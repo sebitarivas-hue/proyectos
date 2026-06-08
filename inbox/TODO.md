@@ -4,114 +4,136 @@ _Dernière mise à jour : 8 juin 2026_
 
 ---
 
+## 🔴 PRIORITÉ ABSOLUE — CETTE SEMAINE
+
+### 1. Déclarer le sinistre ITT à l'ACM (assurance CIC)
+- **Contexte :** Arrêt maladie depuis ~90 jours. Franchise ITT = 90 jours. **Jour 91 = assurance déclenche.**
+- **Ce que ça couvre :** mensualité CIC = **1 250 €/mois** pendant toute la durée de l'AM (max 1 095 jours)
+- **Délai légal :** déclarer dans les 30 jours après la fin de la franchise → **agir maintenant**
+- **Assureur :** ACM VIE SA / ACM IARD SA — contacter via Crédit Mutuel CIC
+- **Pièces à fournir :** arrêt de travail signé médecin, justificatif AM CPAM
+
+### 2. Vérifier assurance ITT sur chaque crédit conso
+Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
+
+| Crédit | Assurance liée | ITT ? | Action |
+|--------|---------------|-------|--------|
+| **BFM** (n°10954898) | ? | ? | Demander à BFM lors contact suspension |
+| **Alterna** | ? | ? | Vérifier contrat |
+| **Cofidis 1** | ? | ? | Vérifier contrat |
+| **Cofidis 2** | ? | ? | Vérifier contrat |
+| **Franfinance** | ? | ? | Vérifier contrat |
+
+> Si ITT confirmée sur tous : jusqu'à **~1 800 €/mois couverts** par les assurances pendant l'AM.
+
+### 3. BFM — Suspension en cours
+- Lettre de suspension envoyée. Attendre réponse.
+- Lors du contact BFM : demander aussi si assurance ITT prévue au contrat.
+- **Contact :** recouvrement@bfm.fr / 0987.980.980 / Mme Pelcat Caroline
+
+---
+
+## SITUATION FINANCIÈRE — JUILLET–SEPTEMBRE 2026
+
+### Revenus
+
+| Source | Montant | Statut |
+|--------|---------|--------|
+| Revenus actuels (RSA/cachets) | 1 590 € | Confirmé |
+| Aide mère | 1 000 € | Confirmé |
+| Aide sœur Marina | 1 300 € | Confirmé |
+| Indemnités AM CPAM (base salaire GRAME) | ⚠️ | À confirmer — 3 mois à venir |
+| **TOTAL CONNU** | **3 890 €** | + indemnités AM |
+
+### Charges (crédit CIC suspendu → intérêts seuls 650 €)
+
+| Poste | Montant | Note |
+|-------|---------|------|
+| Crédit immo CIC — **SUSPENDU** (juil–sept) | **650 €** | Intérêts seuls pendant 3 mois |
+| Pension alimentaire Céleste | 200 € | |
+| Engie | 250 € | |
+| BFM | 205 € | Suspension demandée |
+| Alterna | 160 € | |
+| Cofidis 1 | 107 € | |
+| Bouygues Telecom | 106 € | |
+| Sogessur | 95 € | |
+| Franfinance | 87 € | |
+| Orange | 76 € | |
+| Cofidis 2 | ~66 € | À préciser |
+| Younited | 40 € | En voie de fin |
+| **TOTAL** | **~2 042 €** | |
+
+**Excédent mensuel (juil–sept) : +1 848 €** (hors indemnités AM)
+**Sur 3 mois : ~5 500 € de marge disponible**
+
+### Charges à partir d'octobre (fin suspension CIC)
+
+| | Montant |
+|--|---------|
+| Crédit immo CIC reprend | 1 250 € |
+| Reste des charges | ~792 € |
+| **TOTAL** | **~2 642 €** |
+
+> Si assurance ITT CIC active en octobre : 1 250 € couverts → charges nettes = **~792 €**
+
+---
+
 ## BILAN DETTES CONSO — 8 juin 2026
 
 | Créancier | Capital restant dû | Mensualité | Taux | Source |
 |-----------|-------------------|-----------|------|--------|
-| **BFM** (prêt n°10954898) | **4 713,76 €** | 204,55 € | 4,00 % | ✅ Tableau amortissement officiel |
-| **Alterna** | **~9 000 €** | 160 € | ⚠️ à confirmer | Estimation |
-| **Cofidis** (1 + 2) | **~10 000 €** | ~173 € | ⚠️ à confirmer | Estimation |
-| **Franfinance 1** | ⚠️ | 94 € | ⚠️ | À documenter |
-| **Franfinance 2** | **~2 699 €** | 87,07 € | ⚠️ | ✅ Espace client (31 mensualités restantes) |
-| **Younited** | ⚠️ (faible — fin proche) | 40 € | ⚠️ | En voie de fin |
-| **TOTAL CONSO CONNU** | **~26 413 €** | ~758 € | | |
+| **BFM** (n°10954898) | **4 713,76 €** | 204,55 € | 4,00 % | ✅ Tableau amortissement |
+| **Alterna** | **~9 000 €** | 160 € | ⚠️ | Estimation |
+| **Cofidis** (1+2) | **~10 000 €** | ~173 € | ⚠️ | Estimation |
+| **Franfinance** | **~2 699 €** | 87,07 € | ⚠️ | ✅ 31 mensualités — fin déc. 2028 |
+| **Younited** | ⚠️ faible | 40 € | ⚠️ | En voie de fin |
+| **TOTAL CONSO** | **~26 400 €** | | | |
 
-> **Lecture :** La dette totale est vraisemblablement autour de **26-28k€** selon Franfinance 1 et Younited. C'est gérable avec une stratégie structurée.
-
-### Priorités de remboursement conso (à affiner avec les taux)
-1. **Alterna et Cofidis** — les plus gros capitaux, probablement les taux les plus élevés → négocier ou regrouper
-2. **BFM** — 4 713 € restants à 4 % → pas urgent de solder par anticipation
-3. **Franfinance 2** — 2 699 € restants, fin déc. 2028 → laisser courir
-4. **Younited** → finit seul, laisser courir
-
-### Ce qu'il manque pour un bilan complet
-- [ ] Taux exact Alterna + capital exact
-- [ ] Taux exact Cofidis 1 + 2 + capital exact
-- [ ] Capital restant + taux Franfinance 1
-- [ ] Date de fin + capital Younited
-- [ ] Revenus France Travail exacts + revenus artistiques attendus 2026
+### Ce qu'il manque
+- [ ] Taux Alterna + capital exact
+- [ ] Taux Cofidis 1+2 + capital exact
+- [ ] Montant indemnités AM CPAM (base salaire GRAME)
+- [ ] Date de fin Younited
 
 ---
 
-## URGENT
+## DETTES PONCTUELLES
 
-### 🔴 BFM — Prêt n°10954898 — Échéance impayée (mars 2026)
-- **Capital restant dû :** 4 713,76 € (au 05/06/2026)
-- **Statut :** Email envoyé 27 mars 2026 — pas de réponse documentée
-- **Action :** Contacter BFM pour régler l'échéance impayée et confirmer reprise des prélèvements
-- **Contact :** recouvrement@bfm.fr / Mme Pelcat Caroline / 0987.980.980 (09h–17h)
-- **Espace client :** bfm.fr — login = n° prêt (10954898) + date de naissance
-
-### Impôt sur le revenu (IR France)
-- **Statut :** À régler
-- **Action :** Vérifier montant dû sur impots.gouv.fr — payer ou échelonner
+| Dette | Montant | Action |
+|-------|---------|--------|
+| École (Céleste) | 1 000 € | À régler avec marge juil–sept |
+| ISR (impôt argentin) | 1 000 € | À régler avec marge juil–sept |
+| **Total** | **2 000 €** | |
 
 ---
 
-## SITUATION FINANCIÈRE (mai 2026)
+## CRÉDIT IMMOBILIER
 
-| | Montant |
-|--|--------|
-| Revenus mensuels | 1 590 € |
-| Charges mensuelles | ~2 945 € |
-| **Déficit mensuel** | **−1 355 €** |
+| Établissement | Mensualité | Capital restant dû | Taux | Fin | Statut |
+|--------------|-----------|-------------------|------|-----|--------|
+| **CIC** (8 rue Victor Hugo, Gentilly) | 1 250 € (650 € juil–sept) | ⚠️ | ⚠️ | ⚠️ | Suspendu 3 mois — ITT à déclarer |
 
-### Détail des charges mensuelles
-
-| Poste | Montant | État |
-|-------|---------|------|
-| **Crédit immobilier Gentilly** (Crédit Mutuel) | 1 250 € | Prioritaire, long terme |
-| **Pension alimentaire Céleste** | 350 € | Fixe et prioritaire |
-| **Engie** (élec + gaz) | 250 € | Stabilisé |
-| **BFM** (conso) | 205 € | 🔴 Impayée mars 2026 |
-| **Crédit Alterna** | 160 € | En cours |
-| **Bouygues Telecom** | 106 € | Actif |
-| **Cofidis 1** | 107 € | En cours |
-| **Assurance Sogessur** | 95 € | Habitation / auto |
-| **Franfinance 1** | 94 € | En cours |
-| **Franfinance 2** | 87,07 € | En cours — fin déc. 2028 |
-| **Orange** (internet) | 76 € | Indispensable |
-| **Cofidis 2** | ⚠️ ~66 € | À préciser |
-| **Comutitres / Navigo** | 59 € | Transport |
-| **Younited** | 40 € | En voie de fin |
-| **TOTAL** | **~2 945 €** | |
-
----
-
-## CRÉDITS IMMOBILIERS
-
-| Établissement | Bien | Mensualité | Capital restant dû | Taux | Fin | Statut |
-|--------------|------|-----------|-------------------|------|-----|--------|
-| **Crédit Mutuel** | 8 rue Victor Hugo, Gentilly (résid. principale) | 1 250 € | ⚠️ à documenter | ⚠️ | ⚠️ | Prioritaire |
-| **Société Générale** | 4 rue Paul Fort, 75014 (locatif) | 1 101,37 € | ~108 588 € (06/2026) | 1,55 % fixe | Mai 2035 | ✅ Documenté |
-
-### Détail SG
-- Montant initial 215 000 € / accepté 16 mars 2015 — soulte de partage
-- TAEG 2,06 % — Ref. 814081346265 — 01 69 54 59 30
-- Assurance CNP 100 % quotité
-
-### Détail Crédit Mutuel
-- Assurance Assur Prêt ACM (fiche IPID mai 2025)
-- ⚠️ Capital restant dû + taux + date de fin à documenter via espace client CM
-
----
-
-## PLAN D'ACTION ACTIVÉ (mai 2026)
-
-- **Phase 1 :** Aide famille — 7 100 € (dettes urgentes) + 300 €/mois × 3
-- **Phase 2 :** FSL Val-de-Marne via CCAS Gentilly — 01 41 24 13 50
-- **Phase 2 :** ADIL Val-de-Marne — 01 47 40 58 58 — conseil gratuit crédit/copropriété
-- **Phase 3 :** Modulation/suspension crédits immo CM + SG (après dossier CCAS)
-- **Phase 4 — dernier recours :** Banque de France surendettement — NE PAS activer sans CCAS/ADIL
+> SG = crédit relais — soldé. Un seul crédit immo : CIC.
 
 ---
 
 ## EN ATTENTE
 
-- **CPAM** — Indemnités AM : relancer via ameli.fr ou 36 46
-- **CNM** affiliation n°67015 — renouveler sur monespacepro.cnm.fr si dépôt dossier
+- **CPAM** — Indemnités AM : relancer pour connaître montant exact (base salaire GRAME)
+- **CNM** affiliation n°67015 — renouveler si dépôt dossier prévu
 - **Copropriété** — vérifier paiement facture 038-2025 (Henri Godron — enjoyaol@gmail.com)
 - **SACD OTAGES** — vérifier correction bug (Audiovisuel → Spectacle Vivant)
+- **IR France** — vérifier montant dû sur impots.gouv.fr
+
+---
+
+## PLAN D'ACTION ACTIVÉ (mai 2026)
+
+- **Phase 1 :** Aide famille — 7 100 € + 300 €/mois × 3 ✅
+- **Phase 2 :** FSL Val-de-Marne via CCAS Gentilly — 01 41 24 13 50
+- **Phase 2 :** ADIL Val-de-Marne — 01 47 40 58 58
+- **Phase 3 :** Modulation CIC faite (suspension 3 mois juil–sept)
+- **Levier ITT :** Déclarer sinistre ACM + vérifier tous les crédits conso
 
 ---
 
@@ -122,5 +144,6 @@ _Dernière mise à jour : 8 juin 2026_
 | IRCEC/RAAP | 2026 | Soldé |
 | Taxe foncière | Avr. 2026 | Réglée |
 | IRIS | Avr. 2026 | Réglée |
+| Suspension crédit CIC | Juil 2026 | 3 mois — 650 €/mois d'intérêts |
 | Mutuelle Audiens | Nov. 2025 | 118,93 €/mois. +25% en 2e année. |
 | Couronne dentaire Dr Khedhiri | Déc. 2025 | Réglée |
