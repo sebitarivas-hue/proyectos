@@ -21,23 +21,28 @@ _Dernière mise à jour : 8 juin 2026_
 - → Déclarer dès le jour 91 comme pour CIC
 
 ### 3. Vérifier assurance ITT sur chaque crédit conso
-Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
-
-| Crédit | Assurance liée | Franchise ITT | Action |
-|--------|---------------|---------------|--------|
+| Crédit | Assurance | Franchise ITT | Action |
+|--------|-----------|---------------|--------|
 | **CIC** immo | ACM VIE/IARD | 90 jours ✅ | 🔴 Déclarer maintenant |
-| **Alterna** (Franfinance) | Incluse 19,82€/mois | 90 jours ✅ | 🔴 Déclarer maintenant |
-| **BFM** (n°10954898) | ? | ? | Demander lors contact suspension |
+| **Alterna** (Franfinance) | 19,82€/mois | 90 jours ✅ | 🔴 Déclarer maintenant |
+| **BFM** (n°10954898) | ❌ Non souscrite | — | Confirmé lettre 22/05 |
 | **Cofidis 1** | ? | ? | Vérifier contrat |
 | **Cofidis 2** | ? | ? | Vérifier contrat |
-| **Franfinance** | ? | ? | Vérifier contrat |
+| **Franfinance** (87€) | ? | ? | Vérifier contrat |
 
-> Si ITT confirmée sur tous : jusqu'à **~2 070 €/mois couverts** par les assurances pendant l'AM.
+> ITT CIC + Alterna confirmées = **1 520 €/mois couverts** minimum.
 
-### 4. BFM — Suspension en cours
-- Lettre de suspension envoyée. Attendre réponse.
-- Lors du contact BFM : demander aussi si assurance ITT prévue au contrat.
+### 4. Relancer CPAM — déblocage IJ
+- Salaire GRAME brut : **4 652,25 €/mois** (dernière paie régulière : juin 2024)
+- IJ calculée : **~1 500 €/mois net** (plafonnée SMIC 2026)
+- Rattrappage attendu : **~4 500 € en une fois** (3 mois)
+- Vérifier que l'attestation employeur S3201 a bien été transmise par GRAME CNCM
+- SIRET GRAME : **327 095 964 00059**
+- Contact : ameli.fr messagerie ou 36 46
+
+### 5. BFM — Relancer suspension (lettre envoyée 22/05/2026)
 - **Contact :** recouvrement@bfm.fr / 0987.980.980 / Mme Pelcat Caroline
+- Pas d'ITT sur ce prêt (confirmé dans la lettre)
 
 ---
 
@@ -50,61 +55,72 @@ Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 | Revenus actuels (RSA/cachets) | 1 590 € | Confirmé |
 | Aide mère | 1 000 € | Confirmé |
 | Aide sœur Marina | 1 300 € | Confirmé |
-| Indemnités AM CPAM (base salaire GRAME) | ⚠️ | À confirmer — 3 mois à venir |
-| **TOTAL CONNU** | **3 890 €** | + indemnités AM |
+| **IJ CPAM** | **~1 500 €** | En attente — rattrappage ~4 500 € |
+| **TOTAL** | **~5 390 €** | |
+
+### Calcul IJ CPAM (base bulletins GRAME)
+```
+Salaire journalier de base = (4 652,25 × 3) ÷ 91,25 = 152,92 €/jour
+IJ théorique (50 %) = 76,46 €/jour → plafonnée à ~53,50 €/jour (1,8 SMIC 2026)
+IJ nette (après CSG 6,7 %) ≈ 49,92 €/jour → ~1 500 €/mois
+```
 
 ### Charges (crédit CIC suspendu → intérêts seuls 650 €)
 
 | Poste | Montant | Note |
 |-------|---------|------|
-| Crédit immo CIC — **SUSPENDU** (juil–sept) | **650 €** | Intérêts seuls pendant 3 mois |
+| Crédit immo CIC — SUSPENDU (juil–sept) | **650 €** | Intérêts seuls |
 | Pension alimentaire Céleste | 200 € | |
 | Engie | 250 € | |
 | BFM | 205 € | Suspension demandée |
-| **Alterna (Franfinance)** | **270 €** | ⚠️ Actuellement 540€ (270€ normal + 270€ impayé) |
+| Alterna (Franfinance) | 270 € | Normal — actuellement 540€ avec impayé |
 | Cofidis 1 | 107 € | |
 | Bouygues Telecom | 106 € | |
 | Sogessur | 95 € | |
 | Franfinance | 87 € | |
 | Orange | 76 € | |
-| Cofidis 2 | ~66 € | À préciser |
-| Younited | 40 € | En voie de fin |
-| **TOTAL (Alterna normal)** | **~2 152 €** | |
-| **TOTAL (Alterna avec impayé)** | **~2 422 €** | Situation actuelle |
+| Cofidis 2 | ~66 € | |
+| Younited | 40 € | |
+| **TOTAL charges** | **~2 152 €** | |
 
-**Excédent mensuel (juil–sept, Alterna normal) : ~+1 738 €** (hors indemnités AM)  
-**Sur 3 mois : ~5 200 € de marge disponible** (hors indemnités AM)
+**Excédent mensuel (avec IJ) : ~+3 238 €/mois**  
+**Sur 3 mois : ~9 700 € de marge** (dont ~4 500 € rattrappage IJ en une fois)
+
+### Plan d'emploi de la marge juil–sept
+
+| Usage | Montant | Timing |
+|-------|---------|--------|
+| École Céleste | 1 000 € | Juillet |
+| ISR (impôt argentin) | 1 000 € | Juillet |
+| Remboursement anticipé Alterna | ~5 300 € | Août (avec rattrappage IJ) |
+| Réserve reprise CIC octobre | ~2 400 € | Conserver |
+
+> Objectif : **solder Alterna en août** → stoppe le TAEG 20,85 % définitivement.
 
 ### Charges à partir d'octobre (fin suspension CIC)
 
 | | Montant |
 |--|---------|
-| Crédit immo CIC reprend | 1 250 € |
-| Alterna (normal) | 270 € |
+| Crédit immo CIC | 1 250 € (couvert ITT si validée) |
+| Alterna | **0 €** (soldé) |
 | Reste des charges | ~632 € |
-| **TOTAL** | **~2 752 €** |
-
-> Si assurance ITT CIC + Alterna actives en octobre : 1 250 € + 270 € couverts → charges nettes = **~1 232 €**
+| **TOTAL** | **~1 882 €** (ou ~632 € si ITT CIC active) |
 
 ---
 
 ## BILAN DETTES CONSO — 8 juin 2026
 
-| Créancier | Capital restant dû | Mensualité | Taux | Priorité | Source |
-|-----------|-------------------|-----------|------|----------|--------|
-| **BFM** (n°10954898) | **4 713,76 €** | 204,55 € | **4,00 %** | 3 — taux faible | ✅ Tableau amortissement |
-| **Alterna** (Franfinance n°4059-039568-3) | **5 310,22 €** | 270 € (normal) | **20,85 %** | 🔴 1 — taux le plus élevé | ✅ Relevé 26/05/2026 |
-| **Cofidis** (1+2) | **~10 000 €** | ~173 € | ⚠️ | 2 — à préciser | Estimation |
-| **Franfinance** | **~2 699 €** | 87,07 € | ⚠️ | 4 — capital faible | ✅ 31 mensualités — fin déc. 2028 |
-| **Younited** | ⚠️ faible | 40 € | ⚠️ | 5 — en voie de fin | |
-| **TOTAL CONSO** | **~22 700 €** | | | | |
-
-> **Alterna est le crédit renouvelable le plus dangereux** (TAEG 20,85 %). À geler/fermer en priorité.
-> Alterna = crédit renouvelable (≠ prêt fixe) → peut être clôturé à tout moment sans pénalité.
+| Créancier | Capital restant dû | Mensualité | Taux | Priorité |
+|-----------|-------------------|-----------|------|----------|
+| **Alterna** (Franfinance n°4059-039568-3) | **5 310,22 €** | 270 € | **20,85 %** | 🔴 1 — solder en août |
+| **Cofidis** (1+2) | **~10 000 €** | ~173 € | ⚠️ | 2 — après Alterna |
+| **BFM** (n°10954898) | **4 713,76 €** | 204,55 € | **4,00 %** | 3 — taux faible |
+| **Franfinance** | **~2 699 €** | 87,07 € | ⚠️ | 4 — fin déc. 2028 |
+| **Younited** | ⚠️ faible | 40 € | ⚠️ | 5 — en voie de fin |
+| **TOTAL CONSO** | **~22 700 €** | | | |
 
 ### Ce qu'il manque
 - [ ] Taux Cofidis 1+2 + capital exact
-- [ ] Montant indemnités AM CPAM (base salaire GRAME)
 - [ ] Date de fin Younited + capital restant
 
 ---
@@ -113,39 +129,35 @@ Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 
 | Dette | Montant | Action |
 |-------|---------|--------|
-| École (Céleste) | 1 000 € | À régler avec marge juil–sept |
-| ISR (impôt argentin) | 1 000 € | À régler avec marge juil–sept |
-| **Total** | **2 000 €** | |
+| École (Céleste) | 1 000 € | Juillet — marge IJ |
+| ISR (impôt argentin) | 1 000 € | Juillet — marge IJ |
 
 ---
 
 ## CRÉDIT IMMOBILIER
 
-| Établissement | Mensualité | Capital restant dû | Taux | Fin | Statut |
-|--------------|-----------|-------------------|------|-----|--------|
-| **CIC** (8 rue Victor Hugo, Gentilly) | 1 250 € (650 € juil–sept) | ⚠️ | ⚠️ | ⚠️ | Suspendu 3 mois — ITT à déclarer |
-
-> SG = crédit relais — soldé. Un seul crédit immo : CIC.
+| Établissement | Mensualité | Statut |
+|--------------|-----------|--------|
+| **CIC** (8 rue Victor Hugo, Gentilly) | 1 250 € | Suspendu juil–sept (650€ intérêts) — ITT à déclarer |
 
 ---
 
 ## EN ATTENTE
 
-- **CPAM** — Indemnités AM : relancer pour connaître montant exact (base salaire GRAME)
+- **CPAM** — Débloquer IJ : vérifier S3201 GRAME + relancer ameli.fr
 - **CNM** affiliation n°67015 — renouveler si dépôt dossier prévu
-- **Copropriété** — vérifier paiement facture 038-2025 (Henri Godron — enjoyaol@gmail.com)
+- **Copropriété** — vérifier paiement facture 038-2025 (Henri Godron)
 - **SACD OTAGES** — vérifier correction bug (Audiovisuel → Spectacle Vivant)
 - **IR France** — vérifier montant dû sur impots.gouv.fr
 
 ---
 
-## PLAN D'ACTION ACTIVÉ (mai 2026)
+## PLAN D'ACTION ACTIVÉ
 
-- **Phase 1 :** Aide famille — 7 100 € + 300 €/mois × 3 ✅
+- **Phase 1 :** Aide famille ✅
 - **Phase 2 :** FSL Val-de-Marne via CCAS Gentilly — 01 41 24 13 50
-- **Phase 2 :** ADIL Val-de-Marne — 01 47 40 58 58
-- **Phase 3 :** Modulation CIC faite (suspension 3 mois juil–sept)
-- **Levier ITT :** Déclarer sinistre ACM (CIC) + Franfinance (Alterna) + vérifier BFM/Cofidis/Franfinance
+- **Phase 3 :** Suspension CIC 3 mois ✅
+- **Phase 4 (demain) :** ITT CIC + ITT Alterna + relance BFM + Cofidis + CPAM
 
 ---
 
@@ -157,5 +169,5 @@ Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 | Taxe foncière | Avr. 2026 | Réglée |
 | IRIS | Avr. 2026 | Réglée |
 | Suspension crédit CIC | Juil 2026 | 3 mois — 650 €/mois d'intérêts |
-| Mutuelle Audiens | Nov. 2025 | 118,93 €/mois. +25% en 2e année. |
+| Mutuelle Audiens | Nov. 2025 | 118,93 €/mois |
 | Couronne dentaire Dr Khedhiri | Déc. 2025 | Réglée |
