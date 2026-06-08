@@ -12,23 +12,23 @@ _Dernière mise à jour : 8 juin 2026_
 | **Alterna** | **~9 000 €** | 160 € | ⚠️ à confirmer | Estimation |
 | **Cofidis** (1 + 2) | **~10 000 €** | ~173 € | ⚠️ à confirmer | Estimation |
 | **Franfinance 1** | ⚠️ | 94 € | ⚠️ | À documenter |
-| **Franfinance 2** | ⚠️ | 87 € | ⚠️ | À documenter |
+| **Franfinance 2** | **~2 699 €** | 87,07 € | ⚠️ | ✅ Espace client (31 mensualités restantes) |
 | **Younited** | ⚠️ (faible — fin proche) | 40 € | ⚠️ | En voie de fin |
-| **TOTAL CONSO CONNU** | **~23 714 €** | ~758 € | | |
+| **TOTAL CONSO CONNU** | **~26 413 €** | ~758 € | | |
 
-> **Lecture :** La dette totale n'est pas de 40-50k€. Elle est vraisemblablement autour de **23-28k€** selon les montants Franfinance/Younited. C'est gérable avec une stratégie structurée.
+> **Lecture :** La dette totale est vraisemblablement autour de **26-28k€** selon Franfinance 1 et Younited. C'est gérable avec une stratégie structurée.
 
 ### Priorités de remboursement conso (à affiner avec les taux)
 1. **Alterna et Cofidis** — les plus gros capitaux, probablement les taux les plus élevés → négocier ou regrouper
 2. **BFM** — 4 713 € restants à 4 % → pas urgent de solder par anticipation
-3. **Younited** → finit seul, laisser courir
-4. **Franfinance** → documenter les taux (souvent 10-20 %)
+3. **Franfinance 2** — 2 699 € restants, fin déc. 2028 → laisser courir
+4. **Younited** → finit seul, laisser courir
 
 ### Ce qu'il manque pour un bilan complet
-- [ ] Taux exact Alterna
+- [ ] Taux exact Alterna + capital exact
 - [ ] Taux exact Cofidis 1 + 2 + capital exact
-- [ ] Capital restant Franfinance 1 + 2 (+ taux)
-- [ ] Date de fin Younited
+- [ ] Capital restant + taux Franfinance 1
+- [ ] Date de fin + capital Younited
 - [ ] Revenus France Travail exacts + revenus artistiques attendus 2026
 
 ---
@@ -69,7 +69,7 @@ _Dernière mise à jour : 8 juin 2026_
 | **Cofidis 1** | 107 € | En cours |
 | **Assurance Sogessur** | 95 € | Habitation / auto |
 | **Franfinance 1** | 94 € | En cours |
-| **Franfinance 2** | 87 € | En cours |
+| **Franfinance 2** | 87,07 € | En cours — fin déc. 2028 |
 | **Orange** (internet) | 76 € | Indispensable |
 | **Cofidis 2** | ⚠️ ~66 € | À préciser |
 | **Comutitres / Navigo** | 59 € | Transport |
