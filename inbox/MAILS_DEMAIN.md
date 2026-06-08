@@ -4,8 +4,8 @@ _Copier-coller directement. Vérifier les coordonnées exactes avant envoi._
 ---
 
 ## ✉️ MAIL 1 — CIC / ACM : Déclaration sinistre ITT
-**À :** Ton conseiller CIC (ou acm-sinistres@acm.fr — à confirmer sur ton contrat)  
-**Objet :** Déclaration de sinistre — Garantie Incapacité Temporaire de Travail — Contrat n° [N° contrat assurance CIC]
+**À :** Ton conseiller CIC (numéro sur ton relevé) — ou agence directement  
+**Objet :** Déclaration de sinistre — Garantie Incapacité Temporaire de Travail — Prêt immobilier — Sebastian Rivas
 
 ---
 
@@ -14,22 +14,19 @@ Madame, Monsieur,
 Je me permets de vous contacter afin de déclarer un sinistre au titre de la garantie Incapacité Temporaire de Travail (ITT) souscrite dans le cadre de mon prêt immobilier auprès du CIC.
 
 **Mes coordonnées :**
-- Sebastian Rivas
-- 8 rue Victor Hugo, 94250 Gentilly
-- sebitarivas@gmail.com / 06 63 70 19 36
+Sebastian Rivas — 8 rue Victor Hugo, 94250 Gentilly — sebitarivas@gmail.com — 06 63 70 19 36
 
 **Situation :**
 Je suis en arrêt de travail pour maladie depuis environ 90 jours. La franchise contractuelle de 90 jours étant désormais atteinte, je sollicite la prise en charge de mes mensualités au titre de cette garantie.
 
 **Prêt concerné :**
-- Crédit immobilier CIC — 8 rue Victor Hugo, 94250 Gentilly
-- Mensualité : 1 250 €/mois
+Crédit immobilier CIC — 8 rue Victor Hugo, 94250 Gentilly — Mensualité : 1 250 €/mois
 
 **Documents joints :**
-- Arrêt de travail initial et renouvellements
+- Arrêt de travail initial + renouvellements
 - Attestation de versement CPAM (indemnités journalières)
 
-Je reste disponible pour tout renseignement complémentaire et vous serais reconnaissant de bien vouloir m'indiquer la procédure exacte de déclaration ainsi que les éventuels formulaires à compléter.
+Je vous serais reconnaissant de bien vouloir m'indiquer la procédure exacte ainsi que les éventuels formulaires à compléter.
 
 Dans l'attente de votre retour, je vous adresse mes cordiales salutations.
 
@@ -38,7 +35,7 @@ Sebastian Rivas
 ---
 
 ## ✉️ MAIL 2 — Franfinance / Alterna : Déclaration sinistre ITT + gel de la ligne
-**À :** Franfinance SA — Agence SG Paris Alésia (retrouver le contact sur ton relevé ou appeler le 09 69 39 39 05)  
+**À :** Franfinance SA — Agence SG Paris Alésia (contact sur ton relevé, ou appel 09 69 39 39 05)  
 **Objet :** Déclaration sinistre ITT + demande de gel — Crédit renouvelable n° 4059-039568-3
 
 ---
@@ -49,24 +46,22 @@ Je vous contacte au sujet de mon crédit renouvelable n° **4059-039568-3**, sou
 
 **1. Déclaration de sinistre ITT**
 
-Je suis actuellement en arrêt de travail pour maladie depuis environ 90 jours. Mon contrat d'assurance prévoit une garantie Incapacité Temporaire de Travail avec une franchise de 90 jours.
+Je suis actuellement en arrêt de travail pour maladie depuis environ 90 jours. Mon contrat d'assurance (cotisation 19,82 €/mois) prévoit une garantie Incapacité Temporaire de Travail avec une franchise de 90 jours.
 
-Cette franchise étant désormais atteinte, je vous adresse la présente déclaration de sinistre et vous demande de bien vouloir activer la prise en charge de mes mensualités au titre de cette garantie (montant mensuel : environ 270 €).
+Cette franchise étant atteinte, je vous adresse la présente déclaration de sinistre et vous demande d'activer la prise en charge de mes mensualités au titre de cette garantie (mensualité : environ 270 €).
 
 **2. Demande de gel de la ligne de crédit**
 
-Parallèlement, je souhaite procéder au gel de ma ligne de crédit renouvelable afin de cesser toute utilisation et de passer en mode remboursement seul, dans l'objectif de solder ce crédit dans les meilleurs délais.
+Parallèlement, je souhaite procéder au gel de ma ligne de crédit renouvelable afin de cesser toute utilisation nouvelle et de passer en remboursement seul, dans l'objectif de solder ce crédit dans les meilleurs délais.
 
 **Mes coordonnées :**
-- Sebastian Rivas
-- 8 rue Victor Hugo, 94250 Gentilly
-- sebitarivas@gmail.com / 06 63 70 19 36
+Sebastian Rivas — 8 rue Victor Hugo, 94250 Gentilly — sebitarivas@gmail.com — 06 63 70 19 36
 
 **Documents joints :**
-- Arrêt de travail initial et renouvellements
+- Arrêt de travail initial + renouvellements
 - Attestation de versement CPAM
 
-Je vous remercie de m'indiquer la marche à suivre pour chacune de ces demandes et reste disponible par téléphone ou email.
+Je reste disponible par téléphone ou email pour toute démarche complémentaire.
 
 Cordiales salutations,
 
@@ -74,63 +69,60 @@ Sebastian Rivas
 
 ---
 
-## ✉️ MAIL 3 — BFM : Confirmation suspension + demande ITT
+## ✉️ MAIL 3 — BFM : Relance suspension (lettre envoyée 22/05/2026)
 **À :** recouvrement@bfm.fr  
-**Objet :** Suivi demande suspension — Prêt n° 10954898 — Sebastian Rivas + demande d'information assurance ITT
+**Objet :** Relance — Demande de suspension et allongement de durée — Prêt n° 10954898 — Sebastian Rivas
+
+> ⚠️ **Note :** Pas d'assurance DIT/ITT souscrite sur ce prêt (confirmé dans la lettre du 22/05). Ce mail = relance suspension uniquement.
 
 ---
 
 Madame, Monsieur,
 
-Je vous contacte en suivi de ma demande de suspension du prêt personnel n° **10954898**.
+Par courrier en date du 22 mai 2026, je vous ai adressé une demande de suspension d'échéances (Option B, art. 5.4) et d'allongement de la durée résiduelle à 96 mois (Option A, art. 5.4) concernant mon prêt BFM Liberté n° **10954898**.
 
-**1. Confirmation de suspension**
+N'ayant pas reçu de réponse à ce jour, je me permets de relancer cette demande et vous serais reconnaissant de bien vouloir :
 
-Je souhaite obtenir une confirmation écrite de la mise en place de la suspension demandée, avec précision des dates d'effet et du montant restant dû à l'issue de la période de suspension.
+1. M'indiquer si ma demande a bien été reçue et traitée
+2. Me confirmer par écrit les dates d'effet de la suspension et la nouvelle mensualité applicable à l'issue
+3. Me préciser si des documents complémentaires sont nécessaires
 
-**2. Demande d'information — Garantie ITT**
-
-Par ailleurs, je suis actuellement en arrêt de travail pour maladie depuis environ 90 jours. Je souhaite savoir si le contrat d'assurance associé à ce prêt prévoit une garantie Incapacité Temporaire de Travail (ITT), et le cas échéant :
-- Le délai de franchise applicable
-- La procédure de déclaration de sinistre
-- Les documents à fournir
-
-**Mes coordonnées :**
-- Sebastian Rivas
-- 8 rue Victor Hugo, 94250 Gentilly
-- sebitarivas@gmail.com / 06 63 70 19 36
-- Prêt n° 10954898
+Je suis disponible par téléphone (06 63 70 19 36) ou par email à votre convenance.
 
 Dans l'attente de votre retour, je vous adresse mes cordiales salutations.
 
-Sebastian Rivas
+Sebastian Rivas — 8 rue Victor Hugo, 94250 Gentilly — sebitarivas@gmail.com
 
 ---
 
-## ✉️ MAIL 4 — Cofidis : Demande d'information ITT + demande de rééchelonnement
-**À :** serviceclient@cofidis.fr (ou via espace client cofidis.fr)  
-**Objet :** Demande d'information garantie ITT + demande de rééchelonnement — Sebastian Rivas
+## ✉️ MAIL 4 — Cofidis : Demande ITT + rééchelonnement
+**À :** Via espace client cofidis.fr (messagerie sécurisée) — ou serviceclient@cofidis.fr  
+**Objet :** Arrêt maladie — Demande d'information garantie ITT + demande de rééchelonnement — Sebastian Rivas
 
 ---
 
 Madame, Monsieur,
 
-Je suis titulaire d'un ou plusieurs crédits à la consommation auprès de Cofidis et je me permets de vous contacter pour deux raisons.
+Je suis titulaire de crédits à la consommation auprès de Cofidis et me permets de vous contacter dans le cadre d'un arrêt de travail pour maladie en cours depuis environ 90 jours.
 
-**1. Garantie ITT**
+**1. Garantie Incapacité Temporaire de Travail**
 
-Actuellement en arrêt de travail pour maladie depuis environ 90 jours, je souhaite savoir si les contrats d'assurance associés à mes prêts prévoient une garantie Incapacité Temporaire de Travail, et le cas échéant, connaître la procédure de déclaration.
+Je souhaite savoir si les contrats d'assurance associés à mes prêts prévoient une garantie ITT, et le cas échéant :
+- Le délai de franchise applicable
+- La procédure et les documents nécessaires pour déclarer un sinistre
 
-**2. Demande de rééchelonnement**
+**2. Demande de rééchelonnement ou suspension temporaire**
 
-En raison de difficultés financières temporaires liées à mon arrêt maladie, je sollicite également un rééchelonnement ou une suspension temporaire de mes mensualités, dans l'attente de la reprise d'une activité professionnelle.
+En raison de difficultés financières temporaires liées à cette situation d'arrêt maladie, et dans l'attente d'une reprise d'activité, je sollicite un rééchelonnement ou une suspension temporaire de mes mensualités.
+
+Je suis compositeur et ancien codirecteur d'un Centre National de Création Musicale. Je traverse une période de transition professionnelle avec plusieurs projets en cours de structuration. Ma situation est temporaire et je souhaite régulariser mes engagements dans les meilleures conditions.
 
 **Mes coordonnées :**
-- Sebastian Rivas
-- 8 rue Victor Hugo, 94250 Gentilly
-- sebitarivas@gmail.com / 06 63 70 19 36
+Sebastian Rivas — 8 rue Victor Hugo, 94250 Gentilly — sebitarivas@gmail.com — 06 63 70 19 36
 
-Je joins à ce message mes arrêts de travail ainsi que mon attestation CPAM. Je reste disponible pour un entretien téléphonique à votre convenance.
+**Documents joints :** arrêts de travail + attestation CPAM
+
+Je reste disponible pour un entretien téléphonique.
 
 Cordialement,
 
@@ -138,26 +130,26 @@ Sebastian Rivas
 
 ---
 
-## ✉️ MAIL 5 — CPAM : Demande de confirmation montant indemnités journalières
-**À :** Via ameli.fr (messagerie sécurisée) — ou appel 36 46  
-**Objet :** Demande de confirmation du montant et de la durée de versement des indemnités journalières
+## ✉️ MAIL 5 — CPAM : Confirmation indemnités journalières
+**À :** Via messagerie sécurisée ameli.fr — ou appel 36 46  
+**Objet :** Demande de confirmation montant et durée des indemnités journalières
 
 ---
 
 Madame, Monsieur,
 
-Je suis assuré auprès de la CPAM et actuellement en arrêt de travail pour maladie. Je souhaite obtenir une confirmation écrite des points suivants :
+Actuellement en arrêt de travail pour maladie, je souhaite obtenir une confirmation écrite des éléments suivants :
 
-1. Le montant journalier de mes indemnités journalières, calculé sur la base de mon dernier salaire (GRAME CNCM, Lyon — fin de contrat 2024)
+1. Le montant journalier de mes indemnités journalières (calculé sur la base de mon dernier salaire — GRAME CNCM, Lyon, fin de contrat 2024)
 2. La date de début de versement effectif
 3. La durée maximale de prise en charge
+4. Le montant total estimé sur les 3 prochains mois
 
 Ces informations me sont nécessaires pour la gestion de mes engagements financiers auprès de plusieurs organismes de crédit.
 
 **Mes coordonnées :**
-- Sebastian Rivas
-- 8 rue Victor Hugo, 94250 Gentilly
-- Numéro de sécurité sociale : [À COMPLÉTER]
+Sebastian Rivas — 8 rue Victor Hugo, 94250 Gentilly
+Numéro de sécurité sociale : [À COMPLÉTER]
 
 Dans l'attente de votre retour, je vous adresse mes cordiales salutations.
 
@@ -165,22 +157,20 @@ Sebastian Rivas
 
 ---
 
-## ✉️ MAIL 6 (optionnel) — Franfinance (prêt fixe) : Vérification ITT
-**À :** Franfinance SA (service client)  
-**Objet :** Demande d'information garantie ITT — Prêt personnel — Sebastian Rivas
+## ✉️ MAIL 6 — Franfinance (prêt fixe 87€/mois) : Vérification ITT
+**À :** Franfinance SA service client (contact sur ton contrat)  
+**Objet :** Demande d'information — Garantie ITT — Prêt personnel — Sebastian Rivas
 
 ---
 
 Madame, Monsieur,
 
-Je suis titulaire d'un prêt personnel auprès de Franfinance (mensualité 87,07 €, fin décembre 2028) et je vous contacte pour savoir si le contrat d'assurance associé prévoit une garantie Incapacité Temporaire de Travail.
+Je suis titulaire d'un prêt personnel auprès de Franfinance (mensualité 87,07 €, échéance décembre 2028) et vous contacte dans le cadre d'un arrêt de travail pour maladie en cours depuis environ 90 jours.
 
-Actuellement en arrêt de travail depuis environ 90 jours, je souhaite connaître les conditions d'activation de cette garantie le cas échéant.
+Je souhaite savoir si le contrat d'assurance associé à ce prêt prévoit une garantie Incapacité Temporaire de Travail, et le cas échéant, connaître la franchise applicable et la procédure de déclaration.
 
 **Mes coordonnées :**
-- Sebastian Rivas
-- 8 rue Victor Hugo, 94250 Gentilly
-- sebitarivas@gmail.com / 06 63 70 19 36
+Sebastian Rivas — 8 rue Victor Hugo, 94250 Gentilly — sebitarivas@gmail.com — 06 63 70 19 36
 
 Cordialement,
 
@@ -188,20 +178,32 @@ Sebastian Rivas
 
 ---
 
-## 📋 ORDRE D'ENVOI DEMAIN MATIN
+## 📋 ORDRE D'ENVOI DEMAIN MATIN — ~30 min
 
-| Ordre | Destinataire | Urgence | Durée estimée |
-|-------|-------------|---------|---------------|
-| 1 | CIC/ACM — ITT | 🔴 Urgent | 5 min |
-| 2 | Franfinance/Alterna — ITT + gel | 🔴 Urgent | 5 min |
-| 3 | BFM — confirmation + ITT | 🟠 | 5 min |
-| 4 | Cofidis — ITT + rééchelonnement | 🟠 | 5 min |
-| 5 | CPAM — montant IJ | 🟡 | 5 min (via ameli.fr) |
-| 6 | Franfinance prêt fixe — ITT | 🟢 Optionnel | 3 min |
+| # | Destinataire | Action | Urgence | Potentiel |
+|---|-------------|--------|---------|-----------|
+| 1 | **CIC / ACM** | Déclaration ITT | 🔴 | **1 250 €/mois** couverts |
+| 2 | **Franfinance Alterna** | Déclaration ITT + gel ligne | 🔴 | **270 €/mois** couverts |
+| 3 | **BFM** | Relance suspension (pas d'ITT) | 🟠 | Suspension mensualité 205 € |
+| 4 | **Cofidis** | Vérifier ITT + rééchelonnement | 🟠 | Potentiel + allègement |
+| 5 | **CPAM** | Confirmer montant IJ (ameli.fr) | 🟡 | Clarté sur les revenus |
+| 6 | **Franfinance** (prêt fixe) | Vérifier ITT | 🟢 | Potentiel mineur |
 
-**Total : ~30 minutes pour tout envoyer.**
+**Levier confirmé si mails 1+2 validés : 1 520 €/mois couverts par assurances**
 
-> ⚠️ Avant d'envoyer les mails 1 et 2, assure-toi d'avoir en main :
-> - Arrêts de travail (tous les renouvellements)
-> - Attestation CPAM (indemnités journalières)
-> - Numéros de contrats exacts (vérifier sur les courriers)
+> ⚠️ **Préparer avant d'envoyer :**
+> - Arrêts de travail (tous les renouvellements, en PDF)
+> - Attestation CPAM de versement IJ (à télécharger sur ameli.fr)
+> - N° sécu pour le mail CPAM
+
+---
+
+## 📌 CE QU'ON SAIT SUR CHAQUE CRÉDIT
+
+| Crédit | ITT ? | Note |
+|--------|-------|------|
+| CIC immo | ✅ Oui — franchise 90j | À déclarer maintenant |
+| Alterna (Franfinance) | ✅ Oui — franchise 90j | À déclarer maintenant |
+| BFM | ❌ Non souscrite | Confirmé lettre 22/05/2026 |
+| Cofidis | ❓ Inconnu | À vérifier |
+| Franfinance (87€) | ❓ Inconnu | À vérifier |
