@@ -13,20 +13,28 @@ _Dernière mise à jour : 8 juin 2026_
 - **Assureur :** ACM VIE SA / ACM IARD SA — contacter via Crédit Mutuel CIC
 - **Pièces à fournir :** arrêt de travail signé médecin, justificatif AM CPAM
 
-### 2. Vérifier assurance ITT sur chaque crédit conso
+### 2. Déclarer sinistre ITT sur Alterna (Franfinance/SG)
+- **✅ CONFIRMÉ :** Franchise ITT = **90 jours** (même franchise que CIC)
+- **Assurance incluse :** 19,82 €/mois (taux 0,34 %/mois)
+- **Ce que ça couvre :** mensualité normale ~270 €/mois
+- **Contact :** Franfinance SA — Agence SG Paris Alésia — n° contrat **4059-039568-3**
+- → Déclarer dès le jour 91 comme pour CIC
+
+### 3. Vérifier assurance ITT sur chaque crédit conso
 Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 
-| Crédit | Assurance liée | ITT ? | Action |
-|--------|---------------|-------|--------|
-| **BFM** (n°10954898) | ? | ? | Demander à BFM lors contact suspension |
-| **Alterna** | ? | ? | Vérifier contrat |
+| Crédit | Assurance liée | Franchise ITT | Action |
+|--------|---------------|---------------|--------|
+| **CIC** immo | ACM VIE/IARD | 90 jours ✅ | 🔴 Déclarer maintenant |
+| **Alterna** (Franfinance) | Incluse 19,82€/mois | 90 jours ✅ | 🔴 Déclarer maintenant |
+| **BFM** (n°10954898) | ? | ? | Demander lors contact suspension |
 | **Cofidis 1** | ? | ? | Vérifier contrat |
 | **Cofidis 2** | ? | ? | Vérifier contrat |
 | **Franfinance** | ? | ? | Vérifier contrat |
 
-> Si ITT confirmée sur tous : jusqu'à **~1 800 €/mois couverts** par les assurances pendant l'AM.
+> Si ITT confirmée sur tous : jusqu'à **~2 070 €/mois couverts** par les assurances pendant l'AM.
 
-### 3. BFM — Suspension en cours
+### 4. BFM — Suspension en cours
 - Lettre de suspension envoyée. Attendre réponse.
 - Lors du contact BFM : demander aussi si assurance ITT prévue au contrat.
 - **Contact :** recouvrement@bfm.fr / 0987.980.980 / Mme Pelcat Caroline
@@ -53,7 +61,7 @@ Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 | Pension alimentaire Céleste | 200 € | |
 | Engie | 250 € | |
 | BFM | 205 € | Suspension demandée |
-| Alterna | 160 € | |
+| **Alterna (Franfinance)** | **270 €** | ⚠️ Actuellement 540€ (270€ normal + 270€ impayé) |
 | Cofidis 1 | 107 € | |
 | Bouygues Telecom | 106 € | |
 | Sogessur | 95 € | |
@@ -61,39 +69,43 @@ Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 | Orange | 76 € | |
 | Cofidis 2 | ~66 € | À préciser |
 | Younited | 40 € | En voie de fin |
-| **TOTAL** | **~2 042 €** | |
+| **TOTAL (Alterna normal)** | **~2 152 €** | |
+| **TOTAL (Alterna avec impayé)** | **~2 422 €** | Situation actuelle |
 
-**Excédent mensuel (juil–sept) : +1 848 €** (hors indemnités AM)
-**Sur 3 mois : ~5 500 € de marge disponible**
+**Excédent mensuel (juil–sept, Alterna normal) : ~+1 738 €** (hors indemnités AM)  
+**Sur 3 mois : ~5 200 € de marge disponible** (hors indemnités AM)
 
 ### Charges à partir d'octobre (fin suspension CIC)
 
 | | Montant |
 |--|---------|
 | Crédit immo CIC reprend | 1 250 € |
-| Reste des charges | ~792 € |
-| **TOTAL** | **~2 642 €** |
+| Alterna (normal) | 270 € |
+| Reste des charges | ~632 € |
+| **TOTAL** | **~2 752 €** |
 
-> Si assurance ITT CIC active en octobre : 1 250 € couverts → charges nettes = **~792 €**
+> Si assurance ITT CIC + Alterna actives en octobre : 1 250 € + 270 € couverts → charges nettes = **~1 232 €**
 
 ---
 
 ## BILAN DETTES CONSO — 8 juin 2026
 
-| Créancier | Capital restant dû | Mensualité | Taux | Source |
-|-----------|-------------------|-----------|------|--------|
-| **BFM** (n°10954898) | **4 713,76 €** | 204,55 € | 4,00 % | ✅ Tableau amortissement |
-| **Alterna** | **~9 000 €** | 160 € | ⚠️ | Estimation |
-| **Cofidis** (1+2) | **~10 000 €** | ~173 € | ⚠️ | Estimation |
-| **Franfinance** | **~2 699 €** | 87,07 € | ⚠️ | ✅ 31 mensualités — fin déc. 2028 |
-| **Younited** | ⚠️ faible | 40 € | ⚠️ | En voie de fin |
-| **TOTAL CONSO** | **~26 400 €** | | | |
+| Créancier | Capital restant dû | Mensualité | Taux | Priorité | Source |
+|-----------|-------------------|-----------|------|----------|--------|
+| **BFM** (n°10954898) | **4 713,76 €** | 204,55 € | **4,00 %** | 3 — taux faible | ✅ Tableau amortissement |
+| **Alterna** (Franfinance n°4059-039568-3) | **5 310,22 €** | 270 € (normal) | **20,85 %** | 🔴 1 — taux le plus élevé | ✅ Relevé 26/05/2026 |
+| **Cofidis** (1+2) | **~10 000 €** | ~173 € | ⚠️ | 2 — à préciser | Estimation |
+| **Franfinance** | **~2 699 €** | 87,07 € | ⚠️ | 4 — capital faible | ✅ 31 mensualités — fin déc. 2028 |
+| **Younited** | ⚠️ faible | 40 € | ⚠️ | 5 — en voie de fin | |
+| **TOTAL CONSO** | **~22 700 €** | | | | |
+
+> **Alterna est le crédit renouvelable le plus dangereux** (TAEG 20,85 %). À geler/fermer en priorité.
+> Alterna = crédit renouvelable (≠ prêt fixe) → peut être clôturé à tout moment sans pénalité.
 
 ### Ce qu'il manque
-- [ ] Taux Alterna + capital exact
 - [ ] Taux Cofidis 1+2 + capital exact
 - [ ] Montant indemnités AM CPAM (base salaire GRAME)
-- [ ] Date de fin Younited
+- [ ] Date de fin Younited + capital restant
 
 ---
 
@@ -133,7 +145,7 @@ Pour chaque crédit, retrouver le contrat et vérifier si clause ITT existe :
 - **Phase 2 :** FSL Val-de-Marne via CCAS Gentilly — 01 41 24 13 50
 - **Phase 2 :** ADIL Val-de-Marne — 01 47 40 58 58
 - **Phase 3 :** Modulation CIC faite (suspension 3 mois juil–sept)
-- **Levier ITT :** Déclarer sinistre ACM + vérifier tous les crédits conso
+- **Levier ITT :** Déclarer sinistre ACM (CIC) + Franfinance (Alterna) + vérifier BFM/Cofidis/Franfinance
 
 ---
 
