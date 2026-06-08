@@ -15,11 +15,12 @@ _Dernière mise à jour : 8 juin 2026_
 ---
 
 ## Profil
-Compositeur franco-argentin. Directeur artistique de STOPERA (Gentilly, 94). Ancien directeur artistique de GRAME CNCM (Lyon, ~7 ans). Lion d'Argent — Biennale de Venise 2018. Travail centré sur les formes opératiques contemporaines, le théâtre musical et les écritures hybrides (voix, corps, technologies numériques, IA). Fort ancrage dans la recherche et la transmission.
+Compositeur franco-argentin. Directeur artistique de STOPERA (Gentilly, 94). Ancien co-directeur artistique de GRAME CNCM (Lyon, 2018–2024, en co-direction avec Anouck Avisse). Lion d'Argent — Biennale de Venise 2018. Pensionnaire de la Villa Médicis (Académie de France à Rome). Travail centré sur les formes opératiques contemporaines, le théâtre musical et les écritures hybrides (voix, corps, technologies numériques, IA). Fort ancrage dans la recherche et la transmission.
 
 ---
 
 ## Formation
+- **Pensionnaire — Villa Médicis** (Académie de France à Rome) _(années à confirmer)_
 - **Master** — Université Paris 8 _(dates à compléter)_
 - ⚠️ _Autres formations à compléter_
 
@@ -29,15 +30,20 @@ Compositeur franco-argentin. Directeur artistique de STOPERA (Gentilly, 94). Anc
 
 ### Directeur artistique — STOPERA (2024–présent)
 Gentilly (94) — Compagnie–collectif dédiée aux formes opératiques contemporaines
-- Création et direction de la structure
+- Création et direction de la structure après départ de GRAME
 - Montage de projets : War Madrigals, ANGOT, RUT, Rayon N, América, LIPS, F[A]ME
 - Résidence au Générateur (Gentilly)
 - Partenariats : La Muse en Circuit/CNCM, Lavoir Numérique, T&M Paris, Neue Vocalsolisten Stuttgart
 
-### Directeur artistique — GRAME CNCM (Lyon) (~7 ans, jusqu'à ~fin 2024)
-Centre national de création musicale
-- Co-direction avec Anouck Avisse
-- ⚠️ _Réalisations principales à détailler_
+### Co-Directeur artistique — GRAME CNCM (Lyon) (2018–2024)
+Centre national de création musicale — co-direction avec Anouck Avisse
+- Candidature déposée : 26 janvier 2018. Prise de fonction : 2018. Fin : ~fin 2024.
+- Prédécesseur : James Giroudon
+- **Refonte et repositionnement de la Biennale** : renommage en **B!ME — Biennale des Musiques Exploratoires**
+- **OTAGES** (opéra, 2024) : production GRAME, coproduction Opéra de Lyon (Serge Dorny), soutien Fondation Jerez / Fondation de France. Budget : 238 141,65 €
+- **LIPS** : programme de résidence artistique GRAME (budget résidence 2024 : 51 000 €)
+- **Lion d'Argent — Biennale de Venise 2018** (première année de direction)
+- Partenaires institutionnels clés : Serge Dorny (Opéra de Lyon), Ivan Fedele, Dominique Hervieu, Antoine Gindt (T&M), Julien Brun (DRAC AuRA), Nicolas Crosio (CNSMD Lyon)
 
 ---
 
@@ -59,13 +65,15 @@ Conseil RSE appliqué aux Industries Culturelles et Créatives
 - **Rayon N** — opéra film animé IA. Avec Lavoir Numérique.
 - **F[A]ME** — solo Olivia Martin
 - **Best Worse No Farther** — vibraphone préparé. D'après Beckett. Éd. Lacroch' (2026).
-- **OTAGES** — opéra. Droits SACD (valorisation lyrique).
+- **OTAGES** — opéra. Production GRAME 2024. Droits SACD (valorisation lyrique). Budget 238k€.
+- **Aliados** (2013) — opéra, première collaboration avec Anouck Avisse
 - **EOTB** — projet Teatro Colón, Buenos Aires (2023). ⚠️ Titre complet à préciser.
 
 ---
 
 ## Prix et distinctions
 - **Lion d'Argent — Biennale de Venise 2018**
+- **Pensionnaire de la Villa Médicis** (Académie de France à Rome)
 - ⚠️ _À compléter_
 
 ---
@@ -91,8 +99,8 @@ Conseil RSE appliqué aux Industries Culturelles et Créatives
 ---
 
 ## Informations manquantes
-- [ ] Dates précises GRAME (début/fin)
-- [ ] Réalisations détaillées GRAME
+- [ ] Années exactes Villa Médicis
+- [ ] Mois de fin exact GRAME
 - [ ] Formation complète (conservatoires, années)
 - [ ] Liste complète des œuvres avec dates de création
 - [ ] Enregistrements / discographie
