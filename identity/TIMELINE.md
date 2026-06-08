@@ -31,13 +31,39 @@ _Dernière mise à jour : 8 juin 2026_
 
 ## Carrière professionnelle
 
-### GRAME CNCM — Lyon
-- **Poste :** Directeur artistique
-- **Durée :** ~7 ans, en co-direction avec Anouck Avisse
-- **Fin :** Départ non prévu ni anticipé (~fin 2024)
-- ⚠️ _Dates précises à confirmer_
+### Villa Médicis — Rome (avant 2018)
+- **Pensionnaire de la Villa Médicis** (Académie de France à Rome)
+- C'est durant cette résidence que naît le projet de candidature à la direction de GRAME, en lien avec Anouck Avisse
+- ⚠️ _Années exactes à confirmer_
 
-### STOPERA — Gentilly (94)
+### Première collaboration Avisse / Rivas
+- **Opéra *Aliados*** (2013) — première collaboration avec Anouck Avisse
+- Fondement de la relation artistique qui mènera à la co-direction de GRAME
+
+### GRAME CNCM — Lyon (2018–2024)
+- **Poste :** Co-directeur artistique
+- **Co-direction avec :** Anouck Avisse
+- **Candidature déposée :** 26 janvier 2018
+- **Prise de fonction :** 2018
+- **Fin :** ~fin 2024 (~6–7 ans de direction)
+- **Prédécesseur :** James Giroudon
+- **Structure :** GRAME = Centre national de création musicale (CNCM), Lyon
+
+#### Réalisations majeures sous leur direction
+- **B!ME — Biennale des Musiques Exploratoires** : renommage et repositionnement de la biennale GRAME (anciennement Biennale Musiques en Scène)
+- **OTAGES** (opéra, production GRAME 2024) : coproduction avec l'Opéra de Lyon (Serge Dorny), soutenu par la Fondation Jerez et porté par la Fondation de France. Budget : 238 141,65 €
+- **LIPS** : programme de résidence artistique GRAME, ancré à Gentilly (budget résidence 2024 : 51 000 €)
+- **Lion d'Argent — Biennale de Venise 2018** : obtenu durant la première année de direction
+
+#### Partenaires clés GRAME
+- **Serge Dorny** — Opéra de Lyon (coproduction OTAGES)
+- **Ivan Fedele** — lien Biennale de Venise (Lion d'Argent 2018)
+- **Dominique Hervieu** — Biennale Danse
+- **Antoine Gindt** — T&M Paris
+- **Julien Brun** — DRAC Auvergne-Rhône-Alpes
+- **Nicolas Crosio** — CNSMD Lyon
+
+### STOPERA — Gentilly (94) (2024–présent)
 - **Création :** 2024–2025 (après départ de GRAME)
 - **Statut :** Directeur artistique fondateur
 - **Siège :** 8 rue Victor Hugo, 94250 Gentilly
@@ -46,7 +72,7 @@ _Dernière mise à jour : 8 juin 2026_
 ---
 
 ## Prix et distinctions
-- **Lion d'Argent — Biennale de Venise 2018**
+- **Lion d'Argent — Biennale de Venise 2018** (première année de direction GRAME, lien Ivan Fedele)
 - ⚠️ _Autres distinctions à compléter_
 
 ---
@@ -68,8 +94,9 @@ _Dernière mise à jour : 8 juin 2026_
 ---
 
 ## Informations manquantes
+- [ ] Années exactes Villa Médicis
 - [ ] Dates exactes de formation (conservatoires, Paris 8, autres)
-- [ ] Dates précises du poste GRAME (début/fin)
 - [ ] Autres prix et distinctions
 - [ ] Parcours Argentine / enfance détaillé
 - [ ] Publications, conférences, master classes, jurys
+- [ ] Date de fin exacte GRAME (mois de départ)
