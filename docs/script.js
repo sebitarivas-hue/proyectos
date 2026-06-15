@@ -173,79 +173,93 @@
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Laboratoire / transmission", es: "Laboratorio / transmisión", en: "Lab / transmission", zh: "工作坊 / 传承" } },
         { k: { fr: "Lieu", es: "Lugar", en: "Place", zh: "地点" }, v: "Gentilly" },
-        { k: { fr: "Rythme", es: "Ritmo", en: "Frequency", zh: "频率" }, v: { fr: "Annuel", es: "Anual", en: "Annual", zh: "每年" } }
+        { k: { fr: "Rythme", es: "Ritmo", en: "Frequency", zh: "频率" }, v: { fr: "Annuel", es: "Anual", en: "Annual", zh: "每年" } },
+        { k: { fr: "Éditions précédentes", es: "Ediciones anteriores", en: "Previous editions", zh: "往届" }, v: "UNSAM (Buenos Aires) · GRAME (Lyon) · Pôle Pixel (Villeurbanne)" }
       ],
+      pitchExtra: true,
       credits: [
         { role: { fr: "Direction", es: "Dirección", en: "Direction", zh: "负责人" }, who: "Sebastian Rivas" }
       ],
-      partners: ["Le Générateur", "La Muse en Circuit", "La Chartreuse"]
+      partners: ["Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM", "GRAME", "Pôle Pixel"]
     }
   ];
 
-  function buildCard(p) {
-    var panelId = "panel-" + p.slug;
+  var activeSlug = null;
+
+  function tileHTML(p) {
+    var year = t(YEARS[p.slug] || "");
+    return ''
+      + '<button class="ptile" type="button" aria-controls="project-detail">'
+      +   '<span class="ptile-img" style="background-image:url(\'' + p.img + '\')"></span>'
+      +   '<span class="ptile-scrim"></span>'
+      +   '<span class="ptile-meta">'
+      +     '<span class="ptile-title">' + (p.titleHtml || p.title) + '</span>'
+      +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
+      +   '</span>'
+      + '</button>';
+  }
+
+  function detailHTML(p) {
     var facts = (p.facts || []).map(function (f) {
-      return '<li><span class="k">' + t(f.k) + '</span><span class="v">' + t(f.v) + "</span></li>";
+      return '<li><span class="k">' + t(f.k) + '</span><span class="v">' + t(f.v) + '</span></li>';
     }).join("");
     var credits = (p.credits || []).map(function (c) {
-      return '<li><span class="role">' + t(c.role) + " — </span><span class=\"who\">" + t(c.who) + "</span></li>";
+      return '<li><span class="role">' + t(c.role) + ' — </span><span class="who">' + t(c.who) + '</span></li>';
     }).join("");
     var partners = (p.partners && p.partners.length)
-      ? '<div class="panel-block panel-full"><h4>' + t(UI.partners) + '</h4><ul class="taglist">'
-        + p.partners.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul></div>"
+      ? '<div class="pd-block pd-full"><h4>' + t(UI.partners) + '</h4><ul class="taglist">'
+        + p.partners.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ul></div>'
       : "";
-    var note = p.note ? '<p class="panel-note">' + t(p.note) + "</p>" : "";
-    var year = t(YEARS[p.slug] || "");
-
+    var note = p.note ? '<p class="pd-note">' + t(p.note) + '</p>' : "";
     return ''
-      + '<button class="project-trigger" type="button" aria-expanded="false" aria-controls="' + panelId + '">'
-      +   '<span class="p-row">'
-      +     '<span class="p-name">' + (p.titleHtml || p.title) + "</span>"
-      +     '<span class="p-year">' + year + "</span>"
-      +   "</span>"
-      +   '<span class="p-short">' + t(p.short) + "</span>"
-      +   '<span class="p-toggle"><span class="more-label">' + t(UI.sheet) + '</span><span class="chev">+</span></span>'
-      + "</button>"
-      + '<div class="project-panel" id="' + panelId + '" role="region">'
-      +   '<div class="panel-media"><img src="' + p.img + '" alt="" loading="lazy"></div>'
-      +   '<p class="panel-pitch">' + t(p.pitch) + "</p>"
-      +   '<div class="panel-grid">'
-      +     '<div class="panel-block"><h4>' + t(UI.details) + '</h4><ul class="facts">' + facts + "</ul></div>"
-      +     '<div class="panel-block"><h4>' + t(UI.credits) + '</h4><ul class="credits">' + credits + "</ul></div>"
-      +     partners
-      +     note
-      +   "</div>"
-      + "</div>";
+      + '<div class="pd-head"><h3 class="pd-title">' + (p.titleHtml || p.title) + '</h3>'
+      +   '<button class="pd-close" type="button">' + t(UI.close) + ' ✕</button></div>'
+      + '<div class="pd-media"><img src="' + p.img + '" alt="" loading="lazy"></div>'
+      + '<p class="pd-pitch">' + t(p.pitch) + '</p>'
+      + '<div class="pd-grid">'
+      +   '<div class="pd-block"><h4>' + t(UI.details) + '</h4><ul class="facts">' + facts + '</ul></div>'
+      +   '<div class="pd-block"><h4>' + t(UI.credits) + '</h4><ul class="credits">' + credits + '</ul></div>'
+      +   partners + note
+      + '</div>';
+  }
+
+  function closeDetail() {
+    activeSlug = null;
+    var d = document.getElementById("project-detail");
+    if (d) { d.hidden = true; d.innerHTML = ""; }
+    document.querySelectorAll(".project.active").forEach(function (el) { el.classList.remove("active"); });
+  }
+
+  function openDetail(slug, scroll) {
+    var p = PROJECTS.filter(function (x) { return x.slug === slug; })[0];
+    var d = document.getElementById("project-detail");
+    if (!p || !d) return;
+    activeSlug = slug;
+    d.innerHTML = detailHTML(p);
+    d.hidden = false;
+    document.querySelectorAll(".project").forEach(function (el) { el.classList.toggle("active", el.dataset.slug === slug); });
+    if (scroll) d.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function renderProjects() {
     var grid = document.getElementById("projects-grid");
     if (!grid) return;
-    var open = {};
-    grid.querySelectorAll(".project.open").forEach(function (el) { open[el.dataset.slug] = true; });
     grid.innerHTML = "";
     PROJECTS.forEach(function (p) {
       var li = document.createElement("li");
       li.className = "project";
       li.dataset.slug = p.slug;
-      li.innerHTML = buildCard(p);
-      if (open[p.slug]) setOpen(li, true);
+      li.innerHTML = tileHTML(p);
       grid.appendChild(li);
     });
-  }
-
-  function setOpen(li, isOpen) {
-    li.classList.toggle("open", isOpen);
-    var btn = li.querySelector(".project-trigger");
-    var label = li.querySelector(".more-label");
-    if (btn) btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    if (label) label.textContent = t(isOpen ? UI.close : UI.sheet);
+    if (activeSlug) openDetail(activeSlug, false); else closeDetail();
   }
 
   function onGridClick(e) {
-    var btn = e.target.closest(".project-trigger");
-    if (!btn) return;
-    setOpen(btn.closest(".project"), !btn.closest(".project").classList.contains("open"));
+    var tile = e.target.closest(".ptile");
+    if (!tile) return;
+    var slug = tile.closest(".project").dataset.slug;
+    if (slug === activeSlug) closeDetail(); else openDetail(slug, true);
   }
 
   function applyStaticLang() {
@@ -284,6 +298,8 @@
 
     var grid = document.getElementById("projects-grid");
     if (grid) grid.addEventListener("click", onGridClick);
+    var detail = document.getElementById("project-detail");
+    if (detail) detail.addEventListener("click", function (e) { if (e.target.closest(".pd-close")) closeDetail(); });
 
     document.querySelectorAll("[data-setlang]").forEach(function (b) {
       b.addEventListener("click", function () { setLang(b.getAttribute("data-setlang")); });
