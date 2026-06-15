@@ -164,22 +164,26 @@
     },
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
-      tag: { fr: "Théâtre musical", es: "Teatro musical", en: "Music theatre", zh: "音乐剧场" },
-      short: { fr: "Théâtre musical, mise en scène de Martin Bauer.", es: "Teatro musical, dirección de Martin Bauer.", en: "Music theatre, staged by Martin Bauer.", zh: "音乐剧场，Martin Bauer 执导。" },
+      tag: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧" },
+      short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。" },
       pitch: {
-        fr: "Pièce de théâtre musical mise en scène par Martin Bauer, qui confronte la voix et la scène contemporaine à la figure et à l'imaginaire de Mamma Roma.",
-        es: "Pieza de teatro musical dirigida por Martin Bauer, que confronta la voz y la escena contemporánea con la figura y el imaginario de Mamma Roma.",
-        en: "A music-theatre piece staged by Martin Bauer, confronting the voice and the contemporary stage with the figure and imaginary of Mamma Roma.",
-        zh: "由 Martin Bauer 执导的音乐剧场作品，让人声与当代舞台直面 Mamma Roma 的形象与意象。" },
+        fr: "Opéra construit autour d'une grande table carrée qui se transforme lentement en tombeau. Au CETC du Teatro Colón — nef souterraine entourée de chapelles —, le public se fait face de part et d'autre de l'espace central : la mort d'Ettore rejoue la <em>Lamentation sur le Christ mort</em> de Mantegna que Pasolini cite dans le film. Tout le dispositif est purement acoustique, sans amplification : trois percussionnistes actionnent à vue les mécanismes de la table, opérateurs d'un sacrifice où le banquet, la cérémonie et la mort deviennent une seule et même chose.",
+        es: "Ópera construida alrededor de una gran mesa cuadrada que lentamente se transforma en tumba. En el CETC del Teatro Colón —nave subterránea rodeada de capillas—, el público se enfrenta entre sí a través del espacio central: la muerte de Ettore retoma la <em>Lamentación sobre Cristo muerto</em> de Mantegna que Pasolini cita en la película. Todo el dispositivo es puramente acústico, sin amplificación: tres percusionistas accionan a la vista los mecanismos de la mesa, operadores de un sacrificio donde el banquete, la ceremonia y la muerte terminan siendo una misma cosa.",
+        en: "An opera built around a large square table that slowly turns into a tomb. At the CETC of the Teatro Colón — an underground nave ringed with side chapels — the audience faces itself across the central space: Ettore's death restages Mantegna's <em>Lamentation over the Dead Christ</em>, quoted by Pasolini in the film. The whole device is purely acoustic, without amplification: three percussionists operate the table's mechanisms in full view, operators of a sacrifice in which banquet, ceremony and death become one and the same.",
+        zh: "一部围绕一张方形大桌展开的歌剧，桌子缓缓化为坟墓。在 Teatro Colón 的 CETC——一座被侧礼拜堂环绕的地下中殿——观众隔着中央空间彼此相望：Ettore 之死重现了帕索里尼在影片中引用的曼特尼亚《哀悼基督》。整个装置纯然声学、不加扩音：三位打击乐手当众操作餐桌机械，成为献祭的执行者，让宴席、仪式与死亡合为一体。" },
       facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Théâtre musical", es: "Teatro musical", en: "Music theatre", zh: "音乐剧场" } },
-        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Martin Bauer" }
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧" } },
+        { k: { fr: "D'après", es: "Según", en: "After", zh: "改编自" }, v: "Pier Paolo Pasolini" },
+        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Martin Bauer" },
+        { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "场地" }, v: { fr: "CETC — Teatro Colón", es: "CETC — Teatro Colón", en: "CETC — Teatro Colón", zh: "CETC — 科隆剧院" } },
+        { k: { fr: "Dispositif", es: "Dispositivo", en: "Set-up", zh: "装置" }, v: { fr: "Acoustique, sans amplification", es: "Acústico, sin amplificación", en: "Acoustic, no amplification", zh: "纯声学，无扩音" } }
       ],
       credits: [
-        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Martin Bauer" },
-        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" }
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
+        { role: { fr: "Mise en scène & scénographie", es: "Dirección & escenografía", en: "Staging & set design", zh: "导演与舞台设计" }, who: "Martin Bauer" },
+        { role: { fr: "Percussions", es: "Percusión", en: "Percussion", zh: "打击乐" }, who: { fr: "Trois percussionnistes", es: "Tres percusionistas", en: "Three percussionists", zh: "三位打击乐手" } }
       ],
-      partners: []
+      partners: ["CETC — Teatro Colón (Buenos Aires)"]
     },
     {
       slug: "america", title: "América", titleHtml: "América",
