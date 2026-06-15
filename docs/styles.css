@@ -72,7 +72,8 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .section { max-width: var(--max); margin: 0 auto; padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.2rem, 4vw, 3rem); border-top: 1px solid var(--line); }
 .grid-2 { display: grid; grid-template-columns: 190px 1fr; gap: clamp(1.2rem, 3vw, 3rem); align-items: start; }
 .col-label { display: flex; align-items: baseline; gap: .8rem; }
-.index { font-family: var(--serif); font-size: .95rem; color: var(--accent); }
+.index { font-family: var(--serif); font-size: .95rem; color: var(--accent); flex: 0 0 auto; white-space: nowrap; }
+.eyebrow { overflow-wrap: normal; }
 .eyebrow { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
 .lead { font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.18; letter-spacing: -.01em; margin: 0 0 1.2rem; }
 .prose { max-width: 64ch; color: #2c2620; font-size: 1rem; }
