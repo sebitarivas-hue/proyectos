@@ -32,11 +32,13 @@
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
+  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","fame":"past","snow-on-her-lips":"past" };
+
   var PROJECTS = [
     {
       slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg",
       tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演" },
-      short: { fr: "Cycle vocal pour le Neue Vocalsolisten Stuttgart.", es: "Ciclo vocal para el Neue Vocalsolisten Stuttgart.", en: "A vocal cycle for the Neue Vocalsolisten Stuttgart.", zh: "为 Neue Vocalsolisten Stuttgart 创作的声乐套曲。" },
+      short: { fr: "Cycle de dix madrigaux pour six voix.", es: "Ciclo de diez madrigales para seis voces.", en: "A cycle of ten madrigals for six voices.", zh: "为六个声部创作的十首牧歌套曲。" },
       pitch: {
         fr: "Cycle de madrigaux contemporains qui confronte la voix à l'expérience de la guerre, de l'exil et de l'intime. Sur des textes de Paul Celan, Anaïs Nin, Samuel Beckett et Forough Farrokhzad.",
         es: "Ciclo de madrigales contemporáneos que confronta la voz con la experiencia de la guerra, el exilio y lo íntimo. Sobre textos de Paul Celan, Anaïs Nin, Samuel Beckett y Forough Farrokhzad.",
@@ -44,15 +46,16 @@
         zh: "当代牧歌套曲，让人声直面战争、流亡与亲密的体验。文本取自 Paul Celan、Anaïs Nin、Samuel Beckett 与 Forough Farrokhzad。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Cycle vocal", es: "Ciclo vocal", en: "Vocal cycle", zh: "声乐套曲" } },
-        { k: { fr: "Effectif", es: "Formación", en: "Forces", zh: "编制" }, v: { fr: "Ensemble vocal", es: "Ensemble vocal", en: "Vocal ensemble", zh: "人声乐团" } },
+        { k: { fr: "Effectif", es: "Formación", en: "Forces", zh: "编制" }, v: { fr: "6 voix", es: "6 voces", en: "6 voices", zh: "6 个声部" } },
         { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: "2026" }
       ],
       credits: [
         { role: { fr: "Composition", es: "Composición", en: "Composition", zh: "作曲" }, who: "Sebastian Rivas" },
         { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本" }, who: "Celan · Nin · Beckett · Farrokhzad" },
-        { role: { fr: "Interprétation", es: "Interpretación", en: "Performance", zh: "演出" }, who: "Neue Vocalsolisten Stuttgart" }
+        { role: { fr: "Ensemble", es: "Ensemble", en: "Ensemble", zh: "乐团" }, who: "Les Métaboles" },
+        { role: { fr: "Direction", es: "Dirección", en: "Conducting", zh: "指挥" }, who: "Léo Warynski" }
       ],
-      partners: ["Neue Vocalsolisten Stuttgart"],
+      partners: ["Les Métaboles"],
       note: { fr: "Distribution et dates en cours de finalisation.", es: "Reparto y fechas en proceso de confirmación.", en: "Cast and dates being finalised.", zh: "演员与日期确认中。" }
     },
     {
@@ -79,18 +82,18 @@
       note: { fr: "Recherche de coproductions et de diffuseurs en cours.", es: "Búsqueda de coproducciones y programadores en curso.", en: "Coproductions and venues being sought.", zh: "正在寻找联合制作方与演出场所。" }
     },
     {
-      slug: "nous", title: "Nous", titleHtml: "Nous",
+      slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
       img: "assets/projects/nous.svg",
       tag: ONGOING,
-      short: { fr: "Opéra de chambre d'après Christine Angot.", es: "Ópera de cámara a partir de Christine Angot.", en: "A chamber opera after Christine Angot.", zh: "改编自 Christine Angot 的室内歌剧。" },
+      short: { fr: "Opéra de chambre avec Christine Angot.", es: "Ópera de cámara con Christine Angot.", en: "A chamber opera with Christine Angot.", zh: "与 Christine Angot 合作的室内歌剧。" },
       pitch: {
-        fr: "Opéra de chambre construit à partir de fragments textuels de l'écrivaine Christine Angot, pour une forme scénique libre, au plus près de la parole et de l'intime.",
-        es: "Ópera de cámara construida a partir de fragmentos textuales de la escritora Christine Angot, para una forma escénica libre, muy cerca de la palabra y de lo íntimo.",
-        en: "A chamber opera built from textual fragments by the writer Christine Angot, for a free stage form, close to speech and intimacy.",
-        zh: "以作家 Christine Angot 的文本片段构建的室内歌剧，采用自由的舞台形式，贴近言语与亲密。" },
+        fr: "Opéra de chambre né d'une série de conversations avec Christine Angot. Non pas mettre en musique un thème, mais trouver une forme qui accueille ce qui résiste au langage et au récit : la perte de l'innocence, l'envahissement du réel, l'expérience de la fracture intérieure.",
+        es: "Ópera de cámara nacida de una serie de conversaciones con Christine Angot. No poner en música un tema, sino encontrar una forma que acoja lo que resiste al lenguaje y al relato: la pérdida de la inocencia, la invasión de lo real, la fractura interior.",
+        en: "A chamber opera born from a series of conversations with Christine Angot. Not setting a theme to music, but finding a form that holds what resists language and narrative: the loss of innocence, the flooding of the real, the experience of inner fracture.",
+        zh: "一部室内歌剧，源自与 Christine Angot 的一系列对话。并非为主题谱曲，而是寻找一种能容纳那些抗拒语言与叙事之物的形式：纯真的丧失、现实的侵入、内在断裂的体验。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra de chambre", es: "Ópera de cámara", en: "Chamber opera", zh: "室内歌剧" } },
-        { k: { fr: "D'après", es: "A partir de", en: "After", zh: "改编自" }, v: "Christine Angot" },
+        { k: { fr: "Avec", es: "Con", en: "With", zh: "合作" }, v: "Christine Angot" },
         { k: { fr: "Statut", es: "Estado", en: "Status", zh: "状态" }, v: ONGOING }
       ],
       credits: [
@@ -137,6 +140,25 @@
       ],
       credits: [
         { role: { fr: "Conception & interprétation", es: "Concepción & interpretación", en: "Concept & performance", zh: "构思与表演" }, who: "Olivia Martin" }
+      ],
+      partners: []
+    },
+    {
+      slug: "snow-on-her-lips", title: "Snow on Her Lips", titleHtml: "Snow on Her Lips",
+      img: "assets/projects/snow.svg",
+      tag: { fr: "2021", es: "2021", en: "2021", zh: "2021" },
+      short: { fr: "Pièce performative : corps, musique, électronique et vidéo.", es: "Pieza performativa: cuerpo, música, electrónica y vídeo.", en: "A performative piece: body, music, electronics and video.", zh: "表演性作品：身体、音乐、电子与影像。" },
+      pitch: {
+        fr: "Pièce performative mêlant danse, deux musicien·nes, électronique en temps réel et vidéo : une traversée sensorielle où le corps, le son et l'image se métamorphosent.",
+        es: "Pieza performativa que mezcla danza, dos músicos, electrónica en tiempo real y vídeo: una travesía sensorial donde el cuerpo, el sonido y la imagen se metamorfosean.",
+        en: "A performative piece weaving dance, two musicians, real-time electronics and video: a sensory crossing where body, sound and image metamorphose.",
+        zh: "一部表演性作品，融合舞蹈、两位乐手、实时电子与影像：身体、声音与影像在感官旅程中相互变形。" },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance", es: "Performance", en: "Performance", zh: "表演" } },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: "2021" }
+      ],
+      credits: [
+        { role: { fr: "Conception & musique", es: "Concepción & música", en: "Concept & music", zh: "构思与音乐" }, who: "Sebastian Rivas" }
       ],
       partners: []
     },
@@ -242,20 +264,22 @@
   }
 
   function renderProjects() {
-    var grid = document.getElementById("projects-grid");
-    if (!grid) return;
-    grid.innerHTML = "";
+    var up = document.getElementById("grid-upcoming");
+    var pa = document.getElementById("grid-past");
+    if (!up || !pa) return;
+    up.innerHTML = ""; pa.innerHTML = "";
     PROJECTS.forEach(function (p) {
       var li = document.createElement("li");
       li.className = "project";
       li.dataset.slug = p.slug;
       li.innerHTML = tileHTML(p);
-      grid.appendChild(li);
+      (PERIOD[p.slug] === "past" ? pa : up).appendChild(li);
     });
     if (activeSlug) openDetail(activeSlug, false); else closeDetail();
   }
 
   function onGridClick(e) {
+    if (e.target.closest(".pd-close")) { closeDetail(); return; }
     var tile = e.target.closest(".ptile");
     if (!tile) return;
     var slug = tile.closest(".project").dataset.slug;
@@ -296,10 +320,8 @@
   document.addEventListener("DOMContentLoaded", function () {
     setLang(initialLang());
 
-    var grid = document.getElementById("projects-grid");
-    if (grid) grid.addEventListener("click", onGridClick);
-    var detail = document.getElementById("project-detail");
-    if (detail) detail.addEventListener("click", function (e) { if (e.target.closest(".pd-close")) closeDetail(); });
+    var prod = document.getElementById("productions");
+    if (prod) prod.addEventListener("click", onGridClick);
 
     document.querySelectorAll("[data-setlang]").forEach(function (b) {
       b.addEventListener("click", function () { setLang(b.getAttribute("data-setlang")); });

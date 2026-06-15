@@ -192,3 +192,13 @@ html[lang="zh"] .hero-statement, html[lang="zh"] .lead, html[lang="zh"] .section
 }
 @media print { .float-contact, .site-header { display: none !important; } .reveal { opacity:1 !important; transform:none !important; } }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+/* ---------- Productions sub-grids + compact rosters ---------- */
+.grid-sub { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 1.8rem 0 .7rem; }
+#grid-upcoming { margin-top: .3rem; }
+/* compact, two-column rosters so they don't outweigh the project squares */
+.roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.4rem; }
+.roster li { padding: .5rem 0; }
+.roster .who { font-size: 1rem; }
+.roster .role { font-size: .82rem; }
+@media (max-width: 640px) { .roster { grid-template-columns: 1fr; } }
