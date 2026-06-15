@@ -148,21 +148,29 @@
     {
       slug: "snow-on-her-lips", title: "Snow on Her Lips", titleHtml: "Snow on Her Lips",
       img: "assets/projects/snow.svg",
-      tag: { fr: "2021", es: "2021", en: "2021", zh: "2021" },
-      short: { fr: "Pièce performative : corps, musique, électronique et vidéo.", es: "Pieza performativa: cuerpo, música, electrónica y vídeo.", en: "A performative piece: body, music, electronics and video.", zh: "表演性作品：身体、音乐、电子与影像。" },
+      tag: { fr: "Monte-Carlo · 2021", es: "Monte-Carlo · 2021", en: "Monte-Carlo · 2021", zh: "蒙特卡洛 · 2021" },
+      short: { fr: "Monodrame : théâtre musical, danse, vidéo & électronique.", es: "Monodrama: teatro musical, danza, vídeo y electrónica.", en: "A monodrama: music theatre, dance, video & electronics.", zh: "独角戏：音乐剧场、舞蹈、影像与电子。" },
       pitch: {
-        fr: "Pièce performative mêlant danse, deux musicien·nes, électronique en temps réel et vidéo : une traversée sensorielle où le corps, le son et l'image se métamorphosent.",
-        es: "Pieza performativa que mezcla danza, dos músicos, electrónica en tiempo real y vídeo: una travesía sensorial donde el cuerpo, el sonido y la imagen se metamorfosean.",
-        en: "A performative piece weaving dance, two musicians, real-time electronics and video: a sensory crossing where body, sound and image metamorphose.",
-        zh: "一部表演性作品，融合舞蹈、两位乐手、实时电子与影像：身体、声音与影像在感官旅程中相互变形。" },
+        fr: "Monodrame immersif pour une performeuse, deux instrumentistes, objets, électronique et vidéo. Inspiré de Hans Bellmer et de textes de Heiner Müller (<em>Hamlet-Machine</em>), il suit le monologue d'une femme qui se défait, se libère et se consume — jusqu'à faire de cette destruction le prélude possible d'une reconstruction. Commande du Printemps des Arts de Monte-Carlo.",
+        es: "Monodrama inmersivo para una performer, dos instrumentistas, objetos, electrónica y vídeo. Inspirado en Hans Bellmer y en textos de Heiner Müller (<em>Hamlet-Machine</em>), sigue el monólogo de una mujer que se deshace, se libera y se consume — hasta hacer de esa destrucción el posible preludio de una reconstrucción. Encargo del Printemps des Arts de Monte-Carlo.",
+        en: "An immersive monodrama for a performer, two instrumentalists, objects, electronics and video. Inspired by Hans Bellmer and texts by Heiner Müller (<em>Hamletmachine</em>), it follows the monologue of a woman who breaks apart, frees and consumes herself — until that destruction becomes the possible prelude to a reconstruction. Commissioned by the Printemps des Arts de Monte-Carlo.",
+        zh: "一部沉浸式独角戏，为一位表演者、两位乐手、物件、电子与影像而作。灵感取自汉斯·贝尔默与海纳·穆勒的文本（<em>哈姆雷特机器</em>），追随一位女性自我瓦解、解放与焚毁的独白——直到这种毁灭成为重建的可能序曲。受蒙特卡洛艺术之春委约。" },
       facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance", es: "Performance", en: "Performance", zh: "表演" } },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: "2021" }
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Monodrame / théâtre musical", es: "Monodrama / teatro musical", en: "Monodrama / music theatre", zh: "独角戏 / 音乐剧场" } },
+        { k: { fr: "D'après", es: "A partir de", en: "After", zh: "取材自" }, v: { fr: "Hans Bellmer · Heiner Müller", es: "Hans Bellmer · Heiner Müller", en: "Hans Bellmer · Heiner Müller", zh: "汉斯·贝尔默 · 海纳·穆勒" } },
+        { k: { fr: "Durée", es: "Duración", en: "Duration", zh: "时长" }, v: "55 min" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Printemps des Arts de Monte-Carlo, 2021", es: "Printemps des Arts de Monte-Carlo, 2021", en: "Printemps des Arts de Monte-Carlo, 2021", zh: "蒙特卡洛艺术之春，2021" } }
       ],
       credits: [
-        { role: { fr: "Conception & musique", es: "Concepción & música", en: "Concept & music", zh: "构思与音乐" }, who: "Sebastian Rivas" }
+        { role: { fr: "Composition & mise en scène", es: "Composición & dirección", en: "Composition & staging", zh: "作曲与导演" }, who: "Sebastian Rivas" },
+        { role: { fr: "Performeuse", es: "Performer", en: "Performer", zh: "表演者" }, who: "Emma Terno" },
+        { role: { fr: "Vidéo & informatique musicale", es: "Vídeo & informática musical", en: "Video & music computing", zh: "影像与音乐信息" }, who: "Daniel Zea" },
+        { role: { fr: "Ensemble", es: "Ensemble", en: "Ensemble", zh: "乐团" }, who: "Êkheía — Bastien Roblot, Olivia Martin" },
+        { role: { fr: "Lumières & scénographie", es: "Luces & escenografía", en: "Lighting & set design", zh: "灯光与舞美" }, who: "Jean-Cyrille Burdet" },
+        { role: { fr: "Regard extérieur", es: "Mirada externa", en: "Outside eye", zh: "外部视角" }, who: "Géraldine Kosiak" }
       ],
-      partners: []
+      partners: ["Printemps des Arts de Monte-Carlo", "GRAME"],
+      note: { fr: "Création au Sporting Monte-Carlo (Monaco), 2021. Captation disponible sur notre chaîne YouTube.", es: "Estreno en el Sporting Monte-Carlo (Mónaco), 2021. Grabación disponible en nuestro canal de YouTube.", en: "Premiered at the Sporting Monte-Carlo (Monaco), 2021. Recording available on our YouTube channel.", zh: "2021 年于蒙特卡洛 Sporting（摩纳哥）首演。录像见我们的 YouTube 频道。" }
     },
     {
       slug: "aliados", title: "Aliados", titleHtml: "Aliados",
