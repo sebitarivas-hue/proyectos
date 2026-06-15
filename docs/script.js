@@ -27,16 +27,17 @@
     "rut": "2026",
     "fame": "2025",
     "america": "2027",
+    "mamma-roma": "2027",
     "lips": { fr: "annuel", es: "anual", en: "annual", zh: "每年" }
   };
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","fame":"past","snow-on-her-lips":"past","mamma-roma":"past" };
+  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","mamma-roma":"up","fame":"past","snow-on-her-lips":"past" };
 
   var PROJECTS = [
     {
-      slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg",
+      slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.svg",
       tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演" },
       short: { fr: "Cycle de dix madrigaux pour six voix.", es: "Ciclo de diez madrigales para seis voces.", en: "A cycle of ten madrigals for six voices.", zh: "为六个声部创作的十首牧歌套曲。" },
       pitch: {
@@ -83,7 +84,7 @@
     },
     {
       slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
-      img: "assets/projects/nous.svg",
+      img: "assets/projects/nous.svg", photo: "assets/projects/nous.svg",
       tag: ONGOING,
       short: { fr: "Opéra de chambre avec Christine Angot.", es: "Ópera de cámara con Christine Angot.", en: "A chamber opera with Christine Angot.", zh: "与 Christine Angot 合作的室内歌剧。" },
       pitch: {
@@ -164,7 +165,7 @@
     },
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
-      tag: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧" },
+      tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月" },
       short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。" },
       pitch: {
         fr: "Opéra construit autour d'une grande table carrée qui se transforme lentement en tombeau. Au CETC du Teatro Colón — nef souterraine entourée de chapelles —, le public se fait face de part et d'autre de l'espace central : la mort d'Ettore rejoue la <em>Lamentation sur le Christ mort</em> de Mantegna que Pasolini cite dans le film. Tout le dispositif est purement acoustique, sans amplification : trois percussionnistes actionnent à vue les mécanismes de la table, opérateurs d'un sacrifice où le banquet, la cérémonie et la mort deviennent une seule et même chose.",
@@ -176,6 +177,7 @@
         { k: { fr: "D'après", es: "Según", en: "After", zh: "改编自" }, v: "Pier Paolo Pasolini" },
         { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Martin Bauer" },
         { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "场地" }, v: { fr: "CETC — Teatro Colón", es: "CETC — Teatro Colón", en: "CETC — Teatro Colón", zh: "CETC — 科隆剧院" } },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Juillet 2027", es: "Julio 2027", en: "July 2027", zh: "2027 年 7 月" } },
         { k: { fr: "Dispositif", es: "Dispositivo", en: "Set-up", zh: "装置" }, v: { fr: "Acoustique, sans amplification", es: "Acústico, sin amplificación", en: "Acoustic, no amplification", zh: "纯声学，无扩音" } }
       ],
       credits: [
@@ -189,21 +191,24 @@
       slug: "america", title: "América", titleHtml: "América",
       img: "assets/projects/america.svg",
       tag: { fr: "Création 2027", es: "Estreno 2027", en: "Premiere 2027", zh: "2027 首演" },
-      short: { fr: "Nouveau projet scénique — livret & résidences.", es: "Nuevo proyecto escénico: libreto y residencias.", en: "A new stage project: libretto and residencies.", zh: "新的舞台项目：剧本与驻地。" },
+      short: { fr: "Nouveau projet scénique, créé à Mexico.", es: "Nuevo proyecto escénico, creado en México.", en: "A new stage project, created in Mexico City.", zh: "在墨西哥城创作的新舞台项目。" },
       pitch: {
-        fr: "Nouveau projet scénique en développement : écriture d'un livret et résidences de création, vers une création en 2027 et des résidences croisées avec l'Amérique latine.",
-        es: "Nuevo proyecto escénico en desarrollo: escritura de un libreto y residencias de creación, hacia un estreno en 2027 y residencias cruzadas con América Latina.",
-        en: "A new stage project in development: writing a libretto and creation residencies, towards a 2027 premiere and cross-residencies with Latin America.",
-        zh: "正在发展中的新舞台项目：剧本创作与创作驻地，目标 2027 年首演，并与拉丁美洲进行交流驻地。" },
+        fr: "Nouveau projet scénique créé à Mexico, dans une mise en scène de Marcelo Lombardero. Écriture d'un livret et résidences de création vers une première en 2027.",
+        es: "Nuevo proyecto escénico creado en México, con dirección de escena de Marcelo Lombardero. Escritura de un libreto y residencias de creación hacia un estreno en 2027.",
+        en: "A new stage project created in Mexico City, staged by Marcelo Lombardero. Libretto writing and creation residencies towards a 2027 premiere.",
+        zh: "在墨西哥城创作的新舞台项目，由 Marcelo Lombardero 执导。剧本写作与创作驻地，目标 2027 年首演。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Projet scénique", es: "Proyecto escénico", en: "Stage project", zh: "舞台项目" } },
+        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Marcelo Lombardero" },
+        { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "场地" }, v: { fr: "Mexico", es: "México", en: "Mexico City", zh: "墨西哥城" } },
         { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: "2027" }
       ],
       credits: [
-        { role: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, who: "Sebastian Rivas" }
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
+        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Marcelo Lombardero" }
       ],
-      partners: ["Teatro Colón — Buenos Aires"],
-      note: { fr: "Résidences croisées 2027 (Teatro Colón) à confirmer.", es: "Residencias cruzadas 2027 (Teatro Colón) por confirmar.", en: "2027 cross-residencies (Teatro Colón) to be confirmed.", zh: "2027 交流驻地（Teatro Colón）待确认。" }
+      partners: [],
+      note: { fr: "Création à Mexico. Production en cours de montage.", es: "Estreno en México. Producción en construcción.", en: "Premiere in Mexico City. Production being assembled.", zh: "墨西哥城首演。制作筹备中。" }
     },
     {
       slug: "lips", title: "LIPS Summer Course", titleHtml: "LIPS Summer Course",
