@@ -32,7 +32,7 @@
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","fame":"past","snow-on-her-lips":"past","mamma-roma":"past" };
 
   var PROJECTS = [
     {
@@ -163,6 +163,25 @@
       partners: []
     },
     {
+      slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
+      tag: { fr: "Théâtre musical", es: "Teatro musical", en: "Music theatre", zh: "音乐剧场" },
+      short: { fr: "Théâtre musical, mise en scène de Martin Bauer.", es: "Teatro musical, dirección de Martin Bauer.", en: "Music theatre, staged by Martin Bauer.", zh: "音乐剧场，Martin Bauer 执导。" },
+      pitch: {
+        fr: "Pièce de théâtre musical mise en scène par Martin Bauer, qui confronte la voix et la scène contemporaine à la figure et à l'imaginaire de Mamma Roma.",
+        es: "Pieza de teatro musical dirigida por Martin Bauer, que confronta la voz y la escena contemporánea con la figura y el imaginario de Mamma Roma.",
+        en: "A music-theatre piece staged by Martin Bauer, confronting the voice and the contemporary stage with the figure and imaginary of Mamma Roma.",
+        zh: "由 Martin Bauer 执导的音乐剧场作品，让人声与当代舞台直面 Mamma Roma 的形象与意象。" },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Théâtre musical", es: "Teatro musical", en: "Music theatre", zh: "音乐剧场" } },
+        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Martin Bauer" }
+      ],
+      credits: [
+        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Martin Bauer" },
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" }
+      ],
+      partners: []
+    },
+    {
       slug: "america", title: "América", titleHtml: "América",
       img: "assets/projects/america.svg",
       tag: { fr: "Création 2027", es: "Estreno 2027", en: "Premiere 2027", zh: "2027 首演" },
@@ -208,22 +227,29 @@
 
   var activeSlug = null;
 
-  // Charte couleur élégante pour les productions sans photo (dégradés sobres, lisibles en blanc)
+  // Charte couleur élégante — palette BEHR Color Trends 2026 (tons muets, sophistiqués)
   var COLORS = {
-    "war-madrigals":    ["#3b4d61", "#1f2a36"],  // bleu ardoise
-    "rayon-n":          ["#473a68", "#261d3b"],  // indigo / violet
-    "nous":             ["#5c3a48", "#311d28"],  // prune
-    "rut":              ["#2c5f59", "#143430"],  // sarcelle
-    "fame":             ["#8a6326", "#4c3613"],  // bronze / ambre
-    "snow-on-her-lips": ["#46535f", "#262f38"],  // gris froid
-    "america":          ["#85452f", "#491f16"],  // terre cuite
-    "lips":             ["#3a5a40", "#1f3526"]   // vert forêt
+    "war-madrigals":    "#2f3f49",  // Nocturne Blue — bleu nuit profond
+    "rayon-n":          "#4f5f60",  // Hidden Gem — teal-gris profond
+    "nous":             "#5e3c41",  // Rumors — bordeaux feutré
+    "rut":              "#6f8f8a",  // Dragonfly — vert-bleu
+    "fame":             "#d6a65c",  // Beehive — ocre chaud
+    "snow-on-her-lips": "#aebfbd",  // Watery — bleu-gris pâle
+    "america":          "#a85c45",  // Terra Cotta Urn — terre cuite
+    "lips":             "#939a7e",  // Urban Nature — sauge
+    "mamma-roma":       "#4a3a2f"   // Baronial Brown — brun profond
   };
 
+  function hx(h) { h = h.replace("#", ""); return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)]; }
+  function tx(n) { n = Math.max(0, Math.min(255, Math.round(n))); return ("0" + n.toString(16)).slice(-2); }
+  function darken(h, f) { var c = hx(h); return "#" + tx(c[0]*f) + tx(c[1]*f) + tx(c[2]*f); }
+  function inkOn(h) { var c = hx(h); var l = (0.299*c[0] + 0.587*c[1] + 0.114*c[2]) / 255; return l > 0.62 ? "#1a1410" : "#ffffff"; }
+
   function tileBg(p) {
-    var c = COLORS[p.slug] || ["#3b4d61", "#1f2a36"];
-    return "linear-gradient(152deg," + c[0] + " 0%," + c[1] + " 100%)";
+    var base = COLORS[p.slug] || "#4f5f60";
+    return "linear-gradient(152deg," + base + " 0%," + darken(base, 0.86) + " 100%)";
   }
+  function tileInk(p) { return inkOn(COLORS[p.slug] || "#4f5f60"); }
 
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
@@ -240,7 +266,7 @@
     }
     var tag = t(p.tag || "");
     return ''
-      + '<button class="ptile ptile--color" type="button" aria-controls="project-detail" style="background:' + tileBg(p) + '">'
+      + '<button class="ptile ptile--color" type="button" aria-controls="project-detail" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
       +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
       +   '<span class="ptile-meta">'
       +     '<span class="ptile-title">' + (p.titleHtml || p.title) + '</span>'
@@ -263,7 +289,7 @@
     var note = p.note ? '<p class="pd-note">' + t(p.note) + '</p>' : "";
     var media = p.photo
       ? '<div class="pd-media"><img src="' + p.photo + '" alt="" loading="lazy"></div>'
-      : '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + '"><span class="pd-media-title">' + (p.titleHtml || p.title) + '</span></div>';
+      : '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="pd-media-title">' + (p.titleHtml || p.title) + '</span></div>';
     return ''
       + '<div class="pd-head"><h3 class="pd-title">' + (p.titleHtml || p.title) + '</h3>'
       +   '<button class="pd-close" type="button">' + t(UI.close) + ' ✕</button></div>'
