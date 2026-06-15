@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="Snow on Her Lips">
+ <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1620"/><stop offset="1" stop-color="#0b0a0c"/></linearGradient></defs>
+ <rect width="1200" height="1200" fill="url(#g)"/>
+ <text x="70" y="640" font-family="Georgia, serif" font-size="74" fill="#f3f1ee" fill-opacity="0.92">Snow on</text>
+ <text x="70" y="720" font-family="Georgia, serif" font-size="74" fill="#f3f1ee" fill-opacity="0.92">Her Lips</text>
+ <text x="72" y="770" font-family="Inter, sans-serif" font-size="22" letter-spacing="6" fill="#d81e05" fill-opacity="0.85">STOPERA</text>
+</svg>

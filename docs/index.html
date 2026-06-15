@@ -22,9 +22,9 @@
     <a class="brand" href="#top" aria-label="STOPERA"><img class="brand-logo" src="assets/logo-dark.png" alt="STOPERA! Collectif scénique" /></a>
     <nav class="site-nav" aria-label="Navigation">
       <a href="#manifeste" data-fr="Manifeste" data-es="Manifiesto" data-en="About" data-zh="关于"></a>
+      <a href="#productions" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></a>
       <a href="#honneur" data-fr="Aperghis" data-es="Aperghis" data-en="Aperghis" data-zh="Aperghis"></a>
       <a href="#collectif" data-fr="Collectif" data-es="Colectivo" data-en="Collective" data-zh="团队"></a>
-      <a href="#productions" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></a>
       <a href="#videos" data-fr="Vidéos" data-es="Vídeos" data-en="Videos" data-zh="视频"></a>
       <a href="#contact" data-fr="Contact" data-es="Contacto" data-en="Contact" data-zh="联系"></a>
       <div class="lang-switch" role="group" aria-label="Langue / Language">
@@ -92,10 +92,24 @@
       </div>
     </section>
 
-    <!-- 02 PRÉSIDENT D'HONNEUR (mis en avant) -->
+    <!-- 02 PRODUCTIONS -->
+    <section id="productions" class="section">
+      <div class="section-head-row">
+        <div class="col-label"><span class="index">02</span><span class="eyebrow" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></span></div>
+        <h2 class="lead" style="margin:0" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></h2>
+      </div>
+      <p class="section-note" data-fr="Cliquez une production pour ouvrir sa fiche." data-es="Haga clic en una producción para abrir su ficha." data-en="Click a production to open its sheet." data-zh="点击作品打开详情。"></p>
+      <p class="grid-sub" data-fr="À venir" data-es="Próximamente" data-en="Upcoming" data-zh="即将上演"></p>
+      <ul id="grid-upcoming" class="projects" aria-label="À venir"></ul>
+      <p class="grid-sub" data-fr="Productions passées" data-es="Producciones anteriores" data-en="Past productions" data-zh="往期作品"></p>
+      <ul id="grid-past" class="projects" aria-label="Passées"></ul>
+      <div id="project-detail" class="project-detail" role="region" hidden></div>
+    </section>
+
+    <!-- 03 PRÉSIDENT D'HONNEUR (mis en avant) -->
     <section id="honneur" class="section">
       <div class="grid-2">
-        <div class="col-label"><span class="index">02</span><span class="eyebrow" data-fr="Président d'honneur" data-es="Presidente de honor" data-en="Honorary President" data-zh="名誉主席"></span></div>
+        <div class="col-label"><span class="index">03</span><span class="eyebrow" data-fr="Président d'honneur" data-es="Presidente de honor" data-en="Honorary President" data-zh="名誉主席"></span></div>
         <div class="col-body honneur">
           <figure class="honneur-portrait">
             <img src="assets/aperghis.svg" alt="Georges Aperghis" loading="lazy" />
@@ -118,10 +132,10 @@
       </div>
     </section>
 
-    <!-- 03 COLLECTIF -->
+    <!-- 04 COLLECTIF -->
     <section id="collectif" class="section">
       <div class="grid-2">
-        <div class="col-label"><span class="index">03</span><span class="eyebrow" data-fr="Collectif" data-es="Colectivo" data-en="Collective" data-zh="团队"></span></div>
+        <div class="col-label"><span class="index">04</span><span class="eyebrow" data-fr="Collectif" data-es="Colectivo" data-en="Collective" data-zh="团队"></span></div>
         <div class="col-body">
           <h2 class="lead" data-fr="Celles et ceux qui font les œuvres." data-es="Quienes hacen las obras." data-en="The people who make the work." data-zh="创作作品的人。"></h2>
 
@@ -132,7 +146,7 @@
             <li><span class="who">Rut Schreiner</span><span class="role" data-fr="Direction & performance" data-es="Dirección & performance" data-en="Conducting & performance" data-zh="指挥与表演"></span></li>
             <li><span class="who">Nicola Beller Carbone</span><span class="role" data-fr="Soprano" data-es="Soprano" data-en="Soprano" data-zh="女高音"></span></li>
             <li><span class="who">Antoine Gindt</span><span class="role" data-fr="Dramaturgie · T&M Paris" data-es="Dramaturgia · T&M Paris" data-en="Dramaturgy · T&M Paris" data-zh="戏剧构作 · T&M Paris"></span></li>
-            <li><span class="who">Neue Vocalsolisten Stuttgart</span><span class="role" data-fr="Ensemble vocal partenaire" data-es="Ensemble vocal asociado" data-en="Partner vocal ensemble" data-zh="合作人声乐团"></span></li>
+            <li><span class="who">Les Métaboles</span><span class="role" data-fr="Ensemble vocal partenaire" data-es="Ensemble vocal asociado" data-en="Partner vocal ensemble" data-zh="合作人声乐团"></span></li>
           </ul>
 
           <div class="subblock">
@@ -154,21 +168,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- 04 PRODUCTIONS -->
-    <section id="productions" class="section">
-      <div class="section-head-row">
-        <div class="col-label"><span class="index">04</span><span class="eyebrow" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></span></div>
-        <h2 class="lead" style="margin:0" data-fr="Créations 2025 – 2027" data-es="Creaciones 2025 – 2027" data-en="Creations 2025 – 2027" data-zh="2025 – 2027 作品"></h2>
-      </div>
-      <p class="section-note"
-         data-fr="Cliquez une production pour ouvrir sa fiche."
-         data-es="Haga clic en una producción para abrir su ficha."
-         data-en="Click a production to open its sheet."
-         data-zh="点击作品打开详情。"></p>
-      <ul id="projects-grid" class="projects" aria-label="Productions"></ul>
-      <div id="project-detail" class="project-detail" role="region" hidden></div>
     </section>
 
     <!-- 05 VIDÉOS -->
