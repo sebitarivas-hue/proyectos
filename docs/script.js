@@ -208,12 +208,40 @@
 
   var activeSlug = null;
 
+  // Charte couleur élégante pour les productions sans photo (dégradés sobres, lisibles en blanc)
+  var COLORS = {
+    "war-madrigals":    ["#3b4d61", "#1f2a36"],  // bleu ardoise
+    "rayon-n":          ["#473a68", "#261d3b"],  // indigo / violet
+    "nous":             ["#5c3a48", "#311d28"],  // prune
+    "rut":              ["#2c5f59", "#143430"],  // sarcelle
+    "fame":             ["#8a6326", "#4c3613"],  // bronze / ambre
+    "snow-on-her-lips": ["#46535f", "#262f38"],  // gris froid
+    "america":          ["#85452f", "#491f16"],  // terre cuite
+    "lips":             ["#3a5a40", "#1f3526"]   // vert forêt
+  };
+
+  function tileBg(p) {
+    var c = COLORS[p.slug] || ["#3b4d61", "#1f2a36"];
+    return "linear-gradient(152deg," + c[0] + " 0%," + c[1] + " 100%)";
+  }
+
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
+    if (p.photo) {
+      return ''
+        + '<button class="ptile" type="button" aria-controls="project-detail">'
+        +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
+        +   '<span class="ptile-scrim"></span>'
+        +   '<span class="ptile-meta">'
+        +     '<span class="ptile-title">' + (p.titleHtml || p.title) + '</span>'
+        +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
+        +   '</span>'
+        + '</button>';
+    }
+    var tag = t(p.tag || "");
     return ''
-      + '<button class="ptile" type="button" aria-controls="project-detail">'
-      +   '<span class="ptile-img" style="background-image:url(\'' + p.img + '\')"></span>'
-      +   '<span class="ptile-scrim"></span>'
+      + '<button class="ptile ptile--color" type="button" aria-controls="project-detail" style="background:' + tileBg(p) + '">'
+      +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
       +   '<span class="ptile-meta">'
       +     '<span class="ptile-title">' + (p.titleHtml || p.title) + '</span>'
       +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
@@ -233,10 +261,13 @@
         + p.partners.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ul></div>'
       : "";
     var note = p.note ? '<p class="pd-note">' + t(p.note) + '</p>' : "";
+    var media = p.photo
+      ? '<div class="pd-media"><img src="' + p.photo + '" alt="" loading="lazy"></div>'
+      : '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + '"><span class="pd-media-title">' + (p.titleHtml || p.title) + '</span></div>';
     return ''
       + '<div class="pd-head"><h3 class="pd-title">' + (p.titleHtml || p.title) + '</h3>'
       +   '<button class="pd-close" type="button">' + t(UI.close) + ' ✕</button></div>'
-      + '<div class="pd-media"><img src="' + p.img + '" alt="" loading="lazy"></div>'
+      + media
       + '<p class="pd-pitch">' + t(p.pitch) + '</p>'
       + '<div class="pd-grid">'
       +   '<div class="pd-block"><h4>' + t(UI.details) + '</h4><ul class="facts">' + facts + '</ul></div>'

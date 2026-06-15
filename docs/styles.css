@@ -110,6 +110,18 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .ptile::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 0 var(--accent); transition: box-shadow .2s ease; border-radius: 6px; pointer-events: none; }
 .project.active .ptile::after { box-shadow: inset 0 0 0 3px var(--accent); }
 
+/* productions sans photo : tuiles couleur (charte élégante) */
+.ptile--color { box-shadow: inset 0 -70px 90px -50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06); transition: transform .35s ease, filter .3s ease; }
+.ptile--color:hover { filter: brightness(1.06); transform: translateY(-2px); }
+.ptile-tag { position: absolute; top: .9rem; left: .9rem; right: .9rem; font-family: var(--sans); font-size: .58rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.72); }
+.ptile--color .ptile-meta::before { content: ""; display: block; width: 26px; height: 2px; background: rgba(255,255,255,.55); margin-bottom: .6rem; }
+.ptile--color .ptile-year { color: rgba(255,255,255,.62); }
+
+/* detail : bandeau couleur quand pas de photo */
+.pd-media--color { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 6; border: 0; border-radius: 6px; box-shadow: inset 0 0 90px -30px rgba(0,0,0,.5); }
+.pd-media-title { font-family: var(--serif); font-weight: 500; font-style: normal; color: #fff; font-size: clamp(1.5rem, 4.5vw, 2.6rem); letter-spacing: -.01em; text-align: center; padding: 0 1rem; }
+.pd-media-title .it { font-style: italic; font-weight: 400; }
+
 /* detail panel (shared, under the grid) */
 .project-detail { margin-top: 1.4rem; border-top: 2px solid var(--accent); padding-top: 1.4rem; animation: rise .3s ease; }
 .project-detail[hidden] { display: none; }
@@ -224,3 +236,22 @@ main { counter-reset: sec; }
 .road-year li { padding: .4rem 0; border-top: 1px solid var(--line); font-size: .92rem; }
 
 @media (max-width: 640px) { .axes, .roadmap { grid-template-columns: 1fr; } }
+
+/* ---------- Missions (Notre activité : 4 axes) ---------- */
+.missions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem 2.4rem; }
+.missions .axis h3 { font-size: 1.05rem; }
+.missions .axis p { font-size: .9rem; line-height: 1.45; }
+@media (max-width: 640px) { .missions { grid-template-columns: 1fr; gap: 1.1rem; } }
+
+/* ---------- Recherche : disciplines / axes ---------- */
+.disciplines { list-style: none; margin: 1.4rem 0 1.2rem; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.disciplines li { position: relative; padding: .75rem 0 .75rem 1.6rem; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 1.02rem; }
+.disciplines li::before { content: counter(disc, decimal-leading-zero); counter-increment: disc; position: absolute; left: 0; top: .9rem; font-family: var(--sans); font-size: .64rem; letter-spacing: .08em; color: var(--accent); }
+.disciplines { counter-reset: disc; }
+@media (max-width: 640px) { .disciplines { grid-template-columns: 1fr; } }
+
+/* ---------- Partenaires ---------- */
+.partners { list-style: none; margin: 1.2rem 0 1.4rem; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 2.4rem; }
+.partners li { padding: .65rem 0; border-top: 1px solid var(--line); font-family: var(--serif); font-size: .98rem; }
+@media (max-width: 800px) { .partners { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .partners { grid-template-columns: 1fr; } }
