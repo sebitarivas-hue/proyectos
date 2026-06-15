@@ -1,8 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Nous">
- <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-  <stop offset="0" stop-color="#16131c"/><stop offset="1" stop-color="#0b0a0c"/></linearGradient>
-  <radialGradient id="h" cx="78%" cy="18%" r="60%"><stop offset="0" stop-color="#b9a4f2" stop-opacity="0.20"/><stop offset="1" stop-color="#b9a4f2" stop-opacity="0"/></radialGradient></defs>
- <rect width="1200" height="800" fill="url(#g)"/><rect width="1200" height="800" fill="url(#h)"/>
- <text x="64" y="430" font-family="Georgia, serif" font-size="74" fill="#f3f1ee" fill-opacity="0.92">Nous</text>
- <text x="66" y="486" font-family="Inter, sans-serif" font-size="22" letter-spacing="6" fill="#b9a4f2" fill-opacity="0.8">STOPERA</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="De l'Innocence">
+ <defs>
+  <linearGradient id="w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7e4df"/><stop offset="0.62" stop-color="#dcd9d3"/><stop offset="0.62" stop-color="#c8c6c1"/><stop offset="1" stop-color="#b9b7b2"/></linearGradient>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+ </defs>
+ <rect width="1200" height="1200" fill="url(#w)"/>
+ <ellipse cx="620" cy="840" rx="360" ry="60" fill="#8f8b85" fill-opacity="0.35" filter="url(#sh)"/>
+ <g fill="#a39e97">
+  <path d="M320 820 C300 660 470 560 600 560 C700 560 760 600 720 700 C700 760 760 780 700 820 Z"/>
+  <path d="M600 560 C720 470 860 520 840 640 C825 730 760 760 700 700 C660 660 620 620 600 560 Z" fill="#b0aba3"/>
+  <ellipse cx="470" cy="815" rx="170" ry="45" fill="#9a958e"/>
+ </g>
 </svg>
