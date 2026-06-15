@@ -28,13 +28,14 @@
     "fame": "2025",
     "america": "2027",
     "mamma-roma": "2027",
+    "otages": "2024",
     "aliados": "2013",
     "lips": { fr: "annuel", es: "anual", en: "annual", zh: "每年" }
   };
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","mamma-roma":"up","aliados":"past","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
 
   var PROJECTS = [
     {
@@ -42,10 +43,10 @@
       tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演" },
       short: { fr: "Cycle de dix madrigaux pour six voix.", es: "Ciclo de diez madrigales para seis voces.", en: "A cycle of ten madrigals for six voices.", zh: "为六个声部创作的十首牧歌套曲。" },
       pitch: {
-        fr: "Cycle de madrigaux contemporains qui confronte la voix à l'expérience de la guerre, de l'exil et de l'intime. Sur des textes de Paul Celan, Anaïs Nin, Samuel Beckett et Forough Farrokhzad.",
-        es: "Ciclo de madrigales contemporáneos que confronta la voz con la experiencia de la guerra, el exilio y lo íntimo. Sobre textos de Paul Celan, Anaïs Nin, Samuel Beckett y Forough Farrokhzad.",
-        en: "A cycle of contemporary madrigals confronting the voice with the experience of war, exile and intimacy. On texts by Paul Celan, Anaïs Nin, Samuel Beckett and Forough Farrokhzad.",
-        zh: "当代牧歌套曲，让人声直面战争、流亡与亲密的体验。文本取自 Paul Celan、Anaïs Nin、Samuel Beckett 与 Forough Farrokhzad。" },
+        fr: "Cycle de dix madrigaux pour six voix qui explore la guerre, la mémoire et l'effritement du langage. Un parcours multilingue et polyphonique, miroir sonore des déplacements, des traumas et des résistances intimes.",
+        es: "Ciclo de diez madrigales para seis voces que explora la guerra, la memoria y la erosión del lenguaje. Un recorrido multilingüe y polifónico, espejo sonoro de los desplazamientos, los traumas y las resistencias íntimas.",
+        en: "A cycle of ten madrigals for six voices exploring war, memory and the erosion of language. A multilingual, polyphonic journey — a sonic mirror of displacement, trauma and intimate resistance.",
+        zh: "为六个声部创作的十首牧歌套曲，探索战争、记忆与语言的崩解。一段多语、复调的旅程——流离、创伤与私密抵抗的声音之镜。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Cycle vocal", es: "Ciclo vocal", en: "Vocal cycle", zh: "声乐套曲" } },
         { k: { fr: "Effectif", es: "Formación", en: "Forces", zh: "编制" }, v: { fr: "6 voix", es: "6 voces", en: "6 voices", zh: "6 个声部" } },
@@ -53,7 +54,7 @@
       ],
       credits: [
         { role: { fr: "Composition", es: "Composición", en: "Composition", zh: "作曲" }, who: "Sebastian Rivas" },
-        { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本" }, who: "Celan · Nin · Beckett · Farrokhzad" },
+        { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本" }, who: "Celan · Kertész · Pasolini · Pizarnik · Farrokhzad · Akhmatova · Beckett · Shakespeare" },
         { role: { fr: "Ensemble", es: "Ensemble", en: "Ensemble", zh: "乐团" }, who: "Les Métaboles" },
         { role: { fr: "Direction", es: "Dirección", en: "Conducting", zh: "指挥" }, who: "Léo Warynski" }
       ],
@@ -65,22 +66,25 @@
       tag: { fr: "Production 2026 · diffusion 2027", es: "Producción 2026 · gira 2027", en: "Production 2026 · touring 2027", zh: "2026 制作 · 2027 巡演" },
       short: { fr: "Opéra-film animé par intelligence artificielle.", es: "Ópera-film animada por inteligencia artificial.", en: "An AI-animated film-opera.", zh: "由人工智能生成影像的影像歌剧。" },
       pitch: {
-        fr: "Opéra-film où l'image animée par intelligence artificielle dialogue avec la musique jouée en direct. Livret d'Antoine Gindt, développé avec le Lavoir Numérique à Gentilly.",
-        es: "Ópera-film donde la imagen animada por inteligencia artificial dialoga con la música en vivo. Libreto de Antoine Gindt, desarrollada con el Lavoir Numérique en Gentilly.",
-        en: "A film-opera in which AI-animated imagery converses with live music. Libretto by Antoine Gindt, developed with the Lavoir Numérique in Gentilly.",
-        zh: "一部影像歌剧，由人工智能生成的影像与现场音乐对话。Antoine Gindt 编剧，与让蒂伊的 Lavoir Numérique 合作开发。" },
+        fr: "Opéra inspiré d'un épisode réel : la prétendue découverte du « rayon N » par le physicien René Blondlot en 1903. Une fable sur la croyance, la construction du réel et la manipulation des savoirs, où l'image — aujourd'hui générée et animée — dialogue avec la musique jouée en direct. Livret et mise en scène d'Antoine Gindt, avec Philippe Béziat.",
+        es: "Ópera inspirada en un episodio real: la supuesta invención del «rayo N» por el físico René Blondlot en 1903. Una fábula sobre la creencia, la construcción de lo real y la manipulación de los saberes, donde la imagen —hoy generada y animada— dialoga con la música en vivo. Libreto y dirección de Antoine Gindt, con Philippe Béziat.",
+        en: "An opera inspired by a real episode: physicist René Blondlot's supposed 1903 discovery of the “N-ray.” A fable on belief, the construction of reality and the manipulation of knowledge, where the image — today generated and animated — converses with live music. Libretto and staging by Antoine Gindt, with Philippe Béziat.",
+        zh: "一部取材自真实事件的歌剧：物理学家 René Blondlot 于 1903 年声称发现「N 射线」。一则关于信念、现实建构与知识操纵的寓言；影像——如今由生成技术动画化——与现场音乐对话。Antoine Gindt 编剧与导演，Philippe Béziat 参与。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra-film", es: "Ópera-film", en: "Film-opera", zh: "影像歌剧" } },
-        { k: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, v: "Antoine Gindt" },
-        { k: { fr: "Production", es: "Producción", en: "Production", zh: "制作" }, v: "2026" },
-        { k: { fr: "Diffusion", es: "Gira", en: "Touring", zh: "巡演" }, v: "2027" }
+        { k: { fr: "Commande", es: "Encargo", en: "Commission", zh: "委约" }, v: "Ensemble intercontemporain" },
+        { k: { fr: "Livret & mise en scène", es: "Libreto & dirección", en: "Libretto & staging", zh: "剧本与导演" }, v: "Antoine Gindt" },
+        { k: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, v: "Léo Warynski" },
+        { k: { fr: "Production", es: "Producción", en: "Production", zh: "制作" }, v: { fr: "2026 · diffusion 2027", es: "2026 · gira 2027", en: "2026 · touring 2027", zh: "2026 · 2027 巡演" } }
       ],
       credits: [
         { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
-        { role: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, who: "Antoine Gindt" },
-        { role: { fr: "Image / IA", es: "Imagen / IA", en: "Image / AI", zh: "影像 / AI" }, who: "Lavoir Numérique" }
+        { role: { fr: "Livret & mise en scène", es: "Libreto & dirección", en: "Libretto & staging", zh: "剧本与导演" }, who: "Antoine Gindt" },
+        { role: { fr: "Réalisation", es: "Realización", en: "Film direction", zh: "影像导演" }, who: "Philippe Béziat" },
+        { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Léo Warynski" },
+        { role: { fr: "Ensembles", es: "Ensembles", en: "Ensembles", zh: "乐团" }, who: "Les Métaboles · Ensemble intercontemporain" }
       ],
-      partners: ["Lavoir Numérique (Gentilly)"],
+      partners: ["Ensemble intercontemporain", "Lavoir Numérique (Gentilly)"],
       note: { fr: "Recherche de coproductions et de diffuseurs en cours.", es: "Búsqueda de coproducciones y programadores en curso.", en: "Coproductions and venues being sought.", zh: "正在寻找联合制作方与演出场所。" }
     },
     {
@@ -111,13 +115,14 @@
       tag: { fr: "Première fin 2026", es: "Estreno fin de 2026", en: "Premiere late 2026", zh: "2026 年底首演" },
       short: { fr: "Performance solo de Rut Schreiner.", es: "Performance solo de Rut Schreiner.", en: "A solo performance by Rut Schreiner.", zh: "Rut Schreiner 的独角表演。" },
       pitch: {
-        fr: "Performance solo où le geste de direction de Rut Schreiner, capté par des capteurs, génère et spatialise son et vidéo en temps réel. Le corps devient instrument.",
-        es: "Performance solo donde el gesto de dirección de Rut Schreiner, captado por sensores, genera y espacializa sonido y vídeo en tiempo real. El cuerpo se vuelve instrumento.",
-        en: "A solo performance where Rut Schreiner's conducting gesture, captured by sensors, generates and spatialises sound and video in real time. The body becomes an instrument.",
-        zh: "一场独角表演：Rut Schreiner 的指挥手势经由传感器捕捉，实时生成并空间化声音与影像。身体成为乐器。" },
+        fr: "Performance pour cheffe solo, capteurs, son spatialisé et vidéo interactive — sous-titrée « Conducting the Invisible ». Le geste de direction de Rut Schreiner, capté en temps réel, génère, module et sculpte le son : le corps devient instrument, la direction d'orchestre, matière musicale.",
+        es: "Performance para directora sola, sensores, sonido espacializado y vídeo interactivo —subtitulada «Conducting the Invisible». El gesto de dirección de Rut Schreiner, captado en tiempo real, genera, modula y esculpe el sonido: el cuerpo se vuelve instrumento, la dirección de orquesta, materia musical.",
+        en: "A performance for solo conductor, sensors, spatialised sound and interactive video — subtitled “Conducting the Invisible.” Rut Schreiner's conducting gesture, captured in real time, generates, modulates and sculpts sound: the body becomes an instrument, conducting becomes musical material.",
+        zh: "一场为独奏指挥、传感器、空间化声音与互动影像而作的表演——副标题「Conducting the Invisible」。Rut Schreiner 的指挥手势经实时捕捉，生成、调制并雕塑声音：身体成为乐器，指挥成为音乐素材。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance", es: "Performance", en: "Performance", zh: "表演" } },
         { k: { fr: "Dispositif", es: "Dispositivo", en: "Set-up", zh: "装置" }, v: { fr: "Capteurs · son spatialisé · vidéo", es: "Sensores · sonido espacial · vídeo", en: "Sensors · spatial sound · video", zh: "传感器 · 空间声 · 影像" } },
+        { k: { fr: "Programme", es: "Programa", en: "Programme", zh: "曲目" }, v: "Fernández · De Mey · Martínez Álvarez · Alsina Tarrès" },
         { k: { fr: "Première", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Fin 2026", es: "Fin de 2026", en: "Late 2026", zh: "2026 年底" } }
       ],
       credits: [
@@ -127,15 +132,15 @@
       note: { fr: "Création en résidence. Dispositif technique en cours de définition.", es: "Creación en residencia. Dispositivo técnico en definición.", en: "Created in residency. Technical set-up being defined.", zh: "驻地创作。技术装置确定中。" }
     },
     {
-      slug: "fame", title: "fame", titleHtml: "fame",
+      slug: "fame", title: "F[A]ME", titleHtml: "F[A]ME",
       img: "assets/projects/fame.svg",
       tag: { fr: "Diffusion 2025", es: "Difusión 2025", en: "Touring 2025", zh: "2025 演出" },
-      short: { fr: "Performance musicale solo d'Olivia Martin.", es: "Performance musical solo de Olivia Martin.", en: "A solo musical performance by Olivia Martin.", zh: "Olivia Martin 的个人音乐表演。" },
+      short: { fr: "Performance solo d'Olivia Martin : renommée, effacement, féminité.", es: "Performance solo de Olivia Martin: fama, borrado, feminidad.", en: "A solo performance by Olivia Martin: fame, erasure, femininity.", zh: "Olivia Martin 的个人表演：名望、消隐、女性气质。" },
       pitch: {
-        fr: "Performance musicale solo conçue et interprétée par Olivia Martin, entre composition, voix et présence scénique.",
-        es: "Performance musical solo concebida e interpretada por Olivia Martin, entre composición, voz y presencia escénica.",
-        en: "A solo musical performance conceived and performed by Olivia Martin, between composition, voice and stage presence.",
-        zh: "由 Olivia Martin 构思并演出的个人音乐表演，游走于作曲、人声与舞台存在之间。" },
+        fr: "Performance musicale solo conçue et interprétée par Olivia Martin. Entre composition, voix et présence scénique, elle explore la renommée, l'effacement et la féminité dans les arts vivants.",
+        es: "Performance musical solo concebida e interpretada por Olivia Martin. Entre composición, voz y presencia escénica, explora la fama, el borrado y la feminidad en las artes vivas.",
+        en: "A solo musical performance conceived and performed by Olivia Martin. Between composition, voice and stage presence, it explores fame, erasure and femininity in the live arts.",
+        zh: "由 Olivia Martin 构思并演出的个人音乐表演。游走于作曲、人声与舞台存在之间，探索名望、消隐与表演艺术中的女性气质。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance solo", es: "Performance solo", en: "Solo performance", zh: "独角表演" } },
         { k: { fr: "Diffusion", es: "Difusión", en: "Touring", zh: "演出" }, v: "2025" }
@@ -171,6 +176,32 @@
       ],
       partners: ["Printemps des Arts de Monte-Carlo", "GRAME"],
       note: { fr: "Création au Sporting Monte-Carlo (Monaco), 2021. Captation disponible sur notre chaîne YouTube.", es: "Estreno en el Sporting Monte-Carlo (Mónaco), 2021. Grabación disponible en nuestro canal de YouTube.", en: "Premiered at the Sporting Monte-Carlo (Monaco), 2021. Recording available on our YouTube channel.", zh: "2021 年于蒙特卡洛 Sporting（摩纳哥）首演。录像见我们的 YouTube 频道。" }
+    },
+    {
+      slug: "otages", title: "Otages", titleHtml: "Otages",
+      tag: { fr: "Création 2024", es: "Estreno 2024", en: "Premiere 2024", zh: "2024 首演" },
+      short: { fr: "Opéra d'après Nina Bouraoui — Opéra de Lyon.", es: "Ópera a partir de Nina Bouraoui — Opéra de Lyon.", en: "An opera after Nina Bouraoui — Opéra de Lyon.", zh: "改编自 Nina Bouraoui 的歌剧 —— 里昂歌剧院。" },
+      pitch: {
+        fr: "Opéra en trois actes d'après le texte de Nina Bouraoui. Le portrait de Sylvie Meyer, femme « ordinaire et extraordinaire » qui se conforme cinquante-trois ans durant à ce que l'on attend d'elle — jusqu'au geste qui fait tout basculer, répréhensible et libérateur : « je suis Sylvie Meyer ». Mise en scène de Richard Brunel.",
+        es: "Ópera en tres actos a partir del texto de Nina Bouraoui. El retrato de Sylvie Meyer, mujer «ordinaria y extraordinaria» que durante cincuenta y tres años se conforma con lo que se espera de ella — hasta el gesto que lo trastoca todo, reprensible y liberador: «soy Sylvie Meyer». Dirección de escena de Richard Brunel.",
+        en: "An opera in three acts after the text by Nina Bouraoui. The portrait of Sylvie Meyer, an “ordinary and extraordinary” woman who conforms for fifty-three years to what is expected of her — until the act that overturns everything, reprehensible and liberating: “I am Sylvie Meyer.” Staged by Richard Brunel.",
+        zh: "一部根据 Nina Bouraoui 文本创作的三幕歌剧。Sylvie Meyer 的肖像——一个「平凡而非凡」的女人，五十三年来顺从他人的期待，直到那个颠覆一切、既应受谴责又带来解放的举动：「我是 Sylvie Meyer」。Richard Brunel 执导。" },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra (3 actes)", es: "Ópera (3 actos)", en: "Opera (3 acts)", zh: "歌剧（三幕）" } },
+        { k: { fr: "Texte", es: "Texto", en: "Text", zh: "文本" }, v: "Nina Bouraoui" },
+        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Richard Brunel" },
+        { k: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, v: "Rut Schreiner" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Opéra de Lyon · Croix-Rousse, mars 2024", es: "Opéra de Lyon · Croix-Rousse, marzo 2024", en: "Opéra de Lyon · Croix-Rousse, March 2024", zh: "里昂歌剧院 · Croix-Rousse，2024 年 3 月" } }
+      ],
+      credits: [
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
+        { role: { fr: "Texte", es: "Texto", en: "Text", zh: "文本" }, who: "Nina Bouraoui" },
+        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Richard Brunel" },
+        { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Rut Schreiner" },
+        { role: { fr: "Avec", es: "Con", en: "With", zh: "演员" }, who: "Nicola Beller Carbone · Yvan Ludlow" }
+      ],
+      partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse"],
+      note: { fr: "Création mondiale le 17 mars 2024 (Festival de l'Opéra de Lyon).", es: "Estreno mundial el 17 de marzo de 2024 (Festival de la Opéra de Lyon).", en: "World premiere on 17 March 2024 (Opéra de Lyon Festival).", zh: "2024 年 3 月 17 日世界首演（里昂歌剧院艺术节）。" }
     },
     {
       slug: "aliados", title: "Aliados", titleHtml: "Aliados",
@@ -282,7 +313,8 @@
     "snow-on-her-lips": "#aebfbd",  // Watery — bleu-gris pâle
     "america":          "#a85c45",  // Terra Cotta Urn — terre cuite
     "lips":             "#939a7e",  // Urban Nature — sauge
-    "mamma-roma":       "#4a3a2f"   // Baronial Brown — brun profond
+    "mamma-roma":       "#4a3a2f",  // Baronial Brown — brun profond
+    "otages":           "#6d7f8d"   // Adirondack Blue — bleu-gris
   };
 
   function hx(h) { h = h.replace("#", ""); return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)]; }
