@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Angot">
+ <rect width="1200" height="800" fill="#efe7ea"/>
+ <rect x="28" y="28" width="1144" height="744" fill="none" stroke="#14110f" stroke-opacity="0.18" stroke-width="1.5"/>
+ <text x="600" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86" fill="#14110f" fill-opacity="0.78">Angot</text>
+ <text x="600" y="470" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" letter-spacing="7" fill="#14110f" fill-opacity="0.4">STOPERA</text>
+</svg>

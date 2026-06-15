@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Georges Aperghis">
+ <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16131c"/><stop offset="1" stop-color="#0b0a0c"/></linearGradient></defs>
+ <rect width="800" height="1000" fill="url(#g)"/>
+ <g fill="#f3f1ee" fill-opacity="0.10"><circle cx="400" cy="430" r="150"/><path d="M190 1000 C190 770 290 660 400 660 C510 660 610 770 610 1000 Z"/></g>
+ <text x="400" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="120" fill="#b9a4f2" fill-opacity="0.9">GA</text></svg>
