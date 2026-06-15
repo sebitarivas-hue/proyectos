@@ -1,8 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="War Madrigals">
- <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-  <stop offset="0" stop-color="#16131c"/><stop offset="1" stop-color="#0b0a0c"/></linearGradient>
-  <radialGradient id="h" cx="78%" cy="18%" r="60%"><stop offset="0" stop-color="#b9a4f2" stop-opacity="0.20"/><stop offset="1" stop-color="#b9a4f2" stop-opacity="0"/></radialGradient></defs>
- <rect width="1200" height="800" fill="url(#g)"/><rect width="1200" height="800" fill="url(#h)"/>
- <text x="64" y="430" font-family="Georgia, serif" font-size="74" fill="#f3f1ee" fill-opacity="0.92">War Madrigals</text>
- <text x="66" y="486" font-family="Inter, sans-serif" font-size="22" letter-spacing="6" fill="#b9a4f2" fill-opacity="0.8">STOPERA</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="War Madrigals">
+ <defs>
+  <linearGradient id="s" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#b1a488"/><stop offset="0.55" stop-color="#8d7f66"/><stop offset="1" stop-color="#5f5544"/>
+  </linearGradient>
+  <filter id="b" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="22"/></filter>
+ </defs>
+ <rect width="1200" height="1200" fill="url(#s)"/>
+ <g fill="#2c2519" fill-opacity="0.55" filter="url(#b)">
+  <ellipse cx="470" cy="1020" rx="190" ry="240"/>
+  <circle cx="470" cy="760" r="95"/>
+  <path d="M470 800 L150 640 L175 700 L470 880 Z"/>
+  <path d="M470 800 L800 690 L790 750 L470 880 Z"/>
+ </g>
+ <g fill="#2c2519" fill-opacity="0.30" filter="url(#b)">
+  <ellipse cx="870" cy="980" rx="120" ry="220"/><circle cx="870" cy="720" r="70"/>
+ </g>
 </svg>
