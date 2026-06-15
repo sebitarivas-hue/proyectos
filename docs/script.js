@@ -28,12 +28,13 @@
     "fame": "2025",
     "america": "2027",
     "mamma-roma": "2027",
+    "aliados": "2013",
     "lips": { fr: "annuel", es: "anual", en: "annual", zh: "每年" }
   };
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","mamma-roma":"up","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","mamma-roma":"up","aliados":"past","fame":"past","snow-on-her-lips":"past" };
 
   var PROJECTS = [
     {
@@ -164,6 +165,33 @@
       partners: []
     },
     {
+      slug: "aliados", title: "Aliados", titleHtml: "Aliados",
+      photo: "assets/projects/aliados.jpg",
+      tag: { fr: "Création 2013", es: "Estreno 2013", en: "Premiere 2013", zh: "2013 首演" },
+      short: { fr: "Opéra du temps réel : Thatcher & Pinochet.", es: "Ópera en tiempo real: Thatcher y Pinochet.", en: "A real-time opera: Thatcher & Pinochet.", zh: "实时歌剧：撒切尔与皮诺切特。" },
+      pitch: {
+        fr: "Opéra « du temps réel » sur la rencontre, à Londres en 1999, de Margaret Thatcher et du général Pinochet. Vidéo en direct, voix transformées en temps réel : un face-à-face crépusculaire entre fiction et réalité, mémoire et responsabilité.",
+        es: "Ópera «en tiempo real» sobre el encuentro, en Londres en 1999, de Margaret Thatcher y el general Pinochet. Vídeo en directo, voces transformadas en tiempo real: un cara a cara crepuscular entre ficción y realidad, memoria y responsabilidad.",
+        en: "A “real-time opera” on the 1999 London meeting of Margaret Thatcher and General Pinochet. Live video, voices transformed in real time: a twilight face-off between fiction and reality, memory and responsibility.",
+        zh: "一部「实时歌剧」，讲述 1999 年伦敦撒切尔夫人与皮诺切特将军的会面。现场影像、实时变形的人声：一场介于虚构与现实、记忆与责任之间的暮色对峙。" },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra du temps réel", es: "Ópera en tiempo real", en: "Real-time opera", zh: "实时歌剧" } },
+        { k: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, v: "Esteban Buch" },
+        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Antoine Gindt" },
+        { k: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, v: "Léo Warynski" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "T2G · ManiFeste — Ircam, 2013", es: "T2G · ManiFeste — Ircam, 2013", en: "T2G · ManiFeste — Ircam, 2013", zh: "T2G · ManiFeste — Ircam，2013" } }
+      ],
+      credits: [
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
+        { role: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, who: "Esteban Buch" },
+        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Antoine Gindt" },
+        { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Léo Warynski" },
+        { role: { fr: "Vidéo", es: "Vídeo", en: "Video", zh: "影像" }, who: "Philippe Béziat" }
+      ],
+      partners: ["Ircam — Centre Pompidou", "GRAME", "T2G — Théâtre de Gennevilliers", "Festival ManiFeste"],
+      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。摄影：Pacôme Poirier / WikiSpectacle。" }
+    },
+    {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
       tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月" },
       short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。" },
@@ -211,26 +239,26 @@
       note: { fr: "Création à Mexico. Production en cours de montage.", es: "Estreno en México. Producción en construcción.", en: "Premiere in Mexico City. Production being assembled.", zh: "墨西哥城首演。制作筹备中。" }
     },
     {
-      slug: "lips", title: "LIPS Summer Course", titleHtml: "LIPS Summer Course",
+      slug: "lips", title: "LIPS Lab", titleHtml: "LIPS Lab",
       img: "assets/projects/lips.svg",
-      tag: { fr: "Laboratoire annuel", es: "Laboratorio anual", en: "Annual lab", zh: "年度工作坊" },
-      short: { fr: "Laboratoire estival de création scénique, Gentilly.", es: "Laboratorio estival de creación escénica, Gentilly.", en: "A summer lab for stage creation, Gentilly.", zh: "让蒂伊的夏季舞台创作工作坊。" },
+      tag: { fr: "Laboratoire international", es: "Laboratorio internacional", en: "International lab", zh: "国际工作坊" },
+      short: { fr: "Laboratoire de prototypes scéniques & sonores.", es: "Laboratorio de prototipos escénicos & sonoros.", en: "A laboratory of scenic & sound prototypes.", zh: "舞台与声音原型工作坊。" },
       pitch: {
-        fr: "Laboratoire estival de création scénique contemporaine à Gentilly. Il rassemble compositeur·ices, metteur·euses en scène et interprètes autour de modules pratiques, et incarne la mission de transmission de STOPERA.",
-        es: "Laboratorio estival de creación escénica contemporánea en Gentilly. Reúne a compositoras/es, directoras/es de escena e intérpretes en torno a módulos prácticos, y encarna la misión de transmisión de STOPERA.",
-        en: "A summer laboratory for contemporary stage creation in Gentilly. It gathers composers, directors and performers around practical modules, embodying STOPERA's mission of transmission.",
-        zh: "让蒂伊的当代舞台创作夏季工作坊。它围绕实践模块汇集作曲家、导演与表演者，体现 STOPERA 的传承使命。" },
+        fr: "Laboratoire interdisciplinaire de prototypes scéniques et sonores. Chaque année, de jeunes artistes de toutes disciplines — composition, mise en scène, arts visuels, théâtre, danse — prototypent ensemble de nouvelles formes, accompagnés par des artistes confirmés. Un espace d'échange, d'expérimentation et de co-écriture, où la transmission se fait par la pratique.",
+        es: "Laboratorio interdisciplinario de prototipos escénicos y sonoros. Cada año, jóvenes artistas de todas las disciplinas —composición, dirección de escena, artes visuales, teatro, danza— prototipan juntos nuevas formas, acompañados por artistas consagrados. Un espacio de intercambio, experimentación y co-escritura, donde la transmisión se hace por la práctica.",
+        en: "An interdisciplinary laboratory of scenic and sound prototypes. Each year, young artists from all disciplines — composition, stage direction, visual arts, theatre, dance — prototype new forms together, mentored by established artists. A space for exchange, experimentation and co-writing, where transmission happens through practice.",
+        zh: "一个跨学科的舞台与声音原型工作坊。每年，来自各学科——作曲、导演、视觉艺术、戏剧、舞蹈——的青年艺术家在资深艺术家的陪伴下共同打造新形式的雏形。一个交流、实验与共同书写的空间，让传承通过实践发生。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Laboratoire / transmission", es: "Laboratorio / transmisión", en: "Lab / transmission", zh: "工作坊 / 传承" } },
-        { k: { fr: "Lieu", es: "Lugar", en: "Place", zh: "地点" }, v: "Gentilly" },
+        { k: { fr: "Démarche", es: "Enfoque", en: "Approach", zh: "方法" }, v: { fr: "Co-écriture · interdisciplinarité · intermédialité", es: "Co-escritura · interdisciplinariedad · intermedialidad", en: "Co-writing · interdisciplinarity · intermediality", zh: "共同书写 · 跨学科 · 跨媒介" } },
         { k: { fr: "Rythme", es: "Ritmo", en: "Frequency", zh: "频率" }, v: { fr: "Annuel", es: "Anual", en: "Annual", zh: "每年" } },
-        { k: { fr: "Éditions précédentes", es: "Ediciones anteriores", en: "Previous editions", zh: "往届" }, v: "UNSAM (Buenos Aires) · GRAME (Lyon) · Pôle Pixel (Villeurbanne)" }
+        { k: { fr: "Éditions précédentes", es: "Ediciones anteriores", en: "Previous editions", zh: "往届" }, v: "Pôle Pixel (Villeurbanne) · GRAME (Lyon) · UNSAM (Buenos Aires)" }
       ],
       pitchExtra: true,
       credits: [
         { role: { fr: "Direction", es: "Dirección", en: "Direction", zh: "负责人" }, who: "Sebastian Rivas" }
       ],
-      partners: ["Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM", "GRAME", "Pôle Pixel"]
+      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"]
     }
   ];
 
