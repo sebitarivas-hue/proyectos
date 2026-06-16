@@ -307,7 +307,8 @@
       partners: ["CETC — Teatro Colón (Buenos Aires)"]
     },
     {
-      slug: "america", title: "A World to Blast", titleHtml: "A World to Blast",
+      slug: "america", title: "A World to Blast",
+      titleHtml: { fr: "Un monde à brûler", es: "Un mundo por quemar", en: "A World to Blast", zh: "燃尽的世界" },
       img: "assets/projects/america.svg", photo: "assets/projects/america-scarfo.jpg",
       tag: { fr: "Opéra · Mexico", es: "Ópera · México", en: "Opera · Mexico City", zh: "歌剧 · 墨西哥城" },
       short: { fr: "Opéra : América Scarfó & Soledad Rosas, l'amour comme acte révolutionnaire.", es: "Ópera: América Scarfó y Soledad Rosas, el amor como acto revolucionario.", en: "An opera: América Scarfó & Soledad Rosas, love as a revolutionary act.", zh: "歌剧：América Scarfó 与 Soledad Rosas，爱作为革命行动。" },
@@ -393,7 +394,7 @@
         +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
         +   '<span class="ptile-scrim"></span>'
         +   '<span class="ptile-meta">'
-        +     '<span class="ptile-title">' + (p.titleHtml || p.title) + '</span>'
+        +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
         +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
         +   '</span>'
         + '</button>';
@@ -403,7 +404,7 @@
       + '<button class="ptile ptile--color" type="button" aria-controls="project-detail" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
       +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
       +   '<span class="ptile-meta">'
-      +     '<span class="ptile-title">' + (p.titleHtml || p.title) + '</span>'
+      +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
       +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
       +   '</span>'
       + '</button>';
@@ -443,10 +444,10 @@
     } else if (p.photo) {
       media = '<div class="pd-media"><img src="' + p.photo + '" alt="" loading="lazy"></div>';
     } else {
-      media = '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="pd-media-title">' + (p.titleHtml || p.title) + '</span></div>';
+      media = '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="pd-media-title">' + t(p.titleHtml || p.title) + '</span></div>';
     }
     return ''
-      + '<div class="pd-head"><h3 class="pd-title">' + (p.titleHtml || p.title) + '</h3>'
+      + '<div class="pd-head"><h3 class="pd-title">' + t(p.titleHtml || p.title) + '</h3>'
       +   '<button class="pd-close" type="button">' + t(UI.close) + ' ✕</button></div>'
       + media
       + '<p class="pd-pitch">' + t(p.pitch) + '</p>'
