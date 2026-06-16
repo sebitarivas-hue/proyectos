@@ -44,6 +44,10 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .site-nav a:hover { color: var(--fg); }
 .site-nav a::after { content:""; position:absolute; left:0; right:100%; bottom:-4px; height:1px; background:var(--accent); transition:right .3s ease; }
 .site-nav a:hover::after { right:0; }
+.social { display: inline-flex; align-items: center; gap: .55rem; }
+.social-link { color: var(--muted); display: inline-flex; transition: color .2s ease; }
+.social-link:hover { color: var(--accent); }
+.social-link svg { width: 18px; height: 18px; display: block; fill: currentColor; }
 .lang-switch { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
 .lang-opt { background: none; border: 0; cursor: pointer; font-family: var(--sans); font-size: .66rem; letter-spacing: .04em; color: var(--muted); padding: .35rem .55rem; line-height: 1; transition: background .15s ease, color .15s ease; }
 .lang-opt + .lang-opt { border-left: 1px solid var(--line); }
@@ -226,7 +230,7 @@ html[lang="zh"] .hero-statement, html[lang="zh"] .lead, html[lang="zh"] .section
   .pd-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .site-nav a:not(.lang-opt) { display: none; }
+  .site-nav a:not(.lang-opt):not(.social-link) { display: none; }
   .projects { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
   .ptile-title { font-size: .92rem; }
 }

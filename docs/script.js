@@ -270,11 +270,11 @@
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance", es: "Performance", en: "Performance", zh: "表演" } },
         { k: { fr: "Œuvres", es: "Obras", en: "Works", zh: "作品" }, v: "Georges Aperghis" },
         { k: { fr: "Interprète", es: "Intérprete", en: "Performer", zh: "表演者" }, v: "Nicola Beller Carbone" },
-        { k: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, v: "Sebastian Rivas" },
+        { k: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, v: "Nicola Beller Carbone · Martin Bauer" },
         { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Mexico, 2026", es: "México, 2026", en: "Mexico City, 2026", zh: "墨西哥城，2026" } }
       ],
       credits: [
-        { role: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, who: "Sebastian Rivas" },
+        { role: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, who: "Nicola Beller Carbone · Martin Bauer" },
         { role: { fr: "Interprète", es: "Intérprete", en: "Performer", zh: "表演者" }, who: "Nicola Beller Carbone" },
         { role: { fr: "Œuvres", es: "Obras", en: "Works", zh: "作品" }, who: "Georges Aperghis" }
       ],
