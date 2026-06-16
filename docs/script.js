@@ -163,7 +163,7 @@
     },
     {
       slug: "snow-on-her-lips", title: "Snow on Her Lips", titleHtml: "Snow on Her Lips",
-      img: "assets/projects/snow.svg", video: "BVKdEvoWh6U",
+      img: "assets/projects/snow.svg", photo: "assets/projects/snow.jpg", video: "BVKdEvoWh6U",
       tag: { fr: "Monte-Carlo · 2021", es: "Monte-Carlo · 2021", en: "Monte-Carlo · 2021", zh: "蒙特卡洛 · 2021" },
       short: { fr: "Monodrame : théâtre musical, danse, vidéo & électronique.", es: "Monodrama: teatro musical, danza, vídeo y electrónica.", en: "A monodrama: music theatre, dance, video & electronics.", zh: "独角戏：音乐剧场、舞蹈、影像与电子。" },
       pitch: {
