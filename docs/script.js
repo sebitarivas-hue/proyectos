@@ -250,7 +250,7 @@
         { quote: "Un opéra de l'oubli et du néant.", source: "Bruno Serrou" }
       ],
       pressPdf: "assets/press/aliados-revue-presse.pdf",
-      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Couverture internationale (La Stampa, The Times, Le Monde, El País, Clarín…). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Cobertura internacional (La Stampa, The Times, Le Monde, El País, Clarín…). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). International coverage (La Stampa, The Times, Le Monde, El País, Clarín…). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。国际媒体报道（La Stampa、The Times、Le Monde、El País、Clarín…）。摄影：Pacôme Poirier / WikiSpectacle。" }
+      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Couverture internationale (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Cobertura internacional (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). International coverage (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。国际媒体报道（La Stampa、The Times、Le Monde、El País、El Mundo、Clarín、Página/12…）。摄影：Pacôme Poirier / WikiSpectacle。" }
     },
     {
       slug: "insistir", title: "Insistir", titleHtml: "Insistir",
