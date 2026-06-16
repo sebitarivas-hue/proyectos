@@ -333,7 +333,7 @@
     },
     {
       slug: "lips", title: "LIPS Lab", titleHtml: "LIPS Lab",
-      img: "assets/projects/lips.svg",
+      img: "assets/projects/lips.svg", photo: "assets/projects/lips.jpg",
       tag: { fr: "Laboratoire international", es: "Laboratorio internacional", en: "International lab", zh: "国际工作坊" },
       short: { fr: "Laboratoire de prototypes scéniques & sonores.", es: "Laboratorio de prototipos escénicos & sonoros.", en: "A laboratory of scenic & sound prototypes.", zh: "舞台与声音原型工作坊。" },
       pitch: {
