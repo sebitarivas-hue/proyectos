@@ -152,7 +152,7 @@
     },
     {
       slug: "snow-on-her-lips", title: "Snow on Her Lips", titleHtml: "Snow on Her Lips",
-      img: "assets/projects/snow.svg",
+      img: "assets/projects/snow.svg", video: "BVKdEvoWh6U",
       tag: { fr: "Monte-Carlo · 2021", es: "Monte-Carlo · 2021", en: "Monte-Carlo · 2021", zh: "蒙特卡洛 · 2021" },
       short: { fr: "Monodrame : théâtre musical, danse, vidéo & électronique.", es: "Monodrama: teatro musical, danza, vídeo y electrónica.", en: "A monodrama: music theatre, dance, video & electronics.", zh: "独角戏：音乐剧场、舞蹈、影像与电子。" },
       pitch: {
@@ -364,9 +364,16 @@
         + p.partners.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ul></div>'
       : "";
     var note = p.note ? '<p class="pd-note">' + t(p.note) + '</p>' : "";
-    var media = p.photo
-      ? '<div class="pd-media"><img src="' + p.photo + '" alt="" loading="lazy"></div>'
-      : '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="pd-media-title">' + (p.titleHtml || p.title) + '</span></div>';
+    var media;
+    if (p.video) {
+      media = '<div class="pd-media pd-media--video">'
+        + '<iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1" title="' + (p.title) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'
+        + '</div>';
+    } else if (p.photo) {
+      media = '<div class="pd-media"><img src="' + p.photo + '" alt="" loading="lazy"></div>';
+    } else {
+      media = '<div class="pd-media pd-media--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="pd-media-title">' + (p.titleHtml || p.title) + '</span></div>';
+    }
     return ''
       + '<div class="pd-head"><h3 class="pd-title">' + (p.titleHtml || p.title) + '</h3>'
       +   '<button class="pd-close" type="button">' + t(UI.close) + ' ✕</button></div>'
