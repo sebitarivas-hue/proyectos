@@ -308,7 +308,7 @@
     },
     {
       slug: "america", title: "A World to Blast", titleHtml: "A World to Blast",
-      img: "assets/projects/america.svg",
+      img: "assets/projects/america.svg", photo: "assets/projects/america.jpg",
       tag: { fr: "Création 2027 · Mexico", es: "Estreno 2027 · México", en: "Premiere 2027 · Mexico City", zh: "2027 首演 · 墨西哥城" },
       short: { fr: "Opéra : América Scarfó & Soledad Rosas, l'amour comme acte révolutionnaire.", es: "Ópera: América Scarfó y Soledad Rosas, el amor como acto revolucionario.", en: "An opera: América Scarfó & Soledad Rosas, love as a revolutionary act.", zh: "歌剧：América Scarfó 与 Soledad Rosas，爱作为革命行动。" },
       pitch: {
