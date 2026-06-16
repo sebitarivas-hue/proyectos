@@ -255,6 +255,7 @@
     },
     {
       slug: "insistir", title: "Insistir", titleHtml: "Insistir",
+      photo: "assets/projects/insistir.jpg",
       tag: { fr: "Création 2026 · Mexico", es: "Estreno 2026 · México", en: "Premiere 2026 · Mexico City", zh: "2026 首演 · 墨西哥城" },
       short: { fr: "Performance pour Nicola Beller Carbone, autour de pièces de Georges Aperghis.", es: "Performance para Nicola Beller Carbone, en torno a piezas de Georges Aperghis.", en: "A performance for Nicola Beller Carbone, around works by Georges Aperghis.", zh: "为 Nicola Beller Carbone 而作的表演，围绕 Georges Aperghis 的作品。" },
       pitch: {
