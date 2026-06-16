@@ -1,4 +1,4 @@
-// STOPERA — quadrilingual site (FR / ES / EN / ZH) + expandable project cards
+// STOPERA! — quadrilingual site (FR / ES / EN / ZH) + expandable project cards
 (function () {
   "use strict";
 
