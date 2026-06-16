@@ -17,7 +17,10 @@
     close:    { fr: "Replier", es: "Cerrar", en: "Close", zh: "收起" },
     details:  { fr: "Informations", es: "Información", en: "Details", zh: "信息" },
     credits:  { fr: "Générique", es: "Créditos", en: "Credits", zh: "创作团队" },
-    partners: { fr: "Production & partenaires", es: "Producción & socios", en: "Production & partners", zh: "制作与合作" }
+    partners: { fr: "Production & partenaires", es: "Producción & socios", en: "Production & partners", zh: "制作与合作" },
+    press:    { fr: "Revue de presse", es: "Reseña de prensa", en: "Press", zh: "媒体评论" },
+    links:    { fr: "À voir & écouter", es: "Ver & escuchar", en: "Watch & listen", zh: "观看与聆听" },
+    pressPdf: { fr: "Télécharger la revue de presse (PDF)", es: "Descargar la reseña de prensa (PDF)", en: "Download the press review (PDF)", zh: "下载媒体评论（PDF）" }
   };
 
   var YEARS = {
@@ -25,6 +28,7 @@
     "rayon-n": "2026 – 2027",
     "nous": { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" },
     "rut": "2026",
+    "insistir": "2026",
     "fame": "2025",
     "america": "2027",
     "mamma-roma": "2027",
@@ -35,7 +39,7 @@
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
 
   var PROJECTS = [
     {
@@ -85,6 +89,10 @@
         { role: { fr: "Ensembles", es: "Ensembles", en: "Ensembles", zh: "乐团" }, who: "Les Métaboles · Ensemble intercontemporain" }
       ],
       partners: ["Ensemble intercontemporain", "Lavoir Numérique (Gentilly)"],
+      links: [
+        { label: "GRAME — Rayon N, étape 1 (film de Julien Ravoux)", url: "https://www.grame.fr/evenements/2021-02-rayon-n-etape-1-diffusion-du-film-de-julien-ravoux" },
+        { label: "T&M Paris — Rayon N", url: "https://theatre-musique.com/spectacle/rayon-n/" }
+      ],
       note: { fr: "Recherche de coproductions et de diffuseurs en cours.", es: "Búsqueda de coproducciones y programadores en curso.", en: "Coproductions and venues being sought.", zh: "正在寻找联合制作方与演出场所。" }
     },
     {
@@ -201,6 +209,14 @@
         { role: { fr: "Avec", es: "Con", en: "With", zh: "演员" }, who: "Nicola Beller Carbone · Yvan Ludlow" }
       ],
       partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse"],
+      press: [
+        { quote: { fr: "Une femme de 53 ans s'y livre au commentaire très rationnel de l'acte de violence qui l'a libérée de tout ce qu'elle a subi jusque-là.", es: "Una mujer de 53 años se entrega al comentario muy racional del acto de violencia que la liberó de todo lo que había sufrido.", en: "A 53-year-old woman delivers a coolly rational commentary on the act of violence that freed her from all she had endured.", zh: "一位 53 岁的女性，冷静而理性地讲述那个将她从此前所受的一切中解放出来的暴力行为。" }, source: "Le Monde", url: "https://www.lemonde.fr/culture/article/2024/03/19/otages-un-opera-qui-libere-la-parole-feminine-mais-pas-le-chant_6222903_3246.html" },
+        { quote: { fr: "Le compositeur franco-argentin donne à entendre la violence sociale et sexiste.", es: "El compositor franco-argentino hace oír la violencia social y sexista.", en: "The French-Argentine composer makes social and sexist violence audible.", zh: "这位法国-阿根廷作曲家让社会与性别暴力被听见。" }, source: "Diapason", url: "https://www.diapasonmag.fr/critiques/otages-de-sebastian-rivas-a-lyon-un-drame-feministe-en-musique-46011.html" },
+        { quote: { fr: "Sylvie Meyer découvre qu'elle est doublement otage : amoureuse et économique.", es: "Sylvie Meyer descubre que es doblemente rehén: amorosa y económica.", en: "Sylvie Meyer discovers she is a hostage twice over: emotionally and economically.", zh: "Sylvie Meyer 发现自己是双重人质：情感的与经济的。" }, source: "ResMusica", url: "https://www.resmusica.com/2024/03/20/otages-a-lyon-la-fin-de-la-soumission/" },
+        { quote: { fr: "Le livret s'avère d'une grande richesse, en prise avec notre époque.", es: "El libreto resulta de gran riqueza, en sintonía con nuestra época.", en: "The libretto proves richly resonant, in touch with our time.", zh: "剧本极为丰富，紧扣我们的时代。" }, source: "Forum Opéra", url: "https://www.forumopera.com/spectacle/rivas-otages-lyon/" },
+        { quote: { fr: "Entre musique et théâtre, le mariage est réussi.", es: "Entre música y teatro, la unión es lograda.", en: "Between music and theatre, the marriage is a success.", zh: "音乐与戏剧的结合十分成功。" }, source: "Classykéo", url: "https://www.classykeo.com/2024/03/29/otages-faites-entrer-laccuse/" }
+      ],
+      pressPdf: "assets/press/otages-revue-presse.pdf",
       note: { fr: "Création mondiale le 17 mars 2024 (Festival de l'Opéra de Lyon).", es: "Estreno mundial el 17 de marzo de 2024 (Festival de la Opéra de Lyon).", en: "World premiere on 17 March 2024 (Opéra de Lyon Festival).", zh: "2024 年 3 月 17 日世界首演（里昂歌剧院艺术节）。" }
     },
     {
@@ -229,6 +245,30 @@
       ],
       partners: ["Ircam — Centre Pompidou", "GRAME", "T2G — Théâtre de Gennevilliers", "Festival ManiFeste"],
       note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。摄影：Pacôme Poirier / WikiSpectacle。" }
+    },
+    {
+      slug: "insistir", title: "Insistir", titleHtml: "Insistir",
+      tag: { fr: "Création 2026 · Mexico", es: "Estreno 2026 · México", en: "Premiere 2026 · Mexico City", zh: "2026 首演 · 墨西哥城" },
+      short: { fr: "Performance pour Nicola Beller Carbone, autour de pièces de Georges Aperghis.", es: "Performance para Nicola Beller Carbone, en torno a piezas de Georges Aperghis.", en: "A performance for Nicola Beller Carbone, around works by Georges Aperghis.", zh: "为 Nicola Beller Carbone 而作的表演，围绕 Georges Aperghis 的作品。" },
+      pitch: {
+        fr: "Performance scénique pour une interprète seule en scène, portée par Nicola Beller Carbone et construite autour de pièces de Georges Aperghis. En dialogue avec un geste fondateur — la mise en scène d'<em>En attendant Godot</em> par Susan Sontag dans Sarajevo assiégée (1993) —, elle interroge la présence en situation extrême : la voix comme matière, la répétition comme acte, l'insistance comme résistance. Création prévue à Mexico en 2026.",
+        es: "Performance escénica para una intérprete sola en escena, encarnada por Nicola Beller Carbone y construida en torno a piezas de Georges Aperghis. En diálogo con un gesto fundador —la puesta en escena de <em>Esperando a Godot</em> por Susan Sontag en el Sarajevo sitiado (1993)—, interroga la presencia en situación extrema: la voz como materia, la repetición como acto, la insistencia como resistencia. Estreno previsto en México en 2026.",
+        en: "A stage performance for a single performer, embodied by Nicola Beller Carbone and built around works by Georges Aperghis. In dialogue with a founding gesture — Susan Sontag staging <em>Waiting for Godot</em> in besieged Sarajevo (1993) — it questions presence in extreme conditions: voice as material, repetition as act, insistence as resistance. Premiere planned in Mexico City in 2026.",
+        zh: "一部为独奏表演者而作的舞台表演，由 Nicola Beller Carbone 演绎，围绕 Georges Aperghis 的作品构建。它与一个奠基性姿态对话——1993 年 Susan Sontag 在被围困的萨拉热窝执导《<em>等待戈多</em>》——追问极端处境中的在场：人声作为材料，重复作为行动，坚持作为抵抗。预计 2026 年于墨西哥城首演。" },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance", es: "Performance", en: "Performance", zh: "表演" } },
+        { k: { fr: "Œuvres", es: "Obras", en: "Works", zh: "作品" }, v: "Georges Aperghis" },
+        { k: { fr: "Interprète", es: "Intérprete", en: "Performer", zh: "表演者" }, v: "Nicola Beller Carbone" },
+        { k: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, v: "Sebastian Rivas" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Mexico, 2026", es: "México, 2026", en: "Mexico City, 2026", zh: "墨西哥城，2026" } }
+      ],
+      credits: [
+        { role: { fr: "Direction artistique", es: "Dirección artística", en: "Artistic direction", zh: "艺术指导" }, who: "Sebastian Rivas" },
+        { role: { fr: "Interprète", es: "Intérprete", en: "Performer", zh: "表演者" }, who: "Nicola Beller Carbone" },
+        { role: { fr: "Œuvres", es: "Obras", en: "Works", zh: "作品" }, who: "Georges Aperghis" }
+      ],
+      partners: [],
+      note: { fr: "Projet en développement — en référence au geste de Susan Sontag à Sarajevo (1993).", es: "Proyecto en desarrollo — en referencia al gesto de Susan Sontag en Sarajevo (1993).", en: "Project in development — referencing Susan Sontag's gesture in Sarajevo (1993).", zh: "开发中的项目——参照 1993 年 Susan Sontag 在萨拉热窝的姿态。" }
     },
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
@@ -314,7 +354,8 @@
     "america":          "#a85c45",  // Terra Cotta Urn — terre cuite
     "lips":             "#939a7e",  // Urban Nature — sauge
     "mamma-roma":       "#4a3a2f",  // Baronial Brown — brun profond
-    "otages":           "#6d7f8d"   // Adirondack Blue — bleu-gris
+    "otages":           "#6d7f8d",  // Adirondack Blue — bleu-gris
+    "insistir":         "#6b6470"   // Curtain Call — gris-prune
   };
 
   function hx(h) { h = h.replace("#", ""); return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)]; }
@@ -364,6 +405,20 @@
         + p.partners.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ul></div>'
       : "";
     var note = p.note ? '<p class="pd-note">' + t(p.note) + '</p>' : "";
+    var press = (p.press && p.press.length)
+      ? '<div class="pd-block pd-full pd-press"><h4>' + t(UI.press) + '</h4>'
+        + p.press.map(function (q) {
+            var src = q.url ? '<a href="' + q.url + '" target="_blank" rel="noopener">' + q.source + '</a>' : q.source;
+            return '<blockquote class="pdq">« ' + t(q.quote) + ' »<cite>' + src + '</cite></blockquote>';
+          }).join("")
+        + (p.pressPdf ? '<a class="pd-dl" href="' + p.pressPdf + '" target="_blank" rel="noopener">' + t(UI.pressPdf) + ' ↓</a>' : '')
+        + '</div>'
+      : "";
+    var links = (p.links && p.links.length)
+      ? '<div class="pd-block pd-full"><h4>' + t(UI.links) + '</h4><ul class="taglist">'
+        + p.links.map(function (l) { return '<li><a href="' + l.url + '" target="_blank" rel="noopener">' + l.label + '</a></li>'; }).join("")
+        + '</ul></div>'
+      : "";
     var media;
     if (p.video) {
       media = '<div class="pd-media pd-media--video">'
@@ -382,7 +437,7 @@
       + '<div class="pd-grid">'
       +   '<div class="pd-block"><h4>' + t(UI.details) + '</h4><ul class="facts">' + facts + '</ul></div>'
       +   '<div class="pd-block"><h4>' + t(UI.credits) + '</h4><ul class="credits">' + credits + '</ul></div>'
-      +   partners + note
+      +   partners + press + links + note
       + '</div>';
   }
 

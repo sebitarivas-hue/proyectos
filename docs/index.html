@@ -16,19 +16,19 @@
   <meta property="og:image" content="assets/logo.png" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=20260616f" />
-  <link rel="stylesheet" href="styles.css?v=20260616f" />
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=20260616g" />
+  <link rel="stylesheet" href="styles.css?v=20260616g" />
 </head>
 <body data-lang="fr">
   <header class="site-header">
     <a class="brand" href="#top" aria-label="STOPERA!"><img class="brand-logo" src="assets/logo-dark.png" alt="STOPERA! — Sonic Theatre Opera Performance" /></a>
     <nav class="site-nav" aria-label="Navigation">
       <a href="#apropos" data-fr="À propos" data-es="Acerca de" data-en="About" data-zh="关于"></a>
-      <a href="#recherche" data-fr="Recherche" data-es="Investigación" data-en="Research" data-zh="研究"></a>
-      <a href="#lips" data-fr="LIPS" data-es="LIPS" data-en="LIPS" data-zh="LIPS"></a>
-      <a href="#reseau" data-fr="Réseau" data-es="Red" data-en="Network" data-zh="网络"></a>
       <a href="#productions" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></a>
       <a href="#actualites" data-fr="Actualités" data-es="Novedades" data-en="News" data-zh="动态"></a>
+      <a href="#reseau" data-fr="Réseau" data-es="Red" data-en="Network" data-zh="网络"></a>
+      <a href="#recherche" data-fr="Recherche" data-es="Investigación" data-en="Research" data-zh="研究"></a>
+      <a href="#lips" data-fr="LIPS" data-es="LIPS" data-en="LIPS" data-zh="LIPS"></a>
       <a href="#presse" data-fr="Presse" data-es="Prensa" data-en="Press" data-zh="媒体"></a>
       <a href="#contact" data-fr="Contact" data-es="Contacto" data-en="Contact" data-zh="联系"></a>
       <div class="lang-switch" role="group" aria-label="Langue / Language">
@@ -136,83 +136,48 @@
       </div>
     </section>
 
-    <!-- 02 RECHERCHE & CRÉATION -->
-    <section id="recherche" class="section">
+        <!-- 04 PRODUCTIONS -->
+    <section id="productions" class="section">
+      <div class="section-head-row">
+        <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></span></div>
+        <h2 class="lead" style="margin:0" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></h2>
+      </div>
+      <p class="section-note" data-fr="Cliquez une production pour ouvrir sa fiche. Captations sur notre chaîne YouTube."
+         data-es="Haga clic en una producción para abrir su ficha. Grabaciones en nuestro canal de YouTube."
+         data-en="Click a production to open its sheet. Recordings on our YouTube channel."
+         data-zh="点击作品打开详情。录像见我们的 YouTube 频道。"></p>
+      <p class="grid-sub" data-fr="À venir" data-es="Próximamente" data-en="Upcoming" data-zh="即将上演"></p>
+      <ul id="grid-upcoming" class="projects" aria-label="À venir"></ul>
+      <p class="grid-sub" data-fr="Productions passées" data-es="Producciones anteriores" data-en="Past productions" data-zh="往期作品"></p>
+      <ul id="grid-past" class="projects" aria-label="Passées"></ul>
+      <div id="project-detail" class="project-detail" role="region" hidden></div>
+    </section>
+
+        <!-- 04b ACTUALITÉS / AGENDA -->
+    <section id="actualites" class="section">
       <div class="grid-2">
-        <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Recherche & transmission" data-es="Investigación & transmisión" data-en="Research & transmission" data-zh="研究与传承"></span></div>
+        <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Actualités" data-es="Novedades" data-en="News" data-zh="动态"></span></div>
         <div class="col-body">
-          <h2 class="lead" data-fr="La recherche, au cœur du plateau." data-es="La investigación, en el corazón de la escena." data-en="Research, at the heart of the stage." data-zh="研究，处于舞台的核心。"></h2>
-          <div class="prose">
-            <p data-fr="Chez STOPERA!, la recherche se fait en pratique : sur le plateau, avec des interprètes, autour de la voix, du corps, de l'écoute et de la présence. Elle prend la forme d'un laboratoire — un temps d'expérimentation, de co-écriture et de rencontre entre les disciplines."
-               data-es="En STOPERA!, la investigación se hace en la práctica: en escena, con intérpretes, en torno a la voz, el cuerpo, la escucha y la presencia. Toma la forma de un laboratorio: un tiempo de experimentación, de co-escritura y de encuentro entre disciplinas."
-               data-en="At STOPERA!, research happens in practice: on stage, with performers, around voice, body, listening and presence. It takes the form of a laboratory — a time for experimentation, co-writing and encounter between disciplines."
-               data-zh="在 STOPERA!，研究在实践中发生：在舞台上、与表演者一起，围绕人声、身体、聆听与在场。它以工作坊的形式展开——一段实验、共同书写与跨学科相遇的时光。"></p>
-            <p data-fr="La transmission prolonge cette recherche : STOPERA! accompagne les jeunes artistes, partage ses pratiques et tisse des liens avec des interprètes, des universités et des lieux partenaires, en France et à l'international. Son laboratoire international, <strong>LIPS</strong>, en est le cœur."
-               data-es="La transmisión prolonga esta investigación: STOPERA! acompaña a los jóvenes artistas, comparte sus prácticas y teje vínculos con intérpretes, universidades y espacios asociados, en Francia y en el ámbito internacional. Su laboratorio internacional, <strong>LIPS</strong>, es su corazón."
-               data-en="Transmission extends this research: STOPERA! mentors young artists, shares its practices and builds ties with performers, universities and partner venues, in France and internationally. Its international laboratory, <strong>LIPS</strong>, is its heart."
-               data-zh="传承延续了这项研究：STOPERA! 陪伴青年艺术家，分享其实践，并与表演者、高校及合作场馆建立联系，遍及法国与国际。其国际工作坊 <strong>LIPS</strong> 正是核心。"></p>
-          </div>
-          <ul class="disciplines">
-            <li data-fr="Co-écriture & interdisciplinarité" data-es="Co-escritura & interdisciplinariedad" data-en="Co-writing & interdisciplinarity" data-zh="共同书写与跨学科"></li>
-            <li data-fr="Voix & présence" data-es="Voz & presencia" data-en="Voice & presence" data-zh="人声与在场"></li>
-            <li data-fr="Corps, geste & espace" data-es="Cuerpo, gesto & espacio" data-en="Body, gesture & space" data-zh="身体、动作与空间"></li>
-            <li data-fr="Écriture musicale & théâtre musical" data-es="Escritura musical & teatro musical" data-en="Musical writing & music theatre" data-zh="音乐书写与音乐剧场"></li>
-            <li data-fr="Prototypes scéniques & sonores" data-es="Prototipos escénicos & sonoros" data-en="Scenic & sound prototypes" data-zh="舞台与声音原型"></li>
-            <li data-fr="Transmission · LIPS" data-es="Transmisión · LIPS" data-en="Transmission · LIPS" data-zh="传承 · LIPS"></li>
+          <h2 class="lead" data-fr="Ce qui se joue en ce moment." data-es="Lo que está ocurriendo ahora." data-en="What's happening now." data-zh="此刻正在发生。"></h2>
+          <ul class="agenda">
+            <li><span class="ag-when">2027</span><span class="ag-what" data-fr="<em>Mamma Roma</em> — création en juillet au CETC, Teatro Colón (Buenos Aires)." data-es="<em>Mamma Roma</em> — estreno en julio en el CETC, Teatro Colón (Buenos Aires)." data-en="<em>Mamma Roma</em> — premiere in July at the CETC, Teatro Colón (Buenos Aires)." data-zh="<em>Mamma Roma</em> —— 7 月于 Teatro Colón 的 CETC（布宜诺斯艾利斯）首演。"></span></li>
+            <li><span class="ag-when">2027</span><span class="ag-what" data-fr="<em>América</em> — création à Mexico, mise en scène de Marcelo Lombardero." data-es="<em>América</em> — estreno en México, dirección de Marcelo Lombardero." data-en="<em>América</em> — premiere in Mexico City, staged by Marcelo Lombardero." data-zh="<em>América</em> —— 墨西哥城首演，Marcelo Lombardero 执导。"></span></li>
+            <li><span class="ag-when">2026</span><span class="ag-what" data-fr="<em>input / body / output</em> — première de la performance de Rut Schreiner (fin 2026)." data-es="<em>input / body / output</em> — estreno de la performance de Rut Schreiner (fin de 2026)." data-en="<em>input / body / output</em> — premiere of Rut Schreiner's performance (late 2026)." data-zh="<em>input / body / output</em> —— Rut Schreiner 表演首演（2026 年底）。"></span></li>
+            <li><span class="ag-when">2026</span><span class="ag-what" data-fr="<em>War Madrigals</em> — création avec Les Métaboles, direction Léo Warynski." data-es="<em>War Madrigals</em> — estreno con Les Métaboles, dirección Léo Warynski." data-en="<em>War Madrigals</em> — premiere with Les Métaboles, conducted by Léo Warynski." data-zh="<em>War Madrigals</em> —— 与 Les Métaboles 合作首演，Léo Warynski 指挥。"></span></li>
+            <li><span class="ag-when">2026–27</span><span class="ag-what" data-fr="<em>Rayon N</em> — production de l'opéra-film, commande de l'Ensemble intercontemporain." data-es="<em>Rayon N</em> — producción de la ópera-film, encargo del Ensemble intercontemporain." data-en="<em>Rayon N</em> — production of the film-opera, commissioned by the Ensemble intercontemporain." data-zh="<em>Rayon N</em> —— 影像歌剧制作，Ensemble intercontemporain 委约。"></span></li>
+            <li><span class="ag-when" data-fr="en continu" data-es="en curso" data-en="ongoing" data-zh="进行中"></span><span class="ag-what" data-fr="<em>De l'Innocence</em> — opéra de chambre avec Christine Angot (bourse CNM)." data-es="<em>De l'Innocence</em> — ópera de cámara con Christine Angot (beca CNM)." data-en="<em>De l'Innocence</em> — chamber opera with Christine Angot (CNM grant)." data-zh="<em>De l'Innocence</em> —— 与 Christine Angot 合作的室内歌剧（CNM 资助）。"></span></li>
+            <li><span class="ag-when" data-fr="chaque été" data-es="cada verano" data-en="each summer" data-zh="每年夏季"></span><span class="ag-what" data-fr="<em>LIPS Lab</em> — laboratoire international de prototypes scéniques & sonores." data-es="<em>LIPS Lab</em> — laboratorio internacional de prototipos escénicos y sonoros." data-en="<em>LIPS Lab</em> — international laboratory of scenic & sound prototypes." data-zh="<em>LIPS Lab</em> —— 国际舞台与声音原型工作坊。"></span></li>
+            <li><span class="ag-when">2024</span><span class="ag-what" data-fr="<em>Otages</em> — création mondiale à l'Opéra de Lyon (Théâtre de la Croix-Rousse)." data-es="<em>Otages</em> — estreno mundial en la Opéra de Lyon (Théâtre de la Croix-Rousse)." data-en="<em>Otages</em> — world premiere at the Opéra de Lyon (Théâtre de la Croix-Rousse)." data-zh="<em>Otages</em> —— 里昂歌剧院（Croix-Rousse 剧院）世界首演。"></span></li>
           </ul>
-          <p class="section-note" data-fr="Partenaires de recherche et de transmission : GRAME, UNSAM (Buenos Aires), Pôle Pixel (Villeurbanne), et des partenaires universitaires."
-             data-es="Socios de investigación y transmisión: GRAME, UNSAM (Buenos Aires), Pôle Pixel (Villeurbanne) y socios universitarios."
-             data-en="Research and transmission partners: GRAME, UNSAM (Buenos Aires), Pôle Pixel (Villeurbanne), and university partners."
-             data-zh="研究与传承伙伴：GRAME、UNSAM（布宜诺斯艾利斯）、Pôle Pixel（维勒班）及高校伙伴。"></p>
+          <p class="section-note" data-fr="Agenda indicatif — dates et lieux précisés au fil des confirmations. Captations sur notre chaîne YouTube."
+             data-es="Agenda indicativa — fechas y lugares se precisan a medida que se confirman. Grabaciones en nuestro canal de YouTube."
+             data-en="Indicative agenda — dates and venues confirmed as they are finalised. Recordings on our YouTube channel."
+             data-zh="参考日程 —— 日期与地点随确认而更新。录像见我们的 YouTube 频道。"></p>
         </div>
       </div>
     </section>
 
-    <!-- 02b LIPS -->
-    <section id="lips" class="section">
-      <div class="grid-2">
-        <div class="col-label"><span class="index"></span><span class="eyebrow">LIPS</span></div>
-        <div class="col-body">
-          <h2 class="lead" data-fr="Un laboratoire international de pratiques scéniques." data-es="Un laboratorio internacional de prácticas escénicas." data-en="An international laboratory of stage practices." data-zh="一个国际舞台实践工作坊。"></h2>
-          <div class="prose">
-            <p data-fr="LIPS est un laboratoire interdisciplinaire de prototypes scéniques et sonores. Chaque année, de jeunes artistes de toutes disciplines — composition, mise en scène, arts visuels, théâtre, danse — y prototypent ensemble de nouvelles formes, accompagnés par des artistes confirmés."
-               data-es="LIPS es un laboratorio interdisciplinario de prototipos escénicos y sonoros. Cada año, jóvenes artistas de todas las disciplinas —composición, dirección de escena, artes visuales, teatro, danza— prototipan juntos nuevas formas, acompañados por artistas consagrados."
-               data-en="LIPS is an interdisciplinary laboratory of scenic and sound prototypes. Each year, young artists from all disciplines — composition, stage direction, visual arts, theatre, dance — prototype new forms together, mentored by established artists."
-               data-zh="LIPS 是一个跨学科的舞台与声音原型工作坊。每年，来自各学科——作曲、导演、视觉艺术、戏剧、舞蹈——的青年艺术家在资深艺术家的陪伴下共同打造新形式的雏形。"></p>
-            <p data-fr="Un espace d'échange, d'expérimentation et de co-écriture, où la transmission se fait par la pratique. Les outils numériques y sont une matière commune, jamais une fin."
-               data-es="Un espacio de intercambio, experimentación y co-escritura, donde la transmisión se hace por la práctica. Las herramientas digitales son una materia común, nunca un fin."
-               data-en="A space for exchange, experimentation and co-writing, where transmission happens through practice. Digital tools are common material, never an end."
-               data-zh="一个交流、实验与共同书写的空间，让传承通过实践发生。数字工具是共享的素材，而非目的。"></p>
-          </div>
-          <div class="subblock">
-            <p class="subblock-label" data-fr="Démarche" data-es="Enfoque" data-en="Approach" data-zh="方法"></p>
-            <ul class="disciplines">
-              <li data-fr="Co-écriture" data-es="Co-escritura" data-en="Co-writing" data-zh="共同书写"></li>
-              <li data-fr="Interdisciplinarité" data-es="Interdisciplinariedad" data-en="Interdisciplinarity" data-zh="跨学科"></li>
-              <li data-fr="Intermédialité" data-es="Intermedialidad" data-en="Intermediality" data-zh="跨媒介"></li>
-              <li data-fr="Prototypes scéniques & sonores" data-es="Prototipos escénicos & sonoros" data-en="Scenic & sound prototypes" data-zh="舞台与声音原型"></li>
-              <li data-fr="Mentorat & transmission" data-es="Mentoría & transmisión" data-en="Mentoring & transmission" data-zh="指导与传承"></li>
-              <li data-fr="Résidence" data-es="Residencia" data-en="Residency" data-zh="驻地"></li>
-            </ul>
-          </div>
-          <div class="subblock">
-            <p class="subblock-label" data-fr="Éditions" data-es="Ediciones" data-en="Editions" data-zh="历届"></p>
-            <ul class="roster">
-              <li><span class="who">Pôle Pixel</span><span class="role">Villeurbanne</span></li>
-              <li><span class="who">GRAME — CNCM</span><span class="role">Lyon</span></li>
-              <li><span class="who">UNSAM</span><span class="role">Buenos Aires</span></li>
-            </ul>
-          </div>
-          <p class="section-note" data-fr="Artistes, étudiant·es, lieux : pour rejoindre une édition ou accueillir LIPS, écrivez-nous."
-             data-es="Artistas, estudiantes, espacios: para unirse a una edición o acoger LIPS, escríbanos."
-             data-en="Artists, students, venues: to join an edition or host LIPS, get in touch."
-             data-zh="艺术家、学生、场馆：欲参与某一届或承办 LIPS，请与我们联系。"></p>
-          <a class="btn btn-ghost" href="mailto:stopera.gentilly@gmail.com"><span data-fr="Participer à LIPS" data-es="Participar en LIPS" data-en="Take part in LIPS" data-zh="参与 LIPS"></span><span>→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 RÉSEAU & ARTISTES -->
+        <!-- 03 RÉSEAU & ARTISTES -->
     <section id="reseau" class="section">
       <div class="grid-2">
         <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Réseau & artistes" data-es="Red & artistas" data-en="Network & artists" data-zh="网络与艺术家"></span></div>
@@ -297,48 +262,87 @@
       </div>
     </section>
 
-    <!-- 04 PRODUCTIONS -->
-    <section id="productions" class="section">
-      <div class="section-head-row">
-        <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></span></div>
-        <h2 class="lead" style="margin:0" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></h2>
-      </div>
-      <p class="section-note" data-fr="Cliquez une production pour ouvrir sa fiche. Captations sur notre chaîne YouTube."
-         data-es="Haga clic en una producción para abrir su ficha. Grabaciones en nuestro canal de YouTube."
-         data-en="Click a production to open its sheet. Recordings on our YouTube channel."
-         data-zh="点击作品打开详情。录像见我们的 YouTube 频道。"></p>
-      <p class="grid-sub" data-fr="À venir" data-es="Próximamente" data-en="Upcoming" data-zh="即将上演"></p>
-      <ul id="grid-upcoming" class="projects" aria-label="À venir"></ul>
-      <p class="grid-sub" data-fr="Productions passées" data-es="Producciones anteriores" data-en="Past productions" data-zh="往期作品"></p>
-      <ul id="grid-past" class="projects" aria-label="Passées"></ul>
-      <div id="project-detail" class="project-detail" role="region" hidden></div>
-    </section>
-
-    <!-- 04b ACTUALITÉS / AGENDA -->
-    <section id="actualites" class="section">
+        <!-- 02 RECHERCHE & CRÉATION -->
+    <section id="recherche" class="section">
       <div class="grid-2">
-        <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Actualités" data-es="Novedades" data-en="News" data-zh="动态"></span></div>
+        <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Recherche & transmission" data-es="Investigación & transmisión" data-en="Research & transmission" data-zh="研究与传承"></span></div>
         <div class="col-body">
-          <h2 class="lead" data-fr="Ce qui se joue en ce moment." data-es="Lo que está ocurriendo ahora." data-en="What's happening now." data-zh="此刻正在发生。"></h2>
-          <ul class="agenda">
-            <li><span class="ag-when">2027</span><span class="ag-what" data-fr="<em>Mamma Roma</em> — création en juillet au CETC, Teatro Colón (Buenos Aires)." data-es="<em>Mamma Roma</em> — estreno en julio en el CETC, Teatro Colón (Buenos Aires)." data-en="<em>Mamma Roma</em> — premiere in July at the CETC, Teatro Colón (Buenos Aires)." data-zh="<em>Mamma Roma</em> —— 7 月于 Teatro Colón 的 CETC（布宜诺斯艾利斯）首演。"></span></li>
-            <li><span class="ag-when">2027</span><span class="ag-what" data-fr="<em>América</em> — création à Mexico, mise en scène de Marcelo Lombardero." data-es="<em>América</em> — estreno en México, dirección de Marcelo Lombardero." data-en="<em>América</em> — premiere in Mexico City, staged by Marcelo Lombardero." data-zh="<em>América</em> —— 墨西哥城首演，Marcelo Lombardero 执导。"></span></li>
-            <li><span class="ag-when">2026</span><span class="ag-what" data-fr="<em>input / body / output</em> — première de la performance de Rut Schreiner (fin 2026)." data-es="<em>input / body / output</em> — estreno de la performance de Rut Schreiner (fin de 2026)." data-en="<em>input / body / output</em> — premiere of Rut Schreiner's performance (late 2026)." data-zh="<em>input / body / output</em> —— Rut Schreiner 表演首演（2026 年底）。"></span></li>
-            <li><span class="ag-when">2026</span><span class="ag-what" data-fr="<em>War Madrigals</em> — création avec Les Métaboles, direction Léo Warynski." data-es="<em>War Madrigals</em> — estreno con Les Métaboles, dirección Léo Warynski." data-en="<em>War Madrigals</em> — premiere with Les Métaboles, conducted by Léo Warynski." data-zh="<em>War Madrigals</em> —— 与 Les Métaboles 合作首演，Léo Warynski 指挥。"></span></li>
-            <li><span class="ag-when">2026–27</span><span class="ag-what" data-fr="<em>Rayon N</em> — production de l'opéra-film, commande de l'Ensemble intercontemporain." data-es="<em>Rayon N</em> — producción de la ópera-film, encargo del Ensemble intercontemporain." data-en="<em>Rayon N</em> — production of the film-opera, commissioned by the Ensemble intercontemporain." data-zh="<em>Rayon N</em> —— 影像歌剧制作，Ensemble intercontemporain 委约。"></span></li>
-            <li><span class="ag-when" data-fr="en continu" data-es="en curso" data-en="ongoing" data-zh="进行中"></span><span class="ag-what" data-fr="<em>De l'Innocence</em> — opéra de chambre avec Christine Angot (bourse CNM)." data-es="<em>De l'Innocence</em> — ópera de cámara con Christine Angot (beca CNM)." data-en="<em>De l'Innocence</em> — chamber opera with Christine Angot (CNM grant)." data-zh="<em>De l'Innocence</em> —— 与 Christine Angot 合作的室内歌剧（CNM 资助）。"></span></li>
-            <li><span class="ag-when" data-fr="chaque été" data-es="cada verano" data-en="each summer" data-zh="每年夏季"></span><span class="ag-what" data-fr="<em>LIPS Lab</em> — laboratoire international de prototypes scéniques & sonores." data-es="<em>LIPS Lab</em> — laboratorio internacional de prototipos escénicos y sonoros." data-en="<em>LIPS Lab</em> — international laboratory of scenic & sound prototypes." data-zh="<em>LIPS Lab</em> —— 国际舞台与声音原型工作坊。"></span></li>
-            <li><span class="ag-when">2024</span><span class="ag-what" data-fr="<em>Otages</em> — création mondiale à l'Opéra de Lyon (Théâtre de la Croix-Rousse)." data-es="<em>Otages</em> — estreno mundial en la Opéra de Lyon (Théâtre de la Croix-Rousse)." data-en="<em>Otages</em> — world premiere at the Opéra de Lyon (Théâtre de la Croix-Rousse)." data-zh="<em>Otages</em> —— 里昂歌剧院（Croix-Rousse 剧院）世界首演。"></span></li>
+          <h2 class="lead" data-fr="La recherche, au cœur du plateau." data-es="La investigación, en el corazón de la escena." data-en="Research, at the heart of the stage." data-zh="研究，处于舞台的核心。"></h2>
+          <div class="prose">
+            <p data-fr="Chez STOPERA!, la recherche se fait en pratique : sur le plateau, avec des interprètes, autour de la voix, du corps, de l'écoute et de la présence. Elle prend la forme d'un laboratoire — un temps d'expérimentation, de co-écriture et de rencontre entre les disciplines."
+               data-es="En STOPERA!, la investigación se hace en la práctica: en escena, con intérpretes, en torno a la voz, el cuerpo, la escucha y la presencia. Toma la forma de un laboratorio: un tiempo de experimentación, de co-escritura y de encuentro entre disciplinas."
+               data-en="At STOPERA!, research happens in practice: on stage, with performers, around voice, body, listening and presence. It takes the form of a laboratory — a time for experimentation, co-writing and encounter between disciplines."
+               data-zh="在 STOPERA!，研究在实践中发生：在舞台上、与表演者一起，围绕人声、身体、聆听与在场。它以工作坊的形式展开——一段实验、共同书写与跨学科相遇的时光。"></p>
+            <p data-fr="La transmission prolonge cette recherche : STOPERA! accompagne les jeunes artistes, partage ses pratiques et tisse des liens avec des interprètes, des universités et des lieux partenaires, en France et à l'international. Son laboratoire international, <strong>LIPS</strong>, en est le cœur."
+               data-es="La transmisión prolonga esta investigación: STOPERA! acompaña a los jóvenes artistas, comparte sus prácticas y teje vínculos con intérpretes, universidades y espacios asociados, en Francia y en el ámbito internacional. Su laboratorio internacional, <strong>LIPS</strong>, es su corazón."
+               data-en="Transmission extends this research: STOPERA! mentors young artists, shares its practices and builds ties with performers, universities and partner venues, in France and internationally. Its international laboratory, <strong>LIPS</strong>, is its heart."
+               data-zh="传承延续了这项研究：STOPERA! 陪伴青年艺术家，分享其实践，并与表演者、高校及合作场馆建立联系，遍及法国与国际。其国际工作坊 <strong>LIPS</strong> 正是核心。"></p>
+          </div>
+          <ul class="disciplines">
+            <li data-fr="Co-écriture & interdisciplinarité" data-es="Co-escritura & interdisciplinariedad" data-en="Co-writing & interdisciplinarity" data-zh="共同书写与跨学科"></li>
+            <li data-fr="Voix & présence" data-es="Voz & presencia" data-en="Voice & presence" data-zh="人声与在场"></li>
+            <li data-fr="Corps, geste & espace" data-es="Cuerpo, gesto & espacio" data-en="Body, gesture & space" data-zh="身体、动作与空间"></li>
+            <li data-fr="Écriture musicale & théâtre musical" data-es="Escritura musical & teatro musical" data-en="Musical writing & music theatre" data-zh="音乐书写与音乐剧场"></li>
+            <li data-fr="Prototypes scéniques & sonores" data-es="Prototipos escénicos & sonoros" data-en="Scenic & sound prototypes" data-zh="舞台与声音原型"></li>
+            <li data-fr="Transmission · LIPS" data-es="Transmisión · LIPS" data-en="Transmission · LIPS" data-zh="传承 · LIPS"></li>
           </ul>
-          <p class="section-note" data-fr="Agenda indicatif — dates et lieux précisés au fil des confirmations. Captations sur notre chaîne YouTube."
-             data-es="Agenda indicativa — fechas y lugares se precisan a medida que se confirman. Grabaciones en nuestro canal de YouTube."
-             data-en="Indicative agenda — dates and venues confirmed as they are finalised. Recordings on our YouTube channel."
-             data-zh="参考日程 —— 日期与地点随确认而更新。录像见我们的 YouTube 频道。"></p>
+          <p class="section-note" data-fr="Partenaires de recherche et de transmission : GRAME, UNSAM (Buenos Aires), Pôle Pixel (Villeurbanne), et des partenaires universitaires."
+             data-es="Socios de investigación y transmisión: GRAME, UNSAM (Buenos Aires), Pôle Pixel (Villeurbanne) y socios universitarios."
+             data-en="Research and transmission partners: GRAME, UNSAM (Buenos Aires), Pôle Pixel (Villeurbanne), and university partners."
+             data-zh="研究与传承伙伴：GRAME、UNSAM（布宜诺斯艾利斯）、Pôle Pixel（维勒班）及高校伙伴。"></p>
         </div>
       </div>
     </section>
 
-    <!-- 05 PRESSE & DISTINCTIONS -->
+        <!-- 02b LIPS -->
+    <section id="lips" class="section">
+      <div class="grid-2">
+        <div class="col-label"><span class="index"></span><span class="eyebrow">LIPS</span></div>
+        <div class="col-body">
+          <h2 class="lead" data-fr="Un laboratoire international de pratiques scéniques." data-es="Un laboratorio internacional de prácticas escénicas." data-en="An international laboratory of stage practices." data-zh="一个国际舞台实践工作坊。"></h2>
+          <div class="prose">
+            <p data-fr="LIPS — <em>Laboratoire In(ter)discipliné de Prototypes Scéniques</em> — réunit à chaque édition huit à dix artistes émergents de toutes disciplines : composition, mise en scène, arts visuels, théâtre, danse. Créé en 2019, il leur ouvre studios, outils et équipes de recherche au fil de trois sessions de travail, accompagnées par des artistes confirmés."
+               data-es="LIPS —<em>Laboratoire In(ter)discipliné de Prototypes Scéniques</em>— reúne en cada edición de ocho a diez artistas emergentes de todas las disciplinas: composición, dirección de escena, artes visuales, teatro, danza. Creado en 2019, les abre estudios, herramientas y equipos de investigación a lo largo de tres sesiones de trabajo, acompañadas por artistas consagrados."
+               data-en="LIPS — <em>Laboratoire In(ter)discipliné de Prototypes Scéniques</em> — brings together eight to ten emerging artists from all disciplines at each edition: composition, stage direction, visual arts, theatre, dance. Created in 2019, it opens its studios, tools and research teams across three working sessions, mentored by established artists."
+               data-zh="LIPS——<em>Laboratoire In(ter)discipliné de Prototypes Scéniques</em>——每届汇集八至十位来自各学科（作曲、导演、视觉艺术、戏剧、舞蹈）的新锐艺术家。创立于 2019 年，通过三段工作期向他们开放工作室、工具与研究团队，并由资深艺术家陪伴。"></p>
+            <p data-fr="Un espace d'échange, d'expérimentation et de co-écriture, où la transmission se fait par la pratique. Les outils numériques y sont une matière commune, jamais une fin."
+               data-es="Un espacio de intercambio, experimentación y co-escritura, donde la transmisión se hace por la práctica. Las herramientas digitales son una materia común, nunca un fin."
+               data-en="A space for exchange, experimentation and co-writing, where transmission happens through practice. Digital tools are common material, never an end."
+               data-zh="一个交流、实验与共同书写的空间，让传承通过实践发生。数字工具是共享的素材，而非目的。"></p>
+          </div>
+          <div class="subblock">
+            <p class="subblock-label" data-fr="Démarche" data-es="Enfoque" data-en="Approach" data-zh="方法"></p>
+            <ul class="disciplines">
+              <li data-fr="Co-écriture" data-es="Co-escritura" data-en="Co-writing" data-zh="共同书写"></li>
+              <li data-fr="Interdisciplinarité" data-es="Interdisciplinariedad" data-en="Interdisciplinarity" data-zh="跨学科"></li>
+              <li data-fr="Intermédialité" data-es="Intermedialidad" data-en="Intermediality" data-zh="跨媒介"></li>
+              <li data-fr="Prototypes scéniques & sonores" data-es="Prototipos escénicos & sonoros" data-en="Scenic & sound prototypes" data-zh="舞台与声音原型"></li>
+              <li data-fr="Mentorat & transmission" data-es="Mentoría & transmisión" data-en="Mentoring & transmission" data-zh="指导与传承"></li>
+              <li data-fr="Résidence" data-es="Residencia" data-en="Residency" data-zh="驻地"></li>
+            </ul>
+          </div>
+          <div class="subblock">
+            <p class="subblock-label" data-fr="Éditions" data-es="Ediciones" data-en="Editions" data-zh="历届"></p>
+            <ul class="roster">
+              <li><span class="who">Pôle Pixel</span><span class="role">Villeurbanne</span></li>
+              <li><span class="who">GRAME — CNCM</span><span class="role">Lyon</span></li>
+              <li><span class="who">UNSAM</span><span class="role">Buenos Aires</span></li>
+            </ul>
+          </div>
+          <p class="section-note" data-fr="Avec GRAME (CNCM) et le Pôle Pixel, et dans le cadre du European Creator's Lab. Édition 2023 : « nouvelles narrations immersives ». Le laboratoire défend l'égalité femmes-hommes et une création écoresponsable."
+             data-es="Con GRAME (CNCM) y el Pôle Pixel, en el marco del European Creator's Lab. Edición 2023: «nuevas narrativas inmersivas». El laboratorio defiende la igualdad entre mujeres y hombres y una creación ecorresponsable."
+             data-en="With GRAME (CNCM) and Pôle Pixel, as part of the European Creator's Lab. 2023 edition: “new immersive narratives.” The laboratory champions gender equality and environmentally responsible creation."
+             data-zh="与 GRAME（CNCM）及 Pôle Pixel 合作，并属于 European Creator's Lab 框架。2023 届主题：「沉浸式新叙事」。工作坊倡导性别平等与生态责任的创作。"></p>
+          <p class="section-note" data-fr="Artistes, étudiant·es, lieux : pour rejoindre une édition ou accueillir LIPS, écrivez-nous."
+             data-es="Artistas, estudiantes, espacios: para unirse a una edición o acoger LIPS, escríbanos."
+             data-en="Artists, students, venues: to join an edition or host LIPS, get in touch."
+             data-zh="艺术家、学生、场馆：欲参与某一届或承办 LIPS，请与我们联系。"></p>
+          <a class="btn btn-ghost" href="mailto:stopera.gentilly@gmail.com"><span data-fr="Participer à LIPS" data-es="Participar en LIPS" data-en="Take part in LIPS" data-zh="参与 LIPS"></span><span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+        <!-- 05 PRESSE & DISTINCTIONS -->
     <section id="presse" class="section">
       <div class="grid-2">
         <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Presse & distinctions" data-es="Prensa & distinciones" data-en="Press & recognition" data-zh="媒体与荣誉"></span></div>
@@ -380,7 +384,7 @@
       </div>
     </section>
 
-    <!-- 06 PARTENAIRES -->
+        <!-- 06 PARTENAIRES -->
     <section id="partenaires" class="section">
       <div class="grid-2">
         <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Partenaires" data-es="Socios" data-en="Partners" data-zh="伙伴"></span></div>
@@ -431,7 +435,7 @@
       </div>
     </section>
 
-    <!-- 07 SOUTENIR -->
+        <!-- 07 SOUTENIR -->
     <section id="soutenir" class="section">
       <div class="grid-2">
         <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Soutenir" data-es="Apoyar" data-en="Support" data-zh="支持"></span></div>
@@ -448,7 +452,7 @@
       </div>
     </section>
 
-    <!-- 08 CONTACT -->
+        <!-- 08 CONTACT -->
     <section id="contact" class="section">
       <div class="grid-2">
         <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Contact" data-es="Contacto" data-en="Contact" data-zh="联系"></span></div>
@@ -475,6 +479,6 @@
     <p>© <span id="year"></span> STOPERA! — Sonic Theatre Opera Performance · <span data-fr="Plateforme de création & recherche · Gentilly (Paris)" data-es="Plataforma de creación e investigación · Gentilly (París)" data-en="Creation & research platform · Gentilly (Paris)" data-zh="创作与研究平台 · 巴黎让蒂伊"></span></p>
   </footer>
 
-  <script src="script.js?v=20260616f"></script>
+  <script src="script.js?v=20260616g"></script>
 </body>
 </html>
