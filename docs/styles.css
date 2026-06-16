@@ -7,8 +7,11 @@
   --accent: #d81e05;      /* rouge éditorial */
   --accent-ink: #ffffff;
   --max: 1180px;
-  --serif: "Spectral", Georgia, "Times New Roman", serif;
-  --sans: "Archivo", system-ui, -apple-system, sans-serif;
+  /* Type system (Gaîté-style) : grotesque caractériel + italique expressif + grotesque neutre */
+  --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif; /* titres, hero */
+  --quote: "Fraunces", Georgia, "Times New Roman", serif;            /* italiques & citations */
+  --sans: "Archivo", system-ui, -apple-system, sans-serif;           /* corps, UI, labels */
+  --serif: var(--display); /* alias historique → display */
 }
 
 * { box-sizing: border-box; }
@@ -64,8 +67,8 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .hero > * { max-width: var(--max); margin-left: auto; margin-right: auto; }
 .hero-logo { width: min(300px, 62vw); height: auto; margin: 0 auto clamp(1.4rem, 4vw, 2.2rem); }
 .hero-kicker { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; }
-.hero-statement { font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 4vw, 3rem); line-height: 1.12; letter-spacing: -.01em; margin: 0; max-width: 22ch; }
-.hero-statement em { font-style: italic; color: var(--accent); }
+.hero-statement { font-family: var(--display); font-weight: 600; font-size: clamp(1.95rem, 4.7vw, 3.5rem); line-height: 1.05; letter-spacing: -.025em; margin: 0; max-width: 20ch; }
+.hero-statement em { font-family: var(--quote); font-style: italic; font-weight: 400; letter-spacing: 0; color: var(--accent); }
 .hero-sub { margin: 1.2rem 0 0; font-size: clamp(.98rem, 1.6vw, 1.18rem); line-height: 1.5; color: var(--muted); max-width: 52ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: clamp(1.6rem, 4vw, 2.4rem); }
 
@@ -76,11 +79,12 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .index { display: none; }
 .eyebrow { overflow-wrap: normal; }
 .eyebrow { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
-.lead { font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.18; letter-spacing: -.01em; margin: 0 0 1.2rem; }
+.lead { font-family: var(--display); font-weight: 600; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.08; letter-spacing: -.022em; margin: 0 0 1.2rem; }
 .prose { max-width: 64ch; color: #2c2620; font-size: 1rem; }
 .prose p { margin: 0 0 1rem; }
 .prose strong { font-weight: 600; }
-.prose em { font-style: italic; }
+.prose em, .section-note em { font-family: var(--quote); font-style: italic; }
+.it { font-family: var(--quote); font-style: italic; font-weight: 400; }
 .section-note { color: var(--muted); max-width: 64ch; margin: 0 0 1.6rem; font-size: .95rem; }
 
 /* sub-blocks (DA word, équipe, CA) */
@@ -106,7 +110,7 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .ptile:hover .ptile-img { transform: scale(1.06); }
 .ptile-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,7,9,.82), rgba(8,7,9,.05) 62%); }
 .ptile-meta { position: absolute; left: 0; right: 0; bottom: 0; padding: .85rem; text-align: left; display: flex; flex-direction: column; gap: .2rem; }
-.ptile-title { font-family: var(--serif); font-weight: 500; color: #fff; font-size: 1.05rem; line-height: 1.12; }
+.ptile-title { font-family: var(--display); font-weight: 600; letter-spacing: -.01em; color: #fff; font-size: 1.05rem; line-height: 1.1; }
 .ptile-title .it { font-style: italic; font-weight: 400; }
 .ptile-year { color: rgba(255,255,255,.72); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
 .ptile::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 0 var(--accent); transition: box-shadow .2s ease; border-radius: 6px; pointer-events: none; }
@@ -130,7 +134,7 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .project-detail[hidden] { display: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .pd-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-.pd-title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 3vw, 2rem); margin: 0; }
+.pd-title { font-family: var(--display); font-weight: 600; letter-spacing: -.015em; font-size: clamp(1.45rem, 3vw, 2.1rem); margin: 0; }
 .pd-title .it { font-style: italic; font-weight: 400; }
 .pd-close { background: none; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; color: var(--muted); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: .35rem .7rem; }
 .pd-close:hover { border-color: var(--accent); color: var(--accent); }
@@ -156,7 +160,7 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 
 /* ---------- Press ---------- */
 .press { margin: 0 0 1.6rem; padding: 0 0 0 1.1rem; border-left: 2px solid var(--accent); }
-.press p { font-family: var(--serif); font-size: 1.2rem; line-height: 1.3; margin: 0 0 .4rem; }
+.press p { font-family: var(--quote); font-style: italic; font-weight: 400; font-size: 1.35rem; line-height: 1.35; letter-spacing: 0; margin: 0 0 .4rem; }
 .press cite { font-style: normal; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 
 /* ---------- Vidéos ---------- */
@@ -193,7 +197,7 @@ body::after { content:""; position:fixed; inset:0; pointer-events:none; z-index:
 .reveal.is-in { opacity: 1; transform: none; }
 
 /* Chinese */
-html[lang="zh"] { --serif: "Noto Serif SC", serif; --sans: "Noto Sans SC", system-ui, sans-serif; }
+html[lang="zh"] { --display: "Noto Sans SC", system-ui, sans-serif; --quote: "Noto Serif SC", serif; --sans: "Noto Sans SC", system-ui, sans-serif; }
 html[lang="zh"] .hero-statement, html[lang="zh"] .lead, html[lang="zh"] .section-title { letter-spacing: 0; }
 
 /* ---------- Responsive ---------- */
