@@ -154,6 +154,15 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .pd-full { grid-column: 1 / -1; }
 .pd-note { grid-column: 1 / -1; margin: 0; padding: .8rem 1rem; background: var(--bg-2); border-left: 2px solid var(--accent); color: var(--muted); font-size: .9rem; border-radius: 0 6px 6px 0; }
 
+/* ---------- Actualités / agenda ---------- */
+.agenda { list-style: none; margin: .4rem 0 1.6rem; padding: 0; }
+.agenda li { display: flex; gap: 1.4rem; padding: .9rem 0; border-top: 1px solid var(--line); align-items: baseline; }
+.agenda li:last-child { border-bottom: 1px solid var(--line); }
+.agenda .ag-when { flex: 0 0 6.5em; font-family: var(--sans); font-weight: 600; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); overflow-wrap: normal; word-break: keep-all; }
+.agenda .ag-what { flex: 1 1 auto; min-width: 0; color: #2c2620; font-size: 1.02rem; line-height: 1.4; }
+.agenda .ag-what em { font-family: var(--quote); font-style: italic; }
+@media (max-width: 560px) { .agenda li { flex-direction: column; gap: .25rem; } .agenda .ag-when { flex: none; } }
+
 /* ---------- Video as fiche visual (muted loop) ---------- */
 .pd-media--video { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #0b0a0c; }
 .pd-media--video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; }
