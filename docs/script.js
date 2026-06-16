@@ -34,7 +34,7 @@
     "mamma-roma": "2027",
     "otages": "2024",
     "aliados": "2013",
-    "lips": { fr: "annuel", es: "anual", en: "annual", zh: "每年" }
+    "lips": { fr: "Biennal · 2028", es: "Bienal · 2028", en: "Biennial · 2028", zh: "双年 · 2028" }
   };
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
@@ -345,7 +345,7 @@
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Laboratoire / transmission", es: "Laboratorio / transmisión", en: "Lab / transmission", zh: "工作坊 / 传承" } },
         { k: { fr: "Démarche", es: "Enfoque", en: "Approach", zh: "方法" }, v: { fr: "Co-écriture · interdisciplinarité · intermédialité", es: "Co-escritura · interdisciplinariedad · intermedialidad", en: "Co-writing · interdisciplinarity · intermediality", zh: "共同书写 · 跨学科 · 跨媒介" } },
-        { k: { fr: "Rythme", es: "Ritmo", en: "Frequency", zh: "频率" }, v: { fr: "Annuel", es: "Anual", en: "Annual", zh: "每年" } },
+        { k: { fr: "Rythme", es: "Ritmo", en: "Frequency", zh: "频率" }, v: { fr: "Biennal — prochaine édition 2028", es: "Bienal — próxima edición 2028", en: "Biennial — next edition 2028", zh: "双年制 — 下一届 2028" } },
         { k: { fr: "Éditions précédentes", es: "Ediciones anteriores", en: "Previous editions", zh: "往届" }, v: "Pôle Pixel (Villeurbanne) · GRAME (Lyon) · UNSAM (Buenos Aires)" }
       ],
       pitchExtra: true,
