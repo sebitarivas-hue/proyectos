@@ -349,7 +349,9 @@
       ],
       pitchExtra: true,
       credits: [
-        { role: { fr: "Direction", es: "Dirección", en: "Direction", zh: "负责人" }, who: "Sebastian Rivas" }
+        { role: { fr: "Direction", es: "Dirección", en: "Direction", zh: "负责人" }, who: "Sebastian Rivas" },
+        { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" },
+        { role: { fr: "Intervenant·es", es: "Invitados/as", en: "Mentors & guests", zh: "导师与嘉宾" }, who: "François Chaignaud · Julie Desprairies · Daniel Zea · Géraldine Kosiak · Pierre Jodlowski · Marc Monnet · Richard Brunel · Jean-Cyrille Burdet · Alexander Schubert · Benoit Renaudin · Géraldine Farage" }
       ],
       partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"]
     }
