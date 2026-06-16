@@ -30,7 +30,7 @@
     "rut": "2026",
     "insistir": "2026",
     "fame": "2025",
-    "america": "2027",
+    "america": { fr: "en création", es: "en creación", en: "in creation", zh: "创作中" },
     "mamma-roma": "2027",
     "otages": "2024",
     "aliados": "2013",
@@ -309,7 +309,7 @@
     {
       slug: "america", title: "A World to Blast", titleHtml: "A World to Blast",
       img: "assets/projects/america.svg", photo: "assets/projects/america-scarfo.jpg",
-      tag: { fr: "Création 2027 · Mexico", es: "Estreno 2027 · México", en: "Premiere 2027 · Mexico City", zh: "2027 首演 · 墨西哥城" },
+      tag: { fr: "Opéra · Mexico", es: "Ópera · México", en: "Opera · Mexico City", zh: "歌剧 · 墨西哥城" },
       short: { fr: "Opéra : América Scarfó & Soledad Rosas, l'amour comme acte révolutionnaire.", es: "Ópera: América Scarfó y Soledad Rosas, el amor como acto revolucionario.", en: "An opera: América Scarfó & Soledad Rosas, love as a revolutionary act.", zh: "歌剧：América Scarfó 与 Soledad Rosas，爱作为革命行动。" },
       pitch: {
         fr: "Opéra qui entrelace les destins d'<em>América Scarfó</em> et de <em>Soledad Rosas</em>, deux femmes liées par l'amour, l'exil et la lutte — l'anarchisme des années 1930 (Argentine, Europe) et les mouvements squat de l'Italie des années 1990. Comme la <em>Lulu</em> de Berg, l'œuvre sonde le pouvoir de l'amour ; mais ici l'amour devient un acte révolutionnaire, affirmation d'autonomie face aux systèmes oppressifs. Musique de Sebastian Rivas, dramaturgie et mise en scène de Marcelo Lombardero.",
@@ -321,7 +321,7 @@
         { k: { fr: "Aussi", es: "También", en: "Also", zh: "别名" }, v: { fr: "Un mundo por quemar · Un Monde à brûler", es: "Un mundo por quemar · Un Monde à brûler", en: "Un mundo por quemar · A World to Blast", zh: "Un mundo por quemar · 燃尽的世界" } },
         { k: { fr: "Figures", es: "Figuras", en: "Figures", zh: "人物" }, v: "América Scarfó · Soledad Rosas" },
         { k: { fr: "Dramaturgie & mise en scène", es: "Dramaturgia & dirección", en: "Dramaturgy & staging", zh: "戏剧构作与导演" }, v: "Marcelo Lombardero" },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Mexico, 2027", es: "México, 2027", en: "Mexico City, 2027", zh: "墨西哥城，2027" } }
+        { k: { fr: "Création", es: "Creación", en: "Creation", zh: "创作" }, v: { fr: "Mexico — date à venir", es: "México — fecha por confirmar", en: "Mexico City — date TBC", zh: "墨西哥城 — 日期待定" } }
       ],
       credits: [
         { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
@@ -329,7 +329,7 @@
         { role: { fr: "Distribution", es: "Reparto", en: "Cast", zh: "演员" }, who: { fr: "Scarfó (soprano), Rosas (mezzo), Di Giovanni & Massari (barytons), chœur", es: "Scarfó (soprano), Rosas (mezzo), Di Giovanni y Massari (barítonos), coro", en: "Scarfó (soprano), Rosas (mezzo), Di Giovanni & Massari (baritones), chorus", zh: "Scarfó（女高音）、Rosas（次女高音）、Di Giovanni 与 Massari（男中音）、合唱" } }
       ],
       partners: [],
-      note: { fr: "Sous-titre : Cineres Amoris et Rebellionis. D'après Martín Caparrós (Amor y Anarquía) et Osvaldo Bayer. Création à Mexico, 2027.", es: "Subtítulo: Cineres Amoris et Rebellionis. A partir de Martín Caparrós (Amor y Anarquía) y Osvaldo Bayer. Estreno en México, 2027.", en: "Subtitle: Cineres Amoris et Rebellionis. After Martín Caparrós (Amor y Anarquía) and Osvaldo Bayer. Premiere in Mexico City, 2027.", zh: "副标题：Cineres Amoris et Rebellionis。取材自 Martín Caparrós（《爱与无政府》）与 Osvaldo Bayer。2027 年于墨西哥城首演。" }
+      note: { fr: "Sous-titre : Cineres Amoris et Rebellionis. D'après Martín Caparrós (Amor y Anarquía) et Osvaldo Bayer. Création à Mexico — date à venir.", es: "Subtítulo: Cineres Amoris et Rebellionis. A partir de Martín Caparrós (Amor y Anarquía) y Osvaldo Bayer. Estreno en México — fecha por confirmar.", en: "Subtitle: Cineres Amoris et Rebellionis. After Martín Caparrós (Amor y Anarquía) and Osvaldo Bayer. Premiere in Mexico City — date to be confirmed.", zh: "副标题：Cineres Amoris et Rebellionis。取材自 Martín Caparrós（《爱与无政府》）与 Osvaldo Bayer。于墨西哥城首演 —— 日期待定。" }
     },
     {
       slug: "lips", title: "LIPS Lab", titleHtml: "LIPS Lab",
