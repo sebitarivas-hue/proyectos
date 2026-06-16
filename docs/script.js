@@ -536,6 +536,21 @@
     var prod = document.getElementById("productions");
     if (prod) prod.addEventListener("click", onGridClick);
 
+    var navToggle = document.querySelector(".nav-toggle");
+    var header = document.querySelector(".site-header");
+    if (navToggle && header) {
+      navToggle.addEventListener("click", function () {
+        var open = header.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      document.querySelectorAll("#nav-links a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          header.classList.remove("nav-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
     document.querySelectorAll("[data-setlang]").forEach(function (b) {
       b.addEventListener("click", function () { setLang(b.getAttribute("data-setlang")); });
     });

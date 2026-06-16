@@ -21,13 +21,15 @@
   <meta name="twitter:image" content="assets/og-cover.jpg" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=20260616E" />
-  <link rel="stylesheet" href="styles.css?v=20260616E" />
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=20260616F" />
+  <link rel="stylesheet" href="styles.css?v=20260616F" />
 </head>
 <body data-lang="fr">
   <header class="site-header">
     <a class="brand" href="#top" aria-label="STOPERA!"><img class="brand-logo" src="assets/logo-dark.png" alt="STOPERA! — Sonic Theatre Opera Performance" /></a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bar1" d="M3 6h18" /><path class="bar2" d="M3 12h18" /><path class="bar3" d="M3 18h18" /></svg></button>
     <nav class="site-nav" aria-label="Navigation">
+      <div class="nav-links" id="nav-links">
       <a href="#apropos" data-fr="À propos" data-es="Acerca de" data-en="About" data-zh="关于"></a>
       <a href="#productions" data-fr="Productions" data-es="Producciones" data-en="Productions" data-zh="作品"></a>
       <a href="#actualites" data-fr="Actualités" data-es="Novedades" data-en="News" data-zh="动态"></a>
@@ -36,6 +38,7 @@
       <a href="#lips" data-fr="LIPS" data-es="LIPS" data-en="LIPS" data-zh="LIPS"></a>
       <a href="#presse" data-fr="Presse" data-es="Prensa" data-en="Press" data-zh="媒体"></a>
       <a href="#contact" data-fr="Contact" data-es="Contacto" data-en="Contact" data-zh="联系"></a>
+      </div>
       <div class="social" aria-label="Réseaux sociaux">
         <a class="social-link" href="https://instagram.com/stopera_sonic_theatre" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.9.04-1.39.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.19 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.19-1.39-.32-1.71-.17-.43-.37-.74-.69-1.06-.32-.32-.63-.52-1.06-.69-.32-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 110 10.92 5.46 5.46 0 010-10.92zm0 9a3.54 3.54 0 100-7.08 3.54 3.54 0 000 7.08zm6.95-9.22a1.28 1.28 0 11-2.56 0 1.28 1.28 0 012.56 0z"/></svg></a>
         <a class="social-link" href="https://www.youtube.com/@stopera-sonictheatre" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.5a3.02 3.02 0 00-2.12-2.14C19.5 3.85 12 3.85 12 3.85s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.5C0 8.39 0 12 0 12s0 3.61.5 5.5a3.02 3.02 0 002.12 2.14C4.5 20.15 12 20.15 12 20.15s7.5 0 9.38-.51a3.02 3.02 0 002.12-2.14C24 15.61 24 12 24 12s0-3.61-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
@@ -516,6 +519,6 @@
     <p>© <span id="year"></span> STOPERA! — Sonic Theatre Opera Performance · <span data-fr="Plateforme de création & recherche · Gentilly (Paris)" data-es="Plataforma de creación e investigación · Gentilly (París)" data-en="Creation & research platform · Gentilly (Paris)" data-zh="创作与研究平台 · 巴黎让蒂伊"></span></p>
   </footer>
 
-  <script src="script.js?v=20260616E"></script>
+  <script src="script.js?v=20260616F"></script>
 </body>
 </html>
