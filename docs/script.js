@@ -278,6 +278,7 @@
     },
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
+      photo: "assets/projects/mamma-roma.jpg",
       tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月" },
       short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。" },
       pitch: {
