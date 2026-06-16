@@ -225,7 +225,7 @@
     },
     {
       slug: "aliados", title: "Aliados", titleHtml: "Aliados",
-      photo: "assets/projects/aliados.jpg",
+      photo: "assets/projects/aliados.jpg", video: "z2sobYeFzmE",
       tag: { fr: "Création 2013", es: "Estreno 2013", en: "Premiere 2013", zh: "2013 首演" },
       short: { fr: "Opéra du temps réel : Thatcher & Pinochet.", es: "Ópera en tiempo real: Thatcher y Pinochet.", en: "A real-time opera: Thatcher & Pinochet.", zh: "实时歌剧：撒切尔与皮诺切特。" },
       pitch: {
