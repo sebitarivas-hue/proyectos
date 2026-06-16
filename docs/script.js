@@ -141,7 +141,7 @@
     },
     {
       slug: "fame", title: "F[A]ME", titleHtml: "F[A]ME",
-      img: "assets/projects/fame.svg",
+      img: "assets/projects/fame.svg", photo: "assets/projects/fame.jpg",
       tag: { fr: "Diffusion 2025", es: "Difusión 2025", en: "Touring 2025", zh: "2025 演出" },
       short: { fr: "Performance solo d'Olivia Martin : renommée, effacement, féminité.", es: "Performance solo de Olivia Martin: fama, borrado, feminidad.", en: "A solo performance by Olivia Martin: fame, erasure, femininity.", zh: "Olivia Martin 的个人表演：名望、消隐、女性气质。" },
       pitch: {
@@ -156,7 +156,10 @@
       credits: [
         { role: { fr: "Conception & interprétation", es: "Concepción & interpretación", en: "Concept & performance", zh: "构思与表演" }, who: "Olivia Martin" }
       ],
-      partners: []
+      partners: ["GRAME"],
+      links: [
+        { label: "GRAME — Pop-up exploratoire #1 : F[A]ME", url: "https://www.grame.fr/evenements/2021-10-pop-up-exploratoire-1-fam-e" }
+      ]
     },
     {
       slug: "snow-on-her-lips", title: "Snow on Her Lips", titleHtml: "Snow on Her Lips",
