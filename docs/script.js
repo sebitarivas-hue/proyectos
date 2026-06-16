@@ -43,7 +43,7 @@
 
   var PROJECTS = [
     {
-      slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.svg",
+      slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.jpg",
       tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演" },
       short: { fr: "Cycle de dix madrigaux pour six voix.", es: "Ciclo de diez madrigales para seis voces.", en: "A cycle of ten madrigals for six voices.", zh: "为六个声部创作的十首牧歌套曲。" },
       pitch: {
@@ -97,7 +97,7 @@
     },
     {
       slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
-      img: "assets/projects/nous.svg", photo: "assets/projects/nous.svg",
+      img: "assets/projects/nous.svg", photo: "assets/projects/nous.jpg",
       tag: ONGOING,
       short: { fr: "Opéra de chambre avec Christine Angot.", es: "Ópera de cámara con Christine Angot.", en: "A chamber opera with Christine Angot.", zh: "与 Christine Angot 合作的室内歌剧。" },
       pitch: {
@@ -119,7 +119,7 @@
     },
     {
       slug: "rut", title: "input / body / output", titleHtml: "<span class=\"it\">input / body / output</span>",
-      img: "assets/projects/rut.svg",
+      img: "assets/projects/rut.svg", photo: "assets/projects/rut.jpg",
       tag: { fr: "Première fin 2026", es: "Estreno fin de 2026", en: "Premiere late 2026", zh: "2026 年底首演" },
       short: { fr: "Performance solo de Rut Schreiner.", es: "Performance solo de Rut Schreiner.", en: "A solo performance by Rut Schreiner.", zh: "Rut Schreiner 的独角表演。" },
       pitch: {
@@ -244,7 +244,13 @@
         { role: { fr: "Vidéo", es: "Vídeo", en: "Video", zh: "影像" }, who: "Philippe Béziat" }
       ],
       partners: ["Ircam — Centre Pompidou", "GRAME", "T2G — Théâtre de Gennevilliers", "Festival ManiFeste"],
-      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。摄影：Pacôme Poirier / WikiSpectacle。" }
+      press: [
+        { quote: "La voix inoubliable des oubliés.", source: "Laura Plas — La Terrasse" },
+        { quote: "Sebastian Rivas joue des conventions mais ne tombe pas dedans.", source: "Franck Madlener — Ircam" },
+        { quote: "Un opéra de l'oubli et du néant.", source: "Bruno Serrou" }
+      ],
+      pressPdf: "assets/press/aliados-revue-presse.pdf",
+      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Couverture internationale (La Stampa, The Times, Le Monde, El País, Clarín…). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Cobertura internacional (La Stampa, The Times, Le Monde, El País, Clarín…). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). International coverage (La Stampa, The Times, Le Monde, El País, Clarín…). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。国际媒体报道（La Stampa、The Times、Le Monde、El País、Clarín…）。摄影：Pacôme Poirier / WikiSpectacle。" }
     },
     {
       slug: "insistir", title: "Insistir", titleHtml: "Insistir",
