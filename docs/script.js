@@ -66,7 +66,7 @@
       note: { fr: "Distribution et dates en cours de finalisation.", es: "Reparto y fechas en proceso de confirmación.", en: "Cast and dates being finalised.", zh: "演员与日期确认中。" }
     },
     {
-      slug: "rayon-n", title: "Rayon N", img: "assets/projects/rayon-n.svg",
+      slug: "rayon-n", title: "Rayon N", img: "assets/projects/rayon-n.svg", photo: "assets/projects/rayon-n.jpg",
       tag: { fr: "Production 2026 · diffusion 2027", es: "Producción 2026 · gira 2027", en: "Production 2026 · touring 2027", zh: "2026 制作 · 2027 巡演" },
       short: { fr: "Opéra-film animé par intelligence artificielle.", es: "Ópera-film animada por inteligencia artificial.", en: "An AI-animated film-opera.", zh: "由人工智能生成影像的影像歌剧。" },
       pitch: {
@@ -187,6 +187,7 @@
     },
     {
       slug: "otages", title: "Otages", titleHtml: "Otages",
+      photo: "assets/projects/otages.jpg",
       tag: { fr: "Création 2024", es: "Estreno 2024", en: "Premiere 2024", zh: "2024 首演" },
       short: { fr: "Opéra d'après Nina Bouraoui — Opéra de Lyon.", es: "Ópera a partir de Nina Bouraoui — Opéra de Lyon.", en: "An opera after Nina Bouraoui — Opéra de Lyon.", zh: "改编自 Nina Bouraoui 的歌剧 —— 里昂歌剧院。" },
       pitch: {
