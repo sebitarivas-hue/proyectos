@@ -183,6 +183,14 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .press { margin: 0 0 1.6rem; padding: 0 0 0 1.1rem; border-left: 2px solid var(--accent); }
 .press p { font-family: var(--quote); font-style: italic; font-weight: 400; font-size: 1.35rem; line-height: 1.35; letter-spacing: 0; margin: 0 0 .4rem; }
 .press cite { font-style: normal; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.press cite .it { font-family: var(--quote); font-style: italic; text-transform: none; }
+
+/* press credibility metrics + kits */
+.press-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem 2rem; margin: .2rem 0 2.2rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1.4rem 0; }
+.press-stats .stat-k { display: block; font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -.01em; color: var(--fg); }
+.press-stats .stat-v { display: block; color: var(--muted); font-size: .82rem; margin-top: .25rem; }
+.press-kits { display: flex; flex-wrap: wrap; gap: .7rem; margin: .2rem 0 0; }
+@media (max-width: 640px) { .press-stats { grid-template-columns: 1fr; gap: 1rem; } }
 
 /* ---------- Vidéos ---------- */
 .video-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; aspect-ratio: 16 / 9; width: 100%; text-decoration: none; color: #fff; border: 1px solid var(--line); border-radius: 8px;
