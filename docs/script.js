@@ -307,27 +307,29 @@
       partners: ["CETC — Teatro Colón (Buenos Aires)"]
     },
     {
-      slug: "america", title: "América", titleHtml: "América",
+      slug: "america", title: "A World to Blast", titleHtml: "A World to Blast",
       img: "assets/projects/america.svg",
-      tag: { fr: "Création 2027", es: "Estreno 2027", en: "Premiere 2027", zh: "2027 首演" },
-      short: { fr: "Nouveau projet scénique, créé à Mexico.", es: "Nuevo proyecto escénico, creado en México.", en: "A new stage project, created in Mexico City.", zh: "在墨西哥城创作的新舞台项目。" },
+      tag: { fr: "Création 2027 · Mexico", es: "Estreno 2027 · México", en: "Premiere 2027 · Mexico City", zh: "2027 首演 · 墨西哥城" },
+      short: { fr: "Opéra : América Scarfó & Soledad Rosas, l'amour comme acte révolutionnaire.", es: "Ópera: América Scarfó y Soledad Rosas, el amor como acto revolucionario.", en: "An opera: América Scarfó & Soledad Rosas, love as a revolutionary act.", zh: "歌剧：América Scarfó 与 Soledad Rosas，爱作为革命行动。" },
       pitch: {
-        fr: "Nouveau projet scénique créé à Mexico, dans une mise en scène de Marcelo Lombardero. Écriture d'un livret et résidences de création vers une première en 2027.",
-        es: "Nuevo proyecto escénico creado en México, con dirección de escena de Marcelo Lombardero. Escritura de un libreto y residencias de creación hacia un estreno en 2027.",
-        en: "A new stage project created in Mexico City, staged by Marcelo Lombardero. Libretto writing and creation residencies towards a 2027 premiere.",
-        zh: "在墨西哥城创作的新舞台项目，由 Marcelo Lombardero 执导。剧本写作与创作驻地，目标 2027 年首演。" },
+        fr: "Opéra qui entrelace les destins d'<em>América Scarfó</em> et de <em>Soledad Rosas</em>, deux femmes liées par l'amour, l'exil et la lutte — l'anarchisme des années 1930 (Argentine, Europe) et les mouvements squat de l'Italie des années 1990. Comme la <em>Lulu</em> de Berg, l'œuvre sonde le pouvoir de l'amour ; mais ici l'amour devient un acte révolutionnaire, affirmation d'autonomie face aux systèmes oppressifs. Musique de Sebastian Rivas, dramaturgie et mise en scène de Marcelo Lombardero.",
+        es: "Ópera que entrelaza los destinos de <em>América Scarfó</em> y <em>Soledad Rosas</em>, dos mujeres unidas por el amor, el exilio y la lucha — el anarquismo de los años 30 (Argentina, Europa) y los movimientos «okupas» de la Italia de los 90. Como la <em>Lulu</em> de Berg, la obra indaga el poder del amor; pero aquí el amor es un acto revolucionario, afirmación de autonomía frente a los sistemas opresivos. Música de Sebastian Rivas, dramaturgia y dirección de Marcelo Lombardero.",
+        en: "An opera weaving together the fates of <em>América Scarfó</em> and <em>Soledad Rosas</em>, two women bound by love, exile and struggle — 1930s anarchism (Argentina, Europe) and the 1990s squat movements of Italy. Like Berg's <em>Lulu</em>, it probes the power of love; but here love becomes a revolutionary act, an assertion of autonomy against oppressive systems. Music by Sebastian Rivas, dramaturgy and staging by Marcelo Lombardero.",
+        zh: "一部歌剧，交织 <em>América Scarfó</em> 与 <em>Soledad Rosas</em> 两位女性的命运——她们因爱、流亡与抗争而相连：1930 年代的无政府主义（阿根廷、欧洲）与 1990 年代意大利的占屋运动。如同贝尔格的《<em>璐璐</em>》，作品探问爱的力量；但在这里，爱成为革命行动，是面对压迫体制的自主宣言。Sebastian Rivas 作曲，Marcelo Lombardero 戏剧构作与导演。" },
       facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Projet scénique", es: "Proyecto escénico", en: "Stage project", zh: "舞台项目" } },
-        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Marcelo Lombardero" },
-        { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "场地" }, v: { fr: "Mexico", es: "México", en: "Mexico City", zh: "墨西哥城" } },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: "2027" }
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧" } },
+        { k: { fr: "Aussi", es: "También", en: "Also", zh: "别名" }, v: { fr: "Un mundo por quemar · Un Monde à brûler", es: "Un mundo por quemar · Un Monde à brûler", en: "Un mundo por quemar · A World to Blast", zh: "Un mundo por quemar · 燃尽的世界" } },
+        { k: { fr: "Figures", es: "Figuras", en: "Figures", zh: "人物" }, v: "América Scarfó · Soledad Rosas" },
+        { k: { fr: "Dramaturgie & mise en scène", es: "Dramaturgia & dirección", en: "Dramaturgy & staging", zh: "戏剧构作与导演" }, v: "Marcelo Lombardero" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Mexico, 2027", es: "México, 2027", en: "Mexico City, 2027", zh: "墨西哥城，2027" } }
       ],
       credits: [
         { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
-        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Marcelo Lombardero" }
+        { role: { fr: "Dramaturgie & mise en scène", es: "Dramaturgia & dirección", en: "Dramaturgy & staging", zh: "戏剧构作与导演" }, who: "Marcelo Lombardero" },
+        { role: { fr: "Distribution", es: "Reparto", en: "Cast", zh: "演员" }, who: { fr: "Scarfó (soprano), Rosas (mezzo), Di Giovanni & Massari (barytons), chœur", es: "Scarfó (soprano), Rosas (mezzo), Di Giovanni y Massari (barítonos), coro", en: "Scarfó (soprano), Rosas (mezzo), Di Giovanni & Massari (baritones), chorus", zh: "Scarfó（女高音）、Rosas（次女高音）、Di Giovanni 与 Massari（男中音）、合唱" } }
       ],
       partners: [],
-      note: { fr: "Création à Mexico. Production en cours de montage.", es: "Estreno en México. Producción en construcción.", en: "Premiere in Mexico City. Production being assembled.", zh: "墨西哥城首演。制作筹备中。" }
+      note: { fr: "Sous-titre : Cineres Amoris et Rebellionis. D'après Martín Caparrós (Amor y Anarquía) et Osvaldo Bayer. Création à Mexico, 2027.", es: "Subtítulo: Cineres Amoris et Rebellionis. A partir de Martín Caparrós (Amor y Anarquía) y Osvaldo Bayer. Estreno en México, 2027.", en: "Subtitle: Cineres Amoris et Rebellionis. After Martín Caparrós (Amor y Anarquía) and Osvaldo Bayer. Premiere in Mexico City, 2027.", zh: "副标题：Cineres Amoris et Rebellionis。取材自 Martín Caparrós（《爱与无政府》）与 Osvaldo Bayer。2027 年于墨西哥城首演。" }
     },
     {
       slug: "lips", title: "LIPS Lab", titleHtml: "LIPS Lab",
