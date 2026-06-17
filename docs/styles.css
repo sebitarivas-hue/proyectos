@@ -377,3 +377,11 @@ main { counter-reset: sec; }
 /* ---------- Liens réseau / partenaires ---------- */
 .partners li a, .roster .who a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .25s ease, color .2s ease; }
 .partners li a:hover, .roster .who a:hover { color: var(--accent); background-size: 100% 1px; }
+
+/* ---------- Callout (projet phare / recherche) ---------- */
+.callout { margin-top: 2rem; padding: 1.4rem 1.6rem; background: var(--bg-2); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; }
+.callout-k { margin: 0 0 .5rem; font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.callout-t { margin: 0; color: #2c2620; font-size: 1.02rem; line-height: 1.55; max-width: 70ch; }
+.callout-t em { font-family: var(--quote); font-style: italic; }
+.callout-link { display: inline-block; margin-top: .9rem; font-family: var(--sans); font-weight: 600; font-size: .82rem; letter-spacing: .04em; color: var(--accent); text-decoration: none; }
+.callout-link:hover { text-decoration: underline; }
