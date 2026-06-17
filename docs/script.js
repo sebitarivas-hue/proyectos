@@ -566,5 +566,23 @@
 
     var yr = document.getElementById("year");
     if (yr) yr.textContent = new Date().getFullYear();
+
+    var SHARE_DONE = { fr: "Lien copié ✓", es: "Enlace copiado ✓", en: "Link copied ✓", zh: "链接已复制 ✓" };
+    document.querySelectorAll(".js-share").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var data = { title: document.title, url: location.href };
+        if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+        var done = function () {
+          var lbl = btn.querySelector("span:not([aria-hidden])");
+          if (!lbl) return;
+          var prev = lbl.textContent;
+          lbl.textContent = SHARE_DONE[LANG] || SHARE_DONE.fr;
+          btn.classList.add("is-copied");
+          setTimeout(function () { lbl.textContent = prev; btn.classList.remove("is-copied"); }, 1800);
+        };
+        if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, done);
+        else done();
+      });
+    });
   });
 })();
