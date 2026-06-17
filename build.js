@@ -104,7 +104,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260617E";
+  var rel = opts.rel, V = "?v=20260617F";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -352,7 +352,42 @@ var ARTISTS = [
            es: "Vídeo e informática musical de Snow on Her Lips; también interviene en el laboratorio LIPS.",
            en: "Video and music computing for Snow on Her Lips; he also takes part in the LIPS laboratory.",
            zh: "Snow on Her Lips 的影像与音乐信息技术；他亦参与 LIPS 工作坊。" },
-    productions: ["snow-on-her-lips", "lips"] }
+    productions: ["snow-on-her-lips", "lips"] },
+  { slug: "nina-bouraoui", name: "Nina Bouraoui",
+    role: { fr: "Autrice", es: "Autora", en: "Author", zh: "作者" },
+    bio: { fr: "Écrivaine. Son texte est à l'origine d'Otages, portrait de Sylvie Meyer — femme « ordinaire et extraordinaire » qui bascule en un seul geste.",
+           es: "Escritora. Su texto está en el origen de Otages, retrato de Sylvie Meyer — mujer «ordinaria y extraordinaria» que bascula en un solo gesto.",
+           en: "A writer. Her text is the source of Otages, the portrait of Sylvie Meyer — an “ordinary and extraordinary” woman who tips over in a single act.",
+           zh: "作家。她的文本是 Otages 的源头——对 Sylvie Meyer 的刻画，一位「平凡而非凡」、因一个举动而骤变的女性。" },
+    productions: ["otages"] },
+  { slug: "esteban-buch", name: "Esteban Buch",
+    role: { fr: "Librettiste & chercheur", es: "Libretista & investigador", en: "Librettist & researcher", zh: "编剧与研究者" },
+    bio: { fr: "Auteur du livret d'Aliados, opéra du temps réel sur la rencontre de Margaret Thatcher et du général Pinochet. Ses travaux croisent musique, politique et histoire.",
+           es: "Autor del libreto de Aliados, ópera en tiempo real sobre el encuentro de Margaret Thatcher y el general Pinochet. Su trabajo cruza música, política e historia.",
+           en: "Author of the libretto of Aliados, a real-time opera on the meeting of Margaret Thatcher and General Pinochet. His work crosses music, politics and history.",
+           zh: "Aliados 的剧本作者——一部关于撒切尔夫人与皮诺切特将军会面的实时歌剧。其研究横跨音乐、政治与历史。" },
+    productions: ["aliados"] },
+  { slug: "richard-brunel", name: "Richard Brunel", website: "https://www.opera-lyon.com",
+    role: { fr: "Metteur en scène", es: "Director de escena", en: "Stage director", zh: "导演" },
+    bio: { fr: "Metteur en scène, il signe la création d'Otages au Théâtre de la Croix-Rousse, dans le cadre du Festival de l'Opéra de Lyon, dont il dirige la maison.",
+           es: "Director de escena, firma el estreno de Otages en el Théâtre de la Croix-Rousse, en el marco del Festival de la Opéra de Lyon, casa que dirige.",
+           en: "A stage director, he created Otages at the Théâtre de la Croix-Rousse for the Opéra de Lyon Festival, the house he directs.",
+           zh: "导演，他在里昂歌剧院艺术节框架内于 Croix-Rousse 剧院执导 Otages 的首演，并执掌该院。" },
+    productions: ["otages"] },
+  { slug: "philippe-beziat", name: "Philippe Béziat",
+    role: { fr: "Réalisateur", es: "Realizador", en: "Filmmaker", zh: "影像导演" },
+    bio: { fr: "Réalisateur, il signe l'image et la vidéo de Rayon N et d'Aliados, où le cinéma et l'opéra se répondent en direct.",
+           es: "Realizador, firma la imagen y el vídeo de Rayon N y de Aliados, donde el cine y la ópera se responden en vivo.",
+           en: "A filmmaker, he creates the image and video of Rayon N and Aliados, where cinema and opera answer each other live.",
+           zh: "影像导演，他为 Rayon N 与 Aliados 创作影像与视频，让电影与歌剧实时呼应。" },
+    productions: ["rayon-n", "aliados"] },
+  { slug: "anne-laure-chamboissier", name: "Anne-Laure Chamboissier",
+    role: { fr: "Curatrice & production", es: "Curadora & producción", en: "Curator & production", zh: "策展与制作" },
+    bio: { fr: "Curatrice indépendante, elle accompagne des projets à la croisée des arts visuels, de la musique et de la scène, et a pris part à l'émergence de STOPERA!.",
+           es: "Curadora independiente, acompaña proyectos en el cruce de las artes visuales, la música y la escena, y participó en la emergencia de STOPERA!.",
+           en: "An independent curator, she supports projects at the crossroads of visual arts, music and the stage, and took part in the emergence of STOPERA!.",
+           zh: "独立策展人，她陪伴视觉艺术、音乐与舞台交汇处的项目，并参与了 STOPERA! 的萌生。" },
+    productions: [] }
 ];
 
 function monogram(name) {
