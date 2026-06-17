@@ -76,6 +76,7 @@ function header(rel) {
   // target starting with "#" = anchor on home ; otherwise a standalone page path
   var nav = [["#apropos","À propos","Acerca de","About","关于"],["#productions","Productions","Producciones","Productions","作品"],
     ["news/","Actualités","Novedades","News","动态"],["#reseau","Réseau","Red","Network","网络"],
+    ["artists/","Artistes","Artistas","Artists","艺术家"],
     ["#recherche","Recherche","Investigación","Research","研究"],["lips/","LIPS","LIPS","LIPS","LIPS"],
     ["#presse","Presse","Prensa","Press","媒体"],["#contact","Contact","Contacto","Contact","联系"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
@@ -103,7 +104,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260617D";
+  var rel = opts.rel, V = "?v=20260617E";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -263,6 +264,142 @@ THEMES.forEach(function (th) {
       + '      <h1 class="pd-title pd-title--page" ' + ml(th.title) + "></h1>\n"
       + '      <p class="pd-pitch" ' + ml(th.blurb) + "></p>\n"
       + '      <ul class="projects thread-grid">\n        ' + tiles + "\n      </ul>\n    </section>" }));
+  urls.push(url);
+});
+
+/* ---- ARTISTS (écosystème) ---- */
+var ARTISTS = [
+  { slug: "sebastian-rivas", name: "Sebastian Rivas",
+    role: { fr: "Direction artistique & composition", es: "Dirección artística & composición", en: "Artistic direction & composition", zh: "艺术指导与作曲" },
+    bio: { fr: "Compositeur, il est à l'origine de nombreuses œuvres de STOPERA! et en porte la direction artistique. Son travail explore l'opéra contemporain, le théâtre musical, l'électronique en temps réel et — avec Rayon N — l'image générée.",
+           es: "Compositor, está en el origen de numerosas obras de STOPERA! y asume su dirección artística. Su trabajo explora la ópera contemporánea, el teatro musical, la electrónica en tiempo real y —con Rayon N— la imagen generada.",
+           en: "A composer, he is behind many of STOPERA!'s works and carries its artistic direction. His work explores contemporary opera, music theatre, real-time electronics and — with Rayon N — generated imagery.",
+           zh: "作曲家，是 STOPERA! 众多作品的源头并担任其艺术指导。其创作探索当代歌剧、音乐剧场、实时电子，并以 Rayon N 探索生成影像。" },
+    productions: ["rayon-n", "otages", "aliados", "snow-on-her-lips", "war-madrigals", "nous", "mamma-roma", "america"] },
+  { slug: "georges-aperghis", name: "Georges Aperghis", photo: "assets/aperghis.jpg",
+    role: { fr: "Président d'honneur", es: "Presidente de honor", en: "Honorary president", zh: "名誉主席" },
+    bio: { fr: "Pionnier du théâtre musical, fondateur de l'ATEM (1976). Son compagnonnage et son influence artistique accompagnent STOPERA! ; ses pièces sont au cœur du projet Insistir.",
+           es: "Pionero del teatro musical, fundador del ATEM (1976). Su compañía y su influencia artística acompañan a STOPERA!; sus piezas están en el corazón del proyecto Insistir.",
+           en: "A pioneer of music theatre, founder of ATEM (1976). His companionship and artistic influence accompany STOPERA!; his pieces are at the heart of the Insistir project.",
+           zh: "音乐剧场的先驱，ATEM（1976）创始人。他的陪伴与艺术影响伴随着 STOPERA!；其作品是 Insistir 项目的核心。" },
+    productions: ["insistir"] },
+  { slug: "olivia-martin", name: "Olivia Martin",
+    role: { fr: "Compositrice-interprète", es: "Compositora-intérprete", en: "Composer-performer", zh: "作曲-表演者" },
+    bio: { fr: "Conçoit et interprète F[A]ME, performance solo sur la renommée, l'effacement et la féminité ; elle joue au sein de l'ensemble Êkheía (Snow on Her Lips).",
+           es: "Concibe e interpreta F[A]ME, performance solo sobre la fama, el borrado y la feminidad; toca en el ensemble Êkheía (Snow on Her Lips).",
+           en: "Conceives and performs F[A]ME, a solo on fame, erasure and femininity; she plays within the Êkheía ensemble (Snow on Her Lips).",
+           zh: "构思并演出 F[A]ME——一部关于名望、消隐与女性气质的独角表演；她在 Êkheía 乐团演奏（Snow on Her Lips）。" },
+    productions: ["fame", "snow-on-her-lips"] },
+  { slug: "nicola-beller-carbone", name: "Nicola Beller Carbone",
+    role: { fr: "Soprano", es: "Soprano", en: "Soprano", zh: "女高音" },
+    bio: { fr: "Interprète Sylvie Meyer dans Otages (Opéra de Lyon) et porte le projet Insistir, construit autour de pièces de Georges Aperghis.",
+           es: "Interpreta a Sylvie Meyer en Otages (Opéra de Lyon) y lleva el proyecto Insistir, construido en torno a piezas de Georges Aperghis.",
+           en: "Performs Sylvie Meyer in Otages (Opéra de Lyon) and drives the Insistir project, built around works by Georges Aperghis.",
+           zh: "在 Otages（里昂歌剧院）中饰演 Sylvie Meyer，并推动围绕 Georges Aperghis 作品构建的 Insistir 项目。" },
+    productions: ["otages", "insistir"] },
+  { slug: "martin-bauer", name: "Martin Bauer",
+    role: { fr: "Metteur en scène & scénographe", es: "Director & escenógrafo", en: "Director & set designer", zh: "导演与舞台设计" },
+    bio: { fr: "Signe la mise en scène et la scénographie de Mamma Roma (CETC — Teatro Colón) et co-dirige artistiquement Insistir.",
+           es: "Firma la dirección y la escenografía de Mamma Roma (CETC — Teatro Colón) y codirige artísticamente Insistir.",
+           en: "Directs and designs Mamma Roma (CETC — Teatro Colón) and co-directs Insistir.",
+           zh: "担任 Mamma Roma（CETC — 科隆剧院）的导演与舞台设计，并联合执导 Insistir。" },
+    productions: ["mamma-roma", "insistir"] },
+  { slug: "antoine-gindt", name: "Antoine Gindt", website: "https://theatre-musique.com",
+    role: { fr: "Metteur en scène & librettiste", es: "Director & libretista", en: "Director & librettist", zh: "导演与编剧" },
+    bio: { fr: "Livret et mise en scène de Rayon N ; mise en scène d'Aliados (Ircam · ManiFeste). Il dirige T&M Paris.",
+           es: "Libreto y dirección de Rayon N; dirección de Aliados (Ircam · ManiFeste). Dirige T&M Paris.",
+           en: "Libretto and staging of Rayon N; staging of Aliados (Ircam · ManiFeste). He directs T&M Paris.",
+           zh: "Rayon N 的编剧与导演；Aliados（Ircam · ManiFeste）的导演。他执掌 T&M Paris。" },
+    productions: ["rayon-n", "aliados"] },
+  { slug: "rut-schreiner", name: "Rut Schreiner",
+    role: { fr: "Cheffe d'orchestre & performeuse", es: "Directora & performer", en: "Conductor & performer", zh: "指挥与表演者" },
+    bio: { fr: "Direction musicale d'Otages (Opéra de Lyon) ; elle conçoit et interprète input / body / output (« Conducting the Invisible »), où le geste de direction devient matière sonore.",
+           es: "Dirección musical de Otages (Opéra de Lyon); concibe e interpreta input / body / output («Conducting the Invisible»), donde el gesto de dirección se vuelve materia sonora.",
+           en: "Music direction of Otages (Opéra de Lyon); she conceives and performs input / body / output (“Conducting the Invisible”), where the conducting gesture becomes sonic material.",
+           zh: "Otages（里昂歌剧院）的音乐指挥；她构思并演出 input / body / output（「Conducting the Invisible」），指挥手势在其中成为声音素材。" },
+    productions: ["otages", "rut"] },
+  { slug: "leo-warynski", name: "Léo Warynski", website: "https://www.lesmetaboles.fr",
+    role: { fr: "Chef d'orchestre", es: "Director de orquesta", en: "Conductor", zh: "指挥" },
+    bio: { fr: "Direction musicale de War Madrigals (Les Métaboles), Rayon N et Aliados. Il dirige Les Métaboles et l'ensemble Multilatérale.",
+           es: "Dirección musical de War Madrigals (Les Métaboles), Rayon N y Aliados. Dirige Les Métaboles y el ensemble Multilatérale.",
+           en: "Music direction of War Madrigals (Les Métaboles), Rayon N and Aliados. He leads Les Métaboles and the Multilatérale ensemble.",
+           zh: "War Madrigals（Les Métaboles）、Rayon N 与 Aliados 的音乐指挥。他领导 Les Métaboles 与 Multilatérale 乐团。" },
+    productions: ["war-madrigals", "rayon-n", "aliados"] },
+  { slug: "christine-angot", name: "Christine Angot",
+    role: { fr: "Autrice", es: "Autora", en: "Author", zh: "作者" },
+    bio: { fr: "Écrivaine. Les textes de De l'Innocence, opéra de chambre, naissent d'une série de conversations avec le compositeur, autour de ce qui résiste au langage et au récit.",
+           es: "Escritora. Los textos de De l'Innocence, ópera de cámara, nacen de una serie de conversaciones con el compositor, en torno a lo que resiste al lenguaje y al relato.",
+           en: "A writer. The texts of De l'Innocence, a chamber opera, arise from a series of conversations with the composer, around what resists language and narrative.",
+           zh: "作家。室内歌剧 De l'Innocence 的文本源自与作曲家的一系列对话，围绕那些抗拒语言与叙事之物。" },
+    productions: ["nous"] },
+  { slug: "marcelo-lombardero", name: "Marcelo Lombardero",
+    role: { fr: "Metteur en scène & dramaturge", es: "Director & dramaturgo", en: "Director & dramaturg", zh: "导演与戏剧构作" },
+    bio: { fr: "Dramaturgie et mise en scène d'A World to Blast, opéra autour d'América Scarfó et Soledad Rosas.",
+           es: "Dramaturgia y dirección de A World to Blast, ópera en torno a América Scarfó y Soledad Rosas.",
+           en: "Dramaturgy and staging of A World to Blast, an opera around América Scarfó and Soledad Rosas.",
+           zh: "A World to Blast 的戏剧构作与导演——一部围绕 América Scarfó 与 Soledad Rosas 的歌剧。" },
+    productions: ["america"] },
+  { slug: "emma-terno", name: "Emma Terno",
+    role: { fr: "Performeuse", es: "Performer", en: "Performer", zh: "表演者" },
+    bio: { fr: "Performeuse de Snow on Her Lips, monodrame immersif d'après Hans Bellmer et Heiner Müller (Printemps des Arts de Monte-Carlo).",
+           es: "Performer de Snow on Her Lips, monodrama inmersivo a partir de Hans Bellmer y Heiner Müller (Printemps des Arts de Monte-Carlo).",
+           en: "Performer of Snow on Her Lips, an immersive monodrama after Hans Bellmer and Heiner Müller (Printemps des Arts de Monte-Carlo).",
+           zh: "Snow on Her Lips 的表演者——一部取材自汉斯·贝尔默与海纳·穆勒的沉浸式独角戏（蒙特卡洛艺术之春）。" },
+    productions: ["snow-on-her-lips"] },
+  { slug: "daniel-zea", name: "Daniel Zea",
+    role: { fr: "Vidéo & informatique musicale", es: "Vídeo & informática musical", en: "Video & music computing", zh: "影像与音乐信息" },
+    bio: { fr: "Vidéo et informatique musicale de Snow on Her Lips ; il intervient également au sein du laboratoire LIPS.",
+           es: "Vídeo e informática musical de Snow on Her Lips; también interviene en el laboratorio LIPS.",
+           en: "Video and music computing for Snow on Her Lips; he also takes part in the LIPS laboratory.",
+           zh: "Snow on Her Lips 的影像与音乐信息技术；他亦参与 LIPS 工作坊。" },
+    productions: ["snow-on-her-lips", "lips"] }
+];
+
+function monogram(name) {
+  var parts = String(name).split(/\s+/).filter(Boolean);
+  return ((parts[0] || "").charAt(0) + (parts.length > 1 ? parts[parts.length - 1].charAt(0) : "")).toUpperCase();
+}
+var MONO_COLORS = ["#2f3f49", "#5e3c41", "#4f5f60", "#6f8f8a", "#a85c45", "#939a7e", "#6d7f8d", "#6b6470", "#4a3a2f", "#aebfbd"];
+function monoColor(slug) { var h = 0; for (var i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0; return MONO_COLORS[h % MONO_COLORS.length]; }
+function artistAvatar(a, rel, cls) {
+  if (a.photo) return '<' + cls + ' class="artist-portrait"><img src="' + rel + a.photo + '" alt="' + esc(a.name) + '" /></' + cls + '>';
+  var c = monoColor(a.slug);
+  return '<' + cls + ' class="artist-portrait artist-mono" style="background:' + tileBg(a.slug) + ';color:' + inkOn(c) + '" aria-hidden="true"><span>' + esc(monogram(a.name)) + "</span></" + cls + ">";
+}
+function artistCard(a) {
+  return '<li class="artist-card"><a href="' + a.slug + '/">'
+    + artistAvatar(a, "../", "span")
+    + '<span class="artist-meta"><span class="artist-name">' + esc(a.name) + '</span>'
+    + '<span class="artist-role" ' + ml(a.role) + "></span></span></a></li>";
+}
+function artistBody(a, rel) {
+  var prods = (a.productions || []).filter(function (s) { return bySlug[s]; }).map(function (s) {
+    var pp = bySlug[s], href = rel + (s === "lips" ? "lips/" : "productions/" + s + "/");
+    return '<li><a href="' + href + '" ' + ml(pp.titleHtml || pp.title) + "></a></li>";
+  }).join("");
+  var prodBlock = prods ? '<div class="pd-block pd-full"><h4 ' + ml({ fr: "Productions liées", es: "Producciones vinculadas", en: "Related productions", zh: "相关作品" }) + '></h4><ul class="taglist">' + prods + "</ul></div>" : "";
+  var web = a.website ? '<p class="pd-note"><a href="' + a.website + '" target="_blank" rel="noopener">' + esc(a.website.replace(/^https?:\/\//, "")) + " ↗</a></p>" : "";
+  return '    <article class="section pd-page">\n'
+    + '      <p class="pd-eyebrow"><a href="' + rel + 'artists/" data-fr="← Artistes" data-es="← Artistas" data-en="← Artists" data-zh="← 艺术家"></a></p>\n'
+    + '      <div class="artist-head">' + artistAvatar(a, rel, "div")
+    + '        <div><h1 class="pd-title pd-title--page">' + esc(a.name) + '</h1>'
+    + '<p class="artist-role-lg" ' + ml(a.role) + "></p></div></div>\n"
+    + '      <p class="pd-pitch" ' + ml(a.bio) + "></p>\n"
+    + '      <div class="pd-grid">' + prodBlock + "</div>\n" + web + "\n    </article>";
+}
+
+/* artists index */
+var artistGrid = ARTISTS.map(artistCard).join("\n        ");
+write("artists", page({ rel: "../", title: "Artistes", description: "Les artistes de STOPERA! — compositeurs, interprètes, metteurs en scène, auteurs et chercheurs qui font vivre la plateforme.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/artists/", ogType: "website",
+  body: '    <section class="section pd-page">\n'
+    + '      <h1 class="pd-title pd-title--page" data-fr="Artistes" data-es="Artistas" data-en="Artists" data-zh="艺术家"></h1>\n'
+    + '      <p class="pd-pitch" data-fr="Un écosystème vivant : compositeurs, interprètes, metteur·ses en scène, auteur·rices et chercheur·ses qui se retrouvent d\'un projet à l\'autre." data-es="Un ecosistema vivo: compositores, intérpretes, directores, autores e investigadores que se reencuentran de un proyecto a otro." data-en="A living ecosystem: composers, performers, directors, authors and researchers who meet again from one project to the next." data-zh="一个活的生态：作曲家、表演者、导演、作者与研究者，在一个又一个项目中重逢。"></p>\n'
+    + '      <ul class="artist-grid">\n        ' + artistGrid + "\n      </ul>\n    </section>" }));
+urls.push(SITE + "/artists/");
+ARTISTS.forEach(function (a) {
+  var url = SITE + "/artists/" + a.slug + "/", img = SITE + "/" + (a.photo || "assets/og-cover.jpg");
+  var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: a.name, jobTitle: plain(a.role), url: url, description: plain(a.bio), affiliation: { "@type": "Organization", name: "STOPERA!", url: SITE + "/" }, sameAs: a.website ? [a.website] : undefined });
+  write("artists/" + a.slug, page({ rel: "../../", title: a.name, description: plain(a.bio), image: img, url: url, jsonld: jsonld, body: artistBody(a, "../../") }));
   urls.push(url);
 });
 
