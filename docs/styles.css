@@ -341,3 +341,25 @@ main { counter-reset: sec; }
 .more-link { margin: 1.6rem 0 0; }
 .more-link a { font-family: var(--sans); font-weight: 600; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
 .more-link a:hover { text-decoration: underline; }
+
+/* ---------- Layer 2 : navigation éditoriale (parcours) ---------- */
+.editorial-nav { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; padding: .55rem clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); background: var(--bg-2); font-family: var(--sans); }
+.ed-label { flex: 0 0 auto; font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.ed-links { display: flex; gap: 1.3rem; flex-wrap: wrap; min-width: 0; }
+.ed-links a { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .2s ease; }
+.ed-links a:hover { color: var(--accent); }
+@media (max-width: 640px) {
+  .editorial-nav { gap: .55rem; }
+  .ed-links { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .ed-links::-webkit-scrollbar { display: none; }
+}
+
+/* ---------- Index des parcours ---------- */
+.thread-list { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.thread-card a { position: relative; display: block; height: 100%; padding: 1.5rem 1.6rem; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; color: inherit; background: var(--bg); transition: border-color .2s ease, transform .15s ease; }
+.thread-card a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.thread-h { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(1.25rem, 2.4vw, 1.55rem); letter-spacing: -.015em; line-height: 1.1; margin: 0 2rem .45rem 0; }
+.thread-x { display: block; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+.thread-n { position: absolute; top: 1.5rem; right: 1.6rem; font-family: var(--sans); font-weight: 700; font-size: .72rem; color: var(--accent); }
+.thread-grid { margin-top: 1.8rem; }
+@media (max-width: 640px) { .thread-list { grid-template-columns: 1fr; } }

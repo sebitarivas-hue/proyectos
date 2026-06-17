@@ -23,6 +23,39 @@ var sandbox = "var ONGOING=" + grab(/var ONGOING = (\{[^;]*\});/)
   + ";return {YEARS:YEARS,PERIOD:PERIOD,COLORS:COLORS,PROJECTS:PROJECTS};";
 var DATA = new Function(sandbox)();
 var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS;
+var bySlug = {}; PROJECTS.forEach(function (p) { bySlug[p.slug] = p; });
+
+/* ---- Layer 2 : navigation éditoriale (parcours thématiques transversaux) ---- */
+var THEMES = [
+  { slug: "temps-reel",
+    title: { fr: "Temps réel & technologie", es: "Tiempo real & tecnología", en: "Real time & technology", zh: "实时与技术" },
+    blurb: { fr: "L'image, le geste et la voix transformés en direct : capteurs, vidéo, électronique et image générée deviennent matière de plateau.",
+             es: "La imagen, el gesto y la voz transformados en directo: sensores, vídeo, electrónica e imagen generada se vuelven materia escénica.",
+             en: "Image, gesture and voice transformed live: sensors, video, electronics and generated imagery become stage material.",
+             zh: "影像、动作与人声的实时转化：传感器、影像、电子与生成图像成为舞台素材。" },
+    items: ["rayon-n", "rut", "aliados", "snow-on-her-lips", "fame"] },
+  { slug: "memoire-politique",
+    title: { fr: "Mémoire & politique", es: "Memoria & política", en: "Memory & politics", zh: "记忆与政治" },
+    blurb: { fr: "Pouvoir, histoire et résistance : des figures réelles ou de fiction qui interrogent la responsabilité, la violence et la liberté.",
+             es: "Poder, historia y resistencia: figuras reales o de ficción que interrogan la responsabilidad, la violencia y la libertad.",
+             en: "Power, history and resistance: real or fictional figures questioning responsibility, violence and freedom.",
+             zh: "权力、历史与抵抗：真实或虚构的人物，叩问责任、暴力与自由。" },
+    items: ["aliados", "otages", "america", "mamma-roma", "insistir"] },
+  { slug: "voix-texte",
+    title: { fr: "Voix & texte", es: "Voz & texto", en: "Voice & text", zh: "人声与文本" },
+    blurb: { fr: "L'écriture au cœur du plateau : livrets, auteurs et la parole comme matière musicale, de Christine Angot à Pasolini.",
+             es: "La escritura en el centro de la escena: libretos, autores y la palabra como materia musical, de Christine Angot a Pasolini.",
+             en: "Writing at the heart of the stage: librettos, authors and the spoken word as musical material, from Christine Angot to Pasolini.",
+             zh: "写作居于舞台核心：剧本、作者与作为音乐素材的言语，从 Christine Angot 到帕索里尼。" },
+    items: ["nous", "otages", "war-madrigals", "aliados", "america"] },
+  { slug: "corps-presence",
+    title: { fr: "Corps & présence", es: "Cuerpo & presencia", en: "Body & presence", zh: "身体与在场" },
+    blurb: { fr: "Seul·e en scène : la performance, le geste et la présence comme acte, où le corps devient instrument.",
+             es: "Solo·a en escena: la performance, el gesto y la presencia como acto, donde el cuerpo se vuelve instrumento.",
+             en: "Alone on stage: performance, gesture and presence as act, where the body becomes an instrument.",
+             zh: "独自在台上：表演、动作与作为行动的在场，身体成为乐器。" },
+    items: ["rut", "fame", "insistir", "snow-on-her-lips"] }
+];
 
 /* ---- helpers ---- */
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;"); }
@@ -40,17 +73,27 @@ function inkOn(h){var c=hx(h);return(0.299*c[0]+0.587*c[1]+0.114*c[2])/255>0.62?
 function tileBg(slug){var b=COLORS[slug]||"#4f5f60";return"linear-gradient(152deg,"+b+" 0%,"+darken(b,0.86)+" 100%)";}
 
 function header(rel) {
+  // target starting with "#" = anchor on home ; otherwise a standalone page path
   var nav = [["#apropos","À propos","Acerca de","About","关于"],["#productions","Productions","Producciones","Productions","作品"],
-    ["#actualites","Actualités","Novedades","News","动态"],["#reseau","Réseau","Red","Network","网络"],
-    ["#recherche","Recherche","Investigación","Research","研究"],["#lips","LIPS","LIPS","LIPS","LIPS"],
+    ["news/","Actualités","Novedades","News","动态"],["#reseau","Réseau","Red","Network","网络"],
+    ["#recherche","Recherche","Investigación","Research","研究"],["lips/","LIPS","LIPS","LIPS","LIPS"],
     ["#presse","Presse","Prensa","Press","媒体"],["#contact","Contact","Contacto","Contact","联系"]]
-    .map(function (n) { return '<a href="' + rel + 'index.html' + n[0] + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
+    .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
+      return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
   return '<header class="site-header">\n'
     + '    <a class="brand" href="' + rel + 'index.html" aria-label="STOPERA!"><img class="brand-logo" src="' + rel + 'assets/logo-dark.png" alt="STOPERA!" /></a>\n'
     + '    <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bar1" d="M3 6h18"/><path class="bar2" d="M3 12h18"/><path class="bar3" d="M3 18h18"/></svg></button>\n'
     + '    <nav class="site-nav" aria-label="Navigation"><div class="nav-links" id="nav-links">\n      ' + nav + '\n    </div>\n'
     + '      <div class="lang-switch" role="group" aria-label="Langue / Language"><button type="button" class="lang-opt" data-setlang="fr">FR</button><button type="button" class="lang-opt" data-setlang="es">ES</button><button type="button" class="lang-opt" data-setlang="en">EN</button><button type="button" class="lang-opt" data-setlang="zh">中文</button></div>\n'
     + '    </nav>\n  </header>';
+}
+function editorialNav(rel) {
+  var links = THEMES.map(function (th) {
+    return '<a href="' + rel + 'parcours/' + th.slug + '/" ' + ml(th.title) + '></a>';
+  }).join("");
+  return '<nav class="editorial-nav" aria-label="Parcours éditoriaux">\n'
+    + '    <a class="ed-label" href="' + rel + 'parcours/" data-fr="Parcours" data-es="Recorridos" data-en="Threads" data-zh="主题"></a>\n'
+    + '    <div class="ed-links">' + links + '</div>\n  </nav>';
 }
 function footer(rel) {
   return '<footer class="site-footer">\n'
@@ -80,7 +123,7 @@ function page(opts) {
     + '  <link rel="icon" type="image/png" href="' + rel + 'assets/favicon.png" />\n'
     + '  <link rel="stylesheet" href="' + rel + 'assets/fonts/fonts.css' + V + '" />\n'
     + '  <link rel="stylesheet" href="' + rel + 'styles.css' + V + '" />\n'
-    + '</head>\n<body data-lang="fr">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
+    + '</head>\n<body data-lang="fr">\n  ' + header(rel) + '\n  ' + editorialNav(rel) + '\n  <main id="top" class="subpage">\n'
     + opts.body + '\n  </main>\n  ' + footer(rel) + '\n'
     + '  <a class="float-contact" href="' + rel + 'index.html#contact" aria-label="Contact"><span data-fr="Écrire" data-es="Escribir" data-en="Write" data-zh="联系"></span><span aria-hidden="true">↗</span></a>\n'
     + '  <script src="' + rel + 'script.js' + V + '"></script>\n</body>\n</html>\n';
@@ -119,6 +162,24 @@ function prodBody(p, rel) {
     + "        " + partners + press + links + note + "\n      </div>\n    </article>";
 }
 function wrapQuote(o) { var r = {}; LANGS.forEach(function (l) { r[l] = "« " + (o[l] != null ? o[l] : o.fr) + " »"; }); return r; }
+
+/* ---- static production tile (server-side, for parcours grids) ---- */
+function threadTile(slug, rel) {
+  var p = bySlug[slug]; if (!p) return "";
+  var href = rel + (slug === "lips" ? "lips/" : "productions/" + slug + "/");
+  var year = tFR(YEARS[slug] || "");
+  var yearSpan = year ? '<span class="ptile-year">' + esc(year) + "</span>" : "";
+  var title = '<span class="ptile-title" ' + ml(p.titleHtml || p.title) + "></span>";
+  if (p.photo) {
+    return '<li class="project"><a class="ptile" href="' + href + '">'
+      + '<span class="ptile-img" style="background-image:url(\'' + rel + p.photo + '\')"></span>'
+      + '<span class="ptile-scrim"></span>'
+      + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
+  }
+  return '<li class="project"><a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(slug) + ";color:" + inkOn(COLORS[slug] || "#4f5f60") + '">'
+    + '<span class="ptile-tag" ' + ml(p.tag || "") + "></span>"
+    + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
+}
 
 /* ---- NEWS (éditorial) ---- */
 var NEWS = [
@@ -171,6 +232,34 @@ urls.push(SITE + "/news/");
 NEWS.forEach(function (n) {
   var url = SITE + "/news/" + n.slug + "/", img = SITE + "/" + (n.img || "assets/og-cover.jpg");
   write("news/" + n.slug, page({ rel: "../../", title: plain(n.title), description: plain(n.excerpt), image: img, url: url, body: newsBody(n, "../../") }));
+  urls.push(url);
+});
+
+/* parcours (Layer 2 éditorial) — index + une page par thématique */
+var threadCards = THEMES.map(function (th) {
+  return '<li class="thread-card"><a href="' + th.slug + '/">'
+    + '<span class="thread-h" ' + ml(th.title) + '></span>'
+    + '<span class="thread-x" ' + ml(th.blurb) + '></span>'
+    + '<span class="thread-n">' + th.items.length + '</span></a></li>';
+}).join("\n        ");
+write("parcours", page({ rel: "../", title: "Parcours", description: "Parcours éditoriaux de STOPERA! — explorer les créations par thématiques transversales : temps réel & technologie, mémoire & politique, voix & texte, corps & présence.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/parcours/", ogType: "website",
+  body: '    <section class="section pd-page">\n'
+    + '      <h1 class="pd-title pd-title--page" data-fr="Parcours" data-es="Recorridos" data-en="Threads" data-zh="主题"></h1>\n'
+    + '      <p class="pd-pitch" data-fr="Une lecture transversale du répertoire — par idées et obsessions plutôt que par dates." data-es="Una lectura transversal del repertorio — por ideas y obsesiones más que por fechas." data-en="A cross-cutting reading of the repertoire — by ideas and obsessions rather than dates." data-zh="对作品的横向阅读——以理念与执念为线索，而非日期。"></p>\n'
+    + '      <ul class="thread-list">\n        ' + threadCards + "\n      </ul>\n    </section>" }));
+urls.push(SITE + "/parcours/");
+
+THEMES.forEach(function (th) {
+  var tiles = th.items.map(function (s) { return threadTile(s, "../../"); }).join("\n        ");
+  var url = SITE + "/parcours/" + th.slug + "/";
+  var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage", name: plain(th.title) + " — STOPERA!", description: plain(th.blurb), url: url,
+    hasPart: th.items.map(function (s) { return { "@type": "TheaterEvent", name: plain(bySlug[s] && (bySlug[s].titleHtml || bySlug[s].title)), url: SITE + "/" + (s === "lips" ? "lips/" : "productions/" + s + "/") }; }) });
+  write("parcours/" + th.slug, page({ rel: "../../", title: plain(th.title), description: plain(th.blurb), image: SITE + "/assets/og-cover.jpg", url: url, ogType: "website", jsonld: jsonld,
+    body: '    <section class="section pd-page">\n'
+      + '      <p class="pd-eyebrow"><a href="../" data-fr="← Parcours" data-es="← Recorridos" data-en="← Threads" data-zh="← 主题"></a></p>\n'
+      + '      <h1 class="pd-title pd-title--page" ' + ml(th.title) + "></h1>\n"
+      + '      <p class="pd-pitch" ' + ml(th.blurb) + "></p>\n"
+      + '      <ul class="projects thread-grid">\n        ' + tiles + "\n      </ul>\n    </section>" }));
   urls.push(url);
 });
 
