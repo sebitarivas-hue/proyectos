@@ -314,3 +314,30 @@ main { counter-reset: sec; }
 .partners li { padding: .65rem 0; border-top: 1px solid var(--line); font-family: var(--serif); font-size: .98rem; }
 @media (max-width: 800px) { .partners { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .partners { grid-template-columns: 1fr; } }
+
+/* ---------- Sous-pages (productions / news / lips) ---------- */
+.subpage { min-height: 60vh; }
+.pd-page { max-width: 940px; border-top: 0; }
+.pd-eyebrow { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .9rem; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.pd-eyebrow a { color: var(--accent); text-decoration: none; }
+.pd-eyebrow a:hover { text-decoration: underline; }
+.pd-eyebrow .pd-tag { color: var(--muted); }
+.pd-title--page { font-size: clamp(2.1rem, 6vw, 3.6rem); line-height: 1.02; margin: 0 0 .2rem; }
+.pd-page .pd-media img { aspect-ratio: 16 / 9; }
+.pd-page .pd-pitch { font-size: clamp(1.08rem, 2vw, 1.25rem); line-height: 1.55; }
+
+/* ---------- Liste d'actualités ---------- */
+.news-list { list-style: none; margin: 1.4rem 0 0; padding: 0; }
+.news-item { border-top: 1px solid var(--line); }
+.news-item:last-child { border-bottom: 1px solid var(--line); }
+.news-item a { display: grid; grid-template-columns: 7.5em 1fr; gap: .3rem 1.6rem; align-items: baseline; padding: 1.3rem .2rem; text-decoration: none; color: inherit; transition: background .15s ease, padding .15s ease; }
+.news-item a:hover { background: var(--bg-2); }
+.news-date { font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.news-h { font-family: var(--display); font-weight: 600; letter-spacing: -.015em; font-size: clamp(1.2rem, 2.6vw, 1.7rem); line-height: 1.1; }
+.news-x { grid-column: 2; color: var(--muted); font-size: .98rem; line-height: 1.5; max-width: 64ch; }
+@media (max-width: 560px) { .news-item a { grid-template-columns: 1fr; gap: .35rem; } .news-x { grid-column: 1; } }
+
+/* ---------- Lien "voir plus" ---------- */
+.more-link { margin: 1.6rem 0 0; }
+.more-link a { font-family: var(--sans); font-weight: 600; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.more-link a:hover { text-decoration: underline; }

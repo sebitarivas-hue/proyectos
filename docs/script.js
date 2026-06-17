@@ -386,28 +386,33 @@
   }
   function tileInk(p) { return inkOn(COLORS[p.slug] || "#4f5f60"); }
 
+  function tileHref(p) {
+    return p.slug === "lips" ? "lips/" : "productions/" + p.slug + "/";
+  }
+
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
+    var href = tileHref(p);
     if (p.photo) {
       return ''
-        + '<button class="ptile" type="button" aria-controls="project-detail">'
+        + '<a class="ptile" href="' + href + '">'
         +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
         +   '<span class="ptile-scrim"></span>'
         +   '<span class="ptile-meta">'
         +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
         +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
         +   '</span>'
-        + '</button>';
+        + '</a>';
     }
     var tag = t(p.tag || "");
     return ''
-      + '<button class="ptile ptile--color" type="button" aria-controls="project-detail" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
+      + '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
       +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
       +   '<span class="ptile-meta">'
       +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
       +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
       +   '</span>'
-      + '</button>';
+      + '</a>';
   }
 
   function detailHTML(p) {
@@ -532,9 +537,6 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     setLang(initialLang());
-
-    var prod = document.getElementById("productions");
-    if (prod) prod.addEventListener("click", onGridClick);
 
     var navToggle = document.querySelector(".nav-toggle");
     var header = document.querySelector(".site-header");
