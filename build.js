@@ -104,7 +104,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260617H";
+  var rel = opts.rel, V = "?v=20260617I";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -486,7 +486,8 @@ function monoColor(slug) { var h = 0; for (var i = 0; i < slug.length; i++) h = 
 function artistAvatar(a, rel, cls) {
   if (a.photo) return '<' + cls + ' class="artist-portrait"><img src="' + rel + a.photo + '" alt="' + esc(a.name) + '" /></' + cls + '>';
   var c = monoColor(a.slug);
-  return '<' + cls + ' class="artist-portrait artist-mono" style="background:' + tileBg(a.slug) + ';color:' + inkOn(c) + '" aria-hidden="true"><span>' + esc(monogram(a.name)) + "</span></" + cls + ">";
+  var bg = "linear-gradient(152deg," + c + " 0%," + darken(c, 0.86) + " 100%)";
+  return '<' + cls + ' class="artist-portrait artist-mono" style="background:' + bg + ';color:' + inkOn(c) + '" aria-hidden="true"><span>' + esc(monogram(a.name)) + "</span></" + cls + ">";
 }
 function artistCard(a) {
   return '<li class="artist-card"><a href="' + a.slug + '/">'
