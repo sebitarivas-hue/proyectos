@@ -104,7 +104,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260617G";
+  var rel = opts.rel, V = "?v=20260617H";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -399,6 +399,83 @@ var ARTISTS = [
            zh: "独立策展人，她陪伴视觉艺术、音乐与舞台交汇处的项目，并参与了 STOPERA! 的萌生。" },
     productions: [] }
 ];
+
+/* bios longues validées (faits sûrs uniquement) — fusionnées dans ARTISTS */
+var BIOLONG = {
+  "georges-aperghis": [
+    { fr: "Né à Athènes en 1945, il vit et travaille en France. Figure majeure de la création contemporaine, il fonde en 1976 l'ATEM (Atelier Théâtre et Musique) et invente une œuvre où la voix, le geste et le langage deviennent matière scénique, des Récitations au théâtre musical.",
+      es: "Nacido en Atenas en 1945, vive y trabaja en Francia. Figura mayor de la creación contemporánea, funda en 1976 el ATEM (Atelier Théâtre et Musique) e inventa una obra donde la voz, el gesto y el lenguaje se vuelven materia escénica, de las Récitations al teatro musical.",
+      en: "Born in Athens in 1945, he lives and works in France. A major figure of contemporary creation, he founded ATEM (Atelier Théâtre et Musique) in 1976 and invented a body of work where voice, gesture and language become stage material, from the Récitations to music theatre.",
+      zh: "1945 年生于雅典，现居法国并在此工作。作为当代创作的重要人物，他于 1976 年创立 ATEM（戏剧与音乐工坊），创造出让人声、动作与语言成为舞台素材的作品，从《Récitations》到音乐剧场。" },
+    { fr: "Lion d'Or de la Biennale de Venise en 2015, son compagnonnage et son influence accompagnent STOPERA!. Ses pièces sont au cœur du projet Insistir, porté par Nicola Beller Carbone.",
+      es: "León de Oro de la Bienal de Venecia en 2015, su compañía e influencia acompañan a STOPERA!. Sus piezas están en el corazón del proyecto Insistir, llevado por Nicola Beller Carbone.",
+      en: "Golden Lion of the Venice Biennale in 2015, his companionship and influence accompany STOPERA!. His pieces are at the heart of the Insistir project, led by Nicola Beller Carbone.",
+      zh: "2015 年获威尼斯双年展金狮奖。他的陪伴与影响伴随着 STOPERA!；其作品是由 Nicola Beller Carbone 推动的 Insistir 项目的核心。" }
+  ],
+  "christine-angot": [
+    { fr: "Écrivaine née en 1959, elle est l'une des voix majeures de la littérature française contemporaine, notamment pour son écriture de l'intime (L'Inceste). Prix Médicis 2021 pour Le Voyage dans l'Est.",
+      es: "Escritora nacida en 1959, es una de las voces mayores de la literatura francesa contemporánea, en particular por su escritura de lo íntimo (El incesto). Premio Médicis 2021 por Le Voyage dans l'Est.",
+      en: "A writer born in 1959, she is one of the major voices of contemporary French literature, notably for her writing of the intimate (Incest). Winner of the 2021 Prix Médicis for Le Voyage dans l'Est.",
+      zh: "1959 年出生的作家，是法国当代文学的重要声音之一，尤以其对私密经验的书写著称（《乱伦》）。凭《Le Voyage dans l'Est》获 2021 年美第奇奖。" },
+    { fr: "Elle écrit les textes de De l'Innocence, opéra de chambre né d'une série de conversations avec le compositeur : non pas mettre un thème en musique, mais trouver une forme qui accueille ce qui résiste au langage et au récit.",
+      es: "Escribe los textos de De l'Innocence, ópera de cámara nacida de una serie de conversaciones con el compositor: no poner un tema en música, sino encontrar una forma que acoja lo que resiste al lenguaje y al relato.",
+      en: "She writes the texts of De l'Innocence, a chamber opera born from a series of conversations with the composer: not setting a theme to music, but finding a form that holds what resists language and narrative.",
+      zh: "她为室内歌剧 De l'Innocence 撰写文本：并非为主题谱曲，而是寻找一种容纳那些抗拒语言与叙事之物的形式。" }
+  ],
+  "nina-bouraoui": [
+    { fr: "Écrivaine née en 1967, son œuvre explore l'identité, le désir et la mémoire, entre la France et l'Algérie. Prix Renaudot 2005 pour Mes mauvaises pensées.",
+      es: "Escritora nacida en 1967, su obra explora la identidad, el deseo y la memoria, entre Francia y Argelia. Premio Renaudot 2005 por Mes mauvaises pensées.",
+      en: "A writer born in 1967, her work explores identity, desire and memory, between France and Algeria. Winner of the 2005 Prix Renaudot for Mes mauvaises pensées.",
+      zh: "1967 年出生的作家，其作品在法国与阿尔及利亚之间探索身份、欲望与记忆。凭《Mes mauvaises pensées》获 2005 年勒诺多奖。" },
+    { fr: "Son texte est à l'origine d'Otages : le portrait de Sylvie Meyer, femme « ordinaire et extraordinaire » qui bascule en un seul geste, à la fois répréhensible et libérateur.",
+      es: "Su texto está en el origen de Otages: el retrato de Sylvie Meyer, mujer «ordinaria y extraordinaria» que bascula en un solo gesto, a la vez reprensible y liberador.",
+      en: "Her text is the source of Otages: the portrait of Sylvie Meyer, an “ordinary and extraordinary” woman who tips over in a single act, at once reprehensible and liberating.",
+      zh: "她的文本是 Otages 的源头：对 Sylvie Meyer 的刻画——一位「平凡而非凡」、因一个既应受谴责又带来解放的举动而骤变的女性。" }
+  ],
+  "esteban-buch": [
+    { fr: "Musicologue et historien, directeur d'études à l'EHESS, ses travaux croisent musique, politique et histoire. Il signe le livret d'Aliados, opéra du temps réel sur la rencontre, à Londres en 1999, de Margaret Thatcher et du général Pinochet — un face-à-face entre fiction et réalité, mémoire et responsabilité.",
+      es: "Musicólogo e historiador, director de estudios en la EHESS, su trabajo cruza música, política e historia. Firma el libreto de Aliados, ópera en tiempo real sobre el encuentro, en Londres en 1999, de Margaret Thatcher y el general Pinochet —un cara a cara entre ficción y realidad, memoria y responsabilidad.",
+      en: "A musicologist and historian, directeur d'études at the EHESS, his work crosses music, politics and history. He wrote the libretto of Aliados, a real-time opera on the 1999 London meeting of Margaret Thatcher and General Pinochet — a face-off between fiction and reality, memory and responsibility.",
+      zh: "音乐学者与历史学家，法国社会科学高等研究院（EHESS）研究主任，其研究横跨音乐、政治与历史。他撰写了 Aliados 的剧本——一部关于 1999 年伦敦撒切尔夫人与皮诺切特将军会面的实时歌剧：虚构与现实、记忆与责任之间的对峙。" }
+  ],
+  "richard-brunel": [
+    { fr: "Metteur en scène, il dirige l'Opéra national de Lyon depuis 2021, après avoir été à la tête de la Comédie de Valence. Au théâtre comme à l'opéra, il met en scène un répertoire ancré dans les questions de notre temps.",
+      es: "Director de escena, dirige la Opéra national de Lyon desde 2021, tras haber estado al frente de la Comédie de Valence. En el teatro y en la ópera, pone en escena un repertorio anclado en las cuestiones de nuestro tiempo.",
+      en: "A stage director, he has led the Opéra national de Lyon since 2021, after heading the Comédie de Valence. In theatre and opera alike, he stages a repertoire rooted in the questions of our time.",
+      zh: "导演，自 2021 年起执掌里昂国家歌剧院，此前曾领导瓦朗斯国家戏剧中心。无论戏剧还是歌剧，他执导的剧目都扎根于我们时代的议题。" },
+    { fr: "Il signe la création d'Otages au Théâtre de la Croix-Rousse, dans le cadre du Festival de l'Opéra de Lyon (2024), d'après le texte de Nina Bouraoui.",
+      es: "Firma el estreno de Otages en el Théâtre de la Croix-Rousse, en el marco del Festival de la Opéra de Lyon (2024), a partir del texto de Nina Bouraoui.",
+      en: "He created Otages at the Théâtre de la Croix-Rousse for the Opéra de Lyon Festival (2024), after the text by Nina Bouraoui.",
+      zh: "他在里昂歌剧院艺术节框架内于 Croix-Rousse 剧院执导 Otages 的首演（2024），改编自 Nina Bouraoui 的文本。" }
+  ],
+  "philippe-beziat": [
+    { fr: "Réalisateur, son œuvre filmique explore le lien entre cinéma, musique et opéra, captant la création vivante au plus près des interprètes. Pour STOPERA!, il signe l'image et la vidéo de Rayon N et d'Aliados, où le cinéma et la scène se répondent en direct.",
+      es: "Realizador, su obra fílmica explora el vínculo entre cine, música y ópera, captando la creación viva muy cerca de los intérpretes. Para STOPERA!, firma la imagen y el vídeo de Rayon N y de Aliados, donde el cine y la escena se responden en vivo.",
+      en: "A filmmaker, his work explores the link between cinema, music and opera, capturing live creation up close to the performers. For STOPERA!, he creates the image and video of Rayon N and Aliados, where cinema and the stage answer each other live.",
+      zh: "影像导演，其电影作品探索电影、音乐与歌剧之间的联系，贴近表演者捕捉鲜活的创作。他为 STOPERA! 的 Rayon N 与 Aliados 创作影像与视频，让电影与舞台实时呼应。" }
+  ],
+  "leo-warynski": [
+    { fr: "Chef d'orchestre, il fonde et dirige l'ensemble vocal Les Métaboles et assure la direction musicale de l'ensemble instrumental Multilatérale. Son répertoire fait une large place à la musique de notre temps comme au grand répertoire a cappella.",
+      es: "Director de orquesta, funda y dirige el ensemble vocal Les Métaboles y asume la dirección musical del ensemble instrumental Multilatérale. Su repertorio concede un amplio lugar a la música de nuestro tiempo y al gran repertorio a cappella.",
+      en: "A conductor, he founded and directs the vocal ensemble Les Métaboles and is music director of the instrumental ensemble Multilatérale. His repertoire gives ample place to the music of our time as well as the great a cappella repertoire.",
+      zh: "指挥家，他创立并领导人声乐团 Les Métaboles，并担任器乐团 Multilatérale 的音乐总监。其曲目既广纳当代音乐，也涵盖伟大的无伴奏合唱传统。" },
+    { fr: "Avec STOPERA!, il assure la direction musicale de War Madrigals, Rayon N et Aliados.",
+      es: "Con STOPERA!, asume la dirección musical de War Madrigals, Rayon N y Aliados.",
+      en: "With STOPERA!, he conducts War Madrigals, Rayon N and Aliados.",
+      zh: "在 STOPERA!，他担任 War Madrigals、Rayon N 与 Aliados 的音乐指挥。" }
+  ],
+  "antoine-gindt": [
+    { fr: "Metteur en scène et producteur, il dirige T&M Paris et accompagne depuis de nombreuses années la création lyrique contemporaine, mettant en dialogue théâtre, musique et image.",
+      es: "Director de escena y productor, dirige T&M Paris y acompaña desde hace muchos años la creación lírica contemporánea, poniendo en diálogo teatro, música e imagen.",
+      en: "A stage director and producer, he directs T&M Paris and has long accompanied contemporary lyric creation, bringing theatre, music and image into dialogue.",
+      zh: "导演与制作人，他执掌 T&M Paris，多年来陪伴当代歌剧创作，让戏剧、音乐与影像彼此对话。" },
+    { fr: "Pour STOPERA!, il signe le livret et la mise en scène de Rayon N et la mise en scène d'Aliados (Ircam · ManiFeste).",
+      es: "Para STOPERA!, firma el libreto y la dirección de Rayon N y la dirección de Aliados (Ircam · ManiFeste).",
+      en: "For STOPERA!, he writes the libretto and stages Rayon N, and stages Aliados (Ircam · ManiFeste).",
+      zh: "他为 STOPERA! 担任 Rayon N 的编剧与导演，并执导 Aliados（Ircam · ManiFeste）。" }
+  ]
+};
+ARTISTS.forEach(function (a) { if (BIOLONG[a.slug]) a.bioLong = BIOLONG[a.slug]; });
 
 function monogram(name) {
   var parts = String(name).split(/\s+/).filter(Boolean);
