@@ -96,7 +96,11 @@
         { label: { fr: "Recherche & innovation", es: "Investigación & innovación", en: "Research & innovation", zh: "研究与创新" }, href: "index.html#recherche" },
         { label: { fr: "Coopération internationale", es: "Cooperación internacional", en: "International cooperation", zh: "国际合作" }, href: "index.html#reseau" }
       ],
-      gallery: [],
+      gallery: [
+        { src: "assets/projects/ooo/ooo-9.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" },
+        { src: "assets/projects/ooo/ooo-22.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" },
+        { src: "assets/projects/ooo/ooo-34.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" }
+      ],
       note: { fr: "Création mondiale au CETC — Teatro Colón (Buenos Aires), 2–10 septembre 2025. Photos : Lucía Rivero. Bande-annonce ci-dessus.", es: "Estreno mundial en el CETC — Teatro Colón (Buenos Aires), 2–10 de septiembre de 2025. Fotos: Lucía Rivero. Tráiler arriba.", en: "World premiere at the CETC — Teatro Colón (Buenos Aires), 2–10 September 2025. Photos: Lucía Rivero. Trailer above.", zh: "于 CETC — 科隆剧院（布宜诺斯艾利斯）世界首演，2025 年 9 月 2–10 日。摄影：Lucía Rivero。预告片见上方。" }
     },
     {
