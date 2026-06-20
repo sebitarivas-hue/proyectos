@@ -104,7 +104,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260617I";
+  var rel = opts.rel, V = "?v=20260617J";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -481,11 +481,13 @@ function monogram(name) {
   var parts = String(name).split(/\s+/).filter(Boolean);
   return ((parts[0] || "").charAt(0) + (parts.length > 1 ? parts[parts.length - 1].charAt(0) : "")).toUpperCase();
 }
-var MONO_COLORS = ["#2f3f49", "#5e3c41", "#4f5f60", "#6f8f8a", "#a85c45", "#939a7e", "#6d7f8d", "#6b6470", "#4a3a2f", "#aebfbd"];
-function monoColor(slug) { var h = 0; for (var i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0; return MONO_COLORS[h % MONO_COLORS.length]; }
+/* palette BEHR complète, ordonnée en alternance chaud / froid / clair / foncé */
+var MONO_COLORS = ["#2f3f49", "#a85c45", "#939a7e", "#5e3c41", "#6f8f8a", "#d6a65c", "#6d7f8d", "#4a3a2f", "#aebfbd", "#6b6470", "#4f5f60"];
+/* index séquentiel par artiste → chaque fiche une teinte distincte */
+ARTISTS.forEach(function (a, i) { a.color = MONO_COLORS[i % MONO_COLORS.length]; });
 function artistAvatar(a, rel, cls) {
   if (a.photo) return '<' + cls + ' class="artist-portrait"><img src="' + rel + a.photo + '" alt="' + esc(a.name) + '" /></' + cls + '>';
-  var c = monoColor(a.slug);
+  var c = a.color || MONO_COLORS[0];
   var bg = "linear-gradient(152deg," + c + " 0%," + darken(c, 0.86) + " 100%)";
   return '<' + cls + ' class="artist-portrait artist-mono" style="background:' + bg + ';color:' + inkOn(c) + '" aria-hidden="true"><span>' + esc(monogram(a.name)) + "</span></" + cls + ">";
 }
