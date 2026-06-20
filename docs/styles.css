@@ -428,3 +428,14 @@ main { counter-reset: sec; }
 .artist-links { margin: 0; font-family: var(--sans); font-size: .92rem; }
 .artist-links a { color: var(--accent); text-decoration: none; }
 .artist-links a:hover { text-decoration: underline; }
+
+/* ---------- Production : blocs flagship (teaser, galerie, relations) ---------- */
+.pd-teaser { margin: 1.6rem 0; }
+.pd-teaser h4 { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 .7rem; }
+.pd-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: .6rem; margin: 1.6rem 0; }
+.pd-gallery figure { margin: 0; }
+.pd-gallery img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+.pd-prose { color: #2c2620; font-size: 1rem; line-height: 1.6; max-width: 72ch; margin: 0; }
+.rel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .55rem; }
+.rel-list a { display: inline-block; padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--fg); text-decoration: none; transition: border-color .2s ease, color .2s ease, background .2s ease; }
+.rel-list a:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-2); }

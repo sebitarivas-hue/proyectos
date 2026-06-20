@@ -24,6 +24,7 @@
   };
 
   var YEARS = {
+    "ooo": "2025",
     "war-madrigals": "2026",
     "rayon-n": "2026 – 2027",
     "nous": { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" },
@@ -39,9 +40,65 @@
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "ooo":"past","war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
 
   var PROJECTS = [
+    {
+      slug: "ooo", title: "OOO", titleHtml: "OOO", photo: "assets/projects/ooo.jpg", video: "XC1LQp8Dq6U",
+      tag: { fr: "Création 2025 · Teatro Colón", es: "Estreno 2025 · Teatro Colón", en: "Premiere 2025 · Teatro Colón", zh: "2025 首演 · 科隆剧院" },
+      short: { fr: "Un environnement opératique post-humain.", es: "Un entorno operístico posthumano.", en: "A post-human operatic environment.", zh: "一个后人类的歌剧环境。" },
+      pitch: {
+        fr: "« Le vieux monde est mort. » Privé d'humanité, le présent se suspend : la nature se souvient en pensant l'avenir, les objets se manifestent, une intelligence artificielle défaillante n'est d'aucun secours, des fantômes chantent de vieilles mélodies. À travers le dialogue d'une plante d'intérieur et d'un robot incapable d'imaginer — et la trace spectrale de Dalida — <strong>OOO</strong> déploie une suite de rituels audiovisuels : un opéra sans humains, un rituel pour le monde d'après. Conception et direction d'Emma Terno et Valentín Pelisch.",
+        es: "«El viejo mundo ha muerto.» Sin humanidad, el presente queda suspendido: la naturaleza recuerda mientras imagina el futuro, los objetos se hacen notar, una inteligencia artificial defectuosa no sirve de ayuda, fantasmas cantan viejas melodías. A través del diálogo entre una planta de interior y un bot incapaz de imaginar —y la huella espectral de Dalida— <strong>OOO</strong> despliega una sucesión de rituales audiovisuales: una ópera sin humanos, un ritual para el mundo de después. Concepción y dirección de Emma Terno y Valentín Pelisch.",
+        en: "“The old world is dead.” With humanity absent, the present is suspended: nature remembers while imagining the future, objects make themselves noticed, a defective artificial intelligence is of no help, ghosts sing old melodies. Through the dialogue between a houseplant and a bot that cannot imagine — and the ghostly trace of Dalida — <strong>OOO</strong> unfolds as a succession of audiovisual rituals: an opera without humans, a ritual for the world after. Created and directed by Emma Terno and Valentín Pelisch.",
+        zh: "「旧世界已死。」当人类缺席，当下被悬置：自然一边记忆一边想象未来，物件自我显现，失灵的人工智能无济于事，幽灵吟唱古老旋律。透过一株室内植物与一个无法想象的机器人之间的对话——以及 Dalida 的幽灵踪迹——<strong>OOO</strong> 展开为一连串视听仪式：一部没有人类的歌剧，一场献给「之后世界」的仪式。Emma Terno 与 Valentín Pelisch 构思并导演。" },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Environnement opératique post-humain", es: "Entorno operístico posthumano", en: "Post-human operatic environment", zh: "后人类歌剧环境" } },
+        { k: { fr: "Conception & direction", es: "Concepción & dirección", en: "Creation & direction", zh: "构思与导演" }, v: "Emma Terno · Valentín Pelisch" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "CETC — Teatro Colón (Buenos Aires), sept. 2025", es: "CETC — Teatro Colón (Buenos Aires), sept. 2025", en: "CETC — Teatro Colón (Buenos Aires), Sept. 2025", zh: "CETC — 科隆剧院（布宜诺斯艾利斯），2025 年 9 月" } },
+        { k: { fr: "Production", es: "Producción", en: "Production", zh: "制作" }, v: "GRAME — CNCM (Lyon) · CETC — Teatro Colón" },
+        { k: { fr: "Diffusion internationale", es: "Difusión internacional", en: "International diffusion", zh: "国际巡演" }, v: "STOPERA!" }
+      ],
+      credits: [
+        { role: { fr: "Conception & direction", es: "Concepción & dirección", en: "Creation & direction", zh: "构思与导演" }, who: "Emma Terno · Valentín Pelisch" },
+        { role: { fr: "Performeur·ses", es: "Performers", en: "Performers", zh: "表演者" }, who: "Manuel Atwell · Emma Terno" }
+      ],
+      tech: [
+        { k: { fr: "Saxophone baryton", es: "Saxo barítono", en: "Baritone sax", zh: "上低音萨克斯" }, v: "Carolina Cervetto" },
+        { k: { fr: "Alto", es: "Viola", en: "Viola", zh: "中提琴" }, v: "Mariano Malamud" },
+        { k: { fr: "Violoncelle", es: "Violonchelo", en: "Cello", zh: "大提琴" }, v: "Juan Ignacio Ferrera" },
+        { k: { fr: "Clarinette basse", es: "Clarinete bajo", en: "Bass clarinet", zh: "低音单簧管" }, v: "Lautaro Abrego" },
+        { k: { fr: "Théorbe", es: "Tiorba", en: "Theorbo", zh: "西奥伯琴" }, v: "Laura Fainstein" },
+        { k: { fr: "Lumières", es: "Iluminación", en: "Lighting", zh: "灯光" }, v: "Adrián Grimozzi" },
+        { k: { fr: "Assistante technique", es: "Asistente técnica", en: "Technical assistant", zh: "技术助理" }, v: "Magdalena Picco" },
+        { k: { fr: "Costumes", es: "Vestuario", en: "Costume design", zh: "服装设计" }, v: "Belén Parra · Florencia Fiori" }
+      ],
+      diffusion: {
+        fr: "Créé au Centro de Experimentación del Teatro Colón (Buenos Aires) en septembre 2025, OOO est né d'une coopération entre le GRAME — Centre National de Création Musicale (Lyon) et le CETC. STOPERA! en porte le développement et la diffusion internationale.",
+        es: "Estrenado en el Centro de Experimentación del Teatro Colón (Buenos Aires) en septiembre de 2025, OOO nació de una cooperación entre el GRAME — Centre National de Création Musicale (Lyon) y el CETC. STOPERA! lleva su desarrollo y su difusión internacional.",
+        en: "Premiered at the Centro de Experimentación del Teatro Colón (Buenos Aires) in September 2025, OOO was born from a cooperation between GRAME — Centre National de Création Musicale (Lyon) and the CETC. STOPERA! carries its development and international diffusion.",
+        zh: "OOO 于 2025 年 9 月在科隆剧院实验中心（CETC，布宜诺斯艾利斯）首演，诞生自里昂 GRAME 国家音乐创作中心与 CETC 的合作。STOPERA! 负责其发展与国际巡演。" },
+      partners: ["GRAME — CNCM (Lyon)", "CETC — Teatro Colón (Buenos Aires)", "STOPERA!"],
+      press: [
+        { quote: { fr: "L'opéra qui imagine un monde sans humains stupéfie au Centre d'expérimentation du Teatro Colón.", es: "La ópera que imagina un mundo sin humanos asombra en el Centro de Experimentación del Teatro Colón.", en: "The opera that imagines a world without humans astonishes at the Teatro Colón's experimentation centre.", zh: "这部想象无人世界的歌剧在科隆剧院实验中心令人惊叹。" }, source: "Infobae", url: "https://www.infobae.com/cultura/2025/09/03/la-opera-que-imagina-un-mundo-sin-humanos-asombra-en-el-centro-de-experimentacion-del-teatro-colon/" },
+        { quote: { fr: "Opéra expérimental : le dialogue entre les plantes et l'intelligence artificielle.", es: "Ópera experimental: el diálogo entre las plantas y la inteligencia artificial.", en: "Experimental opera: the dialogue between plants and artificial intelligence.", zh: "实验歌剧：植物与人工智能之间的对话。" }, source: "Clarín", url: "https://www.clarin.com/revista-n/opera-experimental-ooo-dialogo-plantas-inteligencia-artificial_0_0h5nTviRXY.html" }
+      ],
+      links: [
+        { label: "Ópera Latinoamérica — OOO au CETC", url: "https://www.operala.org/centro-experimentacion-teatro-colon-ooo/" },
+        { label: "Radio Buenos Aires — Valentín Pelisch, OOO", url: "https://www.radiobuenosaires.com.ar/valentin-pelisch-ooo-la-opera-experimental-que-desafia-lo-convencional" },
+        { label: "Perfil — OOO (PressReader)", url: "https://www.pressreader.com/argentina/perfil-sabado/20250906/282518664632403" }
+      ],
+      relations: [
+        { label: { fr: "Emma Terno", es: "Emma Terno", en: "Emma Terno", zh: "Emma Terno" }, href: "artists/emma-terno/" },
+        { label: { fr: "Valentín Pelisch", es: "Valentín Pelisch", en: "Valentín Pelisch", zh: "Valentín Pelisch" }, href: "artists/valentin-pelisch/" },
+        { label: { fr: "GRAME — CNCM", es: "GRAME — CNCM", en: "GRAME — CNCM", zh: "GRAME — CNCM" }, url: "https://www.grame.fr" },
+        { label: { fr: "CETC — Teatro Colón", es: "CETC — Teatro Colón", en: "CETC — Teatro Colón", zh: "CETC — 科隆剧院" }, url: "https://teatrocolon.org.ar" },
+        { label: { fr: "Recherche & innovation", es: "Investigación & innovación", en: "Research & innovation", zh: "研究与创新" }, href: "index.html#recherche" },
+        { label: { fr: "Coopération internationale", es: "Cooperación internacional", en: "International cooperation", zh: "国际合作" }, href: "index.html#reseau" }
+      ],
+      gallery: [],
+      note: { fr: "Création mondiale au CETC — Teatro Colón (Buenos Aires), 2–10 septembre 2025. Photos : Lucía Rivero. Bande-annonce ci-dessus.", es: "Estreno mundial en el CETC — Teatro Colón (Buenos Aires), 2–10 de septiembre de 2025. Fotos: Lucía Rivero. Tráiler arriba.", en: "World premiere at the CETC — Teatro Colón (Buenos Aires), 2–10 September 2025. Photos: Lucía Rivero. Trailer above.", zh: "于 CETC — 科隆剧院（布宜诺斯艾利斯）世界首演，2025 年 9 月 2–10 日。摄影：Lucía Rivero。预告片见上方。" }
+    },
     {
       slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.jpg",
       tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演" },
@@ -362,6 +419,7 @@
 
   // Charte couleur élégante — palette BEHR Color Trends 2026 (tons muets, sophistiqués)
   var COLORS = {
+    "ooo":              "#34433f",  // deep forest-teal — nature post-humaine
     "war-madrigals":    "#2f3f49",  // Nocturne Blue — bleu nuit profond
     "rayon-n":          "#4f5f60",  // Hidden Gem — teal-gris profond
     "nous":             "#5e3c41",  // Rumors — bordeaux feutré
