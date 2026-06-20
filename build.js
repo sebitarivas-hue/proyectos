@@ -33,7 +33,7 @@ var THEMES = [
              es: "La imagen, el gesto y la voz transformados en directo: sensores, vídeo, electrónica e imagen generada se vuelven materia escénica.",
              en: "Image, gesture and voice transformed live: sensors, video, electronics and generated imagery become stage material.",
              zh: "影像、动作与人声的实时转化：传感器、影像、电子与生成图像成为舞台素材。" },
-    items: ["rayon-n", "rut", "aliados", "snow-on-her-lips", "fame"] },
+    items: ["ooo", "rayon-n", "rut", "aliados", "snow-on-her-lips", "fame"] },
   { slug: "memoire-politique",
     title: { fr: "Mémoire & politique", es: "Memoria & política", en: "Memory & politics", zh: "记忆与政治" },
     blurb: { fr: "Pouvoir, histoire et résistance : des figures réelles ou de fiction qui interrogent la responsabilité, la violence et la liberté.",
@@ -50,11 +50,11 @@ var THEMES = [
     items: ["nous", "otages", "war-madrigals", "aliados", "america"] },
   { slug: "corps-presence",
     title: { fr: "Corps & présence", es: "Cuerpo & presencia", en: "Body & presence", zh: "身体与在场" },
-    blurb: { fr: "Seul·e en scène : la performance, le geste et la présence comme acte, où le corps devient instrument.",
-             es: "Solo·a en escena: la performance, el gesto y la presencia como acto, donde el cuerpo se vuelve instrumento.",
-             en: "Alone on stage: performance, gesture and presence as act, where the body becomes an instrument.",
-             zh: "独自在台上：表演、动作与作为行动的在场，身体成为乐器。" },
-    items: ["rut", "fame", "insistir", "snow-on-her-lips"] }
+    blurb: { fr: "La performance, le geste et la présence comme acte — du solo au corps parmi les objets et les machines.",
+             es: "La performance, el gesto y la presencia como acto — del solo al cuerpo entre los objetos y las máquinas.",
+             en: "Performance, gesture and presence as act — from the solo to the body among objects and machines.",
+             zh: "表演、动作与作为行动的在场——从独角到置身于物件与机器之间的身体。" },
+    items: ["ooo", "rut", "fame", "insistir", "snow-on-her-lips"] }
 ];
 
 /* ---- helpers ---- */
