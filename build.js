@@ -82,9 +82,8 @@ function tileBg(slug){var b=COLORS[slug]||"#4f5f60";return"linear-gradient(152de
 function header(rel) {
   // target starting with "#" = anchor on home ; otherwise a standalone page path
   var nav = [["#apropos","À propos","Acerca de","About","关于"],["#productions","Productions","Producciones","Productions","作品"],
-    ["news/","Actualités","Novedades","News","动态"],["#reseau","Réseau","Red","Network","网络"],
-    ["artists/","Artistes","Artistas","Artists","艺术家"],
-    ["#recherche","Recherche","Investigación","Research","研究"],["lips/","LIPS","LIPS","LIPS","LIPS"],
+    ["#recherche","Recherche & LIPS","Investigación & LIPS","Research & LIPS","研究 & LIPS"],
+    ["#reseau","Réseau international","Red internacional","International network","国际网络"],
     ["#rejoindre","Rejoindre","Unirse","Join","加入"],["#contact","Contact","Contacto","Contact","联系"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
@@ -96,12 +95,16 @@ function header(rel) {
     + '    </nav>\n  </header>';
 }
 function editorialNav(rel) {
-  var links = THEMES.map(function (th) {
-    return '<a href="' + rel + 'parcours/' + th.slug + '/" ' + ml(th.title) + '></a>';
-  }).join("");
-  return '<nav class="editorial-nav" aria-label="Parcours éditoriaux">\n'
-    + '    <a class="ed-label" href="' + rel + 'parcours/" data-fr="Parcours" data-es="Recorridos" data-en="Threads" data-zh="主题"></a>\n'
-    + '    <div class="ed-links">' + links + '</div>\n  </nav>';
+  var miss = [["#productions","Création","Creación","Creation","创作"],
+    ["#recherche","Recherche","Investigación","Research","研究"],
+    ["#lips","Transmission","Transmisión","Transmission","传承"],
+    ["#rejoindre","Accompagnement","Acompañamiento","Accompaniment","陪伴"],
+    ["cooperation/","Coopération","Cooperación","Cooperation","合作"]]
+    .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
+      return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("");
+  return '<nav class="editorial-nav" aria-label="Missions">\n'
+    + '    <span class="ed-label" data-fr="Missions" data-es="Misiones" data-en="Missions" data-zh="使命"></span>\n'
+    + '    <div class="ed-links">' + miss + '</div>\n  </nav>';
 }
 function footer(rel) {
   return '<footer class="site-footer">\n'
@@ -111,7 +114,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618I";
+  var rel = opts.rel, V = "?v=20260618J";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
