@@ -81,6 +81,7 @@
         zh: "OOO 于 2025 年 9 月在科隆剧院实验中心（CETC，布宜诺斯艾利斯）首演，诞生自里昂 GRAME 国家音乐创作中心与 CETC 的合作。STOPERA! 负责其发展与国际巡演。" },
       partners: ["GRAME — CNCM (Lyon)", "CETC — Teatro Colón (Buenos Aires)", "STOPERA!"],
       press: [
+        { quote: { fr: "OOO invoque Dalida, la chanteuse mythique, dans une succession de rituels audiovisuels où les fantômes chantent de vieilles mélodies.", es: "OOO invoca a Dalida, la mítica cantante, en una sucesión de rituales audiovisuales donde los fantasmas cantan viejas melodías.", en: "OOO invokes Dalida, the mythical singer, in a succession of audiovisual rituals where ghosts sing old melodies.", zh: "OOO 召唤传奇歌手 Dalida，化作一连串视听仪式，幽灵在其中吟唱古老旋律。" }, source: "Página/12 — Inevitables", url: "https://www.pagina12.com.ar/853209-inevitables/" },
         { quote: { fr: "L'opéra qui imagine un monde sans humains stupéfie au Centre d'expérimentation du Teatro Colón.", es: "La ópera que imagina un mundo sin humanos asombra en el Centro de Experimentación del Teatro Colón.", en: "The opera that imagines a world without humans astonishes at the Teatro Colón's experimentation centre.", zh: "这部想象无人世界的歌剧在科隆剧院实验中心令人惊叹。" }, source: "Infobae", url: "https://www.infobae.com/cultura/2025/09/03/la-opera-que-imagina-un-mundo-sin-humanos-asombra-en-el-centro-de-experimentacion-del-teatro-colon/" },
         { quote: { fr: "Opéra expérimental : le dialogue entre les plantes et l'intelligence artificielle.", es: "Ópera experimental: el diálogo entre las plantas y la inteligencia artificial.", en: "Experimental opera: the dialogue between plants and artificial intelligence.", zh: "实验歌剧：植物与人工智能之间的对话。" }, source: "Clarín", url: "https://www.clarin.com/revista-n/opera-experimental-ooo-dialogo-plantas-inteligencia-artificial_0_0h5nTviRXY.html" }
       ],
@@ -98,11 +99,14 @@
         { label: { fr: "Coopération internationale", es: "Cooperación internacional", en: "International cooperation", zh: "国际合作" }, href: "index.html#reseau" }
       ],
       gallery: [
+        { src: "assets/projects/ooo/ooo-32.jpg", alt: "OOO — la pyramide d'objets, Teatro Colón / CETC, photo Lucía Rivero" },
+        { src: "assets/projects/ooo/ooo-26.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" },
         { src: "assets/projects/ooo/ooo-9.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" },
+        { src: "assets/projects/ooo/ooo-24.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" },
         { src: "assets/projects/ooo/ooo-22.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" },
-        { src: "assets/projects/ooo/ooo-34.jpg", alt: "OOO — Teatro Colón / CETC, photo Lucía Rivero" }
+        { src: "assets/projects/ooo/ooo-lyon.jpg", alt: "OOO — version Lyon (GRAME)" }
       ],
-      note: { fr: "Création mondiale au CETC — Teatro Colón (Buenos Aires), 2–10 septembre 2025. Photos : Lucía Rivero. Bande-annonce ci-dessus.", es: "Estreno mundial en el CETC — Teatro Colón (Buenos Aires), 2–10 de septiembre de 2025. Fotos: Lucía Rivero. Tráiler arriba.", en: "World premiere at the CETC — Teatro Colón (Buenos Aires), 2–10 September 2025. Photos: Lucía Rivero. Trailer above.", zh: "于 CETC — 科隆剧院（布宜诺斯艾利斯）世界首演，2025 年 9 月 2–10 日。摄影：Lucía Rivero。预告片见上方。" }
+      note: { fr: "Création mondiale au CETC — Teatro Colón (Buenos Aires), 2–10 septembre 2025. Développée en résidence au GRAME (Lyon). Photos : Lucía Rivero. Bande-annonce ci-dessus.", es: "Estreno mundial en el CETC — Teatro Colón (Buenos Aires), 2–10 de septiembre de 2025. Desarrollada en residencia en el GRAME (Lyon). Fotos: Lucía Rivero. Tráiler arriba.", en: "World premiere at the CETC — Teatro Colón (Buenos Aires), 2–10 September 2025. Developed in residency at GRAME (Lyon). Photos: Lucía Rivero. Trailer above.", zh: "于 CETC — 科隆剧院（布宜诺斯艾利斯）世界首演，2025 年 9 月 2–10 日。曾于里昂 GRAME 驻地开发。摄影：Lucía Rivero。预告片见上方。" }
     },
     {
       slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.jpg",
