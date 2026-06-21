@@ -439,3 +439,9 @@ main { counter-reset: sec; }
 .rel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .55rem; }
 .rel-list a { display: inline-block; padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--fg); text-decoration: none; transition: border-color .2s ease, color .2s ease, background .2s ease; }
 .rel-list a:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-2); }
+
+/* liens dans le bandeau direction + portrait président */
+.authority a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.authority a:hover { border-color: currentColor; }
+.honneur-portrait figcaption a { color: inherit; text-decoration: none; }
+.honneur-portrait figcaption a:hover { color: var(--accent); }
