@@ -111,7 +111,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618H";
+  var rel = opts.rel, V = "?v=20260618I";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -229,6 +229,64 @@ function newsBody(n, rel) {
     + (img ? '      <figure class="pd-media"><img src="' + img + '" alt="' + esc(plain(n.title)) + '" /></figure>\n' : "")
     + '      <p class="pd-pitch" ' + ml(n.excerpt) + "></p>\n"
     + '      <div class="prose"><p ' + ml(n.body) + "></p></div>\n" + rl + "\n    </article>";
+}
+
+/* ---- COOPÉRATION : carte filigrane + spots ---- */
+var COOP_PATHS = [
+  "M0,130 L200,130 L330,200 L440,160 L550,150 L490,110 L330,90 L150,50 L0,40 Z",
+  "M0,310 L70,380 L150,440 L230,460 L320,530 L290,460 L200,400 L110,370 L0,320 Z",
+  "M360,530 L460,510 L550,570 L650,620 L800,680 L720,850 L570,960 L480,1070 L430,1110 L440,950 L380,760 L340,660 Z",
+  "M1050,260 L1060,190 L1120,140 L1160,110 L1210,90 L1270,70 L1360,70 L1450,40 L1450,160 L1350,200 L1270,210 L1200,190 L1130,220 L1080,250 Z",
+  "M980,470 L990,350 L1060,300 L1160,280 L1270,280 L1390,300 L1450,320 L1450,740 L1400,960 L1310,960 L1260,780 L1230,580 L1070,570 L1000,510 Z"
+];
+var COOP_CITIES = [
+  { id:"paris", region:"eu", x:80.9, y:12.3, side:"l", name:"Paris · Gentilly",
+    inst:[["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["T&M Paris","https://theatre-musique.com"],["T2G — Gennevilliers","https://www.theatre2gennevilliers.com"],["Le Générateur","https://legenerateur.com"],["La Muse en Circuit","https://alamuse.com"],["Ville de Gentilly","https://www.ville-gentilly.fr"]],
+    proj:[["Siège STOPERA!",""],["Aliados","aliados"],["LIPS","lips"]] },
+  { id:"lyon", region:"eu", x:82.6, y:15.2, side:"l", name:"Lyon",
+    inst:[["GRAME — CNCM","https://www.grame.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Théâtre de la Croix-Rousse","https://croix-rousse.com"],["Pôle Pixel","https://www.pole-pixel.com"]],
+    proj:[["Otages","otages"],["Rayon N","rayon-n"],["OOO","ooo"],["LIPS","lips"]] },
+  { id:"monaco", region:"eu", x:84.4, y:17.1, side:"l", name:"Monte-Carlo",
+    inst:[["Printemps des Arts","https://www.printempsdesarts.mc"]],
+    proj:[["Snow on Her Lips","snow-on-her-lips"]] },
+  { id:"mexico", region:"la", x:10.9, y:39.8, side:"r", name:"Mexico",
+    inst:[],
+    proj:[["A World to Blast","america"],["Insistir","insistir"]] },
+  { id:"buenosaires", region:"la", x:39.0, y:90.3, side:"up", name:"Buenos Aires",
+    inst:[["CETC — Teatro Colón","https://teatrocolon.org.ar"],["UNSAM","https://www.unsam.edu.ar"],["Ópera Latinoamérica","https://operala.org"]],
+    proj:[["OOO","ooo"],["Mamma Roma","mamma-roma"]] }
+];
+function coopInst(arr){ return arr.map(function(i){ return i[1] ? '<a href="'+i[1]+'" target="_blank" rel="noopener">'+esc(i[0])+"</a>" : esc(i[0]); }).join(" · "); }
+function coopProj(arr, rel){ return arr.map(function(p){ if(!p[1]) return esc(p[0]); var href = rel + (p[1]==="lips" ? "lips/" : "productions/"+p[1]+"/"); return '<a href="'+href+'">'+esc(p[0])+"</a>"; }).join(" · "); }
+function coopCardInner(c, rel){
+  var L_I={fr:"Institutions & lieux",es:"Instituciones & lugares",en:"Institutions & venues",zh:"机构与场馆"};
+  var L_P={fr:"Projets",es:"Proyectos",en:"Projects",zh:"项目"};
+  return '<p class="coop-city">'+esc(c.name)+"</p>"
+    + (c.inst.length ? '<p class="coop-k" '+ml(L_I)+'></p><p class="coop-v">'+coopInst(c.inst)+"</p>" : "")
+    + '<p class="coop-k" '+ml(L_P)+'></p><p class="coop-v">'+coopProj(c.proj, rel)+"</p>";
+}
+function cooperationBody(rel){
+  var svg = '<svg class="coop-svg" viewBox="0 0 1450 1070" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'
+    + COOP_PATHS.map(function(d){ return '<path d="'+d+'"/>'; }).join("") + "</svg>";
+  var spots = COOP_CITIES.map(function(c){
+    return '<button class="spot spot--'+c.side+'" type="button" style="left:'+c.x+'%;top:'+c.y+'%" data-city="'+c.id+'" aria-label="'+esc(c.name)+'">'
+      + '<span class="spot-dot"></span><span class="spot-name">'+esc(c.name)+'</span>'
+      + '<span class="coop-card">'+coopCardInner(c, rel)+"</span></button>";
+  }).join("\n        ");
+  function regionBlock(reg, label){
+    var items = COOP_CITIES.filter(function(c){return c.region===reg;}).map(function(c){
+      return '<div class="coop-city-block">'+coopCardInner(c, rel)+"</div>";
+    }).join("");
+    return '<div class="coop-region"><h3 '+ml(label)+'></h3>'+items+"</div>";
+  }
+  return '    <section class="section pd-page">\n'
+    + '      <p class="pd-eyebrow"><a href="'+rel+'index.html" data-fr="← Accueil" data-es="← Inicio" data-en="← Home" data-zh="← 首页"></a></p>\n'
+    + '      <h1 class="pd-title pd-title--page" data-fr="Coopération internationale" data-es="Cooperación internacional" data-en="International cooperation" data-zh="国际合作"></h1>\n'
+    + '      <p class="pd-pitch" data-fr="Depuis Gentilly, STOPERA! développe des collaborations entre artistes, institutions, universités et réseaux culturels — en Europe, en Amérique latine et au-delà. Survolez une ville pour voir ses institutions et les projets associés." data-es="Desde Gentilly, STOPERA! desarrolla colaboraciones entre artistas, instituciones, universidades y redes culturales — en Europa, América Latina y más allá. Pase el cursor sobre una ciudad para ver sus instituciones y los proyectos asociados." data-en="From Gentilly, STOPERA! develops collaborations between artists, institutions, universities and cultural networks — in Europe, Latin America and beyond. Hover a city to see its institutions and related projects." data-zh="从让蒂伊出发，STOPERA! 在欧洲、拉丁美洲及更远之地发展艺术家、机构、高校与文化网络之间的合作。将鼠标移至城市可查看其机构与相关项目。"></p>\n'
+    + '      <div class="coop-map">'+svg+"\n        "+spots+"\n      </div>\n"
+    + '      <div class="coop-regions">\n        '+regionBlock("eu",{fr:"Europe",es:"Europa",en:"Europe",zh:"欧洲"})+"\n        "+regionBlock("la",{fr:"Amérique latine",es:"América Latina",en:"Latin America",zh:"拉丁美洲"})+"\n      </div>\n"
+    + '      <script>(function(){var ss=document.querySelectorAll(".coop-map .spot");ss.forEach(function(s){s.addEventListener("click",function(e){e.preventDefault();var o=s.classList.contains("is-open");ss.forEach(function(x){x.classList.remove("is-open");});if(!o)s.classList.add("is-open");});});document.addEventListener("click",function(e){if(!e.target.closest(".coop-map .spot"))ss.forEach(function(x){x.classList.remove("is-open");});});})();</script>\n'
+    + "    </section>";
 }
 
 /* ---- write ---- */
@@ -579,6 +637,10 @@ ARTISTS.forEach(function (a) {
   write("artists/" + a.slug, page({ rel: "../../", title: a.name, description: plain(a.bio), image: img, url: url, jsonld: jsonld, body: artistBody(a, "../../") }));
   urls.push(url);
 });
+
+/* cooperation */
+write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
+urls.push(SITE + "/cooperation/");
 
 /* sitemap */
 var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

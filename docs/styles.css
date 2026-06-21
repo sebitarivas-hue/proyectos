@@ -469,3 +469,28 @@ main { counter-reset: sec; }
 .join-cta { font-family: var(--sans); font-weight: 600; font-size: .84rem; letter-spacing: .03em; color: var(--accent); text-decoration: none; }
 .join-cta:hover { text-decoration: underline; }
 @media (max-width: 560px) { .join-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Coopération : carte filigrane ---------- */
+.coop-map { position: relative; width: 100%; max-width: 1000px; margin: 1.8rem auto 0; aspect-ratio: 1450 / 1070; }
+.coop-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.coop-svg path { fill: rgba(216,30,5,.05); stroke: rgba(216,30,5,.20); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.spot { position: absolute; transform: translate(-50%,-50%); background: none; border: 0; padding: 0; cursor: pointer; }
+.spot-dot { display: block; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(216,30,5,.16); transition: box-shadow .2s ease, transform .2s ease; }
+.spot:hover .spot-dot, .spot:focus-visible .spot-dot, .spot.is-open .spot-dot { box-shadow: 0 0 0 7px rgba(216,30,5,.24); transform: scale(1.12); }
+.spot-name { position: absolute; left: 17px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .02em; color: var(--fg); text-shadow: 0 1px 2px var(--bg), 0 0 4px var(--bg); }
+.spot--l .spot-name { left: auto; right: 17px; }
+.coop-card { position: absolute; display: none; z-index: 8; width: 232px; max-width: 72vw; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .85rem .95rem; box-shadow: 0 14px 34px rgba(0,0,0,.16); text-align: left; top: 20px; left: -8px; }
+.spot--l .coop-card { left: auto; right: 20px; top: -8px; }
+.spot--up .coop-card { top: auto; bottom: 20px; left: -8px; }
+.spot:hover, .spot:focus-within, .spot.is-open { z-index: 9; }
+.spot:hover .coop-card, .spot:focus-within .coop-card, .spot.is-open .coop-card { display: block; }
+.coop-city { font-family: var(--display); font-weight: 600; font-size: .98rem; letter-spacing: -.01em; margin: 0 0 .3rem; }
+.coop-k { font-family: var(--sans); font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: .55rem 0 .15rem; }
+.coop-v { font-size: .82rem; line-height: 1.45; color: #2c2620; margin: 0; }
+.coop-card a, .coop-v a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color .2s ease, color .2s ease; }
+.coop-card a:hover, .coop-v a:hover { color: var(--accent); border-color: var(--accent); }
+.coop-regions { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2.4rem; margin-top: 2.6rem; border-top: 1px solid var(--line); padding-top: 1.6rem; }
+.coop-region h3 { font-family: var(--display); font-weight: 600; font-size: 1.1rem; margin: 0 0 .8rem; }
+.coop-city-block { padding: .9rem 0; border-top: 1px solid var(--line); }
+.coop-city-block:first-of-type { border-top: 0; }
+@media (max-width: 680px) { .coop-regions { grid-template-columns: 1fr; } .spot-name { font-size: .64rem; } }
