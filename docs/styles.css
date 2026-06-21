@@ -471,9 +471,9 @@ main { counter-reset: sec; }
 @media (max-width: 560px) { .join-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Coopération : carte filigrane ---------- */
-.coop-map { position: relative; width: 100%; max-width: 1000px; margin: 1.8rem auto 0; aspect-ratio: 1450 / 1070; }
+.coop-map { position: relative; width: 100%; max-width: 1000px; margin: 1.8rem auto 0; aspect-ratio: 2750 / 1220; }
 .coop-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.coop-svg path { fill: rgba(216,30,5,.05); stroke: rgba(216,30,5,.20); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.coop-svg .coop-dots circle { r: 5px; fill: rgba(216,30,5,.32); }
 .spot { position: absolute; transform: translate(-50%,-50%); background: none; border: 0; padding: 0; cursor: pointer; }
 .spot-dot { display: block; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(216,30,5,.16); transition: box-shadow .2s ease, transform .2s ease; }
 .spot:hover .spot-dot, .spot:focus-visible .spot-dot, .spot.is-open .spot-dot { box-shadow: 0 0 0 7px rgba(216,30,5,.24); transform: scale(1.12); }
@@ -515,3 +515,8 @@ main { counter-reset: sec; }
 .disciplines--link li a::after { content: " →"; color: var(--accent); opacity: 0; transition: opacity .2s ease; }
 .disciplines--link li a:hover { color: var(--accent); }
 .disciplines--link li a:hover::after { opacity: 1; }
+
+/* bouton retour accueil (flottant) */
+.float-home { display: inline-flex; align-items: center; gap: .45rem; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: .6rem 1rem; font-family: var(--sans); font-weight: 600; font-size: .8rem; letter-spacing: .04em; text-decoration: none; box-shadow: 0 8px 26px rgba(0,0,0,.12); transition: transform .15s ease, border-color .2s ease, color .2s ease; }
+.float-home svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.float-home:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }

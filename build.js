@@ -135,7 +135,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618P";
+  var rel = opts.rel, V = "?v=20260618S";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -158,6 +158,7 @@ function page(opts) {
     + '</head>\n<body data-lang="fr">\n  ' + header(rel) + '\n  ' + editorialNav(rel) + '\n  <main id="top" class="subpage">\n'
     + opts.body + '\n  </main>\n  ' + footer(rel) + '\n'
     + '  <div class="float-actions">\n'
+    + '    <a class="float-home" href="' + rel + 'index.html" aria-label="Accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg><span data-fr="Accueil" data-es="Inicio" data-en="Home" data-zh="首页"></span></a>\n'
     + '    <button class="float-share js-share" type="button" aria-label="Partager"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l4 4h-3v7h-2V7H8l4-4zM5 10h3v2H6.5v7h11v-7H16v-2h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/></svg><span data-fr="Partager" data-es="Compartir" data-en="Share" data-zh="分享"></span></button>\n'
     + '    <a class="float-contact" href="' + rel + 'index.html#contact" aria-label="Contact"><span data-fr="Écrire" data-es="Escribir" data-en="Write" data-zh="联系"></span><span aria-hidden="true">↗</span></a>\n'
     + '  </div>\n'
@@ -260,31 +261,54 @@ function newsBody(n, rel) {
 
 /* ---- COOPÉRATION : carte filigrane + spots ---- */
 var COOP_PATHS = [
-  "M0,20 L200,30 L330,70 L370,0 L510,20 L590,90 L630,150 L550,160 L480,180 L450,200 L410,220 L400,250 L390,270 L340,310 L350,350 L350,370 L320,330 L300,320 L270,320 L240,330 L210,330 L180,340 L180,360 L180,400 L240,440 L270,460 L320,530 L280,490 L200,460 L140,440 L90,410 L50,380 L10,340 L0,310 Z",
-  "M690,20 L750,-10 L850,-60 L950,-80 L930,-140 L770,-160 L630,-140 L600,-60 L650,10 Z",
-  "M340,540 L380,540 L430,510 L510,520 L550,570 L640,580 L650,620 L710,640 L800,670 L770,740 L760,800 L670,870 L610,960 L570,960 L530,1020 L500,1070 L460,1120 L430,1140 L410,1070 L420,990 L440,920 L450,800 L390,760 L340,680 L350,600 Z",
-  "M1050,250 L1060,190 L1140,180 L1110,140 L1140,130 L1170,110 L1190,100 L1220,80 L1230,50 L1260,30 L1330,30 L1390,20 L1450,30 L1450,170 L1410,210 L1350,220 L1310,210 L1280,170 L1230,180 L1190,190 L1150,220 L1140,250 L1090,260 Z",
-  "M980,470 L990,410 L1030,340 L1090,260 L1170,250 L1260,250 L1350,290 L1450,310 L1450,960 L1350,970 L1300,900 L1270,780 L1240,630 L1240,580 L1170,560 L1100,570 L1050,550 L990,500 Z"
+  "M0,230 L10,320 L50,380 L80,390 L110,420 L130,460 L160,490 L190,510 L240,540 L290,560 L330,570 L380,590 L420,630 L370,560 L340,540 L350,510 L310,520 L280,500 L280,460 L310,430 L350,430 L370,420 L410,420 L430,440 L450,470 L440,410 L490,370 L500,340 L510,320 L550,300 L580,270 L650,250 L690,200 L610,120 L470,100 L300,120 L0,120 Z",
+  "M790,120 L950,40 L1050,20 L1030,-40 L850,-80 L670,-40 L700,40 L750,110 Z",
+  "M440,640 L480,640 L530,610 L630,620 L750,670 L750,720 L810,740 L900,770 L860,850 L860,920 L770,970 L670,1060 L630,1120 L600,1170 L560,1220 L500,1240 L510,1160 L520,1090 L540,1020 L550,900 L490,860 L440,770 L450,700 Z",
+  "M1150,350 L1160,290 L1230,290 L1210,240 L1240,230 L1270,210 L1300,190 L1330,150 L1350,140 L1380,170 L1410,160 L1460,160 L1490,120 L1530,110 L1550,60 L1700,40 L1850,20 L2000,-10 L2250,-30 L2550,-10 L2750,20 L2750,120 L2650,170 L2600,240 L2550,290 L2520,320 L2470,320 L2460,340 L2450,380 L2470,420 L2430,480 L2330,510 L2310,560 L2300,620 L2250,650 L2230,600 L2190,540 L2150,500 L2130,510 L2070,550 L2030,630 L1990,570 L1950,510 L1910,470 L1850,470 L1820,470 L1750,420 L1730,420 L1730,480 L1810,540 L1700,600 L1680,590 L1650,500 L1600,440 L1610,360 L1550,360 L1530,320 L1510,310 L1480,320 L1440,300 L1380,270 L1330,280 L1280,290 L1250,320 L1240,350 L1190,360 Z",
+  "M1080,570 L1090,510 L1150,420 L1190,360 L1270,350 L1360,350 L1450,390 L1500,400 L1570,410 L1600,480 L1650,570 L1680,610 L1760,610 L1660,740 L1650,870 L1600,940 L1570,980 L1530,1050 L1450,1070 L1400,1000 L1370,880 L1340,730 L1340,680 L1270,660 L1200,670 L1150,650 L1090,600 Z",
+  "M2380,940 L2470,900 L2550,840 L2620,840 L2670,830 L2710,900 L2750,970 L2750,1090 L2710,1110 L2650,1100 L2600,1070 L2540,1040 L2470,1060 L2400,1060 L2380,980 Z",
+  "M2450,470 L2470,470 L2465,500 L2455,490 Z",
+  "M2550,410 L2600,380 L2650,340 L2660,310 L2650,370 L2620,370 L2570,390 Z",
+  "M1190,220 L1220,180 L1200,140 L1170,170 L1150,200 Z",
+  "M1680,840 L1750,870 L1750,970 L1700,970 L1680,880 Z",
+  "M1150,200 L1190,170 L1150,180 Z",
+  "M2450,540 L2490,600 L2510,650 L2470,620 L2450,580 Z",
+  "M410,500 L510,520 L480,500 L430,490 Z"
 ];
+/* échantillonnage : grille de points sur les terres (esthétique dot-map) */
+function coopDots(){
+  var polys = COOP_PATHS.map(function(d){
+    return d.replace(/[MZ]/g, " ").trim().split(/\s*L\s*/).map(function(pt){ var a = pt.trim().split(","); return [parseFloat(a[0]), parseFloat(a[1])]; });
+  });
+  function inside(x, y, poly){ var n = poly.length, ins = false, j = n - 1; for (var i = 0; i < n; i++){ var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1]; if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / ((yj - yi) || 1e-9) + xi)) ins = !ins; j = i; } return ins; }
+  var step = 26, out = "";
+  for (var y = 0; y <= 1220; y += step){ for (var x = 0; x <= 2750; x += step){
+    for (var k = 0; k < polys.length; k++){ if (inside(x, y, polys[k])){ out += '<circle cx="' + x + '" cy="' + y + '"/>'; break; } }
+  }}
+  return out;
+}
 var COOP_CITIES = [
-  { id:"paris", region:"eu", x:80.9, y:12.3, side:"l", name:"Paris · Gentilly",
+  { id:"paris", region:"eu", x:45.6, y:17.4, side:"l", name:"Paris · Gentilly",
     inst:[["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["T&M Paris","https://theatre-musique.com"],["T2G — Gennevilliers","https://www.theatre2gennevilliers.com"],["Le Générateur","https://legenerateur.com"],["La Muse en Circuit","https://alamuse.com"],["Ville de Gentilly","https://www.ville-gentilly.fr"]],
     proj:[["Siège STOPERA!",""],["Aliados","aliados"],["LIPS","lips"]] },
-  { id:"lyon", region:"eu", x:82.6, y:15.2, side:"l", name:"Lyon",
+  { id:"lyon", region:"eu", x:47.5, y:21.0, side:"l", name:"Lyon",
     inst:[["GRAME — CNCM","https://www.grame.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Théâtre de la Croix-Rousse","https://croix-rousse.com"],["Pôle Pixel","https://www.pole-pixel.com"]],
     proj:[["Otages","otages"],["Rayon N","rayon-n"],["OOO","ooo"],["LIPS","lips"]] },
-  { id:"monaco", region:"eu", x:84.4, y:17.1, side:"l", name:"Monte-Carlo",
+  { id:"monaco", region:"eu", x:49.2, y:24.6, side:"l", name:"Monte-Carlo",
     inst:[["Printemps des Arts","https://www.printempsdesarts.mc"]],
     proj:[["Snow on Her Lips","snow-on-her-lips"]] },
-  { id:"mexico", region:"la", x:10.9, y:39.8, side:"r", name:"Mexico",
+  { id:"mexico", region:"la", x:9.41, y:43.09, side:"r", name:"Mexico",
     inst:[],
     proj:[["A World to Blast","america"],["Insistir","insistir"]] },
-  { id:"buenosaires", region:"la", x:39.0, y:90.3, side:"up", name:"Buenos Aires",
+  { id:"buenosaires", region:"la", x:24.23, y:87.38, side:"up", name:"Buenos Aires",
     inst:[["CETC — Teatro Colón","https://teatrocolon.org.ar"],["UNSAM","https://www.unsam.edu.ar"],["Ópera Latinoamérica","https://operala.org"]],
     proj:[["OOO","ooo"],["Mamma Roma","mamma-roma"]] },
-  { id:"santiago", region:"la", x:30.6, y:89.2, side:"up", name:"Santiago du Chili",
+  { id:"santiago", region:"la", x:19.76, y:86.43, side:"up", name:"Santiago du Chili",
     inst:[["Ópera Latinoamérica (OLA)","https://operala.org"]],
-    proj:[["Assemblée du réseau · 2024",""]] }
+    proj:[["Assemblée du réseau · 2024",""]] },
+  { id:"taipei", region:"as", x:89.64, y:38.52, side:"l", name:"Taipei · Taïwan",
+    inst:[],
+    proj:[["Sur invitation · 2024",""]] }
 ];
 function coopInst(arr){ return arr.map(function(i){ return i[1] ? '<a href="'+i[1]+'" target="_blank" rel="noopener">'+esc(i[0])+"</a>" : esc(i[0]); }).join(" · "); }
 function coopProj(arr, rel){ return arr.map(function(p){ if(!p[1]) return esc(p[0]); var href = rel + (p[1]==="lips" ? "lips/" : "productions/"+p[1]+"/"); return '<a href="'+href+'">'+esc(p[0])+"</a>"; }).join(" · "); }
@@ -297,8 +321,8 @@ function coopCardInner(c, rel){
 }
 var COOP_SCRIPT = '<script>(function(){var ss=document.querySelectorAll(".coop-map .spot");ss.forEach(function(s){s.addEventListener("click",function(e){e.preventDefault();var o=s.classList.contains("is-open");ss.forEach(function(x){x.classList.remove("is-open");});if(!o)s.classList.add("is-open");});});document.addEventListener("click",function(e){if(!e.target.closest(".coop-map .spot"))ss.forEach(function(x){x.classList.remove("is-open");});});})();</script>';
 function coopMap(rel){
-  var svg = '<svg class="coop-svg" viewBox="0 0 1450 1070" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'
-    + COOP_PATHS.map(function(d){ return '<path d="'+d+'"/>'; }).join("") + "</svg>";
+  var svg = '<svg class="coop-svg" viewBox="0 0 2750 1220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'
+    + '<g class="coop-dots">' + coopDots() + "</g></svg>";
   var spots = COOP_CITIES.map(function(c){
     return '<button class="spot spot--'+c.side+'" type="button" style="left:'+c.x+'%;top:'+c.y+'%" data-city="'+c.id+'" aria-label="'+esc(c.name)+'">'
       + '<span class="spot-dot"></span><span class="spot-name">'+esc(c.name)+'</span>'
@@ -318,7 +342,7 @@ function cooperationBody(rel){
     + '      <h1 class="pd-title pd-title--page" data-fr="Coopération internationale" data-es="Cooperación internacional" data-en="International cooperation" data-zh="国际合作"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Depuis Gentilly, STOPERA! développe des collaborations entre artistes, institutions, universités et réseaux culturels — en Europe, en Amérique latine et au-delà. Survolez une ville pour voir ses institutions et les projets associés." data-es="Desde Gentilly, STOPERA! desarrolla colaboraciones entre artistas, instituciones, universidades y redes culturales — en Europa, América Latina y más allá. Pase el cursor sobre una ciudad para ver sus instituciones y los proyectos asociados." data-en="From Gentilly, STOPERA! develops collaborations between artists, institutions, universities and cultural networks — in Europe, Latin America and beyond. Hover a city to see its institutions and related projects." data-zh="从让蒂伊出发，STOPERA! 在欧洲、拉丁美洲及更远之地发展艺术家、机构、高校与文化网络之间的合作。将鼠标移至城市可查看其机构与相关项目。"></p>\n'
     + '      '+coopMap(rel)+"\n"
-    + '      <div class="coop-regions">\n        '+regionBlock("eu",{fr:"Europe",es:"Europa",en:"Europe",zh:"欧洲"})+"\n        "+regionBlock("la",{fr:"Amérique latine",es:"América Latina",en:"Latin America",zh:"拉丁美洲"})+"\n      </div>\n"
+    + '      <div class="coop-regions">\n        '+regionBlock("eu",{fr:"Europe",es:"Europa",en:"Europe",zh:"欧洲"})+"\n        "+regionBlock("la",{fr:"Amérique latine",es:"América Latina",en:"Latin America",zh:"拉丁美洲"})+"\n        "+regionBlock("as",{fr:"Asie",es:"Asia",en:"Asia",zh:"亚洲"})+"\n      </div>\n"
     + '      ' + COOP_SCRIPT + "\n    </section>";
 }
 
@@ -676,6 +700,54 @@ write("cooperation", page({ rel: "../", title: "Coopération internationale", de
 urls.push(SITE + "/cooperation/");
 /* snippet carte pour l'accueil (rel = "") */
 fs.writeFileSync("/tmp/coop_home.html", coopMap("") + "\n      " + COOP_SCRIPT);
+
+/* ---- AXES DE RECHERCHE (pages dédiées + prods dérivées) ---- */
+var AXES = [
+  { slug:"corps-voix",
+    title:{fr:"Corps & voix",es:"Cuerpo & voz",en:"Body & voice",zh:"身体与人声"},
+    intro:{fr:"L'incarnation au cœur du plateau : comment la voix, le geste et le corps deviennent présence. STOPERA! explore les dramaturgies vocales, l'écriture performative et la présence scénique — du solo à l'ensemble.",
+           es:"La encarnación en el centro de la escena: cómo la voz, el gesto y el cuerpo se vuelven presencia. STOPERA! explora las dramaturgias vocales, la escritura performativa y la presencia escénica — del solo al ensemble.",
+           en:"Embodiment at the heart of the stage: how voice, gesture and body become presence. STOPERA! explores vocal dramaturgies, performative writing and stage presence — from the solo to the ensemble.",
+           zh:"身体化居于舞台核心：人声、动作与身体如何成为在场。STOPERA! 探索人声戏剧构作、表演性书写与舞台在场——从独角到群体。"},
+    items:["rut","snow-on-her-lips","fame","insistir"] },
+  { slug:"technologies-creation",
+    title:{fr:"Technologies & création",es:"Tecnologías & creación",en:"Technologies & creation",zh:"技术与创作"},
+    intro:{fr:"La technologie comme matière artistique, jamais comme fin : intelligence artificielle, image générée, électronique en temps réel et systèmes interactifs — des outils mis à l'épreuve du plateau, du geste et de l'écoute.",
+           es:"La tecnología como materia artística, nunca como fin: inteligencia artificial, imagen generada, electrónica en tiempo real y sistemas interactivos — herramientas puestas a prueba en la escena, el gesto y la escucha.",
+           en:"Technology as artistic material, never as an end: artificial intelligence, generated image, real-time electronics and interactive systems — tools tested on stage, in gesture and listening.",
+           zh:"技术作为艺术素材，而非目的：人工智能、生成影像、实时电子与互动系统——在舞台、动作与聆听中接受检验的工具。"},
+    items:["rayon-n","ooo","rut","aliados"] },
+  { slug:"nouvelles-narrations",
+    title:{fr:"Nouvelles narrations",es:"Nuevas narrativas",en:"New narratives",zh:"新叙事"},
+    intro:{fr:"Raconter autrement : récits fragmentés, formes documentaires, dramaturgies spéculatives et écritures interdisciplinaires. La parole et le texte y deviennent matière musicale, de Christine Angot à Nina Bouraoui.",
+           es:"Contar de otro modo: relatos fragmentados, formas documentales, dramaturgias especulativas y escrituras interdisciplinarias. La palabra y el texto se vuelven materia musical, de Christine Angot a Nina Bouraoui.",
+           en:"Telling otherwise: fragmented narratives, documentary forms, speculative dramaturgies and interdisciplinary writing. Word and text become musical material, from Christine Angot to Nina Bouraoui.",
+           zh:"以另一种方式叙述：碎片化叙事、纪实形式、思辨戏剧构作与跨学科书写。言语与文本成为音乐素材，从 Christine Angot 到 Nina Bouraoui。"},
+    items:["america","otages","nous","war-madrigals"] },
+  { slug:"nouveaux-formats",
+    title:{fr:"Nouveaux formats",es:"Nuevos formatos",en:"New formats",zh:"新形式"},
+    intro:{fr:"Inventer la forme : opéra-film, environnements immersifs, installations performatives, formes scéniques hybrides et projets in situ. L'œuvre déborde le cadre du spectacle pour devenir expérience.",
+           es:"Inventar la forma: ópera-film, entornos inmersivos, instalaciones performativas, formas escénicas híbridas y proyectos in situ. La obra desborda el marco del espectáculo para volverse experiencia.",
+           en:"Inventing form: film-opera, immersive environments, performative installations, hybrid stage forms and site-specific projects. The work overflows the frame of the show to become experience.",
+           zh:"发明形式：影像歌剧、沉浸式环境、表演性装置、混合舞台形式与在地项目。作品溢出演出的框架，成为体验。"},
+    items:["ooo","rayon-n","snow-on-her-lips","insistir"] }
+];
+function rechBody(a, rel){
+  var tiles = a.items.filter(function(s){return bySlug[s];}).map(function(s){ return threadTile(s, rel); }).join("\n        ");
+  return '    <section class="section pd-page">\n'
+    + '      <p class="pd-eyebrow"><a href="'+rel+'index.html#recherche" data-fr="← Recherche" data-es="← Investigación" data-en="← Research" data-zh="← 研究"></a></p>\n'
+    + '      <h1 class="pd-title pd-title--page" '+ml(a.title)+'></h1>\n'
+    + '      <p class="pd-pitch" '+ml(a.intro)+'></p>\n'
+    + '      <ul class="projects thread-grid">\n        '+tiles+'\n      </ul>\n'
+    + '      <p class="more-link"><a href="'+rel+'lips/" data-fr="→ Le laboratoire de recherche LIPS" data-es="→ El laboratorio de investigación LIPS" data-en="→ The LIPS research laboratory" data-zh="→ LIPS 研究工作坊"></a></p>\n'
+    + '    </section>';
+}
+AXES.forEach(function(a){
+  var url = SITE + "/recherche/" + a.slug + "/";
+  var jsonld = JSON.stringify({ "@context":"https://schema.org","@type":"CollectionPage", name: plain(a.title)+" — STOPERA!", description: plain(a.intro), url: url });
+  write("recherche/"+a.slug, page({ rel:"../../", title: plain(a.title), description: plain(a.intro), image: SITE+"/assets/og-cover.jpg", url: url, ogType:"website", jsonld: jsonld, body: rechBody(a, "../../") }));
+  urls.push(url);
+});
 
 /* sitemap */
 var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
