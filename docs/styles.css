@@ -494,3 +494,7 @@ main { counter-reset: sec; }
 .coop-city-block { padding: .9rem 0; border-top: 1px solid var(--line); }
 .coop-city-block:first-of-type { border-top: 0; }
 @media (max-width: 680px) { .coop-regions { grid-template-columns: 1fr; } .spot-name { font-size: .64rem; } }
+
+/* noms cliquables dans le générique / informations des pages projet */
+.credits .who a, .facts .v a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .25s ease, color .2s ease; }
+.credits .who a:hover, .facts .v a:hover { color: var(--accent); background-size: 100% 1px; }

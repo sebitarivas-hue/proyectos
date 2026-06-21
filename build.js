@@ -74,6 +74,21 @@ function ml(o) {
   if (typeof o !== "object") o = { fr: o, es: o, en: o, zh: o };
   return LANGS.map(function (l) { return 'data-' + l + '="' + esc(o[l] != null ? o[l] : o.fr) + '"'; }).join(" ");
 }
+/* name → fiche : rendre tout nom d'artiste cliquable sur les pages projet */
+var NAME2SLUG = {
+  "Sebastian Rivas": "sebastian-rivas", "Georges Aperghis": "georges-aperghis", "Olivia Martin": "olivia-martin",
+  "Nicola Beller Carbone": "nicola-beller-carbone", "Martin Bauer": "martin-bauer", "Antoine Gindt": "antoine-gindt",
+  "Rut Schreiner": "rut-schreiner", "Léo Warynski": "leo-warynski", "Christine Angot": "christine-angot",
+  "Marcelo Lombardero": "marcelo-lombardero", "Emma Terno": "emma-terno", "Valentín Pelisch": "valentin-pelisch",
+  "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui", "Esteban Buch": "esteban-buch",
+  "Richard Brunel": "richard-brunel", "Philippe Béziat": "philippe-beziat", "Anne-Laure Chamboissier": "anne-laure-chamboissier"
+};
+var NAME_LIST = Object.keys(NAME2SLUG).sort(function (a, b) { return b.length - a.length; });
+function linkNames(s, rel) {
+  var out = esc(String(s));
+  NAME_LIST.forEach(function (n) { if (out.indexOf(n) >= 0) out = out.split(n).join('<a href="' + rel + 'artists/' + NAME2SLUG[n] + '/">' + n + "</a>"); });
+  return out;
+}
 function hx(h){h=h.replace("#","");return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
 function darken(h,f){var c=hx(h);function x(n){n=Math.max(0,Math.min(255,Math.round(n)));return("0"+n.toString(16)).slice(-2);}return"#"+x(c[0]*f)+x(c[1]*f)+x(c[2]*f);}
 function inkOn(h){var c=hx(h);return(0.299*c[0]+0.587*c[1]+0.114*c[2])/255>0.62?"#1a1410":"#ffffff";}
@@ -114,7 +129,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618L";
+  var rel = opts.rel, V = "?v=20260618M";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -152,12 +167,15 @@ function prodBody(p, rel) {
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
   if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>';
 
-  var facts = (p.facts || []).map(function (f) { return '<li><span class="k" ' + ml(f.k) + '></span><span class="v" ' + ml(f.v) + '></span></li>'; }).join("");
+  var facts = (p.facts || []).map(function (f) {
+    var v = (typeof f.v === "object") ? '<span class="v" ' + ml(f.v) + '></span>' : '<span class="v">' + linkNames(f.v, rel) + '</span>';
+    return '<li><span class="k" ' + ml(f.k) + '></span>' + v + '</li>';
+  }).join("");
   var credits_ml = (p.credits || []).map(function (c) {
-    var who = (typeof c.who === "object") ? '<span class="who" ' + ml(c.who) + '></span>' : '<span class="who">' + esc(c.who) + '</span>';
+    var who = (typeof c.who === "object") ? '<span class="who" ' + ml(c.who) + '></span>' : '<span class="who">' + linkNames(c.who, rel) + '</span>';
     return '<li><span class="role" ' + ml(c.role) + '></span> — ' + who + '</li>';
   }).join("");
-  var tech = (p.tech && p.tech.length) ? '<div class="pd-block"><h4 ' + ml({fr:"Fiche technique",es:"Ficha técnica",en:"Technical sheet",zh:"技术表"}) + '></h4><ul class="facts">' + p.tech.map(function (f) { return '<li><span class="k" ' + ml(f.k) + '></span><span class="v">' + esc(tFR(f.v)) + '</span></li>'; }).join("") + "</ul></div>" : "";
+  var tech = (p.tech && p.tech.length) ? '<div class="pd-block"><h4 ' + ml({fr:"Fiche technique",es:"Ficha técnica",en:"Technical sheet",zh:"技术表"}) + '></h4><ul class="facts">' + p.tech.map(function (f) { return '<li><span class="k" ' + ml(f.k) + '></span><span class="v">' + linkNames(tFR(f.v), rel) + '</span></li>'; }).join("") + "</ul></div>" : "";
   var diffusion = p.diffusion ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"Production & diffusion",es:"Producción & difusión",en:"Production & diffusion",zh:"制作与巡演"}) + '></h4><p class="pd-prose" ' + ml(p.diffusion) + "></p></div>" : "";
   var partners = (p.partners && p.partners.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"Coproduction",es:"Coproducción",en:"Co-production",zh:"联合制作"}) + '></h4><ul class="taglist">' + p.partners.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>" : "";
   var relations = (p.relations && p.relations.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"En lien",es:"Conexiones",en:"Connections",zh:"关联"}) + '></h4><ul class="rel-list">' + p.relations.map(function (r) {
