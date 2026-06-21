@@ -445,3 +445,27 @@ main { counter-reset: sec; }
 .authority a:hover { border-color: currentColor; }
 .honneur-portrait figcaption a { color: inherit; text-decoration: none; }
 .honneur-portrait figcaption a:hover { color: var(--accent); }
+
+/* ---------- Hero : ligne des fonctions ---------- */
+.hero-functions { margin: 1.1rem 0 0; font-family: var(--sans); font-weight: 600; font-size: clamp(.8rem, 1.5vw, .98rem); letter-spacing: .04em; color: var(--fg); }
+
+/* ---------- Production phare (home) ---------- */
+.featured { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.4rem, 3vw, 3rem); align-items: center; padding: clamp(2rem, 5vw, 3.6rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+.featured-media { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+.featured-media img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .4s ease; }
+.featured-media:hover img { transform: scale(1.03); }
+.featured-kicker { font-family: var(--sans); font-weight: 700; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 .6rem; }
+.featured-title { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.4rem); letter-spacing: -.04em; line-height: .9; margin: 0; }
+.featured-tag { font-family: var(--quote); font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--accent); margin: .4rem 0 .8rem; }
+.featured-sub { color: #2c2620; font-size: 1rem; line-height: 1.55; max-width: 52ch; margin: 0 0 1.3rem; }
+@media (max-width: 760px) { .featured { grid-template-columns: 1fr; } }
+
+/* ---------- Rejoindre : hub d'actions ---------- */
+.join-grid { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.join-card { border: 1px solid var(--line); border-radius: 8px; padding: 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .5rem; transition: border-color .2s ease, transform .15s ease; }
+.join-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.join-card h4 { font-family: var(--display); font-weight: 600; font-size: 1.1rem; letter-spacing: -.01em; margin: 0; }
+.join-card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.45; flex: 1; }
+.join-cta { font-family: var(--sans); font-weight: 600; font-size: .84rem; letter-spacing: .03em; color: var(--accent); text-decoration: none; }
+.join-cta:hover { text-decoration: underline; }
+@media (max-width: 560px) { .join-grid { grid-template-columns: 1fr; } }

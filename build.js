@@ -85,7 +85,7 @@ function header(rel) {
     ["news/","Actualités","Novedades","News","动态"],["#reseau","Réseau","Red","Network","网络"],
     ["artists/","Artistes","Artistas","Artists","艺术家"],
     ["#recherche","Recherche","Investigación","Research","研究"],["lips/","LIPS","LIPS","LIPS","LIPS"],
-    ["#presse","Presse","Prensa","Press","媒体"],["#contact","Contact","Contacto","Contact","联系"]]
+    ["#rejoindre","Rejoindre","Unirse","Join","加入"],["#contact","Contact","Contacto","Contact","联系"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
   return '<header class="site-header">\n'
@@ -111,7 +111,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618G";
+  var rel = opts.rel, V = "?v=20260618H";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
