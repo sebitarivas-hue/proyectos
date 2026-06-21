@@ -135,7 +135,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618N";
+  var rel = opts.rel, V = "?v=20260618O";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -281,7 +281,10 @@ var COOP_CITIES = [
     proj:[["A World to Blast","america"],["Insistir","insistir"]] },
   { id:"buenosaires", region:"la", x:39.0, y:90.3, side:"up", name:"Buenos Aires",
     inst:[["CETC — Teatro Colón","https://teatrocolon.org.ar"],["UNSAM","https://www.unsam.edu.ar"],["Ópera Latinoamérica","https://operala.org"]],
-    proj:[["OOO","ooo"],["Mamma Roma","mamma-roma"]] }
+    proj:[["OOO","ooo"],["Mamma Roma","mamma-roma"]] },
+  { id:"santiago", region:"la", x:30.6, y:89.2, side:"up", name:"Santiago du Chili",
+    inst:[["Ópera Latinoamérica (OLA)","https://operala.org"]],
+    proj:[["Assemblée du réseau · 2024",""]] }
 ];
 function coopInst(arr){ return arr.map(function(i){ return i[1] ? '<a href="'+i[1]+'" target="_blank" rel="noopener">'+esc(i[0])+"</a>" : esc(i[0]); }).join(" · "); }
 function coopProj(arr, rel){ return arr.map(function(p){ if(!p[1]) return esc(p[0]); var href = rel + (p[1]==="lips" ? "lips/" : "productions/"+p[1]+"/"); return '<a href="'+href+'">'+esc(p[0])+"</a>"; }).join(" · "); }
@@ -292,7 +295,8 @@ function coopCardInner(c, rel){
     + (c.inst.length ? '<p class="coop-k" '+ml(L_I)+'></p><p class="coop-v">'+coopInst(c.inst)+"</p>" : "")
     + '<p class="coop-k" '+ml(L_P)+'></p><p class="coop-v">'+coopProj(c.proj, rel)+"</p>";
 }
-function cooperationBody(rel){
+var COOP_SCRIPT = '<script>(function(){var ss=document.querySelectorAll(".coop-map .spot");ss.forEach(function(s){s.addEventListener("click",function(e){e.preventDefault();var o=s.classList.contains("is-open");ss.forEach(function(x){x.classList.remove("is-open");});if(!o)s.classList.add("is-open");});});document.addEventListener("click",function(e){if(!e.target.closest(".coop-map .spot"))ss.forEach(function(x){x.classList.remove("is-open");});});})();</script>';
+function coopMap(rel){
   var svg = '<svg class="coop-svg" viewBox="0 0 1450 1070" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'
     + COOP_PATHS.map(function(d){ return '<path d="'+d+'"/>'; }).join("") + "</svg>";
   var spots = COOP_CITIES.map(function(c){
@@ -300,6 +304,9 @@ function cooperationBody(rel){
       + '<span class="spot-dot"></span><span class="spot-name">'+esc(c.name)+'</span>'
       + '<span class="coop-card">'+coopCardInner(c, rel)+"</span></button>";
   }).join("\n        ");
+  return '<div class="coop-map">'+svg+"\n        "+spots+"\n      </div>";
+}
+function cooperationBody(rel){
   function regionBlock(reg, label){
     var items = COOP_CITIES.filter(function(c){return c.region===reg;}).map(function(c){
       return '<div class="coop-city-block">'+coopCardInner(c, rel)+"</div>";
@@ -310,10 +317,9 @@ function cooperationBody(rel){
     + '      <p class="pd-eyebrow"><a href="'+rel+'index.html" data-fr="← Accueil" data-es="← Inicio" data-en="← Home" data-zh="← 首页"></a></p>\n'
     + '      <h1 class="pd-title pd-title--page" data-fr="Coopération internationale" data-es="Cooperación internacional" data-en="International cooperation" data-zh="国际合作"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Depuis Gentilly, STOPERA! développe des collaborations entre artistes, institutions, universités et réseaux culturels — en Europe, en Amérique latine et au-delà. Survolez une ville pour voir ses institutions et les projets associés." data-es="Desde Gentilly, STOPERA! desarrolla colaboraciones entre artistas, instituciones, universidades y redes culturales — en Europa, América Latina y más allá. Pase el cursor sobre una ciudad para ver sus instituciones y los proyectos asociados." data-en="From Gentilly, STOPERA! develops collaborations between artists, institutions, universities and cultural networks — in Europe, Latin America and beyond. Hover a city to see its institutions and related projects." data-zh="从让蒂伊出发，STOPERA! 在欧洲、拉丁美洲及更远之地发展艺术家、机构、高校与文化网络之间的合作。将鼠标移至城市可查看其机构与相关项目。"></p>\n'
-    + '      <div class="coop-map">'+svg+"\n        "+spots+"\n      </div>\n"
+    + '      '+coopMap(rel)+"\n"
     + '      <div class="coop-regions">\n        '+regionBlock("eu",{fr:"Europe",es:"Europa",en:"Europe",zh:"欧洲"})+"\n        "+regionBlock("la",{fr:"Amérique latine",es:"América Latina",en:"Latin America",zh:"拉丁美洲"})+"\n      </div>\n"
-    + '      <script>(function(){var ss=document.querySelectorAll(".coop-map .spot");ss.forEach(function(s){s.addEventListener("click",function(e){e.preventDefault();var o=s.classList.contains("is-open");ss.forEach(function(x){x.classList.remove("is-open");});if(!o)s.classList.add("is-open");});});document.addEventListener("click",function(e){if(!e.target.closest(".coop-map .spot"))ss.forEach(function(x){x.classList.remove("is-open");});});})();</script>\n'
-    + "    </section>";
+    + '      ' + COOP_SCRIPT + "\n    </section>";
 }
 
 /* ---- write ---- */
@@ -668,6 +674,8 @@ ARTISTS.forEach(function (a) {
 /* cooperation */
 write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
 urls.push(SITE + "/cooperation/");
+/* snippet carte pour l'accueil (rel = "") */
+fs.writeFileSync("/tmp/coop_home.html", coopMap("") + "\n      " + COOP_SCRIPT);
 
 /* sitemap */
 var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
