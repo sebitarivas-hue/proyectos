@@ -137,7 +137,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622G";
+  var rel = opts.rel, V = "?v=20260622H";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -469,11 +469,11 @@ var ARTISTS = [
     productions: ["rayon-n", "otages", "aliados", "snow-on-her-lips", "war-madrigals", "nous", "mamma-roma", "america"] },
   { slug: "georges-aperghis", name: "Georges Aperghis", photo: "assets/aperghis.jpg",
     role: { fr: "Président d'honneur", es: "Presidente de honor", en: "Honorary president", zh: "名誉主席" },
-    bio: { fr: "Pionnier du théâtre musical, fondateur de l'ATEM (1976). Son compagnonnage et son influence artistique accompagnent STOPERA! ; ses pièces sont au cœur du projet Insistir.",
-           es: "Pionero del teatro musical, fundador del ATEM (1976). Su compañía y su influencia artística acompañan a STOPERA!; sus piezas están en el corazón del proyecto Insistir.",
-           en: "A pioneer of music theatre, founder of ATEM (1976). His companionship and artistic influence accompany STOPERA!; his pieces are at the heart of the Insistir project.",
-           zh: "音乐剧场的先驱，ATEM（1976）创始人。他的陪伴与艺术影响伴随着 STOPERA!；其作品是 Insistir 项目的核心。" },
-    productions: ["insistir"] },
+    bio: { fr: "Pionnier du théâtre musical, fondateur de l'ATEM (1976). Son compagnonnage et son influence artistique accompagnent STOPERA! ; ses pièces sont au cœur d'Insistir et résonnent dans [FAM]E (Récitation n°9).",
+           es: "Pionero del teatro musical, fundador del ATEM (1976). Su compañía y su influencia artística acompañan a STOPERA!; sus piezas están en el corazón de Insistir y resuenan en [FAM]E (Récitation n°9).",
+           en: "A pioneer of music theatre, founder of ATEM (1976). His companionship and artistic influence accompany STOPERA!; his pieces are at the heart of Insistir and resonate in [FAM]E (Récitation n°9).",
+           zh: "音乐剧场的先驱，ATEM（1976）创始人。他的陪伴与艺术影响伴随着 STOPERA!；其作品是 Insistir 的核心，并在「[FAM]E」中回响（Récitation n°9）。" },
+    productions: ["insistir", "fame"] },
   { slug: "olivia-martin", name: "Olivia Martin",
     role: { fr: "Percussionniste", es: "Percusionista", en: "Percussionist", zh: "打击乐演奏家" },
     bio: { fr: "Percussionniste, elle conçoit et interprète [FAM]E, récital du GRAME autour du féminin (Auditorium de Lyon), et joue au sein de l'ensemble Êkheía (Snow on Her Lips).",
