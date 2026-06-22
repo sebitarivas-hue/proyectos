@@ -138,7 +138,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622K";
+  var rel = opts.rel, V = "?v=20260622L";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -173,9 +173,9 @@ function prodBody(p, rel) {
   var photo = p.photo ? rel + p.photo : null;
   var hero, teaser = "";
   if (photo) hero = '<figure class="pd-media"><img src="' + photo + '" alt="' + esc(plain(p.titleHtml || p.title)) + '" /></figure>';
-  else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+  else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
-  if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>';
+  if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>';
 
   var facts = (p.facts || []).map(function (f) {
     var v = (typeof f.v === "object") ? '<span class="v" ' + ml(f.v) + '></span>' : '<span class="v">' + linkNames(f.v, rel) + '</span>';
@@ -200,7 +200,7 @@ function prodBody(p, rel) {
   var note = p.note ? '<p class="pd-note" ' + ml(p.note) + "></p>" : "";
   var dims = (p.transmission || p.territory || partnersList) ? '<div class="pd-dimensions">\n'
     + '        <div class="pd-dim"><h4 ' + ml({fr:"Production",es:"Producción",en:"Production",zh:"制作"}) + '></h4><p class="pd-dim-text" ' + ml(p.short) + '></p></div>\n'
-    + '        <div class="pd-dim"><h4 ' + ml({fr:"Transmission",es:"Transmisión",en:"Transmission",zh:"传承"}) + '></h4><p class="pd-dim-text" ' + ml(p.transmission || {fr:"Autour de l'œuvre : ateliers, rencontres et partage des savoir-faire avec artistes, étudiant·es et publics.",es:"En torno a la obra: talleres, encuentros y transmisión de saberes con artistas, estudiantes y públicos.",en:"Around the work: workshops, encounters and sharing of know-how with artists, students and audiences.",zh:"围绕作品：与艺术家、学生及公众展开工作坊、相遇与技艺分享。"}) + '></p></div>\n'
+    + '        <div class="pd-dim"><h4><a class="dim-link" href="' + rel + 'transmission/" ' + ml({fr:"Transmission ↗",es:"Transmisión ↗",en:"Transmission ↗",zh:"传承 ↗"}) + '></a></h4><p class="pd-dim-text" ' + ml(p.transmission || {fr:"Autour de l'œuvre : ateliers, rencontres et partage des savoir-faire avec artistes, étudiant·es et publics.",es:"En torno a la obra: talleres, encuentros y transmisión de saberes con artistas, estudiantes y públicos.",en:"Around the work: workshops, encounters and sharing of know-how with artists, students and audiences.",zh:"围绕作品：与艺术家、学生及公众展开工作坊、相遇与技艺分享。"}) + '></p></div>\n'
     + '        <div class="pd-dim"><h4 ' + ml({fr:"Partenariats & territoire",es:"Alianzas & territorio",en:"Partnerships & territory",zh:"合作与在地"}) + '></h4>' + (p.territory ? '<p class="pd-dim-text" ' + ml(p.territory) + "></p>" : "") + partnersList + "</div>\n"
     + "      </div>" : "";
 
@@ -391,6 +391,23 @@ function legalBody(rel) {
     + '        <p>Ce site comporte des liens vers des sites tiers (institutions, partenaires, presse). STOPERA! n\'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>\n'
     + '        <p class="legal-date">Dernière mise à jour : juin 2026.</p>\n'
     + '      </div>\n    </section>';
+}
+
+/* ---- transmission (chaque projet sous l'angle de la transmission) ---- */
+function transmissionBody(rel) {
+  var groups = PROJECTS.filter(function (p) { return p.transmission; }).map(function (p) {
+    var href = rel + (p.slug === "lips" ? "lips/" : "productions/" + p.slug + "/");
+    return '<div class="tx-group">\n'
+      + '        <h3 class="tx-prod"><a href="' + href + '" ' + ml(p.titleHtml || p.title) + "></a></h3>\n"
+      + '        <p class="tx-text" ' + ml(p.transmission) + "></p>\n"
+      + (p.territory ? '        <p class="tx-terr"><span class="tx-terr-k" ' + ml({fr:"Territoire",es:"Territorio",en:"Territory",zh:"在地"}) + '></span> <span ' + ml(p.territory) + "></span></p>\n" : "")
+      + "      </div>";
+  }).join("\n      ");
+  return '    <section class="section pd-page">\n'
+    + '      <p class="pd-eyebrow"><a href="' + rel + 'index.html" data-fr="← Accueil" data-es="← Inicio" data-en="← Home" data-zh="← 首页"></a></p>\n'
+    + '      <h1 class="pd-title pd-title--page" data-fr="Transmission" data-es="Transmisión" data-en="Transmission" data-zh="传承"></h1>\n'
+    + '      <p class="pd-pitch" data-fr="Chez STOPERA!, chaque œuvre est aussi un espace de transmission : ce qui peut se partager, s\'apprendre, s\'explorer ou se transmettre autour d\'elle — ateliers, rencontres, mentorat, médiation. Voici les productions présentées sous cet angle." data-es="En STOPERA!, cada obra es también un espacio de transmisión: lo que puede compartirse, aprenderse, explorarse o transmitirse en torno a ella — talleres, encuentros, mentoría, mediación. Aquí están las producciones presentadas desde esta perspectiva." data-en="At STOPERA!, every work is also a space of transmission: what can be shared, learned, explored or passed on around it — workshops, encounters, mentoring, mediation. Here are the productions seen through that lens." data-zh="在 STOPERA!，每一部作品也是一个传承的空间：围绕它可以分享、学习、探索或传递之物——工作坊、相遇、师徒指导、导赏。以下是从这一角度呈现的作品。"></p>\n'
+    + "      " + groups + "\n    </section>";
 }
 
 /* ---- write ---- */
@@ -755,6 +772,9 @@ urls.push(SITE + "/cooperation/");
 /* press */
 write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, Aliados, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
 urls.push(SITE + "/presse/");
+/* transmission */
+write("transmission", page({ rel: "../", title: "Transmission", description: "La transmission chez STOPERA! — chaque production présentée sous l'angle de ce qui peut se partager, s'apprendre et se transmettre : ateliers, rencontres, mentorat, médiation.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/transmission/", ogType: "website", body: transmissionBody("../") }));
+urls.push(SITE + "/transmission/");
 /* mentions légales */
 write("mentions-legales", page({ rel: "../", title: "Mentions légales", description: "Mentions légales et politique de confidentialité de STOPERA! — éditeur, hébergement, propriété intellectuelle, RGPD et cookies.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/mentions-legales/", ogType: "website", body: legalBody("../") }));
 urls.push(SITE + "/mentions-legales/");
