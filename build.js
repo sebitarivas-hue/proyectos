@@ -19,11 +19,13 @@ var sandbox = "var ONGOING=" + grab(/var ONGOING = (\{[^;]*\});/)
   + ";var YEARS=" + grab(/var YEARS = (\{[\s\S]*?\});/)
   + ";var PERIOD=" + grab(/var PERIOD = (\{[^;]*\});/)
   + ";var COLORS=" + grab(/var COLORS = (\{[\s\S]*?\});/)
+  + ";var DIM=" + grab(/var DIM = (\{[\s\S]*?\n  \});/)
   + ";var PROJECTS=" + grab(/var PROJECTS = (\[[\s\S]*?\n  \]);/)
-  + ";return {YEARS:YEARS,PERIOD:PERIOD,COLORS:COLORS,PROJECTS:PROJECTS};";
+  + ";return {YEARS:YEARS,PERIOD:PERIOD,COLORS:COLORS,DIM:DIM,PROJECTS:PROJECTS};";
 var DATA = new Function(sandbox)();
-var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS;
+var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS, DIM = DATA.DIM;
 var bySlug = {}; PROJECTS.forEach(function (p) { bySlug[p.slug] = p; });
+Object.keys(DIM).forEach(function (s) { if (bySlug[s]) { if (DIM[s].tx) bySlug[s].transmission = DIM[s].tx; if (DIM[s].terr) bySlug[s].territory = DIM[s].terr; } });
 
 /* ---- Layer 2 : navigation éditoriale (parcours thématiques transversaux) ---- */
 var THEMES = [
@@ -116,11 +118,11 @@ function header(rel) {
     + '    </nav>\n  </header>';
 }
 function editorialNav(rel) {
-  var miss = [["#productions","Création","Creación","Creation","创作"],
-    ["#recherche","Recherche","Investigación","Research","研究"],
-    ["#lips","Transmission","Transmisión","Transmission","传承"],
-    ["#rejoindre","Accompagnement","Acompañamiento","Accompaniment","陪伴"],
-    ["cooperation/","Coopération","Cooperación","Cooperation","合作"]]
+  var miss = [["#productions","Créer","Crear","Create","创作"],
+    ["#recherche","Chercher","Buscar","Explore","探索"],
+    ["#lips","Partager","Compartir","Share","分享"],
+    ["#rejoindre","Soutenir","Apoyar","Support","支持"],
+    ["cooperation/","Relier","Conectar","Connect","连接"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("");
   return '<nav class="editorial-nav" aria-label="Missions">\n'
@@ -184,7 +186,7 @@ function prodBody(p, rel) {
   }).join("");
   var tech = (p.tech && p.tech.length) ? '<div class="pd-block"><h4 ' + ml({fr:"Fiche technique",es:"Ficha técnica",en:"Technical sheet",zh:"技术表"}) + '></h4><ul class="facts">' + p.tech.map(function (f) { return '<li><span class="k" ' + ml(f.k) + '></span><span class="v">' + linkNames(tFR(f.v), rel) + '</span></li>'; }).join("") + "</ul></div>" : "";
   var diffusion = p.diffusion ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"Production & diffusion",es:"Producción & difusión",en:"Production & diffusion",zh:"制作与巡演"}) + '></h4><p class="pd-prose" ' + ml(p.diffusion) + "></p></div>" : "";
-  var partners = (p.partners && p.partners.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"Coproduction",es:"Coproducción",en:"Co-production",zh:"联合制作"}) + '></h4><ul class="taglist">' + p.partners.map(function (x) { return "<li>" + linkInst(x) + "</li>"; }).join("") + "</ul></div>" : "";
+  var partnersList = (p.partners && p.partners.length) ? '<ul class="taglist pd-dim-partners">' + p.partners.map(function (x) { return "<li>" + linkInst(x) + "</li>"; }).join("") + "</ul>" : "";
   var relations = (p.relations && p.relations.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"En lien",es:"Conexiones",en:"Connections",zh:"关联"}) + '></h4><ul class="rel-list">' + p.relations.map(function (r) {
       var href = r.url ? r.url : rel + r.href; var ext = r.url ? ' target="_blank" rel="noopener"' : "";
       return '<li><a href="' + href + '"' + ext + ' ' + ml(r.label) + '></a></li>';
@@ -196,6 +198,11 @@ function prodBody(p, rel) {
     + (p.pressPdf ? '<a class="pd-dl" href="' + rel + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + '></a>' : "") + "</div>" : "";
   var links = (p.links && p.links.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"À voir & écouter",es:"Ver & escuchar",en:"Watch & listen",zh:"观看与聆听"}) + '></h4><ul class="taglist">' + p.links.map(function (l) { return '<li><a href="' + l.url + '" target="_blank" rel="noopener">' + esc(l.label) + "</a></li>"; }).join("") + "</ul></div>" : "";
   var note = p.note ? '<p class="pd-note" ' + ml(p.note) + "></p>" : "";
+  var dims = (p.transmission || p.territory || partnersList) ? '<div class="pd-dimensions">\n'
+    + '        <div class="pd-dim"><h4 ' + ml({fr:"Production",es:"Producción",en:"Production",zh:"制作"}) + '></h4><p class="pd-dim-text" ' + ml(p.short) + '></p></div>\n'
+    + '        <div class="pd-dim"><h4 ' + ml({fr:"Transmission",es:"Transmisión",en:"Transmission",zh:"传承"}) + '></h4><p class="pd-dim-text" ' + ml(p.transmission || {fr:"Autour de l'œuvre : ateliers, rencontres et partage des savoir-faire avec artistes, étudiant·es et publics.",es:"En torno a la obra: talleres, encuentros y transmisión de saberes con artistas, estudiantes y públicos.",en:"Around the work: workshops, encounters and sharing of know-how with artists, students and audiences.",zh:"围绕作品：与艺术家、学生及公众展开工作坊、相遇与技艺分享。"}) + '></p></div>\n'
+    + '        <div class="pd-dim"><h4 ' + ml({fr:"Territoire & partenariats",es:"Territorio & alianzas",en:"Territory & partnerships",zh:"在地与合作"}) + '></h4>' + (p.territory ? '<p class="pd-dim-text" ' + ml(p.territory) + "></p>" : "") + partnersList + "</div>\n"
+    + "      </div>" : "";
 
   return '    <article class="section pd-page">\n'
     + '      <p class="pd-eyebrow"><a href="' + rel + 'index.html#productions" data-fr="← Productions" data-es="← Producciones" data-en="← Productions" data-zh="← 作品"></a> · <span class="pd-tag" ' + ml(p.tag || "") + '></span></p>\n'
@@ -204,11 +211,12 @@ function prodBody(p, rel) {
     + '      <p class="pd-pitch" ' + ml(p.pitch) + "></p>\n"
     + ((p.body && p.body.length) ? p.body.map(function (b) { return '      <p class="pd-prose pd-prose--lead" ' + ml(b) + "></p>\n"; }).join("") : "")
     + (teaser ? "      " + teaser + "\n" : "")
+    + (dims ? "      " + dims + "\n" : "")
     + (gallery ? "      " + gallery + "\n" : "")
     + '      <div class="pd-grid">\n'
     + '        <div class="pd-block"><h4 ' + ml({fr:"Informations",es:"Información",en:"Details",zh:"信息"}) + '></h4><ul class="facts">' + facts + "</ul></div>\n"
     + '        <div class="pd-block"><h4 ' + ml({fr:"Générique",es:"Créditos",en:"Credits",zh:"创作团队"}) + '></h4><ul class="credits">' + credits_ml + "</ul></div>\n"
-    + "        " + tech + diffusion + partners + relations + press + links + note + "\n      </div>\n    </article>";
+    + "        " + tech + diffusion + relations + press + links + note + "\n      </div>\n    </article>";
 }
 function wrapQuote(o) { var r = {}; LANGS.forEach(function (l) { r[l] = "« " + (o[l] != null ? o[l] : o.fr) + " »"; }); return r; }
 

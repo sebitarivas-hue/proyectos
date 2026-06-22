@@ -270,6 +270,10 @@ html[lang="zh"] .hero-statement, html[lang="zh"] .lead, html[lang="zh"] .section
 
 /* ---------- Productions sub-grids + compact rosters ---------- */
 .grid-sub { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 1.8rem 0 .7rem; }
+.grid-sub { display: flex; align-items: center; gap: .5rem; font-weight: 700; color: var(--fg); border-bottom: 1px solid var(--line); padding-bottom: .55rem; }
+.grid-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+.grid-sub--diff .grid-dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(216,30,5,.16); }
+.grid-sub--dev .grid-dot { background: transparent; border: 2px solid var(--accent); }
 #grid-upcoming { margin-top: .3rem; }
 /* compact, two-column rosters so they don't outweigh the project squares */
 .roster { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.4rem; }
@@ -442,6 +446,14 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .pd-gallery img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
 .pd-prose { color: #2c2620; font-size: 1rem; line-height: 1.6; max-width: 72ch; margin: 0; }
 .pd-page .pd-prose--lead { font-size: 1.04rem; line-height: 1.65; margin: 0 0 1.2rem; }
+.pd-dimensions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 2.2rem; margin: 2rem 0 .4rem; padding: 1.6rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pd-dim h4 { font-family: var(--sans); font-weight: 700; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 .55rem; }
+.pd-dim-text { color: #2c2620; font-size: .95rem; line-height: 1.55; margin: 0; }
+.pd-dim-partners { list-style: none; margin: .7rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.pd-dim-partners li { font-size: .8rem; line-height: 1.3; }
+.pd-dim-partners li a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line); }
+.pd-dim-partners li a:hover { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 720px) { .pd-dimensions { grid-template-columns: 1fr; gap: 1.3rem; } }
 .rel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .55rem; }
 .rel-list a { display: inline-block; padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--fg); text-decoration: none; transition: border-color .2s ease, color .2s ease, background .2s ease; }
 .rel-list a:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-2); }
