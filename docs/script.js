@@ -30,7 +30,7 @@
     "nous": { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" },
     "rut": "2026",
     "insistir": "2026",
-    "fame": "2025",
+    "fame": "2021",
     "america": { fr: "en création", es: "en creación", en: "in creation", zh: "创作中" },
     "mamma-roma": "2027",
     "otages": "2024",
@@ -54,8 +54,8 @@
       terr: { fr: "Enraciné en France, soutenu par le CNM ; coproductions en cours de montage.", es: "Enraizado en Francia, apoyado por el CNM; coproducciones en construcción.", en: "Rooted in France, supported by the CNM; coproductions being assembled.", zh: "扎根法国，获 CNM 支持；联合制作筹备中。" } },
     "rut": { tx: { fr: "Masterclass sur le geste de direction comme matière sonore et l'électronique en temps réel.", es: "Masterclass sobre el gesto de dirección como materia sonora y la electrónica en tiempo real.", en: "Masterclass on the conducting gesture as sound material and real-time electronics.", zh: "关于指挥手势作为声音素材与实时电子的大师班。" },
       terr: { fr: "Créé en résidence, à la croisée du concert et de la performance.", es: "Creado en residencia, en el cruce entre concierto y performance.", en: "Created in residency, at the crossroads of concert and performance.", zh: "驻地创作，处于音乐会与表演的交汇处。" } },
-    "fame": { tx: { fr: "Échanges autour de la performance solo, de la voix et de la présence scénique au féminin.", es: "Intercambios en torno a la performance solo, la voz y la presencia escénica en femenino.", en: "Exchanges around solo performance, voice and feminine stage presence.", zh: "围绕独角表演、人声与女性舞台在场的交流。" },
-      terr: { fr: "Créé à Lyon, pour les scènes et les festivals.", es: "Creado en Lyon, para escenas y festivales.", en: "Created in Lyon, for stages and festivals.", zh: "于里昂创作，面向剧场与艺术节。" } },
+    "fame": { tx: { fr: "Un format court et commenté pour faire découvrir la création contemporaine à tou·te·s — la percussion comme porte d'entrée.", es: "Un formato breve y comentado para acercar la creación contemporánea a todos — la percusión como puerta de entrada.", en: "A short, guided format that opens contemporary creation to everyone — percussion as a way in.", zh: "一种简短且有讲解的形式，让所有人走近当代创作——以打击乐为入口。" },
+      terr: { fr: "Créé à l'Auditorium — Orchestre National de Lyon, avec le GRAME.", es: "Creado en el Auditorium — Orchestre National de Lyon, con el GRAME.", en: "Created at the Auditorium — Orchestre National de Lyon, with GRAME.", zh: "于里昂大礼堂——国家管弦乐团创作，与 GRAME 合作。" } },
     "snow-on-her-lips": { tx: { fr: "Atelier transdisciplinaire : théâtre musical, danse, vidéo et électronique réunis.", es: "Taller transdisciplinar: teatro musical, danza, vídeo y electrónica reunidos.", en: "Cross-disciplinary workshop: music theatre, dance, video and electronics together.", zh: "跨学科工作坊：音乐剧场、舞蹈、影像与电子的汇聚。" },
       terr: { fr: "Pensé pour le public du Printemps des Arts, sur la Riviera.", es: "Pensado para el público del Printemps des Arts, en la Riviera.", en: "Made for the Printemps des Arts audience, on the Riviera.", zh: "为蒙特卡洛艺术之春的观众而作，位于里维埃拉。" } },
     "otages": { tx: { fr: "Rencontres autour de l'adaptation littéraire à l'opéra et du travail vocal contemporain.", es: "Encuentros en torno a la adaptación literaria a la ópera y el trabajo vocal contemporáneo.", en: "Encounters around literary adaptation to opera and contemporary vocal work.", zh: "围绕文学改编为歌剧与当代人声创作的相遇。" },
@@ -195,6 +195,10 @@
         { label: "GRAME — Rayon N, étape 1 (film de Julien Ravoux)", url: "https://www.grame.fr/evenements/2021-02-rayon-n-etape-1-diffusion-du-film-de-julien-ravoux" },
         { label: "T&M Paris — Rayon N", url: "https://theatre-musique.com/spectacle/rayon-n/" }
       ],
+      press: [
+        { source: "ENS Paris-Saclay", title: "À la découverte de Rayon N — captation", url: "https://ens-paris-saclay.fr/agenda/spectacle-en-replay-la-decouverte-de-rayon-n" },
+        { source: "Théâtre & Musique (T&M)", title: "Rayon N — opéra-film", url: "https://theatre-musique.com/spectacle/rayon-n/" }
+      ],
       note: { fr: "Recherche de coproductions et de diffuseurs en cours.", es: "Búsqueda de coproducciones y programadores en curso.", en: "Coproductions and venues being sought.", zh: "正在寻找联合制作方与演出场所。" }
     },
     {
@@ -255,25 +259,31 @@
       note: { fr: "Création en résidence. Dispositif technique en cours de définition.", es: "Creación en residencia. Dispositivo técnico en definición.", en: "Created in residency. Technical set-up being defined.", zh: "驻地创作。技术装置确定中。" }
     },
     {
-      slug: "fame", title: "F[A]ME", titleHtml: "F[A]ME",
+      slug: "fame", title: "[FAM]E", titleHtml: "[FAM]E",
       img: "assets/projects/fame.svg", photo: "assets/projects/fame.jpg",
-      tag: { fr: "Diffusion 2025", es: "Difusión 2025", en: "Touring 2025", zh: "2025 演出" },
-      short: { fr: "Performance solo d'Olivia Martin : renommée, effacement, féminité.", es: "Performance solo de Olivia Martin: fama, borrado, feminidad.", en: "A solo performance by Olivia Martin: fame, erasure, femininity.", zh: "Olivia Martin 的个人表演：名望、消隐、女性气质。" },
+      tag: { fr: "Auditorium de Lyon · 2021", es: "Auditorium de Lyon · 2021", en: "Auditorium de Lyon · 2021", zh: "里昂大礼堂 · 2021" },
+      short: { fr: "Récital de percussions contemporaines d'Olivia Martin.", es: "Recital de percusión contemporánea de Olivia Martin.", en: "A contemporary percussion recital by Olivia Martin.", zh: "Olivia Martin 的当代打击乐独奏会。" },
       pitch: {
-        fr: "Performance musicale solo conçue et interprétée par Olivia Martin. Entre composition, voix et présence scénique, elle explore la renommée, l'effacement et la féminité dans les arts vivants.",
-        es: "Performance musical solo concebida e interpretada por Olivia Martin. Entre composición, voz y presencia escénica, explora la fama, el borrado y la feminidad en las artes vivas.",
-        en: "A solo musical performance conceived and performed by Olivia Martin. Between composition, voice and stage presence, it explores fame, erasure and femininity in the live arts.",
-        zh: "由 Olivia Martin 构思并演出的个人音乐表演。游走于作曲、人声与舞台存在之间，探索名望、消隐与表演艺术中的女性气质。" },
+        fr: "<em>Pop-Up Exploratoire #1</em> : un format court de création musicale contemporaine « pour tou·te·s », imaginé avec le GRAME. La percussionniste Olivia Martin, accompagnée des commentaires de Guillaume Kosmicki, déroule un parcours d'œuvres pour percussion solo — de la voix percutée d'Aperghis aux paysages de Yoshihisa Taïra. Créé à l'Auditorium — Orchestre National de Lyon (Salle Proton).",
+        es: "<em>Pop-Up Exploratoire #1</em>: un formato breve de creación musical contemporánea «para todos», ideado con el GRAME. La percusionista Olivia Martin, acompañada por los comentarios de Guillaume Kosmicki, recorre obras para percusión solo — de la voz percutida de Aperghis a los paisajes de Yoshihisa Taïra. Estrenado en el Auditorium — Orchestre National de Lyon (Salle Proton).",
+        en: "<em>Pop-Up Exploratoire #1</em>: a short contemporary-music format “for everyone,” devised with GRAME. Percussionist Olivia Martin, with live commentary by Guillaume Kosmicki, unfolds a programme of solo percussion works — from Aperghis's percussive voice to Yoshihisa Taïra's soundscapes. Premiered at the Auditorium — Orchestre National de Lyon (Salle Proton).",
+        zh: "<em>Pop-Up Exploratoire #1</em>：与 GRAME 共同构想的「面向所有人」的当代音乐短节目。打击乐演奏家 Olivia Martin 在 Guillaume Kosmicki 的现场讲解下，呈现一组打击乐独奏作品——从 Aperghis 的「敲击之声」到 Yoshihisa Taïra 的声音景观。于里昂大礼堂——国家管弦乐团（Salle Proton）首演。" },
       facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Performance solo", es: "Performance solo", en: "Solo performance", zh: "独角表演" } },
-        { k: { fr: "Diffusion", es: "Difusión", en: "Touring", zh: "演出" }, v: "2025" }
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Pop-Up Exploratoire · percussion solo", es: "Pop-Up Exploratoire · percusión solo", en: "Pop-Up Exploratoire · solo percussion", zh: "Pop-Up Exploratoire · 打击乐独奏" } },
+        { k: { fr: "Interprète", es: "Intérprete", en: "Performer", zh: "演奏" }, v: "Olivia Martin" },
+        { k: { fr: "Présentation", es: "Presentación", en: "Hosted by", zh: "讲解" }, v: "Guillaume Kosmicki" },
+        { k: { fr: "Programme", es: "Programa", en: "Programme", zh: "曲目" }, v: { fr: "Rebotier · Aperghis · Volans · Rudel Rey · Caget · Taïra", es: "Rebotier · Aperghis · Volans · Rudel Rey · Caget · Taïra", en: "Rebotier · Aperghis · Volans · Rudel Rey · Caget · Taïra", zh: "Rebotier · Aperghis · Volans · Rudel Rey · Caget · Taïra" } },
+        { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "地点" }, v: { fr: "Auditorium — ONL (Salle Proton)", es: "Auditorium — ONL (Salle Proton)", en: "Auditorium — ONL (Salle Proton)", zh: "里昂大礼堂 — ONL（Salle Proton）" } },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: "2021" }
       ],
       credits: [
-        { role: { fr: "Conception & interprétation", es: "Concepción & interpretación", en: "Concept & performance", zh: "构思与表演" }, who: "Olivia Martin" }
+        { role: { fr: "Percussions", es: "Percusión", en: "Percussion", zh: "打击乐" }, who: "Olivia Martin" },
+        { role: { fr: "Présentation & médiation", es: "Presentación & mediación", en: "Presentation & mediation", zh: "讲解与导赏" }, who: "Guillaume Kosmicki" }
       ],
-      partners: ["GRAME"],
+      partners: ["GRAME", "Auditorium — Orchestre National de Lyon"],
       links: [
-        { label: "GRAME — Pop-up exploratoire #1 : F[A]ME", url: "https://www.grame.fr/evenements/2021-10-pop-up-exploratoire-1-fam-e" }
+        { label: "GRAME — Pop-Up Exploratoire #1 : [FAM]E", url: "https://www.grame.fr/evenements/2021-10-pop-up-exploratoire-1-fam-e" },
+        { label: "Auditorium — Orchestre National de Lyon", url: "https://www.auditorium-lyon.com/fr/saison-2021-22/concerts/pop-exploratoire-1" }
       ]
     },
     {

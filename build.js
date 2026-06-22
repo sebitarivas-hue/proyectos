@@ -137,7 +137,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622D";
+  var rel = opts.rel, V = "?v=20260622E";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -367,7 +367,7 @@ function pressQuote(q) {
   return '<blockquote class="pdq"><span ' + ml(qq) + "></span><cite>" + src + "</cite></blockquote>";
 }
 function pressBody(rel) {
-  var groups = ["ooo", "otages", "aliados", "snow-on-her-lips"].map(function (s) {
+  var groups = ["ooo", "otages", "aliados", "snow-on-her-lips", "rayon-n"].map(function (s) {
     var p = bySlug[s]; if (!p) return "";
     var head = '<h3 class="press-prod"><a href="' + rel + "productions/" + s + '/" ' + ml(p.titleHtml || p.title) + "></a></h3>";
     var inner;
@@ -475,11 +475,11 @@ var ARTISTS = [
            zh: "音乐剧场的先驱，ATEM（1976）创始人。他的陪伴与艺术影响伴随着 STOPERA!；其作品是 Insistir 项目的核心。" },
     productions: ["insistir"] },
   { slug: "olivia-martin", name: "Olivia Martin",
-    role: { fr: "Compositrice-interprète", es: "Compositora-intérprete", en: "Composer-performer", zh: "作曲-表演者" },
-    bio: { fr: "Conçoit et interprète F[A]ME, performance solo sur la renommée, l'effacement et la féminité ; elle joue au sein de l'ensemble Êkheía (Snow on Her Lips).",
-           es: "Concibe e interpreta F[A]ME, performance solo sobre la fama, el borrado y la feminidad; toca en el ensemble Êkheía (Snow on Her Lips).",
-           en: "Conceives and performs F[A]ME, a solo on fame, erasure and femininity; she plays within the Êkheía ensemble (Snow on Her Lips).",
-           zh: "构思并演出 F[A]ME——一部关于名望、消隐与女性气质的独角表演；她在 Êkheía 乐团演奏（Snow on Her Lips）。" },
+    role: { fr: "Percussionniste", es: "Percusionista", en: "Percussionist", zh: "打击乐演奏家" },
+    bio: { fr: "Percussionniste, elle interprète [FAM]E, le Pop-Up Exploratoire #1 du GRAME à l'Auditorium de Lyon, et joue au sein de l'ensemble Êkheía (Snow on Her Lips).",
+           es: "Percusionista, interpreta [FAM]E, el Pop-Up Exploratoire #1 del GRAME en el Auditorium de Lyon, y toca en el ensemble Êkheía (Snow on Her Lips).",
+           en: "A percussionist, she performs [FAM]E, GRAME's Pop-Up Exploratoire #1 at the Auditorium de Lyon, and plays within the Êkheía ensemble (Snow on Her Lips).",
+           zh: "打击乐演奏家，演出 GRAME 于里昂大礼堂的 Pop-Up Exploratoire #1「[FAM]E」，并在 Êkheía 乐团演奏（Snow on Her Lips）。" },
     productions: ["fame", "snow-on-her-lips"] },
   { slug: "nicola-beller-carbone", name: "Nicola Beller Carbone",
     role: { fr: "Soprano", es: "Soprano", en: "Soprano", zh: "女高音" },
