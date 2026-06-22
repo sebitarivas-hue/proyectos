@@ -400,7 +400,7 @@ function legalBody(rel) {
     + '      <h1 class="pd-title pd-title--page">Mentions légales &amp; confidentialité</h1>\n'
     + '      <div class="legal-prose">\n'
     + '        <h2>Éditeur du site</h2>\n'
-    + '        <p><strong>STOPERA!</strong> — Sonic Theatre Opera Performance.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href="mailto:sonic.theatre.stopera@gmail.com">sonic.theatre.stopera@gmail.com</a>.<br/>Directeur de la publication : Sebastian Rivas.<br/><span class="legal-todo">[Statut juridique, n° SIRET et licences d\'entrepreneur de spectacles — à compléter]</span></p>\n'
+    + '        <p><strong>STOPERA!</strong> — Sonic Theatre Opera Performance, association loi 1901 à but non lucratif.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href="mailto:sonic.theatre.stopera@gmail.com">sonic.theatre.stopera@gmail.com</a>.<br/>Directeur de la publication : Sebastian Rivas, président.</p>\n'
     + '        <h2>Hébergement</h2>\n'
     + '        <p>Site hébergé par GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).</p>\n'
     + '        <h2>Propriété intellectuelle</h2>\n'
