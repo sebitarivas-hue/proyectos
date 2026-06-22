@@ -134,11 +134,11 @@ function footer(rel) {
   return '<footer class="site-footer">\n'
     + '    <span class="brand-logo-foot"><img src="' + rel + 'assets/logo-dark.png" alt="STOPERA!" /></span>\n'
     + '    <p class="foot-social"><a href="https://instagram.com/stopera_sonic_theatre" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@stopera-sonictheatre" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.facebook.com/stopera.sonictheatre" target="_blank" rel="noopener">Facebook</a></p>\n'
-    + '    <p>© <span id="year"></span> STOPERA! — Sonic Theatre Opera Performance · Gentilly (Paris)</p>\n  </footer>';
+    + '    <p>© <span id="year"></span> STOPERA! — Sonic Theatre Opera Performance · Gentilly (Paris) · <a href="' + rel + 'mentions-legales/" data-fr="Mentions légales" data-es="Aviso legal" data-en="Legal notice" data-zh="法律声明"></a></p>\n  </footer>';
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622I";
+  var rel = opts.rel, V = "?v=20260622J";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -391,6 +391,28 @@ function pressBody(rel) {
     + "        " + media + "\n"
     + '        <p class="section-note" data-fr="France · Italie · Royaume-Uni · Espagne · Argentine — autour des créations d\'<em>Otages</em>, <em>Aliados</em> et <em>OOO</em>." data-es="Francia · Italia · Reino Unido · España · Argentina — en torno a los estrenos de <em>Otages</em>, <em>Aliados</em> y <em>OOO</em>." data-en="France · Italy · UK · Spain · Argentina — around the premieres of <em>Otages</em>, <em>Aliados</em> and <em>OOO</em>." data-zh="法国 · 意大利 · 英国 · 西班牙 · 阿根廷 —— 围绕 <em>Otages</em>、<em>Aliados</em> 与 <em>OOO</em> 的首演。"></p>\n'
     + "      </div>\n    </section>";
+}
+
+/* ---- mentions légales & confidentialité (FR) ---- */
+function legalBody(rel) {
+  return '    <section class="section pd-page legal-page">\n'
+    + '      <p class="pd-eyebrow"><a href="' + rel + 'index.html" data-fr="← Accueil" data-es="← Inicio" data-en="← Home" data-zh="← 首页"></a></p>\n'
+    + '      <h1 class="pd-title pd-title--page">Mentions légales &amp; confidentialité</h1>\n'
+    + '      <div class="legal-prose">\n'
+    + '        <h2>Éditeur du site</h2>\n'
+    + '        <p><strong>STOPERA!</strong> — Sonic Theatre Opera Performance.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href="mailto:sonic.theatre.stopera@gmail.com">sonic.theatre.stopera@gmail.com</a>.<br/>Directeur de la publication : Sebastian Rivas.<br/><span class="legal-todo">[Statut juridique, n° SIRET et licences d\'entrepreneur de spectacles — à compléter]</span></p>\n'
+    + '        <h2>Hébergement</h2>\n'
+    + '        <p>Site hébergé par GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).</p>\n'
+    + '        <h2>Propriété intellectuelle</h2>\n'
+    + '        <p>L\'ensemble des contenus de ce site (textes, images, vidéos, identité visuelle « STOPERA! ») est protégé par le droit d\'auteur. Toute reproduction ou réutilisation, totale ou partielle, est soumise à autorisation préalable. Les crédits photographiques figurent sur les pages des productions concernées.</p>\n'
+    + '        <h2>Données personnelles (RGPD)</h2>\n'
+    + '        <p>Ce site est statique et ne comporte aucun formulaire&nbsp;; il ne collecte aucune donnée personnelle à votre insu. Les échanges se font par courriel, à votre seule initiative. Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés », vous disposez d\'un droit d\'accès, de rectification et d\'effacement des données que vous nous transmettez par courriel&nbsp;: il vous suffit d\'écrire à l\'adresse ci-dessus.</p>\n'
+    + '        <h2>Cookies &amp; mesure d\'audience</h2>\n'
+    + '        <p>Le site ne dépose aucun cookie de mesure d\'audience ni traceur publicitaire. Les vidéos intégrées (YouTube, en mode « sans cookie ») peuvent déposer des cookies lorsque vous en lancez la lecture&nbsp;; ceux-ci relèvent de la politique de confidentialité de Google / YouTube.</p>\n'
+    + '        <h2>Liens externes</h2>\n'
+    + '        <p>Ce site comporte des liens vers des sites tiers (institutions, partenaires, presse). STOPERA! n\'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>\n'
+    + '        <p class="legal-date">Dernière mise à jour : juin 2026.</p>\n'
+    + '      </div>\n    </section>';
 }
 
 /* ---- write ---- */
@@ -755,6 +777,14 @@ urls.push(SITE + "/cooperation/");
 /* press */
 write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, Aliados, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
 urls.push(SITE + "/presse/");
+/* mentions légales */
+write("mentions-legales", page({ rel: "../", title: "Mentions légales", description: "Mentions légales et politique de confidentialité de STOPERA! — éditeur, hébergement, propriété intellectuelle, RGPD et cookies.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/mentions-legales/", ogType: "website", body: legalBody("../") }));
+urls.push(SITE + "/mentions-legales/");
+/* page 404 (auto-servie par GitHub Pages) */
+fs.writeFileSync(path.join(DOCS, "404.html"),
+  '<!DOCTYPE html>\n<html lang="fr">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n<meta name="robots" content="noindex" />\n<title>Page introuvable — STOPERA!</title>\n'
+  + '<style>html,body{margin:0;height:100%}body{background:#faf8f4;color:#14110f;font-family:Archivo,system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}.x{max-width:30rem}.x img{height:30px;width:auto;margin-bottom:2rem}.x p.code{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#d81e05;margin:0 0 .8rem}.x h1{font-size:1.6rem;font-weight:700;margin:0 0 1rem}.x p{color:#6f685f;line-height:1.6}.x a.btn{display:inline-block;margin-top:1.4rem;background:#d81e05;color:#fff;text-decoration:none;padding:.7rem 1.3rem;border-radius:999px;font-weight:600;font-size:.9rem}</style>\n'
+  + '</head>\n<body>\n<div class="x">\n<img src="' + SITE + '/assets/logo-dark.png" alt="STOPERA!" />\n<p class="code">Erreur 404</p>\n<h1>Cette page n\'existe pas (ou plus).</h1>\n<p>La page que vous cherchez est introuvable. Elle a peut-être été déplacée.</p>\n<a class="btn" href="' + SITE + '/">Retour à l\'accueil →</a>\n</div>\n</body>\n</html>\n');
 /* snippet carte pour l'accueil (rel = "") */
 fs.writeFileSync("/tmp/coop_home.html", coopMap("") + "\n      " + COOP_SCRIPT);
 

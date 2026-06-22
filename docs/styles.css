@@ -556,3 +556,12 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .float-home { display: inline-flex; align-items: center; gap: .45rem; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: .6rem 1rem; font-family: var(--sans); font-weight: 600; font-size: .8rem; letter-spacing: .04em; text-decoration: none; box-shadow: 0 8px 26px rgba(0,0,0,.12); transition: transform .15s ease, border-color .2s ease, color .2s ease; }
 .float-home svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .float-home:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+
+/* mentions légales */
+.legal-prose { max-width: 70ch; }
+.legal-prose h2 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 1.8rem 0 .5rem; }
+.legal-prose p { color: #2c2620; line-height: 1.65; margin: 0 0 .8rem; }
+.legal-prose a { color: var(--fg); border-bottom: 1px solid var(--accent); text-decoration: none; }
+.legal-prose a:hover { color: var(--accent); }
+.legal-todo { color: var(--accent); font-style: italic; }
+.legal-date { color: var(--muted); font-size: .85rem; margin-top: 1.6rem; }
