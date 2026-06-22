@@ -83,7 +83,8 @@ var NAME2SLUG = {
   "Rut Schreiner": "rut-schreiner", "Léo Warynski": "leo-warynski", "Christine Angot": "christine-angot",
   "Marcelo Lombardero": "marcelo-lombardero", "Emma Terno": "emma-terno", "Valentín Pelisch": "valentin-pelisch",
   "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui", "Esteban Buch": "esteban-buch",
-  "Richard Brunel": "richard-brunel", "Philippe Béziat": "philippe-beziat", "Anne-Laure Chamboissier": "anne-laure-chamboissier"
+  "Richard Brunel": "richard-brunel", "Philippe Béziat": "philippe-beziat", "Anne-Laure Chamboissier": "anne-laure-chamboissier",
+  "Guillaume Kosmicki": "guillaume-kosmicki"
 };
 var NAME_LIST = Object.keys(NAME2SLUG).sort(function (a, b) { return b.length - a.length; });
 function linkNames(s, rel) {
@@ -137,7 +138,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622H";
+  var rel = opts.rel, V = "?v=20260622I";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -481,6 +482,13 @@ var ARTISTS = [
            en: "A percussionist, she devises and performs [FAM]E, GRAME's recital around the feminine (Auditorium de Lyon), and plays within the Êkheía ensemble (Snow on Her Lips).",
            zh: "打击乐演奏家，构思并演出 GRAME 围绕「女性」的独奏会「[FAM]E」（里昂大礼堂），并在 Êkheía 乐团演奏（Snow on Her Lips）。" },
     productions: ["fame", "snow-on-her-lips"] },
+  { slug: "guillaume-kosmicki", name: "Guillaume Kosmicki",
+    role: { fr: "Musicologue & médiateur", es: "Musicólogo & mediador", en: "Musicologist & mediator", zh: "音乐学家与导赏人" },
+    bio: { fr: "Musicologue, conférencier et auteur, spécialiste des musiques savantes contemporaines et des musiques électroniques. Il accompagne [FAM]E par sa médiation, rendant la création d'aujourd'hui accessible à tou·te·s.",
+           es: "Musicólogo, conferenciante y autor, especialista en músicas cultas contemporáneas y en músicas electrónicas. Acompaña [FAM]E con su mediación, acercando la creación de hoy a todos.",
+           en: "A musicologist, lecturer and author specialising in contemporary art music and electronic music. He accompanies [FAM]E through his mediation, making today's creation accessible to all.",
+           zh: "音乐学家、讲师与作家，专研当代艺术音乐与电子音乐。他以导赏陪伴「[FAM]E」，让当下的创作为所有人所亲近。" },
+    productions: ["fame"] },
   { slug: "nicola-beller-carbone", name: "Nicola Beller Carbone",
     role: { fr: "Soprano", es: "Soprano", en: "Soprano", zh: "女高音" },
     bio: { fr: "Interprète Sylvie Meyer dans Otages (Opéra de Lyon) et porte le projet Insistir, construit autour de pièces de Georges Aperghis.",
