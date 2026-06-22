@@ -137,7 +137,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622A";
+  var rel = opts.rel, V = "?v=20260622B";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -157,7 +157,7 @@ function page(opts) {
     + '  <link rel="icon" type="image/png" href="' + rel + 'assets/favicon.png" />\n'
     + '  <link rel="stylesheet" href="' + rel + 'assets/fonts/fonts.css' + V + '" />\n'
     + '  <link rel="stylesheet" href="' + rel + 'styles.css' + V + '" />\n'
-    + '</head>\n<body data-lang="fr">\n  ' + header(rel) + '\n  ' + editorialNav(rel) + '\n  <main id="top" class="subpage">\n'
+    + '</head>\n<body data-lang="fr">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
     + opts.body + '\n  </main>\n  ' + footer(rel) + '\n'
     + '  <div class="float-actions">\n'
     + '    <a class="float-home" href="' + rel + 'index.html" aria-label="Accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg><span data-fr="Accueil" data-es="Inicio" data-en="Home" data-zh="首页"></span></a>\n'
@@ -201,7 +201,7 @@ function prodBody(p, rel) {
   var dims = (p.transmission || p.territory || partnersList) ? '<div class="pd-dimensions">\n'
     + '        <div class="pd-dim"><h4 ' + ml({fr:"Production",es:"Producción",en:"Production",zh:"制作"}) + '></h4><p class="pd-dim-text" ' + ml(p.short) + '></p></div>\n'
     + '        <div class="pd-dim"><h4 ' + ml({fr:"Transmission",es:"Transmisión",en:"Transmission",zh:"传承"}) + '></h4><p class="pd-dim-text" ' + ml(p.transmission || {fr:"Autour de l'œuvre : ateliers, rencontres et partage des savoir-faire avec artistes, étudiant·es et publics.",es:"En torno a la obra: talleres, encuentros y transmisión de saberes con artistas, estudiantes y públicos.",en:"Around the work: workshops, encounters and sharing of know-how with artists, students and audiences.",zh:"围绕作品：与艺术家、学生及公众展开工作坊、相遇与技艺分享。"}) + '></p></div>\n'
-    + '        <div class="pd-dim"><h4 ' + ml({fr:"Territoire & partenariats",es:"Territorio & alianzas",en:"Territory & partnerships",zh:"在地与合作"}) + '></h4>' + (p.territory ? '<p class="pd-dim-text" ' + ml(p.territory) + "></p>" : "") + partnersList + "</div>\n"
+    + '        <div class="pd-dim"><h4 ' + ml({fr:"Partenariats & territoire",es:"Alianzas & territorio",en:"Partnerships & territory",zh:"合作与在地"}) + '></h4>' + (p.territory ? '<p class="pd-dim-text" ' + ml(p.territory) + "></p>" : "") + partnersList + "</div>\n"
     + "      </div>" : "";
 
   return '    <article class="section pd-page">\n'
