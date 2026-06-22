@@ -105,7 +105,7 @@ function header(rel) {
   var nav = [["#apropos","À propos","Acerca de","About","关于"],["#productions","Productions","Producciones","Productions","作品"],
     ["#recherche","Recherche & LIPS","Investigación & LIPS","Research & LIPS","研究 & LIPS"],
     ["#reseau","Réseau international","Red internacional","International network","国际网络"],
-    ["#rejoindre","Rejoindre","Unirse","Join","加入"],["#contact","Contact","Contacto","Contact","联系"]]
+    ["#rejoindre","Rejoindre & contact","Unirse & contacto","Join & contact","加入与联系"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
   return '<header class="site-header">\n'
@@ -135,7 +135,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260618S";
+  var rel = opts.rel, V = "?v=20260622A";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -202,6 +202,7 @@ function prodBody(p, rel) {
     + '      <h1 class="pd-title pd-title--page" ' + ml(p.titleHtml || p.title) + '></h1>\n'
     + "      " + hero + "\n"
     + '      <p class="pd-pitch" ' + ml(p.pitch) + "></p>\n"
+    + ((p.body && p.body.length) ? p.body.map(function (b) { return '      <p class="pd-prose pd-prose--lead" ' + ml(b) + "></p>\n"; }).join("") : "")
     + (teaser ? "      " + teaser + "\n" : "")
     + (gallery ? "      " + gallery + "\n" : "")
     + '      <div class="pd-grid">\n'

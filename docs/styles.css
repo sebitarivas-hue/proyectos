@@ -291,6 +291,11 @@ main { counter-reset: sec; }
 /* ---------- Piliers (sous le hero) ---------- */
 .pillars { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.2rem, 2.5vw, 2.6rem); padding: clamp(2rem, 4vw, 3.2rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
 .pillars-5 { grid-template-columns: repeat(5, 1fr); gap: clamp(1rem, 2vw, 1.9rem); }
+a.pillar { display: block; text-decoration: none; color: inherit; position: relative; padding-bottom: 1.1rem; transition: transform .2s ease; }
+a.pillar::after { content: "→"; position: absolute; left: 0; bottom: 0; font-family: var(--sans); font-size: .8rem; color: var(--accent); opacity: 0; transform: translateX(-4px); transition: opacity .2s ease, transform .2s ease; }
+a.pillar:hover { transform: translateY(-2px); }
+a.pillar:hover h2 { text-decoration: underline; text-underline-offset: 3px; }
+a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .pillar h2 { font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 .55rem; }
 .pillar p { margin: 0; font-family: var(--serif); font-size: 1.02rem; line-height: 1.4; color: #2c2620; }
 .pillars-5 .pillar p { font-size: .92rem; line-height: 1.45; }
@@ -436,6 +441,7 @@ main { counter-reset: sec; }
 .pd-gallery figure { margin: 0; }
 .pd-gallery img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
 .pd-prose { color: #2c2620; font-size: 1rem; line-height: 1.6; max-width: 72ch; margin: 0; }
+.pd-page .pd-prose--lead { font-size: 1.04rem; line-height: 1.65; margin: 0 0 1.2rem; }
 .rel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .55rem; }
 .rel-list a { display: inline-block; padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--sans); font-size: .82rem; font-weight: 600; color: var(--fg); text-decoration: none; transition: border-color .2s ease, color .2s ease, background .2s ease; }
 .rel-list a:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-2); }
@@ -469,6 +475,9 @@ main { counter-reset: sec; }
 .join-cta { font-family: var(--sans); font-weight: 600; font-size: .84rem; letter-spacing: .03em; color: var(--accent); text-decoration: none; }
 .join-cta:hover { text-decoration: underline; }
 @media (max-width: 560px) { .join-grid { grid-template-columns: 1fr; } }
+.join-contact { margin-top: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+.join-contact-title { font-family: var(--display); font-weight: 600; font-size: 1.25rem; letter-spacing: -.01em; margin: 0 0 .6rem; }
+.join-contact .contact-big { font-size: clamp(1.3rem, 3.4vw, 2rem); margin: .3rem 0 1.1rem; }
 
 /* ---------- Coopération : carte filigrane ---------- */
 .coop-map { position: relative; width: 100%; max-width: 1000px; margin: 1.8rem auto 0; aspect-ratio: 2750 / 1220; }
@@ -477,8 +486,9 @@ main { counter-reset: sec; }
 .spot { position: absolute; transform: translate(-50%,-50%); background: none; border: 0; padding: 0; cursor: pointer; }
 .spot-dot { display: block; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(216,30,5,.16); transition: box-shadow .2s ease, transform .2s ease; }
 .spot:hover .spot-dot, .spot:focus-visible .spot-dot, .spot.is-open .spot-dot { box-shadow: 0 0 0 7px rgba(216,30,5,.24); transform: scale(1.12); }
-.spot-name { position: absolute; left: 17px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .02em; color: var(--fg); text-shadow: 0 1px 2px var(--bg), 0 0 4px var(--bg); }
+.spot-name { position: absolute; left: 17px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .02em; color: var(--fg); background: var(--bg); padding: 1px 6px; border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,.14); opacity: 0; visibility: hidden; transition: opacity .18s ease; pointer-events: none; }
 .spot--l .spot-name { left: auto; right: 17px; }
+.spot:hover .spot-name, .spot:focus-visible .spot-name, .spot.is-open .spot-name { opacity: 1; visibility: visible; }
 .coop-card { position: absolute; display: none; z-index: 8; width: 232px; max-width: 72vw; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .85rem .95rem; box-shadow: 0 14px 34px rgba(0,0,0,.16); text-align: left; top: 20px; left: -8px; }
 .spot--l .coop-card { left: auto; right: 20px; top: -8px; }
 .spot--up .coop-card { top: auto; bottom: 20px; left: -8px; }
