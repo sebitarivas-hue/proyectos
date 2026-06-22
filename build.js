@@ -137,7 +137,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622E";
+  var rel = opts.rel, V = "?v=20260622F";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -476,10 +476,10 @@ var ARTISTS = [
     productions: ["insistir"] },
   { slug: "olivia-martin", name: "Olivia Martin",
     role: { fr: "Percussionniste", es: "Percusionista", en: "Percussionist", zh: "打击乐演奏家" },
-    bio: { fr: "Percussionniste, elle interprète [FAM]E, le Pop-Up Exploratoire #1 du GRAME à l'Auditorium de Lyon, et joue au sein de l'ensemble Êkheía (Snow on Her Lips).",
-           es: "Percusionista, interpreta [FAM]E, el Pop-Up Exploratoire #1 del GRAME en el Auditorium de Lyon, y toca en el ensemble Êkheía (Snow on Her Lips).",
-           en: "A percussionist, she performs [FAM]E, GRAME's Pop-Up Exploratoire #1 at the Auditorium de Lyon, and plays within the Êkheía ensemble (Snow on Her Lips).",
-           zh: "打击乐演奏家，演出 GRAME 于里昂大礼堂的 Pop-Up Exploratoire #1「[FAM]E」，并在 Êkheía 乐团演奏（Snow on Her Lips）。" },
+    bio: { fr: "Percussionniste, elle conçoit et interprète [FAM]E, récital du GRAME autour de la féminité et du harcèlement de rue (Auditorium de Lyon), et joue au sein de l'ensemble Êkheía (Snow on Her Lips).",
+           es: "Percusionista, concibe e interpreta [FAM]E, recital del GRAME en torno a la feminidad y el acoso callejero (Auditorium de Lyon), y toca en el ensemble Êkheía (Snow on Her Lips).",
+           en: "A percussionist, she devises and performs [FAM]E, GRAME's recital around femininity and street harassment (Auditorium de Lyon), and plays within the Êkheía ensemble (Snow on Her Lips).",
+           zh: "打击乐演奏家，构思并演出 GRAME 围绕女性气质与街头性骚扰的独奏会「[FAM]E」（里昂大礼堂），并在 Êkheía 乐团演奏（Snow on Her Lips）。" },
     productions: ["fame", "snow-on-her-lips"] },
   { slug: "nicola-beller-carbone", name: "Nicola Beller Carbone",
     role: { fr: "Soprano", es: "Soprano", en: "Soprano", zh: "女高音" },
