@@ -301,6 +301,12 @@
         { role: { fr: "Regard extérieur", es: "Mirada externa", en: "Outside eye", zh: "外部视角" }, who: "Géraldine Kosiak" }
       ],
       partners: ["Printemps des Arts de Monte-Carlo", "GRAME"],
+      press: [
+        { source: "Télérama", title: "À Monaco, le Printemps des Arts fait fleurir la musique", url: "https://www.telerama.fr/musique/a-monaco-le-printemps-des-arts-fait-fleurir-la-musique-6850891.php" },
+        { source: "ResMusica", title: "Heureuses retrouvailles au Printemps des Arts de Monte-Carlo", url: "https://www.resmusica.com/2021/03/28/heureuses-retrouvailles-des-artistes-et-du-public-au-printemps-des-arts-de-monte-carlo/" },
+        { source: "La Clef · musique contemporaine", title: "Le ballet en musiques contemporaines", url: "https://laclef.musiquecontemporaine.org/default/le-ballet-en-musiques-contemporaines.aspx?_lg=fr-FR" },
+        { source: "Congrès AMP", title: "Snow on Her Lips", url: "https://congresamp.com/fr/blog/portfolio-items/snow-on-her-lips-3/" }
+      ],
       note: { fr: "Création au Sporting Monte-Carlo (Monaco), 2021. Captation disponible sur notre chaîne YouTube.", es: "Estreno en el Sporting Monte-Carlo (Mónaco), 2021. Grabación disponible en nuestro canal de YouTube.", en: "Premiered at the Sporting Monte-Carlo (Monaco), 2021. Recording available on our YouTube channel.", zh: "2021 年于蒙特卡洛 Sporting（摩纳哥）首演。录像见我们的 YouTube 频道。" }
     },
     {

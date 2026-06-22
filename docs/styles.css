@@ -197,6 +197,10 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .press-group .pdq cite a:hover { color: var(--accent); border-color: var(--accent); }
 .press-soon { color: var(--muted); font-style: italic; margin: 0; }
 .press-media { margin-top: 2.6rem; }
+.press-ref { margin: 0 0 .7rem; font-size: .96rem; line-height: 1.4; }
+.press-ref a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--accent); }
+.press-ref a:hover { color: var(--accent); }
+.press-ref-src { display: inline-block; font-family: var(--sans); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-left: .5rem; }
 
 /* ---------- Press ---------- */
 .press { margin: 0 0 1.6rem; padding: 0 0 0 1.1rem; border-left: 2px solid var(--accent); }

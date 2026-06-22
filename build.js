@@ -137,7 +137,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622C";
+  var rel = opts.rel, V = "?v=20260622D";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -193,8 +193,7 @@ function prodBody(p, rel) {
     }).join("") + "</ul></div>" : "";
   var gallery = (p.gallery && p.gallery.length) ? '<div class="pd-gallery">' + p.gallery.map(function (g) { return '<figure><img src="' + rel + g.src + '" alt="' + esc(g.alt || plain(p.title)) + '" loading="lazy" /></figure>'; }).join("") + "</div>" : "";
   var press = (p.press && p.press.length) ? '<div class="pd-block pd-full pd-press"><h4 ' + ml({fr:"Revue de presse",es:"Reseña de prensa",en:"Press",zh:"媒体评论"}) + '></h4>'
-    + p.press.map(function (q) { var src2 = q.url ? '<a href="' + q.url + '" target="_blank" rel="noopener">' + esc(q.source) + "</a>" : esc(q.source);
-        return '<blockquote class="pdq"><span ' + ml(typeof q.quote === "object" ? wrapQuote(q.quote) : { fr: "« " + q.quote + " »", es: "« " + q.quote + " »", en: "« " + q.quote + " »", zh: "« " + q.quote + " »" }) + '></span><cite>' + src2 + "</cite></blockquote>"; }).join("")
+    + p.press.map(pressQuote).join("")
     + (p.pressPdf ? '<a class="pd-dl" href="' + rel + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + '></a>' : "") + "</div>" : "";
   var links = (p.links && p.links.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"À voir & écouter",es:"Ver & escuchar",en:"Watch & listen",zh:"观看与聆听"}) + '></h4><ul class="taglist">' + p.links.map(function (l) { return '<li><a href="' + l.url + '" target="_blank" rel="noopener">' + esc(l.label) + "</a></li>"; }).join("") + "</ul></div>" : "";
   var note = p.note ? '<p class="pd-note" ' + ml(p.note) + "></p>" : "";
@@ -358,6 +357,11 @@ function cooperationBody(rel){
 /* ---- press (page dédiée, alimentée au fil des productions) ---- */
 var PRESS_MEDIA = ["Le Monde","Diapason","ResMusica","Forum Opéra","Concertclassic","Classykéo","Hémisphères Son","La Terrasse","L'Humanité","AFP","La Stampa","The Times","El País","El Mundo","Scherzo","Clarín","La Nación","Página/12","Infobae"];
 function pressQuote(q) {
+  if (!q.quote) {
+    var t = q.title ? (typeof q.title === "string" ? esc(q.title) : esc(tFR(q.title))) : esc(q.source);
+    var lk = q.url ? '<a href="' + q.url + '" target="_blank" rel="noopener">' + t + "</a>" : t;
+    return '<p class="press-ref">' + lk + ' <span class="press-ref-src">' + esc(q.source) + "</span></p>";
+  }
   var src = q.url ? '<a href="' + q.url + '" target="_blank" rel="noopener">' + esc(q.source) + "</a>" : esc(q.source);
   var qq = (typeof q.quote === "object") ? wrapQuote(q.quote) : { fr: "« " + q.quote + " »", es: "« " + q.quote + " »", en: "« " + q.quote + " »", zh: "« " + q.quote + " »" };
   return '<blockquote class="pdq"><span ' + ml(qq) + "></span><cite>" + src + "</cite></blockquote>";
