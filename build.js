@@ -137,7 +137,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622B";
+  var rel = opts.rel, V = "?v=20260622C";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -353,6 +353,39 @@ function cooperationBody(rel){
     + '      '+coopMap(rel)+"\n"
     + '      <div class="coop-regions">\n        '+regionBlock("eu",{fr:"Europe",es:"Europa",en:"Europe",zh:"欧洲"})+"\n        "+regionBlock("la",{fr:"Amérique latine",es:"América Latina",en:"Latin America",zh:"拉丁美洲"})+"\n        "+regionBlock("as",{fr:"Asie",es:"Asia",en:"Asia",zh:"亚洲"})+"\n      </div>\n"
     + '      ' + COOP_SCRIPT + "\n    </section>";
+}
+
+/* ---- press (page dédiée, alimentée au fil des productions) ---- */
+var PRESS_MEDIA = ["Le Monde","Diapason","ResMusica","Forum Opéra","Concertclassic","Classykéo","Hémisphères Son","La Terrasse","L'Humanité","AFP","La Stampa","The Times","El País","El Mundo","Scherzo","Clarín","La Nación","Página/12","Infobae"];
+function pressQuote(q) {
+  var src = q.url ? '<a href="' + q.url + '" target="_blank" rel="noopener">' + esc(q.source) + "</a>" : esc(q.source);
+  var qq = (typeof q.quote === "object") ? wrapQuote(q.quote) : { fr: "« " + q.quote + " »", es: "« " + q.quote + " »", en: "« " + q.quote + " »", zh: "« " + q.quote + " »" };
+  return '<blockquote class="pdq"><span ' + ml(qq) + "></span><cite>" + src + "</cite></blockquote>";
+}
+function pressBody(rel) {
+  var groups = ["ooo", "otages", "aliados", "snow-on-her-lips"].map(function (s) {
+    var p = bySlug[s]; if (!p) return "";
+    var head = '<h3 class="press-prod"><a href="' + rel + "productions/" + s + '/" ' + ml(p.titleHtml || p.title) + "></a></h3>";
+    var inner;
+    if (p.press && p.press.length) {
+      inner = p.press.map(pressQuote).join("\n        ")
+        + (p.pressPdf ? '\n        <a class="pd-dl" href="' + rel + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + "></a>" : "");
+    } else {
+      inner = '<p class="press-soon" ' + ml({fr:"Revue de presse à venir.",es:"Reseña de prensa próximamente.",en:"Press review coming soon.",zh:"媒体评论即将上线。"}) + "></p>";
+    }
+    return '<div class="press-group">\n        ' + head + "\n        " + inner + "\n      </div>";
+  }).join("\n      ");
+  var media = '<ul class="partners">' + PRESS_MEDIA.map(function (m) { return "<li>" + esc(m) + "</li>"; }).join("") + "</ul>";
+  return '    <section class="section pd-page">\n'
+    + '      <p class="pd-eyebrow"><a href="' + rel + 'index.html" data-fr="← Accueil" data-es="← Inicio" data-en="← Home" data-zh="← 首页"></a></p>\n'
+    + '      <h1 class="pd-title pd-title--page" data-fr="Revue de presse" data-es="Reseña de prensa" data-en="Press" data-zh="媒体评论"></h1>\n'
+    + '      <p class="pd-pitch" data-fr="Une sélection d\'articles et de critiques autour des créations de STOPERA!. Cette revue s\'enrichit au fil des productions." data-es="Una selección de artículos y críticas en torno a las creaciones de STOPERA!. Esta reseña se enriquece a medida que avanzan las producciones." data-en="A selection of articles and reviews around STOPERA!\'s works. This press review grows with each new production." data-zh="围绕 STOPERA! 创作的文章与评论选辑。本媒体评论将随作品不断充实。"></p>\n'
+    + "      " + groups + "\n"
+    + '      <div class="subblock press-media">\n'
+    + '        <p class="subblock-label" data-fr="Ils en ont parlé" data-es="Han hablado de ello" data-en="As featured in" data-zh="媒体报道"></p>\n'
+    + "        " + media + "\n"
+    + '        <p class="section-note" data-fr="France · Italie · Royaume-Uni · Espagne · Argentine — autour des créations d\'<em>Otages</em>, <em>Aliados</em> et <em>OOO</em>." data-es="Francia · Italia · Reino Unido · España · Argentina — en torno a los estrenos de <em>Otages</em>, <em>Aliados</em> y <em>OOO</em>." data-en="France · Italy · UK · Spain · Argentina — around the premieres of <em>Otages</em>, <em>Aliados</em> and <em>OOO</em>." data-zh="法国 · 意大利 · 英国 · 西班牙 · 阿根廷 —— 围绕 <em>Otages</em>、<em>Aliados</em> 与 <em>OOO</em> 的首演。"></p>\n'
+    + "      </div>\n    </section>";
 }
 
 /* ---- write ---- */
@@ -707,6 +740,9 @@ ARTISTS.forEach(function (a) {
 /* cooperation */
 write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
 urls.push(SITE + "/cooperation/");
+/* press */
+write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, Aliados, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
+urls.push(SITE + "/presse/");
 /* snippet carte pour l'accueil (rel = "") */
 fs.writeFileSync("/tmp/coop_home.html", coopMap("") + "\n      " + COOP_SCRIPT);
 
