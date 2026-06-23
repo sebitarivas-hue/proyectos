@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sebitarivas-hue.github.io/proyectos/sitemap.xml
