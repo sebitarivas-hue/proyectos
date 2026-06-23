@@ -18,12 +18,15 @@ function grab(re) { var m = src.match(re); if (!m) throw new Error("not found: "
 var sandbox = "var ONGOING=" + grab(/var ONGOING = (\{[^;]*\});/)
   + ";var YEARS=" + grab(/var YEARS = (\{[\s\S]*?\});/)
   + ";var PERIOD=" + grab(/var PERIOD = (\{[^;]*\});/)
+  + ";var SPACE=" + grab(/var SPACE = (\{[^;]*\});/)
+  + ";var ROLE_FULL=" + grab(/var ROLE_FULL = (\{[^;]*\});/)
+  + ";var ROLE=" + grab(/var ROLE = (\{[\s\S]*?\});/)
   + ";var COLORS=" + grab(/var COLORS = (\{[\s\S]*?\});/)
   + ";var DIM=" + grab(/var DIM = (\{[\s\S]*?\n  \});/)
   + ";var PROJECTS=" + grab(/var PROJECTS = (\[[\s\S]*?\n  \]);/)
-  + ";return {YEARS:YEARS,PERIOD:PERIOD,COLORS:COLORS,DIM:DIM,PROJECTS:PROJECTS};";
+  + ";return {YEARS:YEARS,PERIOD:PERIOD,SPACE:SPACE,ROLE:ROLE,COLORS:COLORS,DIM:DIM,PROJECTS:PROJECTS};";
 var DATA = new Function(sandbox)();
-var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS, DIM = DATA.DIM;
+var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS, DIM = DATA.DIM, SPACE = DATA.SPACE, ROLE = DATA.ROLE;
 var bySlug = {}; PROJECTS.forEach(function (p) { bySlug[p.slug] = p; });
 Object.keys(DIM).forEach(function (s) { if (bySlug[s]) { if (DIM[s].tx) bySlug[s].transmission = DIM[s].tx; if (DIM[s].terr) bySlug[s].territory = DIM[s].terr; } });
 
@@ -35,14 +38,14 @@ var THEMES = [
              es: "La imagen, el gesto y la voz transformados en directo: sensores, vídeo, electrónica e imagen generada se vuelven materia escénica.",
              en: "Image, gesture and voice transformed live: sensors, video, electronics and generated imagery become stage material.",
              zh: "影像、动作与人声的实时转化：传感器、影像、电子与生成图像成为舞台素材。" },
-    items: ["ooo", "rayon-n", "rut", "aliados", "snow-on-her-lips", "fame"] },
+    items: ["ooo", "rut", "aliados", "snow-on-her-lips", "fame"] },
   { slug: "posthumain-memoire",
     title: { fr: "Post-humain & mémoire", es: "Posthumano & memoria", en: "Post-human & memory", zh: "后人类与记忆" },
     blurb: { fr: "Des mondes où l'humain n'est plus au centre : objets, machines et images qui se souviennent à notre place. Ce qui reste, et ce qui se souvient, quand nous ne sommes plus là.",
              es: "Mundos donde lo humano ya no está en el centro: objetos, máquinas e imágenes que recuerdan en nuestro lugar. Lo que queda, y lo que recuerda, cuando ya no estamos.",
              en: "Worlds where the human is no longer the centre: objects, machines and images that remember in our place. What remains, and what remembers, when we are gone.",
              zh: "人类不再居于中心的世界：替我们记忆的物件、机器与影像。当我们不再在场，什么留存，什么记忆。" },
-    items: ["ooo", "rayon-n", "war-madrigals"] },
+    items: ["ooo", "war-madrigals"] },
   { slug: "memoire-politique",
     title: { fr: "Mémoire & politique", es: "Memoria & política", en: "Memory & politics", zh: "记忆与政治" },
     blurb: { fr: "Pouvoir, histoire et résistance : des figures réelles ou de fiction qui interrogent la responsabilité, la violence et la liberté.",
@@ -177,7 +180,10 @@ function prodBody(p, rel) {
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
   if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>';
 
-  var facts = (p.facts || []).map(function (f) {
+  var roleFact = ROLE[p.slug]
+    ? '<li><span class="k" ' + ml({fr:"Rôle de STOPERA!",es:"Rol de STOPERA!",en:"STOPERA!'s role",zh:"STOPERA! 的角色"}) + '></span><span class="v" ' + ml(ROLE[p.slug]) + '></span></li>'
+    : "";
+  var facts = roleFact + (p.facts || []).map(function (f) {
     var v = (typeof f.v === "object") ? '<span class="v" ' + ml(f.v) + '></span>' : '<span class="v">' + linkNames(f.v, rel) + '</span>';
     return '<li><span class="k" ' + ml(f.k) + '></span>' + v + '</li>';
   }).join("");
@@ -227,14 +233,17 @@ function threadTile(slug, rel) {
   var year = tFR(YEARS[slug] || "");
   var yearSpan = year ? '<span class="ptile-year">' + esc(year) + "</span>" : "";
   var title = '<span class="ptile-title" ' + ml(p.titleHtml || p.title) + "></span>";
+  var roleBadge = ROLE[slug] ? '<span class="ptile-role" ' + ml(ROLE[slug]) + "></span>" : "";
   if (p.photo) {
     return '<li class="project"><a class="ptile" href="' + href + '">'
       + '<span class="ptile-img" style="background-image:url(\'' + rel + p.photo + '\')"></span>'
       + '<span class="ptile-scrim"></span>'
+      + roleBadge
       + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
   }
   return '<li class="project"><a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(slug) + ";color:" + inkOn(COLORS[slug] || "#4f5f60") + '">'
     + '<span class="ptile-tag" ' + ml(p.tag || "") + "></span>"
+    + roleBadge
     + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
 }
 
@@ -248,10 +257,6 @@ var NEWS = [
     title: { fr: "STOPERA! ouvre sa plateforme", es: "STOPERA! abre su plataforma", en: "STOPERA! opens its platform", zh: "STOPERA! 启动其平台" },
     excerpt: { fr: "Une plateforme internationale de création, de production, de recherche et de transmission voit le jour à Gentilly.", es: "Una plataforma internacional de creación, producción, investigación y transmisión nace en Gentilly.", en: "An international platform for creation, production, research and transmission launches in Gentilly.", zh: "一个面向创作、制作、研究与传承的国际平台在让蒂伊诞生。" },
     body: { fr: "STOPERA! réunit artistes, interprètes, chercheurs et partenaires culturels autour d'une même question : comment la voix, le corps et le son deviennent présence sur le plateau. La plateforme rassemble créations, recherche et transmission, sous la direction de Sebastian Rivas et avec le soutien de Georges Aperghis comme président d'honneur.", es: "STOPERA! reúne a artistas, intérpretes, investigadores y socios culturales en torno a una misma pregunta: cómo la voz, el cuerpo y el sonido se vuelven presencia en escena. La plataforma reúne creaciones, investigación y transmisión, bajo la dirección de Sebastian Rivas y con el apoyo de Georges Aperghis como presidente de honor.", en: "STOPERA! brings together artists, performers, researchers and cultural partners around a single question: how voice, body and sound become presence on stage. The platform unites creation, research and transmission, directed by Sebastian Rivas and supported by Georges Aperghis as honorary president.", zh: "STOPERA! 汇集艺术家、表演者、研究者与文化伙伴，围绕同一问题：人声、身体与声音如何在舞台上成为在场。平台整合创作、研究与传承，由 Sebastian Rivas 担任艺术指导，并由 Georges Aperghis 担任名誉主席给予支持。" } },
-  { slug: "rayon-n-development", date: "2026", img: "assets/projects/rayon-n.jpg", related: "rayon-n",
-    title: { fr: "Rayon N : l'opéra-film en développement", es: "Rayon N: la ópera-film en desarrollo", en: "Rayon N: the film-opera in development", zh: "Rayon N：影像歌剧开发中" },
-    excerpt: { fr: "Commande de l'Ensemble intercontemporain, Rayon N entre en production (2026) en vue d'une diffusion en 2027.", es: "Encargo del Ensemble intercontemporain, Rayon N entra en producción (2026) con vistas a una gira en 2027.", en: "Commissioned by the Ensemble intercontemporain, Rayon N enters production (2026) towards a 2027 tour.", zh: "受 Ensemble intercontemporain 委约，Rayon N 进入制作阶段（2026），目标 2027 年巡演。" },
-    body: { fr: "Inspiré de la prétendue découverte du « rayon N » par René Blondlot en 1903, l'opéra de Sebastian Rivas (livret et mise en scène d'Antoine Gindt, avec Philippe Béziat) prolonge son questionnement sur la croyance et la construction du réel. L'image, aujourd'hui générée et animée, dialogue avec la musique jouée en direct.", es: "Inspirada en la supuesta invención del «rayo N» por René Blondlot en 1903, la ópera de Sebastian Rivas (libreto y dirección de Antoine Gindt, con Philippe Béziat) prolonga su reflexión sobre la creencia y la construcción de lo real. La imagen, hoy generada y animada, dialoga con la música en vivo.", en: "Inspired by René Blondlot's supposed 1903 discovery of the “N-ray,” Sebastian Rivas's opera (libretto and staging by Antoine Gindt, with Philippe Béziat) extends its inquiry into belief and the construction of reality. Imagery, today generated and animated, converses with live music.", zh: "灵感源自 1903 年 René Blondlot 声称发现的「N 射线」，Sebastian Rivas 的歌剧（Antoine Gindt 编剧与导演，Philippe Béziat 参与）延续其对信念与现实建构的追问。如今生成并动画化的影像与现场音乐对话。" } },
   { slug: "lips-2028", date: "2028", img: "assets/projects/lips.jpg", related: "lips",
     title: { fr: "LIPS Lab : prochaine édition 2028", es: "LIPS Lab: próxima edición 2028", en: "LIPS Lab: next edition 2028", zh: "LIPS Lab：下一届 2028" },
     excerpt: { fr: "Le laboratoire international de prototypes scéniques et sonores revient en 2028, tous les deux ans.", es: "El laboratorio internacional de prototipos escénicos y sonoros vuelve en 2028, cada dos años.", en: "The international laboratory of scenic and sound prototypes returns in 2028, every two years.", zh: "国际舞台与声音原型工作坊将于 2028 年回归，每两年一届。" },
@@ -276,11 +281,11 @@ function coopDots(){
 }
 var COOP_CITIES = [
   { id:"paris", region:"eu", x:50.65, y:24.57, side:"l", name:"Paris · Gentilly",
-    inst:[["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["T&M Paris","https://theatre-musique.com"],["T2G — Gennevilliers","https://www.theatre2gennevilliers.com"],["Le Générateur","https://legenerateur.com"],["La Muse en Circuit","https://alamuse.com"],["Ville de Gentilly","https://www.ville-gentilly.fr"]],
-    proj:[["Siège STOPERA!",""],["Aliados","aliados"],["LIPS","lips"]] },
+    inst:[["Radio France","https://www.radiofrance.fr"],["T&M Paris","https://theatre-musique.com"],["Le Générateur","https://legenerateur.com"],["La Muse en Circuit","https://alamuse.com"],["Ville de Gentilly","https://www.ville-gentilly.fr"]],
+    proj:[["Siège STOPERA!",""],["War Madrigals","war-madrigals"],["LIPS","lips"]] },
   { id:"lyon", region:"eu", x:51.34, y:26.79, side:"l", name:"Lyon",
     inst:[["GRAME — CNCM","https://www.grame.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Théâtre de la Croix-Rousse","https://croix-rousse.com"],["Pôle Pixel","https://www.pole-pixel.com"]],
-    proj:[["Otages","otages"],["Rayon N","rayon-n"],["OOO","ooo"],["LIPS","lips"]] },
+    proj:[["Otages","otages"],["OOO","ooo"],["LIPS","lips"]] },
   { id:"monaco", region:"eu", x:52.06, y:28.25, side:"l", name:"Monte-Carlo",
     inst:[["Printemps des Arts","https://www.printempsdesarts.mc"]],
     proj:[["Snow on Her Lips","snow-on-her-lips"]] },
@@ -346,7 +351,7 @@ function pressQuote(q) {
   return '<blockquote class="pdq"><span ' + ml(qq) + "></span><cite>" + src + "</cite></blockquote>";
 }
 function pressBody(rel) {
-  var groups = ["ooo", "otages", "aliados", "snow-on-her-lips", "rayon-n"].map(function (s) {
+  var groups = ["ooo", "otages", "aliados", "snow-on-her-lips"].map(function (s) {
     var p = bySlug[s]; if (!p) return "";
     var head = '<h3 class="press-prod"><a href="' + rel + "productions/" + s + '/" ' + ml(p.titleHtml || p.title) + "></a></h3>";
     var inner;
@@ -470,21 +475,21 @@ THEMES.forEach(function (th) {
 var ARTISTS = [
   { slug: "sebastian-rivas", name: "Sebastian Rivas",
     role: { fr: "Direction artistique & composition", es: "Dirección artística & composición", en: "Artistic direction & composition", zh: "艺术指导与作曲" },
-    bio: { fr: "Compositeur, il est à l'origine de nombreuses œuvres de STOPERA! et en porte la direction artistique. Son travail explore l'opéra contemporain, le théâtre musical, l'électronique en temps réel et — avec Rayon N — l'image générée.",
-           es: "Compositor, está en el origen de numerosas obras de STOPERA! y asume su dirección artística. Su trabajo explora la ópera contemporánea, el teatro musical, la electrónica en tiempo real y —con Rayon N— la imagen generada.",
-           en: "A composer, he is behind many of STOPERA!'s works and carries its artistic direction. His work explores contemporary opera, music theatre, real-time electronics and — with Rayon N — generated imagery.",
-           zh: "作曲家，是 STOPERA! 众多作品的源头并担任其艺术指导。其创作探索当代歌剧、音乐剧场、实时电子，并以 Rayon N 探索生成影像。" },
+    bio: { fr: "Compositeur, il est à l'origine de nombreuses œuvres de STOPERA! et en porte la direction artistique. Son travail explore l'opéra contemporain, le théâtre musical et l'électronique en temps réel.",
+           es: "Compositor, está en el origen de numerosas obras de STOPERA! y asume su dirección artística. Su trabajo explora la ópera contemporánea, el teatro musical y la electrónica en tiempo real.",
+           en: "A composer, he is behind many of STOPERA!'s works and carries its artistic direction. His work explores contemporary opera, music theatre and real-time electronics.",
+           zh: "作曲家，是 STOPERA! 众多作品的源头并担任其艺术指导。其创作探索当代歌剧、音乐剧场与实时电子。" },
     bioLong: [
       { fr: "Compositeur franco-argentin, il développe une œuvre à la croisée de l'opéra contemporain, du théâtre musical et de l'électronique en temps réel. Lion d'Argent de la Biennale de Venise en 2018, il a notamment créé Aliados (Ircam · ManiFeste, 2013) et Otages (Opéra de Lyon, 2024).",
         es: "Compositor franco-argentino, desarrolla una obra en el cruce de la ópera contemporánea, el teatro musical y la electrónica en tiempo real. León de Plata de la Bienal de Venecia en 2018, ha creado entre otras Aliados (Ircam · ManiFeste, 2013) y Otages (Opéra de Lyon, 2024).",
         en: "A French-Argentine composer, he develops a body of work at the crossroads of contemporary opera, music theatre and real-time electronics. Silver Lion of the Venice Biennale in 2018, his works include Aliados (Ircam · ManiFeste, 2013) and Otages (Opéra de Lyon, 2024).",
         zh: "法国-阿根廷作曲家，其创作游走于当代歌剧、音乐剧场与实时电子之间。2018 年获威尼斯双年展银狮奖，作品包括 Aliados（Ircam · ManiFeste，2013）与 Otages（里昂歌剧院，2024）。" },
-      { fr: "Avec STOPERA!, dont il porte la direction artistique, il explore la manière dont la voix, le corps et le son deviennent présence — jusqu'à l'image générée par intelligence artificielle dans Rayon N. Son travail dialogue avec des institutions en France et à l'international : Ircam, GRAME, Ensemble intercontemporain, Teatro Colón.",
-        es: "Con STOPERA!, cuya dirección artística asume, explora cómo la voz, el cuerpo y el sonido se vuelven presencia —hasta la imagen generada por inteligencia artificial en Rayon N. Su trabajo dialoga con instituciones en Francia y en el extranjero: Ircam, GRAME, Ensemble intercontemporain, Teatro Colón.",
-        en: "With STOPERA!, of which he is artistic director, he explores how voice, body and sound become presence — through to the AI-generated image of Rayon N. His work engages institutions in France and abroad: Ircam, GRAME, the Ensemble intercontemporain, the Teatro Colón.",
-        zh: "在担任艺术指导的 STOPERA!，他探索人声、身体与声音如何成为在场——直至 Rayon N 中由人工智能生成的影像。其工作与法国及国际的机构对话：Ircam、GRAME、Ensemble intercontemporain、Teatro Colón。" }
+      { fr: "Avec STOPERA!, dont il porte la direction artistique, il explore la manière dont la voix, le corps et le son deviennent présence. Son travail dialogue avec des institutions en France et à l'international : Ircam, GRAME, Ensemble intercontemporain, Teatro Colón.",
+        es: "Con STOPERA!, cuya dirección artística asume, explora cómo la voz, el cuerpo y el sonido se vuelven presencia. Su trabajo dialoga con instituciones en Francia y en el extranjero: Ircam, GRAME, Ensemble intercontemporain, Teatro Colón.",
+        en: "With STOPERA!, of which he is artistic director, he explores how voice, body and sound become presence. His work engages institutions in France and abroad: Ircam, GRAME, the Ensemble intercontemporain, the Teatro Colón.",
+        zh: "在担任艺术指导的 STOPERA!，他探索人声、身体与声音如何成为在场。其工作与法国及国际的机构对话：Ircam、GRAME、Ensemble intercontemporain、Teatro Colón。" }
     ],
-    productions: ["rayon-n", "otages", "aliados", "snow-on-her-lips", "war-madrigals", "nous", "mamma-roma", "america"] },
+    productions: ["otages", "aliados", "snow-on-her-lips", "war-madrigals", "nous", "mamma-roma", "america"] },
   { slug: "georges-aperghis", name: "Georges Aperghis", photo: "assets/aperghis.jpg",
     role: { fr: "Président d'honneur", es: "Presidente de honor", en: "Honorary president", zh: "名誉主席" },
     bio: { fr: "Pionnier du théâtre musical, fondateur de l'ATEM (1976). Son compagnonnage et son influence artistique accompagnent STOPERA! ; ses pièces sont au cœur d'Insistir et résonnent dans [FAM]E (Récitation n°9).",
@@ -522,11 +527,11 @@ var ARTISTS = [
     productions: ["mamma-roma", "insistir"] },
   { slug: "antoine-gindt", name: "Antoine Gindt",
     role: { fr: "Metteur en scène & librettiste", es: "Director & libretista", en: "Director & librettist", zh: "导演与编剧" },
-    bio: { fr: "Livret et mise en scène de Rayon N ; mise en scène d'Aliados (Ircam · ManiFeste).",
-           es: "Libreto y dirección de Rayon N; dirección de Aliados (Ircam · ManiFeste).",
-           en: "Libretto and staging of Rayon N; staging of Aliados (Ircam · ManiFeste).",
-           zh: "Rayon N 的编剧与导演；Aliados（Ircam · ManiFeste）的导演。" },
-    productions: ["rayon-n", "aliados"] },
+    bio: { fr: "Mise en scène d'Aliados (Ircam · ManiFeste), opéra du temps réel sur la rencontre de Margaret Thatcher et du général Pinochet.",
+           es: "Dirección de Aliados (Ircam · ManiFeste), ópera en tiempo real sobre el encuentro de Margaret Thatcher y el general Pinochet.",
+           en: "Staging of Aliados (Ircam · ManiFeste), a real-time opera on the meeting of Margaret Thatcher and General Pinochet.",
+           zh: "Aliados（Ircam · ManiFeste）的导演——一部关于撒切尔夫人与皮诺切特将军会面的实时歌剧。" },
+    productions: ["aliados"] },
   { slug: "rut-schreiner", name: "Rut Schreiner",
     role: { fr: "Cheffe d'orchestre & performeuse", es: "Directora & performer", en: "Conductor & performer", zh: "指挥与表演者" },
     bio: { fr: "Direction musicale d'Otages (Opéra de Lyon) ; elle conçoit et interprète input / body / output (« Conducting the Invisible »), où le geste de direction devient matière sonore.",
@@ -536,11 +541,11 @@ var ARTISTS = [
     productions: ["otages", "rut"] },
   { slug: "leo-warynski", name: "Léo Warynski", website: "https://www.lesmetaboles.fr",
     role: { fr: "Chef d'orchestre", es: "Director de orquesta", en: "Conductor", zh: "指挥" },
-    bio: { fr: "Direction musicale de War Madrigals (Les Métaboles), Rayon N et Aliados. Il dirige Les Métaboles et l'ensemble Multilatérale.",
-           es: "Dirección musical de War Madrigals (Les Métaboles), Rayon N y Aliados. Dirige Les Métaboles y el ensemble Multilatérale.",
-           en: "Music direction of War Madrigals (Les Métaboles), Rayon N and Aliados. He leads Les Métaboles and the Multilatérale ensemble.",
-           zh: "War Madrigals（Les Métaboles）、Rayon N 与 Aliados 的音乐指挥。他领导 Les Métaboles 与 Multilatérale 乐团。" },
-    productions: ["war-madrigals", "rayon-n", "aliados"] },
+    bio: { fr: "Direction musicale de War Madrigals (Les Métaboles) et d'Aliados. Il dirige Les Métaboles et l'ensemble Multilatérale.",
+           es: "Dirección musical de War Madrigals (Les Métaboles) y de Aliados. Dirige Les Métaboles y el ensemble Multilatérale.",
+           en: "Music direction of War Madrigals (Les Métaboles) and Aliados. He leads Les Métaboles and the Multilatérale ensemble.",
+           zh: "War Madrigals（Les Métaboles）与 Aliados 的音乐指挥。他领导 Les Métaboles 与 Multilatérale 乐团。" },
+    productions: ["war-madrigals", "aliados"] },
   { slug: "christine-angot", name: "Christine Angot",
     role: { fr: "Autrice", es: "Autora", en: "Author", zh: "作者" },
     bio: { fr: "Écrivaine. Les textes de De l'Innocence, opéra de chambre, naissent d'une série de conversations avec le compositeur, autour de ce qui résiste au langage et au récit.",
@@ -619,11 +624,11 @@ var ARTISTS = [
     productions: ["otages"] },
   { slug: "philippe-beziat", name: "Philippe Béziat",
     role: { fr: "Réalisateur", es: "Realizador", en: "Filmmaker", zh: "影像导演" },
-    bio: { fr: "Réalisateur, il signe l'image et la vidéo de Rayon N et d'Aliados, où le cinéma et l'opéra se répondent en direct.",
-           es: "Realizador, firma la imagen y el vídeo de Rayon N y de Aliados, donde el cine y la ópera se responden en vivo.",
-           en: "A filmmaker, he creates the image and video of Rayon N and Aliados, where cinema and opera answer each other live.",
-           zh: "影像导演，他为 Rayon N 与 Aliados 创作影像与视频，让电影与歌剧实时呼应。" },
-    productions: ["rayon-n", "aliados"] },
+    bio: { fr: "Réalisateur, il signe l'image et la vidéo d'Aliados, où le cinéma et l'opéra se répondent en direct.",
+           es: "Realizador, firma la imagen y el vídeo de Aliados, donde el cine y la ópera se responden en vivo.",
+           en: "A filmmaker, he creates the image and video of Aliados, where cinema and opera answer each other live.",
+           zh: "影像导演，他为 Aliados 创作影像与视频，让电影与歌剧实时呼应。" },
+    productions: ["aliados"] },
   { slug: "anne-laure-chamboissier", name: "Anne-Laure Chamboissier",
     role: { fr: "Curatrice & production", es: "Curadora & producción", en: "Curator & production", zh: "策展与制作" },
     bio: { fr: "Curatrice indépendante, elle accompagne des projets à la croisée des arts visuels, de la musique et de la scène, et a pris part à l'émergence de STOPERA!.",
@@ -801,7 +806,7 @@ var AXES = [
            es:"La tecnología como materia artística, nunca como fin: inteligencia artificial, imagen generada, electrónica en tiempo real y sistemas interactivos — herramientas puestas a prueba en la escena, el gesto y la escucha.",
            en:"Technology as artistic material, never as an end: artificial intelligence, generated image, real-time electronics and interactive systems — tools tested on stage, in gesture and listening.",
            zh:"技术作为艺术素材，而非目的：人工智能、生成影像、实时电子与互动系统——在舞台、动作与聆听中接受检验的工具。"},
-    items:["rayon-n","ooo","rut","aliados"] },
+    items:["ooo","rut","aliados"] },
   { slug:"nouvelles-narrations",
     title:{fr:"Nouvelles narrations",es:"Nuevas narrativas",en:"New narratives",zh:"新叙事"},
     intro:{fr:"Raconter autrement : récits fragmentés, formes documentaires, dramaturgies spéculatives et écritures interdisciplinaires. La parole et le texte y deviennent matière musicale, de Christine Angot à Nina Bouraoui.",
@@ -815,7 +820,7 @@ var AXES = [
            es:"Inventar la forma: ópera-film, entornos inmersivos, instalaciones performativas, formas escénicas híbridas y proyectos in situ. La obra desborda el marco del espectáculo para volverse experiencia.",
            en:"Inventing form: film-opera, immersive environments, performative installations, hybrid stage forms and site-specific projects. The work overflows the frame of the show to become experience.",
            zh:"发明形式：影像歌剧、沉浸式环境、表演性装置、混合舞台形式与在地项目。作品溢出演出的框架，成为体验。"},
-    items:["ooo","rayon-n","snow-on-her-lips","insistir"] }
+    items:["ooo","snow-on-her-lips","insistir"] }
 ];
 function rechBody(a, rel){
   var tiles = a.items.filter(function(s){return bySlug[s];}).map(function(s){ return threadTile(s, rel); }).join("\n        ");

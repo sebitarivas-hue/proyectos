@@ -16,6 +16,7 @@
     sheet:    { fr: "Voir la fiche", es: "Ver la ficha", en: "View sheet", zh: "查看详情" },
     close:    { fr: "Replier", es: "Cerrar", en: "Close", zh: "收起" },
     details:  { fr: "Informations", es: "Información", en: "Details", zh: "信息" },
+    role:     { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色" },
     credits:  { fr: "Générique", es: "Créditos", en: "Credits", zh: "创作团队" },
     partners: { fr: "Production & partenaires", es: "Producción & socios", en: "Production & partners", zh: "制作与合作" },
     press:    { fr: "Revue de presse", es: "Reseña de prensa", en: "Press", zh: "媒体评论" },
@@ -26,7 +27,6 @@
   var YEARS = {
     "ooo": "2025",
     "war-madrigals": "2026",
-    "rayon-n": "2026 – 2027",
     "nous": { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" },
     "rut": "2026",
     "insistir": "2026",
@@ -40,7 +40,18 @@
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "ooo":"past","war-madrigals":"up","rayon-n":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "ooo":"past","war-madrigals":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
+
+  /* Espace éditorial : "stopera" = productions portées par STOPERA! · "parcours" = œuvres antérieures de Sebastian Rivas (hors STOPERA!). */
+  var SPACE = { "ooo":"stopera","war-madrigals":"stopera","nous":"stopera","rut":"stopera","insistir":"stopera","america":"stopera","lips":"stopera","mamma-roma":"stopera","otages":"parcours","aliados":"parcours","fame":"parcours","snow-on-her-lips":"parcours" };
+
+  /* Rôle de STOPERA! sur chaque production (n'apparaît que pour l'espace "stopera"). */
+  var ROLE_FULL = { fr: "Initiation · coproduction · diffusion", es: "Iniciativa · coproducción · difusión", en: "Initiation · coproduction · diffusion", zh: "发起 · 联合制作 · 巡演" };
+  var ROLE = {
+    "ooo": { fr: "Diffusion internationale", es: "Difusión internacional", en: "International diffusion", zh: "国际巡演" },
+    "lips": { fr: "Initiateur", es: "Iniciador", en: "Initiator", zh: "发起方" },
+    "war-madrigals": ROLE_FULL, "nous": ROLE_FULL, "rut": ROLE_FULL, "insistir": ROLE_FULL, "america": ROLE_FULL, "mamma-roma": ROLE_FULL
+  };
 
   // Trois dimensions par projet : Transmission (tx) — ce qui peut se partager / s'explorer ; Territoire & partenariats (terr) — ancrage et engagement local.
   var DIM = {
@@ -48,8 +59,6 @@
       terr: { fr: "Un pont entre Buenos Aires et Lyon, porté en tournée internationale.", es: "Un puente entre Buenos Aires y Lyon, llevado en gira internacional.", en: "A bridge between Buenos Aires and Lyon, taken on international tour.", zh: "连接布宜诺斯艾利斯与里昂的桥梁，并展开国际巡演。" } },
     "war-madrigals": { tx: { fr: "Travail vocal en atelier autour du madrigal et de l'écriture pour six voix.", es: "Trabajo vocal en taller en torno al madrigal y la escritura para seis voces.", en: "Vocal workshops around the madrigal and writing for six voices.", zh: "围绕牧歌与六声部写作的人声工作坊。" },
       terr: { fr: "Porté par le réseau des ensembles vocaux, en France et au-delà.", es: "Llevado por la red de conjuntos vocales, en Francia y más allá.", en: "Carried by the network of vocal ensembles, in France and beyond.", zh: "依托人声合奏团的网络，在法国及更广地区呈现。" } },
-    "rayon-n": { tx: { fr: "Partage du processus opéra-film : musique, image générée et intelligence artificielle.", es: "Compartir el proceso ópera-film: música, imagen generada e inteligencia artificial.", en: "Sharing the film-opera process: music, generated image and artificial intelligence.", zh: "分享影像歌剧的创作流程：音乐、生成影像与人工智能。" },
-      terr: { fr: "Développé à Gentilly, au Lavoir Numérique, en lien avec la scène musicale contemporaine.", es: "Desarrollado en Gentilly, en el Lavoir Numérique, en diálogo con la escena musical contemporánea.", en: "Developed in Gentilly, at the Lavoir Numérique, in dialogue with the contemporary music scene.", zh: "于让蒂伊的 Lavoir Numérique 开发，与当代音乐场景对话。" } },
     "nous": { tx: { fr: "Partage de la méthode : composer à partir de la parole vivante, en ateliers d'écriture et de voix.", es: "Compartir el método: componer a partir de la palabra viva, en talleres de escritura y voz.", en: "Sharing the method: composing from living speech, in writing and voice workshops.", zh: "分享创作方法：从鲜活的言语出发作曲，开展写作与人声工作坊。" },
       terr: { fr: "Enraciné en France, soutenu par le CNM ; coproductions en cours de montage.", es: "Enraizado en Francia, apoyado por el CNM; coproducciones en construcción.", en: "Rooted in France, supported by the CNM; coproductions being assembled.", zh: "扎根法国，获 CNM 支持；联合制作筹备中。" } },
     "rut": { tx: { fr: "Masterclass sur le geste de direction comme matière sonore et l'électronique en temps réel.", es: "Masterclass sobre el gesto de dirección como materia sonora y la electrónica en tiempo real.", en: "Masterclass on the conducting gesture as sound material and real-time electronics.", zh: "关于指挥手势作为声音素材与实时电子的大师班。" },
@@ -164,42 +173,8 @@
         { role: { fr: "Ensemble", es: "Ensemble", en: "Ensemble", zh: "乐团" }, who: "Les Métaboles" },
         { role: { fr: "Direction", es: "Dirección", en: "Conducting", zh: "指挥" }, who: "Léo Warynski" }
       ],
-      partners: ["Les Métaboles"],
-      note: { fr: "Distribution et dates en cours de finalisation.", es: "Reparto y fechas en proceso de confirmación.", en: "Cast and dates being finalised.", zh: "演员与日期确认中。" }
-    },
-    {
-      slug: "rayon-n", title: "Rayon N", img: "assets/projects/rayon-n.svg", photo: "assets/projects/rayon-n.jpg",
-      tag: { fr: "Production 2026 · diffusion 2027", es: "Producción 2026 · gira 2027", en: "Production 2026 · touring 2027", zh: "2026 制作 · 2027 巡演" },
-      short: { fr: "Opéra-film animé par intelligence artificielle.", es: "Ópera-film animada por inteligencia artificial.", en: "An AI-animated film-opera.", zh: "由人工智能生成影像的影像歌剧。" },
-      pitch: {
-        fr: "Opéra inspiré d'un épisode réel : la prétendue découverte du « rayon N » par le physicien René Blondlot en 1903. Une fable sur la croyance, la construction du réel et la manipulation des savoirs, où l'image — aujourd'hui générée et animée — dialogue avec la musique jouée en direct. Livret et mise en scène d'Antoine Gindt, avec Philippe Béziat.",
-        es: "Ópera inspirada en un episodio real: la supuesta invención del «rayo N» por el físico René Blondlot en 1903. Una fábula sobre la creencia, la construcción de lo real y la manipulación de los saberes, donde la imagen —hoy generada y animada— dialoga con la música en vivo. Libreto y dirección de Antoine Gindt, con Philippe Béziat.",
-        en: "An opera inspired by a real episode: physicist René Blondlot's supposed 1903 discovery of the “N-ray.” A fable on belief, the construction of reality and the manipulation of knowledge, where the image — today generated and animated — converses with live music. Libretto and staging by Antoine Gindt, with Philippe Béziat.",
-        zh: "一部取材自真实事件的歌剧：物理学家 René Blondlot 于 1903 年声称发现「N 射线」。一则关于信念、现实建构与知识操纵的寓言；影像——如今由生成技术动画化——与现场音乐对话。Antoine Gindt 编剧与导演，Philippe Béziat 参与。" },
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra-film", es: "Ópera-film", en: "Film-opera", zh: "影像歌剧" } },
-        { k: { fr: "Commande", es: "Encargo", en: "Commission", zh: "委约" }, v: "Ensemble intercontemporain" },
-        { k: { fr: "Livret & mise en scène", es: "Libreto & dirección", en: "Libretto & staging", zh: "剧本与导演" }, v: "Antoine Gindt" },
-        { k: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, v: "Léo Warynski" },
-        { k: { fr: "Production", es: "Producción", en: "Production", zh: "制作" }, v: { fr: "2026 · diffusion 2027", es: "2026 · gira 2027", en: "2026 · touring 2027", zh: "2026 · 2027 巡演" } }
-      ],
-      credits: [
-        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
-        { role: { fr: "Livret & mise en scène", es: "Libreto & dirección", en: "Libretto & staging", zh: "剧本与导演" }, who: "Antoine Gindt" },
-        { role: { fr: "Réalisation", es: "Realización", en: "Film direction", zh: "影像导演" }, who: "Philippe Béziat" },
-        { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Léo Warynski" },
-        { role: { fr: "Ensembles", es: "Ensembles", en: "Ensembles", zh: "乐团" }, who: "Les Métaboles · Ensemble intercontemporain" }
-      ],
-      partners: ["Ensemble intercontemporain", "Lavoir Numérique (Gentilly)"],
-      links: [
-        { label: "GRAME — Rayon N, étape 1 (film de Julien Ravoux)", url: "https://www.grame.fr/evenements/2021-02-rayon-n-etape-1-diffusion-du-film-de-julien-ravoux" },
-        { label: "T&M Paris — Rayon N", url: "https://theatre-musique.com/spectacle/rayon-n/" }
-      ],
-      press: [
-        { source: "ENS Paris-Saclay", title: "À la découverte de Rayon N — captation", url: "https://ens-paris-saclay.fr/agenda/spectacle-en-replay-la-decouverte-de-rayon-n" },
-        { source: "Théâtre & Musique (T&M)", title: "Rayon N — opéra-film", url: "https://theatre-musique.com/spectacle/rayon-n/" }
-      ],
-      note: { fr: "Recherche de coproductions et de diffuseurs en cours.", es: "Búsqueda de coproducciones y programadores en curso.", en: "Coproductions and venues being sought.", zh: "正在寻找联合制作方与演出场所。" }
+      partners: ["Les Métaboles", "Radio France — France Musique (Création Mondiale)"],
+      note: { fr: "Première étape de création dans l'émission « Création Mondiale » d'Anne Montaron (France Musique). Distribution et dates en cours de finalisation.", es: "Primera etapa de creación en el programa «Création Mondiale» de Anne Montaron (France Musique). Reparto y fechas en proceso de confirmación.", en: "First creation step in Anne Montaron's “Création Mondiale” programme (France Musique). Cast and dates being finalised.", zh: "首个创作阶段在 Anne Montaron 主持的「Création Mondiale」节目（France Musique）中进行。演员与日期确认中。" }
     },
     {
       slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
@@ -280,7 +255,7 @@
         { role: { fr: "Percussions", es: "Percusión", en: "Percussion", zh: "打击乐" }, who: "Olivia Martin" },
         { role: { fr: "Présentation & médiation", es: "Presentación & mediación", en: "Presentation & mediation", zh: "讲解与导赏" }, who: "Guillaume Kosmicki" }
       ],
-      partners: ["GRAME", "Auditorium — Orchestre National de Lyon"],
+      partners: [],
       links: [
         { label: "GRAME — Pop-Up Exploratoire #1 : [FAM]E", url: "https://www.grame.fr/evenements/2021-10-pop-up-exploratoire-1-fam-e" },
         { label: "Auditorium — Orchestre National de Lyon", url: "https://www.auditorium-lyon.com/fr/saison-2021-22/concerts/pop-exploratoire-1" }
@@ -378,7 +353,7 @@
         { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Léo Warynski" },
         { role: { fr: "Vidéo", es: "Vídeo", en: "Video", zh: "影像" }, who: "Philippe Béziat" }
       ],
-      partners: ["Ircam — Centre Pompidou", "GRAME", "T2G — Théâtre de Gennevilliers", "Festival ManiFeste"],
+      partners: [],
       press: [
         { quote: "La voix inoubliable des oubliés.", source: "Laura Plas — La Terrasse" },
         { quote: "Sebastian Rivas joue des conventions mais ne tombe pas dedans.", source: "Franck Madlener — Ircam" },
@@ -495,7 +470,6 @@
   var COLORS = {
     "ooo":              "#34433f",  // deep forest-teal — nature post-humaine
     "war-madrigals":    "#2f3f49",  // Nocturne Blue — bleu nuit profond
-    "rayon-n":          "#4f5f60",  // Hidden Gem — teal-gris profond
     "nous":             "#5e3c41",  // Rumors — bordeaux feutré
     "rut":              "#6f8f8a",  // Dragonfly — vert-bleu
     "fame":             "#d6a65c",  // Beehive — ocre chaud
@@ -525,11 +499,14 @@
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
     var href = tileHref(p);
+    var role = ROLE[p.slug] ? t(ROLE[p.slug]) : "";
+    var roleBadge = role ? '<span class="ptile-role">' + role + '</span>' : "";
     if (p.photo) {
       return ''
         + '<a class="ptile" href="' + href + '">'
         +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
         +   '<span class="ptile-scrim"></span>'
+        +   roleBadge
         +   '<span class="ptile-meta">'
         +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
         +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
@@ -540,6 +517,7 @@
     return ''
       + '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
       +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
+      +   roleBadge
       +   '<span class="ptile-meta">'
       +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
       +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
@@ -548,7 +526,10 @@
   }
 
   function detailHTML(p) {
-    var facts = (p.facts || []).map(function (f) {
+    var roleFact = ROLE[p.slug]
+      ? '<li><span class="k">' + t(UI.role) + '</span><span class="v">' + t(ROLE[p.slug]) + '</span></li>'
+      : "";
+    var facts = roleFact + (p.facts || []).map(function (f) {
       return '<li><span class="k">' + t(f.k) + '</span><span class="v">' + t(f.v) + '</span></li>';
     }).join("");
     var credits = (p.credits || []).map(function (c) {
@@ -614,16 +595,18 @@
   }
 
   function renderProjects() {
-    var up = document.getElementById("grid-upcoming");
-    var pa = document.getElementById("grid-past");
-    if (!up || !pa) return;
-    up.innerHTML = ""; pa.innerHTML = "";
+    var diff = document.getElementById("grid-stopera-diff");
+    var dev = document.getElementById("grid-stopera-dev");
+    var par = document.getElementById("grid-parcours");
+    if (!diff || !dev || !par) return;
+    diff.innerHTML = ""; dev.innerHTML = ""; par.innerHTML = "";
     PROJECTS.forEach(function (p) {
       var li = document.createElement("li");
       li.className = "project";
       li.dataset.slug = p.slug;
       li.innerHTML = tileHTML(p);
-      (PERIOD[p.slug] === "past" ? pa : up).appendChild(li);
+      var grid = SPACE[p.slug] === "parcours" ? par : (PERIOD[p.slug] === "past" ? diff : dev);
+      grid.appendChild(li);
     });
     if (activeSlug) openDetail(activeSlug, false); else closeDetail();
   }
