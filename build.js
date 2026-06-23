@@ -138,7 +138,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260622N";
+  var rel = opts.rel, V = "?v=20260622O";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -520,12 +520,12 @@ var ARTISTS = [
            en: "Directs and designs Mamma Roma (CETC — Teatro Colón) and co-directs Insistir.",
            zh: "担任 Mamma Roma（CETC — 科隆剧院）的导演与舞台设计，并联合执导 Insistir。" },
     productions: ["mamma-roma", "insistir"] },
-  { slug: "antoine-gindt", name: "Antoine Gindt", website: "https://theatre-musique.com",
+  { slug: "antoine-gindt", name: "Antoine Gindt",
     role: { fr: "Metteur en scène & librettiste", es: "Director & libretista", en: "Director & librettist", zh: "导演与编剧" },
-    bio: { fr: "Livret et mise en scène de Rayon N ; mise en scène d'Aliados (Ircam · ManiFeste). Il dirige T&M Paris.",
-           es: "Libreto y dirección de Rayon N; dirección de Aliados (Ircam · ManiFeste). Dirige T&M Paris.",
-           en: "Libretto and staging of Rayon N; staging of Aliados (Ircam · ManiFeste). He directs T&M Paris.",
-           zh: "Rayon N 的编剧与导演；Aliados（Ircam · ManiFeste）的导演。他执掌 T&M Paris。" },
+    bio: { fr: "Livret et mise en scène de Rayon N ; mise en scène d'Aliados (Ircam · ManiFeste).",
+           es: "Libreto y dirección de Rayon N; dirección de Aliados (Ircam · ManiFeste).",
+           en: "Libretto and staging of Rayon N; staging of Aliados (Ircam · ManiFeste).",
+           zh: "Rayon N 的编剧与导演；Aliados（Ircam · ManiFeste）的导演。" },
     productions: ["rayon-n", "aliados"] },
   { slug: "rut-schreiner", name: "Rut Schreiner",
     role: { fr: "Cheffe d'orchestre & performeuse", es: "Directora & performer", en: "Conductor & performer", zh: "指挥与表演者" },
