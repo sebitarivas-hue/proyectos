@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://sebitarivas-hue.github.io/proyectos/sitemap.xml
+
+<!-- rebuild catalogue-2026-06-24 -->
