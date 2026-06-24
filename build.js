@@ -79,11 +79,11 @@ function ml(o) {
 /* name → fiche : rendre tout nom d'artiste cliquable sur les pages projet */
 var NAME2SLUG = {
   "Sebastian Rivas": "sebastian-rivas", "Georges Aperghis": "georges-aperghis", "Olivia Martin": "olivia-martin",
-  "Nicola Beller Carbone": "nicola-beller-carbone", "Martin Bauer": "martin-bauer", "Antoine Gindt": "antoine-gindt",
+  "Nicola Beller Carbone": "nicola-beller-carbone", "Martin Bauer": "martin-bauer",
   "Rut Schreiner": "rut-schreiner", "Léo Warynski": "leo-warynski", "Christine Angot": "christine-angot",
   "Marcelo Lombardero": "marcelo-lombardero", "Emma Terno": "emma-terno", "Valentín Pelisch": "valentin-pelisch",
-  "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui", "Esteban Buch": "esteban-buch",
-  "Richard Brunel": "richard-brunel", "Philippe Béziat": "philippe-beziat", "Anne-Laure Chamboissier": "anne-laure-chamboissier",
+  "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui",
+  "Richard Brunel": "richard-brunel", "Anne-Laure Chamboissier": "anne-laure-chamboissier",
   "Guillaume Kosmicki": "guillaume-kosmicki"
 };
 var NAME_LIST = Object.keys(NAME2SLUG).sort(function (a, b) { return b.length - a.length; });
@@ -93,7 +93,7 @@ function linkNames(s, rel) {
   return out;
 }
 /* institutions → site officiel (lien sur les partenaires des pages projet) */
-var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["T&M","https://theatre-musique.com"],["Radio France","https://www.radiofrance.fr"]];
+var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"]];
 function linkInst(x) {
   for (var i = 0; i < INST.length; i++) { if (x.indexOf(INST[i][0]) >= 0) return '<a href="' + INST[i][1] + '" target="_blank" rel="noopener">' + esc(x) + "</a>"; }
   return esc(x);
@@ -272,7 +272,7 @@ function coopDots(){
 }
 var COOP_CITIES = [
   { id:"paris", region:"eu", x:50.65, y:24.57, side:"l", name:"Paris · Gentilly",
-    inst:[["Radio France","https://www.radiofrance.fr"],["T&M Paris","https://theatre-musique.com"],["Le Générateur","https://legenerateur.com"],["La Muse en Circuit","https://alamuse.com"],["Ville de Gentilly","https://www.ville-gentilly.fr"]],
+    inst:[["Radio France","https://www.radiofrance.fr"],["Le Générateur","https://legenerateur.com"],["La Muse en Circuit","https://alamuse.com"],["Ville de Gentilly","https://www.ville-gentilly.fr"]],
     proj:[["Siège STOPERA!",""],["War Madrigals","war-madrigals"],["LIPS","lips"]] },
   { id:"lyon", region:"eu", x:51.34, y:26.79, side:"l", name:"Lyon",
     inst:[["GRAME — CNCM","https://www.grame.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Théâtre de la Croix-Rousse","https://croix-rousse.com"],["Pôle Pixel","https://www.pole-pixel.com"]],
@@ -516,13 +516,6 @@ var ARTISTS = [
            en: "Directs and designs Mamma Roma (CETC — Teatro Colón) and co-directs Insistir.",
            zh: "担任 Mamma Roma（CETC — 科隆剧院）的导演与舞台设计，并联合执导 Insistir。" },
     productions: ["mamma-roma", "insistir"] },
-  { slug: "antoine-gindt", name: "Antoine Gindt",
-    role: { fr: "Metteur en scène & librettiste", es: "Director & libretista", en: "Director & librettist", zh: "导演与编剧" },
-    bio: { fr: "Metteur en scène et producteur, il dirige T&M Paris et accompagne la création lyrique contemporaine.",
-           es: "Director de escena y productor, dirige T&M Paris y acompaña la creación lírica contemporánea.",
-           en: "A stage director and producer, he directs T&M Paris and supports contemporary lyric creation.",
-           zh: "导演与制作人，他执掌 T&M Paris，陪伴当代歌剧创作。" },
-    productions: [] },
   { slug: "rut-schreiner", name: "Rut Schreiner",
     role: { fr: "Cheffe d'orchestre & performeuse", es: "Directora & performer", en: "Conductor & performer", zh: "指挥与表演者" },
     bio: { fr: "Direction musicale d'Otages (Opéra de Lyon) ; elle conçoit et interprète input / body / output (« Conducting the Invisible »), où le geste de direction devient matière sonore.",
@@ -599,13 +592,6 @@ var ARTISTS = [
            en: "A writer. Her text is the source of Otages, the portrait of Sylvie Meyer — an “ordinary and extraordinary” woman who tips over in a single act.",
            zh: "作家。她的文本是 Otages 的源头——对 Sylvie Meyer 的刻画，一位「平凡而非凡」、因一个举动而骤变的女性。" },
     productions: ["otages"] },
-  { slug: "esteban-buch", name: "Esteban Buch",
-    role: { fr: "Librettiste & chercheur", es: "Libretista & investigador", en: "Librettist & researcher", zh: "编剧与研究者" },
-    bio: { fr: "Musicologue, historien et librettiste, directeur d'études à l'EHESS. Ses travaux croisent musique, politique et histoire.",
-           es: "Musicólogo, historiador y libretista, director de estudios en la EHESS. Su trabajo cruza música, política e historia.",
-           en: "A musicologist, historian and librettist, directeur d'études at the EHESS. His work crosses music, politics and history.",
-           zh: "音乐学者、历史学家与编剧，法国社会科学高等研究院（EHESS）研究主任。其研究横跨音乐、政治与历史。" },
-    productions: [] },
   { slug: "richard-brunel", name: "Richard Brunel", website: "https://www.opera-lyon.com",
     role: { fr: "Metteur en scène", es: "Director de escena", en: "Stage director", zh: "导演" },
     bio: { fr: "Metteur en scène, il signe la création d'Otages au Théâtre de la Croix-Rousse, dans le cadre du Festival de l'Opéra de Lyon, dont il dirige la maison.",
@@ -613,13 +599,6 @@ var ARTISTS = [
            en: "A stage director, he created Otages at the Théâtre de la Croix-Rousse for the Opéra de Lyon Festival, the house he directs.",
            zh: "导演，他在里昂歌剧院艺术节框架内于 Croix-Rousse 剧院执导 Otages 的首演，并执掌该院。" },
     productions: ["otages"] },
-  { slug: "philippe-beziat", name: "Philippe Béziat",
-    role: { fr: "Réalisateur", es: "Realizador", en: "Filmmaker", zh: "影像导演" },
-    bio: { fr: "Réalisateur, son œuvre filmique explore le lien entre cinéma, musique et opéra, captant la création vivante au plus près des interprètes.",
-           es: "Realizador, su obra fílmica explora el vínculo entre cine, música y ópera, captando la creación viva muy cerca de los intérpretes.",
-           en: "A filmmaker, his work explores the link between cinema, music and opera, capturing live creation up close to the performers.",
-           zh: "影像导演，其电影作品探索电影、音乐与歌剧之间的联系，贴近表演者捕捉鲜活的创作。" },
-    productions: [] },
   { slug: "anne-laure-chamboissier", name: "Anne-Laure Chamboissier",
     role: { fr: "Curatrice & production", es: "Curadora & producción", en: "Curator & production", zh: "策展与制作" },
     bio: { fr: "Curatrice indépendante, elle accompagne des projets à la croisée des arts visuels, de la musique et de la scène, et a pris part à l'émergence de STOPERA!.",
@@ -661,12 +640,6 @@ var BIOLONG = {
       en: "Her text is the source of Otages: the portrait of Sylvie Meyer, an “ordinary and extraordinary” woman who tips over in a single act, at once reprehensible and liberating.",
       zh: "她的文本是 Otages 的源头：对 Sylvie Meyer 的刻画——一位「平凡而非凡」、因一个既应受谴责又带来解放的举动而骤变的女性。" }
   ],
-  "esteban-buch": [
-    { fr: "Musicologue et historien, directeur d'études à l'EHESS, ses travaux croisent musique, politique et histoire. Librettiste, il accompagne des projets lyriques où l'opéra interroge la mémoire et la responsabilité.",
-      es: "Musicólogo e historiador, director de estudios en la EHESS, su trabajo cruza música, política e historia. Libretista, acompaña proyectos líricos donde la ópera interroga la memoria y la responsabilidad.",
-      en: "A musicologist and historian, directeur d'études at the EHESS, his work crosses music, politics and history. A librettist, he accompanies lyric projects in which opera questions memory and responsibility.",
-      zh: "音乐学者与历史学家，法国社会科学高等研究院（EHESS）研究主任，其研究横跨音乐、政治与历史。身为编剧，他陪伴那些以歌剧叩问记忆与责任的创作项目。" }
-  ],
   "richard-brunel": [
     { fr: "Metteur en scène, il dirige l'Opéra national de Lyon depuis 2021, après avoir été à la tête de la Comédie de Valence. Au théâtre comme à l'opéra, il met en scène un répertoire ancré dans les questions de notre temps.",
       es: "Director de escena, dirige la Opéra national de Lyon desde 2021, tras haber estado al frente de la Comédie de Valence. En el teatro y en la ópera, pone en escena un repertorio anclado en las cuestiones de nuestro tiempo.",
@@ -676,12 +649,6 @@ var BIOLONG = {
       es: "Firma el estreno de Otages en el Théâtre de la Croix-Rousse, en el marco del Festival de la Opéra de Lyon (2024), a partir del texto de Nina Bouraoui.",
       en: "He created Otages at the Théâtre de la Croix-Rousse for the Opéra de Lyon Festival (2024), after the text by Nina Bouraoui.",
       zh: "他在里昂歌剧院艺术节框架内于 Croix-Rousse 剧院执导 Otages 的首演（2024），改编自 Nina Bouraoui 的文本。" }
-  ],
-  "philippe-beziat": [
-    { fr: "Réalisateur, son œuvre filmique explore le lien entre cinéma, musique et opéra, captant la création vivante au plus près des interprètes.",
-      es: "Realizador, su obra fílmica explora el vínculo entre cine, música y ópera, captando la creación viva muy cerca de los intérpretes.",
-      en: "A filmmaker, his work explores the link between cinema, music and opera, capturing live creation up close to the performers.",
-      zh: "影像导演，其电影作品探索电影、音乐与歌剧之间的联系，贴近表演者捕捉鲜活的创作。" }
   ],
   "leo-warynski": [
     { fr: "Chef d'orchestre, il fonde et dirige l'ensemble vocal Les Métaboles et assure la direction musicale de l'ensemble instrumental Multilatérale. Son répertoire fait une large place à la musique de notre temps comme au grand répertoire a cappella.",
@@ -693,16 +660,6 @@ var BIOLONG = {
       en: "With STOPERA!, he conducts War Madrigals.",
       zh: "在 STOPERA!，他担任 War Madrigals 的音乐指挥。" }
   ],
-  "antoine-gindt": [
-    { fr: "Metteur en scène et producteur, il dirige T&M Paris et accompagne depuis de nombreuses années la création lyrique contemporaine, mettant en dialogue théâtre, musique et image.",
-      es: "Director de escena y productor, dirige T&M Paris y acompaña desde hace muchos años la creación lírica contemporánea, poniendo en diálogo teatro, música e imagen.",
-      en: "A stage director and producer, he directs T&M Paris and has long accompanied contemporary lyric creation, bringing theatre, music and image into dialogue.",
-      zh: "导演与制作人，他执掌 T&M Paris，多年来陪伴当代歌剧创作，让戏剧、音乐与影像彼此对话。" },
-    { fr: "Son travail met en dialogue théâtre, musique et image, au plus près des écritures contemporaines.",
-      es: "Su trabajo pone en diálogo teatro, música e imagen, muy cerca de las escrituras contemporáneas.",
-      en: "His work brings theatre, music and image into dialogue, close to contemporary writing.",
-      zh: "他的工作让戏剧、音乐与影像彼此对话，贴近当代创作。" }
-  ]
 };
 ARTISTS.forEach(function (a) { if (BIOLONG[a.slug]) a.bioLong = BIOLONG[a.slug]; });
 
