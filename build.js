@@ -18,15 +18,12 @@ function grab(re) { var m = src.match(re); if (!m) throw new Error("not found: "
 var sandbox = "var ONGOING=" + grab(/var ONGOING = (\{[^;]*\});/)
   + ";var YEARS=" + grab(/var YEARS = (\{[\s\S]*?\});/)
   + ";var PERIOD=" + grab(/var PERIOD = (\{[^;]*\});/)
-  + ";var SPACE=" + grab(/var SPACE = (\{[^;]*\});/)
-  + ";var ROLE_FULL=" + grab(/var ROLE_FULL = (\{[^;]*\});/)
-  + ";var ROLE=" + grab(/var ROLE = (\{[\s\S]*?\});/)
   + ";var COLORS=" + grab(/var COLORS = (\{[\s\S]*?\});/)
   + ";var DIM=" + grab(/var DIM = (\{[\s\S]*?\n  \});/)
   + ";var PROJECTS=" + grab(/var PROJECTS = (\[[\s\S]*?\n  \]);/)
-  + ";return {YEARS:YEARS,PERIOD:PERIOD,SPACE:SPACE,ROLE:ROLE,COLORS:COLORS,DIM:DIM,PROJECTS:PROJECTS};";
+  + ";return {YEARS:YEARS,PERIOD:PERIOD,COLORS:COLORS,DIM:DIM,PROJECTS:PROJECTS};";
 var DATA = new Function(sandbox)();
-var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS, DIM = DATA.DIM, SPACE = DATA.SPACE, ROLE = DATA.ROLE;
+var PROJECTS = DATA.PROJECTS, YEARS = DATA.YEARS, COLORS = DATA.COLORS, DIM = DATA.DIM;
 var bySlug = {}; PROJECTS.forEach(function (p) { bySlug[p.slug] = p; });
 Object.keys(DIM).forEach(function (s) { if (bySlug[s]) { if (DIM[s].tx) bySlug[s].transmission = DIM[s].tx; if (DIM[s].terr) bySlug[s].territory = DIM[s].terr; } });
 
@@ -38,7 +35,7 @@ var THEMES = [
              es: "La imagen, el gesto y la voz transformados en directo: sensores, vídeo, electrónica e imagen generada se vuelven materia escénica.",
              en: "Image, gesture and voice transformed live: sensors, video, electronics and generated imagery become stage material.",
              zh: "影像、动作与人声的实时转化：传感器、影像、电子与生成图像成为舞台素材。" },
-    items: ["ooo", "rut", "aliados", "snow-on-her-lips", "fame"] },
+    items: ["ooo", "rut", "snow-on-her-lips", "fame"] },
   { slug: "posthumain-memoire",
     title: { fr: "Post-humain & mémoire", es: "Posthumano & memoria", en: "Post-human & memory", zh: "后人类与记忆" },
     blurb: { fr: "Des mondes où l'humain n'est plus au centre : objets, machines et images qui se souviennent à notre place. Ce qui reste, et ce qui se souvient, quand nous ne sommes plus là.",
@@ -52,14 +49,14 @@ var THEMES = [
              es: "Poder, historia y resistencia: figuras reales o de ficción que interrogan la responsabilidad, la violencia y la libertad.",
              en: "Power, history and resistance: real or fictional figures questioning responsibility, violence and freedom.",
              zh: "权力、历史与抵抗：真实或虚构的人物，叩问责任、暴力与自由。" },
-    items: ["aliados", "otages", "america", "mamma-roma", "insistir"] },
+    items: ["otages", "america", "mamma-roma", "insistir"] },
   { slug: "voix-texte",
     title: { fr: "Voix & texte", es: "Voz & texto", en: "Voice & text", zh: "人声与文本" },
     blurb: { fr: "L'écriture au cœur du plateau : livrets, auteurs et la parole comme matière musicale, de Christine Angot à Pasolini.",
              es: "La escritura en el centro de la escena: libretos, autores y la palabra como materia musical, de Christine Angot a Pasolini.",
              en: "Writing at the heart of the stage: librettos, authors and the spoken word as musical material, from Christine Angot to Pasolini.",
              zh: "写作居于舞台核心：剧本、作者与作为音乐素材的言语，从 Christine Angot 到帕索里尼。" },
-    items: ["nous", "otages", "war-madrigals", "aliados", "america"] },
+    items: ["nous", "otages", "war-madrigals", "america"] },
   { slug: "corps-presence",
     title: { fr: "Corps & présence", es: "Cuerpo & presencia", en: "Body & presence", zh: "身体与在场" },
     blurb: { fr: "La performance, le geste et la présence comme acte — du solo au corps parmi les objets et les machines.",
@@ -180,10 +177,7 @@ function prodBody(p, rel) {
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
   if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>';
 
-  var roleFact = ROLE[p.slug]
-    ? '<li><span class="k" ' + ml({fr:"Rôle de STOPERA!",es:"Rol de STOPERA!",en:"STOPERA!'s role",zh:"STOPERA! 的角色"}) + '></span><span class="v" ' + ml(ROLE[p.slug]) + '></span></li>'
-    : "";
-  var facts = roleFact + (p.facts || []).map(function (f) {
+  var facts = (p.facts || []).map(function (f) {
     var v = (typeof f.v === "object") ? '<span class="v" ' + ml(f.v) + '></span>' : '<span class="v">' + linkNames(f.v, rel) + '</span>';
     return '<li><span class="k" ' + ml(f.k) + '></span>' + v + '</li>';
   }).join("");
@@ -233,17 +227,14 @@ function threadTile(slug, rel) {
   var year = tFR(YEARS[slug] || "");
   var yearSpan = year ? '<span class="ptile-year">' + esc(year) + "</span>" : "";
   var title = '<span class="ptile-title" ' + ml(p.titleHtml || p.title) + "></span>";
-  var roleBadge = ROLE[slug] ? '<span class="ptile-role" ' + ml(ROLE[slug]) + "></span>" : "";
   if (p.photo) {
     return '<li class="project"><a class="ptile" href="' + href + '">'
       + '<span class="ptile-img" style="background-image:url(\'' + rel + p.photo + '\')"></span>'
       + '<span class="ptile-scrim"></span>'
-      + roleBadge
       + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
   }
   return '<li class="project"><a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(slug) + ";color:" + inkOn(COLORS[slug] || "#4f5f60") + '">'
     + '<span class="ptile-tag" ' + ml(p.tag || "") + "></span>"
-    + roleBadge
     + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
 }
 
@@ -351,7 +342,7 @@ function pressQuote(q) {
   return '<blockquote class="pdq"><span ' + ml(qq) + "></span><cite>" + src + "</cite></blockquote>";
 }
 function pressBody(rel) {
-  var groups = ["ooo", "otages", "aliados", "snow-on-her-lips"].map(function (s) {
+  var groups = ["ooo", "otages", "snow-on-her-lips"].map(function (s) {
     var p = bySlug[s]; if (!p) return "";
     var head = '<h3 class="press-prod"><a href="' + rel + "productions/" + s + '/" ' + ml(p.titleHtml || p.title) + "></a></h3>";
     var inner;
@@ -372,7 +363,7 @@ function pressBody(rel) {
     + '      <div class="subblock press-media">\n'
     + '        <p class="subblock-label" data-fr="Ils en ont parlé" data-es="Han hablado de ello" data-en="As featured in" data-zh="媒体报道"></p>\n'
     + "        " + media + "\n"
-    + '        <p class="section-note" data-fr="France · Italie · Royaume-Uni · Espagne · Argentine — autour des créations d\'<em>Otages</em>, <em>Aliados</em> et <em>OOO</em>." data-es="Francia · Italia · Reino Unido · España · Argentina — en torno a los estrenos de <em>Otages</em>, <em>Aliados</em> y <em>OOO</em>." data-en="France · Italy · UK · Spain · Argentina — around the premieres of <em>Otages</em>, <em>Aliados</em> and <em>OOO</em>." data-zh="法国 · 意大利 · 英国 · 西班牙 · 阿根廷 —— 围绕 <em>Otages</em>、<em>Aliados</em> 与 <em>OOO</em> 的首演。"></p>\n'
+    + '        <p class="section-note" data-fr="France · Italie · Royaume-Uni · Espagne · Argentine — autour des créations d\'<em>Otages</em> et <em>OOO</em>." data-es="Francia · Italia · Reino Unido · España · Argentina — en torno a los estrenos de <em>Otages</em> y <em>OOO</em>." data-en="France · Italy · UK · Spain · Argentina — around the premieres of <em>Otages</em> and <em>OOO</em>." data-zh="法国 · 意大利 · 英国 · 西班牙 · 阿根廷 —— 围绕 <em>Otages</em> 与 <em>OOO</em> 的首演。"></p>\n'
     + "      </div>\n    </section>";
 }
 
@@ -480,16 +471,16 @@ var ARTISTS = [
            en: "A composer, he is behind many of STOPERA!'s works and carries its artistic direction. His work explores contemporary opera, music theatre and real-time electronics.",
            zh: "作曲家，是 STOPERA! 众多作品的源头并担任其艺术指导。其创作探索当代歌剧、音乐剧场与实时电子。" },
     bioLong: [
-      { fr: "Compositeur franco-argentin, il développe une œuvre à la croisée de l'opéra contemporain, du théâtre musical et de l'électronique en temps réel. Lion d'Argent de la Biennale de Venise en 2018, il a notamment créé Aliados (Ircam · ManiFeste, 2013) et Otages (Opéra de Lyon, 2024).",
-        es: "Compositor franco-argentino, desarrolla una obra en el cruce de la ópera contemporánea, el teatro musical y la electrónica en tiempo real. León de Plata de la Bienal de Venecia en 2018, ha creado entre otras Aliados (Ircam · ManiFeste, 2013) y Otages (Opéra de Lyon, 2024).",
-        en: "A French-Argentine composer, he develops a body of work at the crossroads of contemporary opera, music theatre and real-time electronics. Silver Lion of the Venice Biennale in 2018, his works include Aliados (Ircam · ManiFeste, 2013) and Otages (Opéra de Lyon, 2024).",
-        zh: "法国-阿根廷作曲家，其创作游走于当代歌剧、音乐剧场与实时电子之间。2018 年获威尼斯双年展银狮奖，作品包括 Aliados（Ircam · ManiFeste，2013）与 Otages（里昂歌剧院，2024）。" },
+      { fr: "Compositeur franco-argentin, il développe une œuvre à la croisée de l'opéra contemporain, du théâtre musical et de l'électronique en temps réel. Lion d'Argent de la Biennale de Venise en 2018, il a notamment créé Otages (Opéra de Lyon, 2024).",
+        es: "Compositor franco-argentino, desarrolla una obra en el cruce de la ópera contemporánea, el teatro musical y la electrónica en tiempo real. León de Plata de la Bienal de Venecia en 2018, ha creado entre otras Otages (Opéra de Lyon, 2024).",
+        en: "A French-Argentine composer, he develops a body of work at the crossroads of contemporary opera, music theatre and real-time electronics. Silver Lion of the Venice Biennale in 2018, his works include Otages (Opéra de Lyon, 2024).",
+        zh: "法国-阿根廷作曲家，其创作游走于当代歌剧、音乐剧场与实时电子之间。2018 年获威尼斯双年展银狮奖，作品包括 Otages（里昂歌剧院，2024）。" },
       { fr: "Avec STOPERA!, dont il porte la direction artistique, il explore la manière dont la voix, le corps et le son deviennent présence. Son travail dialogue avec des institutions en France et à l'international : Ircam, GRAME, Ensemble intercontemporain, Teatro Colón.",
         es: "Con STOPERA!, cuya dirección artística asume, explora cómo la voz, el cuerpo y el sonido se vuelven presencia. Su trabajo dialoga con instituciones en Francia y en el extranjero: Ircam, GRAME, Ensemble intercontemporain, Teatro Colón.",
         en: "With STOPERA!, of which he is artistic director, he explores how voice, body and sound become presence. His work engages institutions in France and abroad: Ircam, GRAME, the Ensemble intercontemporain, the Teatro Colón.",
         zh: "在担任艺术指导的 STOPERA!，他探索人声、身体与声音如何成为在场。其工作与法国及国际的机构对话：Ircam、GRAME、Ensemble intercontemporain、Teatro Colón。" }
     ],
-    productions: ["otages", "aliados", "snow-on-her-lips", "war-madrigals", "nous", "mamma-roma", "america"] },
+    productions: ["otages", "snow-on-her-lips", "war-madrigals", "nous", "mamma-roma", "america"] },
   { slug: "georges-aperghis", name: "Georges Aperghis", photo: "assets/aperghis.jpg",
     role: { fr: "Président d'honneur", es: "Presidente de honor", en: "Honorary president", zh: "名誉主席" },
     bio: { fr: "Pionnier du théâtre musical, fondateur de l'ATEM (1976). Son compagnonnage et son influence artistique accompagnent STOPERA! ; ses pièces sont au cœur d'Insistir et résonnent dans [FAM]E (Récitation n°9).",
@@ -527,11 +518,11 @@ var ARTISTS = [
     productions: ["mamma-roma", "insistir"] },
   { slug: "antoine-gindt", name: "Antoine Gindt",
     role: { fr: "Metteur en scène & librettiste", es: "Director & libretista", en: "Director & librettist", zh: "导演与编剧" },
-    bio: { fr: "Mise en scène d'Aliados (Ircam · ManiFeste), opéra du temps réel sur la rencontre de Margaret Thatcher et du général Pinochet.",
-           es: "Dirección de Aliados (Ircam · ManiFeste), ópera en tiempo real sobre el encuentro de Margaret Thatcher y el general Pinochet.",
-           en: "Staging of Aliados (Ircam · ManiFeste), a real-time opera on the meeting of Margaret Thatcher and General Pinochet.",
-           zh: "Aliados（Ircam · ManiFeste）的导演——一部关于撒切尔夫人与皮诺切特将军会面的实时歌剧。" },
-    productions: ["aliados"] },
+    bio: { fr: "Metteur en scène et producteur, il dirige T&M Paris et accompagne la création lyrique contemporaine.",
+           es: "Director de escena y productor, dirige T&M Paris y acompaña la creación lírica contemporánea.",
+           en: "A stage director and producer, he directs T&M Paris and supports contemporary lyric creation.",
+           zh: "导演与制作人，他执掌 T&M Paris，陪伴当代歌剧创作。" },
+    productions: [] },
   { slug: "rut-schreiner", name: "Rut Schreiner",
     role: { fr: "Cheffe d'orchestre & performeuse", es: "Directora & performer", en: "Conductor & performer", zh: "指挥与表演者" },
     bio: { fr: "Direction musicale d'Otages (Opéra de Lyon) ; elle conçoit et interprète input / body / output (« Conducting the Invisible »), où le geste de direction devient matière sonore.",
@@ -541,11 +532,11 @@ var ARTISTS = [
     productions: ["otages", "rut"] },
   { slug: "leo-warynski", name: "Léo Warynski", website: "https://www.lesmetaboles.fr",
     role: { fr: "Chef d'orchestre", es: "Director de orquesta", en: "Conductor", zh: "指挥" },
-    bio: { fr: "Direction musicale de War Madrigals (Les Métaboles) et d'Aliados. Il dirige Les Métaboles et l'ensemble Multilatérale.",
-           es: "Dirección musical de War Madrigals (Les Métaboles) y de Aliados. Dirige Les Métaboles y el ensemble Multilatérale.",
-           en: "Music direction of War Madrigals (Les Métaboles) and Aliados. He leads Les Métaboles and the Multilatérale ensemble.",
-           zh: "War Madrigals（Les Métaboles）与 Aliados 的音乐指挥。他领导 Les Métaboles 与 Multilatérale 乐团。" },
-    productions: ["war-madrigals", "aliados"] },
+    bio: { fr: "Direction musicale de War Madrigals (Les Métaboles). Il dirige Les Métaboles et l'ensemble Multilatérale.",
+           es: "Dirección musical de War Madrigals (Les Métaboles). Dirige Les Métaboles y el ensemble Multilatérale.",
+           en: "Music direction of War Madrigals (Les Métaboles). He leads Les Métaboles and the Multilatérale ensemble.",
+           zh: "War Madrigals（Les Métaboles）的音乐指挥。他领导 Les Métaboles 与 Multilatérale 乐团。" },
+    productions: ["war-madrigals"] },
   { slug: "christine-angot", name: "Christine Angot",
     role: { fr: "Autrice", es: "Autora", en: "Author", zh: "作者" },
     bio: { fr: "Écrivaine. Les textes de De l'Innocence, opéra de chambre, naissent d'une série de conversations avec le compositeur, autour de ce qui résiste au langage et au récit.",
@@ -610,11 +601,11 @@ var ARTISTS = [
     productions: ["otages"] },
   { slug: "esteban-buch", name: "Esteban Buch",
     role: { fr: "Librettiste & chercheur", es: "Libretista & investigador", en: "Librettist & researcher", zh: "编剧与研究者" },
-    bio: { fr: "Auteur du livret d'Aliados, opéra du temps réel sur la rencontre de Margaret Thatcher et du général Pinochet. Ses travaux croisent musique, politique et histoire.",
-           es: "Autor del libreto de Aliados, ópera en tiempo real sobre el encuentro de Margaret Thatcher y el general Pinochet. Su trabajo cruza música, política e historia.",
-           en: "Author of the libretto of Aliados, a real-time opera on the meeting of Margaret Thatcher and General Pinochet. His work crosses music, politics and history.",
-           zh: "Aliados 的剧本作者——一部关于撒切尔夫人与皮诺切特将军会面的实时歌剧。其研究横跨音乐、政治与历史。" },
-    productions: ["aliados"] },
+    bio: { fr: "Musicologue, historien et librettiste, directeur d'études à l'EHESS. Ses travaux croisent musique, politique et histoire.",
+           es: "Musicólogo, historiador y libretista, director de estudios en la EHESS. Su trabajo cruza música, política e historia.",
+           en: "A musicologist, historian and librettist, directeur d'études at the EHESS. His work crosses music, politics and history.",
+           zh: "音乐学者、历史学家与编剧，法国社会科学高等研究院（EHESS）研究主任。其研究横跨音乐、政治与历史。" },
+    productions: [] },
   { slug: "richard-brunel", name: "Richard Brunel", website: "https://www.opera-lyon.com",
     role: { fr: "Metteur en scène", es: "Director de escena", en: "Stage director", zh: "导演" },
     bio: { fr: "Metteur en scène, il signe la création d'Otages au Théâtre de la Croix-Rousse, dans le cadre du Festival de l'Opéra de Lyon, dont il dirige la maison.",
@@ -624,11 +615,11 @@ var ARTISTS = [
     productions: ["otages"] },
   { slug: "philippe-beziat", name: "Philippe Béziat",
     role: { fr: "Réalisateur", es: "Realizador", en: "Filmmaker", zh: "影像导演" },
-    bio: { fr: "Réalisateur, il signe l'image et la vidéo d'Aliados, où le cinéma et l'opéra se répondent en direct.",
-           es: "Realizador, firma la imagen y el vídeo de Aliados, donde el cine y la ópera se responden en vivo.",
-           en: "A filmmaker, he creates the image and video of Aliados, where cinema and opera answer each other live.",
-           zh: "影像导演，他为 Aliados 创作影像与视频，让电影与歌剧实时呼应。" },
-    productions: ["aliados"] },
+    bio: { fr: "Réalisateur, son œuvre filmique explore le lien entre cinéma, musique et opéra, captant la création vivante au plus près des interprètes.",
+           es: "Realizador, su obra fílmica explora el vínculo entre cine, música y ópera, captando la creación viva muy cerca de los intérpretes.",
+           en: "A filmmaker, his work explores the link between cinema, music and opera, capturing live creation up close to the performers.",
+           zh: "影像导演，其电影作品探索电影、音乐与歌剧之间的联系，贴近表演者捕捉鲜活的创作。" },
+    productions: [] },
   { slug: "anne-laure-chamboissier", name: "Anne-Laure Chamboissier",
     role: { fr: "Curatrice & production", es: "Curadora & producción", en: "Curator & production", zh: "策展与制作" },
     bio: { fr: "Curatrice indépendante, elle accompagne des projets à la croisée des arts visuels, de la musique et de la scène, et a pris part à l'émergence de STOPERA!.",
@@ -671,10 +662,10 @@ var BIOLONG = {
       zh: "她的文本是 Otages 的源头：对 Sylvie Meyer 的刻画——一位「平凡而非凡」、因一个既应受谴责又带来解放的举动而骤变的女性。" }
   ],
   "esteban-buch": [
-    { fr: "Musicologue et historien, directeur d'études à l'EHESS, ses travaux croisent musique, politique et histoire. Il signe le livret d'Aliados, opéra du temps réel sur la rencontre, à Londres en 1999, de Margaret Thatcher et du général Pinochet — un face-à-face entre fiction et réalité, mémoire et responsabilité.",
-      es: "Musicólogo e historiador, director de estudios en la EHESS, su trabajo cruza música, política e historia. Firma el libreto de Aliados, ópera en tiempo real sobre el encuentro, en Londres en 1999, de Margaret Thatcher y el general Pinochet —un cara a cara entre ficción y realidad, memoria y responsabilidad.",
-      en: "A musicologist and historian, directeur d'études at the EHESS, his work crosses music, politics and history. He wrote the libretto of Aliados, a real-time opera on the 1999 London meeting of Margaret Thatcher and General Pinochet — a face-off between fiction and reality, memory and responsibility.",
-      zh: "音乐学者与历史学家，法国社会科学高等研究院（EHESS）研究主任，其研究横跨音乐、政治与历史。他撰写了 Aliados 的剧本——一部关于 1999 年伦敦撒切尔夫人与皮诺切特将军会面的实时歌剧：虚构与现实、记忆与责任之间的对峙。" }
+    { fr: "Musicologue et historien, directeur d'études à l'EHESS, ses travaux croisent musique, politique et histoire. Librettiste, il accompagne des projets lyriques où l'opéra interroge la mémoire et la responsabilité.",
+      es: "Musicólogo e historiador, director de estudios en la EHESS, su trabajo cruza música, política e historia. Libretista, acompaña proyectos líricos donde la ópera interroga la memoria y la responsabilidad.",
+      en: "A musicologist and historian, directeur d'études at the EHESS, his work crosses music, politics and history. A librettist, he accompanies lyric projects in which opera questions memory and responsibility.",
+      zh: "音乐学者与历史学家，法国社会科学高等研究院（EHESS）研究主任，其研究横跨音乐、政治与历史。身为编剧，他陪伴那些以歌剧叩问记忆与责任的创作项目。" }
   ],
   "richard-brunel": [
     { fr: "Metteur en scène, il dirige l'Opéra national de Lyon depuis 2021, après avoir été à la tête de la Comédie de Valence. Au théâtre comme à l'opéra, il met en scène un répertoire ancré dans les questions de notre temps.",
@@ -687,30 +678,30 @@ var BIOLONG = {
       zh: "他在里昂歌剧院艺术节框架内于 Croix-Rousse 剧院执导 Otages 的首演（2024），改编自 Nina Bouraoui 的文本。" }
   ],
   "philippe-beziat": [
-    { fr: "Réalisateur, son œuvre filmique explore le lien entre cinéma, musique et opéra, captant la création vivante au plus près des interprètes. Pour STOPERA!, il signe l'image et la vidéo de Rayon N et d'Aliados, où le cinéma et la scène se répondent en direct.",
-      es: "Realizador, su obra fílmica explora el vínculo entre cine, música y ópera, captando la creación viva muy cerca de los intérpretes. Para STOPERA!, firma la imagen y el vídeo de Rayon N y de Aliados, donde el cine y la escena se responden en vivo.",
-      en: "A filmmaker, his work explores the link between cinema, music and opera, capturing live creation up close to the performers. For STOPERA!, he creates the image and video of Rayon N and Aliados, where cinema and the stage answer each other live.",
-      zh: "影像导演，其电影作品探索电影、音乐与歌剧之间的联系，贴近表演者捕捉鲜活的创作。他为 STOPERA! 的 Rayon N 与 Aliados 创作影像与视频，让电影与舞台实时呼应。" }
+    { fr: "Réalisateur, son œuvre filmique explore le lien entre cinéma, musique et opéra, captant la création vivante au plus près des interprètes.",
+      es: "Realizador, su obra fílmica explora el vínculo entre cine, música y ópera, captando la creación viva muy cerca de los intérpretes.",
+      en: "A filmmaker, his work explores the link between cinema, music and opera, capturing live creation up close to the performers.",
+      zh: "影像导演，其电影作品探索电影、音乐与歌剧之间的联系，贴近表演者捕捉鲜活的创作。" }
   ],
   "leo-warynski": [
     { fr: "Chef d'orchestre, il fonde et dirige l'ensemble vocal Les Métaboles et assure la direction musicale de l'ensemble instrumental Multilatérale. Son répertoire fait une large place à la musique de notre temps comme au grand répertoire a cappella.",
       es: "Director de orquesta, funda y dirige el ensemble vocal Les Métaboles y asume la dirección musical del ensemble instrumental Multilatérale. Su repertorio concede un amplio lugar a la música de nuestro tiempo y al gran repertorio a cappella.",
       en: "A conductor, he founded and directs the vocal ensemble Les Métaboles and is music director of the instrumental ensemble Multilatérale. His repertoire gives ample place to the music of our time as well as the great a cappella repertoire.",
       zh: "指挥家，他创立并领导人声乐团 Les Métaboles，并担任器乐团 Multilatérale 的音乐总监。其曲目既广纳当代音乐，也涵盖伟大的无伴奏合唱传统。" },
-    { fr: "Avec STOPERA!, il assure la direction musicale de War Madrigals, Rayon N et Aliados.",
-      es: "Con STOPERA!, asume la dirección musical de War Madrigals, Rayon N y Aliados.",
-      en: "With STOPERA!, he conducts War Madrigals, Rayon N and Aliados.",
-      zh: "在 STOPERA!，他担任 War Madrigals、Rayon N 与 Aliados 的音乐指挥。" }
+    { fr: "Avec STOPERA!, il assure la direction musicale de War Madrigals.",
+      es: "Con STOPERA!, asume la dirección musical de War Madrigals.",
+      en: "With STOPERA!, he conducts War Madrigals.",
+      zh: "在 STOPERA!，他担任 War Madrigals 的音乐指挥。" }
   ],
   "antoine-gindt": [
     { fr: "Metteur en scène et producteur, il dirige T&M Paris et accompagne depuis de nombreuses années la création lyrique contemporaine, mettant en dialogue théâtre, musique et image.",
       es: "Director de escena y productor, dirige T&M Paris y acompaña desde hace muchos años la creación lírica contemporánea, poniendo en diálogo teatro, música e imagen.",
       en: "A stage director and producer, he directs T&M Paris and has long accompanied contemporary lyric creation, bringing theatre, music and image into dialogue.",
       zh: "导演与制作人，他执掌 T&M Paris，多年来陪伴当代歌剧创作，让戏剧、音乐与影像彼此对话。" },
-    { fr: "Pour STOPERA!, il signe le livret et la mise en scène de Rayon N et la mise en scène d'Aliados (Ircam · ManiFeste).",
-      es: "Para STOPERA!, firma el libreto y la dirección de Rayon N y la dirección de Aliados (Ircam · ManiFeste).",
-      en: "For STOPERA!, he writes the libretto and stages Rayon N, and stages Aliados (Ircam · ManiFeste).",
-      zh: "他为 STOPERA! 担任 Rayon N 的编剧与导演，并执导 Aliados（Ircam · ManiFeste）。" }
+    { fr: "Son travail met en dialogue théâtre, musique et image, au plus près des écritures contemporaines.",
+      es: "Su trabajo pone en diálogo teatro, música e imagen, muy cerca de las escrituras contemporáneas.",
+      en: "His work brings theatre, music and image into dialogue, close to contemporary writing.",
+      zh: "他的工作让戏剧、音乐与影像彼此对话，贴近当代创作。" }
   ]
 };
 ARTISTS.forEach(function (a) { if (BIOLONG[a.slug]) a.bioLong = BIOLONG[a.slug]; });
@@ -775,7 +766,7 @@ ARTISTS.forEach(function (a) {
 write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
 urls.push(SITE + "/cooperation/");
 /* press */
-write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, Aliados, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
+write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
 urls.push(SITE + "/presse/");
 /* transmission */
 write("transmission", page({ rel: "../", title: "Transmission", description: "La transmission chez STOPERA! — chaque production présentée sous l'angle de ce qui peut se partager, s'apprendre et se transmettre : ateliers, rencontres, mentorat, médiation.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/transmission/", ogType: "website", body: transmissionBody("../") }));
@@ -806,7 +797,7 @@ var AXES = [
            es:"La tecnología como materia artística, nunca como fin: inteligencia artificial, imagen generada, electrónica en tiempo real y sistemas interactivos — herramientas puestas a prueba en la escena, el gesto y la escucha.",
            en:"Technology as artistic material, never as an end: artificial intelligence, generated image, real-time electronics and interactive systems — tools tested on stage, in gesture and listening.",
            zh:"技术作为艺术素材，而非目的：人工智能、生成影像、实时电子与互动系统——在舞台、动作与聆听中接受检验的工具。"},
-    items:["ooo","rut","aliados"] },
+    items:["ooo","rut"] },
   { slug:"nouvelles-narrations",
     title:{fr:"Nouvelles narrations",es:"Nuevas narrativas",en:"New narratives",zh:"新叙事"},
     intro:{fr:"Raconter autrement : récits fragmentés, formes documentaires, dramaturgies spéculatives et écritures interdisciplinaires. La parole et le texte y deviennent matière musicale, de Christine Angot à Nina Bouraoui.",

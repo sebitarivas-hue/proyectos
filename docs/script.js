@@ -16,7 +16,6 @@
     sheet:    { fr: "Voir la fiche", es: "Ver la ficha", en: "View sheet", zh: "查看详情" },
     close:    { fr: "Replier", es: "Cerrar", en: "Close", zh: "收起" },
     details:  { fr: "Informations", es: "Información", en: "Details", zh: "信息" },
-    role:     { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色" },
     credits:  { fr: "Générique", es: "Créditos", en: "Credits", zh: "创作团队" },
     partners: { fr: "Production & partenaires", es: "Producción & socios", en: "Production & partners", zh: "制作与合作" },
     press:    { fr: "Revue de presse", es: "Reseña de prensa", en: "Press", zh: "媒体评论" },
@@ -34,24 +33,12 @@
     "america": { fr: "en création", es: "en creación", en: "in creation", zh: "创作中" },
     "mamma-roma": "2027",
     "otages": "2024",
-    "aliados": "2013",
     "lips": { fr: "Biennal · 2028", es: "Bienal · 2028", en: "Biennial · 2028", zh: "双年 · 2028" }
   };
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "ooo":"past","war-madrigals":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
-
-  /* Espace éditorial : "stopera" = productions portées par STOPERA! · "parcours" = œuvres antérieures de Sebastian Rivas (hors STOPERA!). */
-  var SPACE = { "ooo":"stopera","war-madrigals":"stopera","nous":"stopera","rut":"stopera","insistir":"stopera","america":"stopera","lips":"stopera","mamma-roma":"stopera","otages":"parcours","aliados":"parcours","fame":"parcours","snow-on-her-lips":"parcours" };
-
-  /* Rôle de STOPERA! sur chaque production (n'apparaît que pour l'espace "stopera"). */
-  var ROLE_FULL = { fr: "Initiation · coproduction · diffusion", es: "Iniciativa · coproducción · difusión", en: "Initiation · coproduction · diffusion", zh: "发起 · 联合制作 · 巡演" };
-  var ROLE = {
-    "ooo": { fr: "Diffusion internationale", es: "Difusión internacional", en: "International diffusion", zh: "国际巡演" },
-    "lips": { fr: "Initiateur", es: "Iniciador", en: "Initiator", zh: "发起方" },
-    "war-madrigals": ROLE_FULL, "nous": ROLE_FULL, "rut": ROLE_FULL, "insistir": ROLE_FULL, "america": ROLE_FULL, "mamma-roma": ROLE_FULL
-  };
+  var PERIOD = { "ooo":"past","war-madrigals":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","fame":"past","snow-on-her-lips":"past" };
 
   // Trois dimensions par projet : Transmission (tx) — ce qui peut se partager / s'explorer ; Territoire & partenariats (terr) — ancrage et engagement local.
   var DIM = {
@@ -69,8 +56,6 @@
       terr: { fr: "Pensé pour le public du Printemps des Arts, sur la Riviera.", es: "Pensado para el público del Printemps des Arts, en la Riviera.", en: "Made for the Printemps des Arts audience, on the Riviera.", zh: "为蒙特卡洛艺术之春的观众而作，位于里维埃拉。" } },
     "otages": { tx: { fr: "Rencontres autour de l'adaptation littéraire à l'opéra et du travail vocal contemporain.", es: "Encuentros en torno a la adaptación literaria a la ópera y el trabajo vocal contemporáneo.", en: "Encounters around literary adaptation to opera and contemporary vocal work.", zh: "围绕文学改编为歌剧与当代人声创作的相遇。" },
       terr: { fr: "Ancré à Lyon, en lien avec les scènes lyriques et les publics de la région.", es: "Anclado en Lyon, en relación con las escenas líricas y los públicos de la región.", en: "Anchored in Lyon, connected to opera stages and regional audiences.", zh: "扎根里昂，与歌剧舞台及地区观众相连。" } },
-    "aliados": { tx: { fr: "Partage de la lutherie temps réel (voix et électronique Ircam) en conférences et masterclass.", es: "Compartir la lutería en tiempo real (voz y electrónica Ircam) en conferencias y masterclass.", en: "Sharing real-time instrument design (voice and Ircam electronics) in talks and masterclasses.", zh: "在讲座与大师班中分享实时电子乐器设计（人声与 Ircam 电子）。" },
-      terr: { fr: "Enraciné dans la scène parisienne de la création sonore et diffusé à l'international.", es: "Enraizado en la escena parisina de la creación sonora y difundido internacionalmente.", en: "Rooted in the Paris sound-creation scene and toured internationally.", zh: "扎根巴黎的声音创作场景，并展开国际巡演。" } },
     "insistir": { tx: { fr: "Transmission du répertoire d'Aperghis et du théâtre musical à de jeunes interprètes.", es: "Transmisión del repertorio de Aperghis y del teatro musical a jóvenes intérpretes.", en: "Passing on Aperghis's repertoire and music theatre to young performers.", zh: "向年轻表演者传授 Aperghis 的作品与音乐剧场。" },
       terr: { fr: "Porté par STOPERA! autour de la soprano Nicola Beller Carbone.", es: "Impulsado por STOPERA! en torno a la soprano Nicola Beller Carbone.", en: "Carried by STOPERA! around soprano Nicola Beller Carbone.", zh: "由 STOPERA! 围绕女高音 Nicola Beller Carbone 推进。" } },
     "mamma-roma": { tx: { fr: "Ateliers sur le geste scénique et l'objet — la table — comme espace dramaturgique.", es: "Talleres sobre el gesto escénico y el objeto —la mesa— como espacio dramatúrgico.", en: "Workshops on stage gesture and the object — the table — as dramaturgical space.", zh: "围绕舞台动作与物件（餐桌）作为戏剧空间的工作坊。" },
@@ -330,39 +315,6 @@
       note: { fr: "Création mondiale le 17 mars 2024 (Festival de l'Opéra de Lyon).", es: "Estreno mundial el 17 de marzo de 2024 (Festival de la Opéra de Lyon).", en: "World premiere on 17 March 2024 (Opéra de Lyon Festival).", zh: "2024 年 3 月 17 日世界首演（里昂歌剧院艺术节）。" }
     },
     {
-      slug: "aliados", title: "Aliados", titleHtml: "Aliados",
-      photo: "assets/projects/aliados.jpg", video: "z2sobYeFzmE",
-      tag: { fr: "Création 2013", es: "Estreno 2013", en: "Premiere 2013", zh: "2013 首演" },
-      short: { fr: "Opéra du temps réel : Thatcher & Pinochet.", es: "Ópera en tiempo real: Thatcher y Pinochet.", en: "A real-time opera: Thatcher & Pinochet.", zh: "实时歌剧：撒切尔与皮诺切特。" },
-      pitch: {
-        fr: "Opéra « du temps réel » sur la rencontre, à Londres en 1999, de Margaret Thatcher et du général Pinochet. Vidéo en direct, voix transformées en temps réel : un face-à-face crépusculaire entre fiction et réalité, mémoire et responsabilité.",
-        es: "Ópera «en tiempo real» sobre el encuentro, en Londres en 1999, de Margaret Thatcher y el general Pinochet. Vídeo en directo, voces transformadas en tiempo real: un cara a cara crepuscular entre ficción y realidad, memoria y responsabilidad.",
-        en: "A “real-time opera” on the 1999 London meeting of Margaret Thatcher and General Pinochet. Live video, voices transformed in real time: a twilight face-off between fiction and reality, memory and responsibility.",
-        zh: "一部「实时歌剧」，讲述 1999 年伦敦撒切尔夫人与皮诺切特将军的会面。现场影像、实时变形的人声：一场介于虚构与现实、记忆与责任之间的暮色对峙。" },
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra du temps réel", es: "Ópera en tiempo real", en: "Real-time opera", zh: "实时歌剧" } },
-        { k: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, v: "Esteban Buch" },
-        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Antoine Gindt" },
-        { k: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, v: "Léo Warynski" },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "T2G · ManiFeste — Ircam, 2013", es: "T2G · ManiFeste — Ircam, 2013", en: "T2G · ManiFeste — Ircam, 2013", zh: "T2G · ManiFeste — Ircam，2013" } }
-      ],
-      credits: [
-        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
-        { role: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, who: "Esteban Buch" },
-        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Antoine Gindt" },
-        { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Léo Warynski" },
-        { role: { fr: "Vidéo", es: "Vídeo", en: "Video", zh: "影像" }, who: "Philippe Béziat" }
-      ],
-      partners: [],
-      press: [
-        { quote: "La voix inoubliable des oubliés.", source: "Laura Plas — La Terrasse" },
-        { quote: "Sebastian Rivas joue des conventions mais ne tombe pas dedans.", source: "Franck Madlener — Ircam" },
-        { quote: "Un opéra de l'oubli et du néant.", source: "Bruno Serrou" }
-      ],
-      pressPdf: "assets/press/aliados-revue-presse.pdf",
-      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Couverture internationale (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Cobertura internacional (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). International coverage (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。国际媒体报道（La Stampa、The Times、Le Monde、El País、El Mundo、Clarín、Página/12…）。摄影：Pacôme Poirier / WikiSpectacle。" }
-    },
-    {
       slug: "insistir", title: "Insistir", titleHtml: "Insistir",
       photo: "assets/projects/insistir.jpg",
       tag: { fr: "Création 2026 · Mexico", es: "Estreno 2026 · México", en: "Premiere 2026 · Mexico City", zh: "2026 首演 · 墨西哥城" },
@@ -499,14 +451,11 @@
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
     var href = tileHref(p);
-    var role = ROLE[p.slug] ? t(ROLE[p.slug]) : "";
-    var roleBadge = role ? '<span class="ptile-role">' + role + '</span>' : "";
     if (p.photo) {
       return ''
         + '<a class="ptile" href="' + href + '">'
         +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
         +   '<span class="ptile-scrim"></span>'
-        +   roleBadge
         +   '<span class="ptile-meta">'
         +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
         +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
@@ -517,7 +466,6 @@
     return ''
       + '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
       +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
-      +   roleBadge
       +   '<span class="ptile-meta">'
       +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
       +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
@@ -526,10 +474,7 @@
   }
 
   function detailHTML(p) {
-    var roleFact = ROLE[p.slug]
-      ? '<li><span class="k">' + t(UI.role) + '</span><span class="v">' + t(ROLE[p.slug]) + '</span></li>'
-      : "";
-    var facts = roleFact + (p.facts || []).map(function (f) {
+    var facts = (p.facts || []).map(function (f) {
       return '<li><span class="k">' + t(f.k) + '</span><span class="v">' + t(f.v) + '</span></li>';
     }).join("");
     var credits = (p.credits || []).map(function (c) {
@@ -595,18 +540,16 @@
   }
 
   function renderProjects() {
-    var diff = document.getElementById("grid-stopera-diff");
-    var dev = document.getElementById("grid-stopera-dev");
-    var par = document.getElementById("grid-parcours");
-    if (!diff || !dev || !par) return;
-    diff.innerHTML = ""; dev.innerHTML = ""; par.innerHTML = "";
+    var up = document.getElementById("grid-upcoming");
+    var pa = document.getElementById("grid-past");
+    if (!up || !pa) return;
+    up.innerHTML = ""; pa.innerHTML = "";
     PROJECTS.forEach(function (p) {
       var li = document.createElement("li");
       li.className = "project";
       li.dataset.slug = p.slug;
       li.innerHTML = tileHTML(p);
-      var grid = SPACE[p.slug] === "parcours" ? par : (PERIOD[p.slug] === "past" ? diff : dev);
-      grid.appendChild(li);
+      (PERIOD[p.slug] === "past" ? pa : up).appendChild(li);
     });
     if (activeSlug) openDetail(activeSlug, false); else closeDetail();
   }
