@@ -9,7 +9,7 @@
 "use strict";
 var fs = require("fs"), path = require("path");
 var DOCS = path.join(__dirname, "docs");
-var SITE = "https://sebitarivas-hue.github.io/proyectos";
+var SITE = "https://stopera.art";
 var LANGS = ["fr", "es", "en", "zh"];
 
 /* ---- load data from script.js (no duplication) ---- */
