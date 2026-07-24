@@ -753,3 +753,12 @@ h2.lead { line-height: 1.14; }
 .lead, h2.lead { font-weight: 700; letter-spacing: -.018em; line-height: 1.1; }
 .season-title { font-weight: 700; letter-spacing: -.02em; line-height: 1.04; }
 .manifesto-question, .manifesto-claim { font-weight: 700; }
+
+/* === Héro — reprise de la belle composition (logo au centre + phrase élégante) === */
+.hero { text-align: center; }
+.hero-logo { display: block !important; width: min(360px, 74%); height: auto; margin: 0 auto clamp(1.5rem, 4vw, 2.3rem); background: var(--bg-2); border-radius: 4px; padding: clamp(1rem,3vw,1.5rem) clamp(1.3rem,4vw,2.1rem); }
+.hero-kicker { display: block; margin: 0 auto 1.1rem; }
+.hero-statement { font-size: clamp(1.7rem, 4.2vw, 3rem); max-width: 22ch; margin-left: auto; margin-right: auto; line-height: 1.1; }
+.hero-functions { margin: 1.2rem auto .2rem; color: var(--fg); }
+.hero-sub { color: var(--muted); max-width: none; margin-left: auto; margin-right: auto; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; justify-content: center; }
