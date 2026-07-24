@@ -1,12 +1,12 @@
 :root {
-  --bg: #f4f3ee;          /* papier */
-  --bg-2: #e9e7df;
-  --fg: #131313;          /* encre */
-  --muted: #5f5e57;
-  --line: #d6d3c8;        /* filet */
-  --accent: #cde000;      /* lime acide — identité graphique STOPERA */
-  --petrol: #131313; --sage: #5f5e57; --sand: #e9e7df; --panel-dark: #131313;
-  --accent-ink: #131313;
+  --bg: #faf8f4;          /* papier chaud (juin) */
+  --bg-2: #f2ede4;
+  --fg: #14110f;          /* encre */
+  --muted: #6f685f;
+  --line: #ddd6c9;        /* filet */
+  --accent: #d81e05;      /* rouge éditorial — contraste typographique */
+  --petrol: #14110f; --sage: #6f685f; --sand: #f2ede4; --panel-dark: #14110f;
+  --accent-ink: #ffffff;
   --max: 1180px;
   /* Type system (Gaîté-style) : grotesque caractériel + italique expressif + grotesque neutre */
   --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif; /* titres, hero */
@@ -690,29 +690,6 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 a.nav-link:hover, .nav-links a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 4px; }
 
 
-/* --- lisibilité : le lime ne sert JAMAIS de couleur de texte sur papier clair ---
-   il reste réservé aux aplats (chips, bandeau chiffres), filets, surlignages, survols. */
-.hero-kicker, .eyebrow, .subblock-label, .authority, .authority span::after,
-.pillar h2, .road-y, .news-date, .ed-label, .thread-n, .callout-k, .now-k,
-.coop-k, .pd-teaser h4, .pd-dim h4, .featured-kicker, .fcard-kicker,
-.ag-when, .artist-role-lg, .season-year, .season-card .eyebrow, .pd-eyebrow,
-.featured-tag, .fcard-tag, .hero-statement em, .prog-k {
-  color: var(--fg) !important;
-}
-/* liens éditoriaux : encre + soulignage lime (repère de marque, contraste conservé) */
-.pd-dl, .more-link a, .fcard-go, .join-cta, .callout-link,
-.artist-links a, .pd-eyebrow a, .disciplines--link li a {
-  color: var(--fg) !important;
-  text-decoration: none;
-}
-.pd-dl { border-bottom: 2px solid var(--accent); }
-.more-link a:hover, .fcard-go, .join-cta:hover, .callout-link:hover,
-.disciplines--link li a:hover {
-  text-decoration: underline; text-decoration-color: var(--accent);
-  text-decoration-thickness: 3px; text-underline-offset: 3px;
-}
-/* petit repère lime devant les sur-titres */
-.season-card .eyebrow, .fcard-kicker, .featured-kicker { position: relative; }
 
 
 /* ===== REFINE — typo Syne + resserrage (moins aéré) ===== */
@@ -742,13 +719,13 @@ h2.lead { line-height: 1.14; }
 .newsletter-row { display: flex; gap: .5rem; flex-wrap: wrap; }
 .newsletter-input { flex: 1 1 200px; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 2px; padding: .6rem .7rem; font: inherit; font-size: .9rem; color: var(--fg); }
 .newsletter-input:focus { outline: none; border-color: var(--fg); }
-.newsletter-btn { flex: 0 0 auto; background: var(--accent); color: #131313; border: 0; border-radius: 2px; padding: .6rem 1.15rem; font-family: var(--sans); font-weight: 700; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.newsletter-btn { flex: 0 0 auto; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 2px; padding: .6rem 1.15rem; font-family: var(--sans); font-weight: 700; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 .newsletter-btn:hover { filter: brightness(1.06); }
 
 /* === Système typographique resserré : Bricolage (display) · Archivo (texte) · Fraunces (italiques) ===
    Retour à la grotesque Bricolage (celle du héro aimé) ; l'italique Fraunces = seul accent. */
 .hero-statement { font-weight: 700; letter-spacing: -.02em; line-height: 1.06; }
-.hero-statement em { font-family: var(--quote) !important; font-style: italic !important; font-weight: 400 !important; background: none !important; color: var(--fg) !important; padding: 0 !important; letter-spacing: 0 !important; box-decoration-break: initial; -webkit-box-decoration-break: initial; }
+.hero-statement em { font-family: var(--quote) !important; font-style: italic !important; font-weight: 400 !important; background: none !important; color: var(--accent) !important; padding: 0 !important; letter-spacing: 0 !important; box-decoration-break: initial; -webkit-box-decoration-break: initial; }
 .featured-lead { font-weight: 700; letter-spacing: -.02em; line-height: 1.04; }
 .lead, h2.lead { font-weight: 700; letter-spacing: -.018em; line-height: 1.1; }
 .season-title { font-weight: 700; letter-spacing: -.02em; line-height: 1.04; }
@@ -762,3 +739,34 @@ h2.lead { line-height: 1.14; }
 .hero-functions { margin: 1.2rem auto .2rem; color: var(--fg); }
 .hero-sub { color: var(--muted); max-width: none; margin-left: auto; margin-right: auto; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; justify-content: center; }
+
+/* ============================================================
+   COULEURS DE JUIN — papier chaud + encre + ROUGE éditorial.
+   Le rouge = contraste typographique (accents, chiffres, filets).
+   ============================================================ */
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* accent italique du héro ("présence") + sur-titre en rouge */
+.hero-statement em { color: var(--accent) !important; }
+.hero-kicker { color: var(--accent); }
+
+/* puces de rôle : rouge plein, texte blanc */
+.mode-chip { background: var(--accent) !important; color: var(--accent-ink) !important; }
+
+/* bandeau chiffres : papier, gros chiffres ROUGES (contraste, lisible) */
+.impact-strip { background: var(--bg-2) !important; color: var(--fg) !important; border: 1px solid var(--line) !important; border-radius: 4px; }
+.impact-strip .stat-n { color: var(--accent) !important; font-weight: 800; }
+.impact-strip .stat-l { color: var(--muted) !important; }
+
+/* bouton newsletter : rouge, texte blanc */
+.newsletter-btn { background: var(--accent) !important; color: var(--accent-ink) !important; }
+
+/* --- Page POURQUOI : une seule échelle d'accentuation (fini les tailles qui sautent) --- */
+.manifesto-question, .manifesto-claim {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem); line-height: 1.35;
+  letter-spacing: -.01em; color: var(--fg);
+  margin: 1.3rem 0; padding-left: 1rem; border-left: 3px solid var(--accent);
+}
+.manifesto-vision { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--fg); }
+.name-mark { font-size: .95rem; }
