@@ -632,3 +632,18 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .prog-card{ background:var(--bg); padding:1.25rem 1.35rem; display:flex; flex-direction:column; gap:.45rem; }
 .prog-k{ font-family:var(--display); font-weight:600; font-size:1.4rem; letter-spacing:-.02em; line-height:1; }
 .prog-card p{ margin:0; color:#4a453d; font-size:.95rem; line-height:1.5; flex:1; }
+
+/* présentation "saison" des œuvres — cartes éditoriales */
+.season-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.6rem, 3vw, 2.6rem) clamp(1.2rem, 2vw, 1.8rem); margin-top: 1.8rem; }
+@media (max-width: 900px) { .season-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .season-grid { grid-template-columns: 1fr; } }
+.season-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.season-img { display: block; width: 100%; aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: 4px; overflow: hidden; transition: filter .3s ease; }
+.season-card:hover .season-img { filter: brightness(1.04); }
+.season-img--color { display: flex; align-items: flex-end; padding: 1rem; box-shadow: inset 0 -70px 90px -60px rgba(0,0,0,.4); }
+.season-mono { font-family: var(--display); font-weight: 600; font-size: 1.4rem; line-height: 1.02; letter-spacing: -.02em; }
+.season-chips { display: flex; gap: .3rem; flex-wrap: wrap; margin: .85rem 0 .1rem; }
+.season-title { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 2.5vw, 2.3rem); line-height: 1; letter-spacing: -.025em; margin: .25rem 0 .1rem; }
+.season-title .it { font-family: var(--quote); font-style: italic; font-weight: 400; letter-spacing: 0; }
+.season-sub { color: var(--muted); font-size: .96rem; line-height: 1.4; margin: .35rem 0 .35rem; }
+.season-year { font-family: var(--sans); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-top: auto; }

@@ -762,7 +762,7 @@ var OEUVRES_BODY = `    <section class="section">
         <span class="mode-legend-item"><span class="mode-dot" style="background:#3f8f5f"></span><span data-fr="Accompagnement" data-es="Acompañamiento" data-en="Support" data-zh="陪伴"></span></span>
         <span class="mode-legend-item"><span class="mode-dot" style="background:#c8860a"></span><span data-fr="Pédagogie & transmission" data-es="Pedagogía & transmisión" data-en="Education & transmission" data-zh="教育与传承"></span></span>
       </div>
-      <ul id="grid-flat" class="projects"></ul>
+      <div id="grid-season" class="season-grid"></div>
       <p class="more-link"><a href="../parcours/" data-fr="Explorer par parcours →" data-es="Explorar por recorridos →" data-en="Explore by thread →" data-zh="按主题浏览 →"></a></p>
     </section>`;
 var SOUTENIR_BODY = `    <section class="section">

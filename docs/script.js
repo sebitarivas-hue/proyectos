@@ -664,6 +664,29 @@
       host.appendChild(li);
     });
   }
+  function renderSeason() {
+    var host = document.getElementById("grid-season");
+    if (!host) return;
+    host.innerHTML = "";
+    PROJECTS.forEach(function (p) {
+      var href = tileHref(p);
+      var year = t(YEARS[p.slug] || "");
+      var sub = t(p.short || "");
+      var chips = projModes(p).map(function (k) { var m = MODE_META[k]; return '<span class="mode-chip" style="background:' + m.color + '">' + t(m.chip) + '</span>'; }).join('');
+      var img = p.photo
+        ? '<span class="season-img" style="background-image:url(\'' + REL + p.photo + '\')"></span>'
+        : '<span class="season-img season-img--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="season-mono">' + t(p.titleHtml || p.title) + '</span></span>';
+      var a = document.createElement("a");
+      a.className = "season-card";
+      a.href = href;
+      a.innerHTML = img
+        + '<span class="season-chips">' + chips + '</span>'
+        + '<h3 class="season-title">' + t(p.titleHtml || p.title) + '</h3>'
+        + (sub ? '<p class="season-sub">' + sub + '</p>' : '')
+        + (year ? '<span class="season-year">' + year + '</span>' : '');
+      host.appendChild(a);
+    });
+  }
   function onGridClick(e) {
     if (e.target.closest(".pd-close")) { closeDetail(); return; }
     var tile = e.target.closest(".ptile");
@@ -692,6 +715,7 @@
     applyStaticLang();
     renderProjects();
     renderFlat();
+    renderSeason();
     renderMecenes();
     try { localStorage.setItem(STORAGE_KEY, LANG); } catch (e) {}
   }
