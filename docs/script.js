@@ -5,6 +5,7 @@
   var STORAGE_KEY = "stopera-lang";
   var LANGS = ["fr", "es", "en", "zh"];
   var LANG = "fr";
+  var REL = "";
 
   function t(o) {
     if (o == null) return "";
@@ -16,7 +17,6 @@
     sheet:    { fr: "Voir la fiche", es: "Ver la ficha", en: "View sheet", zh: "查看详情" },
     close:    { fr: "Replier", es: "Cerrar", en: "Close", zh: "收起" },
     details:  { fr: "Informations", es: "Información", en: "Details", zh: "信息" },
-    role:     { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色" },
     credits:  { fr: "Générique", es: "Créditos", en: "Credits", zh: "创作团队" },
     partners: { fr: "Production & partenaires", es: "Producción & socios", en: "Production & partners", zh: "制作与合作" },
     press:    { fr: "Revue de presse", es: "Reseña de prensa", en: "Press", zh: "媒体评论" },
@@ -27,6 +27,7 @@
   var YEARS = {
     "ooo": "2025",
     "war-madrigals": "2026",
+    "salamandres": "2027",
     "nous": { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" },
     "rut": "2026",
     "insistir": "2026",
@@ -34,27 +35,27 @@
     "america": { fr: "en création", es: "en creación", en: "in creation", zh: "创作中" },
     "mamma-roma": "2027",
     "otages": "2024",
-    "aliados": "2013",
     "lips": { fr: "Biennal · 2028", es: "Bienal · 2028", en: "Biennial · 2028", zh: "双年 · 2028" }
   };
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中" };
 
-  var PERIOD = { "ooo":"past","war-madrigals":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","aliados":"past","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "ooo":"past","war-madrigals":"up","salamandres":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","fame":"past","snow-on-her-lips":"past" };
 
-  /* Espace éditorial : "stopera" = productions portées par STOPERA! · "parcours" = œuvres antérieures de Sebastian Rivas (hors STOPERA!). */
-  var SPACE = { "ooo":"stopera","war-madrigals":"stopera","nous":"stopera","rut":"stopera","insistir":"stopera","america":"stopera","lips":"stopera","mamma-roma":"stopera","otages":"parcours","aliados":"parcours","fame":"parcours","snow-on-her-lips":"parcours" };
-
-  /* Rôle de STOPERA! sur chaque production (n'apparaît que pour l'espace "stopera"). */
-  var ROLE_FULL = { fr: "Initiation · coproduction · diffusion", es: "Iniciativa · coproducción · difusión", en: "Initiation · coproduction · diffusion", zh: "发起 · 联合制作 · 巡演" };
-  var ROLE = {
-    "ooo": { fr: "Diffusion internationale", es: "Difusión internacional", en: "International diffusion", zh: "国际巡演" },
-    "lips": { fr: "Initiateur", es: "Iniciador", en: "Initiator", zh: "发起方" },
-    "war-madrigals": ROLE_FULL, "nous": ROLE_FULL, "rut": ROLE_FULL, "insistir": ROLE_FULL, "america": ROLE_FULL, "mamma-roma": ROLE_FULL
+  var MODES = { "salamandres": ["accompagnement"], "lips": ["pedagogie"], "ooo": ["tournee"], "otages": ["production", "tournee"], "snow-on-her-lips": ["production", "tournee"], "fame": ["production", "tournee"], "mamma-roma": ["production"], "rut": ["production"], "nous": ["production"], "war-madrigals": ["production"], "america": ["production"], "insistir": ["production"] };
+  var MODE_ORDER = ["production", "tournee", "accompagnement", "pedagogie"];
+  var MODE_META = {
+    production: { color: "#131313", chip: { fr: "Production", es: "Producci\u00f3n", en: "Production", zh: "\u5236\u4f5c" }, label: { fr: "Production", es: "Producci\u00f3n", en: "Production", zh: "\u5236\u4f5c" }, desc: { fr: "STOPERA! cr\u00e9e et porte l'\u0153uvre.", es: "STOPERA! crea y lleva la obra.", en: "STOPERA! creates and carries the work.", zh: "STOPERA! \u521b\u4f5c\u5e76\u627f\u5236\u4f5c\u54c1\u3002" } },
+    tournee: { color: "#131313", chip: { fr: "Tourn\u00e9e", es: "Gira", en: "Touring", zh: "\u5de1\u6f14" }, label: { fr: "Tourn\u00e9e & diffusion", es: "Gira & difusi\u00f3n", en: "Touring & diffusion", zh: "\u5de1\u6f14\u4e0e\u63a8\u5e7f" }, desc: { fr: "STOPERA! diffuse \u00e0 l'international une \u0153uvre cr\u00e9\u00e9e ailleurs.", es: "STOPERA! difunde internacionalmente una obra creada en otro lugar.", en: "STOPERA! tours a work created elsewhere.", zh: "STOPERA! \u5728\u56fd\u9645\u4e0a\u63a8\u5e7f\u4ed6\u65b9\u521b\u4f5c\u7684\u4f5c\u54c1\u3002" } },
+    accompagnement: { color: "#131313", chip: { fr: "Accompagnement", es: "Acompa\u00f1amiento", en: "Support", zh: "\u966a\u4f34" }, label: { fr: "Accompagnement", es: "Acompa\u00f1amiento", en: "Support", zh: "\u966a\u4f34" }, desc: { fr: "STOPERA! accompagne un projet port\u00e9 par un tiers.", es: "STOPERA! acompa\u00f1a un proyecto de un tercero.", en: "STOPERA! supports a project led by others.", zh: "STOPERA! \u966a\u4f34\u7531\u7b2c\u4e09\u65b9\u4e3b\u5bfc\u7684\u9879\u76ee\u3002" } },
+    pedagogie: { color: "#131313", chip: { fr: "P\u00e9dagogie", es: "Pedagog\u00eda", en: "Education", zh: "\u6559\u80b2" }, label: { fr: "P\u00e9dagogie & transmission", es: "Pedagog\u00eda & transmisi\u00f3n", en: "Education & transmission", zh: "\u6559\u80b2\u4e0e\u4f20\u627f" }, desc: { fr: "Le laboratoire LIPS et la transmission.", es: "El laboratorio LIPS y la transmisi\u00f3n.", en: "The LIPS lab and transmission.", zh: "LIPS \u5b9e\u9a8c\u5ba4\u4e0e\u4f20\u627f\u3002" } }
   };
+  function projModes(p) { return MODES[p.slug] || ["production"]; }
 
   // Trois dimensions par projet : Transmission (tx) — ce qui peut se partager / s'explorer ; Territoire & partenariats (terr) — ancrage et engagement local.
   var DIM = {
+    "salamandres": { tx: { fr: "Le projet naît d'un travail avec les populations : une recherche-action en éducation populaire (quartier Briand, Mulhouse, depuis 2021), des centaines d'heures d'ateliers et de répétitions pour former une « communauté esthétique ».", es: "El proyecto nace de un trabajo con las poblaciones: una investigación-acción en educación popular (barrio Briand, Mulhouse, desde 2021), cientos de horas de talleres y ensayos para formar una « comunidad estética ».", en: "The project grows out of work with communities: an action-research in popular education (Briand neighbourhood, Mulhouse, since 2021), hundreds of hours of workshops and rehearsals to form an “aesthetic community.”", zh: "项目源于与民众的工作：一项平民教育的行动研究（米卢斯 Briand 街区，自 2021 年），数百小时的工作坊与排练，以形成「审美共同体」。" },
+      terr: { fr: "Ancrage local fort : matériaux collectés sur place avec les habitant·es et les associations, à chaque lieu d'accueil — écologie du réemploi et localisme.", es: "Fuerte arraigo local: materiales recogidos in situ con los habitantes y las asociaciones, en cada lugar de acogida — ecología de la reutilización y localismo.", en: "Strong local roots: materials gathered on site with residents and associations, at each host venue — an ecology of re-use and localism.", zh: "深厚的在地扎根：材料在每个接待地与居民和社团就地采集——再利用的生态与在地主义。" } },
     "ooo": { tx: { fr: "Ateliers sur la lutherie d'objets et la dramaturgie post-humaine — faire chanter la matière et le son.", es: "Talleres sobre la lutería de objetos y la dramaturgia posthumana — hacer cantar la materia y el sonido.", en: "Workshops on object-instruments and post-human dramaturgy — making matter and sound sing.", zh: "围绕物件乐器与后人类戏剧构作的工作坊——让物质与声音歌唱。" },
       terr: { fr: "Un pont entre Buenos Aires et Lyon, porté en tournée internationale.", es: "Un puente entre Buenos Aires y Lyon, llevado en gira internacional.", en: "A bridge between Buenos Aires and Lyon, taken on international tour.", zh: "连接布宜诺斯艾利斯与里昂的桥梁，并展开国际巡演。" } },
     "war-madrigals": { tx: { fr: "Travail vocal en atelier autour du madrigal et de l'écriture pour six voix.", es: "Trabajo vocal en taller en torno al madrigal y la escritura para seis voces.", en: "Vocal workshops around the madrigal and writing for six voices.", zh: "围绕牧歌与六声部写作的人声工作坊。" },
@@ -69,8 +70,6 @@
       terr: { fr: "Pensé pour le public du Printemps des Arts, sur la Riviera.", es: "Pensado para el público del Printemps des Arts, en la Riviera.", en: "Made for the Printemps des Arts audience, on the Riviera.", zh: "为蒙特卡洛艺术之春的观众而作，位于里维埃拉。" } },
     "otages": { tx: { fr: "Rencontres autour de l'adaptation littéraire à l'opéra et du travail vocal contemporain.", es: "Encuentros en torno a la adaptación literaria a la ópera y el trabajo vocal contemporáneo.", en: "Encounters around literary adaptation to opera and contemporary vocal work.", zh: "围绕文学改编为歌剧与当代人声创作的相遇。" },
       terr: { fr: "Ancré à Lyon, en lien avec les scènes lyriques et les publics de la région.", es: "Anclado en Lyon, en relación con las escenas líricas y los públicos de la región.", en: "Anchored in Lyon, connected to opera stages and regional audiences.", zh: "扎根里昂，与歌剧舞台及地区观众相连。" } },
-    "aliados": { tx: { fr: "Partage de la lutherie temps réel (voix et électronique Ircam) en conférences et masterclass.", es: "Compartir la lutería en tiempo real (voz y electrónica Ircam) en conferencias y masterclass.", en: "Sharing real-time instrument design (voice and Ircam electronics) in talks and masterclasses.", zh: "在讲座与大师班中分享实时电子乐器设计（人声与 Ircam 电子）。" },
-      terr: { fr: "Enraciné dans la scène parisienne de la création sonore et diffusé à l'international.", es: "Enraizado en la escena parisina de la creación sonora y difundido internacionalmente.", en: "Rooted in the Paris sound-creation scene and toured internationally.", zh: "扎根巴黎的声音创作场景，并展开国际巡演。" } },
     "insistir": { tx: { fr: "Transmission du répertoire d'Aperghis et du théâtre musical à de jeunes interprètes.", es: "Transmisión del repertorio de Aperghis y del teatro musical a jóvenes intérpretes.", en: "Passing on Aperghis's repertoire and music theatre to young performers.", zh: "向年轻表演者传授 Aperghis 的作品与音乐剧场。" },
       terr: { fr: "Porté par STOPERA! autour de la soprano Nicola Beller Carbone.", es: "Impulsado por STOPERA! en torno a la soprano Nicola Beller Carbone.", en: "Carried by STOPERA! around soprano Nicola Beller Carbone.", zh: "由 STOPERA! 围绕女高音 Nicola Beller Carbone 推进。" } },
     "mamma-roma": { tx: { fr: "Ateliers sur le geste scénique et l'objet — la table — comme espace dramaturgique.", es: "Talleres sobre el gesto escénico y el objeto —la mesa— como espacio dramatúrgico.", en: "Workshops on stage gesture and the object — the table — as dramaturgical space.", zh: "围绕舞台动作与物件（餐桌）作为戏剧空间的工作坊。" },
@@ -177,6 +176,68 @@
       note: { fr: "Première étape de création dans l'émission « Création Mondiale » d'Anne Montaron (France Musique). Distribution et dates en cours de finalisation.", es: "Primera etapa de creación en el programa «Création Mondiale» de Anne Montaron (France Musique). Reparto y fechas en proceso de confirmación.", en: "First creation step in Anne Montaron's “Création Mondiale” programme (France Musique). Cast and dates being finalised.", zh: "首个创作阶段在 Anne Montaron 主持的「Création Mondiale」节目（France Musique）中进行。演员与日期确认中。" }
     },
     {
+      slug: "salamandres", title: "We Expected the Disaster…",
+      titleHtml: "We Expected the Disaster… <span class=\"it\">but not the salamanders!</span>",
+      photo: "assets/projects/salamandres.jpg",
+      tag: { fr: "Accompagnement STOPERA · Création 2027", es: "Acompañamiento STOPERA · Estreno 2027", en: "STOPERA support · Premiere 2027", zh: "STOPERA 陪伴 · 2027 首演" },
+      short: { fr: "Opéra politique & écologique de Porte Renaud (Cie Trilobite).", es: "Ópera política y ecológica de Porte Renaud (Cie Trilobite).", en: "A political, ecological opera by Porte Renaud (Cie Trilobite).", zh: "Porte Renaud（Cie Trilobite）的政治与生态歌剧。" },
+      pitch: {
+        fr: "Opéra politique et écologique de <strong>Porte Renaud</strong>, d'après <em>La Guerre des salamandres</em> de Karel Čapek : une humanité productiviste exploite des salamandres bâtisseuses, qui finissent par se soulever. Extractivisme, crise écologique et luttes de classes se répondent dans une fable pour notre présent. Trois actes, 2h25, onze voix et trois musiciens ; une scénographie légère, écologique et fabriquée sur place. Porté par la <strong>Cie Trilobite</strong>, le projet est accompagné par STOPERA! dans une première phase de développement, en amont de sa création au festival <strong>Tête à Tête</strong> (Londres) en 2027.",
+        es: "Ópera política y ecológica de <strong>Porte Renaud</strong>, a partir de <em>La guerra de las salamandras</em> de Karel Čapek: una humanidad productivista explota a unas salamandras constructoras que terminan por sublevarse. Extractivismo, crisis ecológica y luchas de clases dialogan en una fábula para nuestro presente. Tres actos, 2h25, once voces y tres músicos; una escenografía ligera, ecológica y fabricada in situ. Impulsado por la <strong>Cie Trilobite</strong>, el proyecto es acompañado por STOPERA! en una primera fase de desarrollo, antes de su estreno en el festival <strong>Tête à Tête</strong> (Londres) en 2027.",
+        en: "A political, ecological opera by <strong>Porte Renaud</strong>, after Karel Čapek's <em>War with the Newts</em>: a productivist humanity exploits builder-salamanders who eventually rise up. Extractivism, ecological crisis and class struggle echo one another in a fable for our present. Three acts, 2h25, eleven voices and three musicians; a light, ecological set built on site. Driven by <strong>Cie Trilobite</strong>, the project is accompanied by STOPERA! in a first development phase, ahead of its premiere at the <strong>Tête à Tête</strong> festival (London) in 2027.",
+        zh: "<strong>Porte Renaud</strong> 的政治与生态歌剧，取材自卡雷尔·恰佩克的《鲵鱼之乱》：生产至上的人类奴役善于建造的鲵鱼，鲵鱼终而起义。攫取主义、生态危机与阶级斗争在一则映照当下的寓言中相互回响。三幕，2 小时 25 分，十一个声部与三位乐手；舞美轻盈、生态并就地制作。项目由 <strong>Cie Trilobite</strong> 推动，STOPERA! 在首个发展阶段予以陪伴，先于 2027 年在伦敦 <strong>Tête à Tête</strong> 音乐节首演。" },
+      body: [
+        { fr: "Au cœur du projet, un travail de terrain avec les populations. Docteur en philosophie engagé dans l'éducation populaire, Porte Renaud mène depuis 2021 une recherche-action dans le quartier Briand, à Mulhouse : des centaines d'heures d'ateliers, d'animation, d'échanges et de répétitions, pour former une véritable « communauté esthétique » (thèse 2025, lecture située de John Dewey). Les interprètes n'y forment pas un chœur au sens traditionnel — ils et elles incarnent cette communauté. La scénographie prolonge la démarche : les matériaux sont collectés sur place, avec les habitant·es et les associations locales, à chaque lieu d'accueil — réemploi écologique et ancrage territorial concret.",
+          es: "En el corazón del proyecto, un trabajo de campo con las poblaciones. Doctor en filosofía comprometido con la educación popular, Porte Renaud lleva desde 2021 una investigación-acción en el barrio Briand, en Mulhouse: cientos de horas de talleres, animación, intercambios y ensayos, para formar una verdadera « comunidad estética » (tesis 2025, lectura situada de John Dewey). Los intérpretes no forman un coro en el sentido tradicional: encarnan esa comunidad. La escenografía prolonga el enfoque: los materiales se recogen in situ, con los habitantes y las asociaciones locales, en cada lugar de acogida — reutilización ecológica y arraigo territorial concreto.",
+          en: "At the heart of the project, fieldwork with communities. A doctor of philosophy committed to popular education, Porte Renaud has led, since 2021, an action-research project in the Briand neighbourhood of Mulhouse: hundreds of hours of workshops, facilitation, exchanges and rehearsals, to form a genuine “aesthetic community” (PhD 2025, a situated reading of John Dewey). The performers are not a chorus in the traditional sense — they embody that community. The set extends the approach: materials are gathered on site, with residents and local associations, at each host venue — ecological re-use and concrete local roots.",
+          zh: "项目的核心，是与民众的在地工作。作为投身平民教育的哲学博士，Porte Renaud 自 2021 年起在米卢斯的 Briand 街区开展行动研究：数百小时的工作坊、带动、交流与排练，以形成一个真正的「审美共同体」（2025 年博士论文，对约翰·杜威的情境化解读）。演出者并非传统意义上的合唱队——他们体现着这一共同体。舞美延续了这一路径：材料在每个接待地就地采集，与居民和本地社团一同完成——生态再利用与具体的在地扎根。" }
+      ],
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra politique & écologique", es: "Ópera política & ecológica", en: "Political & ecological opera", zh: "政治与生态歌剧" } },
+        { k: { fr: "D'après", es: "A partir de", en: "After", zh: "取材自" }, v: { fr: "La Guerre des salamandres — Karel Čapek", es: "La guerra de las salamandras — Karel Čapek", en: "War with the Newts — Karel Čapek", zh: "《鲵鱼之乱》— 卡雷尔·恰佩克" } },
+        { k: { fr: "Format", es: "Formato", en: "Format", zh: "形制" }, v: { fr: "3 actes · 2h25 · 11 voix + 3 musiciens", es: "3 actos · 2h25 · 11 voces + 3 músicos", en: "3 acts · 2h25 · 11 voices + 3 musicians", zh: "3 幕 · 2 小时 25 分 · 11 声部 + 3 乐手" } },
+        { k: { fr: "Compagnie", es: "Compañía", en: "Company", zh: "剧团" }, v: "Cie Trilobite — Porte Renaud" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "Festival Tête à Tête (Londres), 2027", es: "Festival Tête à Tête (Londres), 2027", en: "Tête à Tête festival (London), 2027", zh: "Tête à Tête 音乐节（伦敦），2027" } },
+        { k: { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色" }, v: { fr: "Accompagnement & développement", es: "Acompañamiento & desarrollo", en: "Support & development", zh: "陪伴与发展" } }
+      ],
+      credits: [
+        { role: { fr: "Musique, texte & mise en scène", es: "Música, texto & dirección", en: "Music, text & staging", zh: "音乐、文本与导演" }, who: "Porte Renaud" },
+        { role: { fr: "Dramaturgie", es: "Dramaturgia", en: "Dramaturgy", zh: "戏剧构作" }, who: "Jean Haderer" },
+        { role: { fr: "Violoncelle", es: "Violonchelo", en: "Cello", zh: "大提琴" }, who: "Sylvain Bolz" },
+        { role: { fr: "Flûte", es: "Flauta", en: "Flute", zh: "长笛" }, who: "Camille Moisson-Bonnevie" },
+        { role: { fr: "Costumes", es: "Vestuario", en: "Costumes", zh: "服装" }, who: "Evelyne Moisson-Bonnevie" },
+        { role: { fr: "Habillage & maquillage", es: "Vestidor & maquillaje", en: "Wardrobe & make-up", zh: "着装与化妆" }, who: "Marie Watiez" }
+      ],
+      partners: ["Cie Trilobite", "Festival Tête à Tête — Londres", "Éditions Lacroch'", "STOPERA!"],
+      diffusion: {
+        fr: "Créé au sein de la Cie Trilobite, We Expected the Disaster… est programmé en création mondiale au festival Tête à Tête (Londres) en 2027. STOPERA! en accompagne une première phase de développement : structuration financière et budget de production, casting des postes techniques, communication et mise en réseau, en vue de la diffusion en France, en Europe et en Amérique latine.",
+        es: "Creada en el seno de la Cie Trilobite, We Expected the Disaster… está programada como estreno mundial en el festival Tête à Tête (Londres) en 2027. STOPERA! acompaña una primera fase de desarrollo: estructuración financiera y presupuesto de producción, casting de los puestos técnicos, comunicación y puesta en red, con vistas a la difusión en Francia, Europa y América Latina.",
+        en: "Created within Cie Trilobite, We Expected the Disaster… is programmed for its world premiere at the Tête à Tête festival (London) in 2027. STOPERA! accompanies a first development phase: financial structuring and production budget, casting of the technical roles, communication and networking, towards diffusion in France, Europe and Latin America.",
+        zh: "《We Expected the Disaster…》由 Cie Trilobite 创作，定于 2027 年在伦敦 Tête à Tête 音乐节世界首演。STOPERA! 陪伴其首个发展阶段：财务结构与制作预算、技术岗位选角、传播与人脉搭建，以推动其在法国、欧洲与拉丁美洲的巡演。" },
+      relations: [
+        { label: { fr: "Porte Renaud", es: "Porte Renaud", en: "Porte Renaud", zh: "Porte Renaud" }, href: "artists/porte-renaud/" },
+        { label: { fr: "Cie Trilobite", es: "Cie Trilobite", en: "Cie Trilobite", zh: "Cie Trilobite" }, url: "https://cietrilobite.org" },
+        { label: { fr: "Festival Tête à Tête — Londres", es: "Festival Tête à Tête — Londres", en: "Tête à Tête festival — London", zh: "Tête à Tête 音乐节 — 伦敦" }, url: "https://www.tete-a-tete.org.uk" },
+        { label: { fr: "Éditions Lacroch'", es: "Éditions Lacroch'", en: "Éditions Lacroch'", zh: "Éditions Lacroch'" }, url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
+        { label: { fr: "Futurs Composés", es: "Futurs Composés", en: "Futurs Composés", zh: "Futurs Composés" }, url: "https://www.futurscomposes.com" },
+        { label: { fr: "Sebastian Rivas", es: "Sebastian Rivas", en: "Sebastian Rivas", zh: "Sebastian Rivas" }, href: "artists/sebastian-rivas/" },
+        { label: { fr: "Écrire à la compagnie", es: "Escribir a la compañía", en: "Contact the company", zh: "联系剧团" }, url: "mailto:opera@cietrilobite.org" }
+      ],
+      links: [
+        { label: "cietrilobite.org", url: "https://cietrilobite.org" },
+        { label: "porterenaud.com", url: "https://porterenaud.com" },
+        { label: "Porte Renaud — éditions Lacroch'", url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
+        { label: "Tête à Tête — The Opera Festival", url: "https://www.tete-a-tete.org.uk" }
+      ],
+      gallery: [
+        { src: "assets/projects/salamandres/01-salamandre.jpg", alt: "We Expected the Disaster… but not the salamanders! — la créature salamandre (Cie Trilobite). Photo wmtprod." },
+        { src: "assets/projects/salamandres/02-plateau-acte1.jpg", alt: "Vue du plateau au démarrage de l'acte 1 — scénographie légère et écologique. Photo wmtprod." },
+        { src: "assets/projects/salamandres/03-trio.jpg", alt: "We Expected the Disaster… — en scène. Photo wmtprod." },
+        { src: "assets/projects/salamandres/04-monologue.jpg", alt: "We Expected the Disaster… — monologue. Photo wmtprod." }
+      ],
+      note: { fr: "Projet externe accompagné par STOPERA! (première phase de développement, 2026). Création mondiale au festival Tête à Tête (Londres), 2027. Compagnie soutenue historiquement par la DRAC Grand Est ; œuvre éditée chez Lacroch' (catalogue Semifuza). Photos du spectacle : wmtprod ; affiche : image générée par IA et photomontage.", es: "Proyecto externo acompañado por STOPERA! (primera fase de desarrollo, 2026). Estreno mundial en el festival Tête à Tête (Londres), 2027. Compañía apoyada históricamente por la DRAC Grand Est; obra editada por Lacroch' (catálogo Semifuza). Fotos del espectáculo: wmtprod; cartel: imagen generada por IA y fotomontaje.", en: "External project accompanied by STOPERA! (first development phase, 2026). World premiere at the Tête à Tête festival (London), 2027. Company historically supported by DRAC Grand Est; work published by Lacroch' (Semifuza catalogue). Performance photos: wmtprod; poster: AI-generated image and photomontage.", zh: "由 STOPERA! 陪伴的外部项目（首个发展阶段，2026）。2027 年在伦敦 Tête à Tête 音乐节世界首演。剧团长期获 DRAC Grand Est 支持；作品由 Lacroch' 出版（Semifuza 目录）。演出照片：wmtprod；海报：AI 生成图像与照片蒙太奇。" }
+    },
+    {
       slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
       img: "assets/projects/nous.svg", photo: "assets/projects/nous.jpg",
       tag: ONGOING,
@@ -209,6 +270,7 @@
         { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本" }, who: "Christine Angot" }
       ],
       partners: [],
+      financeurs: ["CNM"],
       note: { fr: "Bourse CNM. Coproductions en cours de montage.", es: "Beca CNM. Coproducciones en construcción.", en: "CNM grant. Coproductions being assembled.", zh: "CNM 资助。联合制作筹备中。" }
     },
     {
@@ -286,6 +348,7 @@
         { role: { fr: "Regard extérieur", es: "Mirada externa", en: "Outside eye", zh: "外部视角" }, who: "Géraldine Kosiak" }
       ],
       partners: ["Printemps des Arts de Monte-Carlo", "GRAME"],
+      financeurs: ["Fondation Salabert"],
       press: [
         { source: "Télérama", title: "À Monaco, le Printemps des Arts fait fleurir la musique", url: "https://www.telerama.fr/musique/a-monaco-le-printemps-des-arts-fait-fleurir-la-musique-6850891.php" },
         { source: "ResMusica", title: "Heureuses retrouvailles au Printemps des Arts de Monte-Carlo", url: "https://www.resmusica.com/2021/03/28/heureuses-retrouvailles-des-artistes-et-du-public-au-printemps-des-arts-de-monte-carlo/" },
@@ -319,6 +382,7 @@
         { role: { fr: "Avec", es: "Con", en: "With", zh: "演员" }, who: "Nicola Beller Carbone · Yvan Ludlow" }
       ],
       partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse"],
+      financeurs: ["Fondation Jerez (sous l'égide de la Fondation de France)"],
       press: [
         { quote: { fr: "Une femme de 53 ans s'y livre au commentaire très rationnel de l'acte de violence qui l'a libérée de tout ce qu'elle a subi jusque-là.", es: "Una mujer de 53 años se entrega al comentario muy racional del acto de violencia que la liberó de todo lo que había sufrido.", en: "A 53-year-old woman delivers a coolly rational commentary on the act of violence that freed her from all she had endured.", zh: "一位 53 岁的女性，冷静而理性地讲述那个将她从此前所受的一切中解放出来的暴力行为。" }, source: "Le Monde", url: "https://www.lemonde.fr/culture/article/2024/03/19/otages-un-opera-qui-libere-la-parole-feminine-mais-pas-le-chant_6222903_3246.html" },
         { quote: { fr: "Le compositeur franco-argentin donne à entendre la violence sociale et sexiste.", es: "El compositor franco-argentino hace oír la violencia social y sexista.", en: "The French-Argentine composer makes social and sexist violence audible.", zh: "这位法国-阿根廷作曲家让社会与性别暴力被听见。" }, source: "Diapason", url: "https://www.diapasonmag.fr/critiques/otages-de-sebastian-rivas-a-lyon-un-drame-feministe-en-musique-46011.html" },
@@ -328,39 +392,6 @@
       ],
       pressPdf: "assets/press/otages-revue-presse.pdf",
       note: { fr: "Création mondiale le 17 mars 2024 (Festival de l'Opéra de Lyon).", es: "Estreno mundial el 17 de marzo de 2024 (Festival de la Opéra de Lyon).", en: "World premiere on 17 March 2024 (Opéra de Lyon Festival).", zh: "2024 年 3 月 17 日世界首演（里昂歌剧院艺术节）。" }
-    },
-    {
-      slug: "aliados", title: "Aliados", titleHtml: "Aliados",
-      photo: "assets/projects/aliados.jpg", video: "z2sobYeFzmE",
-      tag: { fr: "Création 2013", es: "Estreno 2013", en: "Premiere 2013", zh: "2013 首演" },
-      short: { fr: "Opéra du temps réel : Thatcher & Pinochet.", es: "Ópera en tiempo real: Thatcher y Pinochet.", en: "A real-time opera: Thatcher & Pinochet.", zh: "实时歌剧：撒切尔与皮诺切特。" },
-      pitch: {
-        fr: "Opéra « du temps réel » sur la rencontre, à Londres en 1999, de Margaret Thatcher et du général Pinochet. Vidéo en direct, voix transformées en temps réel : un face-à-face crépusculaire entre fiction et réalité, mémoire et responsabilité.",
-        es: "Ópera «en tiempo real» sobre el encuentro, en Londres en 1999, de Margaret Thatcher y el general Pinochet. Vídeo en directo, voces transformadas en tiempo real: un cara a cara crepuscular entre ficción y realidad, memoria y responsabilidad.",
-        en: "A “real-time opera” on the 1999 London meeting of Margaret Thatcher and General Pinochet. Live video, voices transformed in real time: a twilight face-off between fiction and reality, memory and responsibility.",
-        zh: "一部「实时歌剧」，讲述 1999 年伦敦撒切尔夫人与皮诺切特将军的会面。现场影像、实时变形的人声：一场介于虚构与现实、记忆与责任之间的暮色对峙。" },
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra du temps réel", es: "Ópera en tiempo real", en: "Real-time opera", zh: "实时歌剧" } },
-        { k: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, v: "Esteban Buch" },
-        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演" }, v: "Antoine Gindt" },
-        { k: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, v: "Léo Warynski" },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演" }, v: { fr: "T2G · ManiFeste — Ircam, 2013", es: "T2G · ManiFeste — Ircam, 2013", en: "T2G · ManiFeste — Ircam, 2013", zh: "T2G · ManiFeste — Ircam，2013" } }
-      ],
-      credits: [
-        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐" }, who: "Sebastian Rivas" },
-        { role: { fr: "Livret", es: "Libreto", en: "Libretto", zh: "剧本" }, who: "Esteban Buch" },
-        { role: { fr: "Mise en scène", es: "Dirección de escena", en: "Stage direction", zh: "导演" }, who: "Antoine Gindt" },
-        { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Léo Warynski" },
-        { role: { fr: "Vidéo", es: "Vídeo", en: "Video", zh: "影像" }, who: "Philippe Béziat" }
-      ],
-      partners: [],
-      press: [
-        { quote: "La voix inoubliable des oubliés.", source: "Laura Plas — La Terrasse" },
-        { quote: "Sebastian Rivas joue des conventions mais ne tombe pas dedans.", source: "Franck Madlener — Ircam" },
-        { quote: "Un opéra de l'oubli et du néant.", source: "Bruno Serrou" }
-      ],
-      pressPdf: "assets/press/aliados-revue-presse.pdf",
-      note: { fr: "Création le 14 juin 2013 (Festival ManiFeste · Ircam). Couverture internationale (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Photo : Pacôme Poirier / WikiSpectacle.", es: "Estreno el 14 de junio de 2013 (Festival ManiFeste · Ircam). Cobertura internacional (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Foto: Pacôme Poirier / WikiSpectacle.", en: "Premiered 14 June 2013 (ManiFeste Festival · Ircam). International coverage (La Stampa, The Times, Le Monde, El País, El Mundo, Clarín, Página/12…). Photo: Pacôme Poirier / WikiSpectacle.", zh: "2013 年 6 月 14 日首演（ManiFeste 音乐节 · Ircam）。国际媒体报道（La Stampa、The Times、Le Monde、El País、El Mundo、Clarín、Página/12…）。摄影：Pacôme Poirier / WikiSpectacle。" }
     },
     {
       slug: "insistir", title: "Insistir", titleHtml: "Insistir",
@@ -390,6 +421,7 @@
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
       photo: "assets/projects/mamma-roma.jpg",
+      financeurs: ["CETC — Teatro Colón"],
       tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月" },
       short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。" },
       pitch: {
@@ -448,19 +480,31 @@
         es: "Laboratorio interdisciplinario de prototipos escénicos y sonoros. Cada año, jóvenes artistas de todas las disciplinas —composición, dirección de escena, artes visuales, teatro, danza— prototipan juntos nuevas formas, acompañados por artistas consagrados. Un espacio de intercambio, experimentación y co-escritura, donde la transmisión se hace por la práctica.",
         en: "An interdisciplinary laboratory of scenic and sound prototypes. Each year, young artists from all disciplines — composition, stage direction, visual arts, theatre, dance — prototype new forms together, mentored by established artists. A space for exchange, experimentation and co-writing, where transmission happens through practice.",
         zh: "一个跨学科的舞台与声音原型工作坊。每年，来自各学科——作曲、导演、视觉艺术、戏剧、舞蹈——的青年艺术家在资深艺术家的陪伴下共同打造新形式的雏形。一个交流、实验与共同书写的空间，让传承通过实践发生。" },
+      body: [
+        { fr: "Le laboratoire procède par protocoles. Chaque édition part d'une question de forme — la voix et le geste captés en temps réel, l'image générée, le son spatialisé, la lutherie d'objets, les écritures écologiques — et la travaille en atelier, en résidence et en répétition, jusqu'au prototype. La transmission s'y fait par la pratique : de jeunes artistes de toutes disciplines prototypent aux côtés d'artistes confirmés.",
+          es: "El laboratorio procede por protocolos. Cada edición parte de una pregunta de forma — la voz y el gesto captados en tiempo real, la imagen generada, el sonido espacializado, la lutería de objetos, las escrituras ecológicas — y la trabaja en taller, residencia y ensayo, hasta el prototipo. La transmisión se hace por la práctica: jóvenes artistas de todas las disciplinas prototipan junto a artistas consagrados.",
+          en: "The laboratory works through protocols. Each edition begins from a question of form — voice and gesture captured in real time, generated image, spatialised sound, object-instruments, ecological writing — and works it in workshop, residency and rehearsal, up to the prototype. Transmission happens through practice: young artists from every discipline prototype alongside established artists.",
+          zh: "实验室以方法推进。每一届都从一个关于形式的问题出发——实时捕捉的人声与动作、生成的图像、空间化的声音、物件乐器、生态书写——并在工作坊、驻地与排练中加以打磨，直至原型。传承通过实践发生：各学科的青年艺术家与资深艺术家一同制作原型。" },
+        { fr: "Les résultats ne sont pas seulement des spectacles : ce sont des méthodes, des dispositifs et des connaissances documentés, appelés à circuler — publications, ressources ouvertes, collaborations avec des universités et des centres de recherche.",
+          es: "Los resultados no son solo espectáculos: son métodos, dispositivos y conocimientos documentados, destinados a circular — publicaciones, recursos abiertos, colaboraciones con universidades y centros de investigación.",
+          en: "The outcomes are not only performances: they are documented methods, devices and knowledge meant to circulate — publications, open resources, collaborations with universities and research centres.",
+          zh: "成果不仅是演出，更是被记录、意在流通的方法、装置与知识——出版、开放资源，以及与高校和研究中心的合作。" }
+      ],
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Laboratoire / transmission", es: "Laboratorio / transmisión", en: "Lab / transmission", zh: "工作坊 / 传承" } },
         { k: { fr: "Démarche", es: "Enfoque", en: "Approach", zh: "方法" }, v: { fr: "Co-écriture · interdisciplinarité · intermédialité", es: "Co-escritura · interdisciplinariedad · intermedialidad", en: "Co-writing · interdisciplinarity · intermediality", zh: "共同书写 · 跨学科 · 跨媒介" } },
         { k: { fr: "Rythme", es: "Ritmo", en: "Frequency", zh: "频率" }, v: { fr: "Biennal — prochaine édition 2028", es: "Bienal — próxima edición 2028", en: "Biennial — next edition 2028", zh: "双年制 — 下一届 2028" } },
+        { k: { fr: "Axes de recherche", es: "Ejes de investigación", en: "Research axes", zh: "研究方向" }, v: { fr: "Temps réel · IA & image générée · spatialisation · voix & dramaturgies · lutherie d'objets · écritures écologiques", es: "Tiempo real · IA & imagen generada · espacialización · voz & dramaturgias · lutería de objetos · escrituras ecológicas", en: "Real time · AI & generated image · spatialisation · voice & dramaturgies · object-instruments · ecological writing", zh: "实时 · AI 与生成图像 · 空间化 · 人声与戏剧构作 · 物件乐器 · 生态书写" } },
         { k: { fr: "Éditions précédentes", es: "Ediciones anteriores", en: "Previous editions", zh: "往届" }, v: "Pôle Pixel (Villeurbanne) · GRAME (Lyon) · UNSAM (Buenos Aires)" }
       ],
       pitchExtra: true,
       credits: [
         { role: { fr: "Direction", es: "Dirección", en: "Direction", zh: "负责人" }, who: "Sebastian Rivas" },
-        { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" },
-        { role: { fr: "Intervenant·es", es: "Invitados/as", en: "Mentors & guests", zh: "导师与嘉宾" }, who: "François Chaignaud · Julie Desprairies · Daniel Zea · Géraldine Kosiak · Pierre Jodlowski · Marc Monnet · Richard Brunel · Jean-Cyrille Burdet · Alexander Schubert · Benoit Renaudin · Géraldine Farage" }
+        { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" }
       ],
-      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"]
+      guests: ["François Chaignaud", "Julie Desprairies", "Daniel Zea", "Géraldine Kosiak", "Pierre Jodlowski", "Marc Monnet", "Richard Brunel", "Jean-Cyrille Burdet", "Alexander Schubert", "Benoit Renaudin", "Géraldine Farage"],
+      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"],
+      financeurs: ["Fondation de France"]
     }
   ];
 
@@ -470,6 +514,7 @@
   var COLORS = {
     "ooo":              "#34433f",  // deep forest-teal — nature post-humaine
     "war-madrigals":    "#2f3f49",  // Nocturne Blue — bleu nuit profond
+    "salamandres":      "#3f6f4f",  // Salamander Green — vert écologique
     "nous":             "#5e3c41",  // Rumors — bordeaux feutré
     "rut":              "#6f8f8a",  // Dragonfly — vert-bleu
     "fame":             "#d6a65c",  // Beehive — ocre chaud
@@ -493,43 +538,29 @@
   function tileInk(p) { return inkOn(COLORS[p.slug] || "#4f5f60"); }
 
   function tileHref(p) {
-    return p.slug === "lips" ? "lips/" : "productions/" + p.slug + "/";
+    return REL + (p.slug === "lips" ? "lips/" : "productions/" + p.slug + "/");
   }
 
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
     var href = tileHref(p);
-    var role = ROLE[p.slug] ? t(ROLE[p.slug]) : "";
-    var roleBadge = role ? '<span class="ptile-role">' + role + '</span>' : "";
+    var sub = t(p.short || "");
+    var chips = '<span class="ptile-chips">' + projModes(p).map(function (k) { var m = MODE_META[k]; return '<span class="mode-chip" style="background:' + m.color + '">' + t(m.chip) + '</span>'; }).join('') + '</span>';
+    var body = chips
+      + '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
+      + (sub ? '<span class="ptile-sub">' + sub + '</span>' : '')
+      + (year ? '<span class="ptile-year">' + year + '</span>' : '');
     if (p.photo) {
-      return ''
-        + '<a class="ptile" href="' + href + '">'
-        +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
-        +   '<span class="ptile-scrim"></span>'
-        +   roleBadge
-        +   '<span class="ptile-meta">'
-        +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
-        +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
-        +   '</span>'
-        + '</a>';
+      return '<a class="ptile" href="' + href + '">'
+        + '<span class="ptile-img" style="background-image:url(\'' + REL + p.photo + '\')"></span>'
+        + '<span class="ptile-scrim"></span>'
+        + '<span class="ptile-meta">' + body + '</span></a>';
     }
-    var tag = t(p.tag || "");
-    return ''
-      + '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
-      +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
-      +   roleBadge
-      +   '<span class="ptile-meta">'
-      +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
-      +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
-      +   '</span>'
-      + '</a>';
+    return '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
+      + '<span class="ptile-meta">' + body + '</span></a>';
   }
-
   function detailHTML(p) {
-    var roleFact = ROLE[p.slug]
-      ? '<li><span class="k">' + t(UI.role) + '</span><span class="v">' + t(ROLE[p.slug]) + '</span></li>'
-      : "";
-    var facts = roleFact + (p.facts || []).map(function (f) {
+    var facts = (p.facts || []).map(function (f) {
       return '<li><span class="k">' + t(f.k) + '</span><span class="v">' + t(f.v) + '</span></li>';
     }).join("");
     var credits = (p.credits || []).map(function (c) {
@@ -594,23 +625,68 @@
     if (scroll) d.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  var FUNDERS = [["CNM","https://cnm.fr"],["Fondation Salabert","https://fondation-salabert.org"],["Fondation de France","https://www.fondationdefrance.org"],["Fondation Jerez","https://www.fondationdefrance.org"],["DRAC Grand Est","https://www.culture.gouv.fr/regions/drac-grand-est"],["Teatro Col\u00f3n","https://teatrocolon.org.ar"]];
+  function linkFunder(name){ for(var i=0;i<FUNDERS.length;i++){ if(name.indexOf(FUNDERS[i][0])>=0) return '<a href="'+FUNDERS[i][1]+'" target="_blank" rel="noopener">'+name+'</a>'; } return name; }
+  function renderMecenes(){ var host=document.getElementById("mecenes-list"); if(!host) return; host.innerHTML=""; PROJECTS.forEach(function(p){ if(!p.financeurs||!p.financeurs.length) return; var href=REL+(p.slug==="lips"?"lips/":"productions/"+p.slug+"/"); var li=document.createElement("li"); li.innerHTML='<a href="'+href+'">'+t(p.titleHtml||p.title)+'</a> \u2014 '+p.financeurs.map(linkFunder).join(" \u00b7 "); host.appendChild(li); }); }
   function renderProjects() {
-    var diff = document.getElementById("grid-stopera-diff");
-    var dev = document.getElementById("grid-stopera-dev");
-    var par = document.getElementById("grid-parcours");
-    if (!diff || !dev || !par) return;
-    diff.innerHTML = ""; dev.innerHTML = ""; par.innerHTML = "";
+    var host = document.getElementById("grid-modes");
+    if (!host) return;
+    host.innerHTML = "";
+    MODE_ORDER.forEach(function (mode) {
+      var items = PROJECTS.filter(function (p) { return projModes(p)[0] === mode; });
+      if (!items.length) return;
+      var m = MODE_META[mode];
+      var sec = document.createElement("div");
+      sec.className = "mode-group";
+      sec.innerHTML = '<div class="mode-head"><span class="mode-dot" style="background:' + m.color + '"></span><span class="mode-name">' + t(m.label) + '</span><span class="mode-desc">' + t(m.desc) + '</span></div>';
+      var ul = document.createElement("ul");
+      ul.className = "projects";
+      items.forEach(function (p) {
+        var li = document.createElement("li");
+        li.className = "project";
+        li.dataset.slug = p.slug;
+        li.innerHTML = tileHTML(p);
+        ul.appendChild(li);
+      });
+      sec.appendChild(ul);
+      host.appendChild(sec);
+    });
+  }
+  function renderFlat() {
+    var host = document.getElementById("grid-flat");
+    if (!host) return;
+    host.innerHTML = "";
     PROJECTS.forEach(function (p) {
       var li = document.createElement("li");
       li.className = "project";
       li.dataset.slug = p.slug;
       li.innerHTML = tileHTML(p);
-      var grid = SPACE[p.slug] === "parcours" ? par : (PERIOD[p.slug] === "past" ? diff : dev);
-      grid.appendChild(li);
+      host.appendChild(li);
     });
-    if (activeSlug) openDetail(activeSlug, false); else closeDetail();
   }
-
+  function renderSeason() {
+    var host = document.getElementById("grid-season");
+    if (!host) return;
+    host.innerHTML = "";
+    PROJECTS.forEach(function (p) {
+      var href = tileHref(p);
+      var year = t(YEARS[p.slug] || "");
+      var sub = t(p.short || "");
+      var chips = projModes(p).map(function (k) { var m = MODE_META[k]; return '<span class="mode-chip" style="background:' + m.color + '">' + t(m.chip) + '</span>'; }).join('');
+      var img = p.photo
+        ? '<span class="season-img" style="background-image:url(\'' + REL + p.photo + '\')"></span>'
+        : '<span class="season-img season-img--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="season-mono">' + t(p.titleHtml || p.title) + '</span></span>';
+      var a = document.createElement("a");
+      a.className = "season-card";
+      a.href = href;
+      a.innerHTML = img
+        + '<span class="season-chips">' + chips + '</span>'
+        + '<h3 class="season-title">' + t(p.titleHtml || p.title) + '</h3>'
+        + (sub ? '<p class="season-sub">' + sub + '</p>' : '')
+        + (year ? '<span class="season-year">' + year + '</span>' : '');
+      host.appendChild(a);
+    });
+  }
   function onGridClick(e) {
     if (e.target.closest(".pd-close")) { closeDetail(); return; }
     var tile = e.target.closest(".ptile");
@@ -638,6 +714,9 @@
     LANG = LANGS.indexOf(lang) >= 0 ? lang : "fr";
     applyStaticLang();
     renderProjects();
+    renderFlat();
+    renderSeason();
+    renderMecenes();
     try { localStorage.setItem(STORAGE_KEY, LANG); } catch (e) {}
   }
 
@@ -651,6 +730,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    REL = (document.body.getAttribute("data-rel") || "");
     setLang(initialLang());
 
     var navToggle = document.querySelector(".nav-toggle");
@@ -701,3 +781,17 @@
     });
   });
 })();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("form[data-newsletter]").forEach(function (f) {
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var i = f.querySelector('input[name="email"]');
+      var email = i ? i.value : "";
+      var subj = encodeURIComponent("Inscription newsletter STOPERA!");
+      var body = encodeURIComponent("Bonjour,\n\nJe souhaite m'inscrire \u00e0 la newsletter de STOPERA!.\nEmail : " + email + "\n\nMerci.");
+      window.location.href = "mailto:sonic.theatre.stopera@gmail.com?subject=" + subj + "&body=" + body;
+    });
+  });
+});
