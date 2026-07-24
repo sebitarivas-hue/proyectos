@@ -105,7 +105,7 @@ function tileBg(slug){var b=COLORS[slug]||"#4f5f60";return"linear-gradient(152de
 
 function header(rel) {
   // target starting with "#" = anchor on home ; otherwise a standalone page path
-  var nav = [["#apropos","Pourquoi","Por qué","Why","为何"],
+  var nav = [["pourquoi/","Pourquoi","Por qué","Why","为何"],
     ["oeuvres/","Œuvres","Obras","Works","作品"],
     ["laboratoire/","Laboratoire","Laboratorio","Laboratory","实验室"],
     ["reseau/","Réseau","Red","Network","网络"],
@@ -793,6 +793,8 @@ var LABO_BODY = fs.readFileSync(path.join(__dirname, "partials/laboratoire.html"
 var RESEAU_BODY = fs.readFileSync(path.join(__dirname, "partials/reseau.html"), "utf8");
 write("laboratoire", page({ rel: "../", title: "Laboratoire", description: "Le laboratoire de STOPERA! — recherche artistique et LIPS : nouvelles écritures, voix, image, technologies, temps réel et transmission.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/laboratoire/", ogType: "website", body: LABO_BODY }));
 write("reseau", page({ rel: "../", title: "Réseau", description: "Le réseau de STOPERA! — artistes associé·e·s, gouvernance, institutions partenaires, réseaux et mécénat, en France et à l'international.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/reseau/", ogType: "website", body: RESEAU_BODY }));
+var POURQUOI_BODY = fs.readFileSync(path.join(__dirname, "partials/pourquoi.html"), "utf8");
+write("pourquoi", page({ rel: "../", title: "Pourquoi", description: "Pourquoi STOPERA! — le monde des formes scéniques se transforme ; STOPERA! rassemble artistes, chercheurs, institutions et publics autour d'une question commune, et fait de l'arrêt un espace de recherche et de création.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/pourquoi/", ogType: "website", body: POURQUOI_BODY }));
 
 urls.push(SITE + "/cooperation/");
 /* press */
