@@ -41,6 +41,16 @@
 
   var PERIOD = { "ooo":"past","war-madrigals":"up","salamandres":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","fame":"past","snow-on-her-lips":"past" };
 
+  var MODES = { "salamandres": ["accompagnement"], "lips": ["pedagogie"], "ooo": ["tournee"], "otages": ["production", "tournee"], "snow-on-her-lips": ["production", "tournee"], "fame": ["production", "tournee"], "mamma-roma": ["production"], "rut": ["production"], "nous": ["production"], "war-madrigals": ["production"], "america": ["production"], "insistir": ["production"] };
+  var MODE_ORDER = ["production", "tournee", "accompagnement", "pedagogie"];
+  var MODE_META = {
+    production: { color: "#5B3FA0", chip: { fr: "Production", es: "Producci\u00f3n", en: "Production", zh: "\u5236\u4f5c" }, label: { fr: "Production", es: "Producci\u00f3n", en: "Production", zh: "\u5236\u4f5c" }, desc: { fr: "STOPERA! cr\u00e9e et porte l'\u0153uvre.", es: "STOPERA! crea y lleva la obra.", en: "STOPERA! creates and carries the work.", zh: "STOPERA! \u521b\u4f5c\u5e76\u627f\u5236\u4f5c\u54c1\u3002" } },
+    tournee: { color: "#2f6f8f", chip: { fr: "Tourn\u00e9e", es: "Gira", en: "Touring", zh: "\u5de1\u6f14" }, label: { fr: "Tourn\u00e9e & diffusion", es: "Gira & difusi\u00f3n", en: "Touring & diffusion", zh: "\u5de1\u6f14\u4e0e\u63a8\u5e7f" }, desc: { fr: "STOPERA! diffuse \u00e0 l'international une \u0153uvre cr\u00e9\u00e9e ailleurs.", es: "STOPERA! difunde internacionalmente una obra creada en otro lugar.", en: "STOPERA! tours a work created elsewhere.", zh: "STOPERA! \u5728\u56fd\u9645\u4e0a\u63a8\u5e7f\u4ed6\u65b9\u521b\u4f5c\u7684\u4f5c\u54c1\u3002" } },
+    accompagnement: { color: "#3f8f5f", chip: { fr: "Accompagnement", es: "Acompa\u00f1amiento", en: "Support", zh: "\u966a\u4f34" }, label: { fr: "Accompagnement", es: "Acompa\u00f1amiento", en: "Support", zh: "\u966a\u4f34" }, desc: { fr: "STOPERA! accompagne un projet port\u00e9 par un tiers.", es: "STOPERA! acompa\u00f1a un proyecto de un tercero.", en: "STOPERA! supports a project led by others.", zh: "STOPERA! \u966a\u4f34\u7531\u7b2c\u4e09\u65b9\u4e3b\u5bfc\u7684\u9879\u76ee\u3002" } },
+    pedagogie: { color: "#c8860a", chip: { fr: "P\u00e9dagogie", es: "Pedagog\u00eda", en: "Education", zh: "\u6559\u80b2" }, label: { fr: "P\u00e9dagogie & transmission", es: "Pedagog\u00eda & transmisi\u00f3n", en: "Education & transmission", zh: "\u6559\u80b2\u4e0e\u4f20\u627f" }, desc: { fr: "Le laboratoire LIPS et la transmission.", es: "El laboratorio LIPS y la transmisi\u00f3n.", en: "The LIPS lab and transmission.", zh: "LIPS \u5b9e\u9a8c\u5ba4\u4e0e\u4f20\u627f\u3002" } }
+  };
+  function projModes(p) { return MODES[p.slug] || ["production"]; }
+
   // Trois dimensions par projet : Transmission (tx) — ce qui peut se partager / s'explorer ; Territoire & partenariats (terr) — ancrage et engagement local.
   var DIM = {
     "salamandres": { tx: { fr: "Le projet naît d'un travail avec les populations : une recherche-action en éducation populaire (quartier Briand, Mulhouse, depuis 2021), des centaines d'heures d'ateliers et de répétitions pour former une « communauté esthétique ».", es: "El proyecto nace de un trabajo con las poblaciones: una investigación-acción en educación popular (barrio Briand, Mulhouse, desde 2021), cientos de horas de talleres y ensayos para formar una « comunidad estética ».", en: "The project grows out of work with communities: an action-research in popular education (Briand neighbourhood, Mulhouse, since 2021), hundreds of hours of workshops and rehearsals to form an “aesthetic community.”", zh: "项目源于与民众的工作：一项平民教育的行动研究（米卢斯 Briand 街区，自 2021 年），数百小时的工作坊与排练，以形成「审美共同体」。" },
@@ -517,28 +527,21 @@
   function tileHTML(p) {
     var year = t(YEARS[p.slug] || "");
     var href = tileHref(p);
+    var sub = t(p.short || "");
+    var chips = '<span class="ptile-chips">' + projModes(p).map(function (k) { var m = MODE_META[k]; return '<span class="mode-chip" style="background:' + m.color + '">' + t(m.chip) + '</span>'; }).join('') + '</span>';
+    var body = chips
+      + '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
+      + (sub ? '<span class="ptile-sub">' + sub + '</span>' : '')
+      + (year ? '<span class="ptile-year">' + year + '</span>' : '');
     if (p.photo) {
-      return ''
-        + '<a class="ptile" href="' + href + '">'
-        +   '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
-        +   '<span class="ptile-scrim"></span>'
-        +   '<span class="ptile-meta">'
-        +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
-        +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
-        +   '</span>'
-        + '</a>';
+      return '<a class="ptile" href="' + href + '">'
+        + '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
+        + '<span class="ptile-scrim"></span>'
+        + '<span class="ptile-meta">' + body + '</span></a>';
     }
-    var tag = t(p.tag || "");
-    return ''
-      + '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
-      +   (tag ? '<span class="ptile-tag">' + tag + '</span>' : '')
-      +   '<span class="ptile-meta">'
-      +     '<span class="ptile-title">' + t(p.titleHtml || p.title) + '</span>'
-      +     (year ? '<span class="ptile-year">' + year + '</span>' : '')
-      +   '</span>'
-      + '</a>';
+    return '<a class="ptile ptile--color" href="' + href + '" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '">'
+      + '<span class="ptile-meta">' + body + '</span></a>';
   }
-
   function detailHTML(p) {
     var facts = (p.facts || []).map(function (f) {
       return '<li><span class="k">' + t(f.k) + '</span><span class="v">' + t(f.v) + '</span></li>';
@@ -606,20 +609,29 @@
   }
 
   function renderProjects() {
-    var up = document.getElementById("grid-upcoming");
-    var pa = document.getElementById("grid-past");
-    if (!up || !pa) return;
-    up.innerHTML = ""; pa.innerHTML = "";
-    PROJECTS.forEach(function (p) {
-      var li = document.createElement("li");
-      li.className = "project";
-      li.dataset.slug = p.slug;
-      li.innerHTML = tileHTML(p);
-      (PERIOD[p.slug] === "past" ? pa : up).appendChild(li);
+    var host = document.getElementById("grid-modes");
+    if (!host) return;
+    host.innerHTML = "";
+    MODE_ORDER.forEach(function (mode) {
+      var items = PROJECTS.filter(function (p) { return projModes(p)[0] === mode; });
+      if (!items.length) return;
+      var m = MODE_META[mode];
+      var sec = document.createElement("div");
+      sec.className = "mode-group";
+      sec.innerHTML = '<div class="mode-head"><span class="mode-dot" style="background:' + m.color + '"></span><span class="mode-name">' + t(m.label) + '</span><span class="mode-desc">' + t(m.desc) + '</span></div>';
+      var ul = document.createElement("ul");
+      ul.className = "projects";
+      items.forEach(function (p) {
+        var li = document.createElement("li");
+        li.className = "project";
+        li.dataset.slug = p.slug;
+        li.innerHTML = tileHTML(p);
+        ul.appendChild(li);
+      });
+      sec.appendChild(ul);
+      host.appendChild(sec);
     });
-    if (activeSlug) openDetail(activeSlug, false); else closeDetail();
   }
-
   function onGridClick(e) {
     if (e.target.closest(".pd-close")) { closeDetail(); return; }
     var tile = e.target.closest(".ptile");
