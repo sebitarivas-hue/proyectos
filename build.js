@@ -134,6 +134,7 @@ function editorialNav(rel) {
 function footer(rel) {
   return '<footer class="site-footer">\n'
     + '    <span class="brand-logo-foot"><img src="' + rel + 'assets/logo-dark.png" alt="STOPERA!" /></span>\n'
+    + '    <form class="newsletter" data-newsletter><p class="newsletter-k" data-fr="Newsletter" data-es="Newsletter" data-en="Newsletter" data-zh="\u901a\u8baf"></p><div class="newsletter-row"><input type="email" name="email" class="newsletter-input" required placeholder="email@exemple.com" aria-label="Email" /><button type="submit" class="newsletter-btn" data-fr="S\'inscrire" data-es="Suscribirse" data-en="Subscribe" data-zh="\u8ba2\u9605"></button></div></form>\n'
     + '    <p class="foot-social"><a href="https://instagram.com/stopera_sonic_theatre" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@stopera-sonictheatre" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.facebook.com/stopera.sonictheatre" target="_blank" rel="noopener">Facebook</a></p>\n'
     + '    <p>© <span id="year"></span> STOPERA! — Sonic Theatre Opera Performance · Gentilly (Paris) · <a href="' + rel + 'mentions-legales/" data-fr="Mentions légales" data-es="Aviso legal" data-en="Legal notice" data-zh="法律声明"></a></p>\n  </footer>';
 }
