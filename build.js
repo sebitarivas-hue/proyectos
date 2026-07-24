@@ -42,14 +42,14 @@ var THEMES = [
              es: "Mundos donde lo humano ya no está en el centro: objetos, máquinas e imágenes que recuerdan en nuestro lugar. Lo que queda, y lo que recuerda, cuando ya no estamos.",
              en: "Worlds where the human is no longer the centre: objects, machines and images that remember in our place. What remains, and what remembers, when we are gone.",
              zh: "人类不再居于中心的世界：替我们记忆的物件、机器与影像。当我们不再在场，什么留存，什么记忆。" },
-    items: ["ooo", "war-madrigals"] },
+    items: ["ooo", "war-madrigals", "salamandres"] },
   { slug: "memoire-politique",
     title: { fr: "Mémoire & politique", es: "Memoria & política", en: "Memory & politics", zh: "记忆与政治" },
     blurb: { fr: "Pouvoir, histoire et résistance : des figures réelles ou de fiction qui interrogent la responsabilité, la violence et la liberté.",
              es: "Poder, historia y resistencia: figuras reales o de ficción que interrogan la responsabilidad, la violencia y la libertad.",
              en: "Power, history and resistance: real or fictional figures questioning responsibility, violence and freedom.",
              zh: "权力、历史与抵抗：真实或虚构的人物，叩问责任、暴力与自由。" },
-    items: ["otages", "america", "mamma-roma", "insistir"] },
+    items: ["otages", "america", "mamma-roma", "insistir", "salamandres"] },
   { slug: "voix-texte",
     title: { fr: "Voix & texte", es: "Voz & texto", en: "Voice & text", zh: "人声与文本" },
     blurb: { fr: "L'écriture au cœur du plateau : livrets, auteurs et la parole comme matière musicale, de Christine Angot à Pasolini.",
@@ -84,7 +84,7 @@ var NAME2SLUG = {
   "Marcelo Lombardero": "marcelo-lombardero", "Emma Terno": "emma-terno", "Valentín Pelisch": "valentin-pelisch",
   "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui",
   "Richard Brunel": "richard-brunel", "Anne-Laure Chamboissier": "anne-laure-chamboissier",
-  "Guillaume Kosmicki": "guillaume-kosmicki"
+  "Guillaume Kosmicki": "guillaume-kosmicki", "Porte Renaud": "porte-renaud"
 };
 var NAME_LIST = Object.keys(NAME2SLUG).sort(function (a, b) { return b.length - a.length; });
 function linkNames(s, rel) {
@@ -93,7 +93,7 @@ function linkNames(s, rel) {
   return out;
 }
 /* institutions → site officiel (lien sur les partenaires des pages projet) */
-var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"]];
+var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["Trilobite","https://cietrilobite.org"],["Tête à Tête","https://www.tete-a-tete.org.uk"],["Lacroch'","https://lacroch.com"],["Futurs Composés","https://www.futurscomposes.com"],["Artenréel","https://artenreel.fr"]];
 function linkInst(x) {
   for (var i = 0; i < INST.length; i++) { if (x.indexOf(INST[i][0]) >= 0) return '<a href="' + INST[i][1] + '" target="_blank" rel="noopener">' + esc(x) + "</a>"; }
   return esc(x);
@@ -280,6 +280,12 @@ var COOP_CITIES = [
   { id:"monaco", region:"eu", x:52.06, y:28.25, side:"l", name:"Monte-Carlo",
     inst:[["Printemps des Arts","https://www.printempsdesarts.mc"]],
     proj:[["Snow on Her Lips","snow-on-her-lips"]] },
+  { id:"londres", region:"eu", x:49.5, y:22.6, side:"l", name:"Londres",
+    inst:[["Festival Tête à Tête","https://www.tete-a-tete.org.uk"]],
+    proj:[["We Expected the Disaster…","salamandres"]] },
+  { id:"mulhouse", region:"eu", x:51.5, y:24.9, side:"l", name:"Mulhouse · Grand Est",
+    inst:[["Cie Trilobite","https://cietrilobite.org"],["Éditions Lacroch'","https://lacroch.com"],["Artenréel","https://artenreel.fr"]],
+    proj:[["We Expected the Disaster…","salamandres"]] },
   { id:"mexico", region:"la", x:22.46, y:45.73, side:"r", name:"Mexico",
     inst:[],
     proj:[["A World to Blast","america"],["Insistir","insistir"]] },
@@ -605,7 +611,14 @@ var ARTISTS = [
            es: "Curadora independiente, acompaña proyectos en el cruce de las artes visuales, la música y la escena, y participó en la emergencia de STOPERA!.",
            en: "An independent curator, she supports projects at the crossroads of visual arts, music and the stage, and took part in the emergence of STOPERA!.",
            zh: "独立策展人，她陪伴视觉艺术、音乐与舞台交汇处的项目，并参与了 STOPERA! 的萌生。" },
-    productions: [] }
+    productions: [] },
+  { slug: "porte-renaud", name: "Porte Renaud", website: "https://porterenaud.com", photo: "assets/projects/porte-renaud.jpg",
+    role: { fr: "Compositeur & metteur en scène", es: "Compositor & director", en: "Composer & director", zh: "作曲家与导演" },
+    bio: { fr: "Compositeur, plasticien et docteur en philosophie, il fonde la Cie Trilobite à Mulhouse. Son opéra politique et écologique We Expected the Disaster… but not the salamanders!, d'après La Guerre des salamandres de Karel Čapek, est accompagné par STOPERA! et créé au festival Tête à Tête (Londres) en 2027.",
+           es: "Compositor, artista plástico y doctor en filosofía, funda la Cie Trilobite en Mulhouse. Su ópera política y ecológica We Expected the Disaster… but not the salamanders!, a partir de La guerra de las salamandras de Karel Čapek, es acompañada por STOPERA! y se estrena en el festival Tête à Tête (Londres) en 2027.",
+           en: "A composer, visual artist and doctor of philosophy, he founded Cie Trilobite in Mulhouse. His political, ecological opera We Expected the Disaster… but not the salamanders!, after Karel Čapek's War with the Newts, is accompanied by STOPERA! and premieres at the Tête à Tête festival (London) in 2027.",
+           zh: "作曲家、造型艺术家、哲学博士，在米卢斯创立 Cie Trilobite 剧团。他的政治与生态歌剧 We Expected the Disaster… but not the salamanders!（取材自卡雷尔·恰佩克的《鲵鱼之乱》）由 STOPERA! 陪伴发展，并于 2027 年在伦敦 Tête à Tête 音乐节首演。" },
+    productions: ["salamandres"] }
 ];
 
 /* bios longues validées (faits sûrs uniquement) — fusionnées dans ARTISTS */
