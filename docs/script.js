@@ -5,6 +5,7 @@
   var STORAGE_KEY = "stopera-lang";
   var LANGS = ["fr", "es", "en", "zh"];
   var LANG = "fr";
+  var REL = "";
 
   function t(o) {
     if (o == null) return "";
@@ -537,7 +538,7 @@
   function tileInk(p) { return inkOn(COLORS[p.slug] || "#4f5f60"); }
 
   function tileHref(p) {
-    return p.slug === "lips" ? "lips/" : "productions/" + p.slug + "/";
+    return REL + (p.slug === "lips" ? "lips/" : "productions/" + p.slug + "/");
   }
 
   function tileHTML(p) {
@@ -551,7 +552,7 @@
       + (year ? '<span class="ptile-year">' + year + '</span>' : '');
     if (p.photo) {
       return '<a class="ptile" href="' + href + '">'
-        + '<span class="ptile-img" style="background-image:url(\'' + p.photo + '\')"></span>'
+        + '<span class="ptile-img" style="background-image:url(\'' + REL + p.photo + '\')"></span>'
         + '<span class="ptile-scrim"></span>'
         + '<span class="ptile-meta">' + body + '</span></a>';
     }
@@ -626,7 +627,7 @@
 
   var FUNDERS = [["CNM","https://cnm.fr"],["Fondation Salabert","https://fondation-salabert.org"],["Fondation de France","https://www.fondationdefrance.org"],["Fondation Jerez","https://www.fondationdefrance.org"],["DRAC Grand Est","https://www.culture.gouv.fr/regions/drac-grand-est"],["Teatro Col\u00f3n","https://teatrocolon.org.ar"]];
   function linkFunder(name){ for(var i=0;i<FUNDERS.length;i++){ if(name.indexOf(FUNDERS[i][0])>=0) return '<a href="'+FUNDERS[i][1]+'" target="_blank" rel="noopener">'+name+'</a>'; } return name; }
-  function renderMecenes(){ var host=document.getElementById("mecenes-list"); if(!host) return; host.innerHTML=""; PROJECTS.forEach(function(p){ if(!p.financeurs||!p.financeurs.length) return; var href=p.slug==="lips"?"lips/":"productions/"+p.slug+"/"; var li=document.createElement("li"); li.innerHTML='<a href="'+href+'">'+t(p.titleHtml||p.title)+'</a> \u2014 '+p.financeurs.map(linkFunder).join(" \u00b7 "); host.appendChild(li); }); }
+  function renderMecenes(){ var host=document.getElementById("mecenes-list"); if(!host) return; host.innerHTML=""; PROJECTS.forEach(function(p){ if(!p.financeurs||!p.financeurs.length) return; var href=REL+(p.slug==="lips"?"lips/":"productions/"+p.slug+"/"); var li=document.createElement("li"); li.innerHTML='<a href="'+href+'">'+t(p.titleHtml||p.title)+'</a> \u2014 '+p.financeurs.map(linkFunder).join(" \u00b7 "); host.appendChild(li); }); }
   function renderProjects() {
     var host = document.getElementById("grid-modes");
     if (!host) return;
@@ -692,6 +693,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    REL = (document.body.getAttribute("data-rel") || "");
     setLang(initialLang());
 
     var navToggle = document.querySelector(".nav-toggle");
