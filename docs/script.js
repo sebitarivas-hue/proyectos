@@ -652,6 +652,18 @@
       host.appendChild(sec);
     });
   }
+  function renderFlat() {
+    var host = document.getElementById("grid-flat");
+    if (!host) return;
+    host.innerHTML = "";
+    PROJECTS.forEach(function (p) {
+      var li = document.createElement("li");
+      li.className = "project";
+      li.dataset.slug = p.slug;
+      li.innerHTML = tileHTML(p);
+      host.appendChild(li);
+    });
+  }
   function onGridClick(e) {
     if (e.target.closest(".pd-close")) { closeDetail(); return; }
     var tile = e.target.closest(".ptile");
@@ -679,6 +691,7 @@
     LANG = LANGS.indexOf(lang) >= 0 ? lang : "fr";
     applyStaticLang();
     renderProjects();
+    renderFlat();
     renderMecenes();
     try { localStorage.setItem(STORAGE_KEY, LANG); } catch (e) {}
   }
