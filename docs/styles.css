@@ -9,7 +9,7 @@
   --accent-ink: #131313;
   --max: 1180px;
   /* Type system (Gaîté-style) : grotesque caractériel + italique expressif + grotesque neutre */
-  --display: "Syne", "Bricolage Grotesque", system-ui, sans-serif; /* titres, hero */
+  --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif; /* titres, hero */
   --quote: "Fraunces", Georgia, "Times New Roman", serif;            /* italiques & citations */
   --sans: "Archivo", system-ui, -apple-system, sans-serif;           /* corps, UI, labels */
   --serif: var(--display); /* alias historique → display */
@@ -744,3 +744,12 @@ h2.lead { line-height: 1.14; }
 .newsletter-input:focus { outline: none; border-color: var(--fg); }
 .newsletter-btn { flex: 0 0 auto; background: var(--accent); color: #131313; border: 0; border-radius: 2px; padding: .6rem 1.15rem; font-family: var(--sans); font-weight: 700; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 .newsletter-btn:hover { filter: brightness(1.06); }
+
+/* === Système typographique resserré : Bricolage (display) · Archivo (texte) · Fraunces (italiques) ===
+   Retour à la grotesque Bricolage (celle du héro aimé) ; l'italique Fraunces = seul accent. */
+.hero-statement { font-weight: 700; letter-spacing: -.02em; line-height: 1.06; }
+.hero-statement em { font-family: var(--quote) !important; font-style: italic !important; font-weight: 400 !important; background: none !important; color: var(--fg) !important; padding: 0 !important; letter-spacing: 0 !important; box-decoration-break: initial; -webkit-box-decoration-break: initial; }
+.featured-lead { font-weight: 700; letter-spacing: -.02em; line-height: 1.04; }
+.lead, h2.lead { font-weight: 700; letter-spacing: -.018em; line-height: 1.1; }
+.season-title { font-weight: 700; letter-spacing: -.02em; line-height: 1.04; }
+.manifesto-question, .manifesto-claim { font-weight: 700; }
