@@ -361,7 +361,7 @@
         { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Rut Schreiner" },
         { role: { fr: "Avec", es: "Con", en: "With", zh: "演员" }, who: "Nicola Beller Carbone · Yvan Ludlow" }
       ],
-      partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse"],
+      partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse", "Fondation Jerez (sous l'égide de la Fondation de France)"],
       press: [
         { quote: { fr: "Une femme de 53 ans s'y livre au commentaire très rationnel de l'acte de violence qui l'a libérée de tout ce qu'elle a subi jusque-là.", es: "Una mujer de 53 años se entrega al comentario muy racional del acto de violencia que la liberó de todo lo que había sufrido.", en: "A 53-year-old woman delivers a coolly rational commentary on the act of violence that freed her from all she had endured.", zh: "一位 53 岁的女性，冷静而理性地讲述那个将她从此前所受的一切中解放出来的暴力行为。" }, source: "Le Monde", url: "https://www.lemonde.fr/culture/article/2024/03/19/otages-un-opera-qui-libere-la-parole-feminine-mais-pas-le-chant_6222903_3246.html" },
         { quote: { fr: "Le compositeur franco-argentin donne à entendre la violence sociale et sexiste.", es: "El compositor franco-argentino hace oír la violencia social y sexista.", en: "The French-Argentine composer makes social and sexist violence audible.", zh: "这位法国-阿根廷作曲家让社会与性别暴力被听见。" }, source: "Diapason", url: "https://www.diapasonmag.fr/critiques/otages-de-sebastian-rivas-a-lyon-un-drame-feministe-en-musique-46011.html" },
@@ -470,7 +470,7 @@
         { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" },
         { role: { fr: "Intervenant·es", es: "Invitados/as", en: "Mentors & guests", zh: "导师与嘉宾" }, who: "François Chaignaud · Julie Desprairies · Daniel Zea · Géraldine Kosiak · Pierre Jodlowski · Marc Monnet · Richard Brunel · Jean-Cyrille Burdet · Alexander Schubert · Benoit Renaudin · Géraldine Farage" }
       ],
-      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"]
+      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM", "Fondation de France"]
     }
   ];
 
