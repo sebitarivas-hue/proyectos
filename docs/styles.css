@@ -770,3 +770,8 @@ h2.lead { line-height: 1.14; }
 }
 .manifesto-vision { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--fg); }
 .name-mark { font-size: .95rem; }
+
+/* Héro cliquable -> Pourquoi */
+.hero-cover { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+.hero-cover:hover .hero-kicker { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.hero-cover:focus-visible { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 2px; }
