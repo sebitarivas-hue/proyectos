@@ -269,6 +269,7 @@
         { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本" }, who: "Christine Angot" }
       ],
       partners: [],
+      financeurs: ["CNM"],
       note: { fr: "Bourse CNM. Coproductions en cours de montage.", es: "Beca CNM. Coproducciones en construcción.", en: "CNM grant. Coproductions being assembled.", zh: "CNM 资助。联合制作筹备中。" }
     },
     {
@@ -345,7 +346,8 @@
         { role: { fr: "Lumières & scénographie", es: "Luces & escenografía", en: "Lighting & set design", zh: "灯光与舞美" }, who: "Jean-Cyrille Burdet" },
         { role: { fr: "Regard extérieur", es: "Mirada externa", en: "Outside eye", zh: "外部视角" }, who: "Géraldine Kosiak" }
       ],
-      partners: ["Printemps des Arts de Monte-Carlo", "GRAME", "Fondation Salabert"],
+      partners: ["Printemps des Arts de Monte-Carlo", "GRAME"],
+      financeurs: ["Fondation Salabert"],
       press: [
         { source: "Télérama", title: "À Monaco, le Printemps des Arts fait fleurir la musique", url: "https://www.telerama.fr/musique/a-monaco-le-printemps-des-arts-fait-fleurir-la-musique-6850891.php" },
         { source: "ResMusica", title: "Heureuses retrouvailles au Printemps des Arts de Monte-Carlo", url: "https://www.resmusica.com/2021/03/28/heureuses-retrouvailles-des-artistes-et-du-public-au-printemps-des-arts-de-monte-carlo/" },
@@ -378,7 +380,8 @@
         { role: { fr: "Direction musicale", es: "Dirección musical", en: "Conducting", zh: "音乐指挥" }, who: "Rut Schreiner" },
         { role: { fr: "Avec", es: "Con", en: "With", zh: "演员" }, who: "Nicola Beller Carbone · Yvan Ludlow" }
       ],
-      partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse", "Fondation Jerez (sous l'égide de la Fondation de France)"],
+      partners: ["Opéra de Lyon", "GRAME", "Théâtre de la Croix-Rousse"],
+      financeurs: ["Fondation Jerez (sous l'égide de la Fondation de France)"],
       press: [
         { quote: { fr: "Une femme de 53 ans s'y livre au commentaire très rationnel de l'acte de violence qui l'a libérée de tout ce qu'elle a subi jusque-là.", es: "Una mujer de 53 años se entrega al comentario muy racional del acto de violencia que la liberó de todo lo que había sufrido.", en: "A 53-year-old woman delivers a coolly rational commentary on the act of violence that freed her from all she had endured.", zh: "一位 53 岁的女性，冷静而理性地讲述那个将她从此前所受的一切中解放出来的暴力行为。" }, source: "Le Monde", url: "https://www.lemonde.fr/culture/article/2024/03/19/otages-un-opera-qui-libere-la-parole-feminine-mais-pas-le-chant_6222903_3246.html" },
         { quote: { fr: "Le compositeur franco-argentin donne à entendre la violence sociale et sexiste.", es: "El compositor franco-argentino hace oír la violencia social y sexista.", en: "The French-Argentine composer makes social and sexist violence audible.", zh: "这位法国-阿根廷作曲家让社会与性别暴力被听见。" }, source: "Diapason", url: "https://www.diapasonmag.fr/critiques/otages-de-sebastian-rivas-a-lyon-un-drame-feministe-en-musique-46011.html" },
@@ -417,6 +420,7 @@
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
       photo: "assets/projects/mamma-roma.jpg",
+      financeurs: ["CETC — Teatro Colón"],
       tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月" },
       short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。" },
       pitch: {
@@ -487,7 +491,8 @@
         { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" }
       ],
       guests: ["François Chaignaud", "Julie Desprairies", "Daniel Zea", "Géraldine Kosiak", "Pierre Jodlowski", "Marc Monnet", "Richard Brunel", "Jean-Cyrille Burdet", "Alexander Schubert", "Benoit Renaudin", "Géraldine Farage"],
-      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM", "Fondation de France"]
+      partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"],
+      financeurs: ["Fondation de France"]
     }
   ];
 
@@ -608,6 +613,9 @@
     if (scroll) d.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  var FUNDERS = [["CNM","https://cnm.fr"],["Fondation Salabert","https://fondation-salabert.org"],["Fondation de France","https://www.fondationdefrance.org"],["Fondation Jerez","https://www.fondationdefrance.org"],["DRAC Grand Est","https://www.culture.gouv.fr/regions/drac-grand-est"],["Teatro Col\u00f3n","https://teatrocolon.org.ar"]];
+  function linkFunder(name){ for(var i=0;i<FUNDERS.length;i++){ if(name.indexOf(FUNDERS[i][0])>=0) return '<a href="'+FUNDERS[i][1]+'" target="_blank" rel="noopener">'+name+'</a>'; } return name; }
+  function renderMecenes(){ var host=document.getElementById("mecenes-list"); if(!host) return; host.innerHTML=""; PROJECTS.forEach(function(p){ if(!p.financeurs||!p.financeurs.length) return; var href=p.slug==="lips"?"lips/":"productions/"+p.slug+"/"; var li=document.createElement("li"); li.innerHTML='<a href="'+href+'">'+t(p.titleHtml||p.title)+'</a> \u2014 '+p.financeurs.map(linkFunder).join(" \u00b7 "); host.appendChild(li); }); }
   function renderProjects() {
     var host = document.getElementById("grid-modes");
     if (!host) return;
@@ -659,6 +667,7 @@
     LANG = LANGS.indexOf(lang) >= 0 ? lang : "fr";
     applyStaticLang();
     renderProjects();
+    renderMecenes();
     try { localStorage.setItem(STORAGE_KEY, LANG); } catch (e) {}
   }
 
