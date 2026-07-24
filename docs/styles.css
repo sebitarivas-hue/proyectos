@@ -648,3 +648,18 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .season-title .it { font-family: var(--quote); font-style: italic; font-weight: 400; letter-spacing: 0; }
 .season-sub { color: var(--muted); font-size: .96rem; line-height: 1.4; margin: .35rem 0 .35rem; }
 .season-year { font-family: var(--sans); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-top: auto; }
+
+/* hero + impact — direction maquette (palette terracotta sobre) */
+.hero-logo { display: none; }
+.hero { text-align: left; }
+.hero > * { margin-left: 0; margin-right: 0; }
+.hero-statement { max-width: 15ch; }
+.hero-statement em { font-style: normal; color: inherit; font-family: inherit; }
+.hero-rule { display: block; width: 56px; height: 3px; background: var(--accent); margin: 1.5rem 0; }
+.hero-sub { max-width: 46ch; }
+.hero-link { font-family: var(--sans); font-weight: 700; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); text-decoration: none; display: inline-flex; gap: .45rem; }
+.hero-link:hover { text-decoration: underline; }
+.impact-strip { background: var(--panel-dark); color: #f4f1ea; border: 0; border-radius: 10px; margin: 1rem auto 0; padding: clamp(1.6rem,3.5vw,2.4rem) clamp(1.4rem,4vw,2.6rem); }
+.impact-inner { grid-template-columns: repeat(4, 1fr); }
+.impact-strip .stat-n { color: #f4f1ea; }
+.impact-strip .stat-l { color: rgba(244,241,234,.55); }
