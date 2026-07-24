@@ -105,10 +105,11 @@ function tileBg(slug){var b=COLORS[slug]||"#4f5f60";return"linear-gradient(152de
 
 function header(rel) {
   // target starting with "#" = anchor on home ; otherwise a standalone page path
-  var nav = [["#apropos","Pourquoi","Por qué","Why","为何"],["#programmes","Programmes","Programas","Programmes","行动方向"],["#productions","Productions","Producciones","Productions","作品"],
-    ["#recherche","Recherche & LIPS","Investigación & LIPS","Research & LIPS","研究 & LIPS"],
-    ["#reseau","Réseau international","Red internacional","International network","国际网络"],
-    ["#rejoindre","Soutenir & coopérer","Apoyar & cooperar","Support & cooperate","支持与合作"]]
+  var nav = [["#apropos","Pourquoi","Por qué","Why","为何"],
+    ["oeuvres/","Œuvres","Obras","Works","作品"],
+    ["laboratoire/","Laboratoire","Laboratorio","Laboratory","实验室"],
+    ["reseau/","Réseau","Red","Network","网络"],
+    ["soutenir/","Soutenir","Apoyar","Support","支持"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
   return '<header class="site-header">\n'
@@ -787,6 +788,10 @@ urls.push(SITE + "/oeuvres/");
 write("oeuvres", page({ rel: "../", title: "Œuvres", description: "Le catalogue des créations de STOPERA! — opéra, théâtre musical, performance — par rôle : production, tournée, accompagnement, pédagogie.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/oeuvres/", ogType: "website", body: OEUVRES_BODY }));
 urls.push(SITE + "/soutenir/");
 write("soutenir", page({ rel: "../", title: "Soutenir", description: "Soutenir STOPERA! — coproduction, résidence, partenariat structurel, recherche, mécénat, laboratoire. Contact et modalités.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/soutenir/", ogType: "website", body: SOUTENIR_BODY }));
+var LABO_BODY = fs.readFileSync(path.join(__dirname, "partials/laboratoire.html"), "utf8");
+var RESEAU_BODY = fs.readFileSync(path.join(__dirname, "partials/reseau.html"), "utf8");
+write("laboratoire", page({ rel: "../", title: "Laboratoire", description: "Le laboratoire de STOPERA! — recherche artistique et LIPS : nouvelles écritures, voix, image, technologies, temps réel et transmission.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/laboratoire/", ogType: "website", body: LABO_BODY }));
+write("reseau", page({ rel: "../", title: "Réseau", description: "Le réseau de STOPERA! — artistes associé·e·s, gouvernance, institutions partenaires, réseaux et mécénat, en France et à l'international.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/reseau/", ogType: "website", body: RESEAU_BODY }));
 
 urls.push(SITE + "/cooperation/");
 /* press */
