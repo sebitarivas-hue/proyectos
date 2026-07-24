@@ -93,7 +93,7 @@ function linkNames(s, rel) {
   return out;
 }
 /* institutions → site officiel (lien sur les partenaires des pages projet) */
-var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["Trilobite","https://cietrilobite.org"],["Tête à Tête","https://www.tete-a-tete.org.uk"],["Lacroch'","https://lacroch.com"],["Futurs Composés","https://www.futurscomposes.com"],["Artenréel","https://artenreel.fr"],["Fondation de France","https://www.fondationdefrance.org"]];
+var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["Trilobite","https://cietrilobite.org"],["Tête à Tête","https://www.tete-a-tete.org.uk"],["Lacroch'","https://lacroch.com"],["Futurs Composés","https://www.futurscomposes.com"],["Artenréel","https://artenreel.fr"],["Fondation de France","https://www.fondationdefrance.org"],["Fondation Salabert","https://fondation-salabert.org"]];
 function linkInst(x) {
   for (var i = 0; i < INST.length; i++) { if (x.indexOf(INST[i][0]) >= 0) return '<a href="' + INST[i][1] + '" target="_blank" rel="noopener">' + esc(x) + "</a>"; }
   return esc(x);
@@ -185,6 +185,7 @@ function prodBody(p, rel) {
     var who = (typeof c.who === "object") ? '<span class="who" ' + ml(c.who) + '></span>' : '<span class="who">' + linkNames(c.who, rel) + '</span>';
     return '<li><span class="role" ' + ml(c.role) + '></span> — ' + who + '</li>';
   }).join("");
+  var guests = (p.guests && p.guests.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"Intervenant\u00b7es & artistes invit\u00e9\u00b7es",es:"Invitados/as & artistas",en:"Mentors & guest artists",zh:"\u5bfc\u5e08\u4e0e\u5ba2\u5ea7\u827a\u672f\u5bb6"}) + '></h4><ul class="taglist">' + p.guests.map(function (g) { return "<li>" + linkNames(g, rel) + "</li>"; }).join("") + "</ul></div>" : "";
   var tech = (p.tech && p.tech.length) ? '<div class="pd-block"><h4 ' + ml({fr:"Fiche technique",es:"Ficha técnica",en:"Technical sheet",zh:"技术表"}) + '></h4><ul class="facts">' + p.tech.map(function (f) { return '<li><span class="k" ' + ml(f.k) + '></span><span class="v">' + linkNames(tFR(f.v), rel) + '</span></li>'; }).join("") + "</ul></div>" : "";
   var diffusion = p.diffusion ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"Production & diffusion",es:"Producción & difusión",en:"Production & diffusion",zh:"制作与巡演"}) + '></h4><p class="pd-prose" ' + ml(p.diffusion) + "></p></div>" : "";
   var partnersList = (p.partners && p.partners.length) ? '<ul class="taglist pd-dim-partners">' + p.partners.map(function (x) { return "<li>" + linkInst(x) + "</li>"; }).join("") + "</ul>" : "";
@@ -216,7 +217,7 @@ function prodBody(p, rel) {
     + '      <div class="pd-grid">\n'
     + '        <div class="pd-block"><h4 ' + ml({fr:"Informations",es:"Información",en:"Details",zh:"信息"}) + '></h4><ul class="facts">' + facts + "</ul></div>\n"
     + '        <div class="pd-block"><h4 ' + ml({fr:"Générique",es:"Créditos",en:"Credits",zh:"创作团队"}) + '></h4><ul class="credits">' + credits_ml + "</ul></div>\n"
-    + "        " + tech + diffusion + relations + press + links + note + "\n      </div>\n    </article>";
+    + "        " + guests + tech + diffusion + relations + press + links + note + "\n      </div>\n    </article>";
 }
 function wrapQuote(o) { var r = {}; LANGS.forEach(function (l) { r[l] = "« " + (o[l] != null ? o[l] : o.fr) + " »"; }); return r; }
 

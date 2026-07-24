@@ -345,7 +345,7 @@
         { role: { fr: "Lumières & scénographie", es: "Luces & escenografía", en: "Lighting & set design", zh: "灯光与舞美" }, who: "Jean-Cyrille Burdet" },
         { role: { fr: "Regard extérieur", es: "Mirada externa", en: "Outside eye", zh: "外部视角" }, who: "Géraldine Kosiak" }
       ],
-      partners: ["Printemps des Arts de Monte-Carlo", "GRAME"],
+      partners: ["Printemps des Arts de Monte-Carlo", "GRAME", "Fondation Salabert"],
       press: [
         { source: "Télérama", title: "À Monaco, le Printemps des Arts fait fleurir la musique", url: "https://www.telerama.fr/musique/a-monaco-le-printemps-des-arts-fait-fleurir-la-musique-6850891.php" },
         { source: "ResMusica", title: "Heureuses retrouvailles au Printemps des Arts de Monte-Carlo", url: "https://www.resmusica.com/2021/03/28/heureuses-retrouvailles-des-artistes-et-du-public-au-printemps-des-arts-de-monte-carlo/" },
@@ -484,9 +484,9 @@
       pitchExtra: true,
       credits: [
         { role: { fr: "Direction", es: "Dirección", en: "Direction", zh: "负责人" }, who: "Sebastian Rivas" },
-        { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" },
-        { role: { fr: "Intervenant·es", es: "Invitados/as", en: "Mentors & guests", zh: "导师与嘉宾" }, who: "François Chaignaud · Julie Desprairies · Daniel Zea · Géraldine Kosiak · Pierre Jodlowski · Marc Monnet · Richard Brunel · Jean-Cyrille Burdet · Alexander Schubert · Benoit Renaudin · Géraldine Farage" }
+        { role: { fr: "Informatique musicale", es: "Informática musical", en: "Music computing", zh: "音乐信息" }, who: "Max Bruckert" }
       ],
+      guests: ["François Chaignaud", "Julie Desprairies", "Daniel Zea", "Géraldine Kosiak", "Pierre Jodlowski", "Marc Monnet", "Richard Brunel", "Jean-Cyrille Burdet", "Alexander Schubert", "Benoit Renaudin", "Géraldine Farage"],
       partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM", "Fondation de France"]
     }
   ];
