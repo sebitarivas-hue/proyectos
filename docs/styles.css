@@ -9,7 +9,7 @@
   --accent-ink: #131313;
   --max: 1180px;
   /* Type system (Gaîté-style) : grotesque caractériel + italique expressif + grotesque neutre */
-  --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif; /* titres, hero */
+  --display: "Syne", "Bricolage Grotesque", system-ui, sans-serif; /* titres, hero */
   --quote: "Fraunces", Georgia, "Times New Roman", serif;            /* italiques & citations */
   --sans: "Archivo", system-ui, -apple-system, sans-serif;           /* corps, UI, labels */
   --serif: var(--display); /* alias historique → display */
@@ -70,7 +70,7 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  padding: clamp(3rem, 8vw, 6rem) clamp(1.2rem, 4vw, 3rem) clamp(2.5rem, 6vw, 4.5rem);
+  padding: clamp(1.9rem, 4.5vw, 3.4rem) clamp(1.2rem, 4vw, 3rem) clamp(1.4rem, 3.2vw, 2.4rem);
   background: radial-gradient(900px 480px at 85% -10%, rgba(19,19,19,.10), transparent 60%), var(--bg);
 }
 .hero > * { max-width: var(--max); margin-left: auto; margin-right: auto; }
@@ -82,7 +82,7 @@ p, h1, h2, h3, h4, li, span, a, figcaption { overflow-wrap: anywhere; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: clamp(1.6rem, 4vw, 2.4rem); }
 
 /* ---------- Sections ---------- */
-.section { max-width: var(--max); margin: 0 auto; padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.2rem, 4vw, 3rem); border-top: 1px solid var(--line); }
+.section { max-width: var(--max); margin: 0 auto; padding: clamp(1.7rem, 3.6vw, 3rem) clamp(1.2rem, 4vw, 3rem); border-top: 1px solid var(--line); }
 .grid-2 { display: grid; grid-template-columns: 190px 1fr; gap: clamp(1.2rem, 3vw, 3rem); align-items: start; }
 .col-label { display: flex; align-items: baseline; gap: .8rem; }
 .index { display: none; }
@@ -308,7 +308,7 @@ main { counter-reset: sec; }
 .authority span:not(:last-child)::after { content: "·"; margin: 0 1.2rem; color: var(--accent); }
 
 /* ---------- Piliers (sous le hero) ---------- */
-.pillars { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.2rem, 2.5vw, 2.6rem); padding: clamp(2rem, 4vw, 3.2rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+.pillars { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.2rem, 2.5vw, 2.6rem); padding: clamp(1.3rem, 2.8vw, 2.2rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
 .pillars-5 { grid-template-columns: repeat(5, 1fr); gap: clamp(1rem, 2vw, 1.9rem); }
 a.pillar { display: block; text-decoration: none; color: inherit; position: relative; padding-bottom: 1.1rem; transition: transform .2s ease; }
 a.pillar::after { content: "→"; position: absolute; left: 0; bottom: 0; font-family: var(--sans); font-size: .8rem; color: var(--accent); opacity: 0; transform: translateX(-4px); transition: opacity .2s ease, transform .2s ease; }
@@ -483,7 +483,7 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .hero-functions { margin: 1.1rem 0 0; font-family: var(--sans); font-weight: 600; font-size: clamp(.8rem, 1.5vw, .98rem); letter-spacing: .04em; color: var(--fg); }
 
 /* ---------- Production phare (home) ---------- */
-.featured { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.4rem, 3vw, 3rem); align-items: center; padding: clamp(2rem, 5vw, 3.6rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+.featured { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.4rem, 3vw, 3rem); align-items: center; padding: clamp(1.4rem, 3.2vw, 2.5rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
 .featured-media { display: block; border-radius: 2px; overflow: hidden; border: 1px solid var(--line); }
 .featured-media img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .4s ease; }
 .featured-media:hover img { transform: scale(1.03); }
@@ -493,7 +493,7 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .featured-sub { color: #2c2620; font-size: 1rem; line-height: 1.55; max-width: 52ch; margin: 0 0 1.3rem; }
 @media (max-width: 760px) { .featured { grid-template-columns: 1fr; } }
 /* featured trio — accompagnement & développement */
-.featured-band { max-width: var(--max); margin: 0 auto; padding: clamp(2rem, 5vw, 3.6rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+.featured-band { max-width: var(--max); margin: 0 auto; padding: clamp(1.4rem, 3.2vw, 2.5rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
 .featured-head { margin-bottom: clamp(1.4rem, 3vw, 2.2rem); }
 .featured-lead { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 4.5vw, 3.2rem); letter-spacing: -.03em; line-height: .95; margin: .2rem 0 .5rem; }
 .featured-intro { color: #2c2620; font-size: 1rem; line-height: 1.55; max-width: 62ch; margin: 0; }
@@ -620,7 +620,7 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 
 /* manifesto — Pourquoi */
 .manifesto-claim { font-family: var(--display); font-weight: 600; font-size: clamp(1.15rem, 2.2vw, 1.55rem); line-height: 1.28; letter-spacing: -.01em; color: var(--fg); margin: 1.7rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); }
-.manifesto-vision { font-family: var(--quote); font-style: italic; font-size: clamp(1.05rem, 1.9vw, 1.3rem); color: var(--accent); margin: 1.4rem 0; }
+.manifesto-vision { font-family: var(--quote); font-style: italic; font-size: clamp(1.05rem, 1.9vw, 1.3rem); color: var(--fg); margin: 1.4rem 0; }
 
 /* récit du nom (la suspension) */
 .name-note{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:1.2rem 0; margin:1.7rem 0; max-width:64ch; }
@@ -713,3 +713,17 @@ a.nav-link:hover, .nav-links a:hover { text-decoration: underline; text-decorati
 }
 /* petit repère lime devant les sur-titres */
 .season-card .eyebrow, .fcard-kicker, .featured-kicker { position: relative; }
+
+
+/* ===== REFINE — typo Syne + resserrage (moins aéré) ===== */
+.hero-statement em { background: var(--accent) !important; color: #131313 !important; font-style: normal; padding: 0 .1em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero-statement { font-size: clamp(2.1rem, 5.2vw, 4rem); }
+.hero-sub { margin-top: 0; }
+.section-head-row { margin-bottom: 1rem; }
+.season-grid { margin-top: 1.2rem; gap: clamp(1.1rem, 2.2vw, 1.9rem) clamp(1rem, 1.8vw, 1.5rem); }
+.lead, .featured-lead { margin: .2rem 0 .6rem; }
+h2.lead { line-height: 1.02; }
+
+
+/* énoncé-question du manifeste : mis en avant (typo Syne, filet lime) */
+.manifesto-question { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 2.6vw, 2rem); line-height: 1.12; letter-spacing: -.015em; margin: 1.3rem 0; padding-left: 1rem; border-left: 4px solid var(--accent); }
