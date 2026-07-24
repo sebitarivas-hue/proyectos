@@ -781,3 +781,10 @@ a.stat { text-decoration: none; color: inherit; cursor: pointer; transition: tra
 a.stat:hover { transform: translateY(-2px); }
 a.stat:hover .stat-l { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
+
+/* Bandeau chiffres — mobile : 2 colonnes, jamais de mot coupé */
+.stat-l { overflow-wrap: normal; word-break: keep-all; hyphens: none; }
+@media (max-width: 620px) {
+  .impact-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 1.6rem 1.1rem; }
+  .stat-l { font-size: .64rem; letter-spacing: .03em; }
+}
