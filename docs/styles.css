@@ -608,3 +608,11 @@ a.pillar:hover::after { opacity: 1; transform: translateX(0); }
 .ptile--color .ptile-sub { color: inherit; opacity: .8; }
 .ptile--color .ptile-meta::before { display: none; }
 @media (max-width: 620px) { .ptile-sub { display: none; } }
+
+/* impact strip (chiffres clés) */
+.impact-strip { max-width: var(--max); margin: 0 auto; padding: clamp(1.4rem, 3vw, 2.3rem) clamp(1.2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+.impact-inner { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; text-align: center; }
+.stat { display: flex; flex-direction: column; gap: .25rem; }
+.stat-n { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1; color: var(--accent); letter-spacing: -.03em; }
+.stat-l { font-family: var(--sans); font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); line-height: 1.3; }
+@media (max-width: 680px) { .impact-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; } }
