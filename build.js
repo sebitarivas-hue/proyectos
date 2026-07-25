@@ -293,7 +293,10 @@ function newsBody(n, rel) {
   return '    <article class="section pd-page">\n'
     + '      <p class="pd-eyebrow"><a href="' + rel + 'news/index.html" data-fr="← Actualités" data-es="← Novedades" data-en="← News" data-zh="← 动态"></a> · <span class="pd-tag">' + esc(n.date) + '</span></p>\n'
     + '      <h1 class="pd-title pd-title--page" ' + ml(n.title) + "></h1>\n"
-    + (img ? '      <figure class="pd-media"><img src="' + img + '" alt="' + esc(plain(n.title)) + '" /></figure>\n' : "")
+    + (n.video
+        ? '      <div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + n.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(n.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div>\n'
+          + '      ' + ytFallback(n.video) + '\n'
+        : img ? '      <figure class="pd-media"><img src="' + img + '" alt="' + esc(plain(n.title)) + '" /></figure>\n' : "")
     + '      <p class="pd-pitch" ' + ml(n.excerpt) + "></p>\n"
     + '      <div class="prose"><p ' + ml(n.body) + "></p></div>\n" + rl + "\n    </article>";
 }
