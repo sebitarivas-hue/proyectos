@@ -941,3 +941,6 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 
 /* Baseline en bas du héro (après les boutons) : respiration au-dessus */
 .hero-sub { margin-top: 1.6rem; }
+
+/* Baseline du héro : rouge (accent), comme les autres lignes de rôle */
+.hero-sub { color: var(--accent); }
