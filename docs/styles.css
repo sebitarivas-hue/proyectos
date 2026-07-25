@@ -951,3 +951,38 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   .hmq::after { margin-left: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-marquee-track { animation: none; } }
+
+/* ============================================================
+   Aperçu des actualités (accueil) — colonne de date à largeur
+   fixe : les titres s'alignent quelle que soit la longueur de
+   la date (« juillet 2026 » vs « 2027 »).
+   Même gabarit que la page Actualités : 7,5 em.
+   ============================================================ */
+.news-preview-list { list-style: none; padding: 0; margin: 0; }
+.news-preview-list li { border-bottom: 1px solid var(--line); }
+.news-preview-list li:last-child { border-bottom: 0; }
+.news-preview-list a {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: .25rem 1.2rem;
+  align-items: baseline;
+  padding: .95rem .1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.npv-when {
+  font-family: var(--sans); font-weight: 700; font-size: .7rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  white-space: nowrap;
+}
+.npv-title { color: var(--fg); font-size: .98rem; line-height: 1.45; }
+.news-preview-list a:hover .npv-title {
+  text-decoration: underline; text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px; text-underline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .news-preview-list a { grid-template-columns: 1fr; gap: .2rem; }
+}
+
+/* Page Pourquoi — la phrase d'ambition passe en rouge */
+.manifesto-vision { color: var(--accent); }
