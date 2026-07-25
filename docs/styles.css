@@ -905,63 +905,6 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 }
 
 /* ============================================================
-   FOND DÉFILANT DU HÉRO — cinq rangs qui pavent toute la
-   hauteur, en aplat rouge à 25 %. Capitales très écrasées :
-   le texte ne se lit plus, il fait matière — un fond continu.
-   Chaque piste contient deux fois ses deux langues : la
-   translation de -50 % boucle sans raccord. Les rangs alternent
-   de sens et de durée pour éviter l'effet de bloc.
-   ============================================================ */
-.hero-marquee {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: grid;
-  grid-auto-rows: 1fr;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-}
-/* le contenu du héro repasse au-dessus du fond */
-.hero > *:not(.hero-marquee) { position: relative; z-index: 1; }
-
-.hmq-row { overflow: hidden; display: flex; align-items: center; }
-.hero-marquee-track {
-  display: flex;
-  width: max-content;
-  align-items: center;
-  gap: .4rem;
-  animation: hero-marquee 420s linear infinite;
-}
-.hmq-row:nth-child(even) .hero-marquee-track { animation-name: hero-marquee-rev; animation-duration: 500s; }
-.hmq-row:nth-child(3) .hero-marquee-track { animation-duration: 560s; }
-.hmq-row:nth-child(5) .hero-marquee-track { animation-duration: 470s; }
-
-.hmq {
-  font-family: var(--display);
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 22vw;
-  line-height: .78;
-  letter-spacing: -.07em;
-  white-space: nowrap;
-  color: rgba(216, 30, 5, .25);
-  transform: scale(1.3, .46);   /* très écrasé : la lettre fait matière */
-  transform-origin: center;
-}
-.hmq::after { content: "·"; margin-left: .4rem; }
-@keyframes hero-marquee     { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
-@keyframes hero-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
-@media (max-width: 700px) {
-  .hmq { font-size: 62vw; letter-spacing: -.075em; }
-  .hero-marquee-track { animation-duration: 260s; }
-  .hmq-row:nth-child(even) .hero-marquee-track { animation-duration: 300s; }
-  .hmq-row:nth-child(3) .hero-marquee-track { animation-duration: 340s; }
-  .hmq-row:nth-child(5) .hero-marquee-track { animation-duration: 280s; }
-}
-@media (prefers-reduced-motion: reduce) { .hero-marquee-track { animation: none; } }
-
-/* ============================================================
    Aperçu des actualités (accueil) — colonne de date à largeur
    fixe : les titres s'alignent quelle que soit la longueur de
    la date (« juillet 2026 » vs « 2027 »).
