@@ -938,3 +938,6 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 
 /* Page Pourquoi — la phrase d'ambition passe en rouge */
 .manifesto-vision { color: var(--accent); }
+
+/* Baseline en bas du héro (après les boutons) : respiration au-dessus */
+.hero-sub { margin-top: 1.6rem; }
