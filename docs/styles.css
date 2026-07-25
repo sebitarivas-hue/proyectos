@@ -788,3 +788,7 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   .impact-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 1.6rem 1.1rem; }
   .stat-l { font-size: .64rem; letter-spacing: .03em; }
 }
+
+/* Bandeau affiche sur les fiches production */
+.pd-banner { margin: 1.1rem 0 1.4rem; }
+.pd-banner img { width: 100%; height: auto; display: block; border-radius: 2px; }

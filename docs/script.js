@@ -177,6 +177,7 @@
     },
     {
       slug: "salamandres", title: "We Expected the Disaster…",
+      banner: "assets/projects/salamandres/affiche.jpg",
       titleHtml: "We Expected the Disaster… <span class=\"it\">but not the salamanders!</span>",
       photo: "assets/projects/salamandres.jpg",
       tag: { fr: "Accompagnement STOPERA · Création 2027", es: "Acompañamiento STOPERA · Estreno 2027", en: "STOPERA support · Premiere 2027", zh: "STOPERA 陪伴 · 2027 首演" },
