@@ -944,3 +944,11 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 
 /* Baseline du héro : rouge (accent), comme les autres lignes de rôle */
 .hero-sub { color: var(--accent); }
+
+/* Baseline du héro : capitales, avec l'interlettrage qui va avec */
+.hero-sub { text-transform: uppercase; letter-spacing: .1em; font-size: clamp(.78rem, 1.15vw, .9rem); font-weight: 600; }
+
+/* Liens de section « voir tout » : plus présents (ils étaient à peine plus
+   gros que les mentions légales alors qu'ils portent la navigation de fond) */
+.more-link a { font-size: clamp(.95rem, 1.2vw, 1.1rem); letter-spacing: .05em; }
+.more-link { margin-top: 1.9rem; }
