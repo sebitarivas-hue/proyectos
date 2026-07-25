@@ -174,6 +174,7 @@ function page(opts) {
 function prodBody(p, rel) {
   var photo = p.photo ? rel + p.photo : null;
   var hero, teaser = "";
+  var banner = p.banner ? '<figure class="pd-banner"><img src="' + rel + p.banner + '" alt="' + esc(plain(p.title)) + ' — affiche" loading="lazy" /></figure>' : "";
   if (photo) hero = '<figure class="pd-media"><img src="' + photo + '" alt="' + esc(plain(p.titleHtml || p.title)) + '" /></figure>';
   else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
@@ -211,6 +212,7 @@ function prodBody(p, rel) {
   return '    <article class="section pd-page">\n'
     + '      <p class="pd-eyebrow"><a href="' + rel + 'index.html#productions" data-fr="← Productions" data-es="← Producciones" data-en="← Productions" data-zh="← 作品"></a> · <span class="pd-tag" ' + ml(p.tag || "") + '></span></p>\n'
     + '      <h1 class="pd-title pd-title--page" ' + ml(p.titleHtml || p.title) + '></h1>\n'
+    + (banner ? '      ' + banner + '\n' : '')
     + "      " + hero + "\n"
     + '      <p class="pd-pitch" ' + ml(p.pitch) + "></p>\n"
     + ((p.body && p.body.length) ? p.body.map(function (b) { return '      <p class="pd-prose pd-prose--lead" ' + ml(b) + "></p>\n"; }).join("") : "")
