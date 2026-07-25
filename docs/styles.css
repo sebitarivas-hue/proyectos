@@ -899,3 +899,40 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
     border-radius: inherit;
   }
 }
+
+/* ============================================================
+   BANDEAU DÉFILANT DU HÉRO — la baseline dans les 4 langues,
+   en rouge translucide, sur toute la largeur du héro.
+   Le ruban contient deux fois la même série : la translation de
+   -50 % boucle donc sans raccord visible.
+   ============================================================ */
+.hero-marquee {
+  width: 100%;
+  margin: 1.4rem 0 .2rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.hero-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: baseline;
+  gap: 2.2rem;
+  animation: hero-marquee 60s linear infinite;
+}
+.hmq {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 5.4vw, 4.2rem);
+  line-height: 1.06;
+  letter-spacing: -.02em;
+  white-space: nowrap;
+  color: rgba(216, 30, 5, .32);
+  color: color-mix(in srgb, var(--accent) 32%, transparent);
+}
+.hmq::after { content: "·"; margin-left: 2.2rem; }
+@keyframes hero-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.hero-marquee:hover .hero-marquee-track { animation-play-state: paused; }
+@media (max-width: 700px) { .hero-marquee { margin: 1.1rem 0 .1rem; } .hero-marquee-track { animation-duration: 34s; gap: 1.4rem; } .hmq::after { margin-left: 1.4rem; } }
+@media (prefers-reduced-motion: reduce) { .hero-marquee-track { animation: none; } }
