@@ -590,7 +590,7 @@
     var media;
     if (p.video) {
       media = '<div class="pd-media pd-media--video">'
-        + '<iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1" title="' + (p.title) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'
+        + '<iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + (p.title) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>'
         + '</div>';
     } else if (p.photo) {
       media = '<div class="pd-media"><img src="' + p.photo + '" alt="" loading="lazy"></div>';

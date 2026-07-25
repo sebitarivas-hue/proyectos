@@ -67,7 +67,7 @@ var THEMES = [
 ];
 
 /* ---- helpers ---- */
-function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;"); }
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
 function tFR(o) { return o == null ? "" : (typeof o === "object" ? (o.fr || "") : o); }
 function plain(o) { return tFR(o).replace(/<[^>]+>/g, ""); } // strip HTML for meta
 /* data-* attributes for client-side i18n (script.js fills innerHTML) */
@@ -176,9 +176,9 @@ function prodBody(p, rel) {
   var hero, teaser = "";
   var banner = p.banner ? '<figure class="pd-banner"><img src="' + rel + p.banner + '" alt="' + esc(plain(p.title)) + ' — affiche" loading="lazy" /></figure>' : "";
   if (photo) hero = '<figure class="pd-media"><img src="' + photo + '" alt="' + esc(plain(p.titleHtml || p.title)) + '" /></figure>';
-  else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';
+  else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div>';
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
-  if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube-nocookie.com/embed/' + p.video + '?autoplay=1&mute=1&loop=1&playlist=' + p.video + '&controls=1&modestbranding=1&playsinline=1&rel=0" title="' + esc(plain(p.title)) + '" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>';
+  if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div></div>';
 
   var facts = (p.facts || []).map(function (f) {
     var v = (typeof f.v === "object") ? '<span class="v" ' + ml(f.v) + '></span>' : '<span class="v">' + linkNames(f.v, rel) + '</span>';
@@ -435,7 +435,13 @@ function transmissionBody(rel) {
 }
 
 /* ---- write ---- */
-function write(rel, html) { var dir = path.join(DOCS, rel); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, "index.html"), html); }
+function bakeFR(html) {
+  return html.replace(/<(\w+)([^>]*\sdata-fr="([^"]*)"[^>]*)>(<\/\1>)/g, function (m, tag, attrs, fr, close) {
+    var inner = fr.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    return "<" + tag + attrs + ">" + inner + close;
+  });
+}
+function write(rel, html) { var dir = path.join(DOCS, rel); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, "index.html"), bakeFR(html)); }
 var urls = [SITE + "/"];
 
 PROJECTS.forEach(function (p) {
