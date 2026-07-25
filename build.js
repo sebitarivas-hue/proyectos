@@ -76,6 +76,13 @@ function ml(o) {
   if (typeof o !== "object") o = { fr: o, es: o, en: o, zh: o };
   return LANGS.map(function (l) { return 'data-' + l + '="' + esc(o[l] != null ? o[l] : o.fr) + '"'; }).join(" ");
 }
+/* lien de repli sous un lecteur intégré : si YouTube refuse l'embed,
+   le public garde un accès direct à la vidéo */
+function ytFallback(id) {
+  return '<p class="pd-media-fallback"><a href="https://www.youtube.com/watch?v=' + id +
+    '" target="_blank" rel="noopener" ' +
+    ml({ fr: "Voir sur YouTube \u2197", es: "Ver en YouTube \u2197", en: "Watch on YouTube \u2197", zh: "\u5728 YouTube \u89c2\u770b \u2197" }) + '></a></p>';
+}
 /* name → fiche : rendre tout nom d'artiste cliquable sur les pages projet */
 var NAME2SLUG = {
   "Sebastian Rivas": "sebastian-rivas", "Georges Aperghis": "georges-aperghis", "Olivia Martin": "olivia-martin",
@@ -141,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260725B";
+  var rel = opts.rel, V = "?v=20260725C";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -177,9 +184,9 @@ function prodBody(p, rel) {
   var hero, teaser = "";
   var banner = p.banner ? '<figure class="pd-banner"><img src="' + rel + p.banner + '" alt="' + esc(plain(p.title)) + ' — affiche" loading="lazy" /></figure>' : "";
   if (photo) hero = '<figure class="pd-media"><img src="' + photo + '" alt="' + esc(plain(p.titleHtml || p.title)) + '" /></figure>';
-  else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div>';
+  else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div>' + ytFallback(p.video);
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
-  if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div></div>';
+  if (photo && p.video) teaser = '<div class="pd-teaser"><h4 ' + ml({fr:"Bande-annonce",es:"Tráiler",en:"Trailer",zh:"预告片"}) + '></h4><div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div>' + ytFallback(p.video) + '</div>';
 
   var facts = (p.facts || []).map(function (f) {
     var v = (typeof f.v === "object") ? '<span class="v" ' + ml(f.v) + '></span>' : '<span class="v">' + linkNames(f.v, rel) + '</span>';
