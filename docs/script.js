@@ -361,7 +361,7 @@
     },
     {
       slug: "otages", title: "Otages", titleHtml: "Otages",
-      photo: "assets/projects/otages.jpg",
+      photo: "assets/projects/otages.jpg", video: "ym0otLSblvw",
       tag: { fr: "Création 2024", es: "Estreno 2024", en: "Premiere 2024", zh: "2024 首演" },
       short: { fr: "Opéra d'après Nina Bouraoui — Opéra de Lyon.", es: "Ópera a partir de Nina Bouraoui — Opéra de Lyon.", en: "An opera after Nina Bouraoui — Opéra de Lyon.", zh: "改编自 Nina Bouraoui 的歌剧 —— 里昂歌剧院。" },
       pitch: {
