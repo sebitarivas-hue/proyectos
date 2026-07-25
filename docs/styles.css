@@ -903,24 +903,22 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 /* ============================================================
    BANDEAU DÉFILANT DU HÉRO — calque de fond.
    La baseline défile dans les 4 langues DERRIÈRE le contenu du
-   héro, en capitales creuses (lettres au trait, intérieur vide)
-   rouge à 25 %. Le logo STOPERA! étant une image, le creux est
-   reproduit au filet sur la typo d'affichage.
+   héro : aplat rouge à 25 %, capitales écrasées et élargies,
+   dimensionnées pour occuper toute la hauteur du héro.
    Le ruban contient deux fois la même série : la translation de
    -50 % boucle sans raccord visible.
    ============================================================ */
 .hero-marquee {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
+  inset: 0;
   z-index: 0;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   pointer-events: none;
   user-select: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 /* le contenu du héro repasse au-dessus du calque */
 .hero > *:not(.hero-marquee) { position: relative; z-index: 1; }
@@ -928,29 +926,28 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .hero-marquee-track {
   display: flex;
   width: max-content;
-  align-items: baseline;
-  gap: 2.2rem;
-  animation: hero-marquee 60s linear infinite;
+  align-items: center;
+  gap: 1.2rem;
+  animation: hero-marquee 900s linear infinite;
 }
 .hmq {
   font-family: var(--display);
   font-weight: 800;
   text-transform: uppercase;
-  font-size: clamp(2.6rem, 9vw, 7.5rem);
-  line-height: 1.1;
-  letter-spacing: -.02em;
+  font-size: clamp(3.5rem, 44vw, 34rem);
+  line-height: .8;
+  letter-spacing: -.045em;
   white-space: nowrap;
-  /* lettres creuses : intérieur vide, contour rouge à 25 % */
-  color: transparent;
-  -webkit-text-stroke: 3px rgba(216, 30, 5, .25);
-          text-stroke: 3px rgba(216, 30, 5, .25);
-  paint-order: stroke fill;
+  /* aplat plein, écrasé en hauteur et élargi */
+  color: rgba(216, 30, 5, .25);
+  transform: scale(1.08, .78);
+  transform-origin: center;
 }
-.hmq::after { content: "·"; margin-left: 2.2rem; }
+.hmq::after { content: "·"; margin-left: 1.2rem; }
 @keyframes hero-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (max-width: 700px) {
-  .hero-marquee-track { animation-duration: 34s; gap: 1.4rem; }
-  .hmq { font-size: clamp(2rem, 13vw, 3.4rem); -webkit-text-stroke-width: 1.6px; }
-  .hmq::after { margin-left: 1.4rem; }
+  .hmq { font-size: clamp(3rem, 110vw, 30rem); letter-spacing: -.05em; }
+  .hero-marquee-track { animation-duration: 600s; gap: .8rem; }
+  .hmq::after { margin-left: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-marquee-track { animation: none; } }
