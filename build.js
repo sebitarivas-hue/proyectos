@@ -109,7 +109,8 @@ function header(rel) {
     ["oeuvres/","Œuvres","Obras","Works","作品"],
     ["laboratoire/","Laboratoire","Laboratorio","Laboratory","实验室"],
     ["reseau/","Réseau","Red","Network","网络"],
-    ["soutenir/","Soutenir","Apoyar","Support","支持"]]
+    ["soutenir/","Soutenir","Apoyar","Support","支持"],
+    ["news/","Actualités","Novedades","News","动态"]]
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
   return '<header class="site-header">\n'
