@@ -871,17 +871,21 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
    Exclus : logos, monogrammes de couleur et lecteurs vidéo.
    ============================================================ */
 @supports (mix-blend-mode: color) {
+  /* ATTENTION : ne jamais forcer `position` ici sur un élément déjà
+     positionné. .ptile-img est en position:absolute (inset:0) — lui imposer
+     `relative` le fait retomber en inline et il s'effondre à 0×0 : la photo
+     disparaît. Il ne reçoit donc que l'isolation. */
   .pd-media:not(.pd-media--video):not(.pd-media--color),
   .pd-banner,
   .pd-gallery figure,
   .fcard-img,
   .artist-portrait:has(> img),
   .honneur-portrait a:has(> img),
-  .ptile-img,
   .season-img:not(.season-img--color) {
     position: relative;
     isolation: isolate;
   }
+  .ptile-img { isolation: isolate; }
   .pd-media:not(.pd-media--video):not(.pd-media--color)::after,
   .pd-banner::after,
   .pd-gallery figure::after,
