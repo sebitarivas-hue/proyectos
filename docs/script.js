@@ -793,7 +793,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var email = i ? i.value : "";
       var subj = encodeURIComponent("Inscription newsletter STOPERA!");
       var body = encodeURIComponent("Bonjour,\n\nJe souhaite m'inscrire \u00e0 la newsletter de STOPERA!.\nEmail : " + email + "\n\nMerci.");
-      window.location.href = "mailto:sonic.theatre.stopera@gmail.com?subject=" + subj + "&body=" + body;
+      window.location.href = "mailto:info@stopera.art?subject=" + subj + "&body=" + body;
     });
   });
 });
