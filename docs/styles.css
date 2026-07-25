@@ -861,3 +861,41 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   .stat-l { font-size: .6rem; line-height: 1.35; }
   .stat-n { font-size: 2.2rem; }
 }
+
+/* ============================================================
+   FILTRE ROUGE — traitement de marque sur toutes les photos.
+   Technique : calque rouge en mix-blend-mode "color" — la teinte
+   vient de l'accent, la luminosité reste celle de la photo (donc
+   les détails et les contrastes survivent, contrairement à un
+   simple multiply qui écrase les images sombres).
+   Exclus : logos, monogrammes de couleur et lecteurs vidéo.
+   ============================================================ */
+@supports (mix-blend-mode: color) {
+  .pd-media:not(.pd-media--video):not(.pd-media--color),
+  .pd-banner,
+  .pd-gallery figure,
+  .fcard-img,
+  .artist-portrait:has(> img),
+  .honneur-portrait a:has(> img),
+  .ptile-img,
+  .season-img:not(.season-img--color) {
+    position: relative;
+    isolation: isolate;
+  }
+  .pd-media:not(.pd-media--video):not(.pd-media--color)::after,
+  .pd-banner::after,
+  .pd-gallery figure::after,
+  .fcard-img::after,
+  .artist-portrait:has(> img)::after,
+  .honneur-portrait a:has(> img)::after,
+  .ptile-img::after,
+  .season-img:not(.season-img--color)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    mix-blend-mode: color;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
