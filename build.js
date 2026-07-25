@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260725R";
+  var rel = opts.rel, V = "?v=20260725S";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -448,8 +448,15 @@ function transmissionBody(rel) {
 
 /* ---- write ---- */
 function bakeFR(html) {
-  return html.replace(/<(\w+)([^>]*\sdata-fr="([^"]*)"[^>]*)>(<\/\1>)/g, function (m, tag, attrs, fr, close) {
-    var inner = fr.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  /* Les attributs data-* peuvent contenir des balises inline (<strong>, <a>),
+     donc des « > ». L'ancienne expression s'arretait au premier « > » rencontre
+     et laissait ces paragraphes vides dans le HTML : le texte n'existait que si
+     le JavaScript s'executait — invisible pour les moteurs. On saute desormais
+     les valeurs entre guillemets au lieu de buter dessus. */
+  return html.replace(/<(\w+)((?:"[^"]*"|'[^']*'|[^>"'])*)>(<\/\1>)/g, function (m, tag, attrs, close) {
+    var mm = attrs.match(/\sdata-fr="([^"]*)"/);
+    if (!mm) return m;
+    var inner = mm[1].replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     return "<" + tag + attrs + ">" + inner + close;
   });
 }
