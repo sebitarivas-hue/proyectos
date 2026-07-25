@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260725S";
+  var rel = opts.rel, V = "?v=20260725W";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -481,7 +481,7 @@ PROJECTS.forEach(function (p) {
 var newsList = NEWS.map(function (n) {
   return '<li class="news-item"><a href="' + n.slug + '/"><span class="news-date">' + esc(n.date) + '</span><span class="news-h" ' + ml(n.title) + '></span><span class="news-x" ' + ml(n.excerpt) + '></span></a></li>';
 }).join("\n        ");
-write("news", page({ rel: "../", title: "Actualités", description: "Actualités de STOPERA! — créations, productions, laboratoire LIPS et collaborations internationales.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/news/", ogType: "website",
+write("news", page({ rel: "../", title: "Actualités", description: "Actualités de STOPERA! — créations, productions, laboratoire LIPS et collaborations internationales.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/news/", ogType: "website",
   body: '    <section class="section pd-page">\n      <h1 class="pd-title pd-title--page" data-fr="Actualités" data-es="Novedades" data-en="News" data-zh="动态"></h1>\n      <ul class="news-list">\n        ' + newsList + "\n      </ul>\n    </section>" }));
 urls.push(SITE + "/news/");
 NEWS.forEach(function (n) {
@@ -497,7 +497,7 @@ var threadCards = THEMES.map(function (th) {
     + '<span class="thread-x" ' + ml(th.blurb) + '></span>'
     + '<span class="thread-n">' + th.items.length + '</span></a></li>';
 }).join("\n        ");
-write("parcours", page({ rel: "../", title: "Parcours", description: "Parcours éditoriaux de STOPERA! — explorer les créations par thématiques transversales : temps réel & technologie, mémoire & politique, voix & texte, corps & présence.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/parcours/", ogType: "website",
+write("parcours", page({ rel: "../", title: "Parcours", description: "Parcours éditoriaux de STOPERA! — explorer les créations par thématiques transversales : temps réel & technologie, mémoire & politique, voix & texte, corps & présence.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/parcours/", ogType: "website",
   body: '    <section class="section pd-page">\n'
     + '      <h1 class="pd-title pd-title--page" data-fr="Parcours" data-es="Recorridos" data-en="Threads" data-zh="主题"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Une lecture transversale du répertoire — par idées et obsessions plutôt que par dates." data-es="Una lectura transversal del repertorio — por ideas y obsesiones más que por fechas." data-en="A cross-cutting reading of the repertoire — by ideas and obsessions rather than dates." data-zh="对作品的横向阅读——以理念与执念为线索，而非日期。"></p>\n'
@@ -509,7 +509,7 @@ THEMES.forEach(function (th) {
   var url = SITE + "/parcours/" + th.slug + "/";
   var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage", name: plain(th.title) + " — STOPERA!", description: plain(th.blurb), url: url,
     hasPart: th.items.map(function (s) { return { "@type": "TheaterEvent", name: plain(bySlug[s] && (bySlug[s].titleHtml || bySlug[s].title)), url: SITE + "/" + (s === "lips" ? "lips/" : "productions/" + s + "/") }; }) });
-  write("parcours/" + th.slug, page({ rel: "../../", title: plain(th.title), description: plain(th.blurb), image: SITE + "/assets/og-cover.jpg", url: url, ogType: "website", jsonld: jsonld,
+  write("parcours/" + th.slug, page({ rel: "../../", title: plain(th.title), description: plain(th.blurb), image: SITE + "/assets/og-cover.jpg?v=3", url: url, ogType: "website", jsonld: jsonld,
     body: '    <section class="section pd-page">\n'
       + '      <p class="pd-eyebrow"><a href="../" data-fr="← Parcours" data-es="← Recorridos" data-en="← Threads" data-zh="← 主题"></a></p>\n'
       + '      <h1 class="pd-title pd-title--page" ' + ml(th.title) + "></h1>\n"
@@ -769,7 +769,7 @@ function artistBody(a, rel) {
 
 /* artists index */
 var artistGrid = ARTISTS.map(artistCard).join("\n        ");
-write("artists", page({ rel: "../", title: "Artistes", description: "Les artistes de STOPERA! — compositeurs, interprètes, metteurs en scène, auteurs et chercheurs qui font vivre la plateforme.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/artists/", ogType: "website",
+write("artists", page({ rel: "../", title: "Artistes", description: "Les artistes de STOPERA! — compositeurs, interprètes, metteurs en scène, auteurs et chercheurs qui font vivre la plateforme.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/artists/", ogType: "website",
   body: '    <section class="section pd-page">\n'
     + '      <h1 class="pd-title pd-title--page" data-fr="Artistes" data-es="Artistas" data-en="Artists" data-zh="艺术家"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Un écosystème vivant : compositeurs, interprètes, metteur·ses en scène, auteur·rices et chercheur·ses qui se retrouvent d\'un projet à l\'autre." data-es="Un ecosistema vivo: compositores, intérpretes, directores, autores e investigadores que se reencuentran de un proyecto a otro." data-en="A living ecosystem: composers, performers, directors, authors and researchers who meet again from one project to the next." data-zh="一个活的生态：作曲家、表演者、导演、作者与研究者，在一个又一个项目中重逢。"></p>\n'
@@ -783,7 +783,7 @@ ARTISTS.forEach(function (a) {
 });
 
 /* cooperation */
-write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
+write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
 
 var OEUVRES_BODY = `    <section class="section">
       <div class="section-head-row"><div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Œuvres" data-es="Obras" data-en="Works" data-zh="作品"></span></div><h2 class="lead" style="margin:0" data-fr="Le catalogue" data-es="El catálogo" data-en="The catalogue" data-zh="作品目录"></h2></div>
@@ -816,25 +816,25 @@ var SOUTENIR_BODY = `    <section class="section">
       </div>
     </section>`;
 urls.push(SITE + "/oeuvres/");
-write("oeuvres", page({ rel: "../", title: "Œuvres", description: "Le catalogue des créations de STOPERA! — opéra, théâtre musical, performance — par rôle : production, tournée, accompagnement, pédagogie.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/oeuvres/", ogType: "website", body: OEUVRES_BODY }));
+write("oeuvres", page({ rel: "../", title: "Œuvres", description: "Le catalogue des créations de STOPERA! — opéra, théâtre musical, performance — par rôle : production, tournée, accompagnement, pédagogie.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/oeuvres/", ogType: "website", body: OEUVRES_BODY }));
 urls.push(SITE + "/soutenir/");
-write("soutenir", page({ rel: "../", title: "Soutenir", description: "Soutenir STOPERA! — coproduction, résidence, partenariat structurel, recherche, mécénat, laboratoire. Contact et modalités.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/soutenir/", ogType: "website", body: SOUTENIR_BODY }));
+write("soutenir", page({ rel: "../", title: "Soutenir", description: "Soutenir STOPERA! — coproduction, résidence, partenariat structurel, recherche, mécénat, laboratoire. Contact et modalités.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/soutenir/", ogType: "website", body: SOUTENIR_BODY }));
 var LABO_BODY = fs.readFileSync(path.join(__dirname, "partials/laboratoire.html"), "utf8");
 var RESEAU_BODY = fs.readFileSync(path.join(__dirname, "partials/reseau.html"), "utf8");
-write("laboratoire", page({ rel: "../", title: "Laboratoire", description: "Le laboratoire de STOPERA! — recherche artistique et LIPS : nouvelles écritures, voix, image, technologies, temps réel et transmission.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/laboratoire/", ogType: "website", body: LABO_BODY }));
-write("reseau", page({ rel: "../", title: "Réseau", description: "Le réseau de STOPERA! — artistes associé·e·s, gouvernance, institutions partenaires, réseaux et mécénat, en France et à l'international.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/reseau/", ogType: "website", body: RESEAU_BODY }));
+write("laboratoire", page({ rel: "../", title: "Laboratoire", description: "Le laboratoire de STOPERA! — recherche artistique et LIPS : nouvelles écritures, voix, image, technologies, temps réel et transmission.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/laboratoire/", ogType: "website", body: LABO_BODY }));
+write("reseau", page({ rel: "../", title: "Réseau", description: "Le réseau de STOPERA! — artistes associé·e·s, gouvernance, institutions partenaires, réseaux et mécénat, en France et à l'international.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/reseau/", ogType: "website", body: RESEAU_BODY }));
 var POURQUOI_BODY = fs.readFileSync(path.join(__dirname, "partials/pourquoi.html"), "utf8");
-write("pourquoi", page({ rel: "../", title: "Pourquoi", description: "Pourquoi STOPERA! — le monde des formes scéniques se transforme ; STOPERA! rassemble artistes, chercheurs, institutions et publics autour d'une question commune, et fait de l'arrêt un espace de recherche et de création.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/pourquoi/", ogType: "website", body: POURQUOI_BODY }));
+write("pourquoi", page({ rel: "../", title: "Pourquoi", description: "Pourquoi STOPERA! — le monde des formes scéniques se transforme ; STOPERA! rassemble artistes, chercheurs, institutions et publics autour d'une question commune, et fait de l'arrêt un espace de recherche et de création.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/pourquoi/", ogType: "website", body: POURQUOI_BODY }));
 
 urls.push(SITE + "/cooperation/");
 /* press */
-write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
+write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
 urls.push(SITE + "/presse/");
 /* transmission */
-write("transmission", page({ rel: "../", title: "Transmission", description: "La transmission chez STOPERA! — chaque production présentée sous l'angle de ce qui peut se partager, s'apprendre et se transmettre : ateliers, rencontres, mentorat, médiation.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/transmission/", ogType: "website", body: transmissionBody("../") }));
+write("transmission", page({ rel: "../", title: "Transmission", description: "La transmission chez STOPERA! — chaque production présentée sous l'angle de ce qui peut se partager, s'apprendre et se transmettre : ateliers, rencontres, mentorat, médiation.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/transmission/", ogType: "website", body: transmissionBody("../") }));
 urls.push(SITE + "/transmission/");
 /* mentions légales */
-write("mentions-legales", page({ rel: "../", title: "Mentions légales", description: "Mentions légales et politique de confidentialité de STOPERA! — éditeur, hébergement, propriété intellectuelle, RGPD et cookies.", image: SITE + "/assets/og-cover.jpg", url: SITE + "/mentions-legales/", ogType: "website", body: legalBody("../") }));
+write("mentions-legales", page({ rel: "../", title: "Mentions légales", description: "Mentions légales et politique de confidentialité de STOPERA! — éditeur, hébergement, propriété intellectuelle, RGPD et cookies.", image: SITE + "/assets/og-cover.jpg?v=3", url: SITE + "/mentions-legales/", ogType: "website", body: legalBody("../") }));
 urls.push(SITE + "/mentions-legales/");
 /* page 404 (auto-servie par GitHub Pages) */
 fs.writeFileSync(path.join(DOCS, "404.html"),
@@ -888,7 +888,7 @@ function rechBody(a, rel){
 AXES.forEach(function(a){
   var url = SITE + "/recherche/" + a.slug + "/";
   var jsonld = JSON.stringify({ "@context":"https://schema.org","@type":"CollectionPage", name: plain(a.title)+" — STOPERA!", description: plain(a.intro), url: url });
-  write("recherche/"+a.slug, page({ rel:"../../", title: plain(a.title), description: plain(a.intro), image: SITE+"/assets/og-cover.jpg", url: url, ogType:"website", jsonld: jsonld, body: rechBody(a, "../../") }));
+  write("recherche/"+a.slug, page({ rel:"../../", title: plain(a.title), description: plain(a.intro), image: SITE+"/assets/og-cover.jpg?v=3", url: url, ogType:"website", jsonld: jsonld, body: rechBody(a, "../../") }));
   urls.push(url);
 });
 

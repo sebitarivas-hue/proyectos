@@ -952,3 +952,7 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
    gros que les mentions légales alors qu'ils portent la navigation de fond) */
 .more-link a { font-size: clamp(.95rem, 1.2vw, 1.1rem); letter-spacing: .05em; }
 .more-link { margin-top: 1.9rem; }
+
+/* Bandeau d'en-tête : le lettrage photographié occupe toute la largeur du héro */
+.hero-banner { width: 100% !important; max-width: none !important; aspect-ratio: 2000 / 720; object-fit: cover; border-radius: 2px; margin: 0 0 clamp(1.4rem, 3.5vw, 2.2rem) !important; }
+@media (max-width: 560px) { .hero-banner { aspect-ratio: 3 / 2; } }
