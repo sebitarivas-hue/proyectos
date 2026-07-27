@@ -175,7 +175,9 @@ function page(opts) {
     + '    <button class="float-share js-share" type="button" aria-label="Partager"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l4 4h-3v7h-2V7H8l4-4zM5 10h3v2H6.5v7h11v-7H16v-2h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/></svg><span data-fr="Partager" data-es="Compartir" data-en="Share" data-zh="分享"></span></button>\n'
     + '    <a class="float-contact" href="' + rel + 'index.html#contact" aria-label="Contact"><span data-fr="Écrire" data-es="Escribir" data-en="Write" data-zh="联系"></span><span aria-hidden="true">↗</span></a>\n'
     + '  </div>\n'
-    + '  <script src="' + rel + 'script.js' + V + '"></script>\n</body>\n</html>\n';
+    + '  <script src="' + rel + 'script.js' + V + '"></script>\n'
+    + '  <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "f3dca4355e1c4362b402b3fa96218469"}\'></script><!-- End Cloudflare Web Analytics -->\n'
+    + '</body>\n</html>\n';
 }
 
 /* ---- production / programme page body ---- */
@@ -840,7 +842,7 @@ urls.push(SITE + "/mentions-legales/");
 fs.writeFileSync(path.join(DOCS, "404.html"),
   '<!DOCTYPE html>\n<html lang="fr">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n<meta name="robots" content="noindex" />\n<title>Page introuvable — STOPERA!</title>\n'
   + '<style>html,body{margin:0;height:100%}body{background:#faf8f4;color:#14110f;font-family:Archivo,system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}.x{max-width:30rem}.x img{height:30px;width:auto;margin-bottom:2rem}.x p.code{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#d81e05;margin:0 0 .8rem}.x h1{font-size:1.6rem;font-weight:700;margin:0 0 1rem}.x p{color:#6f685f;line-height:1.6}.x a.btn{display:inline-block;margin-top:1.4rem;background:#d81e05;color:#fff;text-decoration:none;padding:.7rem 1.3rem;border-radius:999px;font-weight:600;font-size:.9rem}</style>\n'
-  + '</head>\n<body>\n<div class="x">\n<img src="' + SITE + '/assets/logo-dark.png" alt="STOPERA!" />\n<p class="code">Erreur 404</p>\n<h1>Cette page n\'existe pas (ou plus).</h1>\n<p>La page que vous cherchez est introuvable. Elle a peut-être été déplacée.</p>\n<a class="btn" href="' + SITE + '/">Retour à l\'accueil →</a>\n</div>\n</body>\n</html>\n');
+  + '</head>\n<body>\n<div class="x">\n<img src="' + SITE + '/assets/logo-dark.png" alt="STOPERA!" />\n<p class="code">Erreur 404</p>\n<h1>Cette page n\'existe pas (ou plus).</h1>\n<p>La page que vous cherchez est introuvable. Elle a peut-être été déplacée.</p>\n<a class="btn" href="' + SITE + '/">Retour à l\'accueil →</a>\n</div>\n  <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "f3dca4355e1c4362b402b3fa96218469"}\'></script><!-- End Cloudflare Web Analytics -->\n</body>\n</html>\n');
 /* snippet carte pour l'accueil (rel = "") */
 fs.writeFileSync("/tmp/coop_home.html", coopMap("") + "\n      " + COOP_SCRIPT);
 
