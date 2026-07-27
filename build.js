@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260726C";
+  var rel = opts.rel, V = "?v=20260726D";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -748,7 +748,14 @@ var MONO_COLORS = ["#2f3f49", "#a85c45", "#939a7e", "#5e3c41", "#6f8f8a", "#d6a6
 /* index séquentiel par artiste → chaque fiche une teinte distincte */
 ARTISTS.forEach(function (a, i) { a.color = MONO_COLORS[i % MONO_COLORS.length]; });
 function artistAvatar(a, rel, cls) {
-  if (a.photo) return '<' + cls + ' class="artist-portrait"><img src="' + rel + a.photo + '" alt="' + esc(a.name) + '" /></' + cls + '>';
+  if (a.photo) {
+    /* Crédit photo : obligatoire pour une image sous licence libre (CC BY / BY-SA)
+       comme pour un portrait de presse fourni par l'artiste. Affiché seulement
+       sur la fiche (cls "div"), pas sur les vignettes de la liste. */
+    var cr = (a.photoCredit && cls === "div")
+      ? '<span class="artist-credit">' + esc(a.photoCredit) + '</span>' : '';
+    return '<' + cls + ' class="artist-portrait"><img src="' + rel + a.photo + '" alt="' + esc(a.name) + '" />' + cr + '</' + cls + '>';
+  }
   var c = a.color || MONO_COLORS[0];
   var bg = "linear-gradient(152deg," + c + " 0%," + darken(c, 0.86) + " 100%)";
   return '<' + cls + ' class="artist-portrait artist-mono" style="background:' + bg + ';color:' + inkOn(c) + '" aria-hidden="true"><span>' + esc(monogram(a.name)) + "</span></" + cls + ">";
