@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260725X";
+  var rel = opts.rel, V = "?v=20260725Y";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -656,7 +656,7 @@ var ARTISTS = [
            zh: "导演，他在里昂歌剧院艺术节框架内于 Croix-Rousse 剧院执导 Otages 的首演，并执掌该院。" },
     productions: ["otages"] },
   { slug: "anne-laure-chamboissier", name: "Anne-Laure Chamboissier",
-    role: { fr: "Curatrice & production", es: "Curadora & producción", en: "Curator & production", zh: "策展与制作" },
+    role: { fr: "Curatrice", es: "Curadora", en: "Curator", zh: "策展人" },
     bio: { fr: "Curatrice indépendante, elle accompagne des projets à la croisée des arts visuels, de la musique et de la scène, et a pris part à l'émergence de STOPERA!.",
            es: "Curadora independiente, acompaña proyectos en el cruce de las artes visuales, la música y la escena, y participó en la emergencia de STOPERA!.",
            en: "An independent curator, she supports projects at the crossroads of visual arts, music and the stage, and took part in the emergence of STOPERA!.",
