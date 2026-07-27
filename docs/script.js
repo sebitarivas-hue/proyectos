@@ -448,7 +448,6 @@
     },
     {
       slug: "america", title: "A World to Blast",
-      titleHtml: { fr: "Un monde à brûler", es: "Un mundo por quemar", en: "A World to Blast", zh: "燃尽的世界" },
       img: "assets/projects/america.svg", photo: "assets/projects/america-scarfo.jpg",
       tag: { fr: "Opéra · Mexico", es: "Ópera · México", en: "Opera · Mexico City", zh: "歌剧 · 墨西哥城" },
       short: { fr: "Opéra : América Scarfó & Soledad Rosas, l'amour comme acte révolutionnaire.", es: "Ópera: América Scarfó y Soledad Rosas, el amor como acto revolucionario.", en: "An opera: América Scarfó & Soledad Rosas, love as a revolutionary act.", zh: "歌剧：América Scarfó 与 Soledad Rosas，爱作为革命行动。" },
@@ -459,7 +458,6 @@
         zh: "一部歌剧，交织 <em>América Scarfó</em> 与 <em>Soledad Rosas</em> 两位女性的命运——她们因爱、流亡与抗争而相连：1930 年代的无政府主义（阿根廷、欧洲）与 1990 年代意大利的占屋运动。如同贝尔格的《<em>璐璐</em>》，作品探问爱的力量；但在这里，爱成为革命行动，是面对压迫体制的自主宣言。Sebastian Rivas 作曲，Marcelo Lombardero 戏剧构作与导演。" },
       facts: [
         { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型" }, v: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧" } },
-        { k: { fr: "Aussi", es: "También", en: "Also", zh: "别名" }, v: { fr: "Un mundo por quemar · Un Monde à brûler", es: "Un mundo por quemar · Un Monde à brûler", en: "Un mundo por quemar · A World to Blast", zh: "Un mundo por quemar · 燃尽的世界" } },
         { k: { fr: "Figures", es: "Figuras", en: "Figures", zh: "人物" }, v: "América Scarfó · Soledad Rosas" },
         { k: { fr: "Dramaturgie & mise en scène", es: "Dramaturgia & dirección", en: "Dramaturgy & staging", zh: "戏剧构作与导演" }, v: "Marcelo Lombardero" },
         { k: { fr: "Création", es: "Creación", en: "Creation", zh: "创作" }, v: { fr: "Mexico — date à venir", es: "México — fecha por confirmar", en: "Mexico City — date TBC", zh: "墨西哥城 — 日期待定" } }
