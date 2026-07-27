@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260727A";
+  var rel = opts.rel, V = "?v=20260727B";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -419,7 +419,7 @@ function legalBody(rel) {
     + '      <h1 class="pd-title pd-title--page">Mentions légales &amp; confidentialité</h1>\n'
     + '      <div class="legal-prose">\n'
     + '        <h2>Éditeur du site</h2>\n'
-    + '        <p><strong>STOPERA!</strong> — Sonic Theatre Opera Performance, association loi 1901 à but non lucratif.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href="mailto:info@stopera.art">info@stopera.art</a>.<br/>Directeur de la publication : Sebastian Rivas, président.</p>\n'
+    + '        <p><strong>STOPERA!</strong> — Sonic Theatre Opera Performance, association loi 1901 à but non lucratif.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href="mailto:info@stopera.art">info@stopera.art</a>.<br/>Directrice de la publication : Oksana Trypolska, présidente de l\'association. Direction artistique : Sebastian Rivas.</p>\n'
     + '        <h2>Hébergement</h2>\n'
     + '        <p>Site hébergé par GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).</p>\n'
     + '        <h2>Propriété intellectuelle</h2>\n'
