@@ -552,7 +552,7 @@
       + (year ? '<span class="ptile-year">' + year + '</span>' : '');
     if (p.photo) {
       return '<a class="ptile" href="' + href + '">'
-        + '<span class="ptile-img" style="background-image:url(\'' + REL + p.photo + '\')"></span>'
+        + '<span class="ptile-img" style="background-image:url(\'' + "/" + p.photo + '\')"></span>'
         + '<span class="ptile-scrim"></span>'
         + '<span class="ptile-meta">' + body + '</span></a>';
     }
@@ -674,7 +674,7 @@
       var sub = t(p.short || "");
       var chips = projModes(p).map(function (k) { var m = MODE_META[k]; return '<span class="mode-chip" style="background:' + m.color + '">' + t(m.chip) + '</span>'; }).join('');
       var img = p.photo
-        ? '<span class="season-img" style="background-image:url(\'' + REL + p.photo + '\')"></span>'
+        ? '<span class="season-img" style="background-image:url(\'' + "/" + p.photo + '\')"></span>'
         : '<span class="season-img season-img--color" style="background:' + tileBg(p) + ';color:' + tileInk(p) + '"><span class="season-mono">' + t(p.titleHtml || p.title) + '</span></span>';
       var a = document.createElement("a");
       a.className = "season-card";
@@ -720,13 +720,32 @@
     try { localStorage.setItem(STORAGE_KEY, LANG); } catch (e) {}
   }
 
+  /* Chaque langue a ses propres URL : / pour le francais, /es/, /en/, /zh/
+     pour les autres. C'est la seule facon qu'un lien partage s'ouvre dans
+     la bonne langue — un robot de previsualisation n'execute pas le
+     JavaScript, il ne lit que le HTML servi a cette adresse. */
+  function pathLang(pathname) {
+    var m = pathname.match(/^\/(es|en|zh)(\/|$)/);
+    return m ? m[1] : "fr";
+  }
+  function pathForLang(pathname, lang) {
+    var bare = pathname.replace(/^\/(es|en|zh)(?=\/|$)/, "");
+    if (bare.charAt(0) !== "/") bare = "/" + bare;
+    return lang === "fr" ? bare : "/" + lang + bare;
+  }
+  function gotoLang(lang) {
+    if (LANGS.indexOf(lang) < 0 || lang === pathLang(location.pathname)) return;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+    location.href = pathForLang(location.pathname, lang) + location.search + location.hash;
+  }
+
+  /* La langue de la page est celle de son URL, pas celle du navigateur ni
+     celle d'un choix anterieur : sans cela, l'adresse et le contenu se
+     contredisent, et c'est l'adresse qui est partagee. */
   function initialLang() {
-    var stored = null;
-    try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-    if (LANGS.indexOf(stored) >= 0) return stored;
-    var nav = (navigator.language || "fr").toLowerCase();
-    for (var i = 0; i < LANGS.length; i++) if (nav.indexOf(LANGS[i]) === 0) return LANGS[i];
-    return "fr";
+    var declared = document.body.getAttribute("data-lang");
+    if (LANGS.indexOf(declared) >= 0) return declared;
+    return pathLang(location.pathname);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -747,9 +766,8 @@
         });
       });
     }
-
     document.querySelectorAll("[data-setlang]").forEach(function (b) {
-      b.addEventListener("click", function () { setLang(b.getAttribute("data-setlang")); });
+      b.addEventListener("click", function () { gotoLang(b.getAttribute("data-setlang")); });
     });
 
     if ("IntersectionObserver" in window) {
