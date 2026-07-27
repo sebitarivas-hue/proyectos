@@ -953,3 +953,6 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .more-link a { font-size: clamp(.95rem, 1.2vw, 1.1rem); letter-spacing: .05em; }
 .more-link { margin-top: 1.9rem; }
 
+
+/* Crédit photo sous un portrait d'artiste */
+.artist-credit { display: block; margin-top: .5rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .02em; color: var(--muted); }
