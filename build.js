@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260725Y";
+  var rel = opts.rel, V = "?v=20260726A";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -474,7 +474,18 @@ PROJECTS.forEach(function (p) {
   var slugPath = isLips ? "lips" : "productions/" + p.slug;
   var url = SITE + "/" + slugPath + "/";
   var img = SITE + "/" + (p.photo || "assets/og-cover.jpg");
-  var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": isLips ? "CreativeWork" : "TheaterEvent", name: plain(p.titleHtml || p.title), description: plain(p.short || p.pitch), image: img, url: url, organizer: { "@type": "Organization", name: "STOPERA!", url: SITE + "/" } });
+  /* Ces pages décrivent des ŒUVRES, pas des représentations datées et
+     billetées. Les déclarer en TheaterEvent obligeait à fournir startDate et
+     location — introuvables pour une création annoncée « 2027 » ou « date à
+     venir », et qu'il aurait fallu inventer. CreativeWork dit le vrai et
+     supprime les six anomalies signalées par la Search Console. */
+  var yr = YEARS[p.slug];
+  var jsonld = JSON.stringify(Object.assign({
+    "@context": "https://schema.org", "@type": "CreativeWork",
+    name: plain(p.titleHtml || p.title), description: plain(p.short || p.pitch),
+    image: img, url: url,
+    creator: { "@type": "Organization", name: "STOPERA!", url: SITE + "/" }
+  }, (typeof yr === "string" && /^\d{4}$/.test(yr)) ? { dateCreated: yr } : {}));
   write(slugPath, page({ rel: rel, title: plain(p.titleHtml || p.title), description: plain(p.short || p.pitch), image: img, url: url, jsonld: jsonld, body: prodBody(p, rel) }));
   urls.push(url);
 });
@@ -510,7 +521,7 @@ THEMES.forEach(function (th) {
   var tiles = th.items.map(function (s) { return threadTile(s, "../../"); }).join("\n        ");
   var url = SITE + "/parcours/" + th.slug + "/";
   var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage", name: plain(th.title) + " — STOPERA!", description: plain(th.blurb), url: url,
-    hasPart: th.items.map(function (s) { return { "@type": "TheaterEvent", name: plain(bySlug[s] && (bySlug[s].titleHtml || bySlug[s].title)), url: SITE + "/" + (s === "lips" ? "lips/" : "productions/" + s + "/") }; }) });
+    hasPart: th.items.map(function (s) { return { "@type": "CreativeWork", name: plain(bySlug[s] && (bySlug[s].titleHtml || bySlug[s].title)), url: SITE + "/" + (s === "lips" ? "lips/" : "productions/" + s + "/") }; }) });
   write("parcours/" + th.slug, page({ rel: "../../", title: plain(th.title), description: plain(th.blurb), image: SITE + "/assets/og-share.jpg?v=1", url: url, ogType: "website", jsonld: jsonld,
     body: '    <section class="section pd-page">\n'
       + '      <p class="pd-eyebrow"><a href="../" data-fr="← Parcours" data-es="← Recorridos" data-en="← Threads" data-zh="← 主题"></a></p>\n'
