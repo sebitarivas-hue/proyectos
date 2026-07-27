@@ -148,7 +148,7 @@ function footer(rel) {
 }
 
 function page(opts) {
-  var rel = opts.rel, V = "?v=20260726E";
+  var rel = opts.rel, V = "?v=20260727A";
   return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
     + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
@@ -425,9 +425,9 @@ function legalBody(rel) {
     + '        <h2>Propriété intellectuelle</h2>\n'
     + '        <p>L\'ensemble des contenus de ce site (textes, images, vidéos, identité visuelle « STOPERA! ») est protégé par le droit d\'auteur. Toute reproduction ou réutilisation, totale ou partielle, est soumise à autorisation préalable. Les crédits photographiques figurent sur les pages des productions concernées.</p>\n'
     + '        <h2>Données personnelles (RGPD)</h2>\n'
-    + '        <p>Ce site est statique et ne comporte aucun formulaire&nbsp;; il ne collecte aucune donnée personnelle à votre insu. Les échanges se font par courriel, à votre seule initiative. Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés », vous disposez d\'un droit d\'accès, de rectification et d\'effacement des données que vous nous transmettez par courriel&nbsp;: il vous suffit d\'écrire à l\'adresse ci-dessus.</p>\n'
+    + '        <p>Ce site est statique. Il ne collecte aucune donnée personnelle à votre insu. Les échanges se font par courriel, à votre seule initiative. Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés », vous disposez d\'un droit d\'accès, de rectification et d\'effacement des données que vous nous transmettez par courriel&nbsp;: il vous suffit d\'écrire à l\'adresse ci-dessus.</p>\n'
     + '        <h2>Cookies &amp; mesure d\'audience</h2>\n'
-    + '        <p>Le site ne dépose aucun cookie de mesure d\'audience ni traceur publicitaire. Les vidéos intégrées (YouTube, en mode « sans cookie ») peuvent déposer des cookies lorsque vous en lancez la lecture&nbsp;; ceux-ci relèvent de la politique de confidentialité de Google / YouTube.</p>\n'
+    + '        <p>Le site utilise <strong>Cloudflare Web Analytics</strong> pour mesurer sa fréquentation. Cet outil <strong>ne dépose aucun cookie</strong> et n\'utilise aucun identifiant persistant&nbsp;: il ne permet pas de vous reconnaître d\'une visite à l\'autre, et aucune donnée n\'est revendue. Aucun traceur publicitaire n\'est utilisé. Les vidéos intégrées (YouTube) peuvent déposer des cookies lorsque vous en lancez la lecture&nbsp;; ceux-ci relèvent de la politique de confidentialité de Google / YouTube.</p>\n'
     + '        <h2>Liens externes</h2>\n'
     + '        <p>Ce site comporte des liens vers des sites tiers (institutions, partenaires, presse). STOPERA! n\'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>\n'
     + '        <p class="legal-date">Dernière mise à jour : juin 2026.</p>\n'
