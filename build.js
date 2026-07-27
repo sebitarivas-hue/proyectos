@@ -68,8 +68,26 @@ var THEMES = [
 
 /* ---- helpers ---- */
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
-function tFR(o) { return o == null ? "" : (typeof o === "object" ? (o.fr || "") : o); }
-function plain(o) { return tFR(o).replace(/<[^>]+>/g, ""); } // strip HTML for meta
+function tL(o, lang) {
+  if (o == null) return "";
+  if (typeof o !== "object") return o;
+  return o[lang] != null ? o[lang] : (o.fr || "");
+}
+function tFR(o) { return tL(o, "fr"); }
+function plain(o, lang) { return tL(o, lang || "fr").replace(/<[^>]+>/g, ""); } // strip HTML for meta
+/* Chemin d'une page dans une langue donnée. Le français reste à la racine :
+   c'est l'URL historique, déjà indexée et déjà partagée. */
+function langPath(p, lang) { return "/" + (lang === "fr" ? "" : lang + "/") + p; }
+function langUrl(p, lang) { return SITE + langPath(p, lang); }
+/* Balises hreflang : elles disent au moteur que ces quatre pages sont la
+   même page en quatre langues, et laquelle servir à qui. Sans elles, les
+   versions se concurrencent au lieu de se compléter. */
+function alternates(p) {
+  return LANGS.map(function (l) {
+    return '  <link rel="alternate" hreflang="' + (l === "zh" ? "zh-Hans" : l) + '" href="' + langUrl(p, l) + '" />\n';
+  }).join("") + '  <link rel="alternate" hreflang="x-default" href="' + langUrl(p, "fr") + '" />\n';
+}
+var OG_LOCALE = { fr: "fr_FR", es: "es_ES", en: "en_GB", zh: "zh_CN" };
 /* data-* attributes for client-side i18n (script.js fills innerHTML) */
 function ml(o) {
   if (o == null) return "";
@@ -121,7 +139,7 @@ function header(rel) {
     .map(function (n) { var href = n[0].charAt(0) === "#" ? rel + "index.html" + n[0] : rel + n[0];
       return '<a href="' + href + '" data-fr="' + n[1] + '" data-es="' + n[2] + '" data-en="' + n[3] + '" data-zh="' + n[4] + '"></a>'; }).join("\n      ");
   return '<header class="site-header">\n'
-    + '    <a class="brand" href="' + rel + 'index.html" aria-label="STOPERA!"><img class="brand-logo" src="' + rel + 'assets/logo-dark.png" alt="STOPERA!" /></a>\n'
+    + '    <a class="brand" href="' + rel + 'index.html" aria-label="STOPERA!"><img class="brand-logo" src="' + '/assets/logo-dark.png" alt="STOPERA!" /></a>\n'
     + '    <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="bar1" d="M3 6h18"/><path class="bar2" d="M3 12h18"/><path class="bar3" d="M3 18h18"/></svg></button>\n'
     + '    <nav class="site-nav" aria-label="Navigation"><div class="nav-links" id="nav-links">\n      ' + nav + '\n    </div>\n'
     + '      <div class="lang-switch" role="group" aria-label="Langue / Language"><button type="button" class="lang-opt" data-setlang="fr">FR</button><button type="button" class="lang-opt" data-setlang="es">ES</button><button type="button" class="lang-opt" data-setlang="en">EN</button><button type="button" class="lang-opt" data-setlang="zh">中文</button></div>\n'
@@ -141,50 +159,77 @@ function editorialNav(rel) {
 }
 function footer(rel) {
   return '<footer class="site-footer">\n'
-    + '    <span class="brand-logo-foot"><img src="' + rel + 'assets/logo-dark.png" alt="STOPERA!" /></span>\n'
+    + '    <span class="brand-logo-foot"><img src="' + '/assets/logo-dark.png" alt="STOPERA!" /></span>\n'
     + '    <form class="newsletter" data-newsletter><p class="newsletter-k" data-fr="Newsletter" data-es="Newsletter" data-en="Newsletter" data-zh="\u901a\u8baf"></p><div class="newsletter-row"><input type="email" name="email" class="newsletter-input" required placeholder="email@exemple.com" aria-label="Email" /><button type="submit" class="newsletter-btn" data-fr="S\'inscrire" data-es="Suscribirse" data-en="Subscribe" data-zh="\u8ba2\u9605"></button></div></form>\n'
     + '    <p class="foot-social"><a href="https://instagram.com/stopera_sonic_theatre" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@stopera-sonictheatre" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.facebook.com/stopera.sonictheatre" target="_blank" rel="noopener">Facebook</a></p>\n'
     + '    <p>© <span id="year"></span> STOPERA! — Sonic Theatre Opera Performance · Gentilly (Paris) · <a href="' + rel + 'mentions-legales/" data-fr="Mentions légales" data-es="Aviso legal" data-en="Legal notice" data-zh="法律声明"></a></p>\n  </footer>';
 }
 
-function page(opts) {
-  var rel = opts.rel, V = "?v=20260727B";
-  return '<!DOCTYPE html>\n<html lang="fr">\n<head>\n'
+/* `page` ne rend plus rien : il décrit la page. Le rendu se fait dans
+   `render`, une fois par langue. C'est ce qui permet à un même appel de
+   produire /productions/ooo/, /es/…, /en/… et /zh/… sans dupliquer le code
+   des pages. */
+function page(opts) { return opts; }
+
+
+/* Cinq pages — oeuvres, soutenir, laboratoire, reseau, pourquoi — ouvrent
+   sur un <h2 class="lead"> et n'ont donc aucun titre de niveau 1. Plutot
+   que de promouvoir ce h2, ce qui changerait leur mise en page, on insere
+   un h1 pour lecteurs d'ecran et moteurs, dans la langue de la page, a
+   partir du titre deja traduit du descripteur. */
+function h1Fallback(opts, lang) {
+  var body = typeof opts.body === "function" ? opts.body(opts.rel, lang) : opts.body;
+  if (body.indexOf("<h1") >= 0) return "";
+  return '    <h1 class="visually-hidden">' + esc(plain(opts.title, lang)) + " — STOPERA!</h1>\n";
+}
+
+function render(opts, lang) {
+  var rel = opts.rel, V = "?v=20260728A";
+  var title = plain(opts.title, lang), desc = plain(opts.description, lang);
+  var jsonld = typeof opts.jsonld === "function" ? opts.jsonld(lang) : opts.jsonld;
+  var url = langUrl(opts.path, lang);
+  return '<!DOCTYPE html>\n<html lang="' + lang + '">\n<head>\n'
     + '  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />\n'
-    + '  <title>' + esc(opts.title) + ' — STOPERA!</title>\n'
-    + '  <meta name="description" content="' + esc(opts.description) + '" />\n'
-    + '  <link rel="canonical" href="' + opts.url + '" />\n'
+    + '  <title>' + esc(title) + ' — STOPERA!</title>\n'
+    + '  <meta name="description" content="' + esc(desc) + '" />\n'
+    + '  <link rel="canonical" href="' + url + '" />\n'
+    + alternates(opts.path)
     + '  <meta name="theme-color" content="#faf8f4" />\n'
     + '  <meta property="og:type" content="' + (opts.ogType || "article") + '" />\n'
-    + '  <meta property="og:title" content="' + esc(opts.title) + ' — STOPERA!" />\n'
-    + '  <meta property="og:description" content="' + esc(opts.description) + '" />\n'
-    + '  <meta property="og:url" content="' + opts.url + '" />\n'
+    + '  <meta property="og:site_name" content="STOPERA!" />\n'
+    + '  <meta property="og:locale" content="' + OG_LOCALE[lang] + '" />\n'
+    + LANGS.filter(function (l) { return l !== lang; }).map(function (l) {
+        return '  <meta property="og:locale:alternate" content="' + OG_LOCALE[l] + '" />\n'; }).join("")
+    + '  <meta property="og:title" content="' + esc(title) + ' — STOPERA!" />\n'
+    + '  <meta property="og:description" content="' + esc(desc) + '" />\n'
+    + '  <meta property="og:url" content="' + url + '" />\n'
     + '  <meta property="og:image" content="' + opts.image + '" />\n'
     + '  <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />\n'
     + '  <meta name="twitter:card" content="summary_large_image" />\n'
-    + '  <meta name="twitter:title" content="' + esc(opts.title) + ' — STOPERA!" />\n'
+    + '  <meta name="twitter:title" content="' + esc(title) + ' — STOPERA!" />\n'
+    + '  <meta name="twitter:description" content="' + esc(desc) + '" />\n'
     + '  <meta name="twitter:image" content="' + opts.image + '" />\n'
-    + (opts.jsonld ? '  <script type="application/ld+json">' + opts.jsonld + '</script>\n' : "")
-    + '  <link rel="icon" type="image/png" href="' + rel + 'assets/favicon.png" />\n'
-    + '  <link rel="stylesheet" href="' + rel + 'assets/fonts/fonts.css' + V + '" />\n'
-    + '  <link rel="stylesheet" href="' + rel + 'styles.css' + V + '" />\n'
-    + '</head>\n<body data-lang="fr" data-rel="' + rel + '">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
-    + opts.body + '\n  </main>\n  ' + footer(rel) + '\n'
+    + (jsonld ? '  <script type="application/ld+json">' + jsonld + '</script>\n' : "")
+    + '  <link rel="icon" type="image/png" href="/assets/favicon.png" />\n'
+    + '  <link rel="stylesheet" href="/assets/fonts/fonts.css' + V + '" />\n'
+    + '  <link rel="stylesheet" href="/styles.css' + V + '" />\n'
+    + '</head>\n<body data-lang="' + lang + '" data-rel="' + rel + '">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
+    + h1Fallback(opts, lang) + (typeof opts.body === "function" ? opts.body(rel, lang) : opts.body) + '\n  </main>\n  ' + footer(rel) + '\n'
     + '  <div class="float-actions">\n'
     + '    <a class="float-home" href="' + rel + 'index.html" aria-label="Accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg><span data-fr="Accueil" data-es="Inicio" data-en="Home" data-zh="首页"></span></a>\n'
     + '    <button class="float-share js-share" type="button" aria-label="Partager"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l4 4h-3v7h-2V7H8l4-4zM5 10h3v2H6.5v7h11v-7H16v-2h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/></svg><span data-fr="Partager" data-es="Compartir" data-en="Share" data-zh="分享"></span></button>\n'
     + '    <a class="float-contact" href="' + rel + 'index.html#contact" aria-label="Contact"><span data-fr="Écrire" data-es="Escribir" data-en="Write" data-zh="联系"></span><span aria-hidden="true">↗</span></a>\n'
     + '  </div>\n'
-    + '  <script src="' + rel + 'script.js' + V + '"></script>\n'
+    + '  <script src="/script.js' + V + '"></script>\n'
     + '  <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "f3dca4355e1c4362b402b3fa96218469"}\'></script><!-- End Cloudflare Web Analytics -->\n'
     + '</body>\n</html>\n';
 }
 
 /* ---- production / programme page body ---- */
 function prodBody(p, rel) {
-  var photo = p.photo ? rel + p.photo : null;
+  var photo = p.photo ? "/" + p.photo : null;
   var hero, teaser = "";
-  var banner = p.banner ? '<figure class="pd-banner"><img src="' + rel + p.banner + '" alt="' + esc(plain(p.title)) + ' — affiche" loading="lazy" /></figure>' : "";
+  var banner = p.banner ? '<figure class="pd-banner"><img src="' + "/" + p.banner + '" alt="' + esc(plain(p.title)) + ' — affiche" loading="lazy" /></figure>' : "";
   if (photo) hero = '<figure class="pd-media"><img src="' + photo + '" alt="' + esc(plain(p.titleHtml || p.title)) + '" /></figure>';
   else if (p.video) hero = '<div class="pd-media pd-media--video"><iframe src="https://www.youtube.com/embed/' + p.video + '?rel=0&modestbranding=1&playsinline=1&controls=1&fs=1" title="' + esc(plain(p.title)) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe></div>' + ytFallback(p.video);
   else hero = '<div class="pd-media pd-media--color" style="background:' + tileBg(p.slug) + ';color:' + inkOn(COLORS[p.slug] || "#4f5f60") + '"><span class="pd-media-title" ' + ml(p.titleHtml || p.title) + '></span></div>';
@@ -207,10 +252,10 @@ function prodBody(p, rel) {
       var href = r.url ? r.url : rel + r.href; var ext = r.url ? ' target="_blank" rel="noopener"' : "";
       return '<li><a href="' + href + '"' + ext + ' ' + ml(r.label) + '></a></li>';
     }).join("") + "</ul></div>" : "";
-  var gallery = (p.gallery && p.gallery.length) ? '<div class="pd-gallery">' + p.gallery.map(function (g) { return '<figure><img src="' + rel + g.src + '" alt="' + esc(g.alt || plain(p.title)) + '" loading="lazy" /></figure>'; }).join("") + "</div>" : "";
+  var gallery = (p.gallery && p.gallery.length) ? '<div class="pd-gallery">' + p.gallery.map(function (g) { return '<figure><img src="' + "/" + g.src + '" alt="' + esc(g.alt || plain(p.title)) + '" loading="lazy" /></figure>'; }).join("") + "</div>" : "";
   var press = (p.press && p.press.length) ? '<div class="pd-block pd-full pd-press"><h4 ' + ml({fr:"Revue de presse",es:"Reseña de prensa",en:"Press",zh:"媒体评论"}) + '></h4>'
     + p.press.map(pressQuote).join("")
-    + (p.pressPdf ? '<a class="pd-dl" href="' + rel + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + '></a>' : "") + "</div>" : "";
+    + (p.pressPdf ? '<a class="pd-dl" href="' + "/" + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + '></a>' : "") + "</div>" : "";
   var links = (p.links && p.links.length) ? '<div class="pd-block pd-full"><h4 ' + ml({fr:"À voir & écouter",es:"Ver & escuchar",en:"Watch & listen",zh:"观看与聆听"}) + '></h4><ul class="taglist">' + p.links.map(function (l) { return '<li><a href="' + l.url + '" target="_blank" rel="noopener">' + esc(l.label) + "</a></li>"; }).join("") + "</ul></div>" : "";
   var note = p.note ? '<p class="pd-note" ' + ml(p.note) + "></p>" : "";
   var dims = (p.transmission || p.territory || partnersList) ? '<div class="pd-dimensions">\n'
@@ -245,7 +290,7 @@ function threadTile(slug, rel) {
   var title = '<span class="ptile-title" ' + ml(p.titleHtml || p.title) + "></span>";
   if (p.photo) {
     return '<li class="project"><a class="ptile" href="' + href + '">'
-      + '<span class="ptile-img" style="background-image:url(\'' + rel + p.photo + '\')"></span>'
+      + '<span class="ptile-img" style="background-image:url(\'' + "/" + p.photo + '\')"></span>'
       + '<span class="ptile-scrim"></span>'
       + '<span class="ptile-meta">' + title + yearSpan + "</span></a></li>";
   }
@@ -290,7 +335,7 @@ var NEWS = [
     body: { fr: "LIPS réunit de jeunes artistes de toutes disciplines — composition, mise en scène, arts visuels, théâtre, danse — accompagnés par des artistes confirmés. Un temps d'expérimentation, de co-écriture et de rencontre, où la transmission se fait par la pratique. Appel à candidatures à venir.", es: "LIPS reúne a jóvenes artistas de todas las disciplinas —composición, dirección de escena, artes visuales, teatro, danza— acompañados por artistas consagrados. Un tiempo de experimentación, co-escritura y encuentro, donde la transmisión se hace por la práctica. Convocatoria próximamente.", en: "LIPS brings together young artists from all disciplines — composition, stage direction, visual arts, theatre, dance — mentored by established artists. A time for experimentation, co-writing and encounter, where transmission happens through practice. Call for applications to come.", zh: "LIPS 汇集来自各学科——作曲、导演、视觉艺术、戏剧、舞蹈——的青年艺术家，由资深艺术家陪伴。一段实验、共同书写与相遇的时光，让传承通过实践发生。招募即将公布。" } }
 ];
 function newsBody(n, rel) {
-  var img = n.img ? rel + n.img : null;
+  var img = n.img ? "/" + n.img : null;
   var rl = n.related ? '<p class="pd-note"><a href="' + rel + (n.related === "lips" ? "lips/" : "productions/" + n.related + "/") + '" data-fr="→ Voir la production" data-es="→ Ver la producción" data-en="→ See the production" data-zh="→ 查看作品"></a></p>' : "";
   return '    <article class="section pd-page">\n'
     + '      <p class="pd-eyebrow"><a href="' + rel + 'news/index.html" data-fr="← Actualités" data-es="← Novedades" data-en="← News" data-zh="← 动态"></a> · <span class="pd-tag">' + esc(n.date) + '</span></p>\n'
@@ -393,7 +438,7 @@ function pressBody(rel) {
     var inner;
     if (p.press && p.press.length) {
       inner = p.press.map(pressQuote).join("\n        ")
-        + (p.pressPdf ? '\n        <a class="pd-dl" href="' + rel + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + "></a>" : "");
+        + (p.pressPdf ? '\n        <a class="pd-dl" href="' + "/" + p.pressPdf + '" target="_blank" rel="noopener" ' + ml({fr:"Télécharger la revue de presse (PDF) ↓",es:"Descargar la reseña de prensa (PDF) ↓",en:"Download the press review (PDF) ↓",zh:"下载媒体评论（PDF）↓"}) + "></a>" : "");
     } else {
       inner = '<p class="press-soon" ' + ml({fr:"Revue de presse à venir.",es:"Reseña de prensa próximamente.",en:"Press review coming soon.",zh:"媒体评论即将上线。"}) + "></p>";
     }
@@ -412,26 +457,67 @@ function pressBody(rel) {
     + "      </div>\n    </section>";
 }
 
-/* ---- mentions légales & confidentialité (FR) ---- */
+/* ---- mentions légales & confidentialité — quadrilingue ---- */
 function legalBody(rel) {
+  function h2(o) { return '        <h2 ' + ml(o) + "></h2>\n"; }
+  function para(o) { return '        <p ' + ml(o) + "></p>\n"; }
   return '    <section class="section pd-page legal-page">\n'
     + '      <p class="pd-eyebrow"><a href="' + rel + 'index.html" data-fr="← Accueil" data-es="← Inicio" data-en="← Home" data-zh="← 首页"></a></p>\n'
-    + '      <h1 class="pd-title pd-title--page">Mentions légales &amp; confidentialité</h1>\n'
+    + '      <h1 class="pd-title pd-title--page" ' + ml({
+        fr: "Mentions légales & confidentialité",
+        es: "Aviso legal & privacidad",
+        en: "Legal notice & privacy",
+        zh: "法律声明与隐私政策" }) + "></h1>\n"
     + '      <div class="legal-prose">\n'
-    + '        <h2>Éditeur du site</h2>\n'
-    + '        <p><strong>STOPERA!</strong> — Sonic Theatre Opera Performance, association loi 1901 à but non lucratif.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href="mailto:info@stopera.art">info@stopera.art</a>.<br/>Directrice de la publication : Oksana Trypolska, présidente de l\'association. Direction artistique : Sebastian Rivas.</p>\n'
-    + '        <h2>Hébergement</h2>\n'
-    + '        <p>Site hébergé par GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).</p>\n'
-    + '        <h2>Propriété intellectuelle</h2>\n'
-    + '        <p>L\'ensemble des contenus de ce site (textes, images, vidéos, identité visuelle « STOPERA! ») est protégé par le droit d\'auteur. Toute reproduction ou réutilisation, totale ou partielle, est soumise à autorisation préalable. Les crédits photographiques figurent sur les pages des productions concernées.</p>\n'
-    + '        <h2>Données personnelles (RGPD)</h2>\n'
-    + '        <p>Ce site est statique. Il ne collecte aucune donnée personnelle à votre insu. Les échanges se font par courriel, à votre seule initiative. Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés », vous disposez d\'un droit d\'accès, de rectification et d\'effacement des données que vous nous transmettez par courriel&nbsp;: il vous suffit d\'écrire à l\'adresse ci-dessus.</p>\n'
-    + '        <h2>Cookies &amp; mesure d\'audience</h2>\n'
-    + '        <p>Le site utilise <strong>Cloudflare Web Analytics</strong> pour mesurer sa fréquentation. Cet outil <strong>ne dépose aucun cookie</strong> et n\'utilise aucun identifiant persistant&nbsp;: il ne permet pas de vous reconnaître d\'une visite à l\'autre, et aucune donnée n\'est revendue. Aucun traceur publicitaire n\'est utilisé. Les vidéos intégrées (YouTube) peuvent déposer des cookies lorsque vous en lancez la lecture&nbsp;; ceux-ci relèvent de la politique de confidentialité de Google / YouTube.</p>\n'
-    + '        <h2>Liens externes</h2>\n'
-    + '        <p>Ce site comporte des liens vers des sites tiers (institutions, partenaires, presse). STOPERA! n\'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>\n'
-    + '        <p class="legal-date">Dernière mise à jour : juin 2026.</p>\n'
-    + '      </div>\n    </section>';
+
+    + h2({ fr: "Éditeur du site", es: "Editor del sitio", en: "Publisher", zh: "网站出版方" })
+    + para({
+        fr: "<strong>STOPERA!</strong> — Sonic Theatre Opera Performance, association loi 1901 à but non lucratif.<br/>Siège : 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Courriel : <a href=\"mailto:info@stopera.art\">info@stopera.art</a>.<br/>Directrice de la publication : Oksana Trypolska, présidente de l'association. Direction artistique : Sebastian Rivas.",
+        es: "<strong>STOPERA!</strong> — Sonic Theatre Opera Performance, asociación sin ánimo de lucro de derecho francés (ley de 1901).<br/>Sede: 8 rue Victor Hugo, 94250 Gentilly (Valle del Marne), Francia.<br/>Correo: <a href=\"mailto:info@stopera.art\">info@stopera.art</a>.<br/>Directora de la publicación: Oksana Trypolska, presidenta de la asociación. Dirección artística: Sebastian Rivas.",
+        en: "<strong>STOPERA!</strong> — Sonic Theatre Opera Performance, a non-profit association under the French law of 1901.<br/>Registered office: 8 rue Victor Hugo, 94250 Gentilly (Val-de-Marne), France.<br/>Email: <a href=\"mailto:info@stopera.art\">info@stopera.art</a>.<br/>Publication director: Oksana Trypolska, President of the association. Artistic direction: Sebastian Rivas.",
+        zh: "<strong>STOPERA!</strong> —— Sonic Theatre Opera Performance，依据法国 1901 年法律成立的非营利协会。<br/>注册地址：8 rue Victor Hugo, 94250 Gentilly（马恩河谷省），法国。<br/>电子邮件：<a href=\"mailto:info@stopera.art\">info@stopera.art</a>。<br/>出版负责人：Oksana Trypolska，协会主席。艺术指导：Sebastian Rivas。" })
+
+    + h2({ fr: "Hébergement", es: "Alojamiento", en: "Hosting", zh: "网站托管" })
+    + para({
+        fr: "Site hébergé par GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).",
+        es: "Sitio alojado por GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estados Unidos (GitHub Pages).",
+        en: "This site is hosted by GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States (GitHub Pages).",
+        zh: "本网站由 GitHub, Inc. 托管 —— 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, 美国（GitHub Pages）。" })
+
+    + h2({ fr: "Propriété intellectuelle", es: "Propiedad intelectual", en: "Intellectual property", zh: "知识产权" })
+    + para({
+        fr: "L'ensemble des contenus de ce site (textes, images, vidéos, identité visuelle « STOPERA! ») est protégé par le droit d'auteur. Toute reproduction ou réutilisation, totale ou partielle, est soumise à autorisation préalable. Les crédits photographiques figurent sur les pages des productions concernées.",
+        es: "Todos los contenidos de este sitio (textos, imágenes, vídeos, identidad visual «STOPERA!») están protegidos por el derecho de autor. Toda reproducción o reutilización, total o parcial, requiere autorización previa. Los créditos fotográficos figuran en las páginas de las producciones correspondientes.",
+        en: "All content on this site (texts, images, videos, the “STOPERA!” visual identity) is protected by copyright. Any reproduction or reuse, in whole or in part, requires prior authorisation. Photographic credits appear on the pages of the productions concerned.",
+        zh: "本网站的全部内容（文字、图像、影像、「STOPERA!」视觉识别）均受著作权保护。任何全部或部分的复制与再利用，均须事先获得授权。摄影版权信息载于相关作品页面。" })
+
+    + h2({ fr: "Données personnelles (RGPD)", es: "Datos personales (RGPD)", en: "Personal data (GDPR)", zh: "个人数据（GDPR）" })
+    + para({
+        fr: "Ce site est statique. Il ne collecte aucune donnée personnelle à votre insu. Les échanges se font par courriel, à votre seule initiative. Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés », vous disposez d'un droit d'accès, de rectification et d'effacement des données que vous nous transmettez par courriel : il vous suffit d'écrire à l'adresse ci-dessus.",
+        es: "Este sitio es estático. No recoge ningún dato personal sin su conocimiento. Los intercambios se realizan por correo electrónico, únicamente por iniciativa suya. Conforme al Reglamento General de Protección de Datos (RGPD), usted dispone de un derecho de acceso, rectificación y supresión de los datos que nos transmita por correo : basta con escribir a la dirección indicada arriba.",
+        en: "This is a static site. It collects no personal data without your knowledge. Exchanges take place by email, at your initiative alone. Under the General Data Protection Regulation (GDPR), you have a right of access to, rectification and erasure of the data you send us by email : simply write to the address above.",
+        zh: "本网站为静态网站，不会在您不知情的情况下收集任何个人数据。所有往来均通过电子邮件进行，且完全出于您的主动。根据《通用数据保护条例》（GDPR），您对通过邮件提供给我们的数据享有访问、更正与删除的权利&nbsp;：来信至上述地址即可。" })
+
+    + h2({ fr: "Cookies & mesure d'audience", es: "Cookies & medición de audiencia", en: "Cookies & audience measurement", zh: "Cookie 与访问统计" })
+    + para({
+        fr: "Le site utilise <strong>Cloudflare Web Analytics</strong> pour mesurer sa fréquentation. Cet outil <strong>ne dépose aucun cookie</strong> et n'utilise aucun identifiant persistant : il ne permet pas de vous reconnaître d'une visite à l'autre, et aucune donnée n'est revendue. Aucun traceur publicitaire n'est utilisé. Les vidéos intégrées (YouTube) peuvent déposer des cookies lorsque vous en lancez la lecture&nbsp;; ceux-ci relèvent de la politique de confidentialité de Google / YouTube.",
+        es: "El sitio utiliza <strong>Cloudflare Web Analytics</strong> para medir su tráfico. Esta herramienta <strong>no instala ninguna cookie</strong> ni emplea identificadores persistentes : no permite reconocerle de una visita a otra, y ningún dato se revende. No se utiliza ningún rastreador publicitario. Los vídeos integrados (YouTube) pueden instalar cookies cuando usted inicia su reproducción&nbsp;; estas se rigen por la política de privacidad de Google / YouTube.",
+        en: "The site uses <strong>Cloudflare Web Analytics</strong> to measure traffic. This tool <strong>sets no cookies</strong> and uses no persistent identifier : it cannot recognise you from one visit to the next, and no data is sold on. No advertising trackers are used. Embedded videos (YouTube) may set cookies once you start playback&nbsp;; these are governed by the Google / YouTube privacy policy.",
+        zh: "本网站使用 <strong>Cloudflare Web Analytics</strong> 统计访问量。该工具<strong>不放置任何 Cookie</strong>，也不使用任何持久标识符&nbsp;：它无法在不同访问之间识别您，且不会转售任何数据。本站不使用任何广告追踪器。嵌入的影片（YouTube）在您开始播放时可能放置 Cookie&nbsp;；此类 Cookie 适用 Google / YouTube 的隐私政策。" })
+
+    + h2({ fr: "Liens externes", es: "Enlaces externos", en: "External links", zh: "外部链接" })
+    + para({
+        fr: "Ce site comporte des liens vers des sites tiers (institutions, partenaires, presse). STOPERA! n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.",
+        es: "Este sitio contiene enlaces a sitios de terceros (instituciones, socios, prensa). STOPERA! no ejerce control alguno sobre ellos y declina toda responsabilidad respecto de su contenido.",
+        en: "This site contains links to third-party sites (institutions, partners, press). STOPERA! exercises no control over them and accepts no responsibility for their content.",
+        zh: "本网站包含指向第三方网站的链接（机构、合作伙伴、媒体）。STOPERA! 对这些网站不行使任何控制，亦不对其内容承担任何责任。" })
+
+    + '        <p class="legal-date" ' + ml({
+        fr: "Dernière mise à jour : juillet 2026.",
+        es: "Última actualización: julio de 2026.",
+        en: "Last updated: July 2026.",
+        zh: "最后更新：2026 年 7 月。" }) + "></p>\n"
+    + "      </div>\n    </section>";
 }
 
 /* ---- transmission (chaque projet sous l'angle de la transmission) ---- */
@@ -452,20 +538,43 @@ function transmissionBody(rel) {
 }
 
 /* ---- write ---- */
-function bakeFR(html) {
+function bake(html, lang) {
   /* Les attributs data-* peuvent contenir des balises inline (<strong>, <a>),
-     donc des « > ». L'ancienne expression s'arretait au premier « > » rencontre
-     et laissait ces paragraphes vides dans le HTML : le texte n'existait que si
-     le JavaScript s'executait — invisible pour les moteurs. On saute desormais
-     les valeurs entre guillemets au lieu de buter dessus. */
+     donc des « > ». Une expression naive s'arrete au premier « > » rencontre
+     et laisse ces elements vides dans le HTML : le texte n'existe alors que
+     si le JavaScript s'execute — invisible pour les moteurs et pour les
+     robots de previsualisation. On saute donc les valeurs entre guillemets
+     au lieu de buter dessus.
+     Le texte injecte est celui de la langue de la page : c'est ce qui rend
+     /en/ reellement anglais aux yeux d'un robot, et non un document francais
+     traduit apres coup par le navigateur. */
+  var re = new RegExp('\\sdata-' + lang + '="([^"]*)"');
   return html.replace(/<(\w+)((?:"[^"]*"|'[^']*'|[^>"'])*)>(<\/\1>)/g, function (m, tag, attrs, close) {
-    var mm = attrs.match(/\sdata-fr="([^"]*)"/);
+    var mm = attrs.match(re) || attrs.match(/\sdata-fr="([^"]*)"/);
     if (!mm) return m;
     var inner = mm[1].replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     return "<" + tag + attrs + ">" + inner + close;
   });
 }
-function write(rel, html) { var dir = path.join(DOCS, rel); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, "index.html"), bakeFR(html)); }
+/* Une seule declaration de page produit les quatre langues. Le francais
+   reste a la racine — ses URL sont deja indexees et deja partagees ; les
+   autres langues vivent sous /es/, /en/ et /zh/.
+   Le meme corps de page sert aux quatre : les liens de contenu sont
+   relatifs, donc ils suivent le prefixe de langue tout seuls, et les
+   ressources sont en chemin absolu, donc elles ne le suivent pas. */
+function write(relPath, opts) {
+  if (!opts || typeof opts !== "object" || !opts.body) {
+    throw new Error("write(" + relPath + ") : descripteur de page attendu");
+  }
+  opts.path = relPath === "" ? "" : relPath + "/";
+  LANGS.forEach(function (lang) {
+    var dir = path.join(DOCS, lang === "fr" ? relPath : path.join(lang, relPath));
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), bake(render(opts, lang), lang));
+  });
+  pages.push(relPath === "" ? "" : relPath + "/");
+}
+var pages = [];
 var urls = [SITE + "/"];
 
 PROJECTS.forEach(function (p) {
@@ -480,13 +589,15 @@ PROJECTS.forEach(function (p) {
      venir », et qu'il aurait fallu inventer. CreativeWork dit le vrai et
      supprime les six anomalies signalées par la Search Console. */
   var yr = YEARS[p.slug];
-  var jsonld = JSON.stringify(Object.assign({
-    "@context": "https://schema.org", "@type": "CreativeWork",
-    name: plain(p.titleHtml || p.title), description: plain(p.short || p.pitch),
-    image: img, url: url,
-    creator: { "@type": "Organization", name: "STOPERA!", url: SITE + "/" }
-  }, (typeof yr === "string" && /^\d{4}$/.test(yr)) ? { dateCreated: yr } : {}));
-  write(slugPath, page({ rel: rel, title: plain(p.titleHtml || p.title), description: plain(p.short || p.pitch), image: img, url: url, jsonld: jsonld, body: prodBody(p, rel) }));
+  var jsonld = function (lang) {
+    return JSON.stringify(Object.assign({
+      "@context": "https://schema.org", "@type": "CreativeWork",
+      name: plain(p.titleHtml || p.title, lang), description: plain(p.short || p.pitch, lang),
+      image: img, url: langUrl(slugPath + "/", lang), inLanguage: lang,
+      creator: { "@type": "Organization", name: "STOPERA!", url: SITE + "/" }
+    }, (typeof yr === "string" && /^\d{4}$/.test(yr)) ? { dateCreated: yr } : {}));
+  };
+  write(slugPath, page({ rel: rel, title: p.titleHtml || p.title, description: p.short || p.pitch, image: img, jsonld: jsonld, body: prodBody(p, rel) }));
   urls.push(url);
 });
 
@@ -494,12 +605,12 @@ PROJECTS.forEach(function (p) {
 var newsList = NEWS.map(function (n) {
   return '<li class="news-item"><a href="' + n.slug + '/"><span class="news-date">' + esc(n.date) + '</span><span class="news-h" ' + ml(n.title) + '></span><span class="news-x" ' + ml(n.excerpt) + '></span></a></li>';
 }).join("\n        ");
-write("news", page({ rel: "../", title: "Actualités", description: "Actualités de STOPERA! — créations, productions, laboratoire LIPS et collaborations internationales.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/news/", ogType: "website",
+write("news", page({ rel: "../", title: {"fr": "Actualités", "es": "Novedades", "en": "News", "zh": "动态"}, description: {"fr": "Actualités de STOPERA! — créations, productions, laboratoire LIPS et collaborations internationales.", "es": "Novedades de STOPERA! — estrenos, producciones, laboratorio LIPS y colaboraciones internacionales.", "en": "News from STOPERA! — premieres, productions, the LIPS laboratory and international collaborations.", "zh": "STOPERA! 动态——首演、制作、LIPS 实验室与国际合作。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/news/", ogType: "website",
   body: '    <section class="section pd-page">\n      <h1 class="pd-title pd-title--page" data-fr="Actualités" data-es="Novedades" data-en="News" data-zh="动态"></h1>\n      <ul class="news-list">\n        ' + newsList + "\n      </ul>\n    </section>" }));
 urls.push(SITE + "/news/");
 NEWS.forEach(function (n) {
   var url = SITE + "/news/" + n.slug + "/", img = SITE + "/" + (n.img || "assets/og-cover.jpg");
-  write("news/" + n.slug, page({ rel: "../../", title: plain(n.title), description: plain(n.excerpt), image: img, url: url, body: newsBody(n, "../../") }));
+  write("news/" + n.slug, page({ rel: "../../", title: n.title, description: n.excerpt, image: img, body: newsBody(n, "../../") }));
   urls.push(url);
 });
 
@@ -510,7 +621,7 @@ var threadCards = THEMES.map(function (th) {
     + '<span class="thread-x" ' + ml(th.blurb) + '></span>'
     + '<span class="thread-n">' + th.items.length + '</span></a></li>';
 }).join("\n        ");
-write("parcours", page({ rel: "../", title: "Parcours", description: "Parcours éditoriaux de STOPERA! — explorer les créations par thématiques transversales : temps réel & technologie, mémoire & politique, voix & texte, corps & présence.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/parcours/", ogType: "website",
+write("parcours", page({ rel: "../", title: {"fr": "Parcours", "es": "Recorridos", "en": "Threads", "zh": "主题"}, description: {"fr": "Parcours éditoriaux de STOPERA! — explorer les créations par thématiques transversales : temps réel & technologie, mémoire & politique, voix & texte, corps & présence.", "es": "Recorridos editoriales de STOPERA! — explorar las obras por temáticas transversales: tiempo real y tecnología, memoria y política, voz y texto, cuerpo y presencia.", "en": "Editorial threads through STOPERA! — exploring the works by cross-cutting themes: real time and technology, memory and politics, voice and text, body and presence.", "zh": "STOPERA! 的编辑性主题——以横向线索探索作品：实时与技术、记忆与政治、人声与文本、身体与在场。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/parcours/", ogType: "website",
   body: '    <section class="section pd-page">\n'
     + '      <h1 class="pd-title pd-title--page" data-fr="Parcours" data-es="Recorridos" data-en="Threads" data-zh="主题"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Une lecture transversale du répertoire — par idées et obsessions plutôt que par dates." data-es="Una lectura transversal del repertorio — por ideas y obsesiones más que por fechas." data-en="A cross-cutting reading of the repertoire — by ideas and obsessions rather than dates." data-zh="对作品的横向阅读——以理念与执念为线索，而非日期。"></p>\n'
@@ -520,9 +631,13 @@ urls.push(SITE + "/parcours/");
 THEMES.forEach(function (th) {
   var tiles = th.items.map(function (s) { return threadTile(s, "../../"); }).join("\n        ");
   var url = SITE + "/parcours/" + th.slug + "/";
-  var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage", name: plain(th.title) + " — STOPERA!", description: plain(th.blurb), url: url,
-    hasPart: th.items.map(function (s) { return { "@type": "CreativeWork", name: plain(bySlug[s] && (bySlug[s].titleHtml || bySlug[s].title)), url: SITE + "/" + (s === "lips" ? "lips/" : "productions/" + s + "/") }; }) });
-  write("parcours/" + th.slug, page({ rel: "../../", title: plain(th.title), description: plain(th.blurb), image: SITE + "/assets/og-share.jpg?v=1", url: url, ogType: "website", jsonld: jsonld,
+  var jsonld = function (lang) {
+    return JSON.stringify({ "@context": "https://schema.org", "@type": "CollectionPage",
+      name: plain(th.title, lang) + " — STOPERA!", description: plain(th.blurb, lang),
+      url: langUrl("parcours/" + th.slug + "/", lang), inLanguage: lang,
+      hasPart: th.items.map(function (s) { return { "@type": "CreativeWork", name: plain(bySlug[s] && (bySlug[s].titleHtml || bySlug[s].title), lang), url: langUrl((s === "lips" ? "lips/" : "productions/" + s + "/"), lang) }; }) });
+  };
+  write("parcours/" + th.slug, page({ rel: "../../", title: th.title, description: th.blurb, image: SITE + "/assets/og-share.jpg?v=1", ogType: "website", jsonld: jsonld,
     body: '    <section class="section pd-page">\n'
       + '      <p class="pd-eyebrow"><a href="../" data-fr="← Parcours" data-es="← Recorridos" data-en="← Threads" data-zh="← 主题"></a></p>\n'
       + '      <h1 class="pd-title pd-title--page" ' + ml(th.title) + "></h1>\n"
@@ -754,7 +869,7 @@ function artistAvatar(a, rel, cls) {
        sur la fiche (cls "div"), pas sur les vignettes de la liste. */
     var cr = (a.photoCredit && cls === "div")
       ? '<span class="artist-credit">' + esc(a.photoCredit) + '</span>' : '';
-    return '<' + cls + ' class="artist-portrait"><img src="' + rel + a.photo + '" alt="' + esc(a.name) + '" />' + cr + '</' + cls + '>';
+    return '<' + cls + ' class="artist-portrait"><img src="' + "/" + a.photo + '" alt="' + esc(a.name) + '" />' + cr + '</' + cls + '>';
   }
   var c = a.color || MONO_COLORS[0];
   var bg = "linear-gradient(152deg," + c + " 0%," + darken(c, 0.86) + " 100%)";
@@ -789,7 +904,7 @@ function artistBody(a, rel) {
 
 /* artists index */
 var artistGrid = ARTISTS.map(artistCard).join("\n        ");
-write("artists", page({ rel: "../", title: "Artistes", description: "Les artistes de STOPERA! — compositeurs, interprètes, metteurs en scène, auteurs et chercheurs qui font vivre la plateforme.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/artists/", ogType: "website",
+write("artists", page({ rel: "../", title: {"fr": "Artistes", "es": "Artistas", "en": "Artists", "zh": "艺术家"}, description: {"fr": "Les artistes de STOPERA! — compositeurs, interprètes, metteurs en scène, auteurs et chercheurs qui font vivre la plateforme.", "es": "Los artistas de STOPERA! — compositores, intérpretes, directores de escena, autores e investigadores que dan vida a la plataforma.", "en": "The artists of STOPERA! — composers, performers, directors, writers and researchers who bring the platform to life.", "zh": "STOPERA! 的艺术家——让这一平台得以存在的作曲家、表演者、导演、作者与研究者。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/artists/", ogType: "website",
   body: '    <section class="section pd-page">\n'
     + '      <h1 class="pd-title pd-title--page" data-fr="Artistes" data-es="Artistas" data-en="Artists" data-zh="艺术家"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Un écosystème vivant : compositeurs, interprètes, metteur·ses en scène, auteur·rices et chercheur·ses qui se retrouvent d\'un projet à l\'autre." data-es="Un ecosistema vivo: compositores, intérpretes, directores, autores e investigadores que se reencuentran de un proyecto a otro." data-en="A living ecosystem: composers, performers, directors, authors and researchers who meet again from one project to the next." data-zh="一个活的生态：作曲家、表演者、导演、作者与研究者，在一个又一个项目中重逢。"></p>\n'
@@ -798,12 +913,12 @@ urls.push(SITE + "/artists/");
 ARTISTS.forEach(function (a) {
   var url = SITE + "/artists/" + a.slug + "/", img = SITE + "/" + (a.photo || "assets/og-cover.jpg");
   var jsonld = JSON.stringify({ "@context": "https://schema.org", "@type": "Person", name: a.name, jobTitle: plain(a.role), url: url, description: plain(a.bio), affiliation: { "@type": "Organization", name: "STOPERA!", url: SITE + "/" }, sameAs: a.website ? [a.website] : undefined });
-  write("artists/" + a.slug, page({ rel: "../../", title: a.name, description: plain(a.bio), image: img, url: url, jsonld: jsonld, body: artistBody(a, "../../") }));
+  write("artists/" + a.slug, page({ rel: "../../", title: a.name, description: a.bio, image: img, jsonld: jsonld, body: artistBody(a, "../../") }));
   urls.push(url);
 });
 
 /* cooperation */
-write("cooperation", page({ rel: "../", title: "Coopération internationale", description: "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
+write("cooperation", page({ rel: "../", title: {"fr": "Coopération internationale", "es": "Cooperación internacional", "en": "International cooperation", "zh": "国际合作"}, description: {"fr": "La carte des coopérations de STOPERA! — institutions, lieux et projets en Europe et en Amérique latine, depuis Gentilly.", "es": "El mapa de cooperaciones de STOPERA! — instituciones, espacios y proyectos en Europa y América Latina, desde Gentilly.", "en": "STOPERA!'s map of cooperations — institutions, venues and projects across Europe and Latin America, from Gentilly.", "zh": "STOPERA! 的合作地图——从让蒂伊出发，遍及欧洲与拉丁美洲的机构、场馆与项目。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/cooperation/", ogType: "website", body: cooperationBody("../") }));
 
 var OEUVRES_BODY = `    <section class="section">
       <div class="section-head-row"><div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Œuvres" data-es="Obras" data-en="Works" data-zh="作品"></span></div><h2 class="lead" style="margin:0" data-fr="Le catalogue" data-es="El catálogo" data-en="The catalogue" data-zh="作品目录"></h2></div>
@@ -836,25 +951,25 @@ var SOUTENIR_BODY = `    <section class="section">
       </div>
     </section>`;
 urls.push(SITE + "/oeuvres/");
-write("oeuvres", page({ rel: "../", title: "Œuvres", description: "Le catalogue des créations de STOPERA! — opéra, théâtre musical, performance — par rôle : production, tournée, accompagnement, pédagogie.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/oeuvres/", ogType: "website", body: OEUVRES_BODY }));
+write("oeuvres", page({ rel: "../", title: {"fr": "Œuvres", "es": "Obras", "en": "Works", "zh": "作品"}, description: {"fr": "Le catalogue des créations de STOPERA! — opéra, théâtre musical, performance — par rôle : production, tournée, accompagnement, pédagogie.", "es": "El catálogo de creaciones de STOPERA! — ópera, teatro musical, performance — por rol: producción, gira, acompañamiento, pedagogía.", "en": "The catalogue of STOPERA! works — opera, music theatre, performance — by role: production, touring, support, teaching.", "zh": "STOPERA! 作品目录——歌剧、音乐剧场、表演——按角色划分：制作、巡演、陪伴、教学。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/oeuvres/", ogType: "website", body: OEUVRES_BODY }));
 urls.push(SITE + "/soutenir/");
-write("soutenir", page({ rel: "../", title: "Soutenir", description: "Soutenir STOPERA! — coproduction, résidence, partenariat structurel, recherche, mécénat, laboratoire. Contact et modalités.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/soutenir/", ogType: "website", body: SOUTENIR_BODY }));
+write("soutenir", page({ rel: "../", title: {"fr": "Soutenir", "es": "Apoyar", "en": "Support", "zh": "支持"}, description: {"fr": "Soutenir STOPERA! — coproduction, résidence, partenariat structurel, recherche, mécénat, laboratoire. Contact et modalités.", "es": "Apoyar a STOPERA! — coproducción, residencia, colaboración estructural, investigación, mecenazgo, laboratorio. Contacto y modalidades.", "en": "Support STOPERA! — co-production, residency, structural partnership, research, patronage, laboratory. Contact and terms.", "zh": "支持 STOPERA!——联合制作、驻地、结构性伙伴关系、研究、赞助、实验室。联络方式与条件。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/soutenir/", ogType: "website", body: SOUTENIR_BODY }));
 var LABO_BODY = fs.readFileSync(path.join(__dirname, "partials/laboratoire.html"), "utf8");
 var RESEAU_BODY = fs.readFileSync(path.join(__dirname, "partials/reseau.html"), "utf8");
-write("laboratoire", page({ rel: "../", title: "Laboratoire", description: "Le laboratoire de STOPERA! — recherche artistique et LIPS : nouvelles écritures, voix, image, technologies, temps réel et transmission.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/laboratoire/", ogType: "website", body: LABO_BODY }));
-write("reseau", page({ rel: "../", title: "Réseau", description: "Le réseau de STOPERA! — artistes associé·e·s, gouvernance, institutions partenaires, réseaux et mécénat, en France et à l'international.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/reseau/", ogType: "website", body: RESEAU_BODY }));
+write("laboratoire", page({ rel: "../", title: {"fr": "Laboratoire", "es": "Laboratorio", "en": "Laboratory", "zh": "实验室"}, description: {"fr": "Le laboratoire de STOPERA! — recherche artistique et LIPS : nouvelles écritures, voix, image, technologies, temps réel et transmission.", "es": "El laboratorio de STOPERA! — investigación artística y LIPS: nuevas escrituras, voz, imagen, tecnologías, tiempo real y transmisión.", "en": "The STOPERA! laboratory — artistic research and LIPS: new forms of writing, voice, image, technology, real time and transmission.", "zh": "STOPERA! 实验室——艺术研究与 LIPS：新的书写、人声、影像、技术、实时与传承。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/laboratoire/", ogType: "website", body: LABO_BODY }));
+write("reseau", page({ rel: "../", title: {"fr": "Réseau", "es": "Red", "en": "Network", "zh": "网络"}, description: {"fr": "Le réseau de STOPERA! — artistes associé·e·s, gouvernance, institutions partenaires, réseaux et mécénat, en France et à l'international.", "es": "La red de STOPERA! — artistas asociados, gobernanza, instituciones socias, redes y mecenazgo, en Francia y en el extranjero.", "en": "The STOPERA! network — associate artists, governance, partner institutions, networks and patronage, in France and abroad.", "zh": "STOPERA! 的网络——合作艺术家、治理架构、伙伴机构、网络与赞助，遍及法国与国际。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/reseau/", ogType: "website", body: RESEAU_BODY }));
 var POURQUOI_BODY = fs.readFileSync(path.join(__dirname, "partials/pourquoi.html"), "utf8");
-write("pourquoi", page({ rel: "../", title: "Pourquoi", description: "Pourquoi STOPERA! — le monde des formes scéniques se transforme ; STOPERA! rassemble artistes, chercheurs, institutions et publics autour d'une question commune, et fait de l'arrêt un espace de recherche et de création.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/pourquoi/", ogType: "website", body: POURQUOI_BODY }));
+write("pourquoi", page({ rel: "../", title: {"fr": "Pourquoi", "es": "Por qué", "en": "Why", "zh": "为何"}, description: {"fr": "Pourquoi STOPERA! — le monde des formes scéniques se transforme ; STOPERA! rassemble artistes, chercheurs, institutions et publics autour d'une question commune, et fait de l'arrêt un espace de recherche et de création.", "es": "Por qué STOPERA! — el mundo de las formas escénicas se transforma; STOPERA! reúne a artistas, investigadores, instituciones y públicos en torno a una pregunta común, y hace de la detención un espacio de investigación y creación.", "en": "Why STOPERA! — the world of stage forms is changing; STOPERA! gathers artists, researchers, institutions and audiences around a shared question, and turns the stop into a space for research and creation.", "zh": "为何是 STOPERA!——舞台形式的世界正在变化；STOPERA! 让艺术家、研究者、机构与观众围绕一个共同的问题相聚，并将「停顿」化为研究与创作的空间。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/pourquoi/", ogType: "website", body: POURQUOI_BODY }));
 
 urls.push(SITE + "/cooperation/");
 /* press */
-write("presse", page({ rel: "../", title: "Revue de presse", description: "La revue de presse de STOPERA! — articles et critiques autour d'Otages, OOO et Snow on Her Lips, et la liste des médias.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
+write("presse", page({ rel: "../", title: {"fr": "Revue de presse", "es": "Prensa", "en": "Press", "zh": "媒体报道"}, description: {"fr": "La revue de presse de STOPERA! — articles et critiques autour d'Otages, OOO et Snow on Her Lips, et la liste des médias.", "es": "La prensa de STOPERA! — artículos y críticas sobre Otages, OOO y Snow on Her Lips, y la lista de medios.", "en": "STOPERA! in the press — articles and reviews of Otages, OOO and Snow on Her Lips, with the list of outlets.", "zh": "STOPERA! 媒体报道——关于 Otages、OOO 与 Snow on Her Lips 的文章与评论，以及媒体名录。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/presse/", ogType: "website", body: pressBody("../") }));
 urls.push(SITE + "/presse/");
 /* transmission */
-write("transmission", page({ rel: "../", title: "Transmission", description: "La transmission chez STOPERA! — chaque production présentée sous l'angle de ce qui peut se partager, s'apprendre et se transmettre : ateliers, rencontres, mentorat, médiation.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/transmission/", ogType: "website", body: transmissionBody("../") }));
+write("transmission", page({ rel: "../", title: {"fr": "Transmission", "es": "Transmisión", "en": "Transmission", "zh": "传承"}, description: {"fr": "La transmission chez STOPERA! — chaque production présentée sous l'angle de ce qui peut se partager, s'apprendre et se transmettre : ateliers, rencontres, mentorat, médiation.", "es": "La transmisión en STOPERA! — cada producción presentada desde lo que puede compartirse, aprenderse y transmitirse: talleres, encuentros, mentoría, mediación.", "en": "Transmission at STOPERA! — every production seen through what can be shared, learned and passed on: workshops, encounters, mentoring, mediation.", "zh": "STOPERA! 的传承——从可分享、可学习、可传递之物出发呈现每一部作品：工作坊、相遇、师徒指导、导赏。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/transmission/", ogType: "website", body: transmissionBody("../") }));
 urls.push(SITE + "/transmission/");
 /* mentions légales */
-write("mentions-legales", page({ rel: "../", title: "Mentions légales", description: "Mentions légales et politique de confidentialité de STOPERA! — éditeur, hébergement, propriété intellectuelle, RGPD et cookies.", image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/mentions-legales/", ogType: "website", body: legalBody("../") }));
+write("mentions-legales", page({ rel: "../", title: {"fr": "Mentions légales", "es": "Aviso legal", "en": "Legal notice", "zh": "法律声明"}, description: {"fr": "Mentions légales et politique de confidentialité de STOPERA! — éditeur, hébergement, propriété intellectuelle, RGPD et cookies.", "es": "Aviso legal y política de privacidad de STOPERA! — editor, alojamiento, propiedad intelectual, RGPD y cookies.", "en": "Legal notice and privacy policy of STOPERA! — publisher, hosting, intellectual property, GDPR and cookies.", "zh": "STOPERA! 法律声明与隐私政策——出版方、托管、知识产权、GDPR 与 Cookie。"}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/mentions-legales/", ogType: "website", body: legalBody("../") }));
 urls.push(SITE + "/mentions-legales/");
 /* page 404 (auto-servie par GitHub Pages) */
 fs.writeFileSync(path.join(DOCS, "404.html"),
@@ -908,13 +1023,131 @@ function rechBody(a, rel){
 AXES.forEach(function(a){
   var url = SITE + "/recherche/" + a.slug + "/";
   var jsonld = JSON.stringify({ "@context":"https://schema.org","@type":"CollectionPage", name: plain(a.title)+" — STOPERA!", description: plain(a.intro), url: url });
-  write("recherche/"+a.slug, page({ rel:"../../", title: plain(a.title), description: plain(a.intro), image: SITE+"/assets/og-cover.jpg", url: url, ogType:"website", jsonld: jsonld, body: rechBody(a, "../../") }));
+  write("recherche/"+a.slug, page({ rel:"../../", title: a.title, description: a.intro, image: SITE+"/assets/og-cover.jpg", ogType:"website", jsonld: jsonld, body: rechBody(a, "../../") }));
   urls.push(url);
 });
 
+
+
+/* `bake` ne sait que REMPLIR un element vide : c'est ce dont ont besoin les
+   pages generees. L'accueil, lui, est ecrit a la main avec son texte
+   francais deja en place — il faut donc REMPLACER ce texte, pas l'ajouter.
+   On ne touche qu'aux elements feuilles : si le contenu renferme une balise
+   de meme nom, on passe, plutot que de risquer une imbrication mal fermee. */
+function retext(html, lang) {
+  /* Le motif EXIGE data-fr dans les attributs. Sans cette exigence, un
+     conteneur non traduit — <div>, <section> — matche en premier, avale ses
+     enfants dans son contenu non gourmand, et le remplaceur les rend
+     inchanges : les elements traduisibles a l'interieur ne sont jamais
+     atteints. C'est la difference avec `bake`, dont le contenu doit etre
+     vide et qu'aucun conteneur ne peut donc absorber. */
+  var re = new RegExp(
+    '<(\\w+)((?:"[^"]*"|[^>"])*\\sdata-fr="[^"]*"(?:"[^"]*"|[^>"])*)>([\\s\\S]*?)<\\/\\1>', 'g');
+  var pick = new RegExp('\\sdata-' + lang + '="([^"]*)"');
+  return html.replace(re, function (m, tag, attrs, inner) {
+    var mm = attrs.match(pick) || attrs.match(/\sdata-fr="([^"]*)"/);
+    if (!mm) return m;
+    if (inner.indexOf("<" + tag) >= 0) return m;  /* imbrication : on s'abstient */
+    var txt = mm[1].replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    return "<" + tag + attrs + ">" + txt + "</" + tag + ">";
+  });
+}
+
+/* ---- page d'accueil : miroirs de langue ------------------------------
+   docs/index.html est ecrite a la main — build.js ne la genere pas. Mais
+   elle est la page la plus partagee du site : sans miroir, un lien vers
+   l'accueil s'affiche toujours en francais, quelle que soit la langue
+   choisie par le visiteur. On la recopie donc sous /es/, /en/ et /zh/ en
+   n'y changeant que ce qui doit l'etre : la langue declaree, les
+   metadonnees de partage, les alternates, et la profondeur des liens
+   relatifs — d'un cran, puisque la copie descend d'un dossier. */
+var HOME_META = {
+  title: { fr: "STOPERA! — Sonic Theatre Opera Performance",
+           es: "STOPERA! — Sonic Theatre Opera Performance",
+           en: "STOPERA! — Sonic Theatre Opera Performance",
+           zh: "STOPERA! — Sonic Theatre Opera Performance" },
+  ogTitle: {
+    fr: "STOPERA! — une plateforme pour les formes scéniques de notre temps",
+    es: "STOPERA! — una plataforma para las formas escénicas de nuestro tiempo",
+    en: "STOPERA! — a platform for the stage forms of our time",
+    zh: "STOPERA! —— 一个面向当代舞台形式的平台" },
+  ogDesc: {
+    fr: "Un espace international de création, de production, de recherche artistique et de transmission — où la voix, le corps et le son deviennent présence. Direction : Sebastian Rivas. Président d'honneur : Georges Aperghis.",
+    es: "Un espacio internacional de creación, producción, investigación artística y transmisión — donde la voz, el cuerpo y el sonido se vuelven presencia. Dirección: Sebastian Rivas. Presidente de honor: Georges Aperghis.",
+    en: "An international space for creation, production, artistic research and transmission — where voice, body and sound become presence. Director: Sebastian Rivas. Honorary President: Georges Aperghis.",
+    zh: "一个用于创作、制作、艺术研究与传承的国际空间——让人声、身体与声音成为在场。艺术指导：Sebastian Rivas。名誉主席：Georges Aperghis。" }
+};
+
+(function homeMirrors() {
+  var home = fs.readFileSync(path.join(DOCS, "index.html"), "utf8");
+  var desc = home.match(/<meta name="description"[\s\S]*?\/>/);
+  if (!desc) throw new Error("index.html : meta description introuvable");
+  var descML = {};
+  LANGS.forEach(function (l) {
+    var m = desc[0].match(new RegExp('data-' + l + '="([^"]*)"'));
+    if (!m) throw new Error("index.html : data-" + l + " manquant sur la description");
+    descML[l] = m[1];
+  });
+
+  LANGS.forEach(function (lang) {
+    var h = home;
+
+    /* Aucun chemin a reecrire : les ressources de l'accueil sont en absolu,
+       donc elles ne suivent pas le prefixe de langue, et les liens de
+       contenu sont relatifs, donc ils le suivent. Prefixer ces derniers
+       de "../" les renvoyait vers les pages francaises depuis /en/. */
+
+    h = h.replace(/\?v=\d{8}[A-Z]/g, "?v=20260728A");
+    h = h.replace('<html lang="fr">', '<html lang="' + lang + '">');
+    h = h.replace(/<body([^>]*)data-lang="fr"/, '<body$1data-lang="' + lang + '"');
+    if (h.indexOf('data-lang="' + lang + '"') < 0) {
+      h = h.replace(/<body([^>]*)>/, '<body$1 data-lang="' + lang + '">');
+    }
+    h = h.replace(/<title>[\s\S]*?<\/title>/, "<title>" + esc(tL(HOME_META.title, lang)) + "</title>");
+    h = h.replace(/(<meta name="description" content=")[^"]*/, "$1" + esc(descML[lang]));
+    h = h.replace(/(<link rel="canonical" href=")[^"]*"/, "$1" + langUrl("", lang) + '"');
+    h = h.replace(/(<meta property="og:url" content=")[^"]*"/, "$1" + langUrl("", lang) + '"');
+    h = h.replace(/(<meta property="og:title" content=")[^"]*"/, "$1" + esc(tL(HOME_META.ogTitle, lang)) + '"');
+    h = h.replace(/(<meta name="twitter:title" content=")[^"]*"/, "$1" + esc(tL(HOME_META.ogTitle, lang)) + '"');
+    h = h.replace(/(<meta property="og:description" content=")[^"]*"/, "$1" + esc(tL(HOME_META.ogDesc, lang)) + '"');
+    if (h.indexOf('name="twitter:description"') < 0) {
+      h = h.replace('<meta name="twitter:card"',
+        '<meta name="twitter:description" content="' + esc(tL(HOME_META.ogDesc, lang)) + '" />\n  <meta name="twitter:card"');
+    } else {
+      h = h.replace(/(<meta name="twitter:description" content=")[^"]*"/, "$1" + esc(tL(HOME_META.ogDesc, lang)) + '"');
+    }
+    h = h.replace(/\s*<link rel="alternate" hreflang="[^"]*" href="[^"]*" \/>/g, "");
+    h = h.replace('<meta name="theme-color"', alternates("").trim() + '\n  <meta name="theme-color"');
+    h = h.replace(/(<meta property="og:type"[^>]*\/>)/,
+      '$1\n  <meta property="og:locale" content="' + OG_LOCALE[lang] + '" />'
+      + LANGS.filter(function (l) { return l !== lang; }).map(function (l) {
+          return '\n  <meta property="og:locale:alternate" content="' + OG_LOCALE[l] + '" />'; }).join(""));
+
+    h = retext(h, lang);
+    var dir = lang === "fr" ? DOCS : path.join(DOCS, lang);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), h);
+  });
+  console.log("accueil : " + LANGS.length + " langues");
+})();
+
 /* sitemap */
-var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-  + urls.map(function (u) { return "  <url><loc>" + u + "</loc></url>"; }).join("\n") + "\n</urlset>\n";
+/* Le sitemap declare les quatre langues de chaque page, et les relie entre
+   elles par xhtml:link. Sans ces liens, Google traite /en/ comme un contenu
+   distinct — voire duplique — au lieu d'une traduction de la page francaise,
+   et continue de servir le francais a un lecteur anglophone. */
+var smPages = [""].concat(pages).filter(function (v, i, a) { return a.indexOf(v) === i; });
+var sm = '<?xml version="1.0" encoding="UTF-8"?>\n'
+  + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+  + smPages.map(function (pg) {
+      var links = LANGS.map(function (l) {
+        return '    <xhtml:link rel="alternate" hreflang="' + (l === "zh" ? "zh-Hans" : l) + '" href="' + langUrl(pg, l) + '"/>\n';
+      }).join("") + '    <xhtml:link rel="alternate" hreflang="x-default" href="' + langUrl(pg, "fr") + '"/>\n';
+      return LANGS.map(function (l) {
+        return "  <url>\n    <loc>" + langUrl(pg, l) + "</loc>\n" + links + "  </url>";
+      }).join("\n");
+    }).join("\n") + "\n</urlset>\n";
 fs.writeFileSync(path.join(DOCS, "sitemap.xml"), sm);
 
-console.log("generated", urls.length, "urls");
+console.log("generated " + smPages.length + " pages × " + LANGS.length + " langues = "
+  + smPages.length * LANGS.length + " urls");
