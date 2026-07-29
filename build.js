@@ -184,7 +184,7 @@ function h1Fallback(opts, lang) {
 }
 
 function render(opts, lang) {
-  var rel = opts.rel, V = "?v=20260728B";
+  var rel = opts.rel, V = "?v=20260728C";
   var title = plain(opts.title, lang), desc = plain(opts.description, lang);
   var jsonld = typeof opts.jsonld === "function" ? opts.jsonld(lang) : opts.jsonld;
   var url = langUrl(opts.path, lang);
@@ -1098,7 +1098,7 @@ var HOME_META = {
        contenu sont relatifs, donc ils le suivent. Prefixer ces derniers
        de "../" les renvoyait vers les pages francaises depuis /en/. */
 
-    h = h.replace(/\?v=\d{8}[A-Z]/g, "?v=20260728B");
+    h = h.replace(/\?v=\d{8}[A-Z]/g, "?v=20260728C");
     h = h.replace('<html lang="fr">', '<html lang="' + lang + '">');
     h = h.replace(/<body([^>]*)data-lang="fr"/, '<body$1data-lang="' + lang + '"');
     if (h.indexOf('data-lang="' + lang + '"') < 0) {

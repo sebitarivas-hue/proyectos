@@ -956,3 +956,24 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 
 /* Crédit photo sous un portrait d'artiste */
 .artist-credit { display: block; margin-top: .5rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .02em; color: var(--muted); }
+
+/* ── Sélecteur de langue : cinq langues ────────────────────────────────
+   Le mode compact « FR ▾ » ne s'appliquait qu'en dessous de 700 px. À
+   quatre langues, la barre tenait au-delà ; à cinq, elle déborde entre
+   700 et 900 px — la tablette et les petits portables. On avance donc le
+   point de rupture, plutôt que de rétrécir des libellés déjà à 0,66 rem.
+   ------------------------------------------------------------------- */
+@media (min-width: 701px) and (max-width: 900px) {
+  .lang-switch { position: relative; flex: none; }
+  .lang-switch .lang-opt { padding: .38rem .5rem; font-size: .64rem; }
+  .lang-switch .lang-opt:not(.active) { display: none; }
+  .lang-switch:not(:focus-within) .lang-opt.active::after {
+    content: "▾"; margin-left: .35rem; font-size: .9em; line-height: 1; opacity: .75;
+  }
+  .lang-switch:focus-within .lang-opt:not(.active) { display: inline-flex; }
+  /* déplié, la liste sort du flux pour ne pas repousser la navigation */
+  .lang-switch:focus-within {
+    position: absolute; right: 0; z-index: 40;
+    background: var(--bg); border-radius: 999px;
+  }
+}
