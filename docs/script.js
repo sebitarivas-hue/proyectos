@@ -117,6 +117,96 @@
 
   var PROJECTS = [
     {
+      slug: "salamandres", title: "We Expected the Disaster…",
+      banner: "assets/projects/salamandres/affiche.jpg",
+      titleHtml: "We Expected the Disaster… <span class=\"it\">but not the salamanders!</span>",
+      photo: "assets/projects/salamandres.jpg",
+      tag: { fr: "Accompagnement STOPERA · Création 2027", es: "Acompañamiento STOPERA · Estreno 2027", en: "STOPERA support · Premiere 2027", zh: "STOPERA 陪伴 · 2027 首演", it: "Accompagnamento STOPERA · Prima 2027" },
+      short: { fr: "Opéra politique & écologique de - porte renaud - (Cie Trilobite).", es: "Ópera política y ecológica de - porte renaud - (Cie Trilobite).", en: "A political, ecological opera by - porte renaud - (Cie Trilobite).", zh: "- porte renaud -（Cie Trilobite）的政治与生态歌剧。", it: "Opera politica & ecologica di - porte renaud - (Cie Trilobite)." },
+      pitch: {
+        fr: "Opéra politique et écologique de <strong>- porte renaud -</strong>, d'après <em>La Guerre des salamandres</em> de Karel Čapek : une humanité productiviste exploite des salamandres bâtisseuses, qui finissent par se soulever. Extractivisme, crise écologique et luttes de classes se répondent dans une fable pour notre présent. Trois actes, 2h25, onze voix et trois musiciens. Porté par la <strong>Cie Trilobite</strong>, le projet est accompagné par STOPERA! dans une première phase de développement, en amont de sa création au festival <strong>Tête à Tête</strong> (Londres) en 2027.",
+        es: "Ópera política y ecológica de <strong>- porte renaud -</strong>, a partir de <em>La guerra de las salamandras</em> de Karel Čapek: una humanidad productivista explota a unas salamandras constructoras que terminan por sublevarse. Extractivismo, crisis ecológica y luchas de clases dialogan en una fábula para nuestro presente. Tres actos, 2h25, once voces y tres músicos. Impulsado por la <strong>Cie Trilobite</strong>, el proyecto es acompañado por STOPERA! en una primera fase de desarrollo, antes de su estreno en el festival <strong>Tête à Tête</strong> (Londres) en 2027.",
+        en: "A political, ecological opera by <strong>- porte renaud -</strong>, after Karel Čapek's <em>War with the Newts</em>: a productivist humanity exploits builder-salamanders who eventually rise up. Extractivism, ecological crisis and class struggle echo one another in a fable for our present. Three acts, 2h25, eleven voices and three musicians. Driven by <strong>Cie Trilobite</strong>, the project is accompanied by STOPERA! in a first development phase, ahead of its premiere at the <strong>Tête à Tête</strong> festival (London) in 2027.",
+        zh: "<strong>- porte renaud -</strong> 的政治与生态歌剧，取材自卡雷尔·恰佩克的《鲵鱼之乱》：生产至上的人类奴役善于建造的鲵鱼，鲵鱼终而起义。攫取主义、生态危机与阶级斗争在一则映照当下的寓言中相互回响。三幕，2 小时 25 分，十一个声部与三位乐手。项目由 <strong>Cie Trilobite</strong> 推动，STOPERA! 在首个发展阶段予以陪伴，先于 2027 年在伦敦 <strong>Tête à Tête</strong> 音乐节首演。", it: "Opera politica ed ecologica di <strong>- porte renaud -</strong>, da <em>La guerra delle salamandre</em> di Karel Čapek: un'umanità produttivista sfrutta salamandre costruttrici, che finiscono per sollevarsi. Estrattivismo, crisi ecologica e lotte di classe si rispondono in una favola per il nostro presente. Tre atti, 2h25, undici voci e tre musicisti. Portato dalla <strong>Cie Trilobite</strong>, il progetto è accompagnato da STOPERA! in una prima fase di sviluppo, in vista della sua prima al festival <strong>Tête à Tête</strong> (Londra) nel 2027." },
+      body: [
+        { fr: "Au cœur du projet, un travail de terrain avec les populations. Docteur en philosophie engagé dans l'éducation populaire, - porte renaud - mène de 2021 à 2026 une recherche-action dans le quartier Briand, à Mulhouse : des centaines d'heures d'ateliers, d'animation, d'échanges et de répétitions, pour former une véritable « communauté esthétique » (thèse 2025, lecture située de John Dewey). Les interprètes n'y forment pas un chœur au sens traditionnel — ils et elles incarnent cette communauté. La scénographie prolonge la démarche : les matériaux sont collectés sur place, avec les habitant·es et les associations locales, à chaque lieu d'accueil — réemploi écologique et ancrage territorial concret.",
+          es: "En el corazón del proyecto, un trabajo de campo con las poblaciones. Doctor en filosofía comprometido con la educación popular, - porte renaud - lleva de 2021 a 2026 una investigación-acción en el barrio Briand, en Mulhouse: cientos de horas de talleres, animación, intercambios y ensayos, para formar una verdadera « comunidad estética » (tesis 2025, lectura situada de John Dewey). Los intérpretes no forman un coro en el sentido tradicional: encarnan esa comunidad. La escenografía prolonga el enfoque: los materiales se recogen in situ, con los habitantes y las asociaciones locales, en cada lugar de acogida — reutilización ecológica y arraigo territorial concreto.",
+          en: "At the heart of the project, fieldwork with communities. A doctor of philosophy committed to popular education, - porte renaud - has led, from 2021 to 2026, an action-research project in the Briand neighbourhood of Mulhouse: hundreds of hours of workshops, facilitation, exchanges and rehearsals, to form a genuine “aesthetic community” (PhD 2025, a situated reading of John Dewey). The performers are not a chorus in the traditional sense — they embody that community. The set extends the approach: materials are gathered on site, with residents and local associations, at each host venue — ecological re-use and concrete local roots.",
+          zh: "项目的核心，是与民众的在地工作。作为投身平民教育的哲学博士，- porte renaud - 从 2021 至 2026 年在米卢斯的 Briand 街区开展行动研究：数百小时的工作坊、带动、交流与排练，以形成一个真正的「审美共同体」（2025 年博士论文，对约翰·杜威的情境化解读）。演出者并非传统意义上的合唱队——他们体现着这一共同体。舞美延续了这一路径：材料在每个接待地就地采集，与居民和本地社团一同完成——生态再利用与具体的在地扎根。", it: "Al cuore del progetto, un lavoro sul campo con gli abitanti. Dottore in filosofia impegnato nell'educazione popolare, - porte renaud - conduce dal 2021 al 2026 una ricerca-azione nel quartiere Briand, a Mulhouse: centinaia di ore di laboratori, animazione, scambi e prove, per formare una vera «comunità estetica» (tesi 2025, lettura situata di John Dewey). Gli interpreti non vi formano un coro in senso tradizionale — incarnano quella comunità. La scenografia prolunga l'approccio: i materiali sono raccolti sul posto, con gli abitanti e le associazioni locali, in ogni spazio ospite — riuso ecologico e radicamento territoriale concreto." }
+      ],
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra politique & écologique", es: "Ópera política & ecológica", en: "Political & ecological opera", zh: "政治与生态歌剧", it: "Opera politica & ecologica" } },
+        { k: { fr: "D'après", es: "A partir de", en: "After", zh: "取材自", it: "Da" }, v: { fr: "La Guerre des salamandres — Karel Čapek", es: "La guerra de las salamandras — Karel Čapek", en: "War with the Newts — Karel Čapek", zh: "《鲵鱼之乱》— 卡雷尔·恰佩克", it: "La guerra delle salamandre — Karel Čapek" } },
+        { k: { fr: "Format", es: "Formato", en: "Format", zh: "形制", it: "Formato" }, v: { fr: "3 actes · 2h25 · 11 voix + 3 musiciens", es: "3 actos · 2h25 · 11 voces + 3 músicos", en: "3 acts · 2h25 · 11 voices + 3 musicians", zh: "3 幕 · 2 小时 25 分 · 11 声部 + 3 乐手", it: "3 atti · 2h25 · 11 voci + 3 musicisti" } },
+        { k: { fr: "Compagnie", es: "Compañía", en: "Company", zh: "剧团", it: "Compagnia" }, v: "Cie Trilobite — - porte renaud -" },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: { fr: "Festival Tête à Tête (Londres), 2027", es: "Festival Tête à Tête (Londres), 2027", en: "Tête à Tête festival (London), 2027", zh: "Tête à Tête 音乐节（伦敦），2027", it: "Festival Tête à Tête (Londra), 2027" } },
+        { k: { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色", it: "Ruolo di STOPERA!" }, v: { fr: "Accompagnement & développement", es: "Acompañamiento & desarrollo", en: "Support & development", zh: "陪伴与发展", it: "Accompagnamento & sviluppo" } }
+      ],
+      credits: [
+        { role: { fr: "Musique, texte & mise en scène", es: "Música, texto & dirección", en: "Music, text & staging", zh: "音乐、文本与导演", it: "Musica, testo & regia" }, who: "- porte renaud -" },
+        { role: { fr: "Piano & direction musicale", es: "Piano & dirección musical", en: "Piano & musical direction", zh: "钢琴与音乐总监", it: "Pianoforte & direzione musicale" }, who: "Rebeca Omordia" },
+        { role: { fr: "Dramaturgie", es: "Dramaturgia", en: "Dramaturgy", zh: "戏剧构作", it: "Drammaturgia" }, who: "Jean Haderer" },
+        { role: { fr: "Violoncelle", es: "Violonchelo", en: "Cello", zh: "大提琴", it: "Violoncello" }, who: "Sylvain Bolz" },
+        { role: { fr: "Flûte", es: "Flauta", en: "Flute", zh: "长笛", it: "Flauto" }, who: "Camille Moisson-Bonnevie" },
+        { role: { fr: "Performeur·ses vocaux·ales", es: "Intérpretes vocales", en: "Vocal performers", zh: "声乐表演者", it: "Performer vocali" }, who: "Laurent Deleuil, Stéphanie Boré, Valeria Altavar, Ariane-Olympe Girard, Florence Gelas" },
+        { role: { fr: "Costumes", es: "Vestuario", en: "Costumes", zh: "服装", it: "Costumi" }, who: "Evelyne Moisson-Bonnevie" }
+      ],
+      partners: ["Cie Trilobite", "Festival Tête à Tête — Londres", "Éditions Lacroch'", "STOPERA!"],
+      diffusion: {
+        fr: "Créé au sein de la Cie Trilobite, We Expected the Disaster… est programmé en création mondiale au festival Tête à Tête (Londres) en 2027. STOPERA! en accompagne une première phase de développement : structuration financière et budget de production, casting des postes techniques, communication et mise en réseau, en vue de la diffusion en France, en Europe et en Amérique latine.",
+        es: "Creada en el seno de la Cie Trilobite, We Expected the Disaster… está programada como estreno mundial en el festival Tête à Tête (Londres) en 2027. STOPERA! acompaña una primera fase de desarrollo: estructuración financiera y presupuesto de producción, casting de los puestos técnicos, comunicación y puesta en red, con vistas a la difusión en Francia, Europa y América Latina.",
+        en: "Created within Cie Trilobite, We Expected the Disaster… is programmed for its world premiere at the Tête à Tête festival (London) in 2027. STOPERA! accompanies a first development phase: financial structuring and production budget, casting of the technical roles, communication and networking, towards diffusion in France, Europe and Latin America.",
+        zh: "《We Expected the Disaster…》由 Cie Trilobite 创作，定于 2027 年在伦敦 Tête à Tête 音乐节世界首演。STOPERA! 陪伴其首个发展阶段：财务结构与制作预算、技术岗位选角、传播与人脉搭建，以推动其在法国、欧洲与拉丁美洲的巡演。", it: "Creato in seno alla Cie Trilobite, We Expected the Disaster… è programmato in prima mondiale al festival Tête à Tête (Londra) nel 2027. STOPERA! ne accompagna una prima fase di sviluppo: strutturazione finanziaria e budget di produzione, selezione dei ruoli tecnici, comunicazione e messa in rete, in vista della distribuzione in Francia, in Europa e in America latina." },
+      relations: [
+        { label: { fr: "- porte renaud -", es: "- porte renaud -", en: "- porte renaud -", zh: "- porte renaud -", it: "- porte renaud -" }, href: "artists/porte-renaud/" },
+        { label: { fr: "Cie Trilobite", es: "Cie Trilobite", en: "Cie Trilobite", zh: "Cie Trilobite", it: "Cie Trilobite" }, url: "https://cietrilobite.org" },
+        { label: { fr: "Festival Tête à Tête — Londres", es: "Festival Tête à Tête — Londres", en: "Tête à Tête festival — London", zh: "Tête à Tête 音乐节 — 伦敦", it: "Festival Tête à Tête — Londra" }, url: "https://www.tete-a-tete.org.uk" },
+        { label: { fr: "Éditions Lacroch'", es: "Éditions Lacroch'", en: "Éditions Lacroch'", zh: "Éditions Lacroch'", it: "Éditions Lacroch'" }, url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
+        { label: { fr: "Futurs Composés", es: "Futurs Composés", en: "Futurs Composés", zh: "Futurs Composés", it: "Futurs Composés" }, url: "https://www.futurscomposes.com" },
+        { label: { fr: "Sebastian Rivas", es: "Sebastian Rivas", en: "Sebastian Rivas", zh: "Sebastian Rivas", it: "Sebastian Rivas" }, href: "artists/sebastian-rivas/" },
+        { label: { fr: "Écrire à la compagnie", es: "Escribir a la compañía", en: "Contact the company", zh: "联系剧团", it: "Scrivere alla compagnia" }, url: "mailto:opera@cietrilobite.org" }
+      ],
+      links: [
+        { label: "cietrilobite.org", url: "https://cietrilobite.org" },
+        { label: "porterenaud.com", url: "https://porterenaud.com" },
+        { label: "- porte renaud - — éditions Lacroch'", url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
+        { label: "Tête à Tête — The Opera Festival", url: "https://www.tete-a-tete.org.uk" }
+      ],
+      gallery: [
+        { src: "assets/projects/salamandres/01-salamandre.jpg", alt: "We Expected the Disaster… but not the salamanders! — la créature salamandre (Cie Trilobite). Photo Claire Shovelton." },
+        { src: "assets/projects/salamandres/02-plateau-acte1.jpg", alt: "Modélisation du plateau, acte 1 — IA et photomontage." },
+        { src: "assets/projects/salamandres/03-trio.jpg", alt: "We Expected the Disaster… — en scène. Photo Claire Shovelton." },
+        { src: "assets/projects/salamandres/04-monologue.jpg", alt: "We Expected the Disaster… — monologue. Photo Claire Shovelton." }
+      ],
+      note: { fr: "Projet externe accompagné par STOPERA! (première phase de développement, 2026). Création mondiale au festival Tête à Tête (Londres), 2027. Compagnie soutenue historiquement par la DRAC Grand Est ; œuvre éditée chez Lacroch' (catalogue Semifuza). Photos du spectacle : Claire Shovelton ; modélisation du plateau : IA et photomontage.", es: "Proyecto externo acompañado por STOPERA! (primera fase de desarrollo, 2026). Estreno mundial en el festival Tête à Tête (Londres), 2027. Compañía apoyada históricamente por la DRAC Grand Est; obra editada por Lacroch' (catálogo Semifuza). Fotos del espectáculo: Claire Shovelton; modelización del escenario: IA y fotomontaje.", en: "External project accompanied by STOPERA! (first development phase, 2026). World premiere at the Tête à Tête festival (London), 2027. Company historically supported by DRAC Grand Est; work published by Lacroch' (Semifuza catalogue). Performance photos: Claire Shovelton; stage modelling: AI and photomontage.", zh: "由 STOPERA! 陪伴的外部项目（首个发展阶段，2026）。2027 年在伦敦 Tête à Tête 音乐节世界首演。剧团长期获 DRAC Grand Est 支持；作品由 Lacroch' 出版（Semifuza 目录）。演出照片：Claire Shovelton；舞台建模：AI 与照片蒙太奇。", it: "Progetto esterno accompagnato da STOPERA! (prima fase di sviluppo, 2026). Prima mondiale al festival Tête à Tête (Londra), 2027. Compagnia sostenuta storicamente dalla DRAC Grand Est; opera pubblicata da Lacroch' (catalogo Semifuza). Foto dello spettacolo: Claire Shovelton; modellazione della scena: IA e fotomontaggio." }
+    },
+    {
+      slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
+      photo: "assets/projects/mamma-roma.jpg",
+      financeurs: ["CETC — Teatro Colón"],
+      tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月", it: "Prima · luglio 2027" },
+      short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。", it: "Opera intorno a un tavolo che diventa tomba." },
+      pitch: {
+        fr: "Opéra construit autour d'une grande table carrée qui se transforme lentement en tombeau. Au CETC du Teatro Colón — nef souterraine entourée de chapelles —, le public se fait face de part et d'autre de l'espace central : la mort d'Ettore rejoue la <em>Lamentation sur le Christ mort</em> de Mantegna que Pasolini cite dans le film. Tout le dispositif est purement acoustique, sans amplification : trois percussionnistes actionnent à vue les mécanismes de la table, opérateurs d'un sacrifice où le banquet, la cérémonie et la mort deviennent une seule et même chose.",
+        es: "Ópera construida alrededor de una gran mesa cuadrada que lentamente se transforma en tumba. En el CETC del Teatro Colón —nave subterránea rodeada de capillas—, el público se enfrenta entre sí a través del espacio central: la muerte de Ettore retoma la <em>Lamentación sobre Cristo muerto</em> de Mantegna que Pasolini cita en la película. Todo el dispositivo es puramente acústico, sin amplificación: tres percusionistas accionan a la vista los mecanismos de la mesa, operadores de un sacrificio donde el banquete, la ceremonia y la muerte terminan siendo una misma cosa.",
+        en: "An opera built around a large square table that slowly turns into a tomb. At the CETC of the Teatro Colón — an underground nave ringed with side chapels — the audience faces itself across the central space: Ettore's death restages Mantegna's <em>Lamentation over the Dead Christ</em>, quoted by Pasolini in the film. The whole device is purely acoustic, without amplification: three percussionists operate the table's mechanisms in full view, operators of a sacrifice in which banquet, ceremony and death become one and the same.",
+        zh: "一部围绕一张方形大桌展开的歌剧，桌子缓缓化为坟墓。在 Teatro Colón 的 CETC——一座被侧礼拜堂环绕的地下中殿——观众隔着中央空间彼此相望：Ettore 之死重现了帕索里尼在影片中引用的曼特尼亚《哀悼基督》。整个装置纯然声学、不加扩音：三位打击乐手当众操作餐桌机械，成为献祭的执行者，让宴席、仪式与死亡合为一体。", it: "Opera costruita intorno a un grande tavolo quadrato che si trasforma lentamente in tomba. Al CETC del Teatro Colón — navata sotterranea circondata da cappelle —, il pubblico si fronteggia ai due lati dello spazio centrale: la morte di Ettore rimette in scena il <em>Cristo morto</em> di Mantegna che Pasolini cita nel film. Tutto il dispositivo è puramente acustico, senza amplificazione: tre percussionisti azionano a vista i meccanismi del tavolo, operatori di un sacrificio dove il banchetto, la cerimonia e la morte diventano una sola e medesima cosa." },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧", it: "Opera" } },
+        { k: { fr: "D'après", es: "Según", en: "After", zh: "改编自", it: "Da" }, v: "Pier Paolo Pasolini" },
+        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演", it: "Regia" }, v: "Martin Bauer" },
+        { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "场地", it: "Luogo" }, v: { fr: "CETC — Teatro Colón", es: "CETC — Teatro Colón", en: "CETC — Teatro Colón", zh: "CETC — 科隆剧院", it: "CETC — Teatro Colón" } },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: { fr: "Juillet 2027", es: "Julio 2027", en: "July 2027", zh: "2027 年 7 月", it: "Luglio 2027" } },
+        { k: { fr: "Dispositif", es: "Dispositivo", en: "Set-up", zh: "装置", it: "Dispositivo" }, v: { fr: "Acoustique, sans amplification", es: "Acústico, sin amplificación", en: "Acoustic, no amplification", zh: "纯声学，无扩音", it: "Acustico, senza amplificazione" } }
+      ],
+      credits: [
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐", it: "Musica" }, who: "Sebastian Rivas" },
+        { role: { fr: "Mise en scène & scénographie", es: "Dirección & escenografía", en: "Staging & set design", zh: "导演与舞台设计", it: "Regia & scenografia" }, who: "Martin Bauer" },
+        { role: { fr: "Percussions", es: "Percusión", en: "Percussion", zh: "打击乐", it: "Percussioni" }, who: { fr: "Trois percussionnistes", es: "Tres percusionistas", en: "Three percussionists", zh: "三位打击乐手", it: "Tre percussionisti" } }
+      ],
+      partners: ["CETC — Teatro Colón (Buenos Aires)"]
+    },
+    {
       slug: "ooo", title: "OOO", titleHtml: "OOO", photo: "assets/projects/ooo.jpg", video: "XC1LQp8Dq6U",
       tag: { fr: "Création 2025 · Teatro Colón", es: "Estreno 2025 · Teatro Colón", en: "Premiere 2025 · Teatro Colón", zh: "2025 首演 · 科隆剧院", it: "Prima 2025 · Teatro Colón" },
       short: { fr: "Un environnement opératique post-humain.", es: "Un entorno operístico posthumano.", en: "A post-human operatic environment.", zh: "一个后人类的歌剧环境。", it: "Un ambiente operistico post-umano." },
@@ -186,129 +276,6 @@
         { src: "assets/projects/ooo/ooo-lyon.jpg", alt: "OOO — version Lyon (GRAME)" }
       ],
       note: { fr: "Création mondiale au CETC — Teatro Colón (Buenos Aires), 2–10 septembre 2025. Développée en résidence au GRAME (Lyon). Photos : Lucía Rivero. Bande-annonce ci-dessus.", es: "Estreno mundial en el CETC — Teatro Colón (Buenos Aires), 2–10 de septiembre de 2025. Desarrollada en residencia en el GRAME (Lyon). Fotos: Lucía Rivero. Tráiler arriba.", en: "World premiere at the CETC — Teatro Colón (Buenos Aires), 2–10 September 2025. Developed in residency at GRAME (Lyon). Photos: Lucía Rivero. Trailer above.", zh: "于 CETC — 科隆剧院（布宜诺斯艾利斯）世界首演，2025 年 9 月 2–10 日。曾于里昂 GRAME 驻地开发。摄影：Lucía Rivero。预告片见上方。", it: "Prima mondiale al CETC — Teatro Colón (Buenos Aires), 2–10 settembre 2025. Sviluppata in residenza al GRAME (Lione). Foto: Lucía Rivero. Trailer qui sopra." }
-    },
-    {
-      slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.jpg",
-      tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演", it: "Prima 2026" },
-      short: { fr: "Cycle de dix madrigaux pour six voix.", es: "Ciclo de diez madrigales para seis voces.", en: "A cycle of ten madrigals for six voices.", zh: "为六个声部创作的十首牧歌套曲。", it: "Ciclo di dieci madrigali per sei voci." },
-      pitch: {
-        fr: "Cycle de dix madrigaux pour six voix qui explore la guerre, la mémoire et l'effritement du langage. Un parcours multilingue et polyphonique, miroir sonore des déplacements, des traumas et des résistances intimes.",
-        es: "Ciclo de diez madrigales para seis voces que explora la guerra, la memoria y la erosión del lenguaje. Un recorrido multilingüe y polifónico, espejo sonoro de los desplazamientos, los traumas y las resistencias íntimas.",
-        en: "A cycle of ten madrigals for six voices exploring war, memory and the erosion of language. A multilingual, polyphonic journey — a sonic mirror of displacement, trauma and intimate resistance.",
-        zh: "为六个声部创作的十首牧歌套曲，探索战争、记忆与语言的崩解。一段多语、复调的旅程——流离、创伤与私密抵抗的声音之镜。", it: "Ciclo di dieci madrigali per sei voci che esplora la guerra, la memoria e lo sgretolarsi del linguaggio. Un percorso multilingue e polifonico, specchio sonoro degli spostamenti, dei traumi e delle resistenze intime." },
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Cycle vocal", es: "Ciclo vocal", en: "Vocal cycle", zh: "声乐套曲", it: "Ciclo vocale" } },
-        { k: { fr: "Effectif", es: "Formación", en: "Forces", zh: "编制", it: "Organico" }, v: { fr: "6 voix", es: "6 voces", en: "6 voices", zh: "6 个声部", it: "6 voci" } },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: "2026" }
-      ],
-      credits: [
-        { role: { fr: "Composition", es: "Composición", en: "Composition", zh: "作曲", it: "Composizione" }, who: "Sebastian Rivas" },
-        { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本", it: "Testi" }, who: "Celan · Kertész · Pasolini · Pizarnik · Farrokhzad · Akhmatova · Beckett · Shakespeare" },
-        { role: { fr: "Ensemble", es: "Ensemble", en: "Ensemble", zh: "乐团", it: "Ensemble" }, who: "Les Métaboles" },
-        { role: { fr: "Direction", es: "Dirección", en: "Conducting", zh: "指挥", it: "Direzione" }, who: "Léo Warynski" }
-      ],
-      partners: ["Les Métaboles", "Radio France — France Musique (Création Mondiale)"],
-      note: { fr: "Première étape de création dans l'émission « Création Mondiale » d'Anne Montaron (France Musique). Distribution et dates en cours de finalisation.", es: "Primera etapa de creación en el programa «Création Mondiale» de Anne Montaron (France Musique). Reparto y fechas en proceso de confirmación.", en: "First creation step in Anne Montaron's “Création Mondiale” programme (France Musique). Cast and dates being finalised.", zh: "首个创作阶段在 Anne Montaron 主持的「Création Mondiale」节目（France Musique）中进行。演员与日期确认中。", it: "Prima tappa di creazione nella trasmissione «Création Mondiale» di Anne Montaron (France Musique). Cast e date in via di definizione." }
-    },
-    {
-      slug: "salamandres", title: "We Expected the Disaster…",
-      banner: "assets/projects/salamandres/affiche.jpg",
-      titleHtml: "We Expected the Disaster… <span class=\"it\">but not the salamanders!</span>",
-      photo: "assets/projects/salamandres.jpg",
-      tag: { fr: "Accompagnement STOPERA · Création 2027", es: "Acompañamiento STOPERA · Estreno 2027", en: "STOPERA support · Premiere 2027", zh: "STOPERA 陪伴 · 2027 首演", it: "Accompagnamento STOPERA · Prima 2027" },
-      short: { fr: "Opéra politique & écologique de - porte renaud - (Cie Trilobite).", es: "Ópera política y ecológica de - porte renaud - (Cie Trilobite).", en: "A political, ecological opera by - porte renaud - (Cie Trilobite).", zh: "- porte renaud -（Cie Trilobite）的政治与生态歌剧。", it: "Opera politica & ecologica di - porte renaud - (Cie Trilobite)." },
-      pitch: {
-        fr: "Opéra politique et écologique de <strong>- porte renaud -</strong>, d'après <em>La Guerre des salamandres</em> de Karel Čapek : une humanité productiviste exploite des salamandres bâtisseuses, qui finissent par se soulever. Extractivisme, crise écologique et luttes de classes se répondent dans une fable pour notre présent. Trois actes, 2h25, onze voix et trois musiciens. Porté par la <strong>Cie Trilobite</strong>, le projet est accompagné par STOPERA! dans une première phase de développement, en amont de sa création au festival <strong>Tête à Tête</strong> (Londres) en 2027.",
-        es: "Ópera política y ecológica de <strong>- porte renaud -</strong>, a partir de <em>La guerra de las salamandras</em> de Karel Čapek: una humanidad productivista explota a unas salamandras constructoras que terminan por sublevarse. Extractivismo, crisis ecológica y luchas de clases dialogan en una fábula para nuestro presente. Tres actos, 2h25, once voces y tres músicos. Impulsado por la <strong>Cie Trilobite</strong>, el proyecto es acompañado por STOPERA! en una primera fase de desarrollo, antes de su estreno en el festival <strong>Tête à Tête</strong> (Londres) en 2027.",
-        en: "A political, ecological opera by <strong>- porte renaud -</strong>, after Karel Čapek's <em>War with the Newts</em>: a productivist humanity exploits builder-salamanders who eventually rise up. Extractivism, ecological crisis and class struggle echo one another in a fable for our present. Three acts, 2h25, eleven voices and three musicians. Driven by <strong>Cie Trilobite</strong>, the project is accompanied by STOPERA! in a first development phase, ahead of its premiere at the <strong>Tête à Tête</strong> festival (London) in 2027.",
-        zh: "<strong>- porte renaud -</strong> 的政治与生态歌剧，取材自卡雷尔·恰佩克的《鲵鱼之乱》：生产至上的人类奴役善于建造的鲵鱼，鲵鱼终而起义。攫取主义、生态危机与阶级斗争在一则映照当下的寓言中相互回响。三幕，2 小时 25 分，十一个声部与三位乐手。项目由 <strong>Cie Trilobite</strong> 推动，STOPERA! 在首个发展阶段予以陪伴，先于 2027 年在伦敦 <strong>Tête à Tête</strong> 音乐节首演。", it: "Opera politica ed ecologica di <strong>- porte renaud -</strong>, da <em>La guerra delle salamandre</em> di Karel Čapek: un'umanità produttivista sfrutta salamandre costruttrici, che finiscono per sollevarsi. Estrattivismo, crisi ecologica e lotte di classe si rispondono in una favola per il nostro presente. Tre atti, 2h25, undici voci e tre musicisti. Portato dalla <strong>Cie Trilobite</strong>, il progetto è accompagnato da STOPERA! in una prima fase di sviluppo, in vista della sua prima al festival <strong>Tête à Tête</strong> (Londra) nel 2027." },
-      body: [
-        { fr: "Au cœur du projet, un travail de terrain avec les populations. Docteur en philosophie engagé dans l'éducation populaire, - porte renaud - mène de 2021 à 2026 une recherche-action dans le quartier Briand, à Mulhouse : des centaines d'heures d'ateliers, d'animation, d'échanges et de répétitions, pour former une véritable « communauté esthétique » (thèse 2025, lecture située de John Dewey). Les interprètes n'y forment pas un chœur au sens traditionnel — ils et elles incarnent cette communauté. La scénographie prolonge la démarche : les matériaux sont collectés sur place, avec les habitant·es et les associations locales, à chaque lieu d'accueil — réemploi écologique et ancrage territorial concret.",
-          es: "En el corazón del proyecto, un trabajo de campo con las poblaciones. Doctor en filosofía comprometido con la educación popular, - porte renaud - lleva de 2021 a 2026 una investigación-acción en el barrio Briand, en Mulhouse: cientos de horas de talleres, animación, intercambios y ensayos, para formar una verdadera « comunidad estética » (tesis 2025, lectura situada de John Dewey). Los intérpretes no forman un coro en el sentido tradicional: encarnan esa comunidad. La escenografía prolonga el enfoque: los materiales se recogen in situ, con los habitantes y las asociaciones locales, en cada lugar de acogida — reutilización ecológica y arraigo territorial concreto.",
-          en: "At the heart of the project, fieldwork with communities. A doctor of philosophy committed to popular education, - porte renaud - has led, from 2021 to 2026, an action-research project in the Briand neighbourhood of Mulhouse: hundreds of hours of workshops, facilitation, exchanges and rehearsals, to form a genuine “aesthetic community” (PhD 2025, a situated reading of John Dewey). The performers are not a chorus in the traditional sense — they embody that community. The set extends the approach: materials are gathered on site, with residents and local associations, at each host venue — ecological re-use and concrete local roots.",
-          zh: "项目的核心，是与民众的在地工作。作为投身平民教育的哲学博士，- porte renaud - 从 2021 至 2026 年在米卢斯的 Briand 街区开展行动研究：数百小时的工作坊、带动、交流与排练，以形成一个真正的「审美共同体」（2025 年博士论文，对约翰·杜威的情境化解读）。演出者并非传统意义上的合唱队——他们体现着这一共同体。舞美延续了这一路径：材料在每个接待地就地采集，与居民和本地社团一同完成——生态再利用与具体的在地扎根。", it: "Al cuore del progetto, un lavoro sul campo con gli abitanti. Dottore in filosofia impegnato nell'educazione popolare, - porte renaud - conduce dal 2021 al 2026 una ricerca-azione nel quartiere Briand, a Mulhouse: centinaia di ore di laboratori, animazione, scambi e prove, per formare una vera «comunità estetica» (tesi 2025, lettura situata di John Dewey). Gli interpreti non vi formano un coro in senso tradizionale — incarnano quella comunità. La scenografia prolunga l'approccio: i materiali sono raccolti sul posto, con gli abitanti e le associazioni locali, in ogni spazio ospite — riuso ecologico e radicamento territoriale concreto." }
-      ],
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra politique & écologique", es: "Ópera política & ecológica", en: "Political & ecological opera", zh: "政治与生态歌剧", it: "Opera politica & ecologica" } },
-        { k: { fr: "D'après", es: "A partir de", en: "After", zh: "取材自", it: "Da" }, v: { fr: "La Guerre des salamandres — Karel Čapek", es: "La guerra de las salamandras — Karel Čapek", en: "War with the Newts — Karel Čapek", zh: "《鲵鱼之乱》— 卡雷尔·恰佩克", it: "La guerra delle salamandre — Karel Čapek" } },
-        { k: { fr: "Format", es: "Formato", en: "Format", zh: "形制", it: "Formato" }, v: { fr: "3 actes · 2h25 · 11 voix + 3 musiciens", es: "3 actos · 2h25 · 11 voces + 3 músicos", en: "3 acts · 2h25 · 11 voices + 3 musicians", zh: "3 幕 · 2 小时 25 分 · 11 声部 + 3 乐手", it: "3 atti · 2h25 · 11 voci + 3 musicisti" } },
-        { k: { fr: "Compagnie", es: "Compañía", en: "Company", zh: "剧团", it: "Compagnia" }, v: "Cie Trilobite — - porte renaud -" },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: { fr: "Festival Tête à Tête (Londres), 2027", es: "Festival Tête à Tête (Londres), 2027", en: "Tête à Tête festival (London), 2027", zh: "Tête à Tête 音乐节（伦敦），2027", it: "Festival Tête à Tête (Londra), 2027" } },
-        { k: { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色", it: "Ruolo di STOPERA!" }, v: { fr: "Accompagnement & développement", es: "Acompañamiento & desarrollo", en: "Support & development", zh: "陪伴与发展", it: "Accompagnamento & sviluppo" } }
-      ],
-      credits: [
-        { role: { fr: "Musique, texte & mise en scène", es: "Música, texto & dirección", en: "Music, text & staging", zh: "音乐、文本与导演", it: "Musica, testo & regia" }, who: "- porte renaud -" },
-        { role: { fr: "Piano & direction musicale", es: "Piano & dirección musical", en: "Piano & musical direction", zh: "钢琴与音乐总监", it: "Pianoforte & direzione musicale" }, who: "Rebeca Omordia" },
-        { role: { fr: "Dramaturgie", es: "Dramaturgia", en: "Dramaturgy", zh: "戏剧构作", it: "Drammaturgia" }, who: "Jean Haderer" },
-        { role: { fr: "Violoncelle", es: "Violonchelo", en: "Cello", zh: "大提琴", it: "Violoncello" }, who: "Sylvain Bolz" },
-        { role: { fr: "Flûte", es: "Flauta", en: "Flute", zh: "长笛", it: "Flauto" }, who: "Camille Moisson-Bonnevie" },
-        { role: { fr: "Performeur·ses vocaux·ales", es: "Intérpretes vocales", en: "Vocal performers", zh: "声乐表演者", it: "Performer vocali" }, who: "Laurent Deleuil, Stéphanie Boré, Valeria Altavar, Ariane-Olympe Girard, Florence Gelas" },
-        { role: { fr: "Costumes", es: "Vestuario", en: "Costumes", zh: "服装", it: "Costumi" }, who: "Evelyne Moisson-Bonnevie" }
-      ],
-      partners: ["Cie Trilobite", "Festival Tête à Tête — Londres", "Éditions Lacroch'", "STOPERA!"],
-      diffusion: {
-        fr: "Créé au sein de la Cie Trilobite, We Expected the Disaster… est programmé en création mondiale au festival Tête à Tête (Londres) en 2027. STOPERA! en accompagne une première phase de développement : structuration financière et budget de production, casting des postes techniques, communication et mise en réseau, en vue de la diffusion en France, en Europe et en Amérique latine.",
-        es: "Creada en el seno de la Cie Trilobite, We Expected the Disaster… está programada como estreno mundial en el festival Tête à Tête (Londres) en 2027. STOPERA! acompaña una primera fase de desarrollo: estructuración financiera y presupuesto de producción, casting de los puestos técnicos, comunicación y puesta en red, con vistas a la difusión en Francia, Europa y América Latina.",
-        en: "Created within Cie Trilobite, We Expected the Disaster… is programmed for its world premiere at the Tête à Tête festival (London) in 2027. STOPERA! accompanies a first development phase: financial structuring and production budget, casting of the technical roles, communication and networking, towards diffusion in France, Europe and Latin America.",
-        zh: "《We Expected the Disaster…》由 Cie Trilobite 创作，定于 2027 年在伦敦 Tête à Tête 音乐节世界首演。STOPERA! 陪伴其首个发展阶段：财务结构与制作预算、技术岗位选角、传播与人脉搭建，以推动其在法国、欧洲与拉丁美洲的巡演。", it: "Creato in seno alla Cie Trilobite, We Expected the Disaster… è programmato in prima mondiale al festival Tête à Tête (Londra) nel 2027. STOPERA! ne accompagna una prima fase di sviluppo: strutturazione finanziaria e budget di produzione, selezione dei ruoli tecnici, comunicazione e messa in rete, in vista della distribuzione in Francia, in Europa e in America latina." },
-      relations: [
-        { label: { fr: "- porte renaud -", es: "- porte renaud -", en: "- porte renaud -", zh: "- porte renaud -", it: "- porte renaud -" }, href: "artists/porte-renaud/" },
-        { label: { fr: "Cie Trilobite", es: "Cie Trilobite", en: "Cie Trilobite", zh: "Cie Trilobite", it: "Cie Trilobite" }, url: "https://cietrilobite.org" },
-        { label: { fr: "Festival Tête à Tête — Londres", es: "Festival Tête à Tête — Londres", en: "Tête à Tête festival — London", zh: "Tête à Tête 音乐节 — 伦敦", it: "Festival Tête à Tête — Londra" }, url: "https://www.tete-a-tete.org.uk" },
-        { label: { fr: "Éditions Lacroch'", es: "Éditions Lacroch'", en: "Éditions Lacroch'", zh: "Éditions Lacroch'", it: "Éditions Lacroch'" }, url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
-        { label: { fr: "Futurs Composés", es: "Futurs Composés", en: "Futurs Composés", zh: "Futurs Composés", it: "Futurs Composés" }, url: "https://www.futurscomposes.com" },
-        { label: { fr: "Sebastian Rivas", es: "Sebastian Rivas", en: "Sebastian Rivas", zh: "Sebastian Rivas", it: "Sebastian Rivas" }, href: "artists/sebastian-rivas/" },
-        { label: { fr: "Écrire à la compagnie", es: "Escribir a la compañía", en: "Contact the company", zh: "联系剧团", it: "Scrivere alla compagnia" }, url: "mailto:opera@cietrilobite.org" }
-      ],
-      links: [
-        { label: "cietrilobite.org", url: "https://cietrilobite.org" },
-        { label: "porterenaud.com", url: "https://porterenaud.com" },
-        { label: "- porte renaud - — éditions Lacroch'", url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
-        { label: "Tête à Tête — The Opera Festival", url: "https://www.tete-a-tete.org.uk" }
-      ],
-      gallery: [
-        { src: "assets/projects/salamandres/01-salamandre.jpg", alt: "We Expected the Disaster… but not the salamanders! — la créature salamandre (Cie Trilobite). Photo Claire Shovelton." },
-        { src: "assets/projects/salamandres/02-plateau-acte1.jpg", alt: "Modélisation du plateau, acte 1 — IA et photomontage." },
-        { src: "assets/projects/salamandres/03-trio.jpg", alt: "We Expected the Disaster… — en scène. Photo Claire Shovelton." },
-        { src: "assets/projects/salamandres/04-monologue.jpg", alt: "We Expected the Disaster… — monologue. Photo Claire Shovelton." }
-      ],
-      note: { fr: "Projet externe accompagné par STOPERA! (première phase de développement, 2026). Création mondiale au festival Tête à Tête (Londres), 2027. Compagnie soutenue historiquement par la DRAC Grand Est ; œuvre éditée chez Lacroch' (catalogue Semifuza). Photos du spectacle : Claire Shovelton ; modélisation du plateau : IA et photomontage.", es: "Proyecto externo acompañado por STOPERA! (primera fase de desarrollo, 2026). Estreno mundial en el festival Tête à Tête (Londres), 2027. Compañía apoyada históricamente por la DRAC Grand Est; obra editada por Lacroch' (catálogo Semifuza). Fotos del espectáculo: Claire Shovelton; modelización del escenario: IA y fotomontaje.", en: "External project accompanied by STOPERA! (first development phase, 2026). World premiere at the Tête à Tête festival (London), 2027. Company historically supported by DRAC Grand Est; work published by Lacroch' (Semifuza catalogue). Performance photos: Claire Shovelton; stage modelling: AI and photomontage.", zh: "由 STOPERA! 陪伴的外部项目（首个发展阶段，2026）。2027 年在伦敦 Tête à Tête 音乐节世界首演。剧团长期获 DRAC Grand Est 支持；作品由 Lacroch' 出版（Semifuza 目录）。演出照片：Claire Shovelton；舞台建模：AI 与照片蒙太奇。", it: "Progetto esterno accompagnato da STOPERA! (prima fase di sviluppo, 2026). Prima mondiale al festival Tête à Tête (Londra), 2027. Compagnia sostenuta storicamente dalla DRAC Grand Est; opera pubblicata da Lacroch' (catalogo Semifuza). Foto dello spettacolo: Claire Shovelton; modellazione della scena: IA e fotomontaggio." }
-    },
-    {
-      slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
-      img: "assets/projects/nous.svg", photo: "assets/projects/nous.jpg",
-      tag: ONGOING,
-      short: { fr: "Opéra de chambre avec Christine Angot.", es: "Ópera de cámara con Christine Angot.", en: "A chamber opera with Christine Angot.", zh: "与 Christine Angot 合作的室内歌剧。", it: "Opera da camera con Christine Angot." },
-      pitch: {
-        fr: "Opéra de chambre né d'une série de conversations avec Christine Angot. Non pas mettre en musique un thème, mais trouver une forme qui accueille ce qui résiste au langage et au récit : la perte de l'innocence, l'envahissement du réel, l'expérience de la fracture intérieure.",
-        es: "Ópera de cámara nacida de una serie de conversaciones con Christine Angot. No poner en música un tema, sino encontrar una forma que acoja lo que resiste al lenguaje y al relato: la pérdida de la inocencia, la invasión de lo real, la fractura interior.",
-        en: "A chamber opera born from a series of conversations with Christine Angot. Not setting a theme to music, but finding a form that holds what resists language and narrative: the loss of innocence, the flooding of the real, the experience of inner fracture.",
-        zh: "一部室内歌剧，源自与 Christine Angot 的一系列对话。并非为主题谱曲，而是寻找一种能容纳那些抗拒语言与叙事之物的形式：纯真的丧失、现实的侵入、内在断裂的体验。", it: "Opera da camera nata da una serie di conversazioni con Christine Angot. Non mettere in musica un tema, ma trovare una forma che accolga ciò che resiste al linguaggio e al racconto: la perdita dell'innocenza, l'invasione del reale, l'esperienza della frattura interiore." },
-      body: [
-        { fr: "Le projet ne part pas d'un livret achevé mais d'une parole vivante. Au fil des rencontres avec Christine Angot, ce sont des fragments — phrases dites, reprises, abandonnées, des silences, des hésitations — qui deviennent la matière première de l'œuvre. La voix de l'écrivaine, sa manière de buter sur certains mots, de revenir sur ce qui ne peut pas se dire, oriente l'écriture musicale autant que le texte lui-même.",
-          es: "El proyecto no parte de un libreto acabado sino de una palabra viva. A lo largo de los encuentros con Christine Angot, son fragmentos —frases dichas, retomadas, abandonadas, silencios, vacilaciones— los que se vuelven la materia prima de la obra. La voz de la escritora, su manera de tropezar con ciertas palabras, de volver sobre lo que no puede decirse, orienta la escritura musical tanto como el propio texto.",
-          en: "The project does not begin from a finished libretto but from living speech. Across the encounters with Christine Angot, it is fragments — sentences spoken, taken up again, abandoned, silences, hesitations — that become the work's raw material. The writer's voice, the way she stumbles on certain words and returns to what cannot be said, shapes the musical writing as much as the text itself.",
-          zh: "这个项目并非始于一部完成的脚本，而是源于鲜活的言语。在与 Christine Angot 的多次相遇中，正是那些片段——说出的、重提的、舍弃的句子，沉默与迟疑——成为作品的原材料。作家的声音，她在某些词语上的踌躇、对那些无法言说之物的反复回返，与文本本身同样地塑造着音乐书写。", it: "Il progetto non parte da un libretto compiuto ma da una parola viva. Nel corso degli incontri con Christine Angot, sono frammenti — frasi dette, riprese, abbandonate, silenzi, esitazioni — a diventare la materia prima dell'opera. La voce della scrittrice, il suo modo di inciampare su certe parole, di tornare su ciò che non si può dire, orienta la scrittura musicale quanto il testo stesso." },
-        { fr: "L'innocence n'est pas ici une nostalgie ni un état perdu à reconquérir, mais un seuil : l'instant où le monde cesse d'être évident, où l'enfance se heurte à ce qu'elle ne pouvait pas prévoir. L'opéra cherche à tenir ce seuil sur le plateau — un espace resserré, un petit ensemble instrumental, une électronique discrète — pour que l'auditeur soit au plus près de la fracture, sans explication ni mise à distance.",
-          es: "La inocencia no es aquí una nostalgia ni un estado perdido que reconquistar, sino un umbral: el instante en que el mundo deja de ser evidente, en que la infancia choca con lo que no podía prever. La ópera busca sostener ese umbral en escena —un espacio reducido, un pequeño conjunto instrumental, una electrónica discreta— para que el oyente esté lo más cerca posible de la fractura, sin explicación ni distancia.",
-          en: "Innocence here is neither nostalgia nor a lost state to be reconquered, but a threshold: the moment when the world ceases to be self-evident, when childhood collides with what it could not foresee. The opera seeks to hold that threshold on stage — a tight space, a small instrumental ensemble, discreet electronics — so that the listener stands as close as possible to the fracture, without explanation or distance.",
-          zh: "此处的纯真既非怀旧，也不是有待重夺的失落状态，而是一道门槛：世界不再不言自明的那一刻，童年撞上它无法预见之物的那一刻。这部歌剧力图在舞台上守住这道门槛——一个收紧的空间、一支小型器乐组、克制的电子声响——让听者尽可能贴近那道断裂，无需解释，也不被拉开距离。", it: "L'innocenza non è qui una nostalgia né uno stato perduto da riconquistare, ma una soglia: l'istante in cui il mondo smette di essere evidente, in cui l'infanzia urta contro ciò che non poteva prevedere. L'opera cerca di tenere questa soglia in scena — uno spazio ristretto, un piccolo ensemble strumentale, un'elettronica discreta — perché l'ascoltatore sia il più vicino possibile alla frattura, senza spiegazione né distanza." }
-      ],
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra de chambre", es: "Ópera de cámara", en: "Chamber opera", zh: "室内歌剧", it: "Opera da camera" } },
-        { k: { fr: "Origine", es: "Origen", en: "Origin", zh: "缘起", it: "Origine" }, v: { fr: "Conversations avec Christine Angot", es: "Conversaciones con Christine Angot", en: "Conversations with Christine Angot", zh: "与 Christine Angot 的对话", it: "Conversazioni con Christine Angot" } },
-        { k: { fr: "Thèmes", es: "Temas", en: "Themes", zh: "主题", it: "Temi" }, v: { fr: "Perte de l'innocence · fracture intérieure", es: "Pérdida de la inocencia · fractura interior", en: "Loss of innocence · inner fracture", zh: "纯真的丧失 · 内在断裂", it: "Perdita dell'innocenza · frattura interiore" } },
-        { k: { fr: "Effectif", es: "Plantilla", en: "Forces", zh: "编制", it: "Organico" }, v: { fr: "Voix · ensemble de chambre · électronique", es: "Voz · conjunto de cámara · electrónica", en: "Voice · chamber ensemble · electronics", zh: "人声 · 室内乐组 · 电子声响", it: "Voce · ensemble da camera · elettronica" } },
-        { k: { fr: "Avec", es: "Con", en: "With", zh: "合作", it: "Con" }, v: "Christine Angot" },
-        { k: { fr: "Statut", es: "Estado", en: "Status", zh: "状态", it: "Stato" }, v: ONGOING }
-      ],
-      credits: [
-        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐", it: "Musica" }, who: "Sebastian Rivas" },
-        { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本", it: "Testi" }, who: "Christine Angot" }
-      ],
-      partners: [],
-      financeurs: ["CNM"],
-      note: { fr: "Bourse CNM. Coproductions en cours de montage.", es: "Beca CNM. Coproducciones en construcción.", en: "CNM grant. Coproductions being assembled.", zh: "CNM 资助。联合制作筹备中。", it: "Borsa CNM. Coproduzioni in fase di costruzione." }
     },
     {
       slug: "rut", title: "input / body / output", titleHtml: "<span class=\"it\">input / body / output</span>",
@@ -395,6 +362,65 @@
       note: { fr: "Création au Sporting Monte-Carlo (Monaco), 2021. Captation disponible sur notre chaîne YouTube.", es: "Estreno en el Sporting Monte-Carlo (Mónaco), 2021. Grabación disponible en nuestro canal de YouTube.", en: "Premiered at the Sporting Monte-Carlo (Monaco), 2021. Recording available on our YouTube channel.", zh: "2021 年于蒙特卡洛 Sporting（摩纳哥）首演。录像见我们的 YouTube 频道。", it: "Prima al Sporting Monte-Carlo (Monaco), 2021. Registrazione disponibile sul nostro canale YouTube." }
     },
     {
+      slug: "war-madrigals", title: "War Madrigals", img: "assets/projects/war-madrigals.svg", photo: "assets/projects/war-madrigals.jpg",
+      tag: { fr: "Création 2026", es: "Estreno 2026", en: "Premiere 2026", zh: "2026 首演", it: "Prima 2026" },
+      short: { fr: "Cycle de dix madrigaux pour six voix.", es: "Ciclo de diez madrigales para seis voces.", en: "A cycle of ten madrigals for six voices.", zh: "为六个声部创作的十首牧歌套曲。", it: "Ciclo di dieci madrigali per sei voci." },
+      pitch: {
+        fr: "Cycle de dix madrigaux pour six voix qui explore la guerre, la mémoire et l'effritement du langage. Un parcours multilingue et polyphonique, miroir sonore des déplacements, des traumas et des résistances intimes.",
+        es: "Ciclo de diez madrigales para seis voces que explora la guerra, la memoria y la erosión del lenguaje. Un recorrido multilingüe y polifónico, espejo sonoro de los desplazamientos, los traumas y las resistencias íntimas.",
+        en: "A cycle of ten madrigals for six voices exploring war, memory and the erosion of language. A multilingual, polyphonic journey — a sonic mirror of displacement, trauma and intimate resistance.",
+        zh: "为六个声部创作的十首牧歌套曲，探索战争、记忆与语言的崩解。一段多语、复调的旅程——流离、创伤与私密抵抗的声音之镜。", it: "Ciclo di dieci madrigali per sei voci che esplora la guerra, la memoria e lo sgretolarsi del linguaggio. Un percorso multilingue e polifonico, specchio sonoro degli spostamenti, dei traumi e delle resistenze intime." },
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Cycle vocal", es: "Ciclo vocal", en: "Vocal cycle", zh: "声乐套曲", it: "Ciclo vocale" } },
+        { k: { fr: "Effectif", es: "Formación", en: "Forces", zh: "编制", it: "Organico" }, v: { fr: "6 voix", es: "6 voces", en: "6 voices", zh: "6 个声部", it: "6 voci" } },
+        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: "2026" }
+      ],
+      credits: [
+        { role: { fr: "Composition", es: "Composición", en: "Composition", zh: "作曲", it: "Composizione" }, who: "Sebastian Rivas" },
+        { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本", it: "Testi" }, who: "Celan · Kertész · Pasolini · Pizarnik · Farrokhzad · Akhmatova · Beckett · Shakespeare" },
+        { role: { fr: "Ensemble", es: "Ensemble", en: "Ensemble", zh: "乐团", it: "Ensemble" }, who: "Les Métaboles" },
+        { role: { fr: "Direction", es: "Dirección", en: "Conducting", zh: "指挥", it: "Direzione" }, who: "Léo Warynski" }
+      ],
+      partners: ["Les Métaboles", "Radio France — France Musique (Création Mondiale)"],
+      note: { fr: "Première étape de création dans l'émission « Création Mondiale » d'Anne Montaron (France Musique). Distribution et dates en cours de finalisation.", es: "Primera etapa de creación en el programa «Création Mondiale» de Anne Montaron (France Musique). Reparto y fechas en proceso de confirmación.", en: "First creation step in Anne Montaron's “Création Mondiale” programme (France Musique). Cast and dates being finalised.", zh: "首个创作阶段在 Anne Montaron 主持的「Création Mondiale」节目（France Musique）中进行。演员与日期确认中。", it: "Prima tappa di creazione nella trasmissione «Création Mondiale» di Anne Montaron (France Musique). Cast e date in via di definizione." }
+    },
+    {
+      slug: "nous", title: "De l'Innocence", titleHtml: "De l'Innocence",
+      img: "assets/projects/nous.svg", photo: "assets/projects/nous.jpg",
+      tag: ONGOING,
+      short: { fr: "Opéra de chambre avec Christine Angot.", es: "Ópera de cámara con Christine Angot.", en: "A chamber opera with Christine Angot.", zh: "与 Christine Angot 合作的室内歌剧。", it: "Opera da camera con Christine Angot." },
+      pitch: {
+        fr: "Opéra de chambre né d'une série de conversations avec Christine Angot. Non pas mettre en musique un thème, mais trouver une forme qui accueille ce qui résiste au langage et au récit : la perte de l'innocence, l'envahissement du réel, l'expérience de la fracture intérieure.",
+        es: "Ópera de cámara nacida de una serie de conversaciones con Christine Angot. No poner en música un tema, sino encontrar una forma que acoja lo que resiste al lenguaje y al relato: la pérdida de la inocencia, la invasión de lo real, la fractura interior.",
+        en: "A chamber opera born from a series of conversations with Christine Angot. Not setting a theme to music, but finding a form that holds what resists language and narrative: the loss of innocence, the flooding of the real, the experience of inner fracture.",
+        zh: "一部室内歌剧，源自与 Christine Angot 的一系列对话。并非为主题谱曲，而是寻找一种能容纳那些抗拒语言与叙事之物的形式：纯真的丧失、现实的侵入、内在断裂的体验。", it: "Opera da camera nata da una serie di conversazioni con Christine Angot. Non mettere in musica un tema, ma trovare una forma che accolga ciò che resiste al linguaggio e al racconto: la perdita dell'innocenza, l'invasione del reale, l'esperienza della frattura interiore." },
+      body: [
+        { fr: "Le projet ne part pas d'un livret achevé mais d'une parole vivante. Au fil des rencontres avec Christine Angot, ce sont des fragments — phrases dites, reprises, abandonnées, des silences, des hésitations — qui deviennent la matière première de l'œuvre. La voix de l'écrivaine, sa manière de buter sur certains mots, de revenir sur ce qui ne peut pas se dire, oriente l'écriture musicale autant que le texte lui-même.",
+          es: "El proyecto no parte de un libreto acabado sino de una palabra viva. A lo largo de los encuentros con Christine Angot, son fragmentos —frases dichas, retomadas, abandonadas, silencios, vacilaciones— los que se vuelven la materia prima de la obra. La voz de la escritora, su manera de tropezar con ciertas palabras, de volver sobre lo que no puede decirse, orienta la escritura musical tanto como el propio texto.",
+          en: "The project does not begin from a finished libretto but from living speech. Across the encounters with Christine Angot, it is fragments — sentences spoken, taken up again, abandoned, silences, hesitations — that become the work's raw material. The writer's voice, the way she stumbles on certain words and returns to what cannot be said, shapes the musical writing as much as the text itself.",
+          zh: "这个项目并非始于一部完成的脚本，而是源于鲜活的言语。在与 Christine Angot 的多次相遇中，正是那些片段——说出的、重提的、舍弃的句子，沉默与迟疑——成为作品的原材料。作家的声音，她在某些词语上的踌躇、对那些无法言说之物的反复回返，与文本本身同样地塑造着音乐书写。", it: "Il progetto non parte da un libretto compiuto ma da una parola viva. Nel corso degli incontri con Christine Angot, sono frammenti — frasi dette, riprese, abbandonate, silenzi, esitazioni — a diventare la materia prima dell'opera. La voce della scrittrice, il suo modo di inciampare su certe parole, di tornare su ciò che non si può dire, orienta la scrittura musicale quanto il testo stesso." },
+        { fr: "L'innocence n'est pas ici une nostalgie ni un état perdu à reconquérir, mais un seuil : l'instant où le monde cesse d'être évident, où l'enfance se heurte à ce qu'elle ne pouvait pas prévoir. L'opéra cherche à tenir ce seuil sur le plateau — un espace resserré, un petit ensemble instrumental, une électronique discrète — pour que l'auditeur soit au plus près de la fracture, sans explication ni mise à distance.",
+          es: "La inocencia no es aquí una nostalgia ni un estado perdido que reconquistar, sino un umbral: el instante en que el mundo deja de ser evidente, en que la infancia choca con lo que no podía prever. La ópera busca sostener ese umbral en escena —un espacio reducido, un pequeño conjunto instrumental, una electrónica discreta— para que el oyente esté lo más cerca posible de la fractura, sin explicación ni distancia.",
+          en: "Innocence here is neither nostalgia nor a lost state to be reconquered, but a threshold: the moment when the world ceases to be self-evident, when childhood collides with what it could not foresee. The opera seeks to hold that threshold on stage — a tight space, a small instrumental ensemble, discreet electronics — so that the listener stands as close as possible to the fracture, without explanation or distance.",
+          zh: "此处的纯真既非怀旧，也不是有待重夺的失落状态，而是一道门槛：世界不再不言自明的那一刻，童年撞上它无法预见之物的那一刻。这部歌剧力图在舞台上守住这道门槛——一个收紧的空间、一支小型器乐组、克制的电子声响——让听者尽可能贴近那道断裂，无需解释，也不被拉开距离。", it: "L'innocenza non è qui una nostalgia né uno stato perduto da riconquistare, ma una soglia: l'istante in cui il mondo smette di essere evidente, in cui l'infanzia urta contro ciò che non poteva prevedere. L'opera cerca di tenere questa soglia in scena — uno spazio ristretto, un piccolo ensemble strumentale, un'elettronica discreta — perché l'ascoltatore sia il più vicino possibile alla frattura, senza spiegazione né distanza." }
+      ],
+      facts: [
+        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra de chambre", es: "Ópera de cámara", en: "Chamber opera", zh: "室内歌剧", it: "Opera da camera" } },
+        { k: { fr: "Origine", es: "Origen", en: "Origin", zh: "缘起", it: "Origine" }, v: { fr: "Conversations avec Christine Angot", es: "Conversaciones con Christine Angot", en: "Conversations with Christine Angot", zh: "与 Christine Angot 的对话", it: "Conversazioni con Christine Angot" } },
+        { k: { fr: "Thèmes", es: "Temas", en: "Themes", zh: "主题", it: "Temi" }, v: { fr: "Perte de l'innocence · fracture intérieure", es: "Pérdida de la inocencia · fractura interior", en: "Loss of innocence · inner fracture", zh: "纯真的丧失 · 内在断裂", it: "Perdita dell'innocenza · frattura interiore" } },
+        { k: { fr: "Effectif", es: "Plantilla", en: "Forces", zh: "编制", it: "Organico" }, v: { fr: "Voix · ensemble de chambre · électronique", es: "Voz · conjunto de cámara · electrónica", en: "Voice · chamber ensemble · electronics", zh: "人声 · 室内乐组 · 电子声响", it: "Voce · ensemble da camera · elettronica" } },
+        { k: { fr: "Avec", es: "Con", en: "With", zh: "合作", it: "Con" }, v: "Christine Angot" },
+        { k: { fr: "Statut", es: "Estado", en: "Status", zh: "状态", it: "Stato" }, v: ONGOING }
+      ],
+      credits: [
+        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐", it: "Musica" }, who: "Sebastian Rivas" },
+        { role: { fr: "Textes", es: "Textos", en: "Texts", zh: "文本", it: "Testi" }, who: "Christine Angot" }
+      ],
+      partners: [],
+      financeurs: ["CNM"],
+      note: { fr: "Bourse CNM. Coproductions en cours de montage.", es: "Beca CNM. Coproducciones en construcción.", en: "CNM grant. Coproductions being assembled.", zh: "CNM 资助。联合制作筹备中。", it: "Borsa CNM. Coproduzioni in fase di costruzione." }
+    },
+    {
       slug: "otages", title: "Otages", titleHtml: "Otages",
       photo: "assets/projects/otages.jpg", video: "ym0otLSblvw",
       tag: { fr: "Création 2024", es: "Estreno 2024", en: "Premiere 2024", zh: "2024 首演", it: "Prima 2024" },
@@ -456,32 +482,6 @@
       note: { fr: "Projet en développement — en référence au geste de Susan Sontag à Sarajevo (1993).", es: "Proyecto en desarrollo — en referencia al gesto de Susan Sontag en Sarajevo (1993).", en: "Project in development — referencing Susan Sontag's gesture in Sarajevo (1993).", zh: "开发中的项目——参照 1993 年 Susan Sontag 在萨拉热窝的姿态。", it: "Progetto in sviluppo — in riferimento al gesto di Susan Sontag a Sarajevo (1993)." }
     },
     {
-      slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
-      photo: "assets/projects/mamma-roma.jpg",
-      financeurs: ["CETC — Teatro Colón"],
-      tag: { fr: "Création · juillet 2027", es: "Estreno · julio 2027", en: "Premiere · July 2027", zh: "首演 · 2027 年 7 月", it: "Prima · luglio 2027" },
-      short: { fr: "Opéra autour d'une table qui devient tombeau.", es: "Ópera en torno a una mesa que se vuelve tumba.", en: "An opera around a table that becomes a tomb.", zh: "一部围绕餐桌化为坟墓的歌剧。", it: "Opera intorno a un tavolo che diventa tomba." },
-      pitch: {
-        fr: "Opéra construit autour d'une grande table carrée qui se transforme lentement en tombeau. Au CETC du Teatro Colón — nef souterraine entourée de chapelles —, le public se fait face de part et d'autre de l'espace central : la mort d'Ettore rejoue la <em>Lamentation sur le Christ mort</em> de Mantegna que Pasolini cite dans le film. Tout le dispositif est purement acoustique, sans amplification : trois percussionnistes actionnent à vue les mécanismes de la table, opérateurs d'un sacrifice où le banquet, la cérémonie et la mort deviennent une seule et même chose.",
-        es: "Ópera construida alrededor de una gran mesa cuadrada que lentamente se transforma en tumba. En el CETC del Teatro Colón —nave subterránea rodeada de capillas—, el público se enfrenta entre sí a través del espacio central: la muerte de Ettore retoma la <em>Lamentación sobre Cristo muerto</em> de Mantegna que Pasolini cita en la película. Todo el dispositivo es puramente acústico, sin amplificación: tres percusionistas accionan a la vista los mecanismos de la mesa, operadores de un sacrificio donde el banquete, la ceremonia y la muerte terminan siendo una misma cosa.",
-        en: "An opera built around a large square table that slowly turns into a tomb. At the CETC of the Teatro Colón — an underground nave ringed with side chapels — the audience faces itself across the central space: Ettore's death restages Mantegna's <em>Lamentation over the Dead Christ</em>, quoted by Pasolini in the film. The whole device is purely acoustic, without amplification: three percussionists operate the table's mechanisms in full view, operators of a sacrifice in which banquet, ceremony and death become one and the same.",
-        zh: "一部围绕一张方形大桌展开的歌剧，桌子缓缓化为坟墓。在 Teatro Colón 的 CETC——一座被侧礼拜堂环绕的地下中殿——观众隔着中央空间彼此相望：Ettore 之死重现了帕索里尼在影片中引用的曼特尼亚《哀悼基督》。整个装置纯然声学、不加扩音：三位打击乐手当众操作餐桌机械，成为献祭的执行者，让宴席、仪式与死亡合为一体。", it: "Opera costruita intorno a un grande tavolo quadrato che si trasforma lentamente in tomba. Al CETC del Teatro Colón — navata sotterranea circondata da cappelle —, il pubblico si fronteggia ai due lati dello spazio centrale: la morte di Ettore rimette in scena il <em>Cristo morto</em> di Mantegna che Pasolini cita nel film. Tutto il dispositivo è puramente acustico, senza amplificazione: tre percussionisti azionano a vista i meccanismi del tavolo, operatori di un sacrificio dove il banchetto, la cerimonia e la morte diventano una sola e medesima cosa." },
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra", es: "Ópera", en: "Opera", zh: "歌剧", it: "Opera" } },
-        { k: { fr: "D'après", es: "Según", en: "After", zh: "改编自", it: "Da" }, v: "Pier Paolo Pasolini" },
-        { k: { fr: "Mise en scène", es: "Dirección", en: "Stage direction", zh: "导演", it: "Regia" }, v: "Martin Bauer" },
-        { k: { fr: "Lieu", es: "Lugar", en: "Venue", zh: "场地", it: "Luogo" }, v: { fr: "CETC — Teatro Colón", es: "CETC — Teatro Colón", en: "CETC — Teatro Colón", zh: "CETC — 科隆剧院", it: "CETC — Teatro Colón" } },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: { fr: "Juillet 2027", es: "Julio 2027", en: "July 2027", zh: "2027 年 7 月", it: "Luglio 2027" } },
-        { k: { fr: "Dispositif", es: "Dispositivo", en: "Set-up", zh: "装置", it: "Dispositivo" }, v: { fr: "Acoustique, sans amplification", es: "Acústico, sin amplificación", en: "Acoustic, no amplification", zh: "纯声学，无扩音", it: "Acustico, senza amplificazione" } }
-      ],
-      credits: [
-        { role: { fr: "Musique", es: "Música", en: "Music", zh: "音乐", it: "Musica" }, who: "Sebastian Rivas" },
-        { role: { fr: "Mise en scène & scénographie", es: "Dirección & escenografía", en: "Staging & set design", zh: "导演与舞台设计", it: "Regia & scenografia" }, who: "Martin Bauer" },
-        { role: { fr: "Percussions", es: "Percusión", en: "Percussion", zh: "打击乐", it: "Percussioni" }, who: { fr: "Trois percussionnistes", es: "Tres percusionistas", en: "Three percussionists", zh: "三位打击乐手", it: "Tre percussionisti" } }
-      ],
-      partners: ["CETC — Teatro Colón (Buenos Aires)"]
-    },
-    {
       slug: "america", title: "A World to Blast",
       img: "assets/projects/america.svg", photo: "assets/projects/america-scarfo.jpg",
       tag: { fr: "Opéra · Mexico", es: "Ópera · México", en: "Opera · Mexico City", zh: "歌剧 · 墨西哥城", it: "Opera · Città del Messico" },
@@ -540,7 +540,8 @@
       guests: ["François Chaignaud", "Julie Desprairies", "Daniel Zea", "Géraldine Kosiak", "Pierre Jodlowski", "Marc Monnet", "Richard Brunel", "Jean-Cyrille Burdet", "Alexander Schubert", "Benoit Renaudin", "Géraldine Farage"],
       partners: ["GRAME", "Pôle Pixel", "Le Générateur", "La Muse en Circuit", "La Chartreuse", "UNSAM"],
       financeurs: ["Fondation de France"]
-    }
+    },
+
   ];
 
   var activeSlug = null;
