@@ -901,6 +901,24 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
     mix-blend-mode: color;
     pointer-events: none;
     border-radius: inherit;
+    opacity: 1;
+    transition: opacity .45s ease;
+  }
+
+  /* Au survol — souris — le calque s'efface et la photo reprend ses
+     couleurs d'origine. Au doigt posé — tactile — meme effet : la classe
+     est posée/retirée par script.js (touchstart/touchend), car :active
+     n'est pas fiable sur un div/figure non interactif au toucher maintenu. */
+  .pd-media:not(.pd-media--video):not(.pd-media--color):hover::after,
+  .pd-banner:hover::after,
+  .pd-gallery figure:hover::after,
+  .fcard-img:hover::after,
+  .artist-portrait:has(> img):hover::after,
+  .honneur-portrait a:has(> img):hover::after,
+  .ptile-img:hover::after,
+  .season-img:not(.season-img--color):hover::after,
+  .filtre-rouge-off::after {
+    opacity: 0;
   }
 }
 

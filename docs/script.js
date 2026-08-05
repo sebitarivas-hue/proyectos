@@ -7,6 +7,41 @@
   var LANG = "fr";
   var REL = "";
 
+  // Un listener touch quelque part sur la page permet à :active de se
+  // déclencher au doigt sur les liens et boutons ordinaires — utile pour le
+  // reste du site. {passive:true} : on ne fait rien, on autorise seulement.
+  document.addEventListener("touchstart", function () {}, { passive: true });
+
+  // FILTRE ROUGE — le doigt posé doit effacer le calque, comme la souris au
+  // survol (docs/styles.css, règle « FILTRE ROUGE »). :active n'est pas fiable
+  // pour ça : sur un div ou un figure sans rôle interactif, son déclenchement
+  // au toucher maintenu varie selon le moteur et la version — vérifié en test,
+  // il ne se déclenche pas de façon garantie. Une classe posée et retirée à la
+  // main donne le même résultat sans dépendre de ce comportement.
+  var FILTRE_ROUGE_SELECTOR = [
+    ".pd-media:not(.pd-media--video):not(.pd-media--color)",
+    ".pd-banner",
+    ".pd-gallery figure",
+    ".fcard-img",
+    ".artist-portrait:has(> img)",
+    ".honneur-portrait a:has(> img)",
+    ".ptile-img",
+    ".season-img:not(.season-img--color)"
+  ].join(",");
+
+  function filtreRougeOff() {
+    document.querySelectorAll(".filtre-rouge-off").forEach(function (el) {
+      el.classList.remove("filtre-rouge-off");
+    });
+  }
+
+  document.addEventListener("touchstart", function (e) {
+    var hit = e.target.closest(FILTRE_ROUGE_SELECTOR);
+    if (hit) hit.classList.add("filtre-rouge-off");
+  }, { passive: true });
+  document.addEventListener("touchend", filtreRougeOff, { passive: true });
+  document.addEventListener("touchcancel", filtreRougeOff, { passive: true });
+
   function t(o) {
     if (o == null) return "";
     if (typeof o !== "object") return o;
