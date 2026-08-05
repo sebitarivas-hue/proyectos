@@ -1,0 +1,56 @@
+# Garde-fou : ce dépôt est PUBLIC (site stopera.art).
+# Bloque toute intrusion de contenu privé du hub `stopera` ou de fichiers
+# de l'app `cm2-kpop` (dépôt séparé — les deux sites ne doivent jamais se mélanger).
+#
+# Conception anti-fausse-alerte (pas de mails d'erreur GitHub injustifiés) :
+# - les étapes bloquantes ne regardent que des NOMS de fichiers/dossiers (haute précision) ;
+# - l'analyse de contenu (numéros type sécu/IBAN) ne fait qu'AVERTIR, jamais échouer ;
+# - aucune dépendance externe, aucun secret, aucune API : rien qui puisse tomber en panne.
+name: garde-fou
+on:
+  push:
+  pull_request:
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bloquer bureautique et archives (interdits dans un dépôt public)
+        run: |
+          M=$(git ls-files | grep -Ei '\.(docx?|xlsx?|pptx?|numbers|pages|zip|7z|rar|eml|msg|key)$' || true)
+          if [ -n "$M" ]; then
+            echo "::error::GARDE-FOU — fichiers bureautiques/archives détectés dans ce dépôt PUBLIC. Ils appartiennent au dépôt privé stopera :"
+            echo "$M"
+            exit 1
+          fi
+
+      - name: Bloquer les dossiers privés du hub stopera
+        run: |
+          M=$(git ls-files | grep -Ei '(^|/)(memory|ops|ADMIN-STOPERA|DOCS_STOPERA|Projets_STopera|github-audit|mails|inbox|ADMIN-REPRISE|DOCTORAT-MALMO|professional|strategy|identity|artistic|Career|knowledge_legacy_a_trier|\.roots)(/|$)|(^|/)S\.T\.O\.P' || true)
+          if [ -n "$M" ]; then
+            echo "::error::GARDE-FOU — contenu du hub privé stopera détecté dans ce dépôt PUBLIC :"
+            echo "$M"
+            exit 1
+          fi
+
+      - name: Bloquer les fichiers de l'app cm2-kpop (dépôt séparé)
+        run: |
+          M=$(git ls-files | grep -Ei '(^|/)(manifest\.json|sw\.js)$|cm2-kpop|(^|/)cm2[.-]' || true)
+          if [ -n "$M" ]; then
+            echo "::error::GARDE-FOU — fichiers de l'app cm2-kpop détectés : le site stopera.art et cm2-kpop ne doivent jamais être mélangés."
+            echo "$M"
+            exit 1
+          fi
+
+      - name: Motifs de données personnelles (avertissement seul, n'échoue jamais)
+        run: |
+          M=$(grep -rInE '\b[12][0-9]{12}\b|FR76[0-9 ]{16,}' docs \
+              --include='*.html' --include='*.md' --include='*.js' \
+              --include='*.css' --include='*.txt' --include='*.xml' 2>/dev/null | head -20 || true)
+          if [ -n "$M" ]; then
+            echo "::warning::GARDE-FOU — motif ressemblant à un numéro de sécurité sociale ou IBAN détecté. Vérifier avant publication :"
+            echo "$M"
+          fi
+          exit 0
