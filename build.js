@@ -184,7 +184,7 @@ function h1Fallback(opts, lang) {
 }
 
 function render(opts, lang) {
-  var rel = opts.rel, V = "?v=20260728C";
+  var rel = opts.rel, V = "?v=20260805A";
   var title = plain(opts.title, lang), desc = plain(opts.description, lang);
   var jsonld = typeof opts.jsonld === "function" ? opts.jsonld(lang) : opts.jsonld;
   var url = langUrl(opts.path, lang);
@@ -1098,7 +1098,7 @@ var HOME_META = {
        contenu sont relatifs, donc ils le suivent. Prefixer ces derniers
        de "../" les renvoyait vers les pages francaises depuis /en/. */
 
-    h = h.replace(/\?v=\d{8}[A-Z]/g, "?v=20260728C");
+    h = h.replace(/\?v=\d{8}[A-Z]/g, "?v=20260805A");
     h = h.replace('<html lang="fr">', '<html lang="' + lang + '">');
     h = h.replace(/<body([^>]*)data-lang="fr"/, '<body$1data-lang="' + lang + '"');
     if (h.indexOf('data-lang="' + lang + '"') < 0) {
@@ -1119,6 +1119,12 @@ var HOME_META = {
     }
     h = h.replace(/\s*<link rel="alternate" hreflang="[^"]*" href="[^"]*" \/>/g, "");
     h = h.replace('<meta name="theme-color"', alternates("").trim() + '\n  <meta name="theme-color"');
+    /* h vient de docs/index.html, que cette meme fonction reecrit pour le
+       francais (dir === DOCS plus bas) : sans ce nettoyage, chaque execution
+       relit le bloc og:locale deja insere par la precedente et en rajoute un
+       de plus a la suite — duplication qui s'accumule d'un build a l'autre. */
+    h = h.replace(/(<meta property="og:type"[^>]*\/>)(?:\s*<meta property="og:locale(?::alternate)?" content="[^"]*" \/>)*/,
+      "$1");
     h = h.replace(/(<meta property="og:type"[^>]*\/>)/,
       '$1\n  <meta property="og:locale" content="' + OG_LOCALE[lang] + '" />'
       + LANGS.filter(function (l) { return l !== lang; }).map(function (l) {
