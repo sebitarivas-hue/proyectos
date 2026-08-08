@@ -4,7 +4,7 @@
   --fg: #14110f;          /* encre */
   --muted: #6f685f;
   --line: #ddd6c9;        /* filet */
-  --accent: #d81e05;      /* rouge éditorial — contraste typographique */
+  --accent: #ff2f8f;      /* magenta éditorial — remplace le rouge, cohérent avec la nouvelle identité */
   --petrol: #14110f; --sage: #6f685f; --sand: #f2ede4; --panel-dark: #14110f;
   --accent-ink: #ffffff;
   --max: 1180px;

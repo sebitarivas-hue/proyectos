@@ -213,7 +213,7 @@ function render(opts, lang) {
     + '  <link rel="icon" type="image/png" href="/assets/favicon.png" />\n'
     + '  <link rel="stylesheet" href="/assets/fonts/fonts.css' + V + '" />\n'
     + '  <link rel="stylesheet" href="/styles.css' + V + '" />\n'
-    + '</head>\n<body data-lang="' + lang + '" data-rel="' + rel + '">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
+    + '</head>\n<body class="home-jv" data-lang="' + lang + '" data-rel="' + rel + '">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
     + h1Fallback(opts, lang) + (typeof opts.body === "function" ? opts.body(rel, lang) : opts.body) + '\n  </main>\n  ' + footer(rel) + '\n'
     + '  <div class="float-actions">\n'
     + '    <a class="float-home" href="' + rel + 'index.html" aria-label="Accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg><span data-fr="Accueil" data-es="Inicio" data-en="Home" data-zh="首页" data-it="Home"></span></a>\n'
@@ -993,7 +993,7 @@ urls.push(SITE + "/mentions-legales/");
 /* page 404 (auto-servie par GitHub Pages) */
 fs.writeFileSync(path.join(DOCS, "404.html"),
   '<!DOCTYPE html>\n<html lang="fr">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n<meta name="robots" content="noindex" />\n<title>Page introuvable — STOPERA!</title>\n'
-  + '<style>html,body{margin:0;height:100%}body{background:#faf8f4;color:#14110f;font-family:Archivo,system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}.x{max-width:30rem}.x img{height:30px;width:auto;margin-bottom:2rem}.x p.code{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#d81e05;margin:0 0 .8rem}.x h1{font-size:1.6rem;font-weight:700;margin:0 0 1rem}.x p{color:#6f685f;line-height:1.6}.x a.btn{display:inline-block;margin-top:1.4rem;background:#d81e05;color:#fff;text-decoration:none;padding:.7rem 1.3rem;border-radius:999px;font-weight:600;font-size:.9rem}</style>\n'
+  + '<style>html,body{margin:0;height:100%}body{background:#faf8f4;color:#14110f;font-family:Archivo,system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem}.x{max-width:30rem}.x img{height:30px;width:auto;margin-bottom:2rem}.x p.code{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#ff2f8f;margin:0 0 .8rem}.x h1{font-size:1.6rem;font-weight:700;margin:0 0 1rem}.x p{color:#6f685f;line-height:1.6}.x a.btn{display:inline-block;margin-top:1.4rem;background:#0d0d0f;color:#fff;text-decoration:none;padding:.7rem 1.3rem;border-radius:2px;font-weight:600;font-size:.9rem}</style>\n'
   + '</head>\n<body>\n<div class="x">\n<img src="' + SITE + '/assets/logo-dark.png" alt="STOPERA!" />\n<p class="code">Erreur 404</p>\n<h1>Cette page n\'existe pas (ou plus).</h1>\n<p>La page que vous cherchez est introuvable. Elle a peut-être été déplacée.</p>\n<a class="btn" href="' + SITE + '/">Retour à l\'accueil →</a>\n</div>\n  <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "f3dca4355e1c4362b402b3fa96218469"}\'></script><!-- End Cloudflare Web Analytics -->\n</body>\n</html>\n');
 /* snippet carte pour l'accueil (rel = "") */
 fs.writeFileSync("/tmp/coop_home.html", coopMap("") + "\n      " + COOP_SCRIPT);
