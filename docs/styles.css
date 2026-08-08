@@ -9,7 +9,7 @@
   --accent-ink: #ffffff;
   --max: 1180px;
   /* Type system (Gaîté-style) : grotesque caractériel + italique expressif + grotesque neutre */
-  --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif; /* titres, hero */
+  --display: "Neutrix", "Bricolage Grotesque", "Archivo", system-ui, sans-serif; /* titres, hero */
   --quote: "Fraunces", Georgia, "Times New Roman", serif;            /* italiques & citations */
   --sans: "Archivo", system-ui, -apple-system, sans-serif;           /* corps, UI, labels */
   --serif: var(--display); /* alias historique → display */
