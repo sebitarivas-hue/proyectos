@@ -995,3 +995,96 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
     background: var(--bg); border-radius: 999px;
   }
 }
+
+/* ============================================================
+   HOME — direction graphique "programme imprimé", d'après la
+   brochure de saison du Théâtre Jean Vilar (Vitry-sur-Seine) :
+   dégradés francs, typographie en matière graphique, duotone
+   photo, grille éditoriale asymétrique, chiffres de section.
+   Scopé à .home-jv (posé sur <main> de l'accueil) : les autres
+   pages gardent le système existant, intact.
+   ============================================================ */
+.home-jv {
+  --jv-magenta: #ff2f8f;
+  --jv-violet:  #6a4fa0;
+  --jv-teal:    #1fc9b7;
+  --jv-ink:     #0d0d0f;
+  --jv-tint-pink:  #f4d3e6;
+  --jv-tint-sage:  #c7dbc9;
+  --jv-tint-mauve: #d3cce0;
+  --jv-tint-sand:  #f2ede4;
+  --jv-grad: linear-gradient(120deg, var(--jv-magenta) 0%, var(--jv-violet) 48%, var(--jv-teal) 100%);
+}
+
+/* ---- Hero : dégradé plein cadre, le mot devient l'image ---- */
+.home-jv .hero { background: var(--jv-grad); position: relative; overflow: hidden; padding-bottom: clamp(3rem, 8vw, 6rem); }
+.home-jv .hero-logo { filter: brightness(0) invert(1); width: min(220px, 52vw); margin-bottom: clamp(1.8rem, 6vw, 3.4rem); }
+.home-jv .hero-kicker { color: rgba(255,255,255,.82); }
+.home-jv .hero-statement {
+  font-family: var(--display); font-weight: 800; text-transform: lowercase;
+  font-size: clamp(2.6rem, 8.4vw, 6.8rem); line-height: .9; letter-spacing: -.02em; color: #fff;
+}
+.home-jv .hero-statement em { font-style: italic; font-family: var(--quote); color: var(--jv-ink); }
+.home-jv .hero-sub { color: rgba(255,255,255,.82) !important; }
+.home-jv .hero-actions .btn-primary { background: var(--jv-ink); color: #fff; border-radius: 2px; }
+.home-jv .hero-actions .btn-ghost { border-color: rgba(255,255,255,.55); color: #fff; border-radius: 2px; }
+.home-jv .hero-actions .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.12); }
+.home-jv .authority { text-align: center; padding: .9rem clamp(1.2rem,4vw,3rem); font-family: var(--sans); font-size: .74rem; text-transform: lowercase; letter-spacing: .02em; border-bottom: 1px solid var(--line); }
+
+/* ---- Chiffres de section, façon programme imprimé ---- */
+.home-jv .col-label { flex-direction: column; align-items: flex-start; gap: .1rem; }
+.home-jv .index { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: .8; color: var(--jv-ink); opacity: .18; white-space: nowrap; }
+.home-jv .eyebrow { color: var(--jv-violet); font-family: var(--sans); }
+.home-jv .lead { text-transform: lowercase; font-weight: 800; }
+
+/* ---- Bandes de couleur alternées par section ---- */
+.home-jv .section.jv-sand { background: var(--jv-tint-sand); }
+.home-jv .section.jv-pink { background: var(--jv-tint-pink); }
+.home-jv .section.jv-sage { background: var(--jv-tint-sage); }
+.home-jv .section.jv-mauve { background: var(--jv-tint-mauve); }
+.home-jv .section { border-top-color: var(--jv-ink); }
+
+/* ---- Catalogue : légende + grille éditoriale asymétrique ---- */
+.home-jv .featured-band { border-bottom-color: var(--jv-ink); }
+.home-jv .featured-kicker { color: var(--jv-violet); }
+.home-jv .mode-legend { border-top: 1px solid var(--jv-ink); border-bottom: 1px solid var(--jv-ink); padding: .7rem 0; }
+.home-jv .mode-legend-item { text-transform: lowercase; }
+
+.home-jv .season-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; background: var(--jv-ink); margin-top: 1.6rem; }
+.home-jv .season-card { background: var(--bg); padding: 0 0 1.1rem; grid-column: span 6; }
+.home-jv .season-img { aspect-ratio: 16 / 11; border-radius: 0; margin-bottom: .9rem; }
+.home-jv .season-img:not(.season-img--color)::after { background: var(--jv-grad); }
+.home-jv .season-chips, .home-jv .season-title, .home-jv .season-sub, .home-jv .season-year { padding-left: 1rem; padding-right: 1rem; }
+.home-jv .season-title { text-transform: lowercase; font-weight: 700; }
+.home-jv .season-sub { font-size: .88rem; color: var(--muted); max-width: 32ch; margin: .3rem 0 0; }
+.home-jv .season-year { display: block; margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--line); font-family: var(--display); font-weight: 700; font-size: .72rem; color: var(--jv-magenta); }
+@media (min-width: 900px) {
+  .home-jv .season-card:nth-child(4n+1) { grid-column: span 7; }
+  .home-jv .season-card:nth-child(4n+2) { grid-column: span 5; }
+  .home-jv .season-card:nth-child(4n+3) { grid-column: span 5; }
+  .home-jv .season-card:nth-child(4n)   { grid-column: span 7; }
+}
+@media (max-width: 600px) { .home-jv .season-card { grid-column: span 12; } }
+
+/* ---- Impact / chiffres : bloc encre, chiffres énormes ---- */
+.home-jv .impact-strip { background: var(--jv-ink) !important; border: 0 !important; border-radius: 0; }
+.home-jv .stat-n { color: #fff !important; font-family: var(--display); }
+.home-jv .stat-l { text-transform: lowercase !important; color: rgba(255,255,255,.6) !important; }
+
+/* ---- Actualités / presse : filets fins, dates en graphique ---- */
+.home-jv .npv-when { color: var(--jv-magenta) !important; }
+.home-jv .news-preview-list a:hover .npv-title { color: var(--jv-violet) !important; }
+
+/* ---- Soutenir : cartes à filet, pas d'arrondi ---- */
+.home-jv .join-card { border-radius: 0; border-color: var(--jv-ink); }
+.home-jv .join-card:hover { border-color: var(--jv-magenta); }
+.home-jv .join-card h4 { text-transform: lowercase; }
+.home-jv .newsletter-btn { background: var(--jv-ink) !important; border-radius: 2px; }
+
+/* ---- Pied — bande dégradé, comme la 4e de couverture ---- */
+.home-jv .site-footer { background: var(--jv-grad); color: #fff; border-top: 0; }
+.home-jv .brand-logo-foot img { filter: brightness(0) invert(1); }
+.home-jv .foot-social a { color: rgba(255,255,255,.85); }
+.home-jv .foot-social a:hover { color: #fff; }
+.home-jv .newsletter-k { color: #fff; }
+.home-jv .newsletter-input { background: rgba(255,255,255,.92); border-color: transparent; }
