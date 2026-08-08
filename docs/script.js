@@ -809,8 +809,15 @@
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
-      }, { threshold: 0.12 });
-      document.querySelectorAll("main > section").forEach(function (sec) { sec.classList.add("reveal"); io.observe(sec); });
+      }, { threshold: 0.12, rootMargin: "0px 0px 600px 0px" });
+      var revealSections = document.querySelectorAll("main > section");
+      revealSections.forEach(function (sec) { sec.classList.add("reveal"); io.observe(sec); });
+      // Filet de sécurité : si pour une raison quelconque l'observer ne s'est
+      // pas déclenché (navigateur, timing des polices, etc.), on ne laisse
+      // jamais une section invisible en permanence — tout apparaît au plus tard.
+      setTimeout(function () {
+        revealSections.forEach(function (sec) { sec.classList.add("is-in"); });
+      }, 1200);
     }
 
     var yr = document.getElementById("year");
