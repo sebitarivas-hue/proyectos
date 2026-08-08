@@ -1017,12 +1017,12 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   --jv-tint-mauve: #d3cce0;
   --jv-tint-sand:  #f2ede4;
   --jv-grad:
-    radial-gradient(78% 62% at 8% 4%,   #d1247e 0%, rgba(209,36,126,0) 63%),
-    radial-gradient(64% 72% at 92% 14%, #6a4fa0 0%, rgba(106,79,160,0) 62%),
-    radial-gradient(72% 58% at 74% 96%, #3f9d78 0%, rgba(63,157,120,0) 60%),
-    radial-gradient(58% 78% at 26% 88%, #2f8f96 0%, rgba(47,143,150,0) 62%),
-    radial-gradient(52% 46% at 52% 44%, #b0359a 0%, rgba(176,53,154,0) 68%),
-    linear-gradient(148deg, #7a0c42 0%, #6a4fa0 54%, #2f8f96 100%);
+    radial-gradient(78% 62% at 8% 4%,   #b8517f 0%, rgba(184,81,127,0) 63%),
+    radial-gradient(64% 72% at 92% 14%, #7d6aa6 0%, rgba(125,106,166,0) 62%),
+    radial-gradient(72% 58% at 74% 96%, #6faa8c 0%, rgba(111,170,140,0) 60%),
+    radial-gradient(58% 78% at 26% 88%, #5f9aa2 0%, rgba(95,154,162,0) 62%),
+    radial-gradient(52% 46% at 52% 44%, #a26697 0%, rgba(162,102,151,0) 68%),
+    linear-gradient(148deg, #7c3f5c 0%, #7d6aa6 54%, #5f9aa2 100%);
 }
 
 /* ---- Hero : dégradé plein cadre, le mot devient l'image ---- */
