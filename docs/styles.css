@@ -1016,7 +1016,7 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   --jv-tint-sage:  #c7dbc9;
   --jv-tint-mauve: #d3cce0;
   --jv-tint-sand:  #f2ede4;
-  --jv-grad: linear-gradient(122deg, #8a0e4a 0%, #c22a74 24%, #6a4fa0 50%, #2f8f96 78%, #3f9d78 100%);
+  --jv-grad: linear-gradient(122deg, #8a0e4a 0 22%, #c22a74 22% 44%, #6a4fa0 44% 64%, #2f8f96 64% 84%, #3f9d78 84% 100%);
 }
 
 /* ---- Hero : dégradé plein cadre, le mot devient l'image ---- */
