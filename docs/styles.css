@@ -1121,3 +1121,26 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .jv-giant-n { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(5.5rem, 16vw, 14rem); line-height: .82; letter-spacing: -.02em; }
 .home-jv .jv-giant-sep { color: var(--jv-teal); padding: 0 .08em; }
 .home-jv .jv-giant-cap { margin: .6rem 0 0; font-family: var(--sans); font-size: .82rem; text-transform: uppercase; letter-spacing: .12em; color: var(--jv-magenta); }
+.home-jv a.jv-giant { display: block; text-decoration: none; transition: background .2s ease; }
+.home-jv a.jv-giant:hover { background: #000; }
+.home-jv a.jv-giant:hover .jv-giant-cap { text-decoration: underline; }
+
+/* ---- Bandeau crédibilité : deux lignes, plus lisibles ---- */
+.home-jv .authority { flex-direction: column; gap: .35rem; padding-top: 1.1rem; padding-bottom: 1.1rem; }
+.home-jv .authority-row { display: block; font-size: .92rem; letter-spacing: .04em; }
+.home-jv .authority-row::after { content: none !important; }
+
+/* ---- Correctif : le hero ne doit jamais dépendre du système de reveal
+   (chargement de Neutrix après le premier rendu = changement de hauteur du
+   texte = Chrome "scroll anchoring" saute la page toute seule) ---- */
+.home-jv .hero.reveal { opacity: 1 !important; transform: none !important; }
+.home-jv { overflow-anchor: none; }
+
+/* ---- Neutrix réservé aux vrais moments d'affichage (hero, chiffres, un
+   seul grand titre par page) : sur les citations multi-lignes, son fort
+   contraste de trait devient difficile à lire en continu. On y revient
+   à Bricolage Grotesque, qui reste distinct du corps de texte (Archivo)
+   sans fatiguer l'œil sur trois-quatre lignes. ---- */
+.manifesto-question, .manifesto-claim {
+  font-family: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
+}
