@@ -1095,3 +1095,29 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .foot-social a:hover { color: #fff; }
 .home-jv .newsletter-k { color: #fff; }
 .home-jv .newsletter-input { background: rgba(255,255,255,.92); border-color: transparent; }
+
+/* ---- Chiffre fantôme dans le hero, comme le "26" de la couverture de référence ---- */
+.home-jv .hero-ghost {
+  position: absolute; left: clamp(1.2rem,4vw,3rem); top: clamp(1.2rem,4vw,2.6rem);
+  font-family: var(--display); font-weight: 800; font-size: clamp(5rem, 16vw, 13rem); line-height: .8;
+  color: rgba(255,255,255,.22); pointer-events: none; user-select: none; z-index: 0;
+}
+.home-jv .hero-logo, .home-jv .hero-kicker, .home-jv .hero-statement, .home-jv .hero-actions, .home-jv .hero-sub { position: relative; z-index: 1; }
+
+/* ---- À suivre : colonnes datées, une couleur chacune ---- */
+.home-jv .npv-cols { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--jv-ink); }
+.home-jv .npv-cols li { background: var(--bg); }
+.home-jv .npv-cols li.jv-pink { background: var(--jv-tint-pink); }
+.home-jv .npv-cols li.jv-sage { background: var(--jv-tint-sage); }
+.home-jv .npv-cols li.jv-mauve { background: var(--jv-tint-mauve); }
+.home-jv .npv-cols a { display: block; padding: 1.4rem 1.3rem 1.6rem; text-decoration: none; color: inherit; height: 100%; }
+.home-jv .npv-cols .npv-when { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--jv-ink) !important; text-transform: lowercase; letter-spacing: 0; margin-bottom: .8rem; }
+.home-jv .npv-cols .npv-title { display: block; font-size: .96rem; line-height: 1.4; color: var(--jv-ink); }
+.home-jv .npv-cols a:hover .npv-title { text-decoration: underline; text-decoration-color: var(--jv-magenta); }
+@media (max-width: 700px) { .home-jv .npv-cols { grid-template-columns: 1fr; } }
+
+/* ---- Bloc chiffre géant plein cadre ---- */
+.home-jv .jv-giant { background: var(--jv-ink); color: var(--bg); padding: clamp(2.4rem,7vw,4.5rem) clamp(1.2rem,4vw,3rem) clamp(3rem,8vw,5rem); overflow: hidden; }
+.home-jv .jv-giant-n { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(5.5rem, 16vw, 14rem); line-height: .82; letter-spacing: -.02em; }
+.home-jv .jv-giant-sep { color: var(--jv-teal); padding: 0 .08em; }
+.home-jv .jv-giant-cap { margin: .6rem 0 0; font-family: var(--sans); font-size: .82rem; text-transform: uppercase; letter-spacing: .12em; color: var(--jv-magenta); }
