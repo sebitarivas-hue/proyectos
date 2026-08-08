@@ -1059,10 +1059,10 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .lead { text-transform: lowercase; font-weight: 800; }
 
 /* ---- Bandes de couleur alternées par section ---- */
-.home-jv .section.jv-sand { background: var(--jv-tint-sand); }
-.home-jv .section.jv-pink { background: var(--jv-tint-pink); }
-.home-jv .section.jv-sage { background: var(--jv-tint-sage); }
-.home-jv .section.jv-mauve { background: var(--jv-tint-mauve); }
+.home-jv .section.jv-sand { background: rgba(255,255,255,.16); }
+.home-jv .section.jv-pink { background: rgba(255,255,255,.58); }
+.home-jv .section.jv-sage { background: rgba(255,255,255,.30); }
+.home-jv .section.jv-mauve { background: rgba(255,255,255,.46); }
 .home-jv .section { border-top-color: var(--jv-ink); }
 
 /* ---- Catalogue : légende + grille éditoriale asymétrique ---- */
@@ -1182,9 +1182,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 /* ---- À suivre : colonnes datées, une couleur chacune ---- */
 .home-jv .npv-cols { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--jv-ink); }
 .home-jv .npv-cols li { background: var(--bg); }
-.home-jv .npv-cols li.jv-pink { background: var(--jv-tint-pink); }
-.home-jv .npv-cols li.jv-sage { background: var(--jv-tint-sage); }
-.home-jv .npv-cols li.jv-mauve { background: var(--jv-tint-mauve); }
+.home-jv .npv-cols li.jv-pink { background: rgba(255,255,255,.58); }
+.home-jv .npv-cols li.jv-sage { background: rgba(255,255,255,.30); }
+.home-jv .npv-cols li.jv-mauve { background: rgba(255,255,255,.46); }
 .home-jv .npv-cols a { display: block; padding: 1.4rem 1.3rem 1.6rem; text-decoration: none; color: inherit; height: 100%; }
 .home-jv .npv-cols .npv-when { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--jv-ink) !important; text-transform: lowercase; letter-spacing: 0; margin-bottom: .8rem; }
 .home-jv .npv-cols .npv-title { display: block; font-size: .96rem; line-height: 1.4; color: var(--jv-ink); }
@@ -1473,22 +1473,22 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   padding-bottom: clamp(2.2rem, 4.4vw, 3.6rem);
   border-top: 0;
 }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+1) { background: var(--jv-tint-sage); }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+2) { background: var(--jv-tint-mauve); }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+3) { background: var(--jv-tint-sand); }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+4) { background: var(--jv-tint-pink); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+1) { background: rgba(255,255,255,.30); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+2) { background: rgba(255,255,255,.46); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+3) { background: rgba(255,255,255,.16); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+4) { background: rgba(255,255,255,.58); }
 
 /* --- Pages à blocs (LIPS, productions) : chaque bloc devient un
        pavé teinté, ce qui découpe enfin le mur de texte. --- */
 .home-jv .subpage .pd-grid { gap: 2px; background: transparent; }
 .home-jv .subpage .pd-block {
   padding: clamp(1.3rem, 2.4vw, 1.9rem) clamp(1.2rem, 2.2vw, 1.7rem);
-  background: var(--jv-tint-sand);
+  background: rgba(255,255,255,.16);
 }
-.home-jv .subpage .pd-block:nth-of-type(4n+1) { background: var(--jv-tint-pink); }
-.home-jv .subpage .pd-block:nth-of-type(4n+2) { background: var(--jv-tint-sage); }
-.home-jv .subpage .pd-block:nth-of-type(4n+3) { background: var(--jv-tint-mauve); }
-.home-jv .subpage .pd-block:nth-of-type(4n+4) { background: var(--jv-tint-sand); }
+.home-jv .subpage .pd-block:nth-of-type(4n+1) { background: rgba(255,255,255,.58); }
+.home-jv .subpage .pd-block:nth-of-type(4n+2) { background: rgba(255,255,255,.30); }
+.home-jv .subpage .pd-block:nth-of-type(4n+3) { background: rgba(255,255,255,.46); }
+.home-jv .subpage .pd-block:nth-of-type(4n+4) { background: rgba(255,255,255,.16); }
 /* Hiérarchie : le texte de présentation reste nu et pleine largeur, les
    métadonnées (générique, casting, partenaires, financeurs) sont étiquetées
    par la même pastille noire que les eyebrows. Sans ça tout se lisait au
@@ -1519,10 +1519,10 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   border: 0; border-radius: 0;
   padding: clamp(1.3rem, 2.4vw, 1.8rem) clamp(1.2rem, 2.2vw, 1.6rem);
 }
-.home-jv .subpage .join-card:nth-of-type(4n+1) { background: var(--jv-tint-mauve); }
-.home-jv .subpage .join-card:nth-of-type(4n+2) { background: var(--jv-tint-sand); }
-.home-jv .subpage .join-card:nth-of-type(4n+3) { background: var(--jv-tint-pink); }
-.home-jv .subpage .join-card:nth-of-type(4n+4) { background: var(--jv-tint-sage); }
+.home-jv .subpage .join-card:nth-of-type(4n+1) { background: rgba(255,255,255,.46); }
+.home-jv .subpage .join-card:nth-of-type(4n+2) { background: rgba(255,255,255,.16); }
+.home-jv .subpage .join-card:nth-of-type(4n+3) { background: rgba(255,255,255,.58); }
+.home-jv .subpage .join-card:nth-of-type(4n+4) { background: rgba(255,255,255,.30); }
 .home-jv .subpage .join-card:hover { transform: translateY(-2px); border: 0; }
 .home-jv .subpage .join-card p { color: rgba(13,13,15,.72); }
 .home-jv .subpage .join-grid { gap: 2px; }
@@ -1537,13 +1537,13 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .subpage .press-group + .press-group,
 .home-jv .subpage .tx-group + .tx-group { margin-top: 2px; }
 .home-jv .subpage .press-group:nth-of-type(4n+1),
-.home-jv .subpage .tx-group:nth-of-type(4n+1) { background: var(--jv-tint-sage); }
+.home-jv .subpage .tx-group:nth-of-type(4n+1) { background: rgba(255,255,255,.30); }
 .home-jv .subpage .press-group:nth-of-type(4n+2),
-.home-jv .subpage .tx-group:nth-of-type(4n+2) { background: var(--jv-tint-mauve); }
+.home-jv .subpage .tx-group:nth-of-type(4n+2) { background: rgba(255,255,255,.46); }
 .home-jv .subpage .press-group:nth-of-type(4n+3),
-.home-jv .subpage .tx-group:nth-of-type(4n+3) { background: var(--jv-tint-sand); }
+.home-jv .subpage .tx-group:nth-of-type(4n+3) { background: rgba(255,255,255,.16); }
 .home-jv .subpage .press-group:nth-of-type(4n+4),
-.home-jv .subpage .tx-group:nth-of-type(4n+4) { background: var(--jv-tint-pink); }
+.home-jv .subpage .tx-group:nth-of-type(4n+4) { background: rgba(255,255,255,.58); }
 /* Sur un aplat, le filet vertical de la citation devient superflu. */
 .home-jv .subpage .press-group .pdq { border-left-color: var(--jv-ink); }
 
@@ -1562,9 +1562,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   padding: clamp(1.4rem, 2.6vw, 2rem) clamp(1.3rem, 2.4vw, 1.8rem);
 }
 .home-jv .subpage .subblock:nth-of-type(3n+1),
-.home-jv .subpage .missions { background: var(--jv-tint-mauve); }
-.home-jv .subpage .subblock:nth-of-type(3n+2) { background: var(--jv-tint-pink); }
-.home-jv .subpage .subblock:nth-of-type(3n+3) { background: var(--jv-tint-sand); }
+.home-jv .subpage .missions { background: rgba(255,255,255,.46); }
+.home-jv .subpage .subblock:nth-of-type(3n+2) { background: rgba(255,255,255,.58); }
+.home-jv .subpage .subblock:nth-of-type(3n+3) { background: rgba(255,255,255,.16); }
 
 /* L'intitulé prend la pastille noire, comme partout ailleurs. */
 .home-jv .subpage .subblock-label {
@@ -1575,3 +1575,17 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 /* Un .subblock-label peut vivre hors d'un .subblock (le balisage n'est pas
    homogène) : on lui donne quand même de l'air. */
 .home-jv .subpage .col-body > .subblock-label { margin-top: 2rem; }
+
+/* Les panneaux sont translucides : c'est le dégradé de la page qui les
+   colore. Un liseré ténu les tient là où le fond est presque blanc. */
+.home-jv .subpage .pd-block,
+.home-jv .subpage .join-card,
+.home-jv .subpage .press-group,
+.home-jv .subpage .tx-group,
+.home-jv .subpage .subblock,
+.home-jv .subpage .missions,
+.home-jv .section.jv-pink, .home-jv .section.jv-sage,
+.home-jv .section.jv-mauve, .home-jv .section.jv-sand {
+  box-shadow: inset 0 0 0 1px rgba(13, 13, 15, .06);
+  backdrop-filter: saturate(1.06);
+}
