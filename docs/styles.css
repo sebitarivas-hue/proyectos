@@ -1400,6 +1400,39 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 }
 
 
+
+/* ---- Fond de page en lavis ----
+   C'est ici que vit le dégradé : les blocs, eux, restent des aplats francs
+   qui s'en détachent. Attachement fixe pour que le lavis traverse la page
+   d'un seul tenant au lieu de se répéter à chaque bloc. */
+.home-jv {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(70% 55% at 4% 2%,   rgba(214, 31, 122, .16), rgba(214,31,122,0) 60%),
+    radial-gradient(60% 60% at 98% 22%, rgba(106, 79, 160, .14), rgba(106,79,160,0) 58%),
+    radial-gradient(65% 55% at 88% 96%, rgba(63, 157, 120, .14), rgba(63,157,120,0) 58%),
+    radial-gradient(55% 60% at 12% 88%, rgba(47, 143, 150, .13), rgba(47,143,150,0) 58%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+/* iOS Safari gère mal background-attachment:fixed — il le traite souvent
+   comme scroll et provoque des à-coups au défilement. Sur petit écran on
+   laisse donc le lavis défiler avec la page : il s'étire sur toute la
+   hauteur du document, ce qui reste discret. */
+@media (max-width: 900px) {
+  .home-jv { background-attachment: scroll; }
+}
+
+/* Les aplats des blocs doivent rester opaques, sinon le lavis les traverse
+   et on perd la délimitation. */
+.home-jv .section.jv-pink, .home-jv .section.jv-sage,
+.home-jv .section.jv-mauve, .home-jv .section.jv-sand,
+.home-jv .subpage .pd-block, .home-jv .subpage .join-card,
+.home-jv .subpage .press-group, .home-jv .subpage .tx-group,
+.home-jv .subpage .subblock, .home-jv .subpage .missions,
+.home-jv .subpage .manifesto-question, .home-jv .subpage .manifesto-claim,
+.home-jv .subpage .name-note { background-attachment: scroll; }
+
 /* Lavis vaporwave : c'est ce qui remplace les aplats unis sur les blocs des
    sous-pages. Opacités volontairement basses (.10 à .18) — au-delà, un
    paragraphe de dix lignes devient pénible à lire. */
@@ -1441,22 +1474,22 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   padding-bottom: clamp(2.2rem, 4.4vw, 3.6rem);
   border-top: 0;
 }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+1) { background: var(--jv-wash-b); }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+2) { background: var(--jv-wash-c); }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+3) { background: var(--jv-wash-d); }
-.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+4) { background: var(--jv-wash-a); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+1) { background: var(--jv-tint-sage); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+2) { background: var(--jv-tint-mauve); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+3) { background: var(--jv-tint-sand); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+4) { background: var(--jv-tint-pink); }
 
 /* --- Pages à blocs (LIPS, productions) : chaque bloc devient un
        pavé teinté, ce qui découpe enfin le mur de texte. --- */
 .home-jv .subpage .pd-grid { gap: 2px; background: transparent; }
 .home-jv .subpage .pd-block {
   padding: clamp(1.3rem, 2.4vw, 1.9rem) clamp(1.2rem, 2.2vw, 1.7rem);
-  background: var(--jv-wash-d);
+  background: var(--jv-tint-sand);
 }
-.home-jv .subpage .pd-block:nth-of-type(4n+1) { background: var(--jv-wash-a); }
-.home-jv .subpage .pd-block:nth-of-type(4n+2) { background: var(--jv-wash-b); }
-.home-jv .subpage .pd-block:nth-of-type(4n+3) { background: var(--jv-wash-c); }
-.home-jv .subpage .pd-block:nth-of-type(4n+4) { background: var(--jv-wash-d); }
+.home-jv .subpage .pd-block:nth-of-type(4n+1) { background: var(--jv-tint-pink); }
+.home-jv .subpage .pd-block:nth-of-type(4n+2) { background: var(--jv-tint-sage); }
+.home-jv .subpage .pd-block:nth-of-type(4n+3) { background: var(--jv-tint-mauve); }
+.home-jv .subpage .pd-block:nth-of-type(4n+4) { background: var(--jv-tint-sand); }
 /* Hiérarchie : le texte de présentation reste nu et pleine largeur, les
    métadonnées (générique, casting, partenaires, financeurs) sont étiquetées
    par la même pastille noire que les eyebrows. Sans ça tout se lisait au
@@ -1487,10 +1520,10 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   border: 0; border-radius: 0;
   padding: clamp(1.3rem, 2.4vw, 1.8rem) clamp(1.2rem, 2.2vw, 1.6rem);
 }
-.home-jv .subpage .join-card:nth-of-type(4n+1) { background: var(--jv-wash-c); }
-.home-jv .subpage .join-card:nth-of-type(4n+2) { background: var(--jv-wash-d); }
-.home-jv .subpage .join-card:nth-of-type(4n+3) { background: var(--jv-wash-a); }
-.home-jv .subpage .join-card:nth-of-type(4n+4) { background: var(--jv-wash-b); }
+.home-jv .subpage .join-card:nth-of-type(4n+1) { background: var(--jv-tint-mauve); }
+.home-jv .subpage .join-card:nth-of-type(4n+2) { background: var(--jv-tint-sand); }
+.home-jv .subpage .join-card:nth-of-type(4n+3) { background: var(--jv-tint-pink); }
+.home-jv .subpage .join-card:nth-of-type(4n+4) { background: var(--jv-tint-sage); }
 .home-jv .subpage .join-card:hover { transform: translateY(-2px); border: 0; }
 .home-jv .subpage .join-card p { color: rgba(13,13,15,.72); }
 .home-jv .subpage .join-grid { gap: 2px; }
@@ -1505,13 +1538,13 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .subpage .press-group + .press-group,
 .home-jv .subpage .tx-group + .tx-group { margin-top: 2px; }
 .home-jv .subpage .press-group:nth-of-type(4n+1),
-.home-jv .subpage .tx-group:nth-of-type(4n+1) { background: var(--jv-wash-b); }
+.home-jv .subpage .tx-group:nth-of-type(4n+1) { background: var(--jv-tint-sage); }
 .home-jv .subpage .press-group:nth-of-type(4n+2),
-.home-jv .subpage .tx-group:nth-of-type(4n+2) { background: var(--jv-wash-c); }
+.home-jv .subpage .tx-group:nth-of-type(4n+2) { background: var(--jv-tint-mauve); }
 .home-jv .subpage .press-group:nth-of-type(4n+3),
-.home-jv .subpage .tx-group:nth-of-type(4n+3) { background: var(--jv-wash-d); }
+.home-jv .subpage .tx-group:nth-of-type(4n+3) { background: var(--jv-tint-sand); }
 .home-jv .subpage .press-group:nth-of-type(4n+4),
-.home-jv .subpage .tx-group:nth-of-type(4n+4) { background: var(--jv-wash-a); }
+.home-jv .subpage .tx-group:nth-of-type(4n+4) { background: var(--jv-tint-pink); }
 /* Sur un aplat, le filet vertical de la citation devient superflu. */
 .home-jv .subpage .press-group .pdq { border-left-color: var(--jv-ink); }
 
@@ -1525,9 +1558,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   padding: clamp(1.4rem, 2.6vw, 2rem) clamp(1.3rem, 2.4vw, 1.8rem);
   max-width: none;
 }
-.home-jv .subpage .manifesto-question { background: var(--jv-wash-b); }
-.home-jv .subpage .manifesto-claim { background: var(--jv-wash-c); }
-.home-jv .subpage .name-note { background: var(--jv-wash-a); }
+.home-jv .subpage .manifesto-question { background: var(--jv-tint-sage); }
+.home-jv .subpage .manifesto-claim { background: var(--jv-tint-mauve); }
+.home-jv .subpage .name-note { background: var(--jv-tint-pink); }
 
 /* --- Sous-blocs internes (laboratoire notamment) ---
    Ces pages n'ont que deux <section>, donc deux couleurs seulement, alors
@@ -1540,9 +1573,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   padding: clamp(1.4rem, 2.6vw, 2rem) clamp(1.3rem, 2.4vw, 1.8rem);
 }
 .home-jv .subpage .subblock:nth-of-type(3n+1),
-.home-jv .subpage .missions { background: var(--jv-wash-c); }
-.home-jv .subpage .subblock:nth-of-type(3n+2) { background: var(--jv-wash-a); }
-.home-jv .subpage .subblock:nth-of-type(3n+3) { background: var(--jv-wash-d); }
+.home-jv .subpage .missions { background: var(--jv-tint-mauve); }
+.home-jv .subpage .subblock:nth-of-type(3n+2) { background: var(--jv-tint-pink); }
+.home-jv .subpage .subblock:nth-of-type(3n+3) { background: var(--jv-tint-sand); }
 
 /* L'intitulé prend la pastille noire, comme partout ailleurs. */
 .home-jv .subpage .subblock-label {
