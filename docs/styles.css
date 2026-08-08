@@ -1343,3 +1343,58 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   .home-jv .nav-links a { color: rgba(255, 255, 255, .82); border-bottom-color: rgba(255, 255, 255, .12); }
   .home-jv .nav-links a:hover { color: #fff; }
 }
+
+/* ============================================================
+   BUG TV SUR LE HERO — le grand STOPERA! décroche par
+   intermittence, tout seul. Pas de survol requis : sur mobile il
+   n'y en a pas, et le hero est la première chose qu'on voit.
+   Le logo porte déjà brightness(0) invert(1) pour passer en blanc :
+   les ombres colorées s'y ajoutent, elles ne le remplacent pas,
+   sinon le logo redevient noir.
+   ============================================================ */
+@keyframes jv-hero-glitch {
+  /* Longues plages calmes, brèves salves — un signal qui décroche,
+     pas une animation qui clignote en continu. */
+  0%, 82%, 100% { filter: brightness(0) invert(1); transform: none; }
+  83%  { filter: brightness(0) invert(1) drop-shadow(3px 0 0 rgba(255,47,143,.9)) drop-shadow(-3px 0 0 rgba(31,201,183,.9)); transform: translateX(-3px); }
+  85%  { filter: brightness(0) invert(1) drop-shadow(-4px 0 0 rgba(255,47,143,.85)) drop-shadow(4px 0 0 rgba(31,201,183,.85)); transform: translateX(3px) skewX(-.8deg); }
+  86%  { filter: brightness(0) invert(1); transform: none; }
+  92%  { filter: brightness(0) invert(1); transform: none; }
+  93%  { filter: brightness(0) invert(1) drop-shadow(2px 0 0 rgba(255,47,143,.8)) drop-shadow(-2px 0 0 rgba(31,201,183,.8)); transform: translateX(2px); }
+  94%  { filter: brightness(0) invert(1); transform: none; }
+}
+/* Tranche décrochée : une copie du logo, découpée en bande et décalée. */
+@keyframes jv-hero-tear {
+  0%, 82%, 100% { opacity: 0; }
+  83% { opacity: .9; clip-path: inset(16% 0 64% 0); transform: translateX(-14px); }
+  85% { opacity: .9; clip-path: inset(56% 0 22% 0); transform: translateX(11px); }
+  86% { opacity: 0; }
+  93% { opacity: .8; clip-path: inset(38% 0 44% 0); transform: translateX(-8px); }
+  94% { opacity: 0; }
+}
+
+.home-jv .hero-logo { animation: jv-hero-glitch 9s steps(1, end) infinite; }
+
+/* La copie décalée est portée par un calque frère, car un <img> ne peut pas
+   avoir de pseudo-élément. On le cale sur la boîte du logo. */
+.home-jv .hero { --hero-logo-w: min(220px, 52vw); }
+.home-jv .hero-logo-tear {
+  position: absolute; left: 50%; top: 0;
+  width: var(--hero-logo-w); transform: translateX(-50%);
+  background-image: url(/assets/logo-dark.png);
+  background-repeat: no-repeat; background-position: center top; background-size: 100% auto;
+  filter: brightness(0) invert(1);
+  mix-blend-mode: screen; opacity: 0; pointer-events: none; z-index: 1;
+  animation: jv-hero-tear 9s steps(1, end) infinite;
+}
+
+/* Au survol, la salve devient plus dense — récompense discrète au passage
+   de la souris, sans rien changer sur tactile. */
+.home-jv .hero:hover .hero-logo { animation-duration: 2.6s; }
+.home-jv .hero:hover .hero-logo-tear { animation-duration: 2.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .home-jv .hero-logo,
+  .home-jv .hero-logo-tear { animation: none; }
+  .home-jv .hero-logo { filter: brightness(0) invert(1); }
+}
