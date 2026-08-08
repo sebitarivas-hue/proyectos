@@ -12,6 +12,19 @@ var DOCS = path.join(__dirname, "docs");
 var SITE = "https://stopera.art";
 var LANGS = ["fr", "es", "en", "it", "zh"];
 
+/* Tritone luminance (ombres magenta -> violet -> turquoise -> jaune pâle
+   dans les hautes lumières), utilisé sur les photos du catalogue en page
+   d'accueil : filter:url(#tritone) au lieu d'un simple mix-blend-mode sur
+   fond de dégradé, qui colorait par POSITION dans le cadre et non par
+   luminosité réelle de la photo. */
+var TRITONE_SVG = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="tritone" color-interpolation-filters="sRGB">'
+  + '<feColorMatrix type="matrix" values="0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0 0 0 1 0"/>'
+  + '<feComponentTransfer>'
+  + '<feFuncR type="table" tableValues="0.4157 0.7693 0.6380 0.5373 0.4524 0.3839 0.3275 0.2757 0.2275 0.1821 0.1393 0.1663 0.2418 0.3143 0.3840 0.4513 0.5164 0.5794 0.6406 0.7002 0.7525 0.7739 0.7948 0.8152 0.8352 0.8547 0.8739 0.8927 0.9112 0.9293 0.9472 0.9647"/>'
+  + '<feFuncG type="table" tableValues="0.0392 0.1526 0.2110 0.2558 0.2935 0.3615 0.4532 0.5375 0.6160 0.6897 0.7594 0.7963 0.8100 0.8232 0.8358 0.8480 0.8598 0.8712 0.8823 0.8931 0.9027 0.9069 0.9111 0.9152 0.9192 0.9231 0.9269 0.9307 0.9344 0.9380 0.9416 0.9451"/>'
+  + '<feFuncB type="table" tableValues="0.2353 0.5030 0.5492 0.5847 0.6145 0.6372 0.6545 0.6704 0.6852 0.6991 0.7122 0.7095 0.6958 0.6827 0.6701 0.6579 0.6461 0.6347 0.6236 0.6128 0.6075 0.6292 0.6505 0.6713 0.6916 0.7116 0.7311 0.7502 0.7690 0.7875 0.8057 0.8235"/>'
+  + '</feComponentTransfer></filter></svg>';
+
 /* ---- load data from script.js (no duplication) ---- */
 var src = fs.readFileSync(path.join(DOCS, "script.js"), "utf8");
 function grab(re) { var m = src.match(re); if (!m) throw new Error("not found: " + re); return m[1]; }
@@ -213,7 +226,7 @@ function render(opts, lang) {
     + '  <link rel="icon" type="image/png" href="/assets/favicon.png" />\n'
     + '  <link rel="stylesheet" href="/assets/fonts/fonts.css' + V + '" />\n'
     + '  <link rel="stylesheet" href="/styles.css' + V + '" />\n'
-    + '</head>\n<body class="home-jv" data-lang="' + lang + '" data-rel="' + rel + '">\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
+    + '</head>\n<body class="home-jv" data-lang="' + lang + '" data-rel="' + rel + '">\n  ' + TRITONE_SVG + '\n  ' + header(rel) + '\n  <main id="top" class="subpage">\n'
     + h1Fallback(opts, lang) + (typeof opts.body === "function" ? opts.body(rel, lang) : opts.body) + '\n  </main>\n  ' + footer(rel) + '\n'
     + '  <div class="float-actions">\n'
     + '    <a class="float-home" href="' + rel + 'index.html" aria-label="Accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h5v-5h4v5h5v-9"/></svg><span data-fr="Accueil" data-es="Inicio" data-en="Home" data-zh="首页" data-it="Home"></span></a>\n'
@@ -877,8 +890,9 @@ function monogram(name) {
   var parts = String(name).split(/\s+/).filter(Boolean);
   return ((parts[0] || "").charAt(0) + (parts.length > 1 ? parts[parts.length - 1].charAt(0) : "")).toUpperCase();
 }
-/* palette BEHR complète, ordonnée en alternance chaud / froid / clair / foncé */
-var MONO_COLORS = ["#2f3f49", "#a85c45", "#939a7e", "#5e3c41", "#6f8f8a", "#d6a65c", "#6d7f8d", "#4a3a2f", "#aebfbd", "#6b6470", "#4f5f60"];
+/* palette alignée sur la charte magenta / violet / turquoise, en alternance
+   pour que deux fiches voisines ne se ressemblent jamais */
+var MONO_COLORS = ["#d61f7a", "#1fc9b7", "#6a4fa0", "#ff2f8f", "#8bd98a", "#8a0e4a", "#4a9ec9", "#bf6ac2", "#1f9e8f", "#c94f7c", "#5f4b8b"];
 /* index séquentiel par artiste → chaque fiche une teinte distincte */
 ARTISTS.forEach(function (a, i) { a.color = MONO_COLORS[i % MONO_COLORS.length]; });
 function artistAvatar(a, rel, cls) {
@@ -925,6 +939,7 @@ function artistBody(a, rel) {
 var artistGrid = ARTISTS.map(artistCard).join("\n        ");
 write("artists", page({ rel: "../", title: {"fr": "Artistes", "es": "Artistas", "en": "Artists", "zh": "艺术家", "it": "Artisti"}, description: {"fr": "Les artistes de STOPERA! — compositeurs, interprètes, metteurs en scène, auteurs et chercheurs qui font vivre la plateforme.", "es": "Los artistas de STOPERA! — compositores, intérpretes, directores de escena, autores e investigadores que dan vida a la plataforma.", "en": "The artists of STOPERA! — composers, performers, directors, writers and researchers who bring the platform to life.", "zh": "STOPERA! 的艺术家——让这一平台得以存在的作曲家、表演者、导演、作者与研究者。", "it": "Gli artisti di STOPERA! — compositori, interpreti, registi, autori e ricercatori che fanno vivere la piattaforma."}, image: SITE + "/assets/og-share.jpg?v=1", url: SITE + "/artists/", ogType: "website",
   body: '    <section class="section pd-page">\n'
+    + '      <div class="col-label"><span class="index"></span><span class="eyebrow" data-fr="Réseau" data-es="Red" data-en="Network" data-zh="网络" data-it="Rete"></span></div>\n'
     + '      <h1 class="pd-title pd-title--page" data-fr="Artistes" data-es="Artistas" data-en="Artists" data-zh="艺术家" data-it="Artisti"></h1>\n'
     + '      <p class="pd-pitch" data-fr="Un écosystème vivant : compositeurs, interprètes, metteur·ses en scène, auteur·rices et chercheur·ses qui se retrouvent d\'un projet à l\'autre." data-es="Un ecosistema vivo: compositores, intérpretes, directores, autores e investigadores que se reencuentran de un proyecto a otro." data-en="A living ecosystem: composers, performers, directors, authors and researchers who meet again from one project to the next." data-zh="一个活的生态：作曲家、表演者、导演、作者与研究者，在一个又一个项目中重逢。" data-it="Un ecosistema vivo: compositori, interpreti, registi, autori e ricercatori che si ritrovano da un progetto all\'altro."></p>\n'
     + '      <ul class="artist-grid">\n        ' + artistGrid + "\n      </ul>\n    </section>" }));

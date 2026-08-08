@@ -1057,7 +1057,37 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .season-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; background: var(--jv-ink); margin-top: 1.6rem; }
 .home-jv .season-card { background: var(--bg); padding: 0 0 1.1rem; grid-column: span 6; }
 .home-jv .season-img { aspect-ratio: 16 / 11; border-radius: 0; margin-bottom: .9rem; }
-.home-jv .season-img:not(.season-img--color)::after { background: var(--jv-grad); }
+/* Vrai tritone par luminosité (filtre SVG #tritone) au lieu d'un calque de
+   couleur en mix-blend-mode, qui colorait selon la position dans le cadre
+   et non selon le clair/obscur réel de la photo. Remplace le « filtre rouge »
+   sur toutes les photos du site ; le survol rend la couleur d'origine. */
+.home-jv .season-img:not(.season-img--color)::after,
+.home-jv .pd-media:not(.pd-media--video):not(.pd-media--color)::after,
+.home-jv .pd-banner::after,
+.home-jv .pd-gallery figure::after,
+.home-jv .fcard-img::after,
+.home-jv .artist-portrait:has(> img)::after,
+.home-jv .honneur-portrait a:has(> img)::after,
+.home-jv .ptile-img::after { content: none; }
+
+.home-jv .season-img:not(.season-img--color),
+.home-jv .pd-media:not(.pd-media--video):not(.pd-media--color),
+.home-jv .pd-banner,
+.home-jv .pd-gallery figure,
+.home-jv .fcard-img,
+.home-jv .artist-portrait:has(> img),
+.home-jv .honneur-portrait a:has(> img),
+.home-jv .ptile-img { filter: url(#tritone); transition: filter .45s ease; }
+
+.home-jv .season-img:not(.season-img--color):hover,
+.home-jv .pd-media:not(.pd-media--video):not(.pd-media--color):hover,
+.home-jv .pd-banner:hover,
+.home-jv .pd-gallery figure:hover,
+.home-jv .fcard-img:hover,
+.home-jv .artist-portrait:has(> img):hover,
+.home-jv .honneur-portrait a:has(> img):hover,
+.home-jv .ptile-img:hover,
+.home-jv .filtre-rouge-off { filter: none; }
 .home-jv .season-chips, .home-jv .season-title, .home-jv .season-sub, .home-jv .season-year { padding-left: 1rem; padding-right: 1rem; }
 .home-jv .season-title { text-transform: lowercase; font-weight: 700; }
 .home-jv .season-sub { font-size: .88rem; color: var(--muted); max-width: 32ch; margin: .3rem 0 0; }
