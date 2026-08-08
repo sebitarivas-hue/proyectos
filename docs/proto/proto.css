@@ -1,0 +1,231 @@
+/* ==========================================================
+   STOPERA! — PROTOTYPE V2
+   Feuille autonome : ne touche aucune page existante du site.
+   Principe : les surfaces se rencontrent, elles ne se fondent pas.
+   Aucun dégradé, aucune ombre, aucun arrondi systématique.
+
+   TYPOGRAPHIE — le brief V2 demande un « grotesque massif pour les
+   niveaux structurels ». Neutrix est une géométrique fine : à très
+   grande échelle elle devient filiforme, l'inverse de ce qui est
+   demandé. Les niveaux structurels sont donc composés en Bricolage
+   Grotesque 800, qui tient la masse.
+   ========================================================== */
+
+:root{
+  /* Couleurs = catégories éditoriales, pas décoration */
+  --c-pourquoi:      #FF2A15;   /* 01 */
+  --c-oeuvres:       #FF0080;   /* 02 */
+  --c-laboratoire:   #00DCEF;   /* 03 */
+  --c-reseau:        #1F1BD8;   /* 04 */
+  --c-transmission:  #00BE5C;   /* 05 */
+  --ink:   #0A0A0C;
+  --paper: #F2EDE4;
+  --dim:   #6E655C;
+
+  --disp: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
+  --sans: "Archivo", system-ui, sans-serif;
+  --serif:"Fraunces", Georgia, serif;
+
+  --gut: clamp(1rem, 2.4vw, 2rem);
+  --sec: var(--c-oeuvres);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:clamp(.95rem,1.02vw,1.05rem); line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+b,strong{font-weight:700}
+
+/* ---------- grille 12 colonnes, stricte ---------- */
+.g{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:0 var(--gut);
+  max-width:1440px; margin:0 auto; padding:0 var(--gut);
+}
+/* blocs autorisés : 3 / 5 / 7 / 12 — jamais 6+6 */
+.c3{grid-column:span 12} .c5{grid-column:span 12}
+.c7{grid-column:span 12} .c12{grid-column:1/-1}
+@media(min-width:900px){
+  .c3{grid-column:span 3} .c5{grid-column:span 5} .c7{grid-column:span 7}
+  .start4{grid-column-start:4}
+}
+
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:60;background:var(--ink);color:var(--paper)}
+.nav .g{align-items:center;padding-top:.7rem;padding-bottom:.7rem}
+.nav-brand{grid-column:span 12;display:flex;align-items:center}
+@media(min-width:900px){.nav-brand{grid-column:span 3}}
+.nav-brand img{height:24px;width:auto;filter:brightness(0) invert(1)}
+.nav-list{grid-column:span 12;display:flex;flex-wrap:wrap;gap:.15rem 1.4rem;align-items:baseline;margin-top:.5rem}
+@media(min-width:900px){.nav-list{grid-column:span 9;justify-content:flex-end;margin-top:0}}
+.nav-list a{
+  font-family:var(--disp); font-weight:800; text-transform:lowercase;
+  font-size:clamp(.92rem,1.25vw,1.1rem); letter-spacing:-.02em; line-height:1.1;
+  padding:.3rem 0; display:inline-flex; align-items:baseline; gap:.3em;
+  border-bottom:2px solid transparent;
+}
+.nav-list a i{
+  font-style:normal; font-size:.66em; font-variant-numeric:tabular-nums;
+  color:var(--sec); font-family:var(--sans); font-weight:700; letter-spacing:.04em;
+}
+.nav-list a:hover,.nav-list a:focus-visible{border-bottom-color:var(--sec);outline:none}
+.nav-list a[aria-current="page"]{border-bottom-color:var(--paper)}
+
+/* ---------- en-tête de section : le chiffre est une masse ---------- */
+.head{background:var(--sec);color:var(--paper);position:relative;overflow:hidden}
+.head.is-light{color:var(--ink)}
+.head .g{padding-top:clamp(1.6rem,4vw,3.2rem);padding-bottom:clamp(1.6rem,4vw,3rem);position:relative;z-index:1}
+.head-num{
+  font-family:var(--disp); font-weight:800; line-height:.68; letter-spacing:-.06em;
+  font-size:clamp(6rem,22vw,17rem); font-variant-numeric:tabular-nums;
+  opacity:.24; position:absolute; right:-.05em; bottom:-.2em; z-index:0;
+  pointer-events:none; color:inherit;
+}
+.head-eyebrow{
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  display:flex;align-items:baseline;gap:.7rem;margin-bottom:.55rem;
+}
+.head-eyebrow .n{font-variant-numeric:tabular-nums;font-size:1.05rem;letter-spacing:.04em}
+.head h1{
+  font-family:var(--disp); font-weight:800; text-transform:lowercase;
+  font-size:clamp(2.6rem,8vw,6rem); line-height:.88; letter-spacing:-.04em;
+  text-wrap:balance;
+}
+.head .intro{max-width:56ch;margin-top:.9rem;font-size:clamp(1rem,1.4vw,1.15rem)}
+
+/* ---------- accueil : hero asymétrique, jamais centré ---------- */
+.hero{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.hero .g{padding-top:clamp(2rem,6vw,4.5rem);padding-bottom:clamp(2rem,5vw,3.6rem);position:relative;z-index:1}
+.hero-year{
+  position:absolute; right:-.04em; top:-.14em; z-index:0; pointer-events:none;
+  font-family:var(--disp); font-weight:800; font-size:clamp(9rem,30vw,26rem);
+  line-height:.7; letter-spacing:-.07em; color:#17171C; font-variant-numeric:tabular-nums;
+}
+.hero-kick{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--c-oeuvres);font-weight:700;margin-bottom:1rem}
+.hero h1{
+  font-family:var(--disp); font-weight:800; text-transform:lowercase;
+  font-size:clamp(2.2rem,5.8vw,4.4rem); line-height:.95; letter-spacing:-.04em;
+}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+.hero-sub{margin-top:1.1rem;max-width:46ch;color:#CFC8BF}
+
+/* CTA : un seul geste dominant, le reste en liens numérotés */
+.acts{margin-top:clamp(1.4rem,3vw,2.2rem);display:flex;flex-direction:column;gap:1.1rem;align-items:flex-start}
+.cta{
+  display:inline-flex;align-items:baseline;gap:.6rem;
+  background:var(--c-oeuvres);color:#fff;
+  font-family:var(--disp);font-weight:800;text-transform:lowercase;
+  font-size:clamp(1.05rem,2vw,1.4rem);letter-spacing:-.025em;
+  padding:.65em 1.05em;border:0;
+}
+.cta:hover,.cta:focus-visible{background:var(--paper);color:var(--ink);outline:none}
+.acts-list{display:flex;flex-wrap:wrap;gap:.35rem 1.5rem}
+.acts-list a{
+  font-family:var(--disp);font-weight:800;text-transform:lowercase;
+  font-size:clamp(.98rem,1.6vw,1.18rem);letter-spacing:-.025em;
+  display:inline-flex;align-items:baseline;gap:.38em;
+  border-bottom:2px solid rgba(242,237,228,.26);padding-bottom:.12rem;
+}
+.acts-list a i{font-style:normal;font-family:var(--sans);font-weight:700;font-size:.64em;color:var(--c-oeuvres);font-variant-numeric:tabular-nums}
+.acts-list a:hover,.acts-list a:focus-visible{border-bottom-color:var(--paper);outline:none}
+
+/* ---------- bandes de section ---------- */
+.band{position:relative;overflow:hidden}
+.band .g{padding-top:clamp(1.7rem,4.2vw,3.2rem);padding-bottom:clamp(1.7rem,4.2vw,3.2rem);position:relative;z-index:1}
+.band-num{
+  position:absolute; right:-.06em; bottom:-.12em; z-index:0; pointer-events:none;
+  font-family:var(--disp); font-weight:800; font-size:clamp(8rem,26vw,22rem);
+  line-height:.7; letter-spacing:-.07em; font-variant-numeric:tabular-nums;
+  color:inherit; -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:2px currentColor; opacity:.40;
+}
+@media(max-width:899px){.band-num{opacity:.20}}
+.band h2{
+  font-family:var(--disp);font-weight:800;text-transform:lowercase;
+  font-size:clamp(1.9rem,5vw,3.3rem);line-height:.92;letter-spacing:-.04em;text-wrap:balance;
+}
+.band p{margin-top:.7rem;max-width:52ch}
+.band .more{
+  display:inline-flex;align-items:baseline;gap:.4em;margin-top:1.1rem;
+  font-family:var(--disp);font-weight:800;text-transform:lowercase;
+  font-size:clamp(1rem,1.6vw,1.15rem);letter-spacing:-.025em;
+  border-bottom:2px solid currentColor;padding-bottom:.1rem;
+}
+.b-ink{background:var(--ink);color:var(--paper)}
+.b-paper{background:var(--paper);color:var(--ink)}
+.b-sec{background:var(--sec);color:var(--paper)}
+/* Cyan et vert sont des couleurs claires : le blanc n'y est pas lisible.
+   La règle graphique cède devant la lisibilité. */
+.b-sec.is-light{color:var(--ink)}
+
+/* ---------- index éditorial ---------- */
+.index-row{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:0 var(--gut);
+  max-width:1440px;margin:0 auto;padding:0 var(--gut);
+  border-top:2px solid var(--ink);
+}
+.index-row:last-child{border-bottom:2px solid var(--ink)}
+.index-link{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,1fr);gap:0 var(--gut);padding:clamp(.8rem,1.6vw,1.25rem) 0;align-items:baseline}
+.index-title{
+  grid-column:span 12;
+  font-family:var(--disp);font-weight:800;text-transform:lowercase;
+  font-size:clamp(1.5rem,4vw,2.8rem);line-height:.96;letter-spacing:-.04em;
+}
+.index-title .it:not(:only-child),.head h1 .it:not(:only-child){font-weight:400;letter-spacing:-.03em}
+.index-meta{grid-column:span 12;color:var(--dim);font-size:.92rem;margin-top:.2rem}
+.index-year{grid-column:span 12;font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.5vw,1.2rem);font-variant-numeric:tabular-nums;margin-top:.2rem}
+@media(min-width:900px){
+  .index-title{grid-column:1/span 6}
+  .index-meta{grid-column:7/span 4;margin-top:0}
+  .index-year{grid-column:11/span 2;text-align:right;margin-top:0}
+}
+.index-link:hover .index-title,.index-link:focus-visible .index-title{color:var(--sec)}
+.index-link:focus-visible{outline:2px solid var(--sec);outline-offset:-2px}
+
+/* vignette de survol : confort desktop, aucune information n'en dépend */
+.peek{position:fixed;right:2vw;top:50%;transform:translateY(-50%);width:min(28vw,320px);aspect-ratio:4/5;z-index:40;pointer-events:none;opacity:0;transition:opacity .18s ease;background:var(--ink)}
+.peek img{width:100%;height:100%;object-fit:cover}
+@media(max-width:1099px){.peek{display:none}}
+
+/* ---------- fiche œuvre ---------- */
+.fig-full{margin:0;background:var(--ink)}
+.fig-full img{width:100%;height:auto}
+.meta{border-top:2px solid var(--ink);padding-top:.9rem}
+.meta dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.1rem;margin-top:.6rem}
+.meta dt{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:700;padding-top:.18rem}
+.meta dd{font-size:.98rem}
+.meta h3{
+  display:inline-block;background:var(--ink);color:var(--paper);
+  font-family:var(--sans);font-weight:700;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;padding:.34em .7em .3em;
+}
+.prose{max-width:62ch}
+.prose p+p{margin-top:.85rem}
+.prose .lead{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.45}
+
+/* ---------- traitements image (registre éditorial) ---------- */
+.im-oeuvres{filter:url(#im-oeuvres)}
+.im-labo{filter:url(#im-labo)}
+.im-portrait{filter:grayscale(1) contrast(1.12) brightness(1.02)}
+/* .im-brut : aucun filtre — archives, presse, documents */
+
+/* ---------- pied ---------- */
+.foot{background:var(--ink);color:var(--paper)}
+.foot .g{padding-top:2.2rem;padding-bottom:2.6rem;row-gap:1.4rem}
+.foot h2{font-family:var(--disp);font-weight:800;text-transform:lowercase;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.04em}
+.foot a{border-bottom:1px solid rgba(242,237,228,.34)}
+.foot a:hover{border-bottom-color:var(--paper)}
+.foot .lab{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#9A9289;font-weight:700}
+.foot ul{list-style:none;display:grid;gap:.35rem;margin-top:.5rem}
+.foot .small{color:#9A9289;font-size:.84rem}
+
+/* ---------- bandeau prototype ---------- */
+.proto-flag{background:var(--c-transmission);color:var(--ink);font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
+.proto-flag .g{padding:.45rem var(--gut)}
+.proto-flag span{grid-column:1/-1}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
