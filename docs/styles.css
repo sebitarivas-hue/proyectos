@@ -1022,14 +1022,16 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .hero-kicker { color: rgba(255,255,255,.82); }
 .home-jv .hero-statement {
   font-family: var(--display); font-weight: 800; text-transform: lowercase;
-  font-size: clamp(2.6rem, 8.4vw, 6.8rem); line-height: .9; letter-spacing: -.02em; color: #fff;
+  font-size: clamp(1.9rem, 4vw, 3.8rem); line-height: 1.02; letter-spacing: -.015em; color: #fff;
+  max-width: 26ch;
 }
-.home-jv .hero-statement em { font-style: italic; font-family: var(--quote); color: var(--jv-ink); }
+.home-jv .hero-statement em { font-style: italic !important; font-family: var(--quote) !important; font-weight: 400 !important; background: none !important; color: var(--jv-ink) !important; padding: 0 !important; letter-spacing: 0 !important; }
 .home-jv .hero-sub { color: rgba(255,255,255,.82) !important; }
 .home-jv .hero-actions .btn-primary { background: var(--jv-ink); color: #fff; border-radius: 2px; }
 .home-jv .hero-actions .btn-ghost { border-color: rgba(255,255,255,.55); color: #fff; border-radius: 2px; }
 .home-jv .hero-actions .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.12); }
-.home-jv .authority { text-align: center; padding: .9rem clamp(1.2rem,4vw,3rem); font-family: var(--sans); font-size: .74rem; text-transform: lowercase; letter-spacing: .02em; border-bottom: 1px solid var(--line); }
+.home-jv .authority { text-align: center; padding: .9rem clamp(1.2rem,4vw,3rem); font-family: var(--sans); font-size: .74rem; text-transform: lowercase; letter-spacing: .02em; border-bottom: 1px solid var(--line); color: var(--jv-ink); }
+.home-jv .authority span::after { color: var(--jv-ink); }
 
 /* ---- Chiffres de section, façon programme imprimé ---- */
 .home-jv .col-label { flex-direction: column; align-items: flex-start; gap: .1rem; }
@@ -1049,6 +1051,8 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .featured-kicker { color: var(--jv-violet); }
 .home-jv .mode-legend { border-top: 1px solid var(--jv-ink); border-bottom: 1px solid var(--jv-ink); padding: .7rem 0; }
 .home-jv .mode-legend-item { text-transform: lowercase; }
+.home-jv .mode-chip { background: var(--jv-ink) !important; color: #fff !important; }
+.home-jv .more-link a { color: var(--jv-magenta) !important; }
 
 .home-jv .season-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; background: var(--jv-ink); margin-top: 1.6rem; }
 .home-jv .season-card { background: var(--bg); padding: 0 0 1.1rem; grid-column: span 6; }
@@ -1080,6 +1084,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .join-card:hover { border-color: var(--jv-magenta); }
 .home-jv .join-card h4 { text-transform: lowercase; }
 .home-jv .newsletter-btn { background: var(--jv-ink) !important; border-radius: 2px; }
+.home-jv .join-cta { color: var(--jv-magenta); }
+.home-jv .contact-big a { color: var(--jv-ink); border-bottom-color: var(--jv-magenta); }
+.home-jv .contact-big a:hover { color: var(--jv-magenta); }
 
 /* ---- Pied — bande dégradé, comme la 4e de couverture ---- */
 .home-jv .site-footer { background: var(--jv-grad); color: #fff; border-top: 0; }
