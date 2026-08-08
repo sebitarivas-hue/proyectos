@@ -1305,3 +1305,41 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   .home-jv .site-header:hover .brand::after,
   .home-jv .site-header:hover::after { animation: none; }
 }
+
+/* ============================================================
+   EN-TÊTE NOIR — bandeau d'encre au lieu du beige.
+   Tout ce qui vivait en sombre sur fond clair doit être repris :
+   le logo (inversé), les liens, les icônes, le sélecteur de langue
+   et les lignes de balayage du bug TV, invisibles sur du noir.
+   ============================================================ */
+.home-jv .site-header {
+  background: rgba(13, 13, 15, .94);
+  border-bottom-color: rgba(255, 255, 255, .14);
+}
+.home-jv .site-header .brand-logo { filter: brightness(0) invert(1); }
+.home-jv .site-header .site-nav a,
+.home-jv .site-header .social-link { color: rgba(255, 255, 255, .72); }
+.home-jv .site-header .site-nav a:hover,
+.home-jv .site-header .social-link:hover { color: #fff; }
+.home-jv .site-header .site-nav a::after { background: var(--jv-magenta); }
+.home-jv .site-header .nav-toggle { color: #fff; }
+.home-jv .site-header .lang-switch { border-color: rgba(255, 255, 255, .28); }
+.home-jv .site-header .lang-opt { color: rgba(255, 255, 255, .66); }
+.home-jv .site-header .lang-opt + .lang-opt { border-left-color: rgba(255, 255, 255, .28); }
+.home-jv .site-header .lang-opt:hover { color: #fff; }
+.home-jv .site-header .lang-opt.active { background: var(--jv-magenta); color: #fff; }
+/* Sur fond noir, des lignes sombres ne se voient pas : on éclaircit. */
+.home-jv .site-header::after {
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.13) 0 1px, transparent 1px 4px);
+}
+/* Le menu déroulant mobile est déclaré en dessous de 560 px avec un fond
+   clair et des liens sombres : on le reprend au même point de rupture,
+   sinon les liens deviennent noirs sur noir. */
+@media (max-width: 560px) {
+  .home-jv .nav-links {
+    background: rgba(13, 13, 15, .98);
+    border-bottom-color: rgba(255, 255, 255, .14);
+  }
+  .home-jv .nav-links a { color: rgba(255, 255, 255, .82); border-bottom-color: rgba(255, 255, 255, .12); }
+  .home-jv .nav-links a:hover { color: #fff; }
+}
