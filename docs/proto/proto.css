@@ -268,3 +268,62 @@ b,strong{font-weight:700}
   letter-spacing:.15em;text-transform:uppercase;color:var(--ink)}
 .body .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ==========================================================
+   INDEX DES ŒUVRES — les pièces doivent être VUES.
+   Pas de vignettes ni de cartes (§ « Vignettes projets — retirer,
+   composition éditoriale à la place des cartes ») : chaque œuvre est
+   une composition, et les poses alternent pour donner le rythme.
+   ========================================================== */
+.oeu{display:grid;grid-template-columns:repeat(12,1fr);gap:0 var(--u);
+  max-width:1240px;margin:0 auto;padding:0 var(--u) calc(var(--u)*2.2)}
+.oeu-img{margin:0;background:var(--ink);grid-column:1/-1}
+.oeu-img img{width:100%;height:auto;object-fit:cover}
+.oeu-txt{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;
+  gap:.2rem 1.5rem;align-items:baseline;padding-top:.7rem}
+.oeu-t{font-family:var(--disp);font-weight:800;letter-spacing:-.04em;line-height:.94;
+  font-size:clamp(1.7rem,5vw,3.4rem);grid-column:1}
+.oeu-t .it:not(:only-child){font-weight:400}
+.oeu-y{font-family:var(--disp);font-weight:800;font-variant-numeric:tabular-nums;
+  font-size:clamp(1rem,1.6vw,1.25rem);grid-column:2;text-align:right;white-space:nowrap}
+.oeu-s{grid-column:1/-1;color:var(--dim);max-width:52ch;margin-top:.15rem}
+.oeu a{display:contents}
+.oeu:hover .oeu-t,.oeu a:focus-visible .oeu-t{color:var(--mag)}
+.oeu a:focus-visible{outline:none}
+.oeu:focus-within{outline:2px solid var(--mag);outline-offset:4px}
+
+@media(min-width:900px){
+  /* A — image pleine largeur, texte dessous */
+  .oeu--a .oeu-img{grid-column:1/-1}
+  .oeu--a .oeu-img img{aspect-ratio:21/9}
+  .oeu--a .oeu-txt{grid-column:1/span 9}
+
+  /* B — image à droite sur 7, texte calé à gauche sur 5 */
+  .oeu--b{align-items:end}
+  .oeu--b .oeu-img{grid-column:6/-1;order:2}
+  .oeu--b .oeu-img img{aspect-ratio:4/3}
+  .oeu--b .oeu-txt{grid-column:1/span 5;order:1;padding-top:0;padding-bottom:.4rem}
+
+  /* C — image à gauche sur 5, texte à droite sur 7 */
+  .oeu--c{align-items:end}
+  .oeu--c .oeu-img{grid-column:1/span 5}
+  .oeu--c .oeu-img img{aspect-ratio:1/1}
+  .oeu--c .oeu-txt{grid-column:7/-1;padding-top:0;padding-bottom:.4rem}
+
+  /* D — image pleine largeur, titre chevauchant le bas de l'image.
+     Chevauchement ponctuel, autorisé par la DA, jamais au point de
+     rendre l'image illisible. */
+  .oeu--d .oeu-img{grid-column:1/-1;grid-row:1}
+  .oeu--d .oeu-img img{aspect-ratio:16/7}
+  .oeu--d .oeu-txt{grid-column:1/span 9;grid-row:1;align-self:end;
+    z-index:1;padding:0 0 1.1rem 1.1rem;color:var(--paper)}
+  .oeu--d .oeu-y{color:var(--paper)}
+  .oeu--d .oeu-s{color:rgba(242,237,228,.86)}
+  .oeu--d:hover .oeu-t{color:#fff}
+}
+/* En colonne étroite toutes les poses se ramènent à : image, puis texte —
+   sauf le chevauchement, qui deviendrait illisible. */
+@media(max-width:899px){
+  .oeu-img img{aspect-ratio:16/10}
+  .oeu--d .oeu-txt{color:inherit}
+}
