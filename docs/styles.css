@@ -1398,3 +1398,52 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
   .home-jv .hero-logo-tear { animation: none; }
   .home-jv .hero-logo { filter: brightness(0) invert(1); }
 }
+
+/* ============================================================
+   RYTHME DES SOUS-PAGES — cohérence avec les aplats de l'accueil.
+   En navigant on tombait sur de longs murs de texte beige, comme
+   dans l'ancienne charte. Les pages internes sont bâties sur deux
+   systèmes différents : les unes empilent des <section>, les autres
+   (LIPS, les productions) des .pd-block. On donne le même rythme
+   aux deux, en alternance automatique — pas de classe à poser à la
+   main sur chaque page.
+   ============================================================ */
+
+/* --- Pages à sections : bandes teintées pleine largeur --- */
+.home-jv .subpage .section:not(.pd-page) {
+  max-width: none;
+  padding-left: max(clamp(1.2rem,4vw,3rem), calc(50vw - var(--max) / 2 + clamp(1.2rem,4vw,3rem)));
+  padding-right: max(clamp(1.2rem,4vw,3rem), calc(50vw - var(--max) / 2 + clamp(1.2rem,4vw,3rem)));
+  padding-top: clamp(2.2rem, 4.4vw, 3.6rem);
+  padding-bottom: clamp(2.2rem, 4.4vw, 3.6rem);
+  border-top: 0;
+}
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+1) { background: var(--jv-tint-pink); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+2) { background: var(--jv-tint-sage); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+3) { background: var(--jv-tint-mauve); }
+.home-jv .subpage .section:not(.pd-page):not(:only-of-type):nth-of-type(4n+4) { background: var(--jv-tint-sand); }
+
+/* --- Pages à blocs (LIPS, productions) : chaque bloc devient un
+       pavé teinté, ce qui découpe enfin le mur de texte. --- */
+.home-jv .subpage .pd-grid { gap: 2px; background: transparent; }
+.home-jv .subpage .pd-block {
+  padding: clamp(1.3rem, 2.4vw, 1.9rem) clamp(1.2rem, 2.2vw, 1.7rem);
+  background: var(--jv-tint-sand);
+}
+.home-jv .subpage .pd-block:nth-of-type(4n+1) { background: var(--jv-tint-pink); }
+.home-jv .subpage .pd-block:nth-of-type(4n+2) { background: var(--jv-tint-sage); }
+.home-jv .subpage .pd-block:nth-of-type(4n+3) { background: var(--jv-tint-mauve); }
+.home-jv .subpage .pd-block:nth-of-type(4n+4) { background: var(--jv-tint-sand); }
+/* Hiérarchie : le texte de présentation reste nu et pleine largeur, les
+   métadonnées (générique, casting, partenaires, financeurs) sont étiquetées
+   par la même pastille noire que les eyebrows. Sans ça tout se lisait au
+   même niveau. */
+.home-jv .subpage .pd-block h4,
+.home-jv .subpage .pd-dim h4 {
+  display: inline-block; background: var(--jv-ink); color: #fff;
+  padding: .32em .7em .28em; border-bottom: 0; border-radius: 2px;
+  font-family: var(--sans); font-weight: 600; letter-spacing: .14em;
+  margin-bottom: .9rem;
+}
+/* Le texte de présentation prend du corps : c'est lui le niveau 1. */
+.home-jv .subpage .pd-prose--lead { font-size: clamp(1.12rem, 1.9vw, 1.38rem); line-height: 1.5; }
