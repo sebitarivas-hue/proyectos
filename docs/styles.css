@@ -1429,9 +1429,8 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .section.jv-mauve, .home-jv .section.jv-sand,
 .home-jv .subpage .pd-block, .home-jv .subpage .join-card,
 .home-jv .subpage .press-group, .home-jv .subpage .tx-group,
-.home-jv .subpage .subblock, .home-jv .subpage .missions,
-.home-jv .subpage .manifesto-question, .home-jv .subpage .manifesto-claim,
-.home-jv .subpage .name-note { background-attachment: scroll; }
+.home-jv .subpage .subblock,
+.home-jv .subpage .missions { background-attachment: scroll; }
 
 /* Lavis vaporwave : c'est ce qui remplace les aplats unis sur les blocs des
    sous-pages. Opacités volontairement basses (.10 à .18) — au-delà, un
@@ -1548,19 +1547,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 /* Sur un aplat, le filet vertical de la citation devient superflu. */
 .home-jv .subpage .press-group .pdq { border-left-color: var(--jv-ink); }
 
-/* --- Pourquoi : le manifeste est un seul long texte. Ses moments
-       forts deviennent des encarts teintés, ce qui donne les
-       respirations que les autres pages tirent de leurs blocs. --- */
-.home-jv .subpage .manifesto-question,
-.home-jv .subpage .manifesto-claim,
-.home-jv .subpage .name-note {
-  border-left: 0; border-top: 0; border-bottom: 0;
-  padding: clamp(1.4rem, 2.6vw, 2rem) clamp(1.3rem, 2.4vw, 1.8rem);
-  max-width: none;
-}
-.home-jv .subpage .manifesto-question { background: var(--jv-tint-sage); }
-.home-jv .subpage .manifesto-claim { background: var(--jv-tint-mauve); }
-.home-jv .subpage .name-note { background: var(--jv-tint-pink); }
+/* --- Pourquoi : volontairement laissé en texte continu. Le manifeste se
+       lit d'une traite ; le découper en encarts colorés le hachait. Seul le
+       fond dégradé de la page l'accompagne. --- */
 
 /* --- Sous-blocs internes (laboratoire notamment) ---
    Ces pages n'ont que deux <section>, donc deux couleurs seulement, alors
