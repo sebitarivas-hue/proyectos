@@ -1528,3 +1528,28 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .subpage .manifesto-question { background: var(--jv-wash-b); }
 .home-jv .subpage .manifesto-claim { background: var(--jv-wash-c); }
 .home-jv .subpage .name-note { background: var(--jv-wash-a); }
+
+/* --- Sous-blocs internes (laboratoire notamment) ---
+   Ces pages n'ont que deux <section>, donc deux couleurs seulement, alors
+   qu'elles enchaînent en réalité plusieurs ensembles distincts : les champs
+   de recherche, les programmes, l'équipe. Ils n'étaient séparés que par un
+   filet. On les traite comme des blocs à part entière. */
+.home-jv .subpage .subblock,
+.home-jv .subpage .missions {
+  border-top: 0; margin-top: 2px;
+  padding: clamp(1.4rem, 2.6vw, 2rem) clamp(1.3rem, 2.4vw, 1.8rem);
+}
+.home-jv .subpage .subblock:nth-of-type(3n+1),
+.home-jv .subpage .missions { background: var(--jv-wash-c); }
+.home-jv .subpage .subblock:nth-of-type(3n+2) { background: var(--jv-wash-a); }
+.home-jv .subpage .subblock:nth-of-type(3n+3) { background: var(--jv-wash-d); }
+
+/* L'intitulé prend la pastille noire, comme partout ailleurs. */
+.home-jv .subpage .subblock-label {
+  display: inline-block; background: var(--jv-ink); color: #fff;
+  padding: .32em .7em .28em; border-radius: 2px;
+  font-family: var(--sans); font-weight: 600; letter-spacing: .14em;
+}
+/* Un .subblock-label peut vivre hors d'un .subblock (le balisage n'est pas
+   homogène) : on lui donne quand même de l'air. */
+.home-jv .subpage .col-body > .subblock-label { margin-top: 2rem; }
