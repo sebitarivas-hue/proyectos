@@ -1059,10 +1059,10 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .lead { text-transform: lowercase; font-weight: 800; }
 
 /* ---- Bandes de couleur alternées par section ---- */
-.home-jv .section.jv-sand { background: rgba(255,255,255,.16); }
-.home-jv .section.jv-pink { background: rgba(255,255,255,.58); }
-.home-jv .section.jv-sage { background: rgba(255,255,255,.30); }
-.home-jv .section.jv-mauve { background: rgba(255,255,255,.46); }
+.home-jv .section.jv-sand { background: var(--jv-tint-sand); }
+.home-jv .section.jv-pink { background: var(--jv-tint-pink); }
+.home-jv .section.jv-sage { background: var(--jv-tint-sage); }
+.home-jv .section.jv-mauve { background: var(--jv-tint-mauve); }
 .home-jv .section { border-top-color: var(--jv-ink); }
 
 /* ---- Catalogue : légende + grille éditoriale asymétrique ---- */
@@ -1182,9 +1182,9 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 /* ---- À suivre : colonnes datées, une couleur chacune ---- */
 .home-jv .npv-cols { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--jv-ink); }
 .home-jv .npv-cols li { background: var(--bg); }
-.home-jv .npv-cols li.jv-pink { background: rgba(255,255,255,.58); }
-.home-jv .npv-cols li.jv-sage { background: rgba(255,255,255,.30); }
-.home-jv .npv-cols li.jv-mauve { background: rgba(255,255,255,.46); }
+.home-jv .npv-cols li.jv-pink { background: var(--jv-tint-pink); }
+.home-jv .npv-cols li.jv-sage { background: var(--jv-tint-sage); }
+.home-jv .npv-cols li.jv-mauve { background: var(--jv-tint-mauve); }
 .home-jv .npv-cols a { display: block; padding: 1.4rem 1.3rem 1.6rem; text-decoration: none; color: inherit; height: 100%; }
 .home-jv .npv-cols .npv-when { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--jv-ink) !important; text-transform: lowercase; letter-spacing: 0; margin-bottom: .8rem; }
 .home-jv .npv-cols .npv-title { display: block; font-size: .96rem; line-height: 1.4; color: var(--jv-ink); }
@@ -1425,8 +1425,6 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 
 /* Les aplats des blocs doivent rester opaques, sinon le lavis les traverse
    et on perd la délimitation. */
-.home-jv .section.jv-pink, .home-jv .section.jv-sage,
-.home-jv .section.jv-mauve, .home-jv .section.jv-sand,
 .home-jv .subpage .pd-block, .home-jv .subpage .join-card,
 .home-jv .subpage .press-group, .home-jv .subpage .tx-group,
 .home-jv .subpage .subblock,
@@ -1584,8 +1582,3 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .subpage .tx-group,
 .home-jv .subpage .subblock,
 .home-jv .subpage .missions,
-.home-jv .section.jv-pink, .home-jv .section.jv-sage,
-.home-jv .section.jv-mauve, .home-jv .section.jv-sand {
-  box-shadow: inset 0 0 0 1px rgba(13, 13, 15, .06);
-  backdrop-filter: saturate(1.06);
-}
