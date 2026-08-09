@@ -856,3 +856,59 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+/* ---- Liage des entités après le rendu côté client -------------------------
+   Le contenu des fiches est réécrit dans le navigateur : les liens posés à la
+   génération y sont effacés. On rejoue donc la même règle après chaque rendu,
+   à partir de la table publiée par build.js.
+   - jamais dans un lien, un titre, un script ou un bouton existant ;
+   - une entité n'est liée qu'à sa première mention ;
+   - une page ne se lie jamais à elle-même.                                  */
+(function () {
+  "use strict";
+  var SKIP = { A: 1, H1: 1, H2: 1, SCRIPT: 1, STYLE: 1, BUTTON: 1, TEXTAREA: 1, OPTION: 1 };
+  function run(root) {
+    var tab = window.__XREF, self = window.__XREF_SELF;
+    if (!tab || !root) return;
+    /* On interroge le document plutôt que de tenir un compteur : une mémoire
+       persistante empêchait de relier après un nouveau rendu, une mémoire
+       remise à zéro reliait trois fois la même entité. Le document, lui, dit
+       toujours la vérité. */
+    var done = Object.create(null);
+    root.querySelectorAll("a.xref").forEach(function (a) { done[a.textContent] = 1; });
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        for (var p = n.parentNode; p && p !== root; p = p.parentNode) {
+          if (SKIP[p.nodeName]) return NodeFilter.FILTER_REJECT;
+        }
+        return n.nodeValue && n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function (node) {
+      for (var i = 0; i < tab.length; i++) {
+        var txt = tab[i][0], url = tab[i][1];
+        if (done[txt] || url === self) continue;
+        var idx = node.nodeValue.indexOf(txt);
+        if (idx < 0) continue;
+        var before = node.nodeValue[idx - 1], after = node.nodeValue[idx + txt.length];
+        if ((before && /[\w\u00C0-\u024F-]/.test(before)) || (after && /[\w\u00C0-\u024F-]/.test(after))) continue;
+        var tail = node.splitText(idx);
+        tail.nodeValue = tail.nodeValue.slice(txt.length);
+        var a = document.createElement("a");
+        a.className = "xref"; a.href = url; a.textContent = txt;
+        tail.parentNode.insertBefore(a, tail);
+        done[txt] = 1;
+        return;               /* ce nœud est consommé, on passe au suivant */
+      }
+    });
+  }
+  function go() { run(document.querySelector("main")); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", go);
+  else go();
+  /* le rendu client peut arriver après : on rejoue une fois les écritures calmées */
+  var t = null;
+  new MutationObserver(function () {
+    clearTimeout(t); t = setTimeout(go, 120);
+  }).observe(document.documentElement, { childList: true, subtree: true });
+})();

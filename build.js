@@ -551,6 +551,82 @@ function transmissionBody(rel) {
 }
 
 /* ---- write ---- */
+/* ---------- Liage automatique des entités ----------------------------------
+   Audit du 09/08/2026 : 129 mentions sur 61 pages citaient un artiste, une
+   œuvre ou LIPS qui possède une page dédiée, sans jamais y renvoyer. Le défaut
+   était systémique — il est donc corrigé dans le générateur, pas page par page.
+
+   Règles :
+   - on ne touche qu'au corps de page, jamais aux attributs ;
+   - on n'entre jamais dans un lien, un titre ou un script existant ;
+   - une entité n'est liée qu'à sa PREMIÈRE mention, pour ne pas cribler le
+     texte de liens ;
+   - une page ne se lie jamais à elle-même.                                   */
+function entityTable(lang) {
+  var tab = [];
+  ARTISTS.forEach(function (a) {
+    if (a.name && a.name.length > 3) tab.push({ txt: a.name, url: "artists/" + a.slug + "/" });
+  });
+  PROJECTS.forEach(function (p) {
+    var ti = typeof p.title === "string" ? p.title : (p.title && (p.title[lang] || p.title.fr));
+    if (ti && ti.length > 3) tab.push({ txt: ti, url: "productions/" + p.slug + "/" });
+  });
+  tab.push({ txt: "LIPS", url: "lips/" });
+  /* les libellés longs d'abord : « Snow on Her Lips » avant « LIPS » */
+  return tab.sort(function (a, b) { return b.txt.length - a.txt.length; });
+}
+function autolink(html, lang, selfPath) {
+  var i = html.indexOf("<main"), j = html.indexOf("</main>");
+  if (i < 0 || j < 0) return html;
+  var head = html.slice(0, html.indexOf(">", i) + 1), tail = html.slice(j);
+  var body = html.slice(html.indexOf(">", i) + 1, j);
+  var pre = lang === "fr" ? "/" : "/" + lang + "/";
+  var table = entityTable(lang), done = {};
+
+  /* Analyseur caractère par caractère. Un découpage par expression régulière
+     ne convient pas ici : les attributs data-* CONTIENNENT du HTML, et un
+     `>` à l'intérieur d'une valeur entre guillemets ferait croire à la fin
+     de la balise. On écrirait alors un lien dans un attribut — 15 cas
+     constatés avant correction. */
+  var out = "", buf = "", depth = 0, k = 0, n = body.length;
+  function flush() {
+    if (!buf) return;
+    var s = buf;
+    if (!depth) {
+      table.forEach(function (e) {
+        if (done[e.txt]) return;
+        if (selfPath && e.url.replace(/\/$/, "") === selfPath.replace(/\/$/, "")) return;
+        var re = new RegExp("(^|[^\\w\u00C0-\u024F-])(" +
+          e.txt.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?![\\w\u00C0-\u024F-])");
+        if (re.test(s)) s = s.replace(re, function (m, before, name) {
+          done[e.txt] = 1;
+          return before + '<a class="xref" href="' + pre + e.url + '">' + name + "</a>";
+        });
+      });
+    }
+    out += s; buf = "";
+  }
+  while (k < n) {
+    var c = body[k];
+    if (c !== "<") { buf += c; k++; continue; }
+    flush();
+    /* on avale la balise entière, guillemets compris */
+    var tag = "<", q = null; k++;
+    while (k < n) {
+      var d = body[k];
+      if (q) { if (d === q) q = null; }
+      else if (d === '"' || d === "'") q = d;
+      else if (d === ">") { tag += ">"; k++; break; }
+      tag += d; k++;
+    }
+    if (/^<\s*(a|h1|h2|script|style|title)[\s>\/]/i.test(tag)) depth++;
+    else if (/^<\s*\/\s*(a|h1|h2|script|style|title)\s*>/i.test(tag)) depth = Math.max(0, depth - 1);
+    out += tag;
+  }
+  flush();
+  return head + out + tail;
+}
+
 function retext(html, lang) {
   /* Le motif EXIGE data-fr dans les attributs. Sans cette exigence, un
      conteneur non traduit — <div>, <section> — matche en premier, avale ses
@@ -1171,6 +1247,60 @@ var sm = '<?xml version="1.0" encoding="UTF-8"?>\n'
       }).join("\n");
     }).join("\n") + "\n</urlset>\n";
 fs.writeFileSync(path.join(DOCS, "sitemap.xml"), sm);
+
+/* ---- Passe finale : liage des entités sur toutes les pages produites ----
+   Exécutée après l'écriture, car les données des artistes sont déclarées plus
+   bas dans ce fichier que le moment où les premières pages sont générées. */
+(function linkPass() {
+  var n = 0, liens = 0;
+  (function walk(dir) {
+    fs.readdirSync(dir, { withFileTypes: true }).forEach(function (e) {
+      var f = path.join(dir, e.name);
+      if (e.isDirectory()) { if (e.name !== "assets" && e.name !== "proto") walk(f); return; }
+      if (e.name !== "index.html") return;
+      var rel = path.relative(DOCS, dir).split(path.sep).join("/");
+      var lang = "fr", parts = rel ? rel.split("/") : [];
+      if (parts.length && LANGS.indexOf(parts[0]) >= 0 && parts[0] !== "fr") { lang = parts[0]; parts = parts.slice(1); }
+      var selfPath = parts.join("/") + (parts.length ? "/" : "");
+      var before = fs.readFileSync(f, "utf8");
+      var after = autolink(before, lang, selfPath);
+      if (after !== before) {
+        fs.writeFileSync(f, after);
+        n++; liens += (after.match(/class="xref"/g) || []).length;
+      }
+    });
+  })(DOCS);
+  console.log("liage des entités : " + liens + " liens posés sur " + n + " pages");
+})();
+
+/* ---- Table d'entités publiée pour le rendu côté client ----
+   docs/script.js réécrit le contenu des fiches dans le navigateur : tout
+   enrichissement fait à la génération y est effacé. La même table est donc
+   exposée à la page, et script.js rejoue le liage après son rendu. */
+(function xrefTable() {
+  var n = 0;
+  (function walk(dir) {
+    fs.readdirSync(dir, { withFileTypes: true }).forEach(function (e) {
+      var f = path.join(dir, e.name);
+      if (e.isDirectory()) { if (e.name !== "assets" && e.name !== "proto") walk(f); return; }
+      if (e.name !== "index.html") return;
+      var rel = path.relative(DOCS, dir).split(path.sep).join("/");
+      var parts = rel ? rel.split("/") : [], lang = "fr";
+      if (parts.length && LANGS.indexOf(parts[0]) >= 0 && parts[0] !== "fr") { lang = parts[0]; parts = parts.slice(1); }
+      var pre = lang === "fr" ? "/" : "/" + lang + "/";
+      var tab = entityTable(lang).map(function (x) { return [x.txt, pre + x.url]; });
+      var self = parts.join("/") + (parts.length ? "/" : "");
+      var tag = '<script>window.__XREF=' + JSON.stringify(tab) +
+        ';window.__XREF_SELF=' + JSON.stringify(pre + self) + ";</script>";
+      var h = fs.readFileSync(f, "utf8");
+      h = h.replace(/<script>window\.__XREF=[\s\S]*?<\/script>/, "");
+      if (h.indexOf("</head>") < 0) return;
+      fs.writeFileSync(f, h.replace("</head>", tag + "\n</head>"));
+      n++;
+    });
+  })(DOCS);
+  console.log("table d'entités publiée sur " + n + " pages");
+})();
 
 console.log("generated " + smPages.length + " pages × " + LANGS.length + " langues = "
   + smPages.length * LANGS.length + " urls");

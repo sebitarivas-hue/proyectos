@@ -1557,3 +1557,11 @@ a.stat:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; bo
 .home-jv .subpage .tx-group,
 .home-jv .subpage .subblock,
 .home-jv .subpage .missions,
+
+/* ---- Liens d'entité posés automatiquement (voir autolink dans build.js) ----
+   Discrets dans le texte courant : le soulignement ne s'allume qu'au survol,
+   pour ne pas cribler la prose de traits. La couleur reste celle de la charte. */
+.xref { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(216,30,5,.38); transition: border-color .2s ease, color .2s ease; }
+.xref:hover, .xref:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
+/* Dans une liste ou un générique, la cible doit rester confortable au doigt. */
+.credits .xref, .facts .xref, .roster .xref { padding: .1em 0; }
