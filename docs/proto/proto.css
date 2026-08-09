@@ -380,3 +380,89 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .gal-i{margin:0;background:var(--ink)}
 .gal-i img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .gal-i figcaption{font-size:.72rem;color:var(--dim);padding:.35rem .1rem 0}
+
+/* ==========================================================
+   SYSTÈME — RÔLES VERROUILLÉS
+   La DA repose sur une opposition de quatre rôles, et rien d'autre.
+   Tout composant emprunte l'un des quatre ; aucun n'invente sa propre
+   combinaison de police, graisse et interlettrage.
+   ========================================================== */
+
+/* Rôle 1 — ARCHITECTURE : Neutrix 400, échelle hors de proportion,
+   déborde et se coupe. Un seul emploi par page. */
+.r-arch{font-family:var(--title);font-weight:400;letter-spacing:-.03em;line-height:.84}
+
+/* Rôle 2 — TITRE : Neutrix 400. Titres de section, d'œuvre, de page. */
+.r-title{font-family:var(--title);font-weight:400;letter-spacing:-.02em;line-height:.96}
+
+/* Rôle 3 — MASSE : Bricolage 800. Chiffres, navigation, appels à l'action,
+   pastilles. C'est le contrepoids du rôle 2. */
+.r-mass{font-family:var(--disp);font-weight:800;letter-spacing:-.025em}
+
+/* Rôle 4 — MICRO : capitales espacées. Étiquettes, rangs, mentions. */
+.r-micro{font-family:var(--body);font-weight:700;font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase}
+
+/* ---- Le logo : une règle, trois contextes, pas de placement au cas par cas ----
+   masthead = rôle 1 · navigation = 22 px · pied = rôle 2 réduit           */
+:root{--logo-nav:22px;--logo-foot:1.9rem}
+.nav .brand img{height:var(--logo-nav);width:auto}
+.foot h2{font-family:var(--title);font-weight:400;letter-spacing:-.03em;font-size:var(--logo-foot)}
+
+/* ==========================================================
+   NAVIGATION MOBILE — composition propre, pas un bureau compressé.
+   Mesuré avant : 181 px et trois lignes de menu sur un écran de 390 px,
+   soit 21 % de la hauteur avant même le contenu. Le fil des rangs devient
+   un rail d'une seule ligne qui défile dans sa propre boîte ; le corps de
+   page ne défile jamais latéralement.
+   ========================================================== */
+@media(max-width:899px){
+  .flag{font-size:.6rem;letter-spacing:.08em}
+  .flag .wrap{padding-top:.26rem;padding-bottom:.26rem;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .nav .wrap{
+    display:flex;flex-wrap:nowrap;align-items:center;gap:0;
+    padding-top:.45rem;padding-bottom:.45rem;
+  }
+  .nav .brand{flex:0 0 auto;margin-right:.9rem}
+  :root{--logo-nav:19px}
+  .nav-rail{
+    flex:1 1 auto;min-width:0;display:flex;gap:1.05rem;align-items:baseline;
+    overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;
+  }
+  .nav-rail::-webkit-scrollbar{display:none}
+  .nav-rail{
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 2.2rem),transparent);
+    mask-image:linear-gradient(to right,#000 calc(100% - 2.2rem),transparent);
+  }
+  /* arrivé au bout, le fondu n'a plus lieu d'être */
+  .nav-rail[data-end="1"]{-webkit-mask-image:none;mask-image:none}
+  .nav a.n{flex:0 0 auto;scroll-snap-align:start;font-size:.92rem;padding:.2rem 0}
+  /* le rang reste visible : c'est lui le fil de la navigation */
+  .nav a.n i{font-size:.7em}
+}
+
+/* ---------- page réseau : coopérations, partenaires, territoires ---------- */
+.body .coop-card{padding:1rem 0;border-bottom:1px solid rgba(10,10,12,.18);display:grid;gap:.15rem}
+.body .coop-card:first-of-type{border-top:2px solid var(--line)}
+@media(min-width:760px){
+  .body .coop-card{grid-template-columns:12rem 1fr;gap:.15rem 1.6rem;align-items:baseline}
+  .body .coop-k,.body .coop-v{grid-column:2}
+}
+.body .coop-city{font-family:var(--title);font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(1.15rem,2.2vw,1.55rem)}
+.body .coop-k{font-family:var(--body);font-weight:700;font-size:.64rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.body .coop-v{font-size:.95rem}
+.body .partners{list-style:none;margin:.3rem 0 0;padding:0;display:grid;gap:0}
+@media(min-width:760px){.body .partners{grid-template-columns:1fr 1fr;column-gap:2.4rem}}
+.body .partners li{padding:.5rem 0;border-bottom:1px solid rgba(10,10,12,.18);font-size:.96rem}
+.body .coop-svg,.body svg{max-width:100%;height:auto}
+.body .spot-dot{fill:var(--sec)}
+.body .spot-name{font-family:var(--body);font-weight:700;font-size:.7rem;fill:var(--ink)}
+.body .more-link a{font-family:var(--title);font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(1.05rem,1.7vw,1.25rem);border-bottom:2px solid var(--sec);padding-bottom:.06rem}
+/* Registre d'images : dans la page réseau, tout portrait est en noir et blanc.
+   La règle vaut par CONTEXTE, pour ne plus dépendre d'une classe posée à la main. */
+.body .honneur-portrait img,.body .artist-portrait img{filter:grayscale(1) contrast(1.12) brightness(1.02)}
