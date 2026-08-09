@@ -472,15 +472,6 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
    La règle vaut par CONTEXTE, pour ne plus dépendre d'une classe posée à la main. */
 .body .honneur-portrait img,.body .artist-portrait img{filter:grayscale(1) contrast(1.12) brightness(1.02)}
 
-/* ---- L'arrêt ----
-   Un carré de la couleur de section bute contre chaque titre. Il ne recouvre
-   jamais une lettre : il s'arrête au bord. C'est la seule marque conservée du
-   dispositif de suspension — la barre pleine largeur a été retirée. */
-.sec .body > h2::before{
-  content:""; display:inline-block; vertical-align:baseline;
-  width:.5em; height:.5em; margin-right:.32em;
-  background:var(--sec); translate:0 .02em;
-}
 
 /* ---- Captation vidéo ----
    Pleine largeur, comme la photographie qu'elle précède. Aucun duotone : le
