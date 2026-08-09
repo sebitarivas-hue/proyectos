@@ -21,10 +21,17 @@ var D = new Function("var ONGOING=" + g(/var ONGOING = (\{[^;]*\});/) +
 function fr(v) { return v == null ? "" : (typeof v === "string" ? v : (v.fr || "")); }
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); }
 
+var LANGS = ["fr", "en", "es", "it", "zh"];
 var n = 0;
+var cibles = [];
 D.PROJECTS.forEach(function (p) {
   if (!p.video) return;
-  var f = path.join(OUT, "productions", p.slug, "index.html");
+  LANGS.forEach(function (l) {
+    cibles.push({ p: p, f: path.join(OUT, l === "fr" ? "" : l, "productions", p.slug, "index.html") });
+  });
+});
+cibles.forEach(function (c) {
+  var p = c.p, f = c.f;
   if (!fs.existsSync(f)) return;
   var h = fs.readFileSync(f, "utf8"), before = h;
   h = h.replace(/<figure class="vid"[\s\S]*?<\/figure>/, "");
@@ -43,6 +50,6 @@ D.PROJECTS.forEach(function (p) {
   } else {
     h = h.replace("</section>", "</section>" + bloc);
   }
-  if (h !== before) { fs.writeFileSync(f, h); n++; console.log("  " + p.slug + " → " + p.video); }
+  if (h !== before) { fs.writeFileSync(f, h); n++; }
 });
 console.log("vidéos intégrées : " + n);
