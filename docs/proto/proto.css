@@ -471,3 +471,46 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 /* Registre d'images : dans la page réseau, tout portrait est en noir et blanc.
    La règle vaut par CONTEXTE, pour ne plus dépendre d'une classe posée à la main. */
 .body .honneur-portrait img,.body .artist-portrait img{filter:grayscale(1) contrast(1.12) brightness(1.02)}
+
+/* ==========================================================
+   LA SUSPENSION — l'opération graphique de STOPERA!
+   Le nom dit la méthode : le STOP n'est pas un refus de l'opéra,
+   c'est une suspension (page Pourquoi, texte du site). On en fait
+   un dispositif, pas une métaphore.
+
+   Trois manifestations, systématiques sur les 59 pages :
+   1. la CÉSURE — une barre pleine largeur ouvre chaque section,
+      dans sa couleur, avec son rang à gauche et son nom à droite ;
+   2. l'ARRÊT — un bloc de couleur bute contre le titre et
+      l'interrompt ;
+   3. le SILENCE — la respiration qui suit la césure est plus large
+      que celle qui la précède : on s'arrête, puis on reprend.
+   ========================================================== */
+
+.caesura{
+  background:var(--sec); color:#fff;
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; padding:.42rem clamp(.9rem,2.2vw,1.6rem) .38rem;
+  font-family:var(--body); font-weight:700;
+  font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
+}
+.caesura .r{font-variant-numeric:tabular-nums; font-size:1.05em; letter-spacing:.1em}
+.caesura .s{opacity:.72}
+/* couleurs claires : le blanc n'y tient pas */
+.caesura.is-light{color:var(--ink)}
+.caesura.is-light .s{opacity:.62}
+
+/* L'ARRÊT — un bloc bute contre le titre. Il ne recouvre jamais une
+   lettre : il s'arrête au bord, c'est là tout le propos. */
+.sec h2{position:relative}
+/* sur CHAQUE titre de section, pas seulement le premier : un dispositif
+   qui n'apparaît qu'une fois n'est pas un dispositif */
+.sec .body>h2::before,
+.sec .body>h2.lead::before{
+  content:""; display:inline-block; vertical-align:baseline;
+  width:.52em; height:.52em; margin-right:.3em;
+  background:var(--sec); translate:0 .02em;
+}
+
+/* Le SILENCE — après une césure, la section respire davantage. */
+.caesura + .sec{padding-top:calc(var(--u)*2.4)}
