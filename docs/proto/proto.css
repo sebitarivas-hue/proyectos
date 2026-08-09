@@ -328,3 +328,42 @@ b,strong{font-weight:700}
   .oeu-img img{aspect-ratio:16/10}
   .oeu--d .oeu-txt{color:inherit}
 }
+
+/* ==========================================================
+   TROIS RÈGLES DE LA DA RESTÉES LETTRE MORTE
+   1. « l'échelle 1 doit déborder et se couper »
+   2. « les numéros passent derrière les images et sont coupés
+        par le bord de l'écran »
+   3. « la rencontre de deux aplats EST le motif graphique »
+   ========================================================== */
+
+/* 1 — Le mot du hero déborde et se coupe au bord droit. */
+.mast{overflow:hidden}
+@media(min-width:900px){
+  /* Le corps est poussé jusqu'à ce que le mot excède réellement la largeur :
+     sans cela « déborder » reste une intention, pas un fait. */
+  .mast h1{white-space:nowrap;font-size:24vw;margin-right:-30vw}
+}
+
+/* 2 — Le chiffre sort de sa colonne, passe DERRIÈRE l'image et se fait
+   couper par le bord de l'écran. Il porte aria-hidden : rien
+   d'informatif n'est rogné. */
+.sec{position:relative;overflow:hidden}
+@media(min-width:900px){
+  .sec--bleed>.wrap{position:static}
+  .sec--bleed .num{
+    position:absolute;top:calc(var(--u)*.6);left:-.10em;z-index:0;
+    font-size:clamp(15rem,32vw,30rem);line-height:.7;opacity:.5;
+    -webkit-text-stroke-width:3px;pointer-events:none;
+  }
+  .sec--bleed.sec--right .num{left:auto;right:-.10em}
+  .sec--bleed .body{position:relative;z-index:1}
+  .sec--bleed .fig{position:relative;z-index:1}
+}
+
+/* 3 — Deux surfaces saturées qui se touchent, sans tampon. */
+.cc-mag{background:var(--mag);color:#fff}
+.cc-cy{background:var(--cy);color:var(--ink)}
+.cc-blu{background:var(--blu);color:#fff}
+.cc-red{background:var(--red);color:#fff}
+.cc-grn{background:var(--grn);color:#fff}
