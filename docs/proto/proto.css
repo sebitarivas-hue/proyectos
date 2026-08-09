@@ -409,6 +409,11 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .nav .brand img{height:var(--logo-nav);width:auto}
 .foot h2{font-family:var(--title);font-weight:400;letter-spacing:-.03em;font-size:var(--logo-foot)}
 
+/* Le rail est un conteneur flex à TOUTES les largeurs. Sans cette règle de
+   base, l'espacement vivait sur le conteneur parent et ne s'appliquait plus
+   aux liens une fois ceux-ci enveloppés : sur ordinateur ils se touchaient. */
+.nav-rail{display:flex;flex-wrap:wrap;align-items:baseline;gap:.45rem 1.5rem}
+
 /* ==========================================================
    NAVIGATION MOBILE — composition propre, pas un bureau compressé.
    Mesuré avant : 181 px et trois lignes de menu sur un écran de 390 px,
@@ -427,7 +432,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   .nav .brand{flex:0 0 auto;margin-right:.9rem}
   :root{--logo-nav:19px}
   .nav-rail{
-    flex:1 1 auto;min-width:0;display:flex;gap:1.05rem;align-items:baseline;
+    flex:1 1 auto;min-width:0;display:flex;flex-wrap:nowrap;gap:1.05rem;align-items:baseline;
     overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
     -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;
   }

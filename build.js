@@ -122,7 +122,7 @@ var NAME2SLUG = {
   "Marcelo Lombardero": "marcelo-lombardero", "Emma Terno": "emma-terno", "Valentín Pelisch": "valentin-pelisch",
   "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui",
   "Richard Brunel": "richard-brunel", "Anne-Laure Chamboissier": "anne-laure-chamboissier",
-  "Guillaume Kosmicki": "guillaume-kosmicki", "- porte renaud -": "porte-renaud"
+  "Guillaume Kosmicki": "guillaume-kosmicki", "Renaud Porte": "porte-renaud"
 };
 var NAME_LIST = Object.keys(NAME2SLUG).sort(function (a, b) { return b.length - a.length; });
 function linkNames(s, rel) {
@@ -336,7 +336,7 @@ var NEWS = [
     body: { fr: "STOPERA! réunit artistes, interprètes, chercheurs et partenaires culturels autour d'une même question : comment la voix, le corps et le son deviennent présence sur le plateau. La plateforme rassemble créations, recherche et transmission, sous la direction de Sebastian Rivas et avec le soutien de Georges Aperghis comme président d'honneur.", es: "STOPERA! reúne a artistas, intérpretes, investigadores y socios culturales en torno a una misma pregunta: cómo la voz, el cuerpo y el sonido se vuelven presencia en escena. La plataforma reúne creaciones, investigación y transmisión, bajo la dirección de Sebastian Rivas y con el apoyo de Georges Aperghis como presidente de honor.", en: "STOPERA! brings together artists, performers, researchers and cultural partners around a single question: how voice, body and sound become presence on stage. The platform unites creation, research and transmission, directed by Sebastian Rivas and supported by Georges Aperghis as honorary president.", zh: "STOPERA! 汇集艺术家、表演者、研究者与文化伙伴，围绕同一问题：人声、身体与声音如何在舞台上成为在场。平台整合创作、研究与传承，由 Sebastian Rivas 担任艺术指导，并由 Georges Aperghis 担任名誉主席给予支持。", it: "STOPERA! riunisce artisti, interpreti, ricercatori e partner culturali intorno a una stessa domanda: come la voce, il corpo e il suono diventano presenza in scena. La piattaforma raccoglie creazioni, ricerca e trasmissione, sotto la direzione di Sebastian Rivas e con il sostegno di Georges Aperghis come presidente onorario." } },
   { slug: "stopera-accompagne-we-expected", date: "2026-07", img: "assets/projects/salamandres.jpg", related: "salamandres",
     title: { fr: "STOPERA! accompagne « We Expected the Disaster… »", es: "STOPERA! acompaña « We Expected the Disaster… »", en: "STOPERA! supports \u201cWe Expected the Disaster\u2026\u201d", zh: "STOPERA! 陪伴《We Expected the Disaster…》", it: "STOPERA! accompagna «We Expected the Disaster…»" },
-    excerpt: { fr: "STOPERA! entre en accompagnement de l'opéra politique et écologique de - porte renaud - (Cie Trilobite), en amont de sa création au festival Tête à Tête (Londres) en 2027.", es: "STOPERA! acompaña la ópera política y ecológica de - porte renaud - (Cie Trilobite), antes de su estreno en el festival Tête à Tête (Londres) en 2027.", en: "STOPERA! begins supporting - porte renaud -'s political, ecological opera (Cie Trilobite), ahead of its premiere at the Tête à Tête festival (London) in 2027.", zh: "STOPERA! 开始陪伴 - porte renaud -（Cie Trilobite）的政治与生态歌剧，先于其 2027 年在伦敦 Tête à Tête 音乐节首演。", it: "STOPERA! comincia ad accompagnare l'opera politica ed ecologica di - porte renaud - (Cie Trilobite), in vista della sua prima al festival Tête à Tête (Londra) nel 2027." },
+    excerpt: { fr: "STOPERA! entre en accompagnement de l'opéra politique et écologique de Renaud Porte (Cie Trilobite), en amont de sa création au festival Tête à Tête (Londres) en 2027.", es: "STOPERA! acompaña la ópera política y ecológica de Renaud Porte (Cie Trilobite), antes de su estreno en el festival Tête à Tête (Londres) en 2027.", en: "STOPERA! begins supporting Renaud Porte's political, ecological opera (Cie Trilobite), ahead of its premiere at the Tête à Tête festival (London) in 2027.", zh: "STOPERA! 开始陪伴 Renaud Porte（Cie Trilobite）的政治与生态歌剧，先于其 2027 年在伦敦 Tête à Tête 音乐节首演。", it: "STOPERA! comincia ad accompagnare l'opera politica ed ecologica di Renaud Porte (Cie Trilobite), in vista della sua prima al festival Tête à Tête (Londra) nel 2027." },
     body: { fr: "D'après La Guerre des salamandres de Karel Čapek, We Expected the Disaster… but not the salamanders! mêle extractivisme, crise écologique et un fort travail avec les populations (recherche-action, éducation populaire). STOPERA! en accompagne une première phase de développement — structuration, communication et mise en réseau — vers une diffusion en France, en Europe et en Amérique latine.", es: "A partir de La guerra de las salamandras de Karel Čapek, We Expected the Disaster… but not the salamanders! entrelaza extractivismo, crisis ecológica y un fuerte trabajo con las poblaciones (investigación-acción, educación popular). STOPERA! acompaña una primera fase de desarrollo — estructuración, comunicación y puesta en red — hacia una difusión en Francia, Europa y América Latina.", en: "After Karel Čapek's War with the Newts, We Expected the Disaster… but not the salamanders! weaves together extractivism, ecological crisis and a strong practice of work with communities (action-research, popular education). STOPERA! supports a first development phase — structuring, communication and networking — towards diffusion in France, Europe and Latin America.", zh: "取材自卡雷尔·恰佩克《鲵鱼之乱》，《We Expected the Disaster… but not the salamanders!》交织攫取主义、生态危机与深入的民众工作（行动研究、平民教育）。STOPERA! 陪伴其首个发展阶段——结构搭建、传播与人脉——推动其在法国、欧洲与拉丁美洲的巡演。", it: "Da La guerra delle salamandre di Karel Čapek, We Expected the Disaster… but not the salamanders! intreccia estrattivismo, crisi ecologica e un forte lavoro con gli abitanti (ricerca-azione, educazione popolare). STOPERA! ne accompagna una prima fase di sviluppo — strutturazione, comunicazione e messa in rete — verso una distribuzione in Francia, in Europa e in America latina." } },
   { slug: "mamma-roma-cetc", date: "2027", img: "assets/projects/mamma-roma.jpg", related: "mamma-roma",
     title: { fr: "Mamma Roma en création au Teatro Colón", es: "Mamma Roma en creación en el Teatro Colón", en: "Mamma Roma premieres at the Teatro Colón", zh: "Mamma Roma 于科隆剧院首演", it: "Mamma Roma in creazione al Teatro Colón" },
@@ -898,7 +898,7 @@ var ARTISTS = [
            en: "An independent curator, she supports projects at the crossroads of visual arts, music and the stage, and took part in the emergence of STOPERA!.",
            zh: "独立策展人，她陪伴视觉艺术、音乐与舞台交汇处的项目，并参与了 STOPERA! 的萌生。", it: "Curatrice indipendente, accompagna progetti all'incrocio tra arti visive, musica e scena, e ha preso parte alla nascita di STOPERA!." },
     productions: [] },
-  { slug: "porte-renaud", name: "- porte renaud -", website: "https://porterenaud.com", photo: "assets/projects/porte-renaud.jpg",
+  { slug: "porte-renaud", name: "Renaud Porte", website: "https://porterenaud.com", photo: "assets/projects/porte-renaud.jpg",
     role: { fr: "Compositeur & metteur en scène", es: "Compositor & director", en: "Composer & director", zh: "作曲家与导演", it: "Compositore & regista" },
     bio: { fr: "Compositeur, plasticien et docteur en philosophie, il fonde la Cie Trilobite à Mulhouse. Son opéra politique et écologique We Expected the Disaster… but not the salamanders!, d'après La Guerre des salamandres de Karel Čapek, est accompagné par STOPERA! et créé au festival Tête à Tête (Londres) en 2027.",
            es: "Compositor, artista plástico y doctor en filosofía, funda la Cie Trilobite en Mulhouse. Su ópera política y ecológica We Expected the Disaster… but not the salamanders!, a partir de La guerra de las salamandras de Karel Čapek, es acompañada por STOPERA! y se estrena en el festival Tête à Tête (Londres) en 2027.",
@@ -1300,6 +1300,76 @@ fs.writeFileSync(path.join(DOCS, "sitemap.xml"), sm);
     });
   })(DOCS);
   console.log("table d'entités publiée sur " + n + " pages");
+})();
+
+/* ---- Maillage éditorial inverse -------------------------------------------
+   Les relations existent dans les données mais ne circulent que dans un sens :
+   un parcours cite ses œuvres, un artiste cite ses productions, une actualité
+   cite une pièce — jamais l'inverse. On construit donc l'index inverse et on
+   l'ajoute aux fiches, pour que chaque œuvre déclare à quels parcours elle
+   appartient, qui l'a faite et ce qu'on en a dit.                           */
+(function meshPass() {
+  var byProject = {};
+  function push(slug, kind, label, href) {
+    if (!slug) return;
+    (byProject[slug] = byProject[slug] || { parcours: [], artistes: [], actus: [] })[kind]
+      .push({ label: label, href: href });
+  }
+  THEMES.forEach(function (th) {
+    (th.projects || th.items || []).forEach(function (s) {
+      push(s, "parcours", th.title, "parcours/" + th.slug + "/");
+    });
+  });
+  ARTISTS.forEach(function (a) {
+    (a.productions || []).forEach(function (s) {
+      push(s, "artistes", a.name, "artists/" + a.slug + "/");
+    });
+  });
+  (typeof NEWS !== "undefined" ? NEWS : []).forEach(function (nw) {
+    (nw.projects || []).forEach(function (s) {
+      push(s, "actus", nw.title, "news/" + nw.slug + "/");
+    });
+  });
+
+  function fr(v) { return v == null ? "" : (typeof v === "string" ? v : (v.fr || "")); }
+  function pick(v, lang) { return v == null ? "" : (typeof v === "string" ? v : (v[lang] || v.fr || "")); }
+
+  var n = 0, blocs = 0;
+  (function walk(dir) {
+    fs.readdirSync(dir, { withFileTypes: true }).forEach(function (e) {
+      var f = path.join(dir, e.name);
+      if (e.isDirectory()) { if (e.name !== "assets" && e.name !== "proto") walk(f); return; }
+      if (e.name !== "index.html") return;
+      var rel = path.relative(DOCS, dir).split(path.sep).join("/");
+      var parts = rel ? rel.split("/") : [], lang = "fr";
+      if (parts.length && LANGS.indexOf(parts[0]) >= 0 && parts[0] !== "fr") { lang = parts[0]; parts = parts.slice(1); }
+      if (parts[0] !== "productions" || parts.length < 2) return;
+      var m = byProject[parts[1]];
+      if (!m) return;
+      var pre = lang === "fr" ? "/" : "/" + lang + "/";
+      var LB = { fr: ["Parcours", "Artistes", "Actualités"], en: ["Threads", "Artists", "News"],
+                 es: ["Recorridos", "Artistas", "Actualidad"], it: ["Percorsi", "Artisti", "Attualità"],
+                 zh: ["主题", "艺术家", "动态"] }[lang] || ["Parcours", "Artistes", "Actualités"];
+      function grp(items, label) {
+        if (!items.length) return "";
+        var seen = {};
+        var li = items.filter(function (x) { var k = x.href; if (seen[k]) return false; seen[k] = 1; return true; })
+          .map(function (x) {
+            return '<li><a href="' + pre + x.href + '">' + pick(x.label, lang) + "</a></li>";
+          }).join("");
+        return '<div class="mesh-g"><h4>' + label + "</h4><ul>" + li + "</ul></div>";
+      }
+      var html = grp(m.parcours, LB[0]) + grp(m.artistes, LB[1]) + grp(m.actus, LB[2]);
+      if (!html) return;
+      var block = '<section class="mesh" aria-label="' + LB[0] + " · " + LB[1] + '">' + html + "</section>";
+      var h = fs.readFileSync(f, "utf8");
+      h = h.replace(/<section class="mesh"[\s\S]*?<\/section>/, "");
+      if (h.indexOf("</main>") < 0) return;
+      fs.writeFileSync(f, h.replace("</main>", block + "\n  </main>"));
+      n++; blocs += (html.match(/<li>/g) || []).length;
+    });
+  })(DOCS);
+  console.log("maillage éditorial : " + blocs + " renvois sur " + n + " fiches");
 })();
 
 console.log("generated " + smPages.length + " pages × " + LANGS.length + " langues = "
