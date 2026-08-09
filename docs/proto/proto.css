@@ -502,3 +502,11 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.45;
   max-width:56ch; margin-bottom:1rem;
 }
+
+
+/* ---- Le texte colle à l'image ----
+   Une image pleine largeur suivie d'un blanc puis du texte casse le lien
+   entre les deux. La section qui suit une image ou une vidéo démarre au ras. */
+.fig-full + .sec, .vid + .sec, .fig-full + .caesura + .sec{padding-top:calc(var(--u)*.9)}
+.fig-full, .vid{margin-bottom:0}
+.fig-full + .sec > .wrap, .vid + .sec > .wrap{padding-top:0}
