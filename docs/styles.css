@@ -910,3 +910,28 @@ body[data-section="productions"] .body p.lead .xref:hover,
 @media(prefers-reduced-motion:reduce){
   ::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
 }
+
+/* ---- Le même geste, là où l'API n'existe pas encore ----
+   La transition entre documents n'est connue que de Chrome, Edge et Safari
+   18.2. Ailleurs — Safari plus ancien, Firefox — la page s'ouvrait sans rien.
+   Ce voile rejoue le geste à l'arrivée : un aplat blanc que perce un cercle
+   grandissant, depuis le point cliqué. Il n'est posé que si le navigateur
+   sait animer une propriété enregistrée ; sinon il n'existe pas du tout,
+   plutôt que de risquer un blanc qui resterait. */
+@property --st-r{syntax:"<percentage>";inherits:false;initial-value:0%}
+
+.st-arrivee::before{
+  content:"";position:fixed;inset:0;background:#fff;z-index:9999;pointer-events:none;
+  --st-r:0%;
+  -webkit-mask-image:radial-gradient(circle at var(--st-x,50%) var(--st-y,50%),
+    transparent var(--st-r),#000 calc(var(--st-r) + 0.6%));
+  mask-image:radial-gradient(circle at var(--st-x,50%) var(--st-y,50%),
+    transparent var(--st-r),#000 calc(var(--st-r) + 0.6%));
+  animation:st-ouvre .66s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes st-ouvre{from{--st-r:0%}to{--st-r:150%}}
+
+@media(prefers-reduced-motion:reduce){
+  .st-arrivee::before{animation:st-fondu .2s linear forwards;mask-image:none;-webkit-mask-image:none}
+  @keyframes st-fondu{from{opacity:1}to{opacity:0}}
+}
