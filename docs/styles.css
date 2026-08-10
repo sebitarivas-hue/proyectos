@@ -761,3 +761,33 @@ body[data-section="productions"] .body p.lead .xref:hover,
 /* le gras n'a pas cours dans un chapeau d'œuvre : le nom se tient seul */
 .body .pd-pitch strong, .body .pd-prose--lead strong{font-family:inherit; font-weight:400}
 .body .pd-pitch em, .body .pd-prose--lead em{font-family:var(--serif)}
+
+/* ---- La revue de presse : une citation se tient à l'échelle d'une voix ----
+   Elle revient sur les fiches françaises, où la composition l'avait perdue.
+   La citation prend l'italique vrai de Neutrix, la source l'étiquette.       */
+.body .pd-press{margin-top:2.8rem; border-top:2px solid var(--line); padding-top:1.1rem}
+.body .pd-press > h4{
+  font-family:var(--title); font-weight:400; color:var(--ink);
+  font-size:clamp(1.9rem,5.2vw,3.2rem); line-height:.9; letter-spacing:-.035em;
+  margin:0 0 1rem;
+}
+.body .pd-press .pdq{
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(1.25rem,3vw,1.85rem); line-height:1.12; letter-spacing:-.02em;
+  max-width:42ch; margin:0 0 1.3rem; padding:0; border:0;
+}
+.body .pd-press .pdq cite{
+  display:block; font-family:var(--disp); font-style:normal; font-weight:800;
+  font-size:.66rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--dim); margin-top:.55rem;
+}
+.body .pd-press .pdq cite a{border-bottom:1px solid rgba(10,10,12,.3);
+  padding-block:.5em; margin-block:-.5em}
+.body .press-ref{padding:.9rem 0; border-bottom:1px solid rgba(10,10,12,.18)}
+.body .press-ref:last-of-type{border-bottom:0}
+.body .pd-dl{
+  display:inline-flex; align-items:baseline; gap:.5em; margin-top:1rem;
+  font-family:var(--disp); font-weight:800; font-size:.92rem; letter-spacing:-.02em;
+  border-bottom:2px solid var(--sec); padding:.3em 0 .18em;
+}
+.body .pd-dl:hover{color:var(--sec)}
