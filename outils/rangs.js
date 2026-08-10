@@ -1,8 +1,10 @@
 /* L'ORDRE DES RANGS.
-   La direction artistique le fixe ainsi : 03 transmission, 05 lips lab. Le
-   laboratoire et la transmission échangent donc leur place, et le laboratoire
-   s'annonce désormais sous son nom — Lips Lab — plutôt que sous le mot
-   générique « laboratoire ».
+   La direction artistique le fixe ainsi : 03 transmission, 05 laboratoire.
+   Le laboratoire et la transmission échangent leur place.
+
+   Le rang garde son mot : « laboratoire ». Lips Lab est le nom de l'œuvre qui
+   s'y déploie, pas celui de la section — un menu nomme un domaine, pas un
+   programme.
 
    Ce que cette règle change, et ce qu'elle ne change pas :
 
@@ -30,7 +32,7 @@ var LIBELLE = {
   oeuvres: { fr: "œuvres", en: "works", es: "obras", it: "opere", zh: "作品", de: "werke" },
   transmission: { fr: "transmission", en: "transmission", es: "transmisión", it: "trasmissione", zh: "传承", de: "vermittlung" },
   reseau: { fr: "réseau", en: "network", es: "red", it: "rete", zh: "网络", de: "netzwerk" },
-  laboratoire: { fr: "lips lab", en: "lips lab", es: "lips lab", it: "lips lab", zh: "lips lab", de: "lips lab" },
+  laboratoire: { fr: "laboratoire", en: "laboratory", es: "laboratorio", it: "laboratorio", zh: "实验室", de: "labor" },
   soutenir: { fr: "soutenir", en: "support", es: "apoyar", it: "sostenere", zh: "支持", de: "unterstützen" }
 };
 /* les sections qui relèvent d'un rang, au-delà de sa page de tête */

@@ -24,7 +24,7 @@ var L = {
   oeuvres: { fr: "œuvres", en: "works", es: "obras", it: "opere", zh: "作品" },
   transmission: { fr: "transmission", en: "transmission", es: "transmisión", it: "trasmissione", zh: "传承" },
   reseau: { fr: "réseau", en: "network", es: "red", it: "rete", zh: "网络" },
-  laboratoire: { fr: "lips lab", en: "lips lab", es: "lips lab", it: "lips lab", zh: "lips lab" },
+  laboratoire: { fr: "laboratoire", en: "laboratory", es: "laboratorio", it: "laboratorio", zh: "实验室" },
   soutenir: { fr: "soutenir", en: "support", es: "apoyar", it: "sostenere", zh: "支持" }
 };
 /* les appels du chapeau : quatre raccourcis, pas six */
