@@ -816,3 +816,43 @@ body[data-section="productions"] .body p.lead .xref:hover,
   .body .artist-head{grid-template-columns:minmax(0,1fr); gap:.7rem}
   .body .artist-portrait{justify-self:start}
 }
+
+/* ==========================================================
+   LA SUSPENSION, ENTRE DEUX PAGES
+   Le nom dit la méthode : le STOP n'est pas un refus, c'est une suspension —
+   le temps d'arrêt d'où naît le geste. Le passage d'une page à l'autre le
+   joue : la page quittée se retire dans le blanc, et la suivante s'ouvre par
+   un cercle, depuis l'endroit exact où l'on a cliqué.
+
+   Tout est en CSS. La navigation ne dépend jamais de l'animation : là où
+   l'API n'existe pas, la page s'ouvre simplement, sans rien casser.
+   ========================================================== */
+@view-transition{navigation:auto}
+
+/* Le cercle part du point cliqué ; à défaut, du centre. Ces images-clés
+   restent au premier niveau : imbriquées dans une requête de média, leur
+   portée devient discutable selon les moteurs. */
+@keyframes st-cercle{
+  from{clip-path:circle(0% at var(--st-x,50%) var(--st-y,50%))}
+  to{clip-path:circle(150% at var(--st-x,50%) var(--st-y,50%))}
+}
+@keyframes st-sortie{from{opacity:1}to{opacity:0}}
+
+@media(prefers-reduced-motion:no-preference){
+  /* le fond de la transition est le blanc : c'est lui qu'on voit paraître
+     quand la page quittée s'efface, avant que la suivante ne s'ouvre */
+  ::view-transition{background:#fff}
+
+  ::view-transition-old(root){
+    animation:st-sortie .30s cubic-bezier(.4,0,1,1) forwards;
+  }
+  ::view-transition-new(root){
+    animation:st-cercle .62s cubic-bezier(.22,1,.36,1) forwards;
+  }
+}
+
+/* Mouvement réduit : la suspension se dit en une seule respiration, sans
+   déplacement — le fondu suffit. */
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+}
