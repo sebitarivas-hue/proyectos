@@ -6,6 +6,24 @@
      docs/news/<slug>/index.html  + docs/news/index.html
      docs/sitemap.xml
    Run: node build.js   (from repo root) */
+/* ⛔ GÉNÉRATEUR RETIRÉ DU SERVICE — 10/08/2026
+   Ce script produisait le site d'avant la V2 : il écrit dans docs/ à partir de
+   docs/script.js et de partials/. Le site publié ne vient plus de là — les 295
+   pages ont été composées puis migrées depuis le prototype V2, et une exécution
+   de ce fichier les écraserait toutes par l'ancienne mise en page.
+
+   Il est conservé pour son historique et pour les données qu'il porte
+   (PROJECTS, YEARS, ARTISTS, THEMES), qui restent lisibles par require().
+   Pour le remettre en service, il faut d'abord lui apprendre la V2.          */
+if (require.main === module) {
+  console.error(
+    "\nbuild.js ne publie plus rien.\n" +
+    "Le site vient du prototype V2 migré le 10/08/2026 ; relancer ce script\n" +
+    "remplacerait les 295 pages par l'ancienne mise en page.\n" +
+    "Voir le journal de git pour la migration.\n");
+  process.exit(1);
+}
+
 "use strict";
 var fs = require("fs"), path = require("path");
 var DOCS = path.join(__dirname, "docs");
