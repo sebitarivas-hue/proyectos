@@ -791,3 +791,28 @@ body[data-section="productions"] .body p.lead .xref:hover,
   border-bottom:2px solid var(--sec); padding:.3em 0 .18em;
 }
 .body .pd-dl:hover{color:var(--sec)}
+
+/* ---- Le bandeau d'une fiche de personne ----
+   Le monogramme n'avait aucune dimension : il s'écrasait en filet coloré.
+   Il devient un carré plein — une surface, comme le veut le système : pas
+   d'arrondi, pas d'ombre, elle touche le texte sans marge. */
+.body .artist-head{
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:0 1.1rem;
+  align-items:end; margin-bottom:.2rem;
+}
+.body .artist-portrait{
+  width:clamp(3.4rem,13vw,5.2rem); aspect-ratio:1; display:grid; place-items:center;
+  font-family:var(--disp); font-weight:800; letter-spacing:.02em;
+  font-size:clamp(1rem,3.4vw,1.5rem); align-self:end;
+}
+.body .artist-portrait img{width:100%; height:100%; object-fit:cover}
+.body .artist-head > div:last-child{align-self:end}
+.body .artist-role-lg{
+  font-family:var(--disp); font-weight:800; font-size:.66rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--dim);
+  margin-top:.45rem;
+}
+@media(max-width:559px){
+  .body .artist-head{grid-template-columns:minmax(0,1fr); gap:.7rem}
+  .body .artist-portrait{justify-self:start}
+}
