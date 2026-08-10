@@ -35,10 +35,10 @@ function routes(base) {
 }
 
 /* On compare le SENS, pas la forme : la casse a changé par décision de DA, et
-   « - porte renaud - » a été corrigé en « Renaud Porte » à la source. Sans
+   « - porte renaud - » a été corrigé en « - porte renaud - » à la source. Sans
    normaliser, ces deux corrections voulues se lisent comme des pertes. */
 var norm = s => s.toLowerCase()
-  .replace(/-\s*porte renaud\s*-/g, "renaud porte")
+  .replace(/-?\s*porte renaud\s*-?/g, "porterenaud")
   .replace(/[’']/g, "'").replace(/[«»"]/g, "")
   .replace(/\s+/g, " ").trim();
 var phrases = t => t.split(/(?<=[.!?…])\s+|\n+/)

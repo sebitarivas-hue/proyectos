@@ -31,11 +31,11 @@ function routes(base) {
   return out;
 }
 
-/* « Renaud Porte » a été corrigé à la source : les deux graphies valent l'une
+/* « - porte renaud - » a été corrigé à la source : les deux graphies valent l'une
    pour l'autre, sinon la correction se lirait comme une disparition. */
 function cle(s) {
   return s.toLowerCase()
-    .replace(/porte renaud|renaud porte/g, "renaudporte")
+    .replace(/-?\s*porte renaud\s*-?/g, "porterenaud")
     .normalize("NFD").replace(/[̀-ͯ]/g, "")
     .replace(/[^a-z0-9]/g, "");
 }

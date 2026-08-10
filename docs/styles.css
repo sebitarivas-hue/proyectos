@@ -802,7 +802,7 @@ body[data-section="productions"] .sec p.lead strong{font-family:inherit; font-we
 
 /* ---- À cette échelle, un filet de lien traverse la ligne suivante ----
    Mesuré : interligne 26,3 px pour un corps de 24,8 px — le trait sous
-   « Renaud Porte » tombait sur « salamandre » et se lisait comme une rature.
+   « - porte renaud - » tombait sur « salamandre » et se lisait comme une rature.
    Dans un chapeau d'œuvre, le renvoi se signale donc par la couleur seule.  */
 body[data-section="productions"] .body p.lead .xref,
 body[data-section="productions"] .sec p.lead .xref,

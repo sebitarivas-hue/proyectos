@@ -42,7 +42,7 @@ function pages(base, a, d) {
 }
 function cle(s) {
   return String(s).replace(/<[^>]+>/g, " ").toLowerCase()
-    .replace(/porte renaud|renaud porte/g, "renaudporte")
+    .replace(/-?\s*porte renaud\s*-?/g, "porterenaud")
     .normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
 }
 
@@ -88,7 +88,7 @@ function cle(s) {
         var copie = bloc.cloneNode(true);
         [...copie.children].forEach(function (c) {
           var k = (c.innerText || "").toLowerCase()
-            .replace(/porte renaud|renaud porte/g, "renaudporte")
+            .replace(/-?\s*porte renaud\s*-?/g, "porterenaud")
             .normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
           if (k.length >= 30 && window.__NEUF.indexOf(k) >= 0) c.remove();
         });

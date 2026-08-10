@@ -44,7 +44,15 @@ function pages(d, a) {
   return a;
 }
 
-var posees = 0, touchees = 0, sans = [];
+/* Sur une fiche d'œuvre, le registre porte l'information sur L'IMAGE
+   PRINCIPALE — celle qui annonce l'œuvre, la première de la page. Les
+   vignettes qui suivent sont une fresque de photos de plateau : elles se
+   lisent telles qu'elles ont été prises, sans traitement.
+   La règle est l'ordre, pas le conteneur : un conteneur se renomme, l'ordre
+   d'une page ne ment pas. */
+function unique(route) { return /\/productions\//.test(route); }
+
+var posees = 0, touchees = 0, sans = [], nettoyees = 0;
 
 pages(DOCS).forEach(function (f) {
   var route = routeOf(f), veut = registre(route);
@@ -52,8 +60,20 @@ pages(DOCS).forEach(function (f) {
   var i = h.indexOf("<body"), n = 0;
   var head = h.slice(0, i), body = h.slice(i);
 
+  var rang = 0;
   body = body.replace(/<img\b[^>]*>/g, function (t) {
     if (/logo-dark|favicon/.test(t)) return t;          /* la marque n'est pas une image de contenu */
+    /* L'image principale d'une œuvre vit directement dans /assets/projects/ ;
+       ce qui est rangé dans un sous-dossier est une vignette ou une affiche —
+       l'affiche est un objet graphique, elle ne se filtre pas non plus. */
+    var src = (t.match(/src="([^"]*)"/) || [, ""])[1];
+    var principale = /^\/assets\/projects\/[^/]+$/.test(src.split("?")[0]);
+    rang += principale ? 1 : 0;
+    if (unique(route) && (!principale || rang > 1)) {   /* vignette : aucun traitement */
+      var nu = t.replace(/\s*\bim-[a-z]+/g, "").replace(/class="\s*"/, "");
+      if (nu !== t) { nettoyees++; n++; }
+      return nu;
+    }
     if (/\bim-[a-z]+/.test(t)) return t;                /* déjà inscrite au registre */
     n++;
     if (VERIF) { sans.push(route + " — " + (t.match(/src="([^"]*)"/) || [, "?"])[1]); return t; }
@@ -70,5 +90,6 @@ if (VERIF) {
   console.log("images sans traitement : " + posees);
   sans.slice(0, 20).forEach(function (s) { console.log("  " + s); });
 } else {
-  console.log("registre posé sur " + posees + " image(s), " + touchees + " page(s)");
+  console.log("registre posé sur " + posees + " image(s), " + touchees + " page(s) ; " +
+    nettoyees + " vignette(s) rendue(s) au brut");
 }
