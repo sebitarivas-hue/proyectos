@@ -4,11 +4,9 @@
    contrebasse, clarinette basse, et les trois percussions qui actionnent la
    table à vue.
 
-   La distribution vocale, elle, n'est pas arrêtée — trois hommes et une femme
-   sont pressentis. Elle est donc écrite comme le site écrit déjà ce qui n'est
-   pas fixé, sur la fiche de RUT : « en cours de définition ». Une fiche
-   d'œuvre à créer peut dire qu'elle cherche encore ; elle ne peut pas
-   annoncer une distribution comme acquise.
+   Les voix sont nommées par leur tessiture — soprano, contre-ténor, ténor,
+   baryton. C'est ce qu'écrit un générique : l'écriture vocale de l'œuvre, pas
+   le nombre d'hommes et de femmes qui la chanteront.
 
    Le récit de la fiche n'est pas touché : « trois percussionnistes actionnent
    à vue les mécanismes de la table » reste vrai — il était incomplet, pas
@@ -33,13 +31,17 @@ var LIGNES = [
     }
   },
   {
+    /* Un générique nomme des tessitures, pas un décompte de personnes.
+       « Trois hommes et une femme » décrivait la distribution ; ce qui
+       s'écrit, c'est l'écriture vocale de l'œuvre. Ordre par tessiture,
+       du plus aigu au plus grave, comme le fait un programme. */
     role: { fr: "Voix", en: "Voices", es: "Voces", it: "Voci", zh: "声部" },
     qui: {
-      fr: "Trois hommes et une femme — distribution en cours de définition",
-      en: "Three men and one woman — casting being defined",
-      es: "Tres hombres y una mujer — reparto en definición",
-      it: "Tre uomini e una donna — distribuzione in via di definizione",
-      zh: "三男一女 —— 演员阵容确定中"
+      fr: "Soprano, contre-ténor, ténor, baryton",
+      en: "Soprano, countertenor, tenor, baritone",
+      es: "Soprano, contratenor, tenor, barítono",
+      it: "Soprano, controtenore, tenore, baritono",
+      zh: "女高音、假声男高音、男高音、男中音"
     }
   }
 ];
@@ -66,8 +68,8 @@ LANGS.forEach(function (lang) {
      son générique en <dt>/<dd>, celles reprises du site en <li> role/who. La
      règle reconnaît les deux — sans quoi la langue de référence serait la
      seule à ne pas être corrigée, ce qui est exactement ce qui s'est passé. */
-  var reLi = /<li>(?:(?!<\/li>)[\s\S])*?data-fr="Percussions"(?:(?!<\/li>)[\s\S])*?<\/li>/;
-  var reDt = /<dt>Percussions<\/dt><dd>[^<]*<\/dd>/;
+  var reLi = /<li>(?:(?!<\/li>)[\s\S])*?data-fr="(?:Percussions|Ensemble)"(?:(?!<\/li>)[\s\S])*?<\/li>/;
+  var reDt = /<dt[^>]*>Percussions<\/dt><dd[^>]*>[^<]*<\/dd>/;
   if (reLi.test(h)) {
     h = h.replace(reLi, LIGNES.map(function (e) { return ligne(e, lang); }).join(""));
   } else if (reDt.test(h)) {
