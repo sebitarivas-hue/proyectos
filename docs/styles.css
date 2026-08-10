@@ -541,3 +541,154 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .fig-full + .sec, .vid + .sec, .fig-full + .caesura + .sec{padding-top:calc(var(--u)*.9)}
 .fig-full, .vid{margin-bottom:0}
 .fig-full + .sec > .wrap, .vid + .sec > .wrap{padding-top:0}
+
+/* ==========================================================
+   LE CONTENU REPRIS DU SITE ENTRE DANS LE SYSTÈME
+   83 classes vivaient sans aucune règle : sur les fiches d'œuvres, les
+   intitulés de bloc, les génériques, les listes de partenaires et les
+   caractéristiques tombaient tous au même niveau, dans la même graisse,
+   avec les puces du navigateur. Une fiche n'était plus une architecture,
+   c'était un bloc de texte.
+
+   Les quatre rôles du système leur sont appliqués, une fois pour toutes :
+     ARCHITECTURE  Neutrix 400        les titres
+     TEXTE         Archivo 400        la prose
+     MASSE         Bricolage 800      les chiffres, les appels
+     MICRO         capitales espacées les étiquettes
+   ========================================================== */
+
+/* ---- MICRO — tout intitulé de bloc est une étiquette, jamais un titre ---- */
+.body .k, .body .credits .role, .body .artist-mono,
+.body .col-label, .body .press-ref-src, .body .news-date,
+.body .legal-date, .body .thread-n, .body .join-contact-title{
+  font-family:var(--disp); font-weight:800; font-size:.66rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--dim);
+  line-height:1.4;
+}
+
+/* ---- Le fil d'ariane de la fiche ---- */
+.body .pd-eyebrow{
+  font-family:var(--disp); font-weight:800; font-size:.66rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--dim);
+  margin-bottom:.55rem; display:flex; flex-wrap:wrap; gap:.2rem .5rem; align-items:baseline;
+}
+.body .pd-eyebrow a{border-bottom:1px solid rgba(10,10,12,.3); padding-block:.5em; margin-block:-.5em}
+.body .pd-tag{color:var(--sec)}
+
+/* ---- ARCHITECTURE — le titre de la fiche tient la page ---- */
+.body .pd-title, .body .artist-head, .body .thread-h, .body .news-h{
+  font-family:var(--title); font-weight:400; letter-spacing:-.03em;
+  line-height:.92; font-size:clamp(1.9rem,4.6vw,3rem); margin:0;
+}
+.body .pd-title--page{
+  font-size:clamp(2.6rem,8vw,5.4rem); line-height:.86; letter-spacing:-.035em;
+  margin:0 0 .5rem;
+}
+.body .pd-title .it{font-style:italic}
+
+/* ---- TEXTE — le chapeau se distingue de la prose par l'échelle, pas par la graisse ---- */
+.body .pd-pitch, .body .pd-prose--lead{
+  font-family:var(--body); font-size:clamp(1.05rem,1.7vw,1.24rem);
+  line-height:1.42; max-width:58ch; margin-top:.9rem;
+}
+.body .pd-prose, .body .pd-note, .body .artist-bio-long, .body .legal-prose{max-width:64ch}
+.body .pd-prose + .pd-prose, .body .pd-prose p + p{margin-top:.8rem}
+.body .pd-note{color:var(--dim); font-size:.94rem; margin-top:.9rem}
+
+/* ---- Un bloc est une unité : un filet le sépare, jamais un cadre ---- */
+.body .pd-block, .body .pd-dimensions, .body .pd-gallery, .body .press-group{
+  margin-top:2.8rem; border-top:2px solid var(--line); padding-top:1.1rem;
+}
+/* ---- ARCHITECTURE — un intitulé de bloc porte la fiche, il ne la légende pas.
+   C'est la typographie qui fait la structure : ces titres ont l'échelle des
+   titres de section, pas celle des étiquettes. ---- */
+.body .pd-block > h3, .body .pd-block > h4, .body .pd-dimensions > h3{
+  display:block; font-family:var(--title); font-weight:400;
+  font-size:clamp(1.9rem,5.2vw,3.2rem); line-height:.9; letter-spacing:-.035em;
+  color:var(--ink); margin:0 0 .9rem;
+}
+.body .pd-dim > h4{
+  font-family:var(--title); font-weight:400; color:var(--ink);
+  font-size:clamp(1.5rem,3.4vw,2rem); line-height:.94; letter-spacing:-.03em;
+  margin:0 0 .45rem;
+}
+
+/* ---- Les listes du contenu : des filets, pas les puces du navigateur ---- */
+.body ul.facts, .body ul.credits, .body ul.taglist, .body ul.rel-list,
+.body ul.artist-links, .body ul.pd-dl, .body ul.news-list, .body ul.thread-list,
+.body ul.pd-dim-partners, .body ul.index{list-style:none; margin:0; padding:0}
+
+.body ul.facts > li, .body ul.credits > li{
+  display:grid; grid-template-columns:minmax(0,1fr); gap:.1rem;
+  padding:.6rem 0; border-bottom:1px solid rgba(10,10,12,.18);
+}
+@media(min-width:640px){
+  .body ul.facts > li, .body ul.credits > li{grid-template-columns:11rem minmax(0,1fr); gap:.1rem 1.4rem; align-items:baseline}
+}
+.body ul.facts > li:last-child, .body ul.credits > li:last-child{border-bottom:0}
+.body .v, .body .credits .who{font-family:var(--body); font-size:1rem; line-height:1.45}
+/* le tiret cadratin du générique appartenait à la mise en page, plus au texte */
+.body ul.credits > li{font-size:0}
+.body ul.credits > li > *{font-size:1rem}
+.body ul.credits > li .role{font-size:.66rem}
+
+/* ---- Les partenaires et les mots-clés : des jalons, alignés ---- */
+.body ul.taglist, .body ul.pd-dim-partners, .body ul.artist-links{
+  display:flex; flex-wrap:wrap; gap:.4rem .5rem; margin-top:.7rem;
+}
+.body ul.taglist > li, .body ul.pd-dim-partners > li, .body ul.artist-links > li{
+  font-family:var(--disp); font-weight:800; font-size:.68rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid rgba(10,10,12,.34); padding:.42em .6em .38em;
+}
+.body ul.taglist a, .body ul.pd-dim-partners a, .body ul.artist-links a{border:0}
+.body ul.taglist > li:hover, .body ul.pd-dim-partners > li:hover{border-color:var(--sec); color:var(--sec)}
+
+/* ---- Les trois dimensions d'une œuvre se lisent côte à côte ---- */
+.body .pd-dimensions{display:grid; gap:1.4rem}
+@media(min-width:900px){.body .pd-dimensions{grid-template-columns:repeat(3,minmax(0,1fr)); gap:2rem}}
+.body .pd-dim-text{max-width:40ch}
+.body .dim-link{border-bottom:1px solid rgba(10,10,12,.3); padding-block:.5em; margin-block:-.5em}
+
+/* ---- Les images de la fiche touchent le texte, comme partout ailleurs ---- */
+.body .pd-media, .body .pd-full{margin:1.1rem 0 0}
+.body .pd-media img, .body .pd-full img{width:100%}
+.body .pd-gallery{display:grid; gap:.6rem}
+@media(min-width:760px){.body .pd-gallery{grid-template-columns:1fr 1fr}}
+
+/* ---- Les vignettes de projets ---- */
+.body .projects, .body .thread-grid{display:grid; gap:1.2rem; list-style:none; padding:0; margin:1rem 0 0}
+@media(min-width:760px){.body .projects, .body .thread-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.body .projects{grid-template-columns:repeat(3,1fr)}}
+.body .ptile{position:relative; display:block; background:var(--ink)}
+.body .ptile-img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.body .ptile-scrim{position:absolute; inset:auto 0 0 0; height:60%;
+  background:linear-gradient(to top,rgba(10,10,12,.86),transparent)}
+.body .ptile-meta{position:absolute; left:0; right:0; bottom:0; padding:.8rem; color:var(--paper);
+  display:flex; align-items:baseline; justify-content:space-between; gap:.8rem}
+.body .ptile-title{font-family:var(--title); font-weight:400; font-size:1.4rem;
+  letter-spacing:-.02em; line-height:1}
+.body .ptile-year{font-family:var(--disp); font-weight:800; font-size:.8rem;
+  font-variant-numeric:tabular-nums}
+
+/* ---- Les renvois éditoriaux ---- */
+.body .xref{border-bottom:1px solid var(--sec); padding-block:.5em; margin-block:-.5em}
+.body .xref:hover{color:var(--sec)}
+
+/* ---- Les appels à l'action ---- */
+.body .btn, .body .btn-ghost{
+  display:inline-flex; align-items:baseline; gap:.5em; margin-top:1rem;
+  font-family:var(--disp); font-weight:800; font-size:.92rem;
+  letter-spacing:-.02em; padding:.7em 1.1em;
+}
+.body .btn{background:var(--sec); color:var(--paper)}
+.body .btn-ghost{border:2px solid var(--line)}
+.body .btn:hover{filter:brightness(1.12)}
+.body .btn-ghost:hover{border-color:var(--sec); color:var(--sec)}
+
+/* ---- Actualités, presse, textes légaux ---- */
+.body ul.news-list > li, .body ul.thread-list > li, .body .press-ref{
+  padding:.9rem 0; border-bottom:1px solid rgba(10,10,12,.18);
+}
+.body .news-date, .body .legal-date{display:block; margin-bottom:.25rem}
+.body .press-prod{font-family:var(--disp); font-weight:800; letter-spacing:-.02em}
