@@ -8,9 +8,12 @@
 
    Chacun s'appuie sur un fait déjà porté par le site, et sur rien d'autre :
 
-     · le territoire — la recherche-action de six ans dans le quartier Briand
-       à Mulhouse, et les matériaux collectés sur place avec les habitant·es
-       et les associations, à chaque lieu d'accueil (fiche salamandres) ;
+     · le territoire, à deux échelles — la recherche-action de six ans dans le
+       quartier Briand à Mulhouse et les matériaux collectés sur place (fiche
+       salamandres) ; et l'orientation vers le sud, que la carte des
+       coopérations documente déjà : Buenos Aires (CETC — Teatro Colón,
+       UNSAM), Santiago (Ópera Latinoamérica), Mexico (A World to Blast),
+       Monte-Carlo. « Territorial » ne veut pas dire « local » ;
      · la démocratisation — la médiation de [FAM]E, « ouverte à tou·te·s »,
        et l'éducation populaire (fiches [FAM]E et salamandres) ;
      · la parité — « le laboratoire défend l'égalité femmes-hommes »
@@ -42,11 +45,11 @@ var AXES = [
   {
     k: { fr: "Logique territoriale", en: "Territorial logic", es: "Lógica territorial",
          it: "Logica territoriale", zh: "在地逻辑" },
-    v: { fr: "Les actions se mènent avec les lieux d'accueil, dans la durée : ateliers, rencontres et recherche-action au long cours — jusqu'à collecter sur place, avec les habitant·es et les associations, les matériaux d'un spectacle.",
-         en: "The work is carried out with the host venues, over time: workshops, encounters and long-term action research — to the point of gathering the materials of a production on site, with residents and local associations.",
-         es: "Las acciones se llevan a cabo con los espacios de acogida, en la duración: talleres, encuentros e investigación-acción a largo plazo — hasta recoger in situ, con los habitantes y las asociaciones, los materiales de un espectáculo.",
-         it: "Le azioni si conducono con i luoghi ospitanti, nella durata: laboratori, incontri e ricerca-azione di lungo periodo — fino a raccogliere sul posto, con gli abitanti e le associazioni, i materiali di uno spettacolo.",
-         zh: "行动与接待场所长期共同展开：工作坊、交流与持续的行动研究——直至与居民和当地协会一起，就地收集一部演出的材料。" }
+    v: { fr: "Deux échelles, une même logique. Sur place : ateliers, rencontres et recherche-action au long cours avec les lieux d'accueil, jusqu'à collecter les matériaux d'un spectacle avec les habitant·es et les associations. Et vers le sud : les œuvres se fabriquent avec Buenos Aires, Santiago, Mexico et le sud de l'Europe — une coopération qui suit d'autres axes que ceux du centre.",
+         en: "Two scales, one logic. On the ground: workshops, encounters and long-term action research with the host venues, to the point of gathering the materials of a production with residents and local associations. And southwards: the works are made with Buenos Aires, Santiago, Mexico City and southern Europe — a cooperation that follows other axes than those of the centre.",
+         es: "Dos escalas, una misma lógica. Sobre el terreno: talleres, encuentros e investigación-acción a largo plazo con los espacios de acogida, hasta recoger los materiales de un espectáculo con los habitantes y las asociaciones. Y hacia el sur: las obras se fabrican con Buenos Aires, Santiago, Ciudad de México y el sur de Europa — una cooperación que sigue otros ejes que los del centro.",
+         it: "Due scale, una stessa logica. Sul posto: laboratori, incontri e ricerca-azione di lungo periodo con i luoghi ospitanti, fino a raccogliere i materiali di uno spettacolo con gli abitanti e le associazioni. E verso sud: le opere si fabbricano con Buenos Aires, Santiago, Città del Messico e il sud dell'Europa — una cooperazione che segue assi diversi da quelli del centro.",
+         zh: "两个尺度，同一种逻辑。在地：与接待场所长期开展工作坊、交流与行动研究，直至与居民和协会一起收集一部演出的材料。以及朝南：作品与布宜诺斯艾利斯、圣地亚哥、墨西哥城以及南欧共同完成——一种沿着中心之外的轴线展开的合作。" }
   },
   {
     k: { fr: "Démocratisation", en: "Widening access", es: "Democratización",
