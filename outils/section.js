@@ -19,12 +19,12 @@ var DOCS = path.resolve(__dirname, "..", "docs");
 var LANGS = ["en", "es", "it", "zh"];
 
 var REGLES = [
-  [/^productions\//, "productions"],
-  [/^parcours\//, "parcours"],
+  [/^productions(\/|$)/, "productions"],
+  [/^parcours(\/|$)/, "parcours"],
   [/^artists(\/|$)/, "artistes"],
   [/^news(\/|$)/, "actualites"],
   [/^presse(\/|$)/, "presse"],
-  [/^recherche\/|^lips(\/|$)|^laboratoire(\/|$)/, "laboratoire"],
+  [/^recherche(\/|$)|^lips(\/|$)|^laboratoire(\/|$)/, "laboratoire"],
   [/^reseau(\/|$)|^cooperation(\/|$)/, "reseau"],
   [/^oeuvres(\/|$)/, "oeuvres"],
   [/^pourquoi(\/|$)/, "pourquoi"],
