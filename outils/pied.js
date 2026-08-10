@@ -43,8 +43,12 @@ function pied(lang, route) {
     '<p style="margin-top:.7rem"><a href="mailto:info@stopera.art">info@stopera.art</a></p></div>' +
     '<div><p class="lab">' + LAB[lang][0] + "</p><ul><li>" + liste + "</li></ul>" +
     '<p class="lab" style="margin-top:1rem">' + LAB[lang][1] + "</p><ul>" +
-    '<li><a href="https://www.instagram.com/stopera.art/">Instagram</a> · ' +
-    '<a href="https://www.youtube.com/@stopera-art">YouTube</a></li></ul></div>' +
+    /* Les comptes du site, relevés sur l'ancien : ceux qui figuraient ici
+       jusqu'ici — stopera.art — n'existaient nulle part et menaient dans le
+       vide, sur les 300 pages. Facebook avait purement disparu. */
+    '<li><a href="https://instagram.com/stopera_sonic_theatre">Instagram</a> · ' +
+    '<a href="https://www.youtube.com/@stopera-sonictheatre">YouTube</a> · ' +
+    '<a href="https://www.facebook.com/stopera.sonictheatre">Facebook</a></li></ul></div>' +
     "</div></footer>";
 }
 
