@@ -952,3 +952,47 @@ body[data-section="productions"] .body p.lead .xref:hover,
   .st-arrivee::before{animation:st-fondu .2s linear forwards;mask-image:none;-webkit-mask-image:none}
   @keyframes st-fondu{from{opacity:1}to{opacity:0}}
 }
+
+/* ==========================================================
+   LE SÉLECTEUR DE LANGUE, DANS LA BARRE
+   Il vivait au pied : mesuré sur une fiche en 390 px, à 4 462 px du haut —
+   97 % de la page, cinq écrans de défilement. Introuvable.
+
+   Le monter n'était pas qu'une question de volonté : le fil des rangs n'a
+   aucune marge, à aucune largeur — 691 px de liens pour 691 px disponibles en
+   1440, et il défile déjà en 390. Six libellés en toutes lettres demandent
+   388 px qui n'existent nulle part. D'où un bouton compact : le code de la
+   langue courante, qui déplie la liste.
+
+   Aucun JavaScript : <details> ouvre et ferme, le clavier y accède, la touche
+   d'échappement referme. Ce que le navigateur sait faire, on ne le réécrit
+   pas.
+   ========================================================== */
+.nav .lang{flex:0 0 auto;position:relative;margin-left:.7rem}
+.nav .lang > summary{
+  list-style:none;cursor:pointer;
+  font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:.42em .5em;border:2px solid var(--line);
+  display:inline-flex;align-items:center;gap:.35em;line-height:1;
+}
+.nav .lang > summary::-webkit-details-marker{display:none}
+.nav .lang > summary::after{content:"▾";font-size:.85em;line-height:1}
+.nav .lang > summary:hover,.nav .lang[open] > summary{border-color:var(--sec);color:var(--sec)}
+.nav .lang > summary:focus-visible{outline:2px solid var(--sec);outline-offset:2px}
+
+.nav .lang-liste{
+  position:absolute;right:0;top:calc(100% + .55rem);z-index:70;
+  background:var(--paper);border:2px solid var(--line);
+  display:grid;min-width:11rem;padding:.3rem 0;
+}
+.nav .lang-liste a,.nav .lang-liste span{
+  display:block;padding:.62rem 1rem;font-family:var(--body);font-size:.92rem;line-height:1.2;
+}
+.nav .lang-liste a:hover,.nav .lang-liste a:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+.nav .lang-liste [aria-current]{color:var(--dim)}
+
+/* la barre reste sur une ligne : le rail cède la place, il défile déjà */
+@media(max-width:899px){
+  .nav .lang{margin-left:.5rem}
+  .nav .lang > summary{padding:.4em .42em;font-size:.62rem;letter-spacing:.1em}
+}
