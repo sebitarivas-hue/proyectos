@@ -5,10 +5,9 @@
    venue d'une autre section. Réparer le premier bloc rencontré laissait
    l'autre en place — d'où deux « LANGUES » l'un sous l'autre.
 
-   Un pied a une forme, et une seule. Il est donc réécrit entier, à partir de
-   la route de la page : trois colonnes, un sélecteur, et rien d'autre.
-   Chaque langue mène à LA MÊME page, et les intitulés se disent dans la
-   langue de la page.
+   Un pied a une forme, et une seule. Il est donc réécrit entier : trois
+   colonnes — la marque, l'adresse, les réseaux — et rien d'autre. Le choix de
+   la langue est monté dans la barre ; le répéter ici l'enterrait.
 
    Run: node outils/pied.js [--verifier]                                     */
 "use strict";
@@ -32,17 +31,15 @@ function pages(d, a) {
   return a;
 }
 
-function pied(lang, route) {
-  var liste = LANGS.map(function (l) {
-    if (l === lang) return '<span aria-current="true">' + NOM[l] + "</span>";
-    return '<a href="/' + (l === "fr" ? "" : l + "/") + route + '">' + NOM[l] + "</a>";
-  }).join(" · ");
+function pied(lang) {
+  /* Le choix de la langue vit désormais dans la barre, en haut. Le répéter ici
+     ne l'aidait pas : il l'enterrait à cinq écrans de là. Le pied garde ce qui
+     lui appartient — la marque, l'adresse, les réseaux. */
   return '<footer class="foot"><div class="wrap">' +
     "<div><h2>stopera!</h2></div>" +
     '<div><p class="small">Sonic Theatre Opera Performance</p>' +
     '<p style="margin-top:.7rem"><a href="mailto:info@stopera.art">info@stopera.art</a></p></div>' +
-    '<div><p class="lab">' + LAB[lang][0] + "</p><ul><li>" + liste + "</li></ul>" +
-    '<p class="lab" style="margin-top:1rem">' + LAB[lang][1] + "</p><ul>" +
+    '<div><p class="lab">' + LAB[lang][1] + "</p><ul>" +
     /* Les comptes du site, relevés sur l'ancien : ceux qui figuraient ici
        jusqu'ici — stopera.art — n'existaient nulle part et menaient dans le
        vide, sur les 300 pages. Facebook avait purement disparu. */
