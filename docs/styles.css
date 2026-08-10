@@ -185,7 +185,16 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .meta h3{display:inline-block;background:var(--ink);color:var(--paper);
   font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.16em;
   text-transform:uppercase;padding:.34em .7em .3em}
-.meta dl{display:grid;grid-template-columns:auto 1fr;gap:.42rem 1.1rem;margin-top:.7rem}
+/* Le générique se lit en deux colonnes quand la place existe. En dessous, la
+   clé passe au-dessus de sa valeur : mesuré à 390 px, une colonne de clé de
+   11 rem ne laissait que 180 px au nom, et « Piano, violon, alto… » se brisait
+   sur six lignes. La même grille vaut pour les caractéristiques. */
+.meta dl{display:grid;grid-template-columns:minmax(0,1fr);gap:.1rem;margin-top:.7rem}
+.meta dd{margin-bottom:.55rem}
+@media(min-width:640px){
+  .meta dl{grid-template-columns:11rem minmax(0,1fr);gap:.1rem 1.4rem;align-items:baseline}
+  .meta dd{margin-bottom:.35rem}
+}
 .meta dt{font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--dim);padding-top:.18rem}
 .prose p+p{margin-top:.8rem}
