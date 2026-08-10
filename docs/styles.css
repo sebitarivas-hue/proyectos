@@ -717,7 +717,15 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .body .pd-dimensions{display:grid; gap:1.4rem}
 @media(min-width:900px){.body .pd-dimensions{grid-template-columns:repeat(3,minmax(0,1fr)); gap:2rem}}
 .body .pd-dim-text{max-width:40ch}
-.body .dim-link{border-bottom:1px solid rgba(10,10,12,.3); padding-block:.5em; margin-block:-.5em}
+/* ---- Un lien dans un titre se signale par la couleur ----
+   Mesuré : le lien portait 12 px de rembourrage vertical — la cible tactile —
+   et un filet en dessous. Dans un titre dont l'interligne est de 22,5 px pour
+   un corps de 24 px, ce filet tombait à 13 px sous le titre, en travers de la
+   ligne suivante : le titre paraissait barré. Le titre est déjà une cible
+   ample ; il n'a besoin ni du rembourrage ni du filet. */
+.body .dim-link{border-bottom:0; padding-block:0; margin-block:0; color:var(--sec)}
+.body .dim-link:hover,.body .dim-link:focus-visible{text-decoration:underline;
+  text-underline-offset:.14em; text-decoration-thickness:.05em}
 
 /* ---- Les images de la fiche touchent le texte, comme partout ailleurs ---- */
 .body .pd-media, .body .pd-full{margin:1.1rem 0 0}

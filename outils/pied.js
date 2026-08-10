@@ -39,7 +39,7 @@ function pied(lang, route) {
   }).join(" · ");
   return '<footer class="foot"><div class="wrap">' +
     "<div><h2>stopera!</h2></div>" +
-    '<div><p class="small">Sonic Theatre Opera Performance — Gentilly (Paris)</p>' +
+    '<div><p class="small">Sonic Theatre Opera Performance</p>' +
     '<p style="margin-top:.7rem"><a href="mailto:info@stopera.art">info@stopera.art</a></p></div>' +
     '<div><p class="lab">' + LAB[lang][0] + "</p><ul><li>" + liste + "</li></ul>" +
     '<p class="lab" style="margin-top:1rem">' + LAB[lang][1] + "</p><ul>" +
