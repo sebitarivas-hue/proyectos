@@ -17,23 +17,23 @@ var DOCS = path.resolve(__dirname, "..", "docs");
 var LANGS = ["fr", "en", "es", "it", "zh"];
 var VERIF = process.argv.indexOf("--verifier") > 0;
 
-var SLUG = ["pourquoi", "oeuvres", "laboratoire", "reseau", "transmission", "soutenir"];
+var SLUG = ["pourquoi", "oeuvres", "transmission", "reseau", "laboratoire", "soutenir"];
 var NUM = ["01", "02", "03", "04", "05", "06"];
 var COL = ["var(--red)", "var(--mag)", "var(--cy)", "var(--blu)", "var(--grn)", "var(--ink)"];
 var L = {
-  fr: ["pourquoi", "œuvres", "laboratoire", "réseau", "transmission", "soutenir"],
-  en: ["why", "works", "laboratory", "network", "transmission", "support"],
-  es: ["por qué", "obras", "laboratorio", "red", "transmisión", "apoyar"],
-  it: ["perché", "opere", "laboratorio", "rete", "trasmissione", "sostenere"],
-  zh: ["为何", "作品", "实验室", "网络", "传承", "支持"]
+  fr: ["pourquoi", "œuvres", "transmission", "réseau", "lips lab", "soutenir"],
+  en: ["why", "works", "transmission", "network", "lips lab", "support"],
+  es: ["por qué", "obras", "transmisión", "red", "lips lab", "apoyar"],
+  it: ["perché", "opere", "trasmissione", "rete", "lips lab", "sostenere"],
+  zh: ["为何", "作品", "传承", "网络", "lips lab", "支持"]
 };
 /* la section d'une page dit son rang ; l'adresse ne le dit pas */
 var RANG = {
   pourquoi: 0,
   oeuvres: 1, productions: 1, parcours: 1,
-  laboratoire: 2,
+  transmission: 2,
   reseau: 3, artistes: 3,
-  transmission: 4,
+  laboratoire: 4,
   soutenir: 5
   /* accueil, actualités, presse, mentions : couches transversales, sans rang */
 };
