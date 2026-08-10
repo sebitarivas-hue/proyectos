@@ -22,13 +22,15 @@ list.forEach(function (f) {
   var h = fs.readFileSync(f, "utf8");
   var from = "/" + f.replace(/^docs\//, "").replace(/index\.html$/, "");
   var lang = (from.match(/^\/(en|es|it|zh)\//) || [])[1] || "fr";
-  var iL = h.indexOf('<p class="lab">Langues');
+  /* Un lien vers une autre langue n'est légitime que s'il mène à LA MÊME
+     page : c'est le sélecteur. Vers une autre route, c'est une fuite. */
+  var route = from.replace(/^\/(en|es|it|zh)\//, '/');
   for (var m of h.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) {
     var u = m[1];
     if (ASSET.test(u)) { if (!fs.existsSync("docs" + u.split("?")[0])) casses.push(from + " → " + u + " (fichier absent)"); continue; }
     if (!have.has(u)) { casses.push(from + " → " + u + " (404)"); continue; }
     var l2 = (u.match(/^\/(en|es|it|zh)\//) || [])[1] || "fr";
-    var dansSelecteur = iL >= 0 && m.index > iL && m.index < iL + 700;
+    var dansSelecteur = u.replace(/^\/(en|es|it|zh)\//, '/') === route;
     if (l2 !== lang && !dansSelecteur) fuites.push(from + " → " + u);
   }
 });
