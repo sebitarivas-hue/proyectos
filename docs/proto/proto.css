@@ -16,12 +16,16 @@
   --disp:"Bricolage Grotesque","Archivo",system-ui,sans-serif;
   --title:"Neutrix","Bricolage Grotesque",system-ui,sans-serif;
   --body:"Archivo",system-ui,sans-serif;
-  --serif:"Fraunces",Georgia,serif;
+  --serif:"Neutrix","Bricolage Grotesque",system-ui,sans-serif;
   --u:clamp(.9rem,2.2vw,1.6rem);
   --sec:var(--mag);            /* couleur de la section courante */
 }
 *{margin:0;padding:0;box-sizing:border-box}
+/* Les contrôles de formulaire n'héritent pas de la police : sans cette ligne,
+   tout ce qui vit sous un <button> retombe sur l'Arial du navigateur. */
+button,input,select,textarea{font:inherit;color:inherit;background:none;border:0}
 html{-webkit-text-size-adjust:100%}
+body{font-synthesis:none}
 body{
   background:var(--paper); color:var(--ink);
   font-family:var(--body); font-size:clamp(.95rem,1.05vw,1.02rem); line-height:1.55;
@@ -29,8 +33,19 @@ body{
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+/* Tout titre parle en Neutrix 400. Sans cette ligne, chaque titre du contenu
+   importé que la feuille ne nomme pas retombe sur le gras du navigateur —
+   c'est de là que venait la quatrième voix, sur 277 pages. */
+h1,h2,h3,h4,h5,h6{font-family:var(--title);font-weight:400;letter-spacing:-.02em;line-height:1.02}
 p{max-width:64ch}
-b,strong{font-weight:700}
+b,strong{font-family:inherit;font-weight:inherit}
+em,i,cite{font-family:var(--serif);font-style:italic;font-weight:400}
+/* le gras n'existe que dans le fil du texte courant */
+/* Le gras est une emphase du texte courant. Il ne traverse jamais un bloc de
+   titre : un paragraphe qui porte une classe est une composition, pas de la prose. */
+.body .prose p:not([class]) b,.body .prose p:not([class]) strong,
+.body li b,.body li strong,
+figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 .wrap{max-width:1240px;margin:0 auto;padding:0 var(--u)}
 
 /* ---------- navigation : crème, filet, jamais un bandeau noir ---------- */
@@ -45,7 +60,7 @@ b,strong{font-weight:700}
   display:inline-flex;align-items:baseline;gap:.3em;
   border-bottom:2px solid transparent;padding:.15rem 0;
 }
-.nav a.n i{font-style:normal;font-family:var(--body);font-weight:700;font-size:.66em;
+.nav a.n i{font-style:normal;font-family:var(--disp);font-weight:800;font-size:.66em;
   color:var(--sec);font-variant-numeric:tabular-nums;letter-spacing:.04em}
 .nav a.n:hover,.nav a.n:focus-visible{border-bottom-color:var(--sec);outline:none}
 .nav a.n[aria-current="page"]{border-bottom-color:var(--ink)}
@@ -94,7 +109,7 @@ b,strong{font-weight:700}
 p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   font-size:clamp(1.08rem,1.6vw,1.32rem);line-height:1.4;
   max-width:56ch;margin-bottom:1rem}
-.eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+.eyebrow{font-family:var(--disp);font-weight:800;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--dim);margin-bottom:.5rem}
 .more{
   display:inline-flex;align-items:baseline;gap:.4em;margin-top:1rem;
@@ -129,7 +144,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   font-size:clamp(.95rem,1.5vw,1.1rem);letter-spacing:-.025em;
   display:inline-flex;align-items:baseline;gap:.35em;
   border-bottom:2px solid rgba(10,10,12,.25);padding-bottom:.1rem}
-.acts a i{font-style:normal;font-family:var(--body);font-weight:700;font-size:.64em;
+.acts a i{font-style:normal;font-family:var(--disp);font-weight:800;font-size:.64em;
   color:var(--mag);font-variant-numeric:tabular-nums}
 .acts a:hover,.acts a:focus-visible{border-bottom-color:var(--ink);outline:none}
 .mast .acts a{border-bottom-color:rgba(242,237,228,.3)}
@@ -143,8 +158,8 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 @media(min-width:900px){
   .idx a{grid-template-columns:minmax(0,7fr) minmax(0,4fr) 5rem;gap:0 2rem}
 }
-.idx .t{font-family:var(--disp);font-weight:800;
-  font-size:clamp(1.5rem,4vw,2.7rem);line-height:.96;letter-spacing:-.04em}
+.idx .t{font-family:var(--title);font-weight:400;
+  font-size:clamp(2.1rem,6.2vw,4.4rem);line-height:.88;letter-spacing:-.035em}
 .idx .t .it:not(:only-child),.sec h2 .it:not(:only-child){font-weight:400;letter-spacing:-.03em}
 .idx .m{color:var(--dim);font-size:.92rem}
 .idx .y{font-family:var(--disp);font-weight:800;font-variant-numeric:tabular-nums;
@@ -164,11 +179,11 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .fig-full img{width:100%;height:auto}
 .meta{border-top:2px solid var(--line);padding-top:.8rem;margin-top:1.2rem}
 .meta h3{display:inline-block;background:var(--ink);color:var(--paper);
-  font-family:var(--body);font-weight:700;font-size:.68rem;letter-spacing:.16em;
+  font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.16em;
   text-transform:uppercase;padding:.34em .7em .3em}
 .meta dl{display:grid;grid-template-columns:auto 1fr;gap:.42rem 1.1rem;margin-top:.7rem}
-.meta dt{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);
-  font-weight:700;padding-top:.18rem}
+.meta dt{font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--dim);padding-top:.18rem}
 .prose p+p{margin-top:.8rem}
 
 /* ---------- traitements image ---------- */
@@ -182,13 +197,14 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 @media(min-width:900px){.foot .wrap{grid-template-columns:14rem 1fr 1fr;gap:0 3rem}}
 .foot h2{font-family:var(--disp);font-weight:800;text-transform:lowercase;
   font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.04em}
-.foot .lab{font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:var(--dim)}
+.foot .lab{font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--dim)}
 .foot ul{list-style:none;display:grid;gap:.3rem;margin-top:.4rem}
 .foot a{border-bottom:1px solid rgba(10,10,12,.25)}
 .foot a:hover{border-bottom-color:var(--ink)}
 .foot .small{color:var(--dim);font-size:.84rem}
 
-.flag{background:var(--grn);color:#fff;font-weight:700;font-size:.72rem;
+.flag{background:var(--grn);color:#fff;font-family:var(--disp);font-weight:800;font-size:.72rem;
   letter-spacing:.1em;text-transform:uppercase}
 .flag .wrap{padding-top:.42rem;padding-bottom:.42rem}
 
@@ -210,42 +226,53 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .body .prose{max-width:64ch}
 
 .body .manifesto-question,.body .manifesto-claim{
-  font-family:var(--disp);font-weight:800;letter-spacing:-.03em;
-  font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.12;
-  border-left:3px solid var(--sec);padding-left:1rem;margin:1.3rem 0}
-.body .manifesto-vision{font-family:var(--serif);font-style:italic;
-  font-size:clamp(1.1rem,2vw,1.45rem);line-height:1.25;margin:1.3rem 0;color:var(--sec)}
+  font-family:var(--title);font-weight:400;letter-spacing:-.03em;
+  font-size:clamp(1.6rem,4vw,2.6rem);line-height:.98;
+  border-left:3px solid var(--sec);padding-left:1rem;margin:1.6rem 0}
+.body .manifesto-vision{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.5rem,3.6vw,2.35rem);line-height:1.04;letter-spacing:-.025em;
+  margin:1.6rem 0;color:var(--sec)}
 .body .name-note{border-top:2px solid var(--line);border-bottom:2px solid var(--line);
   padding:1.1rem 0;margin:1.5rem 0;max-width:64ch}
-.body .name-mark{font-family:var(--disp);font-weight:800;letter-spacing:.02em;
-  font-size:1.1rem;margin-bottom:.5rem}
+.body .name-mark b{color:var(--sec)}
+.body .name-mark{font-family:var(--title);font-weight:400;letter-spacing:-.01em;
+  font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1;margin-bottom:.6rem}
 
 .body .subblock{margin-top:1.8rem;border-top:2px solid var(--line);padding-top:1rem}
 .body .subblock-label,.body .section-note+.subblock-label{
   display:inline-block;background:var(--ink);color:var(--paper);
-  font-family:var(--body);font-weight:700;font-size:.66rem;letter-spacing:.16em;
+  font-family:var(--disp);font-weight:800;font-size:.66rem;letter-spacing:.16em;
   text-transform:uppercase;padding:.34em .7em .3em;margin-bottom:.9rem}
 .body .section-note{color:var(--dim);margin-top:.9rem}
+
+/* La citation : l'italique vrai de Neutrix (Neutrix-Slant), pas un italique
+   fabriqué à partir d'Archivo. Une voix de plus serait une voix de trop. */
+.body blockquote,.body .pdq{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.35rem,3.2vw,2.05rem);line-height:1.08;letter-spacing:-.02em;
+  max-width:44ch;margin:1.4rem 0}
+.body blockquote cite,.body .pdq cite{display:block;font-family:var(--disp);
+  font-style:normal;font-weight:800;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);margin-top:.7rem}
 
 .body .missions{display:grid;gap:0;margin-top:.4rem;border-top:2px solid var(--line)}
 @media(min-width:760px){.body .missions{grid-template-columns:1fr 1fr}}
 .body .axis{padding:1rem 0;border-bottom:1px solid rgba(10,10,12,.18)}
 @media(min-width:760px){.body .axis:nth-child(odd){padding-right:2rem}
   .body .axis:nth-child(even){padding-left:2rem;border-left:1px solid rgba(10,10,12,.18)}}
-.body .axis h3{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;
+.body .axis h3{font-family:var(--title);font-weight:400;letter-spacing:-.03em;
   font-size:clamp(1.15rem,2.2vw,1.5rem);margin-bottom:.3rem}
 .body .axis p{color:var(--dim);font-size:.94rem}
 
 .body .disciplines{list-style:none;margin:.3rem 0 0;padding:0;display:grid;gap:0}
 @media(min-width:760px){.body .disciplines{grid-template-columns:1fr 1fr;column-gap:2.4rem}}
 .body .disciplines li{padding:.6rem 0;border-bottom:1px solid rgba(10,10,12,.18);
-  font-family:var(--disp);font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
+  font-family:var(--title);font-weight:400;letter-spacing:-.025em;font-size:1.35rem}
 
 .body .roster{list-style:none;margin:.3rem 0 0;padding:0;display:grid;gap:0}
 @media(min-width:760px){.body .roster{grid-template-columns:1fr 1fr;column-gap:2.4rem}}
 .body .roster li{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   padding:.55rem 0;border-bottom:1px solid rgba(10,10,12,.18)}
-.body .roster .who{font-family:var(--disp);font-weight:800;letter-spacing:-.02em}
+.body .roster .who{font-family:var(--title);font-weight:400;letter-spacing:-.025em;font-size:1.28rem}
 .body .roster .role{color:var(--dim);font-size:.9rem}
 
 .body .join-grid{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:0;
@@ -255,7 +282,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   display:flex;flex-direction:column;gap:.4rem}
 @media(min-width:760px){.body .join-card:nth-child(odd){padding-right:2rem}
   .body .join-card:nth-child(even){padding-left:2rem;border-left:1px solid rgba(10,10,12,.18)}}
-.body .join-card h4{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;
+.body .join-card h4{font-family:var(--title);font-weight:400;letter-spacing:-.03em;
   font-size:clamp(1.1rem,2vw,1.35rem)}
 .body .join-card p{color:var(--dim);font-size:.94rem;flex:1}
 .body .join-cta{font-family:var(--disp);font-weight:800;letter-spacing:-.025em;
@@ -263,11 +290,11 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 
 .body .tx-group{padding:1rem 0;border-bottom:1px solid rgba(10,10,12,.18)}
 .body .tx-group:first-child{border-top:2px solid var(--line)}
-.body .tx-prod{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;
+.body .tx-prod{font-family:var(--title);font-weight:400;letter-spacing:-.03em;
   font-size:clamp(1.1rem,2.1vw,1.4rem);margin-bottom:.25rem}
 .body .tx-text{color:var(--dim);font-size:.95rem}
 .body .tx-terr{font-size:.84rem;color:var(--dim);margin-top:.3rem}
-.body .tx-terr-k{font-family:var(--body);font-weight:700;font-size:.64rem;
+.body .tx-terr-k{font-family:var(--disp);font-weight:800;font-size:.64rem;
   letter-spacing:.15em;text-transform:uppercase;color:var(--ink)}
 .body .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap}
@@ -284,11 +311,11 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .oeu-img img{width:100%;height:auto;object-fit:cover}
 .oeu-txt{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;
   gap:.2rem 1.5rem;align-items:baseline;padding-top:.7rem}
-.oeu-t{font-family:var(--title);font-weight:400;letter-spacing:-.02em;line-height:.98;
-  font-size:clamp(1.8rem,5.4vw,3.7rem);grid-column:1}
+.oeu-t{font-family:var(--title);font-weight:400;letter-spacing:-.035em;line-height:.86;
+  font-size:clamp(2.7rem,8.6vw,6rem);grid-column:1}
 .oeu-t .it:not(:only-child){font-weight:400}
 .oeu-y{font-family:var(--disp);font-weight:800;font-variant-numeric:tabular-nums;
-  font-size:clamp(1rem,1.6vw,1.25rem);grid-column:2;text-align:right;white-space:nowrap}
+  font-size:clamp(1.15rem,2vw,1.7rem);grid-column:2;text-align:right;white-space:nowrap}
 .oeu-s{grid-column:1/-1;color:var(--dim);max-width:52ch;margin-top:.15rem}
 .oeu a{display:contents}
 .oeu:hover .oeu-t,.oeu a:focus-visible .oeu-t{color:var(--mag)}
@@ -373,7 +400,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 /* ---------- galerie : documents de production, traitement brut ---------- */
 .gal{margin:1.6rem 0 .6rem;border-top:2px solid var(--line);padding-top:.9rem}
 .gal-k{display:inline-block;background:var(--ink);color:var(--paper);
-  font-family:var(--body);font-weight:700;font-size:.66rem;letter-spacing:.16em;
+  font-family:var(--disp);font-weight:800;font-size:.66rem;letter-spacing:.16em;
   text-transform:uppercase;padding:.34em .7em .3em;margin-bottom:.9rem}
 .gal-g{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 @media(min-width:760px){.gal-g{grid-template-columns:repeat(3,1fr)}}
@@ -400,7 +427,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .r-mass{font-family:var(--disp);font-weight:800;letter-spacing:-.025em}
 
 /* Rôle 4 — MICRO : capitales espacées. Étiquettes, rangs, mentions. */
-.r-micro{font-family:var(--body);font-weight:700;font-size:.68rem;
+.r-micro{font-family:var(--disp);font-weight:800;font-size:.68rem;
   letter-spacing:.16em;text-transform:uppercase}
 
 /* ---- Le logo : une règle, trois contextes, pas de placement au cas par cas ----
@@ -457,7 +484,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 }
 .body .coop-city{font-family:var(--title);font-weight:400;letter-spacing:-.02em;
   font-size:clamp(1.15rem,2.2vw,1.55rem)}
-.body .coop-k{font-family:var(--body);font-weight:700;font-size:.64rem;
+.body .coop-k{font-family:var(--disp);font-weight:800;font-size:.64rem;
   letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
 .body .coop-v{font-size:.95rem}
 .body .partners{list-style:none;margin:.3rem 0 0;padding:0;display:grid;gap:0}
@@ -465,7 +492,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .body .partners li{padding:.5rem 0;border-bottom:1px solid rgba(10,10,12,.18);font-size:.96rem}
 .body .coop-svg,.body svg{max-width:100%;height:auto}
 .body .spot-dot{fill:var(--sec)}
-.body .spot-name{font-family:var(--body);font-weight:700;font-size:.7rem;fill:var(--ink)}
+.body .spot-name{font-family:var(--disp);font-weight:800;font-size:.7rem;fill:var(--ink)}
 .body .more-link a{font-family:var(--title);font-weight:400;letter-spacing:-.02em;
   font-size:clamp(1.05rem,1.7vw,1.25rem);border-bottom:2px solid var(--sec);padding-bottom:.06rem}
 /* Registre d'images : dans la page réseau, tout portrait est en noir et blanc.
@@ -486,7 +513,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 }
 .vid-k{
   display:inline-block;background:var(--sec);color:#fff;
-  font-family:var(--body);font-weight:700;font-size:.62rem;letter-spacing:.15em;
+  font-family:var(--disp);font-weight:800;font-size:.62rem;letter-spacing:.15em;
   text-transform:uppercase;padding:.28em .6em .24em;margin-right:.5rem;
 }
 .vid figcaption a{border-bottom:1px solid rgba(242,237,228,.4)}
