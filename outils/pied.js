@@ -1,14 +1,16 @@
-/* LE SÉLECTEUR DE LANGUE DU PIED.
-   Il était cassé sur les 236 pages non françaises : les cinq liens menaient
-   tous à la page courante. Depuis l'italien, « English » ramenait à l'italien.
-   Le site était monolingue dès qu'on quittait le français.
+/* LE PIED DE PAGE, RECONSTRUIT EN ENTIER.
+   Il ne suffit pas de réparer le sélecteur de langue : sur onze fiches de
+   production, le pied portait DEUX listes de langues et une note égarée
+   (« Couche transversale : la presse n'est pas une section numérotée »)
+   venue d'une autre section. Réparer le premier bloc rencontré laissait
+   l'autre en place — d'où deux « LANGUES » l'un sous l'autre.
 
-   La cause : la règle qui ramène chaque lien dans la langue de sa page a été
-   appliquée au sélecteur, dont le travail est précisément l'inverse. Ici il
-   est reconstruit à partir de la route de la page — la seule information dont
-   il a besoin — et ses deux intitulés sont dits dans la langue de la page.
+   Un pied a une forme, et une seule. Il est donc réécrit entier, à partir de
+   la route de la page : trois colonnes, un sélecteur, et rien d'autre.
+   Chaque langue mène à LA MÊME page, et les intitulés se disent dans la
+   langue de la page.
 
-   Run: node outils/pied.js                                                  */
+   Run: node outils/pied.js [--verifier]                                     */
 "use strict";
 var fs = require("fs"), path = require("path");
 var DOCS = path.resolve(__dirname, "..", "docs");
@@ -18,6 +20,7 @@ var LAB = {
   fr: ["Langues", "Réseaux"], en: ["Languages", "Social"],
   es: ["Idiomas", "Redes"], it: ["Lingue", "Social"], zh: ["语言", "社交"]
 };
+var VERIF = process.argv.indexOf("--verifier") > 0;
 
 function pages(d, a) {
   a = a || [];
@@ -29,7 +32,23 @@ function pages(d, a) {
   return a;
 }
 
-var repare = 0, labels = 0;
+function pied(lang, route) {
+  var liste = LANGS.map(function (l) {
+    if (l === lang) return '<span aria-current="true">' + NOM[l] + "</span>";
+    return '<a href="/' + (l === "fr" ? "" : l + "/") + route + '">' + NOM[l] + "</a>";
+  }).join(" · ");
+  return '<footer class="foot"><div class="wrap">' +
+    "<div><h2>stopera!</h2></div>" +
+    '<div><p class="small">Sonic Theatre Opera Performance — Gentilly (Paris)</p>' +
+    '<p style="margin-top:.7rem"><a href="mailto:info@stopera.art">info@stopera.art</a></p></div>' +
+    '<div><p class="lab">' + LAB[lang][0] + "</p><ul><li>" + liste + "</li></ul>" +
+    '<p class="lab" style="margin-top:1rem">' + LAB[lang][1] + "</p><ul>" +
+    '<li><a href="https://www.instagram.com/stopera.art/">Instagram</a> · ' +
+    '<a href="https://www.youtube.com/@stopera-art">YouTube</a></li></ul></div>' +
+    "</div></footer>";
+}
+
+var refaits = 0, doubles = 0;
 
 pages(DOCS).forEach(function (f) {
   var rel = path.relative(DOCS, path.dirname(f)).split(path.sep).join("/");
@@ -38,23 +57,17 @@ pages(DOCS).forEach(function (f) {
   var route = lang === "fr" ? rel : rel.split("/").slice(1).join("/");
   if (route) route += "/";
 
-  var h = fs.readFileSync(f, "utf8"), avant = h;
+  var h = fs.readFileSync(f, "utf8");
+  var i = h.indexOf('<footer class="foot">');
+  if (i < 0) return;
+  var j = h.indexOf("</footer>", i) + 9;
+  var avant = h.slice(i, j), apres = pied(lang, route);
+  if (avant === apres) return;
 
-  /* la liste des langues, reconstruite : chaque lien mène à SA langue */
-  var liste = LANGS.map(function (l) {
-    if (l === lang) return '<span aria-current="true">' + NOM[l] + "</span>";
-    return '<a href="/' + (l === "fr" ? "" : l + "/") + route + '">' + NOM[l] + "</a>";
-  }).join(" · ");
-
-  h = h.replace(/(<p class="lab"[^>]*>)[^<]*(<\/p><ul><li>)[\s\S]*?(<\/li><\/ul>)/,
-    "$1" + LAB[lang][0] + "$2" + liste + "$3");
-
-  /* et l'intitulé des réseaux, dans la langue de la page */
-  h = h.replace(/(<p class="lab" style="margin-top:1rem">)[^<]*(<\/p>)/,
-    "$1" + LAB[lang][1] + "$2");
-
-  if (h !== avant) { fs.writeFileSync(f, h); repare++; if (lang !== "fr") labels++; }
+  if ((avant.match(/class="lab"/g) || []).length > 2) doubles++;
+  refaits++;
+  if (!VERIF) fs.writeFileSync(f, h.slice(0, i) + apres + h.slice(j));
 });
 
-console.log("sélecteur de langue refait sur " + repare + " page(s) ; " +
-  labels + " dans une langue autre que le français");
+console.log((VERIF ? "à refaire : " : "pieds refaits : ") + refaits +
+  " page(s), dont " + doubles + " qui portaient deux sélecteurs");
