@@ -251,11 +251,15 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .body .name-mark{font-family:var(--title);font-weight:400;letter-spacing:-.01em;
   font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1;margin-bottom:.6rem}
 
-.body .subblock{margin-top:1.8rem;border-top:2px solid var(--line);padding-top:1rem}
+/* ---- L'intitulé d'un bloc porte la page, comme sur une fiche d'œuvre ----
+   Il était une pastille noire de 11 px : une étiquette posée sur le contenu,
+   quand la fiche d'œuvre, elle, fait porter le bloc par un titre à l'échelle.
+   Le modèle est la fiche. Même filet de 2 px, même Neutrix, même échelle. */
+.body .subblock{margin-top:2.8rem;border-top:2px solid var(--line);padding-top:1.1rem}
 .body .subblock-label,.body .section-note+.subblock-label{
-  display:inline-block;background:var(--ink);color:var(--paper);
-  font-family:var(--disp);font-weight:800;font-size:.66rem;letter-spacing:.16em;
-  text-transform:uppercase;padding:.34em .7em .3em;margin-bottom:.9rem}
+  display:block;background:none;color:var(--ink);padding:0;
+  font-family:var(--title);font-weight:400;text-transform:none;letter-spacing:-.035em;
+  font-size:clamp(1.9rem,5.2vw,3.2rem);line-height:.9;margin:0 0 .9rem}
 .body .section-note{color:var(--dim);margin-top:.9rem}
 
 /* La citation : l'italique vrai de Neutrix (Neutrix-Slant), pas un italique
@@ -996,3 +1000,37 @@ body[data-section="productions"] .body p.lead .xref:hover,
   .nav .lang{margin-left:.5rem}
   .nav .lang > summary{padding:.4em .42em;font-size:.62rem;letter-spacing:.1em}
 }
+
+/* ---- Un lien dans le fil du texte se souligne sous ses lettres ----
+   Mesuré : le filet était accroché à la boîte du lien, à 7,6 px sous le
+   texte pour une interligne de 23,56 px. Il tombait donc dans la ligne
+   suivante — sous « Sebastian Rivas », le trait apparaissait sous
+   « franco-argentin ». Le soulignement typographique, lui, suit les lettres :
+   il ne peut pas déborder. La cible tactile reste, c'est le trait qui bouge. */
+.body .prose a, .body p a, .body li a, .body dd a, .body .xref{
+  border-bottom:0;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.18em;
+  text-decoration-color:rgba(10,10,12,.34);
+}
+.body .xref{text-decoration-color:var(--sec)}
+.body .prose a:hover, .body p a:hover, .body li a:hover, .body .xref:hover{
+  text-decoration-color:var(--sec); color:var(--sec);
+}
+/* les jalons cadrés et les intitulés gardent leur traitement propre */
+.body ul.taglist a, .body ul.pd-dim-partners a, .body ul.artist-links a,
+.body .subblock-label a, .body .more, .body .btn, .body .btn-ghost{text-decoration:none}
+
+/* ---- Un nom dans une liste n'est pas un lien dans une phrase ----
+   Sur une fiche d'œuvre, les noms du générique ne sont pas soulignés : la
+   ligne entière est l'entrée. Le même principe vaut ici — vingt noms
+   soulignés d'affilée font une page rayée, pas une liste. C'est la couleur
+   qui répond au survol. */
+.body .roster a, .body .partners a, .body .facts a, .body .credits a,
+.body .rel-list a, .body .index a{text-decoration:none}
+.body .roster a:hover, .body .partners a:hover, .body .facts a:hover,
+.body .credits a:hover, .body .rel-list a:hover{color:var(--sec)}
+/* la ligne entière est la cible : le nom porte, le rôle suit */
+.body .roster li{padding:.7rem 0}
+.body .roster li:hover .who{color:var(--sec)}
