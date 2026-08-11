@@ -1,5 +1,6 @@
 /* CONTRÔLE GÉNÉRAL — les 300 pages, en 1440 px et en 390 px.
-   Débordement latéral, paragraphe répété, pied unique, erreur JavaScript.
+   Débordement latéral, paragraphe répété, entité visible, pied unique,
+   erreur JavaScript.
    Usage : servir docs/ sur 8899, puis
    PW=<…>/playwright-core node outils/verifier.js                           */
 "use strict";
@@ -29,20 +30,34 @@ function pages(d, a) {
            n'ait pas de raccord ; la copie porte aria-hidden. Ce n'est pas un
            doublon de contenu, et le contrôle ne doit pas le compter. */
         document.querySelectorAll('.st-defile [aria-hidden="true"]').forEach(function (e) { e.remove(); });
-        var t = document.body.innerText.split(/\n+/).map(s => s.trim()).filter(s => s.length > 60);
+        /* Deux copies d'une même phrase ne s'écrivent pas toujours pareil :
+           l'une peut porter une espace insécable devant le deux-points là où
+           l'autre a une espace ordinaire. Comparées octet à octet, elles
+           passaient pour deux phrases différentes — c'est ainsi qu'un
+           paragraphe en double a dormi des mois sur les mentions légales. */
+        /* Une entité visible à l'écran est toujours un défaut : &nbsp; se lit
+           « &nbsp; » au lieu de faire une espace. C'est ce qui a laissé dormir
+           un paragraphe en double sur les mentions légales — les deux copies
+           ne s'écrivaient pas pareil, l'une portant l'entité en clair. */
+        var ent = (document.body.innerText.match(/&(nbsp|amp|lt|gt|quot|#39);/g) || []).length;
+        var normalise = s => s.replace(/&nbsp;/g, " ")
+          .replace(/[\u00a0\u202f]/g, " ").replace(/\s+/g, " ").trim();
+        var t = document.body.innerText.split(/\n+/).map(normalise)
+          .filter(s => s.length > 60);
         var vus = new Set(), dup = 0;
         t.forEach(s => { if (vus.has(s)) dup++; vus.add(s); });
-        return { ov: de.scrollWidth - de.clientWidth, foot: document.querySelectorAll("footer").length, dup: dup };
+        return { ov: de.scrollWidth - de.clientWidth, foot: document.querySelectorAll("footer").length, dup: dup, ent: ent };
       });
       if (r.ov > 2) pb.push(f + " @" + w + " déborde de " + r.ov + "px");
       if (w === 1440 && r.foot !== 1) pb.push(f + " : " + r.foot + " pieds");
       if (w === 1440 && r.dup > 0) pb.push(f + " : " + r.dup + " doublon(s)");
+      if (w === 1440 && r.ent > 0) pb.push(f + " : " + r.ent + " entité(s) visible(s) à l'écran");
       if (errs.length) pb.push(f + " JS: " + errs[0]);
     }
     await pg.close();
   }
   await b.close();
   console.log("pages : " + list.length);
-  console.log(pb.length ? pb.slice(0, 12).join("\n") : "aucun débordement, aucun doublon, un seul pied, aucune erreur");
+  console.log(pb.length ? pb.slice(0, 12).join("\n") : "aucun débordement, aucun doublon, aucune entité visible, un seul pied, aucune erreur");
   console.log("total : " + pb.length);
 })();

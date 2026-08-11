@@ -16,6 +16,7 @@ node outils/marque-icone.js  # « So! » aplati en icône d'onglet
 node outils/logo.js          # « So! » dans la barre, l'icône dans l'onglet
 node outils/hero-doublon.js  # le second menu sous le hero s'en va
 node outils/hero-nom.js      # le nom se coupe après « stop », plus après « st »
+node outils/mentions.js      # doublon, lien cassé, entité en clair
 node outils/lips-editions.js # les dates du LIPS, la cadence retirée
 node outils/lips-historique.js # le bloc des quatre éditions
 node outils/section.js       # data-section sur <body>

@@ -673,7 +673,46 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   max-width:26ch; margin-top:.7rem;
 }
 .body .pd-pitch em, .body .pd-prose--lead em{font-family:var(--serif)}
-.body .pd-prose, .body .pd-note, .body .artist-bio-long, .body .legal-prose{max-width:64ch}
+.body .pd-prose, .body .pd-note, .body .artist-bio-long{max-width:64ch}
+
+/* ---- Les mentions légales : un document, pas une section ----
+   Les intertitres y héritaient de .sec h2 — clamp(2rem, 5,6vw, 3,7rem) — le
+   costume d'une phrase de section. « Données personnelles (RGPD) » s'écrivait
+   donc à 59 px au-dessus d'un texte de 15, sur deux lignes, et la page tenait
+   sur 1860 px pour huit paragraphes. Un intertitre de document se dit à
+   l'échelle du document : Neutrix, mais deux fois le texte, pas quatre.
+
+   Au-delà de 1100 px, la prose passe sur deux colonnes : la mesure de lecture
+   reste la même, la page cesse de laisser la moitié de sa largeur vide. Un
+   intertitre ne se sépare jamais de son paragraphe, ni un paragraphe de
+   lui-même. */
+.body .legal-prose{max-width:64ch}
+.body .legal-prose h2{
+  font-family:var(--title);font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.1;
+  margin:1.9rem 0 .35rem;padding-top:.75rem;
+  border-top:1px solid rgba(10,10,12,.22);
+  break-after:avoid;
+}
+.body .legal-prose h2:first-child{margin-top:.4rem}
+.body .legal-prose p{line-height:1.55;break-inside:avoid}
+.body .legal-prose .legal-date{margin-top:1.6rem}
+@media(min-width:1100px){
+  .body .legal-prose{max-width:none;columns:2;column-gap:3.2rem}
+  .body .legal-prose h2{margin-top:1.5rem}
+  .body .legal-prose h2:first-child{margin-top:0;padding-top:0;border-top:0}
+  /* la date de mise à jour appartient au document entier, pas à sa dernière
+     colonne : elle passe sous les deux */
+  .body .legal-prose .legal-date{column-span:all;margin-top:2rem;
+    border-top:1px solid rgba(10,10,12,.22);padding-top:.7rem}
+}
+
+/* Le titre d'une page administrative n'a pas à tenir la page comme celui
+   d'une œuvre : « Mentions légales & confidentialité » s'écrivait à 86 px et
+   sur deux lignes, pour dire une formalité. */
+body[data-section="mentions"] .body .pd-title--page{
+  font-size:clamp(2rem,5vw,3.2rem);line-height:.94;margin-bottom:.9rem;
+}
 .body .pd-prose + .pd-prose, .body .pd-prose p + p{margin-top:.8rem}
 .body .pd-note{color:var(--dim); font-size:.94rem; margin-top:.9rem}
 
