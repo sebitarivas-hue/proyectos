@@ -53,7 +53,12 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 .nav .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;align-items:baseline;
   padding-top:.7rem;padding-bottom:.7rem}
 .nav .brand{margin-right:auto;display:flex;align-items:center}
-.nav .brand img{height:22px;width:auto}
+/* La marque de la barre est écrite, pas dessinée : Neutrix 400, comme le
+   grand logo du hero — « st » / « opera! » là-haut, « So » / « ! » ici.
+   L'encre suit la couleur de la barre ; seul le point est fixe. */
+.nav .brand .marque{font-family:var(--title);font-weight:400;line-height:1;
+  letter-spacing:-.03em;color:inherit;font-size:var(--logo-nav)}
+.nav .brand .marque .m{color:var(--mag)}
 .nav a.n{
   font-family:var(--disp);font-weight:800;text-transform:lowercase;
   font-size:clamp(.9rem,1.2vw,1.05rem);letter-spacing:-.02em;
@@ -445,9 +450,9 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   letter-spacing:.16em;text-transform:uppercase}
 
 /* ---- Le logo : une règle, trois contextes, pas de placement au cas par cas ----
-   masthead = rôle 1 · navigation = 22 px · pied = rôle 2 réduit           */
-:root{--logo-nav:22px;--logo-foot:1.9rem}
-.nav .brand img{height:var(--logo-nav);width:auto}
+   masthead = rôle 1 · barre = la marque écrite · pied = rôle 2 réduit
+   --logo-nav est le corps de la marque, et non plus une hauteur d'image. */
+:root{--logo-nav:1.62rem;--logo-foot:1.9rem}
 .foot h2{font-family:var(--title);font-weight:400;letter-spacing:-.03em;font-size:var(--logo-foot)}
 
 /* Le rail est un conteneur flex à TOUTES les largeurs. Sans cette règle de
@@ -471,7 +476,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
     padding-top:.45rem;padding-bottom:.45rem;
   }
   .nav .brand{flex:0 0 auto;margin-right:.9rem}
-  :root{--logo-nav:19px}
+  :root{--logo-nav:1.42rem}
   .nav-rail{
     flex:1 1 auto;min-width:0;display:flex;flex-wrap:nowrap;gap:1.05rem;align-items:baseline;
     overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
