@@ -1034,3 +1034,46 @@ body[data-section="productions"] .body p.lead .xref:hover,
 /* la ligne entière est la cible : le nom porte, le rôle suit */
 .body .roster li{padding:.7rem 0}
 .body .roster li:hover .who{color:var(--sec)}
+
+/* ==========================================================
+   LA PHRASE QUI DÉFILE — bas de la section 06
+   Elle passe de droite à gauche, en Neutrix, à l'échelle d'un titre : c'est
+   l'appel de la page, il doit accrocher l'œil avant le formulaire.
+
+   Trois précautions, sans lesquelles un bandeau défilant est une faute :
+
+     · il ne défile QUE si le lecteur n'a pas demandé moins de mouvement.
+       Sinon la phrase reste posée, lisible, sur plusieurs lignes ;
+     · il s'arrête au survol et au clavier — un texte qui fuit ne se lit pas ;
+     · le texte est écrit DEUX FOIS dans la piste et l'animation ne parcourt
+       que la moitié : la boucle est continue, sans saut ni blanc. La copie
+       est masquée aux technologies d'assistance, qui ne doivent pas
+       l'entendre deux fois.
+   ========================================================== */
+.st-defile{
+  overflow:hidden; margin:2.4rem 0 .6rem;
+  border-top:2px solid var(--line); border-bottom:2px solid var(--line);
+  padding:.7rem 0;
+}
+.st-defile .piste{
+  display:flex; width:max-content; will-change:transform;
+  animation:st-glisse 26s linear infinite;
+}
+.st-defile:hover .piste,.st-defile:focus-within .piste{animation-play-state:paused}
+.st-defile .part{
+  font-family:var(--title); font-weight:400;
+  font-size:clamp(1.6rem,4.4vw,2.8rem); line-height:1.06; letter-spacing:-.03em;
+  white-space:nowrap; padding-right:3rem;
+}
+/* Le magenta, pas la couleur de section : le rang 06 est encré de noir, et un
+   nom noir sur fond crème n'accroche rien. C'est la couleur de la marque. */
+.st-defile .part .m{color:var(--mag)}
+@keyframes st-glisse{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Mouvement réduit : rien ne bouge, la phrase se pose et se lit. */
+@media(prefers-reduced-motion:reduce){
+  .st-defile{overflow:visible}
+  .st-defile .piste{animation:none;width:auto;display:block}
+  .st-defile .part{white-space:normal;padding-right:0}
+  .st-defile .part+.part{display:none}
+}
