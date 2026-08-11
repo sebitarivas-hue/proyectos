@@ -36,7 +36,7 @@ function pied(lang) {
      ne l'aidait pas : il l'enterrait à cinq écrans de là. Le pied garde ce qui
      lui appartient — la marque, l'adresse, les réseaux. */
   return '<footer class="foot"><div class="wrap">' +
-    "<div><h2>stopera!</h2></div>" +
+    "<div><h2 translate=\"no\">stopera!</h2></div>" +
     '<div><p class="small">Sonic Theatre Opera Performance</p>' +
     '<p style="margin-top:.7rem"><a href="mailto:info@stopera.art">info@stopera.art</a></p></div>' +
     '<div><p class="lab">' + LAB[lang][1] + "</p><ul>" +

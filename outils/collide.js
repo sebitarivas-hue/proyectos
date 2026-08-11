@@ -21,7 +21,7 @@ var T = {
   es: ["creaciones", "&amp; producciones"],
   it: ["creazioni", "&amp; produzioni"],
   zh: ["创作", "与制作"],
-  de: ["schöpfungen", "&amp; produktionen"]
+  de: ["kreationen", "&amp; produktionen"]
 };
 /* le chinois n'a pas d'espace entre les mots */
 var MEMOIRE = LANGS.map(function (l) {

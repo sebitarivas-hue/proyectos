@@ -11,6 +11,7 @@ cd "$(dirname "$0")/.."
 
 node outils/allemand.js      # mémoire data-de + les 60 pages allemandes
 node outils/collide.js       # « créations & productions », six langues
+node outils/allemand-registre.js # Kreation, pas Schöpfung
 node outils/lips-editions.js # les dates du LIPS, la cadence retirée
 node outils/lips-historique.js # le bloc des quatre éditions
 node outils/section.js       # data-section sur <body>
@@ -19,6 +20,7 @@ node outils/pied.js          # le pied de page
 node outils/selecteur.js     # le sélecteur de langue, dans la barre
 node outils/hreflang.js      # les alternates et le canonique
 node outils/titres.js        # les titres d'onglet
+node outils/intraduisible.js # le nom propre, protégé des traducteurs
 
 node - <<'JS'
 /* le plan du site, relevé sur le disque */
