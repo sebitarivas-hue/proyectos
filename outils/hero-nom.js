@@ -10,8 +10,10 @@
    mot que le nom contient, et ce qui reste quand on l'a dit. La palette ne
    bouge pas : crème et magenta, comme avant.
 
-   La casse du hero ne bouge pas non plus : le site écrit son nom en bas de
-   casse partout — le pied, la barre, le hero.
+   La capitale revient au passage, au hero comme au pied : la barre porte
+   « So! », et un nom qui s'écrit de deux façons à deux écrans d'intervalle
+   n'est plus un nom. La feuille de style forçait le bas de casse sur les
+   deux — elle ne le force plus, c'est le texte qui décide.
 
    Run: node outils/hero-nom.js [--verifier]                                 */
 "use strict";
@@ -19,8 +21,8 @@ var fs = require("fs"), path = require("path");
 var DOCS = path.resolve(__dirname, "..", "docs");
 var VERIF = process.argv.indexOf("--verifier") > 0;
 
-var AVANT = /<h1( translate="no")?>st<span class="m">opera!<\/span><\/h1>/g;
-var APRES = '<h1 translate="no">stop<span class="m">era!</span></h1>';
+var AVANT = /<h1( translate="no")?>[Ss]t(op)?<span class="m">(opera|era)!<\/span><\/h1>/g;
+var APRES = '<h1 translate="no">Stop<span class="m">era!</span></h1>';
 
 function pages(d, a) {
   a = a || [];

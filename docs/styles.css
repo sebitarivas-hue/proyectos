@@ -75,7 +75,14 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 .mast .kick{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cy);margin-bottom:.9rem}
 .mast h1{
   font-family:var(--title);font-weight:400;line-height:.84;letter-spacing:-.03em;
-  font-size:clamp(3.6rem,14vw,11rem);text-transform:lowercase;
+  font-size:clamp(3.6rem,14vw,11rem);
+  /* L'interlignage négatif fait déborder l'encre des deux côtés de sa boîte.
+     En haut : tant que le nom commençait par un « s » bas de casse, rien ne
+     montait plus haut que l'œil ; la capitale atteint la hauteur de capitale
+     et venait toucher le surtitre. En bas : la hampe du « p » arrivait à un
+     pixel du paragraphe — mesuré à 1280 et 1440 px, où le corps dépasse
+     300 px. Les deux marges sont en em : elles suivent le corps. */
+  margin-top:.12em;margin-bottom:.09em;
 }
 .mast h1 .m{color:var(--mag)}
 /* La ligne des disciplines est une étiquette, pas une phrase : capitales
@@ -203,7 +210,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .foot{border-top:2px solid var(--line);padding:calc(var(--u)*1.6) 0 calc(var(--u)*2.4)}
 .foot .wrap{display:grid;gap:1.3rem}
 @media(min-width:900px){.foot .wrap{grid-template-columns:14rem 1fr 1fr;gap:0 3rem}}
-.foot h2{font-family:var(--disp);font-weight:800;text-transform:lowercase;
+.foot h2{font-family:var(--disp);font-weight:800;
   font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.04em}
 .foot .lab{font-family:var(--disp);font-weight:800;font-size:.68rem;letter-spacing:.17em;
   text-transform:uppercase;color:var(--dim)}

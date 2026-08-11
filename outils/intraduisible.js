@@ -50,14 +50,14 @@ pages(DOCS).forEach(function (f) {
   });
 
   /* le logo, la marque, la signature */
-  h = h.replace(/<h1>stop<span class="m">era!<\/span><\/h1>/g, function () {
-    logos++; return '<h1 translate="no">stop<span class="m">era!</span></h1>';
+  h = h.replace(/<h1>Stop<span class="m">era!<\/span><\/h1>/g, function () {
+    logos++; return '<h1 translate="no">Stop<span class="m">era!</span></h1>';
   });
   h = h.replace(/<a class="brand" (?!translate=)/g, function () {
     logos++; return '<a class="brand" translate="no" ';
   });
-  h = h.replace(/<h2>stopera!<\/h2>/g, function () {
-    logos++; return '<h2 translate="no">stopera!</h2>';
+  h = h.replace(/<h2>Stopera!<\/h2>/g, function () {
+    logos++; return '<h2 translate="no">Stopera!</h2>';
   });
 
   /* un nom propre : les six langues l'écrivent pareil */
