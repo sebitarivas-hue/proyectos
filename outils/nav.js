@@ -21,10 +21,10 @@ var SLUG = ["pourquoi", "oeuvres", "transmission", "reseau", "laboratoire", "sou
 var NUM = ["01", "02", "03", "04", "05", "06"];
 var COL = ["var(--red)", "var(--mag)", "var(--cy)", "var(--blu)", "var(--grn)", "var(--ink)"];
 var L = {
-  fr: ["pourquoi", "œuvres", "transmission", "réseau", "laboratoire", "soutenir"],
-  en: ["why", "works", "transmission", "network", "laboratory", "support"],
-  es: ["por qué", "obras", "transmisión", "red", "laboratorio", "apoyar"],
-  it: ["perché", "opere", "trasmissione", "rete", "laboratorio", "sostenere"],
+  fr: ["pourquoi", "œuvres", "transmettre", "réseau", "laboratoire", "soutenir"],
+  en: ["why", "works", "passing on", "network", "laboratory", "support"],
+  es: ["por qué", "obras", "transmitir", "red", "laboratorio", "apoyar"],
+  it: ["perché", "opere", "trasmettere", "rete", "laboratorio", "sostenere"],
   zh: ["为何", "作品", "传承", "网络", "实验室", "支持"]
 };
 /* la section d'une page dit son rang ; l'adresse ne le dit pas */
