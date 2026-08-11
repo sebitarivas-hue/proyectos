@@ -1,7 +1,7 @@
 /* CE QUI NE SE TRADUIT PAS, DIT AUX MACHINES.
    Signalé le 11/08/2026 : la page allemande, relue à travers un traducteur
    automatique, annonçait « Saint Opéra ! ». Le mot « Saint » n'existe nulle
-   part dans le site — le logo s'écrit « st » puis « opera! », en deux
+   part dans le site — le logo s'écrit « stop » puis « era! », en deux
    morceaux, et la machine y a lu l'abréviation de « Saint ». Le nom de la
    compagnie était traduit sous les yeux du visiteur.
 
@@ -50,8 +50,8 @@ pages(DOCS).forEach(function (f) {
   });
 
   /* le logo, la marque, la signature */
-  h = h.replace(/<h1>st<span class="m">opera!<\/span><\/h1>/g, function () {
-    logos++; return '<h1 translate="no">st<span class="m">opera!</span></h1>';
+  h = h.replace(/<h1>stop<span class="m">era!<\/span><\/h1>/g, function () {
+    logos++; return '<h1 translate="no">stop<span class="m">era!</span></h1>';
   });
   h = h.replace(/<a class="brand" (?!translate=)/g, function () {
     logos++; return '<a class="brand" translate="no" ';
