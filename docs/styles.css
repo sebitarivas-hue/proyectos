@@ -143,16 +143,6 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   font-size:clamp(1.05rem,2vw,1.35rem);letter-spacing:-.025em;padding:.62em 1em;
 }
 .cta:hover,.cta:focus-visible{background:var(--ink);outline:none}
-.acts{display:flex;flex-wrap:wrap;gap:.3rem 1.4rem;margin-top:1.1rem}
-.acts a{font-family:var(--disp);font-weight:800;text-transform:lowercase;
-  font-size:clamp(.95rem,1.5vw,1.1rem);letter-spacing:-.025em;
-  display:inline-flex;align-items:baseline;gap:.35em;
-  border-bottom:2px solid rgba(10,10,12,.25);padding-bottom:.1rem}
-.acts a i{font-style:normal;font-family:var(--disp);font-weight:800;font-size:.64em;
-  color:var(--mag);font-variant-numeric:tabular-nums}
-.acts a:hover,.acts a:focus-visible{border-bottom-color:var(--ink);outline:none}
-.mast .acts a{border-bottom-color:rgba(242,237,228,.3)}
-.mast .acts a:hover{border-bottom-color:var(--paper)}
 
 /* ---------- index éditorial ---------- */
 .idx{border-top:2px solid var(--line)}

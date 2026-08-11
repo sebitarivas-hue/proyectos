@@ -12,6 +12,8 @@ cd "$(dirname "$0")/.."
 node outils/allemand.js      # mémoire data-de + les 60 pages allemandes
 node outils/collide.js       # « créations & productions », six langues
 node outils/allemand-registre.js # Kreation, pas Schöpfung
+node outils/logo.js          # l'O suspendu remplace l'ancien logotype
+node outils/hero-doublon.js  # le second menu sous le hero s'en va
 node outils/lips-editions.js # les dates du LIPS, la cadence retirée
 node outils/lips-historique.js # le bloc des quatre éditions
 node outils/section.js       # data-section sur <body>

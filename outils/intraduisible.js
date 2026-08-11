@@ -53,7 +53,7 @@ pages(DOCS).forEach(function (f) {
   h = h.replace(/<h1>st<span class="m">opera!<\/span><\/h1>/g, function () {
     logos++; return '<h1 translate="no">st<span class="m">opera!</span></h1>';
   });
-  h = h.replace(/<a class="brand" /g, function () {
+  h = h.replace(/<a class="brand" (?!translate=)/g, function () {
     logos++; return '<a class="brand" translate="no" ';
   });
   h = h.replace(/<h2>stopera!<\/h2>/g, function () {
