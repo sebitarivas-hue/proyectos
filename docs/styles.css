@@ -216,6 +216,13 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .foot a{border-bottom:1px solid rgba(10,10,12,.25)}
 .foot a:hover{border-bottom-color:var(--ink)}
 .foot .small{color:var(--dim);font-size:.84rem}
+/* Les crédits : une ligne sous les trois colonnes, sur toute la largeur.
+   Ils portent ce que la loi demande et ce que la page doit à d'autres. */
+.foot-credits{border-top:1px solid rgba(10,10,12,.18);padding-top:1rem;
+  display:grid;gap:.3rem;font-size:.78rem}
+@media(min-width:900px){.foot-credits{grid-column:1 / -1;margin-top:1.4rem;
+  grid-template-columns:1fr auto;gap:0 2rem;align-items:baseline}
+  .foot-credits p:last-child{text-align:right}}
 
 .flag{background:var(--grn);color:#fff;font-family:var(--disp);font-weight:800;font-size:.72rem;
   letter-spacing:.1em;text-transform:uppercase}

@@ -19,6 +19,29 @@ var LAB = {
   fr: ["Langues", "Réseaux"], en: ["Languages", "Social"],
   es: ["Idiomas", "Redes"], it: ["Lingue", "Social"], zh: ["语言", "社交"], de: ["Sprachen", "Soziale Netzwerke"]
 };
+/* Les crédits du site — la ligne du bas. La page des mentions légales
+   existait depuis toujours, et rien n'y menait : aucune page du site ne la
+   liait. Une association loi 1901 doit pourtant les rendre accessibles. */
+var MENTIONS = {
+  fr: "Mentions légales &amp; confidentialité", en: "Legal notice &amp; privacy",
+  es: "Aviso legal &amp; privacidad", it: "Note legali &amp; privacy",
+  zh: "法律声明与隐私", de: "Impressum &amp; Datenschutz"
+};
+/* Le français met une espace insécable avant le deux-points ; l'allemand,
+   l'anglais, l'espagnol et l'italien n'en mettent aucune ; le chinois a son
+   propre signe, pleine chasse. */
+var DEUXPOINTS = { fr: "\u00a0: ", en: ": ", es: ": ", it: ": ", zh: "：", de: ": " };
+var TYPOS = {
+  fr: "Typographies", en: "Typefaces", es: "Tipografías",
+  it: "Caratteri", zh: "字体", de: "Schriften"
+};
+var ASSO = {
+  fr: "association loi 1901", en: "non-profit association (French law of 1901)",
+  es: "asociación sin ánimo de lucro (ley francesa de 1901)",
+  it: "associazione senza scopo di lucro (legge francese del 1901)",
+  zh: "非营利协会（法国 1901 年法）", de: "gemeinnütziger Verein (loi 1901)"
+};
+var ANNEE = "2026";
 var VERIF = process.argv.indexOf("--verifier") > 0;
 
 function pages(d, a) {
@@ -46,6 +69,16 @@ function pied(lang) {
     '<li><a href="https://instagram.com/stopera_sonic_theatre">Instagram</a> · ' +
     '<a href="https://www.youtube.com/@stopera-sonictheatre">YouTube</a> · ' +
     '<a href="https://www.facebook.com/stopera.sonictheatre">Facebook</a></li></ul></div>' +
+    /* Les crédits, sur toute la largeur : ce que la loi demande, et ce que la
+       page doit à d'autres. Les typographies sont celles de la feuille de
+       style, relevées sur elle et non sur une intention. */
+    '<div class="foot-credits"><p class="small">' +
+    "&copy; " + ANNEE + ' <span translate="no">STOPERA!</span> — Sonic Theatre Opera Performance, ' +
+    ASSO[lang] + ". " +
+    '<a href="' + (lang === "fr" ? "/" : "/" + lang + "/") + 'mentions-legales/">' +
+    MENTIONS[lang] + "</a></p>" +
+    '<p class="small">' + TYPOS[lang] + DEUXPOINTS[lang] + '<span translate="no">Neutrix</span>, ' +
+    '<span translate="no">Bricolage Grotesque</span>, <span translate="no">Archivo</span>.</p></div>' +
     "</div></footer>";
 }
 
