@@ -25,6 +25,10 @@ function pages(d, a) {
       await pg.goto("http://127.0.0.1:8899/" + f.replace(/^docs\//, ""), { waitUntil: "load" });
       var r = await pg.evaluate(() => {
         var de = document.documentElement;
+        /* La piste défilante écrit sa phrase deux fois pour que la boucle
+           n'ait pas de raccord ; la copie porte aria-hidden. Ce n'est pas un
+           doublon de contenu, et le contrôle ne doit pas le compter. */
+        document.querySelectorAll('.st-defile [aria-hidden="true"]').forEach(function (e) { e.remove(); });
         var t = document.body.innerText.split(/\n+/).map(s => s.trim()).filter(s => s.length > 60);
         var vus = new Set(), dup = 0;
         t.forEach(s => { if (vus.has(s)) dup++; vus.add(s); });
