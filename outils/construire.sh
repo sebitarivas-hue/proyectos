@@ -23,6 +23,8 @@ node outils/selecteur.js     # le sélecteur de langue, dans la barre
 node outils/hreflang.js      # les alternates et le canonique
 node outils/titres.js        # les titres d'onglet
 node outils/intraduisible.js # le nom propre, protégé des traducteurs
+node outils/versions.js      # le jeton anti-cache, calculé sur le contenu
+node outils/page-404.js      # la page introuvable, aux couleurs du site
 
 node - <<'JS'
 /* le plan du site, relevé sur le disque */
