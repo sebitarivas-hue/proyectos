@@ -16,7 +16,7 @@
 "use strict";
 var fs = require("fs"), path = require("path");
 var DOCS = path.resolve(__dirname, "..", "docs");
-var LANGS = ["en", "es", "it", "zh"];
+var LANGS = ["en", "es", "it", "zh", "de"];
 
 var REGLES = [
   [/^productions(\/|$)/, "productions"],

@@ -21,16 +21,16 @@ var casses = [], fuites = [];
 list.forEach(function (f) {
   var h = fs.readFileSync(f, "utf8");
   var from = "/" + f.replace(/^docs\//, "").replace(/index\.html$/, "");
-  var lang = (from.match(/^\/(en|es|it|zh)\//) || [])[1] || "fr";
+  var lang = (from.match(/^\/(en|es|it|zh|de)\//) || [])[1] || "fr";
   /* Un lien vers une autre langue n'est légitime que s'il mène à LA MÊME
      page : c'est le sélecteur. Vers une autre route, c'est une fuite. */
-  var route = from.replace(/^\/(en|es|it|zh)\//, '/');
+  var route = from.replace(/^\/(en|es|it|zh|de)\//, '/');
   for (var m of h.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) {
     var u = m[1];
     if (ASSET.test(u)) { if (!fs.existsSync("docs" + u.split("?")[0])) casses.push(from + " → " + u + " (fichier absent)"); continue; }
     if (!have.has(u)) { casses.push(from + " → " + u + " (404)"); continue; }
-    var l2 = (u.match(/^\/(en|es|it|zh)\//) || [])[1] || "fr";
-    var dansSelecteur = u.replace(/^\/(en|es|it|zh)\//, '/') === route;
+    var l2 = (u.match(/^\/(en|es|it|zh|de)\//) || [])[1] || "fr";
+    var dansSelecteur = u.replace(/^\/(en|es|it|zh|de)\//, '/') === route;
     if (l2 !== lang && !dansSelecteur) fuites.push(from + " → " + u);
   }
 });

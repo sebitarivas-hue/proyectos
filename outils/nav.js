@@ -14,7 +14,7 @@
 "use strict";
 var fs = require("fs"), path = require("path");
 var DOCS = path.resolve(__dirname, "..", "docs");
-var LANGS = ["fr", "en", "es", "it", "zh"];
+var LANGS = ["fr", "en", "es", "it", "zh", "de"];
 var VERIF = process.argv.indexOf("--verifier") > 0;
 
 var SLUG = ["pourquoi", "oeuvres", "transmission", "reseau", "laboratoire", "soutenir"];
@@ -25,7 +25,8 @@ var L = {
   en: ["why", "works", "passing on", "network", "laboratory", "support"],
   es: ["por qué", "obras", "transmitir", "red", "laboratorio", "apoyar"],
   it: ["perché", "opere", "trasmettere", "rete", "laboratorio", "sostenere"],
-  zh: ["为何", "作品", "传承", "网络", "实验室", "支持"]
+  zh: ["为何", "作品", "传承", "网络", "实验室", "支持"],
+  de: ["warum", "werke", "weitergeben", "netzwerk", "labor", "unterstützen"]
 };
 /* la section d'une page dit son rang ; l'adresse ne le dit pas */
 var RANG = {

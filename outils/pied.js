@@ -13,11 +13,11 @@
 "use strict";
 var fs = require("fs"), path = require("path");
 var DOCS = path.resolve(__dirname, "..", "docs");
-var LANGS = ["fr", "en", "es", "it", "zh"];
-var NOM = { fr: "Français", en: "English", es: "Español", it: "Italiano", zh: "中文" };
+var LANGS = ["fr", "en", "es", "it", "zh", "de"];
+var NOM = { fr: "Français", en: "English", es: "Español", it: "Italiano", zh: "中文", de: "Deutsch" };
 var LAB = {
   fr: ["Langues", "Réseaux"], en: ["Languages", "Social"],
-  es: ["Idiomas", "Redes"], it: ["Lingue", "Social"], zh: ["语言", "社交"]
+  es: ["Idiomas", "Redes"], it: ["Lingue", "Social"], zh: ["语言", "社交"], de: ["Sprachen", "Soziale Netzwerke"]
 };
 var VERIF = process.argv.indexOf("--verifier") > 0;
 
