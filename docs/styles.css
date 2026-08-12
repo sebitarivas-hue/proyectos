@@ -15,6 +15,11 @@
   --ink:#0A0A0C; --paper:#F2EDE4; --dim:#6E655C; --line:#0A0A0C;
   --disp:"Bricolage Grotesque","Archivo",system-ui,sans-serif;
   --title:"Neutrix","Bricolage Grotesque",system-ui,sans-serif;
+  /* La police du NOM, à part de celle des titres : le hero, la marque de la
+     barre et la signature du pied écrivent « Stopera! », et c'est la même
+     lettre qui doit les tenir. Aujourd'hui c'est Neutrix, comme les titres ;
+     le jour où une autre est retenue, cette ligne suffit. */
+  --nom:var(--title);
   --body:"Archivo",system-ui,sans-serif;
   --serif:"Neutrix","Bricolage Grotesque",system-ui,sans-serif;
   --u:clamp(.9rem,2.2vw,1.6rem);
@@ -56,7 +61,7 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 /* La marque de la barre est écrite, pas dessinée : Neutrix 400, comme le
    grand logo du hero — « st » / « opera! » là-haut, « So » / « ! » ici.
    L'encre suit la couleur de la barre ; seul le point est fixe. */
-.nav .brand .marque{font-family:var(--title);font-weight:400;line-height:1;
+.nav .brand .marque{font-family:var(--nom);font-weight:400;line-height:1;
   letter-spacing:-.03em;color:inherit;font-size:var(--logo-nav)}
 .nav .brand .marque .m{color:var(--mag)}
 .nav a.n{
@@ -74,7 +79,7 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 .mast{background:var(--ink);color:var(--paper);padding:calc(var(--u)*1.7) 0 calc(var(--u)*1.4)}
 .mast .kick{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cy);margin-bottom:.9rem}
 .mast h1{
-  font-family:var(--title);font-weight:400;line-height:.84;letter-spacing:-.03em;
+  font-family:var(--nom);font-weight:400;line-height:.84;letter-spacing:-.03em;
   font-size:clamp(3.6rem,14vw,11rem);
   /* L'interlignage négatif fait déborder l'encre des deux côtés de sa boîte.
      En haut : tant que le nom commençait par un « s » bas de casse, rien ne
@@ -460,7 +465,7 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
    masthead = rôle 1 · barre = la marque écrite · pied = rôle 2 réduit
    --logo-nav est le corps de la marque, et non plus une hauteur d'image. */
 :root{--logo-nav:1.62rem;--logo-foot:1.9rem}
-.foot h2{font-family:var(--title);font-weight:400;letter-spacing:-.03em;font-size:var(--logo-foot)}
+.foot h2{font-family:var(--nom);font-weight:400;letter-spacing:-.03em;font-size:var(--logo-foot)}
 
 /* Le rail est un conteneur flex à TOUTES les largeurs. Sans cette règle de
    base, l'espacement vivait sur le conteneur parent et ne s'appliquait plus
