@@ -66,7 +66,7 @@ function pied(lang) {
     /* Les comptes du site, relevés sur l'ancien : ceux qui figuraient ici
        jusqu'ici — stopera.art — n'existaient nulle part et menaient dans le
        vide, sur les 300 pages. Facebook avait purement disparu. */
-    '<li><a href="https://instagram.com/stopera_sonic_theatre">Instagram</a> · ' +
+    '<li><a href="https://instagram.com/__stopera__">Instagram</a> · ' +
     '<a href="https://www.youtube.com/@stopera-sonictheatre">YouTube</a> · ' +
     '<a href="https://www.facebook.com/stopera.sonictheatre">Facebook</a></li></ul></div>' +
     /* Les crédits, sur toute la largeur : ce que la loi demande, et ce que la
