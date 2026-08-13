@@ -1,0 +1,28 @@
+LOGOS DES PARTENAIRES
+=====================
+
+Déposez ici le logo de chaque partenaire, nommé comme suit :
+
+  cetc.svg               CETC — Teatro Colón (Buenos Aires)
+  grame.svg              GRAME — CNCM (Lyon)
+  opera-de-lyon.svg      Opéra de Lyon
+  croix-rousse.svg       Théâtre de la Croix-Rousse
+  les-metaboles.svg      Les Métaboles
+  cie-trilobite.svg      Cie Trilobite
+  printemps-des-arts.svg Printemps des Arts de Monte-Carlo
+  radio-france.svg       Radio France — France Musique
+
+Puis lancer :  node outils/partenaires.js
+
+FORMAT
+  .svg de préférence — une marque typographique reste nette à toute taille
+  et pèse quelques centaines d'octets.
+  .png accepté, à fond TRANSPARENT, 1000 px de large au moins.
+
+Un logo à fond blanc opaque ne convient pas : il fait une tache sur les fonds
+sombres du site et des visuels.
+
+CE QUI N'EST PAS FAIT ICI
+  Un logo n'est ni redessiné, ni recoloré, ni détouré. Si une version claire
+  est nécessaire pour un fond sombre, elle est demandée au partenaire — c'est
+  sa marque, et la plupart des chartes l'interdisent explicitement.

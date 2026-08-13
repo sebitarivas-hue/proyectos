@@ -299,6 +299,14 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .body .disciplines li{padding:.6rem 0;border-bottom:1px solid rgba(10,10,12,.18);
   font-family:var(--title);font-weight:400;letter-spacing:-.025em;font-size:1.35rem}
 
+/* Le logo d'un partenaire se pose à côté de son nom, jamais à la place :
+   le texte reste pour les lecteurs d'écran et pour les moteurs. Hauteur
+   constante quelle que soit la marque, et une zone de protection à sa
+   gauche — c'est ce que demandent toutes les chartes. */
+.body .logo-partenaire{height:1.55rem;width:auto;max-width:11rem;vertical-align:-.45rem;
+  margin-right:.62rem;object-fit:contain}
+@media(min-width:760px){.body .logo-partenaire{height:1.8rem;margin-right:.75rem}}
+
 .body .roster{list-style:none;margin:.3rem 0 0;padding:0;display:grid;gap:0}
 @media(min-width:760px){.body .roster{grid-template-columns:1fr 1fr;column-gap:2.4rem}}
 .body .roster li{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
