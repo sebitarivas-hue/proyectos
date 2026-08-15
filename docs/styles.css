@@ -75,8 +75,24 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 .nav a.n:hover,.nav a.n:focus-visible{border-bottom-color:var(--sec);outline:none}
 .nav a.n[aria-current="page"]{border-bottom-color:var(--ink)}
 
-/* ---------- bandeau titre : le SEUL grand aplat noir du site ---------- */
-.mast{background:var(--ink);color:var(--paper);padding:calc(var(--u)*1.7) 0 calc(var(--u)*1.4)}
+/* ---------- bandeau titre : le seul fond sombre du site ----------
+   Ce n'est plus un aplat mais une scène — le néon d'Einstein on the Beach,
+   presque éteint. La photo passe en niveaux de gris et descend à un tiers de
+   sa clarté, puis un dégradé la referme vers le bas : il ne reste qu'une
+   profondeur. Le nom et le paragraphe gardent le contraste qu'ils avaient sur
+   le noir plat — c'est la condition, pas l'effet, qui commande le réglage. */
+.mast{background:var(--ink);color:var(--paper);padding:calc(var(--u)*1.7) 0 calc(var(--u)*1.4);
+  position:relative;isolation:isolate}
+.mast::before,.mast::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.mast::before{
+  background:url(/assets/projects/einstein/einstein-neon.jpg) center 24%/cover no-repeat;
+  filter:grayscale(1) brightness(.34) contrast(1.06);
+}
+.mast::after{
+  background:linear-gradient(180deg,rgba(10,10,12,.52) 0%,rgba(10,10,12,.78) 52%,
+    rgba(10,10,12,.96) 100%);
+}
+.mast>.wrap{position:relative}
 .mast .kick{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cy);margin-bottom:.9rem}
 .mast h1{
   font-family:var(--nom);font-weight:400;line-height:.84;letter-spacing:-.03em;
