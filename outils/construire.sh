@@ -29,6 +29,7 @@ node outils/hreflang.js      # les alternates et le canonique
 node outils/titres.js        # les titres d'onglet
 node outils/intraduisible.js # le nom propre, protégé des traducteurs
 node outils/versions.js      # le jeton anti-cache, calculé sur le contenu
+node outils/hero-precharge.js # la scène du bandeau, demandée sans attendre
 node outils/page-404.js      # la page introuvable, aux couleurs du site
 node outils/mesure.js        # la balise de mesure, sur toutes les pages
 

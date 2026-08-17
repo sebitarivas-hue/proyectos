@@ -76,21 +76,29 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
 .nav a.n[aria-current="page"]{border-bottom-color:var(--ink)}
 
 /* ---------- bandeau titre : le seul fond sombre du site ----------
-   Ce n'est plus un aplat mais une scène — le néon d'Einstein on the Beach,
-   presque éteint. La photo passe en niveaux de gris et descend à un tiers de
-   sa clarté, puis un dégradé la referme vers le bas : il ne reste qu'une
-   profondeur. Le nom et le paragraphe gardent le contraste qu'ils avaient sur
-   le noir plat — c'est la condition, pas l'effet, qui commande le réglage. */
+   Ce n'est plus un aplat mais une scène — le plateau d'Einstein on the Beach
+   et ses trois corps. Le néon qui surmonte la scène a été laissé hors du
+   cadre : `scene-bandeau.jpg` est la bande basse de la photo, découpée à la
+   construction, pour qu'aucune autre typographie ne vienne concurrencer le
+   nom. La photo passe en niveaux de gris ; le dégradé pèse à gauche, sous le
+   texte, et s'allège à droite, où les deux silhouettes doivent rester
+   visibles — c'est la lisibilité, pas l'effet, qui commande le réglage. */
 .mast{background:var(--ink);color:var(--paper);padding:calc(var(--u)*1.7) 0 calc(var(--u)*1.4);
   position:relative;isolation:isolate}
 .mast::before,.mast::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
 .mast::before{
-  background:url(/assets/projects/einstein/einstein-neon.jpg) center 24%/cover no-repeat;
-  filter:grayscale(1) brightness(.34) contrast(1.06);
+  /* 62 % et non 50 : sur téléphone la fenêtre est étroite et un cadrage
+     centré ne retenait que le corps accroupi ; décalée, elle en garde deux.
+     Sur grand écran la marge horizontale est de six pour cent, le décalage
+     n'y déplace rien. */
+  background:url(/assets/projects/einstein/scene-bandeau.jpg) 62% center/cover no-repeat;
+  filter:grayscale(1) brightness(.5) contrast(1.04);
 }
 .mast::after{
-  background:linear-gradient(180deg,rgba(10,10,12,.52) 0%,rgba(10,10,12,.78) 52%,
-    rgba(10,10,12,.96) 100%);
+  background:linear-gradient(100deg,rgba(10,10,12,.90) 0%,rgba(10,10,12,.80) 34%,
+    rgba(10,10,12,.56) 66%,rgba(10,10,12,.44) 100%),
+    linear-gradient(180deg,rgba(10,10,12,.30) 0%,rgba(10,10,12,0) 34%,
+    rgba(10,10,12,.42) 100%);
 }
 .mast>.wrap{position:relative}
 .mast .kick{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cy);margin-bottom:.9rem}
