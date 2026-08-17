@@ -3,9 +3,14 @@
 # de l'app `cm2-kpop` (dépôt séparé — les deux sites ne doivent jamais se mélanger).
 #
 # Conception anti-fausse-alerte (pas de mails d'erreur GitHub injustifiés) :
-# - les étapes bloquantes ne regardent que des NOMS de fichiers/dossiers (haute précision) ;
-# - l'analyse de contenu (numéros type sécu/IBAN) ne fait qu'AVERTIR, jamais échouer ;
+# - les étapes bloquantes ne regardent que des NOMS de fichiers/dossiers (haute précision)
+#   ou des CHAÎNES LITTÉRALES vérifiées absentes du site au 13/08/2026 ;
+# - l'analyse de motifs flous (numéros type sécu/IBAN) ne fait qu'AVERTIR, jamais échouer ;
 # - aucune dépendance externe, aucun secret, aucune API : rien qui puisse tomber en panne.
+#
+# Renforcé le 13/08/2026 (phase 5.4, action AD2). Motif : un champ `publiable:` dans un
+# fichier est DÉCLARATIF — il décrit une intention, il n'empêche rien. Le seul garde-fou
+# ayant force d'arrêt est un contrôle bloquant à la frontière, c'est-à-dire ici.
 name: garde-fou
 on:
   push:
@@ -28,7 +33,7 @@ jobs:
 
       - name: Bloquer les dossiers privés du hub stopera
         run: |
-          M=$(git ls-files | grep -Ei '(^|/)(memory|ops|ADMIN-STOPERA|DOCS_STOPERA|Projets_STopera|github-audit|mails|inbox|ADMIN-REPRISE|DOCTORAT-MALMO|professional|strategy|identity|artistic|Career|knowledge_legacy_a_trier|\.roots)(/|$)|(^|/)S\.T\.O\.P' || true)
+          M=$(git ls-files | grep -Ei '(^|/)(memory|ops|ADMIN-STOPERA|DOCS_STOPERA|Projets_STopera|github-audit|mails|inbox|ADMIN-REPRISE|DOCTORAT-MALMO|professional|strategy|identity|artistic|Career|knowledge_legacy_a_trier|knowledge-model|\.roots)(/|$)|(^|/)S\.T\.O\.P' || true)
           if [ -n "$M" ]; then
             echo "::error::GARDE-FOU — contenu du hub privé stopera détecté dans ce dépôt PUBLIC :"
             echo "$M"
@@ -40,6 +45,52 @@ jobs:
           M=$(git ls-files | grep -Ei '(^|/)(manifest\.json|sw\.js)$|cm2-kpop|(^|/)cm2[.-]' || true)
           if [ -n "$M" ]; then
             echo "::error::GARDE-FOU — fichiers de l'app cm2-kpop détectés : le site stopera.art et cm2-kpop ne doivent jamais être mélangés."
+            echo "$M"
+            exit 1
+          fi
+
+      # ------------------------------------------------------------------
+      # AD2 — les trois étapes bloquantes ajoutées le 13/08/2026
+      # ------------------------------------------------------------------
+
+      - name: Bloquer le marqueur de contenu privé
+        # Convention : tout document du hub privé peut porter le marqueur ci-dessous.
+        # S'il atteint ce dépôt par copier-coller ou par erreur d'outil, la publication échoue.
+        # C'est le seul mécanisme qui transforme une intention en interdiction effective.
+        run: |
+          M=$(grep -rIl -e 'PRIVE-STOPERA-NE-PAS-PUBLIER' -e 'publiable: false' . \
+              --exclude-dir=.git --exclude-dir=.github 2>/dev/null || true)
+          if [ -n "$M" ]; then
+            echo "::error::GARDE-FOU — marqueur de contenu privé détecté. Ce fichier appartient au dépôt privé stopera :"
+            echo "$M"
+            exit 1
+          fi
+
+      - name: Bloquer les identifiants personnels (chaînes vérifiées absentes le 13/08/2026)
+        # Chaque chaîne a été vérifiée : 0 occurrence dans le site au moment de l'ajout.
+        # Une correspondance signifie donc une intrusion réelle, jamais un faux positif hérité.
+        run: |
+          M=$(grep -rInI -e '175079201908736' -e '8257746' \
+                         -e '06 63 70 19 36' -e '0663701936' -e '+33 6 63 70 19 36' \
+                         -e 'sebitarivas@gmail' \
+                         . --exclude-dir=.git --exclude-dir=.github 2>/dev/null || true)
+          if [ -n "$M" ]; then
+            echo "::error::GARDE-FOU — identifiant personnel détecté (n° sécu, n° CAF, mobile privé ou email privé) :"
+            echo "$M"
+            exit 1
+          fi
+
+      - name: Bloquer les données famille et santé
+        # Périmètre le plus sensible du hub privé : l'enfant, le cercle familial, les soignants.
+        # Vérifié : 0 occurrence le 13/08/2026.
+        # Si une œuvre venait à porter l'un de ces noms, retirer la ligne concernée ci-dessous
+        # ET consigner la décision dans 00_GOUVERNANCE/Registre_des_decisions.md (dépôt privé).
+        run: |
+          M=$(grep -rInI -e 'Céleste' -e 'Amandine Bajou' -e 'Marina Rivas' \
+                         -e 'Khedhiri' -e 'Dr Winter' -e 'RPPS' \
+                         . --exclude-dir=.git --exclude-dir=.github 2>/dev/null || true)
+          if [ -n "$M" ]; then
+            echo "::error::GARDE-FOU — donnée famille ou santé détectée dans ce dépôt PUBLIC :"
             echo "$M"
             exit 1
           fi
