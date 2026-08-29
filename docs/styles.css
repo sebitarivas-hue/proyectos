@@ -289,6 +289,25 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 .body .name-mark{font-family:var(--title);font-weight:400;letter-spacing:-.01em;
   font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1;margin-bottom:.6rem}
 
+/* ---- Pourquoi : la typo porte la page, pas la photo ----
+   Retiré : un triptyque de photos, qui n'apportait rien (Sébastien,
+   21/08). Ce qui reste doit tenir seul. Le h2.lead d'un manifeste hérite
+   du même .lead qu'un chapeau de fiche — plus petit qu'un h2 de section
+   ordinaire, à l'envers de ce qu'exige la page qui porte tout le sens du
+   site. Ici seulement, le titre et les trois voix du manifeste (question,
+   affirmation, ambition) passent à une échelle de couverture, et le
+   chiffre "01" du chapitre grandit avec eux. */
+body[data-section="pourquoi"] .body .lead{
+  font-size:clamp(2.8rem,8vw,6.2rem);letter-spacing:-.03em;margin-bottom:1.1rem}
+body[data-section="pourquoi"] .body .manifesto-question,
+body[data-section="pourquoi"] .body .manifesto-claim{
+  font-size:clamp(2rem,5.6vw,3.6rem);margin:2rem 0}
+body[data-section="pourquoi"] .body .manifesto-vision{
+  font-size:clamp(1.9rem,5.2vw,3.2rem);margin:2rem 0}
+@media(min-width:900px){
+  body[data-section="pourquoi"] .num{font-size:clamp(6rem,19vw,15rem)}
+}
+
 /* ---- L'intitulé d'un bloc porte la page, comme sur une fiche d'œuvre ----
    Il était une pastille noire de 11 px : une étiquette posée sur le contenu,
    quand la fiche d'œuvre, elle, fait porter le bloc par un titre à l'échelle.
