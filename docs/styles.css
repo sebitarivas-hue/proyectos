@@ -472,6 +472,63 @@ body[data-section="pourquoi"] .body .manifesto-vision{
 /* Le bandeau de groupe n'annonce plus, il sépare : un nom, une règle, et
    l'œuvre juste dessous. */
 .oeu-groupe-w{padding:calc(var(--u)*.7) 0 calc(var(--u)*.55)}
+
+/* ==========================================================
+   /oeuvres/ — LE PLAN
+   Le catalogue n'est plus une pile de bandes, une œuvre par écran, mais un
+   plan : une voie centrale, des places qui portent le nom des blocs, et des
+   rangées qui s'en écartent — trois, puis deux, alternées, pour qu'on ne
+   retombe jamais sur une grille régulière. Deux colonnes dès le téléphone :
+   on voit toujours plus d'une œuvre à la fois.
+   ========================================================== */
+.plan{position:relative;max-width:1240px;margin:0 auto;padding:0 var(--u) calc(var(--u)*2)}
+
+/* La voie : un trait qui traverse toute la page, derrière les rangées. */
+.plan::before{content:"";position:absolute;left:50%;top:.5rem;bottom:calc(var(--u)*3);
+  width:1px;background:var(--line);opacity:.16;pointer-events:none}
+
+/* Une place sur la voie : le nom du bloc, posé sur le trait qu'il interrompt. */
+.plan .oeu-groupe{padding:0;text-align:center}
+.plan .oeu-groupe-w{border:0;padding:calc(var(--u)*1.1) 0 calc(var(--u)*.8)}
+.plan > .oeu-groupe:first-child .oeu-groupe-w{padding-top:calc(var(--u)*.5)}
+.plan .oeu-groupe-t{display:inline-block;position:relative;background:var(--paper);
+  padding:.35rem .9rem;border:1px solid var(--line)}
+.plan .oeu-groupe--affiche .oeu-groupe-t{border-color:var(--mag);color:var(--mag)}
+
+/* Les rangées : la ramification. */
+.plan-rang{display:grid;gap:calc(var(--u)*1.1) var(--u);
+  margin-bottom:calc(var(--u)*1.5);position:relative}
+.plan-rang--1{grid-template-columns:minmax(0,1fr)}
+.plan-rang--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.plan-rang--3{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:900px){
+  .plan-rang--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  /* Le centre ne prend pas toute la largeur : c'est une place, pas une bande. */
+  .plan-rang--1{grid-template-columns:minmax(0,1fr);max-width:74%;margin-inline:auto}
+}
+
+/* La tuile : l'image d'abord, le texte dessous. Elle remplace les quatre
+   poses d'affiche (a/b/c/d), qui supposaient une œuvre par bande. */
+.oeu--tuile{display:block;grid-template-columns:none;max-width:none;
+  margin:0;padding:0}
+.oeu--tuile .oeu-img{grid-column:auto}
+.oeu--tuile .oeu-img img{aspect-ratio:4/3;width:100%;display:block}
+/* Une rangée de deux tient dans un écran ; une rangée de trois en montre
+   trois d'un coup. Les rapports diffèrent pour que les deux respirent. */
+.plan-rang--2 .oeu--tuile .oeu-img img{aspect-ratio:3/2}
+.plan-rang--1 .oeu--tuile .oeu-img img{aspect-ratio:21/9}
+.oeu--tuile .oeu-txt{display:block;padding-top:.6rem}
+.oeu--tuile .oeu-t{font-size:clamp(1.15rem,2.1vw,1.75rem);line-height:1;
+  letter-spacing:-.025em}
+.plan-rang--1 .oeu--tuile .oeu-t{font-size:clamp(1.8rem,4vw,3rem)}
+.oeu--tuile .oeu-y{display:none}          /* la date est déjà dans la ligne de statut */
+.oeu--tuile .oeu-st{margin-top:.35rem;font-size:.66rem;letter-spacing:.08em}
+.oeu--tuile .oeu-s{font-size:.86rem;max-width:38ch;margin-top:.3rem;
+  color:var(--dim)}
+@media(max-width:640px){
+  .oeu--tuile .oeu-s{display:none}        /* sur téléphone, l'image et le titre suffisent */
+  .plan::before{left:calc(var(--u)*-.1);opacity:.1}
+}
 .oeu a{display:contents}
 .oeu:hover .oeu-t,.oeu a:focus-visible .oeu-t{color:var(--mag)}
 .oeu a:focus-visible{outline:none}
