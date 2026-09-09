@@ -422,12 +422,13 @@ body[data-section="pourquoi"] .body .manifesto-vision{
 .oeu-st{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;
   gap:.35rem .7rem;margin-top:.45rem;font-family:var(--disp);
   font-size:clamp(.68rem,1.05vw,.78rem);letter-spacing:.1em;text-transform:uppercase}
-.oeu-role{font-weight:800;color:var(--mag)}
-.oeu-role::after{content:"·";margin-left:.7rem;color:var(--dim);font-weight:400}
+/* Pas de séparateur « · » entre le rôle et la date : quand la ligne passe
+   à la ligne — c'est le cas sur téléphone — il restait suspendu en fin de
+   ligne. Le changement de couleur suffit à séparer. */
+.oeu-role{font-weight:800;color:var(--mag);margin-right:.35rem}
 .oeu-statut-t{font-weight:600;color:var(--ink)}
 .oeu--d .oeu-statut-t{color:var(--paper)}
 .oeu--d .oeu-role{color:#fff}
-.oeu--d .oeu-role::after{color:rgba(242,237,228,.7)}
 
 /* ==========================================================
    Parcours — les liens qui manquaient
@@ -452,6 +453,25 @@ body[data-section="pourquoi"] .body .manifesto-vision{
 /* Quatre langues sur six finissaient une fiche sans aucune sortie : ni retour
    aux œuvres, ni parcours. Ce bloc porte les deux. */
 .fiche-fin{padding-bottom:calc(var(--u)*2)}
+
+/* ==========================================================
+   /oeuvres/ — entrer dans les œuvres tout de suite
+   Mesuré le 09/09/2026 : la première image apparaissait à 661 px sur un
+   écran de 900. On arrivait sur une page de texte. Le manifeste a sa page
+   (/pourquoi/) et le bloc de couleur vit sur l'accueil ; ici, un sur-titre,
+   un titre, puis les œuvres.
+   ========================================================== */
+.sec--catalogue{padding:calc(var(--u)*.9) 0 calc(var(--u)*.6)}
+.sec--catalogue .body{max-width:none}
+.sec--catalogue h2{font-family:var(--title);font-weight:400;letter-spacing:-.03em;
+  line-height:1;font-size:clamp(1.5rem,3vw,2.3rem);margin-top:.25rem}
+@media(min-width:900px){
+  /* plus de colonne pour le chiffre : il a été retiré de cette page */
+  .sec--catalogue>.wrap{grid-template-columns:minmax(0,1fr)}
+}
+/* Le bandeau de groupe n'annonce plus, il sépare : un nom, une règle, et
+   l'œuvre juste dessous. */
+.oeu-groupe-w{padding:calc(var(--u)*.7) 0 calc(var(--u)*.55)}
 .oeu a{display:contents}
 .oeu:hover .oeu-t,.oeu a:focus-visible .oeu-t{color:var(--mag)}
 .oeu a:focus-visible{outline:none}
