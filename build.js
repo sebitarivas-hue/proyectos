@@ -13,15 +13,25 @@
    de ce fichier les écraserait toutes par l'ancienne mise en page.
 
    Il est conservé pour son historique et pour les données qu'il porte
-   (PROJECTS, YEARS, ARTISTS, THEMES), qui restent lisibles par require().
-   Pour le remettre en service, il faut d'abord lui apprendre la V2.          */
-if (require.main === module) {
-  console.error(
+   (PROJECTS, YEARS, ARTISTS, THEMES).
+   Pour le remettre en service, il faut d'abord lui apprendre la V2.
+
+   ⚠️ CORRIGÉ LE 09/09/2026 — ces lignes ont dit pendant un mois que les
+   données « restent lisibles par require() ». C'ÉTAIT FAUX, et le garde-fou
+   ne gardait rien : `if (require.main === module)` n'arrête que l'exécution
+   directe. Un simple `require("./build.js")`, fait pour lire THEMES, a
+   déroulé tout le corps du module et RÉÉCRIT 310 pages du site publié avec
+   l'ancienne mise en page. Le garde-fou couvre désormais les deux voies.
+   Pour lire les données sans rien écrire : `BUILD_JS_LECTURE=1 node -e "…"`,
+   ou mieux, lire les pages publiées, qui font foi.                          */
+if (require.main === module || !process.env.BUILD_JS_LECTURE) {
+  var _msg =
     "\nbuild.js ne publie plus rien.\n" +
-    "Le site vient du prototype V2 migré le 10/08/2026 ; relancer ce script\n" +
+    "Le site vient du prototype V2 migré le 10/08/2026 ; l'exécuter\n" +
     "remplacerait les 295 pages par l'ancienne mise en page.\n" +
-    "Voir le journal de git pour la migration.\n");
-  process.exit(1);
+    "Pour lire seulement ses données : BUILD_JS_LECTURE=1\n";
+  if (require.main === module) { console.error(_msg); process.exit(1); }
+  throw new Error(_msg);
 }
 
 "use strict";

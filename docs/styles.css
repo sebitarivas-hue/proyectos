@@ -428,6 +428,30 @@ body[data-section="pourquoi"] .body .manifesto-vision{
 .oeu--d .oeu-statut-t{color:var(--paper)}
 .oeu--d .oeu-role{color:#fff}
 .oeu--d .oeu-role::after{color:rgba(242,237,228,.7)}
+
+/* ==========================================================
+   Parcours — les liens qui manquaient
+   Ajoutés le 09/09/2026. Les trente pages de /parcours/ existaient,
+   complètes et dans le sitemap, sans qu'aucun lien du site n'y mène :
+   le bouton « Explorer par parcours » de l'accueil pointait sur /oeuvres/.
+   La carte du parcours menait à l'œuvre ; l'œuvre ne revenait pas.
+   ========================================================== */
+.oeu-vers-parcours{max-width:1240px;margin:0 auto;padding:0 var(--u) calc(var(--u)*1.4)}
+
+/* Sur la fiche : les parcours auxquels l'œuvre appartient. */
+.fiche-parcours{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .9rem;
+  margin:calc(var(--u)*1.2) 0 .9rem;padding-top:calc(var(--u)*.8);
+  border-top:1px solid var(--line)}
+.fiche-parcours-t{font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  letter-spacing:.14em;font-size:.7rem;color:var(--dim)}
+.fiche-parcours a{font-family:var(--disp);font-weight:600;font-size:.86rem;
+  color:var(--ink);text-decoration:none;border-bottom:1px solid var(--mag);
+  padding-bottom:.06em}
+.fiche-parcours a:hover,.fiche-parcours a:focus-visible{color:var(--mag)}
+
+/* Quatre langues sur six finissaient une fiche sans aucune sortie : ni retour
+   aux œuvres, ni parcours. Ce bloc porte les deux. */
+.fiche-fin{padding-bottom:calc(var(--u)*2)}
 .oeu a{display:contents}
 .oeu:hover .oeu-t,.oeu a:focus-visible .oeu-t{color:var(--mag)}
 .oeu a:focus-visible{outline:none}
