@@ -399,6 +399,35 @@ body[data-section="pourquoi"] .body .manifesto-vision{
 .oeu-y{font-family:var(--disp);font-weight:800;font-variant-numeric:tabular-nums;
   font-size:clamp(1.15rem,2vw,1.7rem);grid-column:2;text-align:right;white-space:nowrap}
 .oeu-s{grid-column:1/-1;color:var(--dim);max-width:52ch;margin-top:.15rem}
+
+/* ==========================================================
+   Trois blocs sur /oeuvres/ — à l'affiche · en création · au répertoire
+   Ajoutés le 09/09/2026. La page listait quatorze œuvres à plat, sans
+   ordre, avec pour seule information une année nue : Einstein on the
+   Beach y affichait « 2023 » alors que sa fiche annonçait Bogotá dans
+   dix-sept jours. Le statut existait sur chaque fiche ; il remonte ici.
+   ========================================================== */
+.oeu-groupe{max-width:1240px;margin:0 auto;padding:0 var(--u)}
+.oeu-groupe-w{border-top:1px solid var(--line);padding:calc(var(--u)*.9) 0 calc(var(--u)*1.1)}
+.oeu-groupe--affiche .oeu-groupe-w{border-top-width:3px;border-top-color:var(--mag)}
+.oeu-groupe-t{font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  letter-spacing:.14em;font-size:clamp(.82rem,1.35vw,1rem);line-height:1.2}
+.oeu-groupe--affiche .oeu-groupe-t{color:var(--mag)}
+.oeu-groupe-s{color:var(--dim);margin-top:.3rem;max-width:46ch}
+
+/* La ligne de statut : le rôle de STOPERA! puis la date, sous le titre.
+   Trois œuvres n'ont d'étiquette de rôle NULLE PART (Espaces bruts,
+   Otages, Snow on Her Lips) — elles n'en portent donc pas. Le manque est
+   voulu : mieux vaut une case vide qu'un rôle inventé. */
+.oeu-st{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;
+  gap:.35rem .7rem;margin-top:.45rem;font-family:var(--disp);
+  font-size:clamp(.68rem,1.05vw,.78rem);letter-spacing:.1em;text-transform:uppercase}
+.oeu-role{font-weight:800;color:var(--mag)}
+.oeu-role::after{content:"·";margin-left:.7rem;color:var(--dim);font-weight:400}
+.oeu-statut-t{font-weight:600;color:var(--ink)}
+.oeu--d .oeu-statut-t{color:var(--paper)}
+.oeu--d .oeu-role{color:#fff}
+.oeu--d .oeu-role::after{color:rgba(242,237,228,.7)}
 .oeu a{display:contents}
 .oeu:hover .oeu-t,.oeu a:focus-visible .oeu-t{color:var(--mag)}
 .oeu a:focus-visible{outline:none}
