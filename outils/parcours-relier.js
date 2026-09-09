@@ -7,11 +7,12 @@
    trouver cette partie du site.
 
    Trois gestes, aucun contenu inventé :
-     1. l'accueil envoie enfin sur /parcours/ (le bouton disait déjà « parcours ») ;
-     2. /oeuvres/ propose la lecture transversale en bas de page ;
-     3. chaque fiche d'œuvre affiche les parcours auxquels elle appartient,
+     1. /oeuvres/ propose la lecture transversale en bas de page ;
+     2. chaque fiche d'œuvre affiche les parcours auxquels elle appartient,
         cliquables — la carte du parcours menait à l'œuvre, l'œuvre ne
         revenait pas.
+   (Une troisième étape, qui détournait le bouton de l'accueil vers
+   /parcours/, a été retirée le 09/09 : l'accueil va aux œuvres.)
 
    La correspondance œuvre ↔ parcours n'est pas saisie ici : elle est LUE
    dans les pages /parcours/<slug>/ publiées, qui font foi.
@@ -60,17 +61,13 @@ function correspondance(lang) {
   return carte;
 }
 
-/* ── 2. L'accueil ──────────────────────────────────────────────────────── */
-function accueil(lang) {
-  const f = path.join(dossier(lang), "index.html");
-  let s = fs.readFileSync(f, "utf8");
-  const re = new RegExp(`(<a class="more" href=")${prefixe(lang)}/oeuvres/("[^>]*>[^<]*)`, "");
-  const av = s;
-  s = s.replace(re, `$1${prefixe(lang)}/parcours/$2`);
-  if (s === av) return `  ${lang} — accueil : bouton déjà corrigé ou introuvable`;
-  fs.writeFileSync(f, s);
-  return `  ${lang} — accueil → /parcours/`;
-}
+/* ── 2. L'accueil : NE PAS Y TOUCHER ───────────────────────────────────
+   Ce script a d'abord fait pointer le bouton du bloc 02 de l'accueil vers
+   /parcours/, parce que son libellé disait « Explorer par parcours ».
+   Sébastien a tranché le 09/09/2026 : **le bloc 02 va aux œuvres**, et le
+   libellé a été refait pour le dire (« Voir les œuvres »). Les Parcours
+   restent atteignables depuis /oeuvres/, ce qui suffit — vérifié : zéro
+   page orpheline. Ne pas rétablir l'étape supprimée ici.                */
 
 /* ── 3. /oeuvres/ → /parcours/ ─────────────────────────────────────────── */
 function oeuvres(lang) {
@@ -130,7 +127,6 @@ function fiches(lang) {
 
 console.log("Relie les Parcours :");
 for (const l of LANGS) {
-  console.log(accueil(l));
   console.log(oeuvres(l));
   console.log(fiches(l));
 }
