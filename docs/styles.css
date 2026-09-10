@@ -233,6 +233,13 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
 /* ---------- traitements image ---------- */
 .im-oeuvres{filter:url(#im-oeuvres)}
 .im-labo{filter:url(#im-labo)}
+/* Une couleur par catégorie sur /oeuvres/ — ajouté le 09/09/2026. Les
+   quatorze photos passaient toutes par le duotone magenta : la page était
+   uniformément rose et rien ne distinguait ce qui joue de ce qui est au
+   répertoire. Les teintes viennent de la palette du site, pas d'ailleurs. */
+.im-affiche{filter:url(#im-affiche)}       /* magenta — ce qui se joue */
+.im-creation{filter:url(#im-creation)}     /* bleu — le gros du catalogue */
+.im-repertoire{filter:url(#im-repertoire)} /* graphite — l'archive, et le repos */
 .im-portrait{filter:grayscale(1) contrast(1.12) brightness(1.02)}
 
 /* ---------- pied : crème, filet, pas de bandeau noir ---------- */
@@ -494,6 +501,13 @@ body[data-section="pourquoi"] .body .manifesto-vision{
 .plan .oeu-groupe-t{display:inline-block;position:relative;background:var(--paper);
   padding:.35rem .9rem;border:1px solid var(--line)}
 .plan .oeu-groupe--affiche .oeu-groupe-t{border-color:var(--mag);color:var(--mag)}
+.plan .oeu-groupe--creation .oeu-groupe-t{border-color:var(--blu);color:var(--blu)}
+.plan .oeu-groupe--repertoire .oeu-groupe-t{border-color:var(--ink);color:var(--ink)}
+/* La ligne de statut suit la couleur de son bloc : le rôle n'est plus rose
+   partout, il dit à quelle catégorie l'œuvre appartient. */
+.plan-rang .oeu-role{color:var(--sec-bloc,var(--mag))}
+.oeu-groupe--creation ~ .plan-rang{--sec-bloc:var(--blu)}
+.oeu-groupe--repertoire ~ .plan-rang{--sec-bloc:var(--ink)}
 
 /* Les rangées : la ramification. */
 .plan-rang{display:grid;gap:calc(var(--u)*1.1) var(--u);
