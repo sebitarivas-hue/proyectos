@@ -304,15 +304,46 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
    site. Ici seulement, le titre et les trois voix du manifeste (question,
    affirmation, ambition) passent à une échelle de couverture, et le
    chiffre "01" du chapitre grandit avec eux. */
+/* ⚠️ CORRIGÉ LE 10/09/2026 — la page était illisible, et les chiffres le disaient.
+   Mesuré au navigateur en 1440 px : titre 99 px, puis trois paragraphes de
+   manifeste à 58, 58 et 51 px — donc trois blocs de six à huit lignes tous à
+   la même taille, l'un après l'autre — et le corps du texte à 15 px. Rien
+   entre 15 et 51. Le rapport du plus grand au plus petit était de 6,6.
+
+   Deux défauts, pas un.
+   • L'ÉCHELLE : deux extrêmes et rien au milieu. Un paragraphe de sept lignes
+     à 58 px n'est pas un texte, c'est une affiche ; à 15 px sur cette page, la
+     phrase qui dit ce que STOPERA! fait réellement passait inaperçue.
+   • LE SENS : les trois voix du manifeste — la question, l'affirmation,
+     l'ambition — avaient la même taille. Elles ne se répondaient pas, elles se
+     répétaient. Or elles ne pèsent pas pareil.
+
+   Une échelle en quatre marches, qui suit le sens plutôt que l'emphase :
+   le titre (64) · la question, seule à rester à l'échelle d'une couverture,
+   parce que c'est la question de la plateforme (40) · l'affirmation (27) ·
+   l'ambition (25) · le corps, remonté de 15 à 17. La descente se voit, et
+   elle veut dire quelque chose. */
 body[data-section="pourquoi"] .body .lead{
-  font-size:clamp(2.8rem,8vw,6.2rem);letter-spacing:-.03em;margin-bottom:1.1rem}
-body[data-section="pourquoi"] .body .manifesto-question,
+  font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-.03em;
+  line-height:.95;margin-bottom:1.1rem}
+body[data-section="pourquoi"] .body .manifesto-question{
+  font-size:clamp(1.6rem,2.9vw,2.5rem);line-height:1.05;margin:1.8rem 0;
+  max-width:26ch}
 body[data-section="pourquoi"] .body .manifesto-claim{
-  font-size:clamp(2rem,5.6vw,3.6rem);margin:2rem 0}
+  font-size:clamp(1.25rem,1.9vw,1.7rem);line-height:1.2;margin:1.6rem 0;
+  letter-spacing:-.02em;max-width:44ch}
 body[data-section="pourquoi"] .body .manifesto-vision{
-  font-size:clamp(1.9rem,5.2vw,3.2rem);margin:2rem 0}
+  font-size:clamp(1.2rem,1.75vw,1.55rem);line-height:1.28;margin:1.6rem 0;
+  max-width:46ch}
+/* Le corps portait le fond de la page à 15 px, sous trois blocs géants. */
+body[data-section="pourquoi"] .body p:not([class]),
+body[data-section="pourquoi"] .body .prose{
+  font-size:1.06rem;line-height:1.6;max-width:66ch}
 @media(min-width:900px){
-  body[data-section="pourquoi"] .num{font-size:clamp(6rem,19vw,15rem)}
+  /* Le chiffre avait grandi avec le titre ; le titre a rétréci, pas lui, et il
+     mordait sur les premières lignes du texte (10/09/2026). Il reste large,
+     mais il tient désormais dans sa colonne. */
+  body[data-section="pourquoi"] .num{font-size:clamp(6rem,13vw,10.5rem)}
 }
 
 /* ---- L'intitulé d'un bloc porte la page, comme sur une fiche d'œuvre ----
