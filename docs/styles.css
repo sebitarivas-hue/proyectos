@@ -230,16 +230,23 @@ p.lead{font-family:var(--body);font-weight:400;letter-spacing:0;
   text-transform:uppercase;color:var(--dim);padding-top:.18rem}
 .prose p+p{margin-top:.8rem}
 
-/* ---------- traitements image ---------- */
-.im-oeuvres{filter:url(#im-oeuvres)}
-.im-labo{filter:url(#im-labo)}
-/* Une couleur par catégorie sur /oeuvres/ — ajouté le 09/09/2026. Les
-   quatorze photos passaient toutes par le duotone magenta : la page était
-   uniformément rose et rien ne distinguait ce qui joue de ce qui est au
-   répertoire. Les teintes viennent de la palette du site, pas d'ailleurs. */
-.im-affiche{filter:url(#im-affiche)}       /* magenta — ce qui se joue */
-.im-creation{filter:url(#im-creation)}     /* bleu — le gros du catalogue */
-.im-repertoire{filter:url(#im-repertoire)} /* graphite — l'archive, et le repos */
+/* ---------- traitements image ----------
+   Trois catégories, trois teintes — posé le 09/09/2026, et c'est juste : la
+   page était uniformément rose et rien ne distinguait ce qui joue de ce qui
+   est au répertoire.
+
+   Corrigé le 11/09 : les duotones mappaient la luminance sur deux points
+   extrêmes, et le point haut du bleu plafonnait à 0.64. Tous les tons moyens
+   d'une photographie tombaient donc sur un indigo plein, et on ne lisait plus
+   ce que l'image montrait. La distinction par couleur reste entière, mais la
+   teinte est portée sur une image grise au lieu d'être posée en aplat par
+   dessus le sujet. Les filtres SVG restent déclarés dans les pages, ils ne
+   sont simplement plus appelés. */
+.im-affiche{filter:grayscale(1) contrast(1.04) sepia(.42) hue-rotate(268deg) saturate(1.35) brightness(1.04)}   /* magenta — ce qui se joue */
+.im-creation{filter:grayscale(1) contrast(1.04) sepia(.40) hue-rotate(200deg) saturate(1.15) brightness(1.05)}  /* bleu — le gros du catalogue */
+.im-repertoire{filter:grayscale(1) contrast(1.06) brightness(1.03)}                                             /* graphite — l'archive, et le repos */
+.im-oeuvres{filter:grayscale(1) contrast(1.04) sepia(.42) hue-rotate(268deg) saturate(1.35) brightness(1.04)}
+.im-labo{filter:grayscale(1) contrast(1.04) sepia(.42) hue-rotate(140deg) saturate(1.2) brightness(1.04)}
 .im-portrait{filter:grayscale(1) contrast(1.12) brightness(1.02)}
 
 /* ---------- pied : crème, filet, pas de bandeau noir ---------- */
