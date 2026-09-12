@@ -37,13 +37,18 @@ var bilan = { rangs: 0, collide: 0, menues: 0 };
 /* On repère chaque rang par les œuvres qu'il contient, jamais par son
    numéro d'ordre : l'ordre du catalogue changera, les œuvres non.       */
 var RANGS = [
-  { oeuvres: ["rut", "war-madrigals", "insistir"], classe: "plan-rang--5-4-3" },
-  { oeuvres: ["salamandres", "america"],           classe: "plan-rang--8-4" },
-  { oeuvres: ["nous"],                             classe: "plan-rang--court" }
+  { oeuvres: ["espaces-bruts", "mamma-roma"], classe: "plan-rang--vedette" },
+  { oeuvres: ["salamandres", "america"],      classe: "plan-rang--8-4" },
+  { oeuvres: ["nous"],                        classe: "plan-rang--court" }
 ];
+
+/* Classes d'une passe précédente qui ne correspondent plus au choix
+   éditorial : elles sont retirées avant que les nouvelles soient posées. */
+var PERIMEES = ["plan-rang--5-4-3"];
 
 function marquerRangs(fichier) {
   var h = fs.readFileSync(fichier, "utf8"), avant = h;
+  PERIMEES.forEach(function (c) { h = h.split(" " + c).join(""); });
   var morceaux = h.split(/(<div class="plan-rang[^"]*">)/);
   for (var i = 1; i < morceaux.length; i += 2) {
     var ouvrant = morceaux[i], contenu = morceaux[i + 1] || "";
