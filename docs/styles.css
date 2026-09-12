@@ -1542,3 +1542,30 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
 @media(prefers-reduced-motion:reduce){
   .im-affiche,.im-creation,.im-repertoire,.im-oeuvres,.im-labo{transition:none}
 }
+
+/* --------------------------------------------------------------------------
+   LA COULEUR PURE POUR LES SIGNES, LA COULEUR POSÉE POUR LES SURFACES
+   12/09/2026. En adoucissant le traitement des photographies, on a laissé
+   les aplats à saturation pleine : un magenta et un cyan absolus tombaient
+   juste sous une image devenue douce, et l'écart se voyait plus que les
+   deux couleurs.
+
+   La palette ne change pas. C'est la règle d'emploi qui se précise : un
+   trait, un chiffre, une étiquette, un lien gardent la couleur entière,
+   parce qu'un signe doit trancher ; une grande surface la prend mêlée au
+   papier, parce qu'une surface doit porter, pas crier. Le texte y passe à
+   l'encre, qui tient mieux sur une teinte claire que le blanc.
+
+   Ces surfaces n'existent que sur l'accueil et sur l'index des artistes :
+   la règle est petite et se retire d'un bloc.
+   -------------------------------------------------------------------------- */
+@supports(background:color-mix(in oklab,red,white)){
+  .cc-mag{background:color-mix(in oklab,var(--mag) 58%,var(--paper));color:var(--ink)}
+  .cc-cy{background:color-mix(in oklab,var(--cy) 58%,var(--paper));color:var(--ink)}
+  .cc-blu{background:color-mix(in oklab,var(--blu) 58%,var(--paper));color:var(--ink)}
+  .cc-sec{background:color-mix(in oklab,var(--sec) 58%,var(--paper));color:var(--ink)}
+  .cc-sec-d{background:color-mix(in oklab,var(--sec) 58%,var(--paper));color:var(--ink)}
+  /* le filet du 04 gardait déjà sa couleur en typographie : rien à adoucir,
+     un mot n'est pas une surface */
+  .collide--filet .cc-mag{background:none;color:var(--mag)}
+}
