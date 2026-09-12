@@ -65,3 +65,37 @@
   if (document.readyState === "loading") addEventListener("DOMContentLoaded", jouer);
   else jouer();
 })();
+
+/* LA COULEUR RÉELLE DE LA PHOTOGRAPHIE.
+   Les duotones de section sont un état de repos : ils tiennent la page
+   ensemble. Ils ne doivent pas être le dernier mot sur une photographie
+   qui a sa propre richesse.
+
+   Sur un appareil qui a un pointeur, le survol suffit et la règle est en
+   CSS. Sur un écran tactile il n'y a pas de survol : l'image reprend sa
+   couleur quand elle passe dans la bande centrale de l'écran, c'est à dire
+   quand on arrive devant elle. Une fois révélée elle le reste : on ne
+   reteint pas une image qu'on vient de voir en couleur.
+
+   Rien ici n'est nécessaire à la lecture : sans IntersectionObserver, ou
+   sans JavaScript, la page garde simplement ses duotones. */
+(function () {
+  "use strict";
+  var SEL = ".im-affiche,.im-creation,.im-repertoire,.im-oeuvres,.im-labo";
+  if (!("IntersectionObserver" in window)) return;
+  if (matchMedia("(hover: hover)").matches) return;        /* le survol s'en charge */
+
+  function armer() {
+    var vues = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("im-vive");
+        vues.unobserve(e.target);
+      });
+    }, { rootMargin: "-22% 0px -22% 0px", threshold: 0 });
+    document.querySelectorAll(SEL).forEach(function (el) { vues.observe(el); });
+  }
+
+  if (document.readyState === "loading") addEventListener("DOMContentLoaded", armer);
+  else armer();
+})();

@@ -1516,3 +1516,29 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
   .plan-rang--vedette > .oeu:first-child .oeu-t{font-size:clamp(1.8rem,4vw,3rem)}
   .plan-rang--vedette > .oeu:nth-child(2){grid-column:1/span 5}
 }
+
+/* --------------------------------------------------------------------------
+   LA COULEUR RÉELLE DE LA PHOTOGRAPHIE — 12/09/2026
+   Les duotones de section tiennent la page ensemble, mais ils ternissent
+   des photographies qui ont leur propre richesse. Ils deviennent donc un
+   état de repos, pas un verdict : l'image reprend sa colorimétrie entière
+   dès qu'on arrive devant elle.
+
+   Au pointeur, c'est le survol. Sur un écran tactile, où il n'y a pas de
+   survol, c'est le passage dans la bande centrale de l'écran : la classe
+   im-vive est posée par transition.js. Sans JavaScript, la page garde ses
+   duotones et ne perd rien.
+   -------------------------------------------------------------------------- */
+.im-affiche,.im-creation,.im-repertoire,.im-oeuvres,.im-labo{
+  transition:filter .5s cubic-bezier(.2,.6,.2,1);
+}
+@media(hover:hover){
+  a:hover .im-affiche,a:hover .im-creation,a:hover .im-repertoire,
+  a:hover .im-oeuvres,a:hover .im-labo,
+  figure:hover > .im-affiche,figure:hover > .im-creation,figure:hover > .im-repertoire,
+  figure:hover > .im-oeuvres,figure:hover > .im-labo{filter:none}
+}
+.im-vive{filter:none}
+@media(prefers-reduced-motion:reduce){
+  .im-affiche,.im-creation,.im-repertoire,.im-oeuvres,.im-labo{transition:none}
+}

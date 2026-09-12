@@ -33,6 +33,10 @@ function empreinte(f) {
 }
 var VS = empreinte(path.join(DOCS, "styles.css"));
 var VF = empreinte(path.join(DOCS, "assets", "fonts", "fonts.css"));
+/* transition.js portait un jeton écrit à la main, resté figé pendant que le
+   fichier changeait : exactement le défaut décrit plus haut pour la feuille
+   de style. Il est calculé lui aussi depuis le 12/09/2026. */
+var VJ = empreinte(path.join(DOCS, "transition.js"));
 
 /* Neutrix porte tous les titres : elle est demandée avant tout le reste.
    crossorigin est obligatoire pour une fonte, même servie par le même hôte. */
@@ -49,7 +53,7 @@ function pages(d, a) {
   return a;
 }
 
-var styles = 0, fontes = 0, precharges = 0, touchees = 0;
+var styles = 0, fontes = 0, scripts = 0, precharges = 0, touchees = 0;
 
 pages(DOCS).forEach(function (f) {
   var h = fs.readFileSync(f, "utf8"), avant = h;
@@ -63,6 +67,11 @@ pages(DOCS).forEach(function (f) {
     return 'href="/assets/fonts/fonts.css?v=' + VF + '"';
   });
 
+  h = h.replace(/src="\/transition\.js(\?v=[0-9a-f]+)?"/g, function (m) {
+    if (m.indexOf(VJ) < 0) scripts++;
+    return 'src="/transition.js?v=' + VJ + '"';
+  });
+
   if (h.indexOf('href="/assets/fonts/Neutrix-Regular.woff2"') < 0) {
     var i = h.indexOf('<link rel="stylesheet" href="/assets/fonts/fonts.css');
     if (i >= 0) { h = h.slice(0, i) + PRECHARGE + "\n" + h.slice(i); precharges++; }
@@ -72,5 +81,6 @@ pages(DOCS).forEach(function (f) {
 });
 
 console.log("jetons : styles.css=" + VS + " (" + styles + " à jour), fonts.css=" + VF +
-  " (" + fontes + " à jour) · préchargement posé : " + precharges + " — " +
+  " (" + fontes + " à jour), transition.js=" + VJ + " (" + scripts + " à jour)" +
+  " · préchargement posé : " + precharges + " — " +
   touchees + " page(s)");
