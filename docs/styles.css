@@ -1472,26 +1472,29 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
 }
 
 /* --------------------------------------------------------------------------
-   LES SIX CHIFFRES DE L'ACCUEIL — 12/09/2026
-   Mesuré en 390 px : 01, 02, 03, 04, 05 et 06 portaient tous exactement
-   72 px, l'un sous l'autre. C'est la répétition la plus visible du site.
-   Sur grand écran la variation venait de sec--bleed, qui sort le chiffre de
-   sa colonne, mais cet effet est lui-même enfermé au dessus de 900 px : en
-   dessous, les six retombaient au même gabarit.
+   LES SIX CHIFFRES DE L'ACCUEIL SUR TÉLÉPHONE — 12/09/2026
+   Mesuré en 390 px : les six portaient tous exactement 72 px, l'un sous
+   l'autre. La variation existait pourtant déjà, mais elle venait de
+   sec--bleed — le chiffre sort de sa colonne, passe derrière l'image et se
+   fait couper par le bord — et cette règle était enfermée au dessus de
+   900 px. En dessous, les six retombaient au même gabarit.
 
-   L'échelle suit ce que le chapitre porte, et volontairement pas une rampe
-   régulière : une rampe serait un mécanisme de plus. Le catalogue porte le
-   plus gros, le manifeste ouvre, le soutien ferme bas.
+   On ne réinvente donc pas une échelle par chapitre : c'est la règle du
+   grand écran qui descend sur le téléphone. 02, 04 et 05 débordent, 01, 03
+   et 06 tiennent dans leur colonne. Même composition, une seule logique.
+   Le chiffre porte aria-hidden : rien d'informatif n'est rogné, et .sec
+   est déjà en overflow:hidden, donc rien ne déborde de la page.
    -------------------------------------------------------------------------- */
 @media(max-width:899px){
-  body[data-section="accueil"] .sec--rang-01 .num{font-size:clamp(4.4rem,23vw,7rem)}
-  body[data-section="accueil"] .sec--rang-02 .num{font-size:clamp(5.2rem,29vw,8.5rem)}
-  body[data-section="accueil"] .sec--rang-03 .num{font-size:clamp(3rem,15vw,4.5rem);
-    -webkit-text-stroke-width:1.5px}
-  body[data-section="accueil"] .sec--rang-04 .num{font-size:clamp(4rem,21vw,6.4rem)}
-  body[data-section="accueil"] .sec--rang-05 .num{font-size:clamp(3.4rem,17vw,5.2rem)}
-  body[data-section="accueil"] .sec--rang-06 .num{font-size:clamp(2.6rem,13vw,3.8rem);
-    -webkit-text-stroke-width:1.5px}
+  body[data-section="accueil"] .sec--bleed > .wrap{position:static}
+  body[data-section="accueil"] .sec--bleed .num{
+    position:absolute;top:calc(var(--u)*.35);left:-.12em;z-index:0;
+    font-size:clamp(8rem,42vw,15rem);line-height:.7;opacity:.38;
+    -webkit-text-stroke-width:2px;pointer-events:none;
+  }
+  body[data-section="accueil"] .sec--bleed.sec--right .num{left:auto;right:-.12em}
+  body[data-section="accueil"] .sec--bleed .body{position:relative;z-index:1}
+  body[data-section="accueil"] .sec--bleed .fig{position:relative;z-index:1}
 }
 
 /* --------------------------------------------------------------------------
