@@ -1411,7 +1411,6 @@ body[data-section="productions"] .body p.lead .xref:hover,
    page : le manifeste et le catalogue portent gros, le réseau et le soutien
    portent bas. La variation est mesurée, jamais aléatoire. */
 @media(min-width:900px){
-  body[data-section="oeuvres"] .sec > .wrap > .num{font-size:clamp(5rem,17vw,13rem)}
   body[data-section="reseau"] .sec > .wrap > .num,
   body[data-section="artistes"] .sec > .wrap > .num,
   body[data-section="soutenir"] .sec > .wrap > .num{
@@ -1473,9 +1472,31 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
   .plan-rang--court{padding-right:16%}
 
   /* les grands numéros : trois échelles, ici aussi */
-  body[data-section="oeuvres"] .sec > .wrap > .num{font-size:clamp(5.5rem,22vw,9rem)}
   body[data-section="reseau"] .sec > .wrap > .num,
   body[data-section="artistes"] .sec > .wrap > .num,
   body[data-section="soutenir"] .sec > .wrap > .num{
     font-size:clamp(3rem,10vw,5rem);-webkit-text-stroke-width:1.5px}
+}
+
+/* --------------------------------------------------------------------------
+   LES SIX CHIFFRES DE L'ACCUEIL — 12/09/2026
+   Mesuré en 390 px : 01, 02, 03, 04, 05 et 06 portaient tous exactement
+   72 px, l'un sous l'autre. C'est la répétition la plus visible du site.
+   Sur grand écran la variation venait de sec--bleed, qui sort le chiffre de
+   sa colonne, mais cet effet est lui-même enfermé au dessus de 900 px : en
+   dessous, les six retombaient au même gabarit.
+
+   L'échelle suit ce que le chapitre porte, et volontairement pas une rampe
+   régulière : une rampe serait un mécanisme de plus. Le catalogue porte le
+   plus gros, le manifeste ouvre, le soutien ferme bas.
+   -------------------------------------------------------------------------- */
+@media(max-width:899px){
+  body[data-section="accueil"] .sec--rang-01 .num{font-size:clamp(4.4rem,23vw,7rem)}
+  body[data-section="accueil"] .sec--rang-02 .num{font-size:clamp(5.2rem,29vw,8.5rem)}
+  body[data-section="accueil"] .sec--rang-03 .num{font-size:clamp(3rem,15vw,4.5rem);
+    -webkit-text-stroke-width:1.5px}
+  body[data-section="accueil"] .sec--rang-04 .num{font-size:clamp(4rem,21vw,6.4rem)}
+  body[data-section="accueil"] .sec--rang-05 .num{font-size:clamp(3.4rem,17vw,5.2rem)}
+  body[data-section="accueil"] .sec--rang-06 .num{font-size:clamp(2.6rem,13vw,3.8rem);
+    -webkit-text-stroke-width:1.5px}
 }
