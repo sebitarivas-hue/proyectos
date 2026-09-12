@@ -99,3 +99,19 @@
   if (document.readyState === "loading") addEventListener("DOMContentLoaded", armer);
   else armer();
 })();
+
+/* LE SÉLECTEUR DE LANGUE FAIT AUTORITÉ.
+   La détection automatique posée dans la tête des pages françaises ne se
+   déclenche qu'une fois, et jamais si une langue a déjà été arrêtée pour
+   ce navigateur. C'est ici qu'on l'arrête : dès qu'on clique une langue
+   dans le sélecteur, ce choix est retenu, et la détection ne se réveille
+   plus. Quelqu'un qui revient volontairement au français reste donc en
+   français, même avec un navigateur réglé sur une autre langue. */
+(function () {
+  "use strict";
+  addEventListener("click", function (e) {
+    var a = e.target && e.target.closest && e.target.closest(".lang-liste a[lang]");
+    if (!a) return;
+    try { localStorage.setItem("st-langue", a.getAttribute("lang")); } catch (err) {}
+  });
+})();
