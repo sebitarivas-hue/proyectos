@@ -1366,3 +1366,83 @@ body[data-section="productions"] .body p.lead .xref:hover,
   .st-defile .part{white-space:normal;padding-right:0}
   .st-defile .part+.part{display:none}
 }
+
+/* ==========================================================================
+   PASSE DE RYTHME — 12/09/2026
+   Le système tient. Ce qui fatiguait, c'est qu'il s'appliquait partout de la
+   même façon : on devinait le bloc suivant. Rien ici ne change le style, la
+   palette ou la grille. Huit endroits cessent seulement d'être mécaniques.
+   ========================================================================== */
+
+/* 1 · L'INDEX DES ŒUVRES — trois rangs sur six cessent d'avoir des tuiles
+   de poids égal. Aucune œuvre ne pesait plus qu'une autre, et la photo de
+   plateau des salamandres tenait la même place que deux portraits d'archive
+   de 275 px de large, gonflés jusqu'à la demi-page. */
+@media(min-width:900px){
+  .plan-rang--8-4{grid-template-columns:8fr 4fr}
+  .plan-rang--5-4-3{grid-template-columns:5fr 4fr 3fr}
+  /* 2 · Un rang s'arrête avant le bord droit. La respiration est un
+     élément de la composition, pas ce qui reste quand on a fini. */
+  .plan-rang--court{grid-template-columns:5fr 5fr 2fr}
+}
+
+/* 3 · L'ACCUEIL — le second aplat redevient un filet. Les mots restent, le
+   rectangle part. Un aplat qui revient à chaque section est une fonction ;
+   un aplat qui apparaît une fois est un événement. */
+.collide--filet{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  min-height:0}
+.collide--filet>div{background:none;box-shadow:none;padding:.75rem 0;min-height:0;
+  align-items:center}
+.collide--filet .cc-out{border:0}
+.collide--filet .cc-mag{color:var(--mag);justify-content:flex-end}
+.collide--filet .t{font-size:clamp(1.4rem,3.4vw,2.3rem);line-height:1.1}
+.collide--filet .t.num-t{color:var(--ink)}
+
+/* 4 · L'aplat qui reste cesse d'être coupé en deux parts égales. Une moitié
+   exacte se lit comme un composant ; sept douzièmes se lisent comme un
+   choix. */
+@media(min-width:640px){
+  .collide:not(.collide--filet){grid-template-columns:7fr 5fr}
+}
+
+/* 5 · LES GRANDS NUMÉROS — trois échelles au lieu d'une. Ils portaient tous
+   exactement la même taille au même endroit du haut de page, ce qui est
+   précisément ce qu'on anticipe. L'échelle suit maintenant le poids de la
+   page : le manifeste et le catalogue portent gros, le réseau et le soutien
+   portent bas. La variation est mesurée, jamais aléatoire. */
+@media(min-width:900px){
+  body[data-section="oeuvres"] .sec > .wrap > .num{font-size:clamp(5rem,17vw,13rem)}
+  body[data-section="reseau"] .sec > .wrap > .num,
+  body[data-section="artistes"] .sec > .wrap > .num,
+  body[data-section="soutenir"] .sec > .wrap > .num{
+    font-size:clamp(3.4rem,8vw,6.4rem);-webkit-text-stroke-width:1.5px}
+}
+
+/* 6 · LES FICHES D'ŒUVRE — la pile devient une hiérarchie. Huit blocs se
+   suivaient avec le même titre à la même échelle et le même filet de deux
+   pixels pleine largeur : c'est ce qui donnait l'impression d'un gabarit
+   qui se déroule. Les blocs de tête gardent leur rang ; ceux qui suivent
+   passent à l'échelle d'un intertitre et leur filet ne traverse plus. */
+body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(.pd-press){
+  border-top:0;margin-top:2.2rem;position:relative;padding-top:1.1rem;
+}
+body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(.pd-press)::before{
+  content:"";position:absolute;top:0;left:0;width:4.5rem;
+  border-top:2px solid var(--line);
+}
+body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(.pd-press) > h3,
+body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(.pd-press) > h4{
+  font-size:clamp(1.25rem,2.6vw,1.7rem);letter-spacing:-.02em;margin-bottom:.7rem;
+}
+
+/* 7 · Une image peut être volontairement petite. Ces deux photographies font
+   275 px de large : affichées en pleine largeur elles étaient agrandies plus
+   de cinq fois, et on voyait le grain avant de voir le sujet. Elles
+   reprennent leur taille et se tiennent à droite, comme un document. */
+.fig--menue{background:none;display:flex;justify-content:flex-end;
+  padding:0 var(--u)}
+.fig--menue img{width:100%;max-width:34rem;height:auto}
+@media(min-width:900px){
+  .fig--menue{padding-inline:clamp(1.2rem,6vw,6rem)}
+  .fig--menue img{max-width:38rem}
+}
