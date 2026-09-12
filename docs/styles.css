@@ -1446,3 +1446,36 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
   .fig--menue{padding-inline:clamp(1.2rem,6vw,6rem)}
   .fig--menue img{max-width:38rem}
 }
+
+/* --------------------------------------------------------------------------
+   PASSE DE RYTHME — LE TÉLÉPHONE, 12/09/2026
+   Faute corrigée le jour même : les trois rangs et les échelles de numéros
+   étaient enfermés dans un @media(min-width:900px). Sur un téléphone, la
+   passe n'existait pas — et c'est sur un téléphone que le site se regarde.
+   Les mêmes intentions, écrites pour une colonne étroite : une œuvre peut
+   prendre toute la largeur, une autre peut rester petite, une rangée peut
+   s'arrêter avant le bord.
+   -------------------------------------------------------------------------- */
+@media(max-width:899px){
+  /* le rang de trois : la première tient la largeur, les deux autres se
+     partagent la ligne suivante */
+  .plan-rang--5-4-3 > .oeu:first-child{grid-column:1/-1}
+  .plan-rang--5-4-3 > .oeu:first-child .oeu-img img{aspect-ratio:3/2}
+  .plan-rang--5-4-3 > .oeu:first-child .oeu-t{font-size:clamp(1.5rem,5.5vw,2.2rem)}
+
+  /* la photo de plateau prend la largeur ; les deux portraits d'archive de
+     275 px restent dans la colonne de droite, à leur échelle */
+  .plan-rang--8-4 > .oeu:first-child{grid-column:1/-1}
+  .plan-rang--8-4 > .oeu:first-child .oeu-t{font-size:clamp(1.5rem,5.5vw,2.2rem)}
+  .plan-rang--8-4 > .oeu:nth-child(2){grid-column:2/3}
+
+  /* la rangée s'arrête avant le bord droit */
+  .plan-rang--court{padding-right:16%}
+
+  /* les grands numéros : trois échelles, ici aussi */
+  body[data-section="oeuvres"] .sec > .wrap > .num{font-size:clamp(5.5rem,22vw,9rem)}
+  body[data-section="reseau"] .sec > .wrap > .num,
+  body[data-section="artistes"] .sec > .wrap > .num,
+  body[data-section="soutenir"] .sec > .wrap > .num{
+    font-size:clamp(3rem,10vw,5rem);-webkit-text-stroke-width:1.5px}
+}
