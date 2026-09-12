@@ -1586,3 +1586,21 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
 @media(min-width:900px){
   .mast::before{background-position:50% bottom}
 }
+
+/* --------------------------------------------------------------------------
+   L'IMAGE D'OUVERTURE D'UNE FICHE EST UNE PLANCHE, PAS UN MUR — 12/09/2026
+   Mesuré en 1440 px : la même place affichait 395 px de haut pour War
+   Madrigals et 1158 px pour input / body / output, dont le tirage est un
+   portrait. Ce n'était pas une variation, c'était un accident : le hasard
+   du format de chaque fichier décidait de la page, et une image plus haute
+   que l'écran ne se lit plus, elle se subit.
+
+   La hauteur est donc bornée et l'image recadrée au delà. Un paysage n'est
+   pas touché, un portrait est ramené à la planche. La variation qui reste,
+   de 395 à 544 px, vient de la photographie et non du hasard.
+   -------------------------------------------------------------------------- */
+.fig-full:not(.fig--menue) img,
+.pd-media:not(.fig--menue) img{
+  display:block;width:100%;height:auto;
+  max-height:min(46vh,26rem);object-fit:cover;object-position:center;
+}
