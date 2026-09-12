@@ -91,12 +91,22 @@ figcaption b,figcaption strong{font-family:var(--body);font-weight:700}
      centré ne retenait que le corps accroupi ; décalée, elle en garde deux.
      Sur grand écran la marge horizontale est de six pour cent, le décalage
      n'y déplace rien. */
-  background:url(/assets/projects/einstein/scene-bandeau.jpg) 62% center/cover no-repeat;
-  filter:grayscale(1) brightness(.5) contrast(1.04);
+  /* Cadrage par le bas, et non par le centre — corrigé le 12/09/2026.
+     Le recadrage centré coupait la rampe, le sol et les tours d'éclairage,
+     c'est à dire tout ce qui dit que c'est un vrai plateau : il ne restait
+     qu'une ambiance sombre avec deux silhouettes, et ça pouvait être
+     n'importe quelle image d'atmosphère. Ancrée en bas, la photographie
+     redevient le document qu'elle est : le plateau d'Einstein on the Beach
+     au Teatro Colón, quelqu'un accroupi à la rampe.
+     Et moins 50 % de luminosité effaçait ce qui restait. */
+  background:url(/assets/projects/einstein/scene-bandeau.jpg) 62% bottom/cover no-repeat;
+  filter:grayscale(1) brightness(.74) contrast(1.06);
 }
 .mast::after{
-  background:linear-gradient(100deg,rgba(10,10,12,.90) 0%,rgba(10,10,12,.80) 34%,
-    rgba(10,10,12,.56) 66%,rgba(10,10,12,.44) 100%),
+  /* Le voile reste dense à gauche, sous le titre et le chapeau, et s'ouvre
+     franchement à droite pour laisser voir la scène. */
+  background:linear-gradient(100deg,rgba(10,10,12,.88) 0%,rgba(10,10,12,.70) 34%,
+    rgba(10,10,12,.32) 66%,rgba(10,10,12,.14) 100%),
     linear-gradient(180deg,rgba(10,10,12,.30) 0%,rgba(10,10,12,0) 34%,
     rgba(10,10,12,.42) 100%);
 }
@@ -1568,4 +1578,11 @@ body[data-section="productions"] .body .pd-block:not(.pd-press) ~ .pd-block:not(
   /* le filet du 04 gardait déjà sa couleur en typographie : rien à adoucir,
      un mot n'est pas une surface */
   .collide--filet .cc-mag{background:none;color:var(--mag)}
+}
+
+/* Sur grand écran la fenêtre est large : un cadrage centré garde les deux
+   tours d'éclairage et toute la largeur du plateau. Le décalage de 62 % ne
+   sert qu'au téléphone, où la fenêtre est étroite et haute. */
+@media(min-width:900px){
+  .mast::before{background-position:50% bottom}
 }
