@@ -83,14 +83,14 @@ var THEMES = [
              es: "Mundos donde lo humano ya no está en el centro: objetos, máquinas e imágenes que recuerdan en nuestro lugar. Lo que queda, y lo que recuerda, cuando ya no estamos.",
              en: "Worlds where the human is no longer the centre: objects, machines and images that remember in our place. What remains, and what remembers, when we are gone.",
              zh: "人类不再居于中心的世界：替我们记忆的物件、机器与影像。当我们不再在场，什么留存，什么记忆。", it: "Mondi in cui l'umano non è più al centro: oggetti, macchine e immagini che ricordano al posto nostro. Ciò che resta, e ciò che ricorda, quando non ci siamo più." },
-    items: ["ooo", "war-madrigals", "salamandres"] },
+    items: ["ooo", "war-madrigals"] },
   { slug: "memoire-politique",
     title: { fr: "Mémoire & politique", es: "Memoria & política", en: "Memory & politics", zh: "记忆与政治", it: "Memoria & politica" },
     blurb: { fr: "Pouvoir, histoire et résistance : des figures réelles ou de fiction qui interrogent la responsabilité, la violence et la liberté.",
              es: "Poder, historia y resistencia: figuras reales o de ficción que interrogan la responsabilidad, la violencia y la libertad.",
              en: "Power, history and resistance: real or fictional figures questioning responsibility, violence and freedom.",
              zh: "权力、历史与抵抗：真实或虚构的人物，叩问责任、暴力与自由。", it: "Potere, storia e resistenza: figure reali o di finzione che interrogano la responsabilità, la violenza e la libertà." },
-    items: ["otages", "america", "mamma-roma", "insistir", "salamandres"] },
+    items: ["otages", "america", "mamma-roma", "insistir"] },
   { slug: "voix-texte",
     title: { fr: "Voix & texte", es: "Voz & texto", en: "Voice & text", zh: "人声与文本", it: "Voce & testo" },
     blurb: { fr: "L'écriture au cœur du plateau : livrets, auteurs et la parole comme matière musicale, de Christine Angot à Pasolini.",
@@ -150,7 +150,7 @@ var NAME2SLUG = {
   "Marcelo Lombardero": "marcelo-lombardero", "Emma Terno": "emma-terno", "Valentín Pelisch": "valentin-pelisch",
   "Daniel Zea": "daniel-zea", "Nina Bouraoui": "nina-bouraoui",
   "Richard Brunel": "richard-brunel", "Anne-Laure Chamboissier": "anne-laure-chamboissier",
-  "Guillaume Kosmicki": "guillaume-kosmicki", "- porte renaud -": "porte-renaud"
+  "Guillaume Kosmicki": "guillaume-kosmicki"
 };
 var NAME_LIST = Object.keys(NAME2SLUG).sort(function (a, b) { return b.length - a.length; });
 function linkNames(s, rel) {
@@ -159,7 +159,7 @@ function linkNames(s, rel) {
   return out;
 }
 /* institutions → site officiel (lien sur les partenaires des pages projet) */
-var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["Trilobite","https://cietrilobite.org"],["Tête à Tête","https://www.tete-a-tete.org.uk"],["Lacroch'","https://lacroch.com"],["Futurs Composés","https://www.futurscomposes.com"],["Artenréel","https://artenreel.fr"],["Fondation de France","https://www.fondationdefrance.org"],["Fondation Salabert","https://fondation-salabert.org"],["CNM","https://cnm.fr"],["DRAC Grand Est","https://www.culture.gouv.fr/regions/drac-grand-est"],["Fondation Jerez","https://www.fondationdefrance.org"]];
+var INST = [["GRAME","https://www.grame.fr"],["Teatro Colón","https://teatrocolon.org.ar"],["Ensemble intercontemporain","https://www.ensembleinter.com"],["Métaboles","https://www.lesmetaboles.fr"],["Opéra de Lyon","https://www.opera-lyon.com"],["Croix-Rousse","https://croix-rousse.com"],["Gennevilliers","https://www.theatre2gennevilliers.com"],["Monte-Carlo","https://www.printempsdesarts.mc"],["Pôle Pixel","https://www.pole-pixel.com"],["UNSAM","https://www.unsam.edu.ar"],["Latinoamérica","https://operala.org"],["Ville de Gentilly","https://www.ville-gentilly.fr"],["Muse en Circuit","https://alamuse.com"],["Chartreuse","https://www.chartreuse.org"],["Générateur","https://legenerateur.com"],["ManiFeste","https://www.ircam.fr/agenda/festival"],["Ircam","https://www.ircam.fr"],["Radio France","https://www.radiofrance.fr"],["Futurs Composés","https://www.futurscomposes.com"],["Fondation de France","https://www.fondationdefrance.org"],["Fondation Salabert","https://fondation-salabert.org"],["CNM","https://cnm.fr"],["DRAC Grand Est","https://www.culture.gouv.fr/regions/drac-grand-est"],["Fondation Jerez","https://www.fondationdefrance.org"]];
 function linkInst(x) {
   for (var i = 0; i < INST.length; i++) { if (x.indexOf(INST[i][0]) >= 0) return '<a href="' + INST[i][1] + '" target="_blank" rel="noopener">' + esc(x) + "</a>"; }
   return esc(x);
@@ -362,10 +362,6 @@ var NEWS = [
     title: { fr: "STOPERA! ouvre sa plateforme", es: "STOPERA! abre su plataforma", en: "STOPERA! opens its platform", zh: "STOPERA! 启动其平台", it: "STOPERA! apre la sua piattaforma" },
     excerpt: { fr: "Une plateforme internationale de création, de production, de recherche et de transmission voit le jour à Gentilly.", es: "Una plataforma internacional de creación, producción, investigación y transmisión nace en Gentilly.", en: "An international platform for creation, production, research and transmission launches in Gentilly.", zh: "一个面向创作、制作、研究与传承的国际平台在让蒂伊诞生。", it: "Una piattaforma internazionale di creazione, produzione, ricerca e trasmissione nasce a Gentilly." },
     body: { fr: "STOPERA! réunit artistes, interprètes, chercheurs et partenaires culturels autour d'une même question : comment la voix, le corps et le son deviennent présence sur le plateau. La plateforme rassemble créations, recherche et transmission, sous la direction de Sebastian Rivas et avec le soutien de Georges Aperghis comme président d'honneur.", es: "STOPERA! reúne a artistas, intérpretes, investigadores y socios culturales en torno a una misma pregunta: cómo la voz, el cuerpo y el sonido se vuelven presencia en escena. La plataforma reúne creaciones, investigación y transmisión, bajo la dirección de Sebastian Rivas y con el apoyo de Georges Aperghis como presidente de honor.", en: "STOPERA! brings together artists, performers, researchers and cultural partners around a single question: how voice, body and sound become presence on stage. The platform unites creation, research and transmission, directed by Sebastian Rivas and supported by Georges Aperghis as honorary president.", zh: "STOPERA! 汇集艺术家、表演者、研究者与文化伙伴，围绕同一问题：人声、身体与声音如何在舞台上成为在场。平台整合创作、研究与传承，由 Sebastian Rivas 担任艺术指导，并由 Georges Aperghis 担任名誉主席给予支持。", it: "STOPERA! riunisce artisti, interpreti, ricercatori e partner culturali intorno a una stessa domanda: come la voce, il corpo e il suono diventano presenza in scena. La piattaforma raccoglie creazioni, ricerca e trasmissione, sotto la direzione di Sebastian Rivas e con il sostegno di Georges Aperghis come presidente onorario." } },
-  { slug: "stopera-accompagne-we-expected", date: "2026-07", img: "assets/projects/salamandres.jpg", related: "salamandres",
-    title: { fr: "STOPERA! accompagne « We Expected the Disaster… »", es: "STOPERA! acompaña « We Expected the Disaster… »", en: "STOPERA! supports \u201cWe Expected the Disaster\u2026\u201d", zh: "STOPERA! 陪伴《We Expected the Disaster…》", it: "STOPERA! accompagna «We Expected the Disaster…»" },
-    excerpt: { fr: "STOPERA! entre en accompagnement de l'opéra politique et écologique de - porte renaud - (Cie Trilobite), en amont de sa création au festival Tête à Tête (Londres) en 2027.", es: "STOPERA! acompaña la ópera política y ecológica de - porte renaud - (Cie Trilobite), antes de su estreno en el festival Tête à Tête (Londres) en 2027.", en: "STOPERA! begins supporting - porte renaud -'s political, ecological opera (Cie Trilobite), ahead of its premiere at the Tête à Tête festival (London) in 2027.", zh: "STOPERA! 开始陪伴 - porte renaud -（Cie Trilobite）的政治与生态歌剧，先于其 2027 年在伦敦 Tête à Tête 音乐节首演。", it: "STOPERA! comincia ad accompagnare l'opera politica ed ecologica di - porte renaud - (Cie Trilobite), in vista della sua prima al festival Tête à Tête (Londra) nel 2027." },
-    body: { fr: "D'après La Guerre des salamandres de Karel Čapek, We Expected the Disaster… but not the salamanders! mêle extractivisme, crise écologique et un fort travail avec les populations (recherche-action, éducation populaire). STOPERA! en accompagne une première phase de développement — structuration, communication et mise en réseau — vers une diffusion en France, en Europe et en Amérique latine.", es: "A partir de La guerra de las salamandras de Karel Čapek, We Expected the Disaster… but not the salamanders! entrelaza extractivismo, crisis ecológica y un fuerte trabajo con las poblaciones (investigación-acción, educación popular). STOPERA! acompaña una primera fase de desarrollo — estructuración, comunicación y puesta en red — hacia una difusión en Francia, Europa y América Latina.", en: "After Karel Čapek's War with the Newts, We Expected the Disaster… but not the salamanders! weaves together extractivism, ecological crisis and a strong practice of work with communities (action-research, popular education). STOPERA! supports a first development phase — structuring, communication and networking — towards diffusion in France, Europe and Latin America.", zh: "取材自卡雷尔·恰佩克《鲵鱼之乱》，《We Expected the Disaster… but not the salamanders!》交织攫取主义、生态危机与深入的民众工作（行动研究、平民教育）。STOPERA! 陪伴其首个发展阶段——结构搭建、传播与人脉——推动其在法国、欧洲与拉丁美洲的巡演。", it: "Da La guerra delle salamandre di Karel Čapek, We Expected the Disaster… but not the salamanders! intreccia estrattivismo, crisi ecologica e un forte lavoro con gli abitanti (ricerca-azione, educazione popolare). STOPERA! ne accompagna una prima fase di sviluppo — strutturazione, comunicazione e messa in rete — verso una distribuzione in Francia, in Europa e in America latina." } },
   { slug: "mamma-roma-cetc", date: "2027", img: "assets/projects/mamma-roma.jpg", related: "mamma-roma",
     title: { fr: "Mamma Roma en création au Teatro Colón", es: "Mamma Roma en creación en el Teatro Colón", en: "Mamma Roma premieres at the Teatro Colón", zh: "Mamma Roma 于科隆剧院首演", it: "Mamma Roma in creazione al Teatro Colón" },
     excerpt: { fr: "Mamma Roma, opéra d'après Pasolini mis en scène par Martin Bauer, est créé au CETC — Teatro Colón (Buenos Aires) en 2027.", es: "Mamma Roma, ópera a partir de Pasolini dirigida por Martin Bauer, se estrena en el CETC — Teatro Colón (Buenos Aires) en 2027.", en: "Mamma Roma, an opera after Pasolini staged by Martin Bauer, premieres at the CETC — Teatro Colón (Buenos Aires) in 2027.", zh: "取材自帕索里尼、Martin Bauer 执导的歌剧 Mamma Roma，于 2027 年在 CETC — 科隆剧院（布宜诺斯艾利斯）首演。", it: "Mamma Roma, opera da Pasolini con la regia di Martin Bauer, debutta al CETC — Teatro Colón (Buenos Aires) nel 2027." },
@@ -405,12 +401,6 @@ var COOP_CITIES = [
   { id:"monaco", region:"eu", x:52.06, y:28.25, side:"l", name:"Monte-Carlo",
     inst:[["Printemps des Arts","https://www.printempsdesarts.mc"]],
     proj:[["Snow on Her Lips","snow-on-her-lips"]] },
-  { id:"londres", region:"eu", x:49.5, y:22.6, side:"l", name:"Londres",
-    inst:[["Festival Tête à Tête","https://www.tete-a-tete.org.uk"]],
-    proj:[["We Expected the Disaster…","salamandres"]] },
-  { id:"mulhouse", region:"eu", x:51.5, y:24.9, side:"l", name:"Mulhouse · Grand Est",
-    inst:[["Cie Trilobite","https://cietrilobite.org"],["Éditions Lacroch'","https://lacroch.com"],["Artenréel","https://artenreel.fr"]],
-    proj:[["We Expected the Disaster…","salamandres"]] },
   { id:"mexico", region:"la", x:22.46, y:45.73, side:"r", name:"Mexico",
     inst:[],
     proj:[["A World to Blast","america"],["Insistir","insistir"]] },
@@ -926,13 +916,6 @@ var ARTISTS = [
            en: "An independent curator, she supports projects at the crossroads of visual arts, music and the stage, and took part in the emergence of STOPERA!.",
            zh: "独立策展人，她陪伴视觉艺术、音乐与舞台交汇处的项目，并参与了 STOPERA! 的萌生。", it: "Curatrice indipendente, accompagna progetti all'incrocio tra arti visive, musica e scena, e ha preso parte alla nascita di STOPERA!." },
     productions: [] },
-  { slug: "porte-renaud", name: "- porte renaud -", website: "https://porterenaud.com", photo: "assets/projects/porte-renaud.jpg",
-    role: { fr: "Compositeur & metteur en scène", es: "Compositor & director", en: "Composer & director", zh: "作曲家与导演", it: "Compositore & regista" },
-    bio: { fr: "Compositeur, plasticien et docteur en philosophie, il fonde la Cie Trilobite à Mulhouse. Son opéra politique et écologique We Expected the Disaster… but not the salamanders!, d'après La Guerre des salamandres de Karel Čapek, est accompagné par STOPERA! et créé au festival Tête à Tête (Londres) en 2027.",
-           es: "Compositor, artista plástico y doctor en filosofía, funda la Cie Trilobite en Mulhouse. Su ópera política y ecológica We Expected the Disaster… but not the salamanders!, a partir de La guerra de las salamandras de Karel Čapek, es acompañada por STOPERA! y se estrena en el festival Tête à Tête (Londres) en 2027.",
-           en: "A composer, visual artist and doctor of philosophy, he founded Cie Trilobite in Mulhouse. His political, ecological opera We Expected the Disaster… but not the salamanders!, after Karel Čapek's War with the Newts, is accompanied by STOPERA! and premieres at the Tête à Tête festival (London) in 2027.",
-           zh: "作曲家、造型艺术家、哲学博士，在米卢斯创立 Cie Trilobite 剧团。他的政治与生态歌剧 We Expected the Disaster… but not the salamanders!（取材自卡雷尔·恰佩克的《鲵鱼之乱》）由 STOPERA! 陪伴发展，并于 2027 年在伦敦 Tête à Tête 音乐节首演。", it: "Compositore, artista visivo e dottore in filosofia, fonda la Cie Trilobite a Mulhouse. La sua opera politica ed ecologica We Expected the Disaster… but not the salamanders!, da La guerra delle salamandre di Karel Čapek, è accompagnata da STOPERA! e debutta al festival Tête à Tête (Londra) nel 2027." },
-    productions: ["salamandres"] }
 ];
 
 /* bios longues validées (faits sûrs uniquement) — fusionnées dans ARTISTS */

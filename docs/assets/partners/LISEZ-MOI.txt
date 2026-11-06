@@ -8,7 +8,6 @@ Déposez ici le logo de chaque partenaire, nommé comme suit :
   opera-de-lyon.svg      Opéra de Lyon
   croix-rousse.svg       Théâtre de la Croix-Rousse
   les-metaboles.svg      Les Métaboles
-  cie-trilobite.svg      Cie Trilobite
   printemps-des-arts.svg Printemps des Arts de Monte-Carlo
   radio-france.svg       Radio France — France Musique
 

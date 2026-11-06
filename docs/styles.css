@@ -1122,7 +1122,7 @@ body[data-section="productions"] .sec p.lead strong{font-family:inherit; font-we
 
 /* ---- À cette échelle, un filet de lien traverse la ligne suivante ----
    Mesuré : interligne 26,3 px pour un corps de 24,8 px — le trait sous
-   « - porte renaud - » tombait sur « salamandre » et se lisait comme une rature.
+   lien du chapeau tombait sur le mot de la ligne suivante, comme une rature.
    Dans un chapeau d'œuvre, le renvoi se signale donc par la couleur seule.  */
 body[data-section="productions"] .body p.lead .xref,
 body[data-section="productions"] .sec p.lead .xref,
@@ -1386,7 +1386,7 @@ body[data-section="productions"] .body p.lead .xref:hover,
 
 /* 1 · L'INDEX DES ŒUVRES — trois rangs sur six cessent d'avoir des tuiles
    de poids égal. Aucune œuvre ne pesait plus qu'une autre, et la photo de
-   plateau des salamandres tenait la même place que deux portraits d'archive
+   plateau la plus forte tenait la même place que deux portraits d'archive
    de 275 px de large, gonflés jusqu'à la demi-page. */
 @media(min-width:900px){
   .plan-rang--8-4{grid-template-columns:8fr 4fr}

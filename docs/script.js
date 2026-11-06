@@ -62,7 +62,6 @@
   var YEARS = {
     "ooo": "2025",
     "war-madrigals": "2026",
-    "salamandres": "2027",
     "nous": { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中", it: "in corso" },
     "rut": "2026",
     "insistir": "2026",
@@ -75,9 +74,9 @@
 
   var ONGOING = { fr: "en cours", es: "en curso", en: "ongoing", zh: "进行中", it: "in corso" };
 
-  var PERIOD = { "ooo":"past","war-madrigals":"up","salamandres":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","fame":"past","snow-on-her-lips":"past" };
+  var PERIOD = { "ooo":"past","war-madrigals":"up","nous":"up","rut":"up","insistir":"up","america":"up","lips":"up","mamma-roma":"up","otages":"past","fame":"past","snow-on-her-lips":"past" };
 
-  var MODES = { "salamandres": ["accompagnement"], "lips": ["pedagogie"], "ooo": ["tournee"], "otages": ["production", "tournee"], "snow-on-her-lips": ["production", "tournee"], "fame": ["production", "tournee"], "mamma-roma": ["production"], "rut": ["production"], "nous": ["production"], "war-madrigals": ["production"], "america": ["production"], "insistir": ["production"] };
+  var MODES = { "lips": ["pedagogie"], "ooo": ["tournee"], "otages": ["production", "tournee"], "snow-on-her-lips": ["production", "tournee"], "fame": ["production", "tournee"], "mamma-roma": ["production"], "rut": ["production"], "nous": ["production"], "war-madrigals": ["production"], "america": ["production"], "insistir": ["production"] };
   var MODE_ORDER = ["production", "tournee", "accompagnement", "pedagogie"];
   var MODE_META = {
     production: { color: "#0d0d0f", chip: { fr: "Production", es: "Producci\u00f3n", en: "Production", zh: "\u5236\u4f5c", it: "Produzione" }, label: { fr: "Production", es: "Producci\u00f3n", en: "Production", zh: "\u5236\u4f5c", it: "Produzione" }, desc: { fr: "STOPERA! cr\u00e9e et porte l'\u0153uvre.", es: "STOPERA! crea y lleva la obra.", en: "STOPERA! creates and carries the work.", zh: "STOPERA! \u521b\u4f5c\u5e76\u627f\u5236\u4f5c\u54c1\u3002", it: "STOPERA! crea e porta l'opera." } },
@@ -89,8 +88,6 @@
 
   // Trois dimensions par projet : Transmission (tx) — ce qui peut se partager / s'explorer ; Territoire & partenariats (terr) — ancrage et engagement local.
   var DIM = {
-    "salamandres": { tx: { fr: "Le projet naît d'un travail avec les populations : une recherche-action en éducation populaire (quartier Briand, Mulhouse, 2021–2026), des centaines d'heures d'ateliers et de répétitions pour former une « communauté esthétique ».", es: "El proyecto nace de un trabajo con las poblaciones: una investigación-acción en educación popular (barrio Briand, Mulhouse, 2021–2026), cientos de horas de talleres y ensayos para formar una « comunidad estética ».", en: "The project grows out of work with communities: an action-research in popular education (Briand neighbourhood, Mulhouse, 2021–2026), hundreds of hours of workshops and rehearsals to form an “aesthetic community.”", zh: "项目源于与民众的工作：一项平民教育的行动研究（米卢斯 Briand 街区，2021–2026），数百小时的工作坊与排练，以形成「审美共同体」。", it: "Il progetto nasce da un lavoro con gli abitanti: una ricerca-azione di educazione popolare (quartiere Briand, Mulhouse, 2021–2026), centinaia di ore di laboratori e di prove per formare una «comunità estetica»." },
-      terr: { fr: "Ancrage local fort : matériaux collectés sur place avec les habitant·es et les associations, à chaque lieu d'accueil — écologie du réemploi et localisme.", es: "Fuerte arraigo local: materiales recogidos in situ con los habitantes y las asociaciones, en cada lugar de acogida — ecología de la reutilización y localismo.", en: "Strong local roots: materials gathered on site with residents and associations, at each host venue — an ecology of re-use and localism.", zh: "深厚的在地扎根：材料在每个接待地与居民和社团就地采集——再利用的生态与在地主义。", it: "Forte radicamento locale: materiali raccolti sul posto con gli abitanti e le associazioni, in ogni spazio ospite — ecologia del riuso e localismo." } },
     "ooo": { tx: { fr: "Ateliers sur la lutherie d'objets et la dramaturgie post-humaine — faire chanter la matière et le son.", es: "Talleres sobre la lutería de objetos y la dramaturgia posthumana — hacer cantar la materia y el sonido.", en: "Workshops on object-instruments and post-human dramaturgy — making matter and sound sing.", zh: "围绕物件乐器与后人类戏剧构作的工作坊——让物质与声音歌唱。", it: "Laboratori sulla liuteria di oggetti e la drammaturgia post-umana — far cantare la materia e il suono." },
       terr: { fr: "Un pont entre Buenos Aires et Lyon, porté en tournée internationale.", es: "Un puente entre Buenos Aires y Lyon, llevado en gira internacional.", en: "A bridge between Buenos Aires and Lyon, taken on international tour.", zh: "连接布宜诺斯艾利斯与里昂的桥梁，并展开国际巡演。", it: "Un ponte tra Buenos Aires e Lione, portato in tournée internazionale." } },
     "war-madrigals": { tx: { fr: "Travail vocal en atelier autour du madrigal et de l'écriture pour six voix.", es: "Trabajo vocal en taller en torno al madrigal y la escritura para seis voces.", en: "Vocal workshops around the madrigal and writing for six voices.", zh: "围绕牧歌与六声部写作的人声工作坊。", it: "Lavoro vocale in laboratorio intorno al madrigale e alla scrittura per sei voci." },
@@ -116,70 +113,6 @@
   };
 
   var PROJECTS = [
-    {
-      slug: "salamandres", title: "We Expected the Disaster…",
-      banner: "assets/projects/salamandres/affiche.jpg",
-      titleHtml: "We Expected the Disaster… <span class=\"it\">but not the salamanders!</span>",
-      photo: "assets/projects/salamandres.jpg",
-      tag: { fr: "Accompagnement STOPERA · Création 2027", es: "Acompañamiento STOPERA · Estreno 2027", en: "STOPERA support · Premiere 2027", zh: "STOPERA 陪伴 · 2027 首演", it: "Accompagnamento STOPERA · Prima 2027" },
-      short: { fr: "Opéra politique & écologique de - porte renaud - (Cie Trilobite).", es: "Ópera política y ecológica de - porte renaud - (Cie Trilobite).", en: "A political, ecological opera by - porte renaud - (Cie Trilobite).", zh: "- porte renaud -（Cie Trilobite）的政治与生态歌剧。", it: "Opera politica & ecologica di - porte renaud - (Cie Trilobite)." },
-      pitch: {
-        fr: "Opéra politique et écologique de <strong>- porte renaud -</strong>, d'après <em>La Guerre des salamandres</em> de Karel Čapek : une humanité productiviste exploite des salamandres bâtisseuses, qui finissent par se soulever. Extractivisme, crise écologique et luttes de classes se répondent dans une fable pour notre présent. Trois actes, 2h25, onze voix et trois musiciens. Porté par la <strong>Cie Trilobite</strong>, le projet est accompagné par STOPERA! dans une première phase de développement, en amont de sa création au festival <strong>Tête à Tête</strong> (Londres) en 2027.",
-        es: "Ópera política y ecológica de <strong>- porte renaud -</strong>, a partir de <em>La guerra de las salamandras</em> de Karel Čapek: una humanidad productivista explota a unas salamandras constructoras que terminan por sublevarse. Extractivismo, crisis ecológica y luchas de clases dialogan en una fábula para nuestro presente. Tres actos, 2h25, once voces y tres músicos. Impulsado por la <strong>Cie Trilobite</strong>, el proyecto es acompañado por STOPERA! en una primera fase de desarrollo, antes de su estreno en el festival <strong>Tête à Tête</strong> (Londres) en 2027.",
-        en: "A political, ecological opera by <strong>- porte renaud -</strong>, after Karel Čapek's <em>War with the Newts</em>: a productivist humanity exploits builder-salamanders who eventually rise up. Extractivism, ecological crisis and class struggle echo one another in a fable for our present. Three acts, 2h25, eleven voices and three musicians. Driven by <strong>Cie Trilobite</strong>, the project is accompanied by STOPERA! in a first development phase, ahead of its premiere at the <strong>Tête à Tête</strong> festival (London) in 2027.",
-        zh: "<strong>- porte renaud -</strong> 的政治与生态歌剧，取材自卡雷尔·恰佩克的《鲵鱼之乱》：生产至上的人类奴役善于建造的鲵鱼，鲵鱼终而起义。攫取主义、生态危机与阶级斗争在一则映照当下的寓言中相互回响。三幕，2 小时 25 分，十一个声部与三位乐手。项目由 <strong>Cie Trilobite</strong> 推动，STOPERA! 在首个发展阶段予以陪伴，先于 2027 年在伦敦 <strong>Tête à Tête</strong> 音乐节首演。", it: "Opera politica ed ecologica di <strong>- porte renaud -</strong>, da <em>La guerra delle salamandre</em> di Karel Čapek: un'umanità produttivista sfrutta salamandre costruttrici, che finiscono per sollevarsi. Estrattivismo, crisi ecologica e lotte di classe si rispondono in una favola per il nostro presente. Tre atti, 2h25, undici voci e tre musicisti. Portato dalla <strong>Cie Trilobite</strong>, il progetto è accompagnato da STOPERA! in una prima fase di sviluppo, in vista della sua prima al festival <strong>Tête à Tête</strong> (Londra) nel 2027." },
-      body: [
-        { fr: "Au cœur du projet, un travail de terrain avec les populations. Docteur en philosophie engagé dans l'éducation populaire, - porte renaud - mène de 2021 à 2026 une recherche-action dans le quartier Briand, à Mulhouse : des centaines d'heures d'ateliers, d'animation, d'échanges et de répétitions, pour former une véritable « communauté esthétique » (thèse 2025, lecture située de John Dewey). Les interprètes n'y forment pas un chœur au sens traditionnel — ils et elles incarnent cette communauté. La scénographie prolonge la démarche : les matériaux sont collectés sur place, avec les habitant·es et les associations locales, à chaque lieu d'accueil — réemploi écologique et ancrage territorial concret.",
-          es: "En el corazón del proyecto, un trabajo de campo con las poblaciones. Doctor en filosofía comprometido con la educación popular, - porte renaud - lleva de 2021 a 2026 una investigación-acción en el barrio Briand, en Mulhouse: cientos de horas de talleres, animación, intercambios y ensayos, para formar una verdadera « comunidad estética » (tesis 2025, lectura situada de John Dewey). Los intérpretes no forman un coro en el sentido tradicional: encarnan esa comunidad. La escenografía prolonga el enfoque: los materiales se recogen in situ, con los habitantes y las asociaciones locales, en cada lugar de acogida — reutilización ecológica y arraigo territorial concreto.",
-          en: "At the heart of the project, fieldwork with communities. A doctor of philosophy committed to popular education, - porte renaud - has led, from 2021 to 2026, an action-research project in the Briand neighbourhood of Mulhouse: hundreds of hours of workshops, facilitation, exchanges and rehearsals, to form a genuine “aesthetic community” (PhD 2025, a situated reading of John Dewey). The performers are not a chorus in the traditional sense — they embody that community. The set extends the approach: materials are gathered on site, with residents and local associations, at each host venue — ecological re-use and concrete local roots.",
-          zh: "项目的核心，是与民众的在地工作。作为投身平民教育的哲学博士，- porte renaud - 从 2021 至 2026 年在米卢斯的 Briand 街区开展行动研究：数百小时的工作坊、带动、交流与排练，以形成一个真正的「审美共同体」（2025 年博士论文，对约翰·杜威的情境化解读）。演出者并非传统意义上的合唱队——他们体现着这一共同体。舞美延续了这一路径：材料在每个接待地就地采集，与居民和本地社团一同完成——生态再利用与具体的在地扎根。", it: "Al cuore del progetto, un lavoro sul campo con gli abitanti. Dottore in filosofia impegnato nell'educazione popolare, - porte renaud - conduce dal 2021 al 2026 una ricerca-azione nel quartiere Briand, a Mulhouse: centinaia di ore di laboratori, animazione, scambi e prove, per formare una vera «comunità estetica» (tesi 2025, lettura situata di John Dewey). Gli interpreti non vi formano un coro in senso tradizionale — incarnano quella comunità. La scenografia prolunga l'approccio: i materiali sono raccolti sul posto, con gli abitanti e le associazioni locali, in ogni spazio ospite — riuso ecologico e radicamento territoriale concreto." }
-      ],
-      facts: [
-        { k: { fr: "Genre", es: "Género", en: "Genre", zh: "类型", it: "Genere" }, v: { fr: "Opéra politique & écologique", es: "Ópera política & ecológica", en: "Political & ecological opera", zh: "政治与生态歌剧", it: "Opera politica & ecologica" } },
-        { k: { fr: "D'après", es: "A partir de", en: "After", zh: "取材自", it: "Da" }, v: { fr: "La Guerre des salamandres — Karel Čapek", es: "La guerra de las salamandras — Karel Čapek", en: "War with the Newts — Karel Čapek", zh: "《鲵鱼之乱》— 卡雷尔·恰佩克", it: "La guerra delle salamandre — Karel Čapek" } },
-        { k: { fr: "Format", es: "Formato", en: "Format", zh: "形制", it: "Formato" }, v: { fr: "3 actes · 2h25 · 11 voix + 3 musiciens", es: "3 actos · 2h25 · 11 voces + 3 músicos", en: "3 acts · 2h25 · 11 voices + 3 musicians", zh: "3 幕 · 2 小时 25 分 · 11 声部 + 3 乐手", it: "3 atti · 2h25 · 11 voci + 3 musicisti" } },
-        { k: { fr: "Compagnie", es: "Compañía", en: "Company", zh: "剧团", it: "Compagnia" }, v: "Cie Trilobite — - porte renaud -" },
-        { k: { fr: "Création", es: "Estreno", en: "Premiere", zh: "首演", it: "Prima" }, v: { fr: "Festival Tête à Tête (Londres), 2027", es: "Festival Tête à Tête (Londres), 2027", en: "Tête à Tête festival (London), 2027", zh: "Tête à Tête 音乐节（伦敦），2027", it: "Festival Tête à Tête (Londra), 2027" } },
-        { k: { fr: "Rôle de STOPERA!", es: "Rol de STOPERA!", en: "STOPERA!'s role", zh: "STOPERA! 的角色", it: "Ruolo di STOPERA!" }, v: { fr: "Accompagnement & développement", es: "Acompañamiento & desarrollo", en: "Support & development", zh: "陪伴与发展", it: "Accompagnamento & sviluppo" } }
-      ],
-      credits: [
-        { role: { fr: "Musique, texte & mise en scène", es: "Música, texto & dirección", en: "Music, text & staging", zh: "音乐、文本与导演", it: "Musica, testo & regia" }, who: "- porte renaud -" },
-        { role: { fr: "Piano & direction musicale", es: "Piano & dirección musical", en: "Piano & musical direction", zh: "钢琴与音乐总监", it: "Pianoforte & direzione musicale" }, who: "Rebeca Omordia" },
-        { role: { fr: "Dramaturgie", es: "Dramaturgia", en: "Dramaturgy", zh: "戏剧构作", it: "Drammaturgia" }, who: "Jean Haderer" },
-        { role: { fr: "Violoncelle", es: "Violonchelo", en: "Cello", zh: "大提琴", it: "Violoncello" }, who: "Sylvain Bolz" },
-        { role: { fr: "Flûte", es: "Flauta", en: "Flute", zh: "长笛", it: "Flauto" }, who: "Camille Moisson-Bonnevie" },
-        { role: { fr: "Performeur·ses vocaux·ales", es: "Intérpretes vocales", en: "Vocal performers", zh: "声乐表演者", it: "Performer vocali" }, who: "Laurent Deleuil, Stéphanie Boré, Valeria Altavar, Ariane-Olympe Girard, Florence Gelas" },
-        { role: { fr: "Costumes", es: "Vestuario", en: "Costumes", zh: "服装", it: "Costumi" }, who: "Evelyne Moisson-Bonnevie" }
-      ],
-      partners: ["Cie Trilobite", "Festival Tête à Tête — Londres", "Éditions Lacroch'", "STOPERA!"],
-      diffusion: {
-        fr: "Créé au sein de la Cie Trilobite, We Expected the Disaster… est programmé en création mondiale au festival Tête à Tête (Londres) en 2027. STOPERA! en accompagne une première phase de développement : structuration financière et budget de production, casting des postes techniques, communication et mise en réseau, en vue de la diffusion en France, en Europe et en Amérique latine.",
-        es: "Creada en el seno de la Cie Trilobite, We Expected the Disaster… está programada como estreno mundial en el festival Tête à Tête (Londres) en 2027. STOPERA! acompaña una primera fase de desarrollo: estructuración financiera y presupuesto de producción, casting de los puestos técnicos, comunicación y puesta en red, con vistas a la difusión en Francia, Europa y América Latina.",
-        en: "Created within Cie Trilobite, We Expected the Disaster… is programmed for its world premiere at the Tête à Tête festival (London) in 2027. STOPERA! accompanies a first development phase: financial structuring and production budget, casting of the technical roles, communication and networking, towards diffusion in France, Europe and Latin America.",
-        zh: "《We Expected the Disaster…》由 Cie Trilobite 创作，定于 2027 年在伦敦 Tête à Tête 音乐节世界首演。STOPERA! 陪伴其首个发展阶段：财务结构与制作预算、技术岗位选角、传播与人脉搭建，以推动其在法国、欧洲与拉丁美洲的巡演。", it: "Creato in seno alla Cie Trilobite, We Expected the Disaster… è programmato in prima mondiale al festival Tête à Tête (Londra) nel 2027. STOPERA! ne accompagna una prima fase di sviluppo: strutturazione finanziaria e budget di produzione, selezione dei ruoli tecnici, comunicazione e messa in rete, in vista della distribuzione in Francia, in Europa e in America latina." },
-      relations: [
-        { label: { fr: "- porte renaud -", es: "- porte renaud -", en: "- porte renaud -", zh: "- porte renaud -", it: "- porte renaud -" }, href: "artists/porte-renaud/" },
-        { label: { fr: "Cie Trilobite", es: "Cie Trilobite", en: "Cie Trilobite", zh: "Cie Trilobite", it: "Cie Trilobite" }, url: "https://cietrilobite.org" },
-        { label: { fr: "Festival Tête à Tête — Londres", es: "Festival Tête à Tête — Londres", en: "Tête à Tête festival — London", zh: "Tête à Tête 音乐节 — 伦敦", it: "Festival Tête à Tête — Londra" }, url: "https://www.tete-a-tete.org.uk" },
-        { label: { fr: "Éditions Lacroch'", es: "Éditions Lacroch'", en: "Éditions Lacroch'", zh: "Éditions Lacroch'", it: "Éditions Lacroch'" }, url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
-        { label: { fr: "Futurs Composés", es: "Futurs Composés", en: "Futurs Composés", zh: "Futurs Composés", it: "Futurs Composés" }, url: "https://www.futurscomposes.com" },
-        { label: { fr: "Sebastian Rivas", es: "Sebastian Rivas", en: "Sebastian Rivas", zh: "Sebastian Rivas", it: "Sebastian Rivas" }, href: "artists/sebastian-rivas/" },
-        { label: { fr: "Écrire à la compagnie", es: "Escribir a la compañía", en: "Contact the company", zh: "联系剧团", it: "Scrivere alla compagnia" }, url: "mailto:opera@cietrilobite.org" }
-      ],
-      links: [
-        { label: "cietrilobite.org", url: "https://cietrilobite.org" },
-        { label: "porterenaud.com", url: "https://porterenaud.com" },
-        { label: "- porte renaud - — éditions Lacroch'", url: "https://lacroch.com/catalogue/semifuza/porte-renaud/" },
-        { label: "Tête à Tête — The Opera Festival", url: "https://www.tete-a-tete.org.uk" }
-      ],
-      gallery: [
-        { src: "assets/projects/salamandres/01-salamandre.jpg", alt: "We Expected the Disaster… but not the salamanders! — la créature salamandre (Cie Trilobite). Photo Claire Shovelton." },
-        { src: "assets/projects/salamandres/02-plateau-acte1.jpg", alt: "Modélisation du plateau, acte 1 — IA et photomontage." },
-        { src: "assets/projects/salamandres/03-trio.jpg", alt: "We Expected the Disaster… — en scène. Photo Claire Shovelton." },
-        { src: "assets/projects/salamandres/04-monologue.jpg", alt: "We Expected the Disaster… — monologue. Photo Claire Shovelton." }
-      ],
-      note: { fr: "Projet externe accompagné par STOPERA! (première phase de développement, 2026). Création mondiale au festival Tête à Tête (Londres), 2027. Compagnie soutenue historiquement par la DRAC Grand Est ; œuvre éditée chez Lacroch' (catalogue Semifuza). Photos du spectacle : Claire Shovelton ; modélisation du plateau : IA et photomontage.", es: "Proyecto externo acompañado por STOPERA! (primera fase de desarrollo, 2026). Estreno mundial en el festival Tête à Tête (Londres), 2027. Compañía apoyada históricamente por la DRAC Grand Est; obra editada por Lacroch' (catálogo Semifuza). Fotos del espectáculo: Claire Shovelton; modelización del escenario: IA y fotomontaje.", en: "External project accompanied by STOPERA! (first development phase, 2026). World premiere at the Tête à Tête festival (London), 2027. Company historically supported by DRAC Grand Est; work published by Lacroch' (Semifuza catalogue). Performance photos: Claire Shovelton; stage modelling: AI and photomontage.", zh: "由 STOPERA! 陪伴的外部项目（首个发展阶段，2026）。2027 年在伦敦 Tête à Tête 音乐节世界首演。剧团长期获 DRAC Grand Est 支持；作品由 Lacroch' 出版（Semifuza 目录）。演出照片：Claire Shovelton；舞台建模：AI 与照片蒙太奇。", it: "Progetto esterno accompagnato da STOPERA! (prima fase di sviluppo, 2026). Prima mondiale al festival Tête à Tête (Londra), 2027. Compagnia sostenuta storicamente dalla DRAC Grand Est; opera pubblicata da Lacroch' (catalogo Semifuza). Foto dello spettacolo: Claire Shovelton; modellazione della scena: IA e fotomontaggio." }
-    },
     {
       slug: "mamma-roma", title: "Mamma Roma", titleHtml: "Mamma Roma",
       photo: "assets/projects/mamma-roma.jpg",
@@ -550,7 +483,6 @@
   var COLORS = {
     "ooo":              "#34433f",  // deep forest-teal — nature post-humaine
     "war-madrigals":    "#2f3f49",  // Nocturne Blue — bleu nuit profond
-    "salamandres":      "#3f6f4f",  // Salamander Green — vert écologique
     "nous":             "#5e3c41",  // Rumors — bordeaux feutré
     "rut":              "#6f8f8a",  // Dragonfly — vert-bleu
     "fame":             "#d6a65c",  // Beehive — ocre chaud
